@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
   await admin.from('payment_events').insert({
     stripe_event_id: event.id,
     event_type: event.type,
-    data: event.data.object as Record<string, unknown>,
+    data: event.data.object as unknown as Record<string, unknown>,
   }).then(({ error }) => {
     if (error) console.error('Failed to log payment event:', error)
   })
@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
   switch (event.type) {
     case 'checkout.session.completed': {
       const session = event.data.object as Stripe.Checkout.Session
-      const userId = session.subscription_data?.metadata?.supabase_user_id
+      const userId = (session as any).subscription_data?.metadata?.supabase_user_id
         ?? session.metadata?.supabase_user_id
 
       if (userId && session.subscription) {

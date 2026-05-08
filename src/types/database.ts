@@ -132,6 +132,7 @@ export interface JournalEntry {
   // Structured tracking fields
   symptom_focus: SymptomKey | null     // Which symptom this entry is about
   plan_item_id: string | null          // Which wellness plan item they're journalling about
+  plan_item_title?: string | null      // Human-readable title for the plan item (optional)
   days_tried: number | null            // How many days they've been trying this item
   perceived_effect: 'much_better' | 'better' | 'no_change' | 'worse' | null
   would_continue: boolean | null
