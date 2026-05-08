@@ -1,0 +1,62 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# WELLNESS FRAMEWORK TEMPLATE
+# Copy this file and rename it to your symptom (e.g. hot-flashes.yaml)
+# ─────────────────────────────────────────────────────────────────────────────
+
+id: symptom-name                    # kebab-case, must be unique
+label: Symptom Display Name         # Human-readable label
+
+# When should this framework be activated?
+# Matches against onboarding_answers table (question_key + answer_value)
+trigger_conditions:
+  - question: primary_symptom       # Must match a question_key in onboarding
+    answer: symptom_answer          # Must match an answer_value
+  - question: symptom_severity
+    answer: [moderate, severe]      # Array = match ANY of these values
+    min_matches: 1                  # How many of the array values must match
+
+# ─── RECOMMENDATIONS ─────────────────────────────────────────────────────────
+# Each recommendation needs: id, title, body, priority (high/medium/low)
+# priority determines order in the wellness plan
+
+diet_adjustments:
+  - id: unique-rec-id               # kebab-case, globally unique across all frameworks
+    title: Short action title
+    body: |
+      Detailed explanation of what to do and why. This is what the user reads
+      in their wellness plan. Be specific, evidence-informed, and empowering.
+      No medical claims. No diagnosis language.
+    priority: high                  # high | medium | low
+    for_whom: All users             # Optional: who this is most relevant for
+
+lifestyle_adjustments:
+  - id: unique-lifestyle-id
+    title: Short action title
+    body: |
+      Explanation text here.
+    priority: medium
+
+mindset_recommendations:
+  - id: unique-mindset-id
+    title: Short action title
+    body: |
+      Explanation text here.
+    priority: medium
+
+supplement_suggestions:
+  # EVERY supplement MUST have a disclaimer field — build will fail without it
+  - id: unique-supplement-id
+    title: Supplement name
+    body: |
+      Evidence-informed context about this supplement.
+      What it does, dose studied, what to look for.
+    priority: low
+    disclaimer: >
+      Always check with your GP before starting any new supplement,
+      especially if you take prescription medications or have any
+      underlying health conditions.
+
+# Content module IDs to surface in the user's Learn section
+content_module_ids:
+  - article-slug-1
+  - article-slug-2
