@@ -121,7 +121,7 @@ export default function SignUpPage() {
 
   if (sent) {
     return (
-      <div className="min-h-screen flex items-center justify-center px-6 bg-gradient-to-b from-brand-50 to-white">
+      <div className="min-h-screen flex items-center justify-center px-6 bg-cream">
         <div className="text-center max-w-sm">
           <div className="text-5xl mb-4">📧</div>
           <h1 className="text-2xl font-bold text-brand-900 mb-2">
@@ -144,7 +144,7 @@ export default function SignUpPage() {
   // ── Main sign-up form ──────────────────────────────────────────────────────
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-brand-50 to-white flex items-center justify-center px-6 py-12">
+    <div className="min-h-screen bg-cream flex items-center justify-center px-6 py-12">
       <div className="w-full max-w-sm">
 
         {/* Header */}

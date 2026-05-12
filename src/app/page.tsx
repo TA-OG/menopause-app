@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function LandingPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-brand-50 to-white">
+    <main className="min-h-screen bg-gradient-to-b from-cream to-white">
       {/* Nav */}
       <nav className="flex items-center justify-between px-6 py-4 max-w-4xl mx-auto">
         <span className="text-brand-900 font-bold text-xl">

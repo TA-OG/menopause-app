@@ -90,7 +90,7 @@ function WaitlistForm() {
   // ── Success state ────────────────────────────────────────────────────────────
   if (done) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-brand-50 to-white flex items-center justify-center px-6 py-12">
+      <div className="min-h-screen bg-cream flex items-center justify-center px-6 py-12">
         <div className="w-full max-w-sm space-y-6">
           {/* Header */}
           <div className="text-center">
@@ -169,7 +169,7 @@ function WaitlistForm() {
 
   // ── Signup form ──────────────────────────────────────────────────────────────
   return (
-    <div className="min-h-screen bg-gradient-to-b from-brand-50 to-white">
+    <div className="min-h-screen bg-cream">
       <div className="max-w-lg mx-auto px-6 py-12">
 
         {/* Priority badge */}

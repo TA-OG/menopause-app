@@ -474,7 +474,7 @@ export default function OnboardingPage() {
   // ─── Step renders ──────────────────────────────────────────────────────────
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-brand-50 to-white">
+    <div className="min-h-screen bg-cream">
       <div className="max-w-lg mx-auto px-6 py-8">
 
         {/* ── Progress bar (hidden on disclaimer and complete steps) ─────── */}
