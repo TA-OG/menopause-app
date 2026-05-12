@@ -1,11 +1,28 @@
 'use client'
 
+/**
+ * Onboarding wizard — multi-step questionnaire that builds a personalised
+ * wellness plan based on the user's symptoms, lifestyle, and cultural heritage.
+ *
+ * Architecture notes:
+ * - 14-step linear flow with back/forward navigation and a progress bar.
+ * - Answers are held in local state until the final step, then persisted to
+ *   three Supabase tables (onboarding_answers, profiles, user_preferences)
+ *   in a single transaction-style sequence.
+ * - The Supabase client is created lazily inside completeOnboarding() — never
+ *   at render time — so that Next.js static prerendering doesn't crash when
+ *   NEXT_PUBLIC_SUPABASE_URL is unavailable during the Vercel build.
+ * - Heritage step maps to community-map.ts, which drives the cultural engine
+ *   for ethnicity-aware supplement and diet recommendations.
+ */
+
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { DISCLAIMER } from '@/lib/disclaimer'
 
-// ─── Step definitions ─────────────────────────────────────────────────────────
+// ─── Step definitions ────────────────────────────────────────────────────────
+// Order matters: this array drives the wizard flow and progress bar.
 
 const STEPS = [
   'disclaimer',
@@ -26,6 +43,7 @@ const STEPS = [
 
 type Step = typeof STEPS[number]
 
+/** Accumulated answers — all fields optional until final submission. */
 interface Answers {
   full_name?: string
   age_range?: string
@@ -41,7 +59,8 @@ interface Answers {
   previously_tried?: string[]
 }
 
-// ─── Option sets ──────────────────────────────────────────────────────────────
+// ─── Option sets ─────────────────────────────────────────────────────────────
+// Each constant defines the choices for one onboarding step.
 
 const AGE_OPTIONS = ['Under 40', '40–44', '45–49', '50–54', '55–59', '60+']
 
@@ -123,8 +142,13 @@ const TRIED_OPTIONS = [
 ]
 
 // ─── Granular community options — grouped by region ──────────────────────────
-// Each value maps to a community key in community-map.ts
-const COMMUNITY_OPTIONS: Array<{ group: string; options: Array<{ value: string; label: string }> }> = [
+// Each value maps to a community key in src/lib/community-map.ts, which loads
+// the corresponding cultural YAML file for ethnicity-aware recommendations.
+
+const COMMUNITY_OPTIONS: Array<{
+  group: string
+  options: Array<{ value: string; label: string }>
+}> = [
   {
     group: 'Nigeria',
     options: [
@@ -283,11 +307,18 @@ const COMMUNITY_OPTIONS: Array<{ group: string; options: Array<{ value: string; 
   },
 ]
 
-// ─── Helper components ────────────────────────────────────────────────────────
+// ─── Reusable UI components ──────────────────────────────────────────────────
 
+/** Single-select or multi-select option button with active/inactive styling. */
 function OptionButton({
-  label, selected, onClick,
-}: { label: string; selected: boolean; onClick: () => void }) {
+  label,
+  selected,
+  onClick,
+}: {
+  label: string
+  selected: boolean
+  onClick: () => void
+}) {
   return (
     <button
       type="button"
@@ -303,9 +334,16 @@ function OptionButton({
   )
 }
 
+/** Primary call-to-action button used at the bottom of each step. */
 function PrimaryButton({
-  label, onClick, disabled = false,
-}: { label: string; onClick: () => void; disabled?: boolean }) {
+  label,
+  onClick,
+  disabled = false,
+}: {
+  label: string
+  onClick: () => void
+  disabled?: boolean
+}) {
   return (
     <button
       type="button"
@@ -318,36 +356,41 @@ function PrimaryButton({
   )
 }
 
+/** Consistent heading for each onboarding step. */
 function StepHeader({ title, subtitle }: { title: string; subtitle?: string }) {
   return (
     <div className="mb-6">
       <h2 className="text-2xl font-bold text-brand-900 leading-tight">{title}</h2>
-      {subtitle && <p className="text-gray-500 mt-2 text-sm leading-relaxed">{subtitle}</p>}
+      {subtitle && (
+        <p className="text-gray-500 mt-2 text-sm leading-relaxed">{subtitle}</p>
+      )}
     </div>
   )
 }
 
-// ─── Main onboarding component ────────────────────────────────────────────────
+// ─── Main onboarding component ───────────────────────────────────────────────
 
 export default function OnboardingPage() {
   const router = useRouter()
-  const supabase = createClient()
   const [stepIndex, setStepIndex] = useState(0)
   const [answers, setAnswers] = useState<Answers>({})
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
 
-  const step = STEPS[stepIndex]
+  const step: Step = STEPS[stepIndex]
   const progress = Math.round((stepIndex / (STEPS.length - 1)) * 100)
 
+  /** Advance to the next step (clamped to array bounds). */
   function next() {
     setStepIndex((i) => Math.min(i + 1, STEPS.length - 1))
   }
 
+  /** Go back to the previous step. */
   function back() {
     setStepIndex((i) => Math.max(i - 1, 0))
   }
 
+  /** Toggle a value in a multi-select answer array (symptoms, heritage, etc). */
   function toggleMulti(key: 'symptoms' | 'previously_tried' | 'heritage', value: string) {
     const current = (answers[key] ?? []) as string[]
     const updated = current.includes(value)
@@ -356,15 +399,27 @@ export default function OnboardingPage() {
     setAnswers({ ...answers, [key]: updated })
   }
 
+  /**
+   * Persist all onboarding answers to Supabase and redirect to dashboard.
+   *
+   * Three writes happen in sequence:
+   * 1. onboarding_answers — individual rows per question (supports arrays).
+   * 2. profiles — sets full_name, menopause_stage, onboarding_complete flag.
+   * 3. user_preferences — lifestyle data used by the wellness engine.
+   *
+   * Finally, triggers the wellness-plan API to generate the initial plan.
+   */
   async function completeOnboarding() {
     setSaving(true)
     setError('')
 
     try {
+      const supabase = createClient()
       const { data: { user } } = await supabase.auth.getUser()
       if (!user) throw new Error('Not authenticated')
 
-      // Save all answers to onboarding_answers table
+      // Flatten answers into individual rows for the onboarding_answers table.
+      // Array values (symptoms, heritage) expand into one row per value.
       const answerRows = Object.entries(answers)
         .filter(([, v]) => v !== undefined && v !== '')
         .flatMap(([key, value]) => {
@@ -381,10 +436,9 @@ export default function OnboardingPage() {
       const { error: answersError } = await supabase
         .from('onboarding_answers')
         .upsert(answerRows, { onConflict: 'user_id,question_key' })
-
       if (answersError) throw answersError
 
-      // Update profile
+      // Mark profile as onboarded
       const { error: profileError } = await supabase
         .from('profiles')
         .update({
@@ -393,10 +447,9 @@ export default function OnboardingPage() {
           menopause_stage: answers.menopause_stage as any,
         })
         .eq('id', user.id)
-
       if (profileError) throw profileError
 
-      // Save preferences
+      // Save lifestyle preferences for the wellness engine
       const { error: prefError } = await supabase
         .from('user_preferences')
         .upsert({
@@ -406,10 +459,9 @@ export default function OnboardingPage() {
           sleep_quality: answers.sleep_quality as any,
           stress_level: answers.stress_level as any,
         }, { onConflict: 'user_id' })
-
       if (prefError) throw prefError
 
-      // Generate wellness plan
+      // Trigger initial wellness plan generation
       await fetch('/api/wellness-plan', { method: 'POST' })
 
       router.push('/dashboard')
@@ -419,13 +471,13 @@ export default function OnboardingPage() {
     }
   }
 
-  // ─── Step renders ───────────────────────────────────────────────────────────
+  // ─── Step renders ──────────────────────────────────────────────────────────
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-brand-50 to-white">
       <div className="max-w-lg mx-auto px-6 py-8">
 
-        {/* Progress bar */}
+        {/* ── Progress bar (hidden on disclaimer and complete steps) ─────── */}
         {step !== 'disclaimer' && step !== 'complete' && (
           <div className="mb-8">
             <div className="flex items-center justify-between mb-2">
@@ -433,7 +485,7 @@ export default function OnboardingPage() {
                 onClick={back}
                 className="text-sm text-gray-400 hover:text-gray-600 font-medium"
               >
-                ← Back
+                &larr; Back
               </button>
               <span className="text-xs text-gray-400">{progress}%</span>
             </div>
@@ -446,14 +498,12 @@ export default function OnboardingPage() {
           </div>
         )}
 
-        {/* ── STEP: Disclaimer ── */}
+        {/* ── STEP: Disclaimer ──────────────────────────────────────────── */}
         {step === 'disclaimer' && (
           <div className="space-y-6">
             <div className="text-center">
               <div className="text-5xl mb-4">🌸</div>
-              <h1 className="text-3xl font-bold text-brand-900">
-                Welcome
-              </h1>
+              <h1 className="text-3xl font-bold text-brand-900">Welcome</h1>
               <p className="text-gray-500 mt-2">
                 Let&apos;s build your personalised wellness plan.
               </p>
@@ -467,7 +517,7 @@ export default function OnboardingPage() {
           </div>
         )}
 
-        {/* ── STEP: Name ── */}
+        {/* ── STEP: Name ────────────────────────────────────────────────── */}
         {step === 'name' && (
           <div className="space-y-6">
             <StepHeader
@@ -490,7 +540,7 @@ export default function OnboardingPage() {
           </div>
         )}
 
-        {/* ── STEP: Age ── */}
+        {/* ── STEP: Age ─────────────────────────────────────────────────── */}
         {step === 'age' && (
           <div className="space-y-4">
             <StepHeader title="How old are you?" />
@@ -507,7 +557,7 @@ export default function OnboardingPage() {
           </div>
         )}
 
-        {/* ── STEP: Stage ── */}
+        {/* ── STEP: Stage ───────────────────────────────────────────────── */}
         {step === 'stage' && (
           <div className="space-y-4">
             <StepHeader
@@ -527,7 +577,7 @@ export default function OnboardingPage() {
           </div>
         )}
 
-        {/* ── STEP: Symptoms (multi-select) ── */}
+        {/* ── STEP: Symptoms (multi-select) ─────────────────────────────── */}
         {step === 'symptoms' && (
           <div className="space-y-4">
             <StepHeader
@@ -552,7 +602,7 @@ export default function OnboardingPage() {
           </div>
         )}
 
-        {/* ── STEP: Primary symptom ── */}
+        {/* ── STEP: Primary symptom ─────────────────────────────────────── */}
         {step === 'primary_symptom' && (
           <div className="space-y-4">
             <StepHeader
@@ -574,12 +624,10 @@ export default function OnboardingPage() {
           </div>
         )}
 
-        {/* ── STEP: Goal ── */}
+        {/* ── STEP: Goal ────────────────────────────────────────────────── */}
         {step === 'goal' && (
           <div className="space-y-4">
-            <StepHeader
-              title="What's your main goal with this app?"
-            />
+            <StepHeader title="What's your main goal with this app?" />
             <div className="space-y-2">
               {GOAL_OPTIONS.map((opt) => (
                 <OptionButton
@@ -593,12 +641,10 @@ export default function OnboardingPage() {
           </div>
         )}
 
-        {/* ── STEP: Diet ── */}
+        {/* ── STEP: Diet ────────────────────────────────────────────────── */}
         {step === 'diet' && (
           <div className="space-y-4">
-            <StepHeader
-              title="How would you describe your current diet?"
-            />
+            <StepHeader title="How would you describe your current diet?" />
             <div className="space-y-2">
               {DIET_OPTIONS.map((opt) => (
                 <OptionButton
@@ -612,7 +658,7 @@ export default function OnboardingPage() {
           </div>
         )}
 
-        {/* ── STEP: Exercise ── */}
+        {/* ── STEP: Exercise ────────────────────────────────────────────── */}
         {step === 'exercise' && (
           <div className="space-y-4">
             <StepHeader title="How active are you currently?" />
@@ -629,7 +675,7 @@ export default function OnboardingPage() {
           </div>
         )}
 
-        {/* ── STEP: Sleep ── */}
+        {/* ── STEP: Sleep ───────────────────────────────────────────────── */}
         {step === 'sleep' && (
           <div className="space-y-4">
             <StepHeader title="How would you rate your sleep quality right now?" />
@@ -646,7 +692,7 @@ export default function OnboardingPage() {
           </div>
         )}
 
-        {/* ── STEP: Stress ── */}
+        {/* ── STEP: Stress ──────────────────────────────────────────────── */}
         {step === 'stress' && (
           <div className="space-y-4">
             <StepHeader title="How is your stress level day-to-day?" />
@@ -663,13 +709,15 @@ export default function OnboardingPage() {
           </div>
         )}
 
-        {/* ── STEP: Heritage — granular community selection ── */}
+        {/* ── STEP: Heritage — granular community selection ──────────────── */}
         {step === 'heritage' && (
           <div className="space-y-4">
             <StepHeader
               title="What is your cultural background?"
               subtitle="Aunty Mel uses this to make your recommendations genuinely relevant — referencing foods, traditions, and experiences you actually know. Select all that apply."
             />
+
+            {/* Research context — explains why we ask */}
             <div className="bg-brand-50 rounded-xl p-3 border border-brand-100">
               <p className="text-xs text-brand-700 leading-relaxed">
                 Research shows menopause affects different communities differently — in timing,
@@ -678,7 +726,7 @@ export default function OnboardingPage() {
               </p>
             </div>
 
-            {/* Grouped options with scrollable list */}
+            {/* Grouped options in a scrollable list */}
             <div className="space-y-4 max-h-96 overflow-y-auto pr-1">
               {COMMUNITY_OPTIONS.map((group) => (
                 <div key={group.group}>
@@ -705,6 +753,7 @@ export default function OnboardingPage() {
               ))}
             </div>
 
+            {/* Selection summary */}
             {(answers.heritage ?? []).length > 0 && (
               <div className="bg-brand-50 rounded-xl p-2 text-xs text-brand-700">
                 Selected: {(answers.heritage ?? []).join(', ')}
@@ -729,7 +778,7 @@ export default function OnboardingPage() {
           </div>
         )}
 
-        {/* ── STEP: Previously tried (multi-select) ── */}
+        {/* ── STEP: Previously tried (multi-select) ─────────────────────── */}
         {step === 'previously_tried' && (
           <div className="space-y-4">
             <StepHeader
@@ -746,11 +795,11 @@ export default function OnboardingPage() {
                 />
               ))}
             </div>
-            <PrimaryButton label="Build my plan →" onClick={next} />
+            <PrimaryButton label="Build my plan &rarr;" onClick={next} />
           </div>
         )}
 
-        {/* ── STEP: Complete ── */}
+        {/* ── STEP: Complete ─────────────────────────────────────────────── */}
         {step === 'complete' && (
           <div className="space-y-6 text-center">
             <div className="text-6xl">✨</div>
@@ -766,11 +815,13 @@ export default function OnboardingPage() {
             </div>
 
             {error && (
-              <p className="text-red-600 text-sm bg-red-50 rounded-xl px-4 py-2">{error}</p>
+              <p className="text-red-600 text-sm bg-red-50 rounded-xl px-4 py-2">
+                {error}
+              </p>
             )}
 
             <PrimaryButton
-              label={saving ? 'Building your plan...' : 'See my plan →'}
+              label={saving ? 'Building your plan...' : 'See my plan &rarr;'}
               onClick={completeOnboarding}
               disabled={saving}
             />
