@@ -12,6 +12,8 @@ export default async function DashboardPage() {
     .eq('id', user.id)
     .single()
 
+  const hour = new Date().getHours()
+  const greeting = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening'
   const firstName = profile?.full_name?.split(' ')[0] ?? 'there'
   const isPremium = profile?.subscription_tier === 'premium'
 
@@ -20,7 +22,7 @@ export default async function DashboardPage() {
       {/* Greeting */}
       <div>
         <h1 className="text-2xl font-bold text-brand-900">
-          Good morning, {firstName} 👋
+          {greeting}, {firstName} 👋
         </h1>
         <p className="text-gray-500 mt-1 text-sm">
           How are you feeling today?

@@ -1,0 +1,126 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# EAST ASIAN CULTURAL WELLNESS MODIFIER
+#
+# Applied when heritage includes: chinese, japanese, korean, vietnamese,
+# taiwanese, east_asian
+#
+# Research basis:
+# - Hot flashes LESS common in Japanese and Chinese women (dietary phytoestrogens)
+# - Traditional Asian diets: 50–200mg isoflavones/day vs Western 3–5mg
+# - Joint and muscle pain is primary symptom (Singapore study 2024)
+# - Low libido and sexual pain more prevalent
+# - Forgetfulness particularly noted
+# - Lower bone density than Black women but lower osteoporosis risk variation
+# - Cultural framing of menopause often as natural transition, less medicalised
+# ─────────────────────────────────────────────────────────────────────────────
+
+id: east-asian-modifier
+label: East Asian Cultural Context
+type: cultural_modifier
+
+awareness:
+  title: Your diet may already be working in your favour
+  body: |
+    Women who eat traditional East Asian diets — rich in soy-based foods like
+    tofu, miso, edamame, and tempeh — consume 50–200mg of isoflavones daily.
+    Western women typically get 3–5mg. This may be a significant reason why
+    hot flashes are reported less frequently in Japan and China.
+
+    If you've moved toward a more Westernised diet, reintroducing traditional
+    soy-based foods may be worth exploring. If your diet is still predominantly
+    traditional, this is a genuine nutritional advantage to maintain.
+  source: VA Whole Health Library / Jean Hailes Foundation 2024
+
+diet_context:
+  items:
+    - id: soy-tofu-miso-phytoestrogens
+      body: |
+        Tofu, miso, edamame, tempeh, and natto are among the richest food sources
+        of isoflavones — plant oestrogens that bind to oestrogen receptors and can
+        help moderate vasomotor symptoms. The evidence is strongest for whole soy
+        foods (not processed soy protein) consumed regularly.
+
+        If tofu is already a staple in your cooking, keep it there. Miso soup
+        daily is a simple, beneficial addition. Fermented soy (miso, natto, tempeh)
+        appears to have stronger benefits than non-fermented forms.
+
+    - id: green-tea-antioxidants
+      body: |
+        Green tea is high in antioxidants and has anti-inflammatory properties
+        that support overall health during menopause. The caffeine content is lower
+        than coffee but not zero — if hot flashes or sleep disruption are significant,
+        consider switching afternoon cups to houjicha (roasted green tea, lower
+        caffeine) or barley tea which is caffeine-free and widely drunk in East Asia.
+
+    - id: fish-omega3-brain
+      body: |
+        Traditional East Asian diets are typically high in oily fish — salmon,
+        mackerel, sardines, and tuna. Omega-3 fatty acids are among the most
+        well-evidenced dietary supports for brain health, mood, and inflammation
+        during menopause. If you've moved toward less fish in your diet, bringing
+        this back is a high-impact change.
+
+    - id: fermented-foods-gut
+      body: |
+        Kimchi, miso, natto, and other fermented foods support gut microbiome health.
+        Emerging research suggests the gut microbiome plays a role in how the body
+        processes and recycles oestrogen — women with diverse gut microbiomes may
+        metabolise phytoestrogens more effectively. Including fermented foods daily
+        is supported by both traditional wisdom and emerging science.
+
+    - id: white-rice-blood-sugar
+      body: |
+        White rice is a staple that can raise blood sugar significantly when eaten
+        in large quantities without sufficient protein and vegetables alongside it.
+        This matters during menopause because blood sugar instability worsens hot
+        flashes and mood swings.
+
+        Eating rice with generous portions of vegetables, tofu, fish or eggs
+        moderates the glycaemic response. Cooling and reheating rice also converts
+        some starch to resistant starch, which has a lower glycaemic impact.
+
+lifestyle_context:
+  - id: joint-pain-tai-chi
+    body: |
+      Joint and muscle pain is the most commonly reported menopause symptom
+      among women of East and Southeast Asian heritage. Tai chi and qigong —
+      both with roots in traditional Chinese medicine — have genuine evidence
+      for reducing joint pain, improving balance, and supporting mental health.
+      These are not just cultural practices; they are evidence-supported
+      menopause interventions.
+
+  - id: natural-framing
+    body: |
+      In many East Asian cultural contexts, menopause is framed as a natural
+      life transition — not a disease state or a failure. This perspective has
+      genuine value. Research suggests that women who view menopause more
+      positively experience lower symptom burden.
+
+      If you've adopted a more medicalised Western framework around menopause,
+      there may be wisdom in reconnecting with a cultural perspective that
+      holds this as a passage rather than a problem.
+
+mindset_context:
+  - id: not-complaining
+    body: |
+      In some East Asian cultural contexts, expressing physical discomfort —
+      particularly around women's health — is not encouraged. "Getting on with it"
+      may feel like the right thing. But suffering in silence means symptoms go
+      unaddressed and worsen over time.
+
+      You can hold your cultural values around stoicism and still take your
+      symptoms seriously. Tracking them here, for yourself, is not complaining —
+      it is gathering information that will help you feel better.
+
+supplement_context:
+  - id: bone-density-monitoring
+    body: |
+      Studies show variation in bone density across ethnic groups. Japanese and
+      Chinese women generally have lower baseline bone density than Black women,
+      which can mean higher relative risk of fracture with the oestrogen decline
+      of menopause.
+
+      Weight-bearing exercise, adequate calcium and Vitamin D, and — if
+      appropriate — a DEXA scan discussion with your GP are all worth considering,
+      particularly if menopause onset is earlier than expected.
+      DISCLAIMER: Discuss bone density screening with your GP, especially if you have a family history of osteoporosis.

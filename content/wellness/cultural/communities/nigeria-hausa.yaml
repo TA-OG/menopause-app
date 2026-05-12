@@ -1,0 +1,161 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# HAUSA-FULANI (Nigeria / Niger / Cameroon) — Community Wellness Modifier
+#
+# Applies to: Hausa and Fulani women from Northern Nigeria (Kano, Kaduna, Katsina,
+# Sokoto, Zamfara, Kebbi, Gombe, Borno, Jigawa, Bauchi, Plateau, Niger state),
+# and from Niger, Cameroon northern regions, and diaspora
+#
+# Research basis:
+# - BusinessDay NG 2021: Hausa/Fulani diet - milk and grains dominant
+#   "Hausa/Fulanis are tall and slim" — different body composition, dairy-heavy diet
+# - Quora / Legit.ng: Hausa foods — tuwo shinkafa, miyan kuka, fura da nono, suya, masa
+# - BMS 2023: African/Caribbean women earlier menopause onset
+# - Islamic dietary context: no pork; Halal requirements
+# - Fura da nono (fermented milk): probiotic, calcium-rich — significant for menopause
+#
+# IMPORTANT: Hausa and Fulani are distinct ethnicities with overlapping cultural
+# practices in the North. This file covers shared Northern Nigerian food traditions.
+# There is significant variation between urban Kano, rural Sokoto, and diaspora contexts.
+# ─────────────────────────────────────────────────────────────────────────────
+
+id: nigeria-hausa
+label: Hausa / Hausa-Fulani (Northern Nigeria)
+type: cultural_modifier
+region: West Africa
+country: Nigeria
+community: Hausa-Fulani
+
+awareness:
+  title: Your diet is already doing some of the work
+  body: |
+    The traditional Hausa-Fulani diet — rich in grains, legumes, and fermented dairy —
+    provides some natural nutritional advantages during menopause. Fura da nono
+    (fermented milk drink) in particular provides calcium, probiotics, and protein
+    that support bone health during the oestrogen decline of menopause.
+
+    Nigerian women tend to reach menopause earlier than the Western average of 51.
+    If you're in your 40s and noticing changes, take them seriously.
+  source: BMS 2023; BusinessDay NG 2021
+
+diet_context:
+  items:
+    - id: fura-da-nono-probiotic-calcium
+      body: |
+        Fura da nono — the Fulani fermented milk drink made from millet balls and
+        fermented cow milk — is nutritionally significant for menopausal women.
+        It provides calcium (critical for bone density as oestrogen declines),
+        probiotic bacteria (which support gut health and may improve phytoestrogen
+        metabolism), and protein.
+
+        If you have access to it, this is one of the most relevant traditional foods
+        for this life stage. If making it at home, the fermentation is the most
+        important part nutritionally.
+
+    - id: tuwo-shinkafa-grain-staple
+      body: |
+        Tuwo shinkafa (rice pudding/mould) is the Northern staple swallow,
+        eaten with a variety of soups. Rice-based staples are generally more easily
+        digestible than heavier swallows. Eating tuwo with miyan kuka (baobab leaf soup)
+        or miyan taushe (pumpkin soup) provides a nutritionally balanced meal.
+
+        During menopause, blood sugar stability matters. Pairing tuwo with protein-rich
+        soups and reducing portion size of the tuwo while increasing the soup
+        moderates the blood sugar response.
+
+    - id: miyan-kuka-baobab
+      body: |
+        Miyan kuka (baobab leaf soup) is rich in calcium, iron, Vitamin C, and
+        antioxidants. Baobab — the tree called "the tree of life" across sub-Saharan Africa —
+        has one of the highest Vitamin C contents of any food. Vitamin C supports
+        iron absorption and immune function, both of which matter during menopause.
+
+        Baobab powder is now also available in UK health food shops — a teaspoon
+        added to smoothies or porridge provides a significant nutrient boost.
+
+    - id: masa-tsamiya-sorghum
+      body: |
+        Masa (fermented rice pancakes) and tsamiya (tamarind) are part of Hausa
+        snack culture. Fermented foods support gut health. Tamarind has antioxidant
+        properties. Sorghum-based foods (burukutu, tuwo dawa) are higher in fibre
+        and have a lower glycaemic index than white rice, making them a better
+        choice during menopause for blood sugar management.
+
+    - id: suya-kilishi-protein
+      body: |
+        Suya (spiced grilled beef or chicken) and kilishi (dried spiced meat) are
+        high-protein foods — important during menopause when muscle mass maintenance
+        becomes more critical. The spice rub (suya spice/tankora) contains groundnuts,
+        ginger, and other spices with anti-inflammatory properties.
+
+        Suya from street vendors tends to be high in salt. If you are making it at home,
+        reducing salt while keeping the spice profile supports cardiovascular health,
+        which becomes more important after menopause when oestrogen's protective
+        cardiovascular effects decline.
+
+    - id: groundnuts-legumes
+      body: |
+        Groundnuts (kulikuli, groundnut soup, groundnut oil) are central to Northern
+        Nigerian cooking and provide protein, healthy fats, and some phytoestrogens.
+        Groundnut oil is a better cooking choice than refined vegetable oils.
+        Groundnut soup eaten with grains provides sustained energy and blood sugar stability.
+
+lifestyle_context:
+  - id: purdah-vitamin-d
+    body: |
+      For Hausa-Fulani women who observe purdah or who wear full covering outdoors,
+      Vitamin D deficiency is a significant health risk. The combination of limited
+      sun exposure and dark skin means Vitamin D production is minimal in the UK.
+
+      Vitamin D deficiency directly worsens joint pain, fatigue, bone health, and
+      mood during menopause — all symptoms that are already more prevalent. This is
+      a medically important issue to address with your GP, regardless of how you choose
+      to dress.
+
+  - id: community-women-network
+    body: |
+      Hausa women's community networks — informal and formal — have historically been
+      important spaces where women share health knowledge. The concept of "sadaka" (charity
+      and community care) extends to health knowledge sharing.
+
+      Seeking information about menopause from women in your community who have
+      already experienced it is a valid and valuable source of support, alongside
+      evidence-based guidance.
+
+mindset_context:
+  - id: islamic-framing-natural-process
+    body: |
+      In Islamic scholarship, menopause is understood as a natural part of the life
+      cycle Allah created — the end of one responsibility (childbearing) and the
+      freeing of energy for other forms of contribution and worship. This positive
+      framing has genuine wellbeing value.
+
+      Your faith does not require you to suffer through symptoms silently. Seeking
+      knowledge about your body and seeking relief from symptoms is consistent with
+      Islamic principles of caring for the body as an amanah (trust).
+
+  - id: discussing-sexual-health
+    body: |
+      Discussing sexual health — including changes in libido, vaginal dryness, or
+      pain during intimacy — can feel very difficult in Hausa-Fulani cultural
+      contexts where these are private matters.
+
+      Within the privacy of this app, you can track and understand these changes
+      without disclosure. If they are significant and affecting your life, speaking
+      to a female GP in confidence is your right. These changes are medical, they
+      have evidence-based solutions, and you deserve access to them.
+
+supplement_context:
+  - id: calcium-bone-health-hausa
+    body: |
+      The traditional Hausa-Fulani diet is one of the higher-calcium West African
+      diets due to dairy consumption (fura da nono, milk). This is a genuine advantage
+      for bone health during menopause. Continue this dietary pattern and speak to
+      your GP about a DEXA bone density scan if you have early menopause or a family
+      history of osteoporosis.
+      DISCLAIMER: Discuss calcium supplementation with your GP.
+
+  - id: vitamin-d-hausa
+    body: |
+      Vitamin D deficiency is particularly high in Hausa women in the UK.
+      Test via GP before supplementing at higher doses.
+      DISCLAIMER: Always check with your GP. Excess Vitamin D is toxic.

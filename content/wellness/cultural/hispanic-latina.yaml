@@ -1,0 +1,108 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# HISPANIC / LATINA CULTURAL WELLNESS MODIFIER
+#
+# Applied when heritage includes: mexican, colombian, puerto_rican, cuban,
+# dominican, peruvian, ecuadorian, guatemalan, other_latin_american, hispanic
+#
+# Research basis:
+# - Skin and hair changes more common (OR 1.58 vs white women)
+# - Mood/emotional swings more prevalent (55% vs 49% white women)
+# - Highest negative daily impact of symptoms (63% feel negative impact)
+# - 57% use vitamins/supplements (vs 47% white women)
+# - Many Latina cultures view menopause positively — less pathologised
+# ─────────────────────────────────────────────────────────────────────────────
+
+id: hispanic-latina-modifier
+label: Hispanic / Latina Cultural Context
+type: cultural_modifier
+
+awareness:
+  title: Mood changes and skin changes are especially common for Latina women
+  body: |
+    Research consistently shows that Hispanic and Latina women report mood changes
+    and emotional swings more frequently than other groups during menopause —
+    55% compared to 49% of white women. Skin and hair changes are also more
+    pronounced.
+
+    These are not imagined or exaggerated — they reflect real hormonal patterns.
+    Naming them clearly when speaking to your GP helps you get the support
+    you need, rather than having mood symptoms dismissed or misdiagnosed as
+    anxiety or depression alone.
+  source: AARP Diverse Voices of Menopause Study 2024
+
+diet_context:
+  items:
+    - id: beans-legumes-central
+      body: |
+        Black beans, pinto beans, frijoles — legumes are central to Latin American
+        cooking and are among the best foods for menopause. They're high in plant
+        protein, fibre, and phytoestrogens. If beans are already a daily staple,
+        this is a significant nutritional advantage.
+
+    - id: avocado-healthy-fats
+      body: |
+        Avocado is a Latin American staple and genuinely excellent for menopause —
+        rich in monounsaturated fats that support hormone production, Vitamin E for
+        skin health (particularly relevant given the skin changes common in Latina
+        women during menopause), and potassium for blood pressure management.
+        Daily avocado is evidence-supported, not just trendy.
+
+    - id: chilli-triggers
+      body: |
+        Chilli and spicy food is fundamental to many Latin American cuisines and
+        deeply culturally significant. As with other spicy food traditions, pay
+        attention to whether there's a connection between spicy meals and hot
+        flashes. If there is a pattern, consider timing rather than elimination —
+        enjoying spicy food earlier in the day may reduce evening impact.
+
+    - id: corn-tortilla-vs-flour
+      body: |
+        Corn tortillas have a lower glycaemic index than flour tortillas and are
+        naturally gluten-free. During menopause, when blood sugar stability
+        directly affects hot flash frequency and mood, this is a simple swap
+        worth making where corn tortillas are culturally appropriate.
+
+    - id: hibiscus-jamaica
+      body: |
+        Agua de jamaica (hibiscus flower water) is consumed widely in Mexico
+        and Central America. It has genuine evidence for blood pressure support
+        and antioxidant properties. Reducing added sugar in the preparation
+        maximises the benefit — a lighter sweetness with plenty of hibiscus and
+        lime is just as satisfying.
+
+lifestyle_context:
+  - id: skin-and-hair-changes
+    body: |
+      Skin and hair changes are more pronounced in Hispanic and Latina women
+      during menopause — changes in texture, dryness, pigmentation, and hair
+      thinning are documented at higher rates. This is not vanity — these changes
+      affect identity and wellbeing.
+
+      Hydration (both from water and from healthy fats in the diet), Vitamin E,
+      and good skincare adapted to drier, changing skin are all worth prioritising.
+      A dermatologist familiar with menopause-related skin changes can be helpful
+      if changes are significant.
+
+mindset_context:
+  - id: cultural-positivity
+    body: |
+      Research with Latina women and women of Mexican heritage finds that many
+      hold more positive attitudes toward menopause than their white Western
+      counterparts — viewing it as a natural transition rather than a medical
+      condition. This cultural framing has real value and is associated with
+      lower symptom distress in studies.
+
+      You can hold this positive cultural framing and still take your symptoms
+      seriously. Both things are true. The transition is natural and it can
+      also be hard — and you deserve support with the hard parts.
+
+  - id: familismo-and-stress
+    body: |
+      The cultural value of familismo — deep family connection and responsibility
+      — means many Latina women are central to the emotional and practical life
+      of extended family networks during their menopausal years. This is a gift
+      and also a significant source of stress.
+
+      Finding even small windows of time that are yours alone — a walk, a moment
+      of quiet — is not a rejection of your family. It's what allows you to keep
+      showing up for them.

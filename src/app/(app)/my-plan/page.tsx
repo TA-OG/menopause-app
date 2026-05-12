@@ -102,6 +102,21 @@ export default async function MyPlanPage() {
     gatedPlan.mindset_recommendations.length +
     gatedPlan.supplement_suggestions.length
 
+  // Cultural context — stored as JSONB on the plan
+  const culturalContext = (plan as any)?.cultural_context as {
+    awareness?: Array<{ title: string; body: string; source?: string }>
+    diet?: Array<{ id: string; title?: string; body: string }>
+    lifestyle?: Array<{ id: string; body: string }>
+    mindset?: Array<{ id: string; body: string }>
+    supplements?: Array<{ id: string; body: string }>
+  } | null
+
+  const hasCulturalContext = culturalContext && (
+    (culturalContext.awareness?.length ?? 0) > 0 ||
+    (culturalContext.diet?.length ?? 0) > 0 ||
+    (culturalContext.lifestyle?.length ?? 0) > 0
+  )
+
   return (
     <div className="space-y-8 py-4">
       <div>
@@ -110,6 +125,19 @@ export default async function MyPlanPage() {
           {totalRecs} personalised recommendation{totalRecs !== 1 ? 's' : ''} for you
         </p>
       </div>
+
+      {/* Cultural awareness — shown first if present */}
+      {hasCulturalContext && culturalContext?.awareness?.map((item, i) => (
+        <div key={i} className="bg-brand-50 border border-brand-200 rounded-2xl p-4">
+          <p className="text-sm font-bold text-brand-900 mb-2">🌍 {item.title}</p>
+          <p className="text-sm text-brand-800 leading-relaxed whitespace-pre-line">
+            {item.body}
+          </p>
+          {item.source && (
+            <p className="text-xs text-brand-500 mt-2">Source: {item.source}</p>
+          )}
+        </div>
+      ))}
 
       {/* Free tier upgrade prompt */}
       {!isPremium && (
@@ -152,6 +180,45 @@ export default async function MyPlanPage() {
           emoji={CATEGORY_CONFIG.supplement.emoji}
           recs={gatedPlan.supplement_suggestions}
         />
+      )}
+
+      {/* Cultural food context — premium only, shown after main recs */}
+      {isPremium && hasCulturalContext && (culturalContext?.diet?.length ?? 0) > 0 && (
+        <div>
+          <h2 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+            <span>🍽️</span> Foods from your culture
+          </h2>
+          <div className="space-y-3">
+            {culturalContext!.diet!.map((item) => (
+              <div key={item.id} className="bg-amber-50 rounded-2xl p-4 border border-amber-100">
+                {item.title && (
+                  <h3 className="font-semibold text-gray-900 text-sm mb-2">{item.title}</h3>
+                )}
+                <p className="text-sm text-gray-600 leading-relaxed whitespace-pre-line">
+                  {item.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Cultural lifestyle context */}
+      {isPremium && hasCulturalContext && (culturalContext?.lifestyle?.length ?? 0) > 0 && (
+        <div>
+          <h2 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+            <span>💫</span> For your experience specifically
+          </h2>
+          <div className="space-y-3">
+            {culturalContext!.lifestyle!.map((item) => (
+              <div key={item.id} className="bg-purple-50 rounded-2xl p-4 border border-purple-100">
+                <p className="text-sm text-gray-600 leading-relaxed whitespace-pre-line">
+                  {item.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
       )}
 
       {/* GP signpost — always shown */}

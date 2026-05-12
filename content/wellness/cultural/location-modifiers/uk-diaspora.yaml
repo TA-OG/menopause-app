@@ -1,0 +1,97 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# UK DIASPORA LOCATION MODIFIER
+#
+# Applies to: ALL women living in the UK regardless of heritage background
+# Layered on top of community-specific modifiers
+#
+# This addresses the critical "acculturation" factor identified in:
+# - BMS 2023: "Attitudes of women towards menopausal symptoms may vary,
+#   depending on whether they are living in their country of origin, or
+#   if they have moved to a new country"
+# - Endara-Mina 2025: "Migration and modernization modify traditional interpretations"
+#
+# The combination of community heritage + UK location = the specific woman
+# Aunty Mel is serving in the UK context.
+# ─────────────────────────────────────────────────────────────────────────────
+
+id: uk-diaspora
+label: Living in the UK
+type: location_modifier
+
+vitamin_d:
+  title: Vitamin D in the UK — this is not optional
+  body: |
+    Regardless of where you are from, living in the UK changes your relationship
+    with sunlight. UK latitude means meaningful UV exposure (enough to produce
+    Vitamin D in skin) is only available from roughly April to September, and
+    even then requires significant unprotected sun time.
+
+    For women with darker skin tones — African, South Asian, East Asian, Middle Eastern —
+    melanin requires far more UV exposure to produce the same amount of Vitamin D.
+    This means Vitamin D deficiency is extremely common among women of colour in the UK,
+    and becomes more clinically significant during menopause when its role in bone health,
+    mood, joint function, and fatigue becomes more critical.
+
+    The NHS recommends all UK adults supplement with 10 micrograms (400 IU) daily,
+    particularly in autumn and winter. For women with darker skin, more may be needed —
+    but testing is the right starting point.
+
+    Ask your GP for a Vitamin D blood test. Many GPs in the UK will do this if you
+    ask directly.
+
+nhs_navigation:
+  title: Getting what you need from the NHS
+  body: |
+    The NHS provides menopause care — but research consistently shows that women
+    from ethnic minority backgrounds are less likely to be offered diagnosis, treatment,
+    or referral for menopause symptoms. This is a documented healthcare inequality,
+    not a personal failure.
+
+    Practical steps:
+    - Keep a symptom diary before your appointment (frequency, severity, impact on work,
+      sleep, relationships)
+    - Use specific language: "I believe I may be in perimenopause or menopause"
+    - Ask directly: "What are my options for managing these symptoms?"
+    - If dismissed, you can ask for a second opinion or referral to a menopause clinic
+    - Many areas have NHS menopause clinics — ask your GP for a referral
+
+    You are entitled to this care. Aunty Mel helps you prepare for these conversations.
+
+food_access:
+  title: Finding traditional foods in the UK
+  body: |
+    Many traditional foods from your culture are available in the UK — often more
+    widely than you might expect. African food shops, Asian grocery stores, Caribbean
+    markets, and online suppliers mean that traditional ingredients are accessible
+    in most UK cities and increasingly in smaller towns.
+
+    Some specifically useful for menopause:
+    - Egusi, ede (cocoyam), fresh ugu (pumpkin leaves), dried crayfish: major UK cities,
+      online (Buy African Foods, Afro Market, etc.)
+    - Fresh or frozen plantain: most large supermarkets and Caribbean/African shops
+    - Baobab powder: Holland & Barrett, health food shops, online
+    - Dried methi, atta, dal varieties: Asian grocery stores in most UK towns
+    - Tofu, miso, edamame: all major UK supermarkets
+    - Moringa powder: health food shops, online
+
+    Eating your traditional foods is not inconvenient or backward — it is culturally
+    intelligent and, in many cases, nutritionally superior to Western convenience food.
+
+mental_health_uk:
+  title: Mental health support in the UK — and why it matters here
+  body: |
+    Mood changes, anxiety, and brain fog during menopause are common and clinically
+    documented. In the UK, these are often the first and most significant way that
+    menopause announces itself — and they are frequently misdiagnosed as depression
+    or anxiety disorder rather than recognised as menopause symptoms.
+
+    If you have been prescribed antidepressants for symptoms that started around
+    perimenopause age, it is worth asking whether menopause was considered.
+    Some GPs will discuss menopause treatment alongside or instead of antidepressants
+    for mood symptoms that started with the hormonal changes.
+
+    UK mental health resources relevant to menopause:
+    - Your GP (ask specifically about menopause-related mood changes)
+    - British Menopause Society find-a-specialist tool (bms.thebms.org.uk)
+    - Menopause Support UK (menopausesupport.co.uk)
+    - Rethink Mental Illness (rethink.org) — culturally aware mental health support

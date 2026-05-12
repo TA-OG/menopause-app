@@ -1,0 +1,158 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# SOUTH ASIAN CULTURAL WELLNESS MODIFIER
+#
+# Applied when heritage includes: indian, pakistani, bangladeshi,
+# sri_lankan, nepali, south_asian
+#
+# Research basis:
+# - Indian women reach menopause avg 46.2–46.7 years (significantly earlier)
+# - Joint and muscle pain is the primary symptom (Singapore/Asian studies 2024)
+# - Low libido and sexual pain more prevalent than in Western women
+# - Forgetfulness/brain fog particularly prominent
+# - Diet already high in phytoestrogens (lentils, legumes) — a real advantage
+# - Less likely to uptake preventive health measures in UK studies
+# - Cultural taboo around menopause discussion in many South Asian communities
+# ─────────────────────────────────────────────────────────────────────────────
+
+id: south-asian-modifier
+label: South Asian Cultural Context
+type: cultural_modifier
+
+awareness:
+  title: Your timeline may be earlier than you expect
+  body: |
+    Research shows that women of South Asian heritage — particularly of Indian,
+    Pakistani, and Bangladeshi background — typically reach menopause between
+    46 and 47 years, sometimes earlier. This is 3–4 years before the UK average.
+
+    Perimenopause can begin in your late 30s to early 40s. If you're experiencing
+    symptoms and your GP suggests you're too young, this research is worth sharing.
+    Earlier menopause is not a failure — but it does mean earlier awareness matters.
+  source: Menoveda / Singh V, Sivakami M 2020 / Lancet 2024
+
+diet_context:
+  title: Your kitchen may already have some of the best menopause medicine
+  items:
+    - id: dal-lentils-phytoestrogens
+      body: |
+        Dal — whether masoor, moong, chana, or toor — is one of the best foods
+        you can eat during menopause. Lentils and legumes are rich in phytoestrogens
+        (plant oestrogens) and plant protein. Research shows that women who eat
+        diets naturally high in phytoestrogens — common in South Asian and East
+        Asian cooking — experience fewer and less severe hot flashes.
+
+        If dal is already a daily staple in your household, this is a significant
+        nutritional advantage. Keep it there.
+
+    - id: turmeric-inflammation
+      body: |
+        Turmeric (haldi) used daily in cooking has genuine anti-inflammatory properties.
+        Curcumin — the active compound — has been studied for joint pain, brain
+        health, and mood. The amounts used in cooking are beneficial but modest.
+        If joint pain is a primary symptom, cooking with turmeric daily and adding
+        black pepper (which significantly increases absorption) is worth prioritising.
+
+    - id: ghee-fats-balance
+      body: |
+        Ghee is a culturally significant cooking fat and in moderate amounts is
+        not problematic. The issue during menopause tends to be the total volume
+        of saturated fats, particularly if combined with high-refined-carbohydrate
+        eating patterns. The oestrogen decline changes how fat is stored — particularly
+        around the abdomen.
+
+        Balance ghee-based cooking with oily fish, nuts, and seeds (til/sesame,
+        flaxseed) to support the hormonal environment. Flaxseed in particular is
+        high in lignans — a form of phytoestrogen — and can be ground and added
+        to roti dough or porridge.
+
+    - id: refined-carbs-blood-sugar
+      body: |
+        White rice and maida-based foods (white roti, paratha, naan) can create
+        blood sugar spikes that worsen hot flashes, mood swings, and fatigue.
+        This isn't about eliminating cultural foods — it's about balance.
+
+        Switching some white rice to brown or red rice, using whole wheat atta,
+        and always pairing carbohydrates with dal, vegetables, or protein slows
+        the glucose response significantly. Eating earlier in the evening also
+        helps with sleep and weight management during menopause.
+
+    - id: chai-caffeine
+      body: |
+        Strong chai multiple times a day is part of life for many South Asian
+        women — and the social ritual around it matters. Caffeine can worsen
+        hot flashes and disrupt sleep during menopause, particularly afternoon
+        and evening cups.
+
+        Consider switching one or two daily chais to herbal alternatives — ginger
+        and cardamom tea has similar warming properties, or tulsi (holy basil) tea
+        which has adaptogenic properties that support stress response. The morning
+        chai can stay.
+
+    - id: fenugreek-methi
+      body: |
+        Methi (fenugreek) — used in cooking and as a spice — contains phytoestrogens
+        and has been used in Ayurvedic practice for women's health for centuries.
+        There is emerging evidence for its role in managing hot flashes and
+        blood sugar regulation. Using methi seeds in cooking or drinking methi-soaked
+        water (a traditional practice) may be a gentle daily addition.
+
+lifestyle_context:
+  - id: joint-pain-movement
+    body: |
+      Joint and muscle pain is the most reported menopause symptom among South
+      Asian and East Asian women — more prominent than hot flashes. This is
+      important because it can be misattributed to arthritis or dismissed.
+
+      Gentle daily movement — yoga, walking, swimming — is the strongest
+      evidence-supported intervention for menopause-related joint pain. If you
+      grew up with yoga as a cultural practice, this is a meaningful bridge
+      between heritage and evidence-based wellness.
+
+  - id: vitamin-d-south-asian-uk
+    body: |
+      South Asian women in the UK have some of the highest rates of Vitamin D
+      deficiency — both due to dietary factors and because melanin in darker skin
+      requires more sun exposure to produce the same Vitamin D. UK winters provide
+      almost no UV exposure at any skin tone.
+
+      Vitamin D deficiency directly worsens joint pain, fatigue, brain fog, and
+      mood — all symptoms already elevated in perimenopause. This is a simple,
+      high-impact thing to test and address.
+
+mindset_context:
+  - id: cultural-silence
+    body: |
+      In many South Asian communities, menopause is not spoken about. It may
+      be referred to obliquely, minimised, or associated with shame around aging
+      or the end of femininity. Women may feel they are expected to simply carry on.
+
+      You are allowed to name what you're going through. You are allowed to take
+      it seriously. The silence around menopause in your community does not mean
+      the experience is supposed to be endured alone — it means the conversation
+      was never given permission to happen. This is that permission.
+
+  - id: family-expectation-stress
+    body: |
+      Many South Asian women in perimenopause are simultaneously managing caring
+      responsibilities — ageing parents, children, extended family — while
+      also carrying the emotional labour of the household. This compounding stress
+      directly amplifies menopause symptoms.
+
+      Identifying one area where you can reduce your load, and having a direct
+      conversation with family members about what you're experiencing, is not
+      a cultural betrayal — it is self-preservation. Aunty Mel can help you
+      find the language for those conversations.
+
+supplement_context:
+  - id: calcium-bone-health
+    body: |
+      South Asian women have a higher risk of osteoporosis than white British
+      women, compounded by Vitamin D deficiency and earlier menopause onset.
+      Bone density is built in youth and maintained through midlife — the
+      oestrogen decline of menopause accelerates bone loss.
+
+      Dairy (dahi, paneer, milk) is already part of many South Asian diets and
+      is an excellent calcium source. If dairy is limited, sesame seeds (til),
+      almonds, and fortified plant milks are good alternatives. Weight-bearing
+      exercise (walking, resistance training) is as important as diet for bone health.
+      DISCLAIMER: Discuss calcium and Vitamin D supplementation with your GP, particularly if you have kidney concerns.

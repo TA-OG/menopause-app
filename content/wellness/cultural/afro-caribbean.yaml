@@ -1,0 +1,162 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# AFRO-CARIBBEAN CULTURAL WELLNESS MODIFIER
+#
+# Applied when heritage includes: afro_caribbean, jamaican, barbadian,
+# trinidadian, guyanese, haitian, other_caribbean
+#
+# Research basis:
+# - SWAN study: Black women reach menopause avg 49.6yrs (8.5mo earlier)
+# - Spend 3.5 more years in perimenopause than white women
+# - Hot flashes: OR 1.91 more likely vs white women (Kochersberger et al, 2024)
+# - Night sweats: OR 1.87; Sleep: OR 1.67; Brain fog: OR 1.19
+# - Higher allostatic load from chronic stress may amplify symptom burden
+# - 57% use vitamins/supplements vs 47% white women (AARP 2024)
+# - Less likely to be prescribed HRT in UK primary care
+# ─────────────────────────────────────────────────────────────────────────────
+
+id: afro-caribbean-modifier
+label: Afro-Caribbean Cultural Context
+type: cultural_modifier  # Layered on top of base frameworks, not a standalone
+
+awareness:
+  title: Something important to know about your timeline
+  body: |
+    Research consistently shows that women of African and Caribbean heritage
+    typically reach menopause around age 49–50 — about 18 months earlier than
+    the UK average of 51. This means perimenopause can begin in your early-to-mid 40s,
+    sometimes even late 30s.
+
+    If you've been told you're "too young" to be in perimenopause, you may not be.
+    It's worth being aware of this when speaking to your GP.
+  source: SWAN Study / Kochersberger et al, Menopause Journal 2024
+
+diet_context:
+  title: Foods from your culture — what helps and what to watch
+  items:
+    - id: ackee-saltfish-sodium
+      body: |
+        Ackee and saltfish is a staple dish in many Caribbean households and deeply
+        culturally significant. The ackee itself is nutritionally excellent — high in
+        protein and healthy fats. However, the salt cod (saltfish) can be very high
+        in sodium, which can worsen bloating, water retention, and contribute to
+        blood pressure changes that are already more common during menopause.
+
+        Try reducing the saltfish quantity and soaking it longer to draw out more
+        salt. Season with fresh herbs and spices rather than adding table salt.
+        This keeps the dish and the tradition — just gentler on your body right now.
+
+    - id: rice-peas-blood-sugar
+      body: |
+        Rice and peas is a comfort staple. The kidney beans (gungo peas, black-eyed
+        peas) in the dish are excellent — high in plant protein, fibre, and
+        phytoestrogens that can help manage vasomotor symptoms. The rice is the
+        part to watch. Switching to brown rice or reducing the white rice portion
+        while increasing the peas portion helps stabilise blood sugar, which directly
+        affects hot flash frequency and mood stability.
+
+    - id: plantain-glycaemic
+      body: |
+        Ripe plantain is beloved but higher on the glycaemic index. If hot flashes
+        or mood swings are significant, try eating it with protein (chicken, fish,
+        beans) rather than alone — the protein slows the glucose response. Green
+        plantain is a better choice for blood sugar balance.
+
+    - id: callaloo-magnesium
+      body: |
+        Callaloo is genuinely excellent for menopause. It's high in magnesium
+        (which supports sleep and reduces hot flash frequency), iron, calcium, and
+        folate. If you're not eating it regularly, this is worth bringing back.
+        The amaranth variety used in the Caribbean is particularly nutritious.
+
+    - id: sorrel-hibiscus
+      body: |
+        Sorrel (hibiscus) has been used in Caribbean and West African traditions
+        for generations. Research supports its benefits for blood pressure and
+        antioxidant properties. Drinking it without heavy sugar is worth exploring —
+        the traditional Christmas sorrel drink can be made with less sweetener while
+        keeping the depth of flavour with cloves, ginger, and cinnamon.
+
+    - id: coconut-oil-fats
+      body: |
+        Coconut oil and coconut milk are used widely in Caribbean cooking and can
+        be part of a healthy diet in moderate amounts. During menopause, the
+        shift in oestrogen changes how fat is processed, particularly around
+        the abdomen. A balance of coconut-based fats with oily fish (mackerel,
+        sardines, herring) which are excellent for brain health and inflammation,
+        works well.
+
+lifestyle_context:
+  - id: stress-allostatic-load
+    body: |
+      Research shows that women of African and Caribbean heritage carry a higher
+      "allostatic load" — the cumulative effect of chronic stress on the body,
+      including from racial discrimination and navigating systems not designed for
+      you. This chronic stress response can amplify menopause symptoms, particularly
+      hot flashes, sleep disruption, and mood changes.
+
+      This isn't a reason to simply "manage stress better" — it's an acknowledgement
+      that your symptoms may be more intense because your body has been carrying more.
+      This is worth naming when you speak to your GP, and worth being compassionate
+      with yourself about.
+
+  - id: hair-changes-menopause
+    body: |
+      Hair thinning and texture changes during menopause are extremely common and
+      can be particularly distressing for women of African and Caribbean heritage,
+      where hair is deeply tied to identity and cultural expression. The combination
+      of declining oestrogen and the impact of heat styling and chemical processes
+      can compound the effect.
+
+      Protective styles that reduce manipulation, focusing on scalp health (regular
+      massage, castor oil), and ensuring adequate protein and iron in your diet
+      are all evidence-supported approaches alongside any topical treatments.
+
+mindset_context:
+  - id: speaking-up-gp
+    body: |
+      Research in UK primary care shows that women from ethnic minority communities
+      are less likely to be offered HRT and less likely to have their symptoms taken
+      seriously. This is a documented health inequality, not your imagination.
+
+      If your symptoms are significant, you have every right to advocate clearly for
+      yourself. Keep a symptom diary before your appointment. Be specific about the
+      impact on your daily life. If your GP is dismissive, you have the right to ask
+      for a second opinion or request a referral to a menopause specialist.
+      Aunty Mel can help you prepare for those conversations.
+
+  - id: community-and-isolation
+    body: |
+      In some Caribbean communities, menopause is not spoken about openly — it can
+      be treated as something to manage privately, or associated with aging in ways
+      that carry stigma. You may feel like you can't talk about it with the women
+      around you.
+
+      But the wisdom has always been there. The aunties who went through it before
+      you knew. Finding your version of that community — whether online, through
+      friends, or through this app — can make a significant difference to how
+      you experience this transition.
+
+supplement_context:
+  - id: vitamin-d-caribbean-uk
+    body: |
+      Women of African and Caribbean heritage living in the UK are at significantly
+      higher risk of Vitamin D deficiency — the melanin in darker skin requires
+      longer sun exposure to produce the same amount of Vitamin D, and UK sunlight
+      is insufficient for most of the year.
+
+      Vitamin D deficiency worsens fatigue, mood, joint pain, and sleep — all
+      symptoms that are already elevated during menopause. Testing is available
+      via your GP. Most UK dermatology and menopause guidance recommends 1000–2000 IU
+      daily for women with darker skin in the UK, but test first before supplementing
+      at higher doses.
+      DISCLAIMER: Always check with your GP before starting supplements, especially at higher doses than the NHS standard 400 IU recommendation.
+
+  - id: iron-monitoring
+    body: |
+      If you're still having periods during perimenopause — which can be heavier
+      and more irregular — iron monitoring is important. Heavy perimenopausal bleeding
+      is more common in Black women and can lead to iron deficiency anaemia, which
+      compounds fatigue significantly.
+
+      Ask your GP for a full blood count if fatigue is a significant symptom for you.
+      DISCLAIMER: Always check with your GP before starting iron supplements — too much iron can be harmful.

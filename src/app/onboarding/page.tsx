@@ -19,6 +19,7 @@ const STEPS = [
   'exercise',
   'sleep',
   'stress',
+  'heritage',
   'previously_tried',
   'complete',
 ] as const
@@ -36,6 +37,7 @@ interface Answers {
   exercise_level?: string
   sleep_quality?: string
   stress_level?: string
+  heritage?: string[]
   previously_tried?: string[]
 }
 
@@ -120,6 +122,167 @@ const TRIED_OPTIONS = [
   'Other',
 ]
 
+// ─── Granular community options — grouped by region ──────────────────────────
+// Each value maps to a community key in community-map.ts
+const COMMUNITY_OPTIONS: Array<{ group: string; options: Array<{ value: string; label: string }> }> = [
+  {
+    group: 'Nigeria',
+    options: [
+      { value: 'yoruba', label: 'Yoruba (Lagos, Oyo, Ogun, Ondo, Ekiti, Osun)' },
+      { value: 'igbo', label: 'Igbo (Anambra, Imo, Enugu, Abia, Ebonyi)' },
+      { value: 'hausa_fulani', label: 'Hausa / Hausa-Fulani (Northern Nigeria)' },
+      { value: 'ijaw', label: 'Ijaw / Niger Delta' },
+      { value: 'edo', label: 'Edo / Bini' },
+      { value: 'efik', label: 'Efik / Ibibio (Cross River, Akwa Ibom)' },
+      { value: 'urhobo', label: 'Urhobo / Delta' },
+      { value: 'nigerian_other', label: 'Other Nigerian heritage' },
+    ],
+  },
+  {
+    group: 'Ghana',
+    options: [
+      { value: 'akan', label: 'Akan / Ashanti / Fante' },
+      { value: 'ewe', label: 'Ewe' },
+      { value: 'ga', label: 'Ga / Adangbe' },
+      { value: 'ghanaian', label: 'Other Ghanaian heritage' },
+    ],
+  },
+  {
+    group: 'East & Southern Africa',
+    options: [
+      { value: 'kikuyu', label: 'Kikuyu (Kenya)' },
+      { value: 'luo', label: 'Luo (Kenya/Uganda)' },
+      { value: 'kenyan', label: 'Other Kenyan heritage' },
+      { value: 'baganda', label: 'Baganda (Uganda)' },
+      { value: 'ugandan', label: 'Other Ugandan heritage' },
+      { value: 'bemba', label: 'Bemba (Zambia)' },
+      { value: 'zambian', label: 'Other Zambian heritage' },
+      { value: 'shona', label: 'Shona (Zimbabwe)' },
+      { value: 'zulu', label: 'Zulu (South Africa)' },
+      { value: 'xhosa', label: 'Xhosa (South Africa)' },
+      { value: 'south_african', label: 'Other South African heritage' },
+      { value: 'amhara', label: 'Amhara / Oromo (Ethiopia)' },
+      { value: 'somali', label: 'Somali' },
+    ],
+  },
+  {
+    group: 'West Africa (other)',
+    options: [
+      { value: 'wolof', label: 'Wolof (Senegal/Gambia)' },
+      { value: 'temne', label: 'Temne / Mende (Sierra Leone)' },
+      { value: 'krio', label: 'Krio (Sierra Leone)' },
+    ],
+  },
+  {
+    group: 'Caribbean',
+    options: [
+      { value: 'jamaican', label: 'Jamaican' },
+      { value: 'trinidadian', label: 'Trinidadian / Tobagonian' },
+      { value: 'barbadian', label: 'Barbadian (Bajan)' },
+      { value: 'guyanese', label: 'Guyanese' },
+      { value: 'haitian', label: 'Haitian' },
+      { value: 'grenadian', label: 'Grenadian' },
+      { value: 'st_lucian', label: 'St Lucian' },
+      { value: 'caribbean', label: 'Other Caribbean heritage' },
+    ],
+  },
+  {
+    group: 'South Asia — India',
+    options: [
+      { value: 'punjabi', label: 'Punjabi (Sikh / Hindu)' },
+      { value: 'gujarati', label: 'Gujarati (including Jain)' },
+      { value: 'bengali_india', label: 'Bengali (West Bengal)' },
+      { value: 'tamil', label: 'Tamil (Tamil Nadu / South India)' },
+      { value: 'malayali', label: 'Malayali (Kerala)' },
+      { value: 'marathi', label: 'Marathi (Maharashtra)' },
+      { value: 'telugu', label: 'Telugu (Andhra / Telangana)' },
+      { value: 'kannada', label: 'Kannada (Karnataka)' },
+      { value: 'bihari', label: 'Bihari / UP' },
+      { value: 'rajasthani', label: 'Rajasthani' },
+      { value: 'indian', label: 'Other Indian heritage' },
+    ],
+  },
+  {
+    group: 'South Asia — Pakistan & Bangladesh',
+    options: [
+      { value: 'punjabi_pakistan', label: 'Punjabi (Pakistan / Muslim)' },
+      { value: 'sindhi', label: 'Sindhi' },
+      { value: 'pashtun', label: 'Pashtun / KPK' },
+      { value: 'kashmiri', label: 'Kashmiri' },
+      { value: 'pakistani', label: 'Other Pakistani heritage' },
+      { value: 'bangladeshi', label: 'Bangladeshi / Bengali (Bangladesh)' },
+      { value: 'sylheti', label: 'Sylheti' },
+      { value: 'sri_lankan', label: 'Sri Lankan (Sinhalese / Tamil)' },
+    ],
+  },
+  {
+    group: 'East Asia',
+    options: [
+      { value: 'cantonese', label: 'Cantonese (Guangdong / Hong Kong)' },
+      { value: 'mandarin', label: 'Mandarin-speaking (Northern China)' },
+      { value: 'hakka', label: 'Hakka' },
+      { value: 'hokkien', label: 'Hokkien / Fujianese' },
+      { value: 'japanese', label: 'Japanese' },
+      { value: 'korean', label: 'Korean' },
+      { value: 'taiwanese', label: 'Taiwanese' },
+    ],
+  },
+  {
+    group: 'Southeast Asia',
+    options: [
+      { value: 'vietnamese', label: 'Vietnamese' },
+      { value: 'filipino', label: 'Filipino (Tagalog / Visayan)' },
+      { value: 'thai', label: 'Thai' },
+      { value: 'malay', label: 'Malay / Malaysian' },
+      { value: 'indonesian', label: 'Indonesian / Javanese' },
+    ],
+  },
+  {
+    group: 'Middle East & North Africa',
+    options: [
+      { value: 'arab', label: 'Arab (general)' },
+      { value: 'moroccan', label: 'Moroccan' },
+      { value: 'egyptian', label: 'Egyptian' },
+      { value: 'lebanese', label: 'Lebanese / Syrian' },
+      { value: 'iranian', label: 'Iranian / Persian' },
+      { value: 'turkish', label: 'Turkish / Kurdish' },
+    ],
+  },
+  {
+    group: 'Latin America',
+    options: [
+      { value: 'mexican', label: 'Mexican' },
+      { value: 'colombian', label: 'Colombian' },
+      { value: 'puerto_rican', label: 'Puerto Rican' },
+      { value: 'cuban', label: 'Cuban' },
+      { value: 'dominican', label: 'Dominican' },
+      { value: 'peruvian', label: 'Peruvian' },
+      { value: 'brazilian', label: 'Brazilian' },
+      { value: 'hispanic', label: 'Other Latin American / Hispanic' },
+    ],
+  },
+  {
+    group: 'White British & European',
+    options: [
+      { value: 'english', label: 'English' },
+      { value: 'scottish', label: 'Scottish' },
+      { value: 'welsh', label: 'Welsh' },
+      { value: 'white_irish', label: 'Irish' },
+      { value: 'polish', label: 'Polish' },
+      { value: 'eastern_european', label: 'Other Eastern European' },
+      { value: 'mediterranean', label: 'Mediterranean (Italian / Greek / Spanish)' },
+      { value: 'white_european', label: 'Other White European' },
+    ],
+  },
+  {
+    group: 'Other',
+    options: [
+      { value: 'mixed', label: 'Mixed heritage (select all that apply above)' },
+      { value: 'prefer_not_to_say', label: 'Prefer not to say' },
+    ],
+  },
+]
+
 // ─── Helper components ────────────────────────────────────────────────────────
 
 function OptionButton({
@@ -185,7 +348,7 @@ export default function OnboardingPage() {
     setStepIndex((i) => Math.max(i - 1, 0))
   }
 
-  function toggleMulti(key: 'symptoms' | 'previously_tried', value: string) {
+  function toggleMulti(key: 'symptoms' | 'previously_tried' | 'heritage', value: string) {
     const current = (answers[key] ?? []) as string[]
     const updated = current.includes(value)
       ? current.filter((v) => v !== value)
@@ -497,6 +660,72 @@ export default function OnboardingPage() {
                 />
               ))}
             </div>
+          </div>
+        )}
+
+        {/* ── STEP: Heritage — granular community selection ── */}
+        {step === 'heritage' && (
+          <div className="space-y-4">
+            <StepHeader
+              title="What is your cultural background?"
+              subtitle="Aunty Mel uses this to make your recommendations genuinely relevant — referencing foods, traditions, and experiences you actually know. Select all that apply."
+            />
+            <div className="bg-brand-50 rounded-xl p-3 border border-brand-100">
+              <p className="text-xs text-brand-700 leading-relaxed">
+                Research shows menopause affects different communities differently — in timing,
+                symptoms, and which foods help most. The more specific you are, the more
+                relevant your plan. This information stays private and is never shared.
+              </p>
+            </div>
+
+            {/* Grouped options with scrollable list */}
+            <div className="space-y-4 max-h-96 overflow-y-auto pr-1">
+              {COMMUNITY_OPTIONS.map((group) => (
+                <div key={group.group}>
+                  <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2 sticky top-0 bg-white py-1">
+                    {group.group}
+                  </p>
+                  <div className="space-y-1.5">
+                    {group.options.map((opt) => (
+                      <button
+                        key={opt.value}
+                        type="button"
+                        onClick={() => toggleMulti('heritage', opt.value)}
+                        className={`w-full text-left px-3 py-2.5 rounded-xl border text-sm transition-all ${
+                          (answers.heritage ?? []).includes(opt.value)
+                            ? 'bg-brand-900 text-white border-brand-900'
+                            : 'bg-white text-gray-700 border-gray-200 hover:border-brand-300 hover:bg-brand-50'
+                        }`}
+                      >
+                        {opt.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {(answers.heritage ?? []).length > 0 && (
+              <div className="bg-brand-50 rounded-xl p-2 text-xs text-brand-700">
+                Selected: {(answers.heritage ?? []).join(', ')}
+              </div>
+            )}
+
+            <PrimaryButton
+              label={
+                (answers.heritage ?? []).length > 0
+                  ? `Continue with ${(answers.heritage ?? []).length} selection${(answers.heritage ?? []).length > 1 ? 's' : ''}`
+                  : 'Continue'
+              }
+              onClick={next}
+            />
+            <button
+              type="button"
+              onClick={next}
+              className="w-full text-sm text-gray-400 py-1"
+            >
+              Skip this question
+            </button>
           </div>
         )}
 

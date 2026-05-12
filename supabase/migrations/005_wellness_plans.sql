@@ -12,6 +12,7 @@ CREATE TABLE wellness_plans (
   lifestyle_adjustments     JSONB NOT NULL DEFAULT '[]',
   mindset_recommendations   JSONB NOT NULL DEFAULT '[]',
   supplement_suggestions    JSONB NOT NULL DEFAULT '[]',
+  cultural_context          JSONB,                         -- Cultural modifier context
   is_active                 BOOLEAN NOT NULL DEFAULT TRUE,
   version                   INTEGER NOT NULL DEFAULT 1,
   created_at                TIMESTAMPTZ NOT NULL DEFAULT NOW()

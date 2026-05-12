@@ -1,0 +1,89 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# WHITE BRITISH / IRISH CULTURAL WELLNESS MODIFIER
+#
+# Applied when heritage includes: white_british, white_irish, white_european
+#
+# Note: Most menopause research is conducted on this demographic —
+# so this modifier focuses on diet and cultural specifics, not symptom
+# correction, since the base frameworks already reflect this population.
+# ─────────────────────────────────────────────────────────────────────────────
+
+id: white-british-modifier
+label: British / Irish Cultural Context
+type: cultural_modifier
+
+diet_context:
+  items:
+    - id: fish-chips-acv
+      body: |
+        Fish and chips with vinegar — a staple. The fish itself (cod, haddock,
+        plaice) is a genuinely good source of lean protein and some omega-3.
+        The batter and the chips are where the challenge is during menopause —
+        deep-fried foods and refined carbohydrates can worsen bloating, hot
+        flashes, and blood sugar instability.
+
+        A practical approach: baked or grilled fish with a smaller portion of
+        chips, more regularly than a full portion less often. Apple cider vinegar
+        (the malt variety on chips, or as a daily drink diluted in water) has
+        some evidence for blood sugar management, though the evidence is modest.
+
+    - id: tea-caffeine-timing
+      body: |
+        British tea culture is real and the ritual of it matters. Tea contains
+        less caffeine than coffee but enough to affect sleep and potentially
+        contribute to hot flashes if consumed in quantity throughout the day.
+
+        A practical approach: enjoy morning and early afternoon tea freely. Be
+        mindful of late afternoon onwards. Swap one or two daily teas for
+        herbal alternatives — peppermint (also mildly cooling), chamomile
+        (supports sleep), or redbush (caffeine-free, similar ritual).
+
+    - id: sunday-roast-adapted
+      body: |
+        The Sunday roast is nutritionally balanced — lean meat or vegetarian
+        alternatives, vegetables, and protein. The additions that work against
+        menopause: large quantities of refined flour gravy, white bread stuffing,
+        and excessive salt. The vegetables, particularly leafy greens and
+        cruciferous veg (broccoli, cauliflower, Brussels sprouts), are excellent.
+
+        Leaning into the vegetable-heavy version of the roast — more greens,
+        smaller carbohydrate portions — is a realistic adaptation that keeps the
+        cultural meal intact.
+
+    - id: alcohol-culture
+      body: |
+        Alcohol is deeply embedded in British social culture, and wine or a pint
+        in the evening is normal for many women. Alcohol worsens hot flashes,
+        disrupts sleep architecture (even moderate amounts), and affects mood
+        the following day — all symptoms that are already elevated during menopause.
+
+        This doesn't mean abstaining from social drinking. It means being honest
+        with yourself about the connection between a glass of wine and the quality
+        of your night. Alcohol-free alternatives have improved dramatically —
+        for evenings where sleep really matters, this is worth trying.
+
+    - id: processed-food-convenience
+      body: |
+        Ready meals, sandwiches, and convenience food are realistic parts of
+        busy UK life. The challenge during menopause is high sodium, refined
+        carbohydrates, and low fibre in many convenience options — all of which
+        worsen symptoms.
+
+        Rather than overhauling the diet entirely, focus on one or two high-impact
+        swaps: adding a handful of seeds or nuts to whatever you're eating, keeping
+        hummus and vegetable sticks available for snacking, and choosing wholegrain
+        options where available. Small consistent changes outperform dramatic
+        short-term overhauls.
+
+lifestyle_context:
+  - id: stoicism-british-culture
+    body: |
+      British culture around health is often one of quiet management — not
+      complaining, not making a fuss, getting on with it. Many women describe
+      suffering significant menopause symptoms for years before seeking help,
+      or going to their GP and being fobbed off.
+
+      Your symptoms deserve to be taken seriously. Keeping a diary and being
+      specific with your GP about the impact on your daily life — work, sleep,
+      relationships — is not making a fuss. It is advocating for care you
+      are entitled to.

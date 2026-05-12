@@ -9,7 +9,6 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        border: '#E5E7EB',
         brand: {
           50:  '#f4f0fa',
           100: '#e9e0f5',
@@ -23,6 +22,7 @@ const config: Config = {
           900: '#3b1f6b', // primary brand
           950: '#240f44',
         },
+        border: '#E5E7EB',
         blush: {
           50:  '#fdf4f7',
           100: '#fce8f1',

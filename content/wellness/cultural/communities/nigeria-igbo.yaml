@@ -1,0 +1,138 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# IGBO (Nigeria) — Community Wellness Modifier
+#
+# Applies to: Igbo women from Anambra, Imo, Enugu, Ebonyi, Abia, Delta (Igbo areas),
+# Rivers (Igbo areas), and Igbo diaspora worldwide
+#
+# Research basis:
+# - BusinessDay NG 2021: Igbo diet - variety of root-based solids and vegetables
+# - BMS 2023: Black/African women reach menopause avg 49.6 years
+# - Kochersberger 2024: Black women significantly more likely to experience hot flashes
+# - Legit.ng / Quora: Igbo foods documented — ofe onugbu, egusi, oha, nkwobi, ukazi
+# - Note: Bitter leaf (ofe onugbu) has documented anti-inflammatory properties (emerging research)
+# ─────────────────────────────────────────────────────────────────────────────
+
+id: nigeria-igbo
+label: Igbo (Nigeria)
+type: cultural_modifier
+region: West Africa
+country: Nigeria
+community: Igbo
+
+awareness:
+  title: Your timeline and your symptoms may be earlier than expected
+  body: |
+    Nigerian women typically reach menopause earlier than the UK average of 51.
+    Perimenopause can begin in the early-to-mid 40s. The Igbo cultural understanding
+    of womanhood as carrying wisdom, strength, and community — "nwanyi oma" — can
+    be a genuine anchor during this transition.
+
+    You are not losing your strength. You are changing form.
+  source: BMS 2023; SWAN Study
+
+diet_context:
+  title: Igbo kitchen — what helps and what to watch
+  items:
+    - id: bitter-leaf-ofe-onugbu
+      body: |
+        Ofe onugbu (bitter leaf soup) is a distinctly Igbo staple and has emerging
+        research supporting its anti-inflammatory and blood glucose-regulating properties.
+        Bitter leaf (Vernonia amygdalina) has been used in Igbo and broader West African
+        traditional medicine for generations. During menopause, when inflammation
+        management and blood sugar stability both matter, this is a dish worth prioritising.
+
+        The traditional Igbo combination of bitter leaf soup with cocoyam or eba provides
+        fibre, plant compounds, and protein.
+
+    - id: oha-soup-nutrients
+      body: |
+        Oha soup (made with oha/African rosewood leaves) is rich in calcium, iron, and
+        Vitamin C — all important during the menopause transition when bone density,
+        energy, and immune function all shift. Oha leaves are also high in fibre.
+
+        If oha is readily available to you (from African food shops in the UK),
+        this is a nutritionally excellent soup worth eating regularly.
+
+    - id: egusi-protein-zinc
+      body: |
+        Egusi (melon seeds) — used across Igbo, Yoruba, and other West African cooking —
+        is high in zinc, protein, and healthy fats. Zinc is essential for testosterone
+        synthesis (which affects energy and libido in women during menopause) and
+        immune function. Egusi soup with leafy greens provides a genuinely nutritious
+        menopause meal.
+
+    - id: yam-fufu-blood-sugar
+      body: |
+        Fufu, eba, and pounded yam are Igbo staple swallows. These are culturally
+        significant and nutritionally present — yam contains compounds that support
+        hormonal balance. However, large portions of refined carbohydrates eaten without
+        sufficient vegetables or protein can spike blood sugar, which worsens hot flashes
+        and mood instability.
+
+        The traditional Igbo approach of eating soup-heavy meals (more soup, smaller swallow)
+        naturally moderates this. Follow the traditional balance rather than Westernising it.
+
+    - id: palm-nut-soup-abenkwan-banga
+      body: |
+        Palm nut soup (ofe akwu) is nutritious and culturally significant. Palm nuts
+        provide Vitamin E and beta-carotene. The concern during menopause is overall
+        saturated fat balance — complement palm-oil-heavy cooking with oily fish (sardines,
+        mackerel, tuna) and dark leafy greens for omega-3 balance.
+
+    - id: ukazi-afang-leafy-greens
+      body: |
+        Ukazi leaves (used in afang soup and as a thickener) are high in iron and fibre.
+        Afang soup — a combination of ukazi and waterleaf — is one of the most nutritionally
+        dense soups in Eastern Nigerian cooking. For women managing perimenopausal fatigue
+        or heavy bleeding, the iron content is genuinely relevant.
+
+    - id: abacha-african-salad
+      body: |
+        Abacha (African salad made from dried cassava) is a lighter Igbo dish often
+        made with garden egg, onion, crayfish, and palm oil. It is lower in carbohydrates
+        than swallow-based meals, which makes it a useful option for managing blood sugar
+        and abdominal weight changes during menopause. Garden egg also has documented
+        antioxidant properties.
+
+lifestyle_context:
+  - id: vitamin-d-igbo-uk
+    body: |
+      Igbo women living in the UK — as with all women of African heritage — face high
+      risk of Vitamin D deficiency due to the combination of melanin requiring more sun
+      exposure and the UK's limited UV availability outside summer months.
+
+      Fatigue, joint pain, poor mood, and bone concerns are all worsened by Vitamin D
+      deficiency — and all are already elevated during menopause. Testing and addressing
+      this is a simple, high-impact action.
+
+  - id: nkwobi-okonkwo-social
+    body: |
+      Igbo food culture is deeply social — nkwobi, isi ewu, and ofe are often communal
+      dishes eaten at gatherings. This community aspect of eating has genuine wellbeing
+      value during menopause. Social connection, emotional support, and the shared
+      experience of food are documented buffers against the isolation that can come
+      with significant hormonal change.
+
+      Don't underestimate the medicine in your community.
+
+mindset_context:
+  - id: igbo-women-strength
+    body: |
+      Igbo women are known for resilience, entrepreneurship, and community leadership.
+      This strength can sometimes mean pushing through difficulty in silence — "onye aghala
+      nwanne ya" (do not abandon your kin) can become a weight when it means not asking
+      for help for yourself.
+
+      Taking your menopause symptoms seriously — tracking them, seeking support, and
+      advocating for yourself with your GP — is not weakness. It is the same intelligence
+      and determination that built Aba Women's Riot into history. You deserve that same
+      energy directed toward your own body.
+
+supplement_context:
+  - id: vitamin-d-testing
+    body: |
+      Vitamin D testing and supplementation if deficient. Particularly important for
+      Igbo women in the UK who face high rates of deficiency due to skin tone and
+      UK climate.
+      DISCLAIMER: Test before supplementing above 400 IU. Excess Vitamin D is toxic.
+      Speak to your GP.

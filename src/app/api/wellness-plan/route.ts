@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { matchFrameworks, buildPlan, applyTierGating } from '@/lib/wellness-engine'
 import { loadFrameworks } from '@/lib/load-frameworks'
+import { loadCulturalModifiers, buildCulturalContext } from '@/lib/cultural-engine'
 import { sanitizeError } from '@/lib/sanitize-error'
 import { rateLimit } from '@/lib/rate-limit'
 
@@ -73,6 +74,13 @@ export async function POST(request: NextRequest) {
     const matchedFrameworks = matchFrameworks(answers ?? [], frameworks)
     const plan = buildPlan(matchedFrameworks, preferences ?? {})
 
+    // Load cultural modifiers based on heritage answers
+    const heritageAnswers = (answers ?? [])
+      .filter((a) => a.question_key === 'heritage')
+      .map((a) => a.answer_value)
+    const culturalModifiers = loadCulturalModifiers(heritageAnswers)
+    const culturalContext = buildCulturalContext(culturalModifiers)
+
     // Save the plan (deactivate_previous_plans trigger fires automatically)
     const { data: savedPlan, error: planError } = await admin
       .from('wellness_plans')
@@ -81,6 +89,9 @@ export async function POST(request: NextRequest) {
         ...plan,
         is_active: true,
         version: 1,
+        // Store cultural context as JSONB alongside the plan
+        // This is surfaced separately on the my-plan page
+        cultural_context: culturalContext,
       })
       .select()
       .single()

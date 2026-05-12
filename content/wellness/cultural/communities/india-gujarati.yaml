@@ -1,0 +1,130 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# GUJARATI — Community Wellness Modifier
+#
+# Applies to: Gujarati women from Gujarat (India) and diaspora
+# (UK: significant in Leicester, Harrow, Wembley, Barnet, Croydon)
+#
+# Distinct from Punjabi: largely vegetarian (especially Jain Gujaratis),
+# different staple foods (thepla, dhokla, undhiyu), sweet/sour flavour profile,
+# significant Jain community with additional dietary restrictions
+#
+# Research basis: same as india-punjabi.yaml (Indian women avg 46.7 years)
+# Dietary specifics from documented Gujarati food traditions
+# ─────────────────────────────────────────────────────────────────────────────
+
+id: india-gujarati
+label: Gujarati (India)
+type: cultural_modifier
+region: South Asia
+country: India
+community: Gujarati
+
+awareness:
+  title: Your menopause may start earlier — and your diet is already an asset
+  body: |
+    Indian women typically reach menopause around 46.7 years — 4 years earlier
+    than the UK average. Perimenopause can begin in the late 30s.
+
+    Gujarati cooking is largely plant-based with high legume content — this is
+    a genuine nutritional advantage for managing menopause symptoms. Your traditional
+    diet is already doing work you may not have realised.
+  source: BMS 2023; Kriplani & Banerjee 2005
+
+diet_context:
+  items:
+    - id: dal-dhokli-legume-advantage
+      body: |
+        Dal dhokli, handvo, and the wide variety of Gujarati dal preparations provide
+        excellent menopause nutrition. Lentils and legumes are rich in phytoestrogens,
+        plant protein, and fibre. The consistent presence of dal in Gujarati cooking
+        across all three meals is a natural dietary advantage over women who eat
+        Western diets with minimal legumes.
+
+        The phytoestrogen content in a regular Gujarati dal diet may be contributing
+        to managing vasomotor symptoms without you being aware of it.
+
+    - id: thepla-methi-phytoestrogens
+      body: |
+        Thepla made with methi (fenugreek) is a Gujarati staple with specific menopause
+        relevance. Fenugreek is high in phytoestrogens and has been studied for its
+        role in reducing hot flush frequency and supporting blood sugar regulation.
+        Methi nu thepla for breakfast is a meaningful nutritional choice, not just
+        a cultural one.
+
+    - id: undhiyu-seasonal-vegetables
+      body: |
+        Undhiyu — the mixed seasonal vegetable and lentil dish — is one of the most
+        nutritionally complete dishes in Gujarati cooking. The combination of various
+        vegetables, surti papdi (flat beans), tuvar (pigeon peas), and raw banana
+        provides a complex array of phytoestrogens, fibre, and micronutrients.
+        Raw banana (kacchi keri) provides resistant starch, which feeds beneficial
+        gut bacteria.
+
+    - id: dhokla-fermented-gut
+      body: |
+        Dhokla and handvo are fermented foods (fermented chickpea batter) with probiotic
+        properties. Fermented foods support gut microbiome health, which emerging research
+        suggests plays a role in how the body metabolises and recycles oestrogen.
+        Keeping fermented Gujarati foods in your diet supports gut health during menopause.
+
+    - id: jaggery-sugar-alternatives
+      body: |
+        Gujarati food is known for being slightly sweet — jaggery (gol) is used in
+        dal, sabzi, and snacks. Jaggery has a slightly lower glycaemic index than
+        refined sugar and contains trace minerals. However, during menopause, overall
+        sugar intake — from any source — affects blood sugar stability and can worsen
+        hot flushes.
+
+        Using jaggery in smaller amounts than traditional recipes suggest, and eating
+        sweet dishes with a protein source alongside, moderates the blood sugar impact.
+
+    - id: chaas-buttermilk-calcium
+      body: |
+        Chaas (spiced buttermilk) is a staple Gujarati beverage and a good source of
+        calcium, protein, and probiotics. Drinking chaas after meals aids digestion
+        and contributes to the calcium intake needed to protect bone density during
+        menopause. The cumin and ginger in chaas also have digestive and anti-inflammatory
+        properties.
+
+    - id: til-sesame-calcium-phytoestrogens
+      body: |
+        Til (sesame seeds) are used throughout Gujarati cooking and snacks — til ladoo,
+        tilgul, and as a garnish. Sesame seeds are high in calcium (important for bone
+        health) and contain lignans, a form of phytoestrogen. This is a small but
+        meaningful nutritional contribution from a culturally embedded food.
+
+lifestyle_context:
+  - id: jain-dietary-context
+    body: |
+      For Jain Gujarati women, dietary restrictions (no root vegetables during certain
+      periods, no meat) mean that plant-based protein and calcium sources need deliberate
+      attention during menopause.
+
+      Dairy (paneer, dahi, chaas), sesame seeds, almonds, pumpkin seeds, green leafy
+      vegetables, and lentils are all Jain-compatible calcium and protein sources
+      that support menopause nutrition within religious practice.
+
+  - id: cvd-metabolic-gujarati
+    body: |
+      South Asian women including Gujarati women have significantly higher rates of
+      metabolic syndrome, insulin resistance, and cardiovascular risk during menopause
+      transition. This is clinically documented and means monitoring blood pressure
+      and blood sugar matters during this period.
+
+mindset_context:
+  - id: community-expectations
+    body: |
+      Gujarati women often carry significant community and family responsibility —
+      business families, extended households, and community networks. The expectation
+      of productivity and composure can make it difficult to name or prioritise
+      your own experience of menopause.
+
+      You can hold your community values and still take your symptoms seriously.
+      Both are true.
+
+supplement_context:
+  - id: vitamin-d-gujarati
+    body: |
+      Vitamin D deficiency is high in Gujarati women in the UK.
+      Test via your GP before supplementing above NHS standard levels.
+      DISCLAIMER: Excess Vitamin D is toxic. Test, then supplement appropriately.

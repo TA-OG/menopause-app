@@ -10,17 +10,17 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Menopause App',
-    template: '%s | Menopause App',
+    default: 'Aunty Mel',
+    template: '%s | Aunty Mel',
   },
   description:
-    'Personalised wellness support for women experiencing perimenopause and menopause. Empowering you with the information to understand your body and get real results.',
+    'Every body needs an Aunty Mel. Personalised wellness guidance for perimenopause and menopause — built on real specialist expertise to help you understand your body, manage your symptoms, and have a more powerful conversation with your doctor.',
   keywords: ['menopause', 'perimenopause', 'wellness', 'womens health', 'symptoms'],
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: 'Menopause App',
+    title: 'Aunty Mel',
   },
   formatDetection: {
     telephone: false,
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_GB',
-    siteName: 'Menopause App',
+    siteName: 'Aunty Mel',
   },
 }
 
@@ -53,7 +53,21 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
       </head>
-      <body className="min-h-screen bg-white">{children}</body>
+      <body className="min-h-screen bg-white">
+        {children}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                  navigator.serviceWorker.register('/sw.js')
+                    .catch(function(err) { console.log('SW registration failed:', err) })
+                })
+              }
+            `,
+          }}
+        />
+      </body>
     </html>
   )
 }

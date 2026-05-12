@@ -1,0 +1,196 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# PUNJABI (India & Pakistan) — Community Wellness Modifier
+#
+# Applies to: Punjabi women from Punjab (India), Punjab (Pakistan), and diaspora
+# (UK: largest South Asian community in Britain; significant in Southall, Bradford,
+# Birmingham, Wolverhampton, Leicester, Leeds, Glasgow)
+#
+# Research basis:
+# - BMS 2023: Indian women avg menopause age 46.7 years; Pakistani 47.16 years
+# - BMS 2023: South Asian women higher CVD risk during menopause transition;
+#   metabolic syndrome, insulin resistance, central obesity, hypertension
+# - Menoveda: Indian women average 46 years — proactive dietary intervention critical
+# - Pandit 2012: Metabolic syndrome significantly higher in South Asian women
+# - Frontiers in Nutrition 2025: Mediterranean diet recommendations need localisation
+#   for South Asian contexts — "supplanting olive oil with mustard oil variants"
+# - BMS 2023: 78% of Pakistani women unaware of menopausal symptoms (Nusrat 2008)
+# - Goldman Labs 2026: Only 6.2% of Asian women receive HRT vs 23.3% White women in UK
+#
+# IMPORTANT: Punjabi from India and Punjabi from Pakistan share food traditions but
+# differ significantly in religion (Sikh/Hindu vs Muslim), which affects dietary
+# practice. This file covers shared Punjabi food traditions. Religious dietary
+# context is noted where relevant.
+# ─────────────────────────────────────────────────────────────────────────────
+
+id: india-punjabi
+label: Punjabi (Indian & Pakistani)
+type: cultural_modifier
+region: South Asia
+country: India / Pakistan
+community: Punjabi
+
+awareness:
+  title: Your menopause may start earlier than you expect
+  body: |
+    Indian and Pakistani women reach menopause significantly earlier than the UK average.
+    Indian women average 46.7 years; Pakistani women 47.16 years — both 3–4 years earlier
+    than the UK average of 51.
+
+    This means perimenopause can begin in your late 30s or early 40s. Symptoms at this
+    age are frequently dismissed as stress, depression, or thyroid issues.
+
+    If you're in your 40s and experiencing hot flushes, sleep changes, mood shifts,
+    irregular periods, or joint pain — these could be perimenopause. Push to be taken
+    seriously.
+  source: BMS 2023 (Kriplani & Banerjee 2005; Qazi 2006)
+
+diet_context:
+  title: Punjabi kitchen — what helps and what to watch
+  items:
+    - id: dal-legumes-phytoestrogens
+      body: |
+        Dal — masoor, moong, chana, toor, urad — is the nutritional backbone of Punjabi
+        cooking and one of the best foods for menopause. Lentils and legumes are rich
+        in phytoestrogens (plant oestrogens), plant protein, fibre, and iron.
+
+        Women who eat legume-rich diets naturally tend to experience fewer and less
+        severe hot flushes. If dal is already daily in your household, this is a real
+        advantage. Dal makhani (black urad dal) provides protein and iron together.
+        Keep it in regular rotation.
+
+    - id: sarson-da-saag-greens
+      body: |
+        Sarson da saag (mustard greens) is a Punjabi winter staple with genuine
+        menopause relevance. Mustard greens are high in calcium (critical as oestrogen
+        declines), Vitamin K (bone health), folate, and antioxidants.
+        Traditionally eaten with makki di roti (maize flatbread) — maize is higher in
+        fibre than white wheat flour, with a lower glycaemic response.
+
+        This traditional winter dish is worth eating year-round during menopause,
+        not just in season.
+
+    - id: ghee-moderation
+      body: |
+        Ghee is culturally and nutritionally significant in Punjabi cooking — Sikh and
+        Hindu households particularly use it generously. In moderate amounts, ghee is
+        not problematic. However, during menopause, the oestrogen decline changes
+        how fat is metabolised and stored, particularly around the abdomen.
+
+        The research on South Asian women shows higher rates of central obesity and
+        metabolic syndrome during menopause transition specifically. This doesn't mean
+        eliminating ghee — it means using it with awareness alongside other healthy fats
+        (mustard oil, nuts, flaxseed) rather than as the dominant cooking fat.
+
+    - id: paneer-calcium-protein
+      body: |
+        Paneer is an excellent menopause food — high in calcium, high in protein,
+        relatively lower in lactose than milk. Calcium is critical during menopause
+        for bone density maintenance. Palak paneer (with spinach) combines calcium
+        with iron and Vitamin C in one dish. Mutter paneer provides protein and
+        plant-based carbohydrates.
+
+        If you're lactose intolerant (common in South Asians), small amounts of paneer
+        are usually better tolerated than liquid dairy.
+
+    - id: roti-chapati-refined-carbs
+      body: |
+        White wheat roti and chapati are central to Punjabi eating. During menopause,
+        blood sugar management becomes particularly important for South Asian women —
+        the research documents significantly higher rates of insulin resistance and
+        metabolic syndrome in South Asian women during the menopause transition.
+
+        Practical adjustments: mix some wholemeal atta with regular atta (50/50)
+        to increase fibre. Eat roti with generous dal, sabzi, or protein — the
+        protein and fibre slow the blood sugar response. Don't reduce roti alone;
+        increase what you eat alongside it.
+
+    - id: chai-caffeine-south-asian
+      body: |
+        Strong Punjabi chai — often made with full-fat milk, sugar, and cardamom —
+        several times a day is culturally central. Caffeine can worsen hot flushes
+        and disrupt sleep during menopause, particularly from afternoon onwards.
+
+        Reducing sugar in chai has the highest impact. Switching afternoon and evening
+        chai to turmeric milk (haldi doodh) has cultural resonance and also provides
+        anti-inflammatory benefits. The morning chai can stay as it is.
+
+    - id: turmeric-haldi-inflammation
+      body: |
+        Turmeric (haldi) used throughout Punjabi cooking is genuinely anti-inflammatory.
+        Curcumin — the active compound — is absorbed much better with black pepper (kali
+        mirch) and fat. Traditional Punjabi cooking already combines these (curry bases
+        use ghee and pepper alongside haldi).
+
+        Haldi doodh (golden milk) in the evening provides anti-inflammatory benefits
+        and supports sleep through the tryptophan in warm milk. A genuinely useful
+        traditional practice.
+
+    - id: lassi-probiotic
+      body: |
+        Traditional salty lassi (not the sweet mango variety) is a probiotic food
+        that supports gut health. Gut health is increasingly linked to how the body
+        processes and recycles oestrogen. A glass of salted lassi with cumin is
+        genuinely supportive. The sweet commercial lassi versions add significant
+        sugar, which counteracts the benefit.
+
+lifestyle_context:
+  - id: cvd-risk-south-asian
+    body: |
+      South Asian women have significantly higher rates of cardiovascular risk factors
+      during the menopause transition — metabolic syndrome, insulin resistance, diabetes,
+      central obesity, and hypertension are all more prevalent in South Asian women than
+      in white European women during this period.
+
+      This is not alarmist — it is clinically documented and means that taking menopause
+      seriously, monitoring blood pressure and blood sugar, and being proactive about
+      lifestyle matters more, not less, for South Asian women.
+
+  - id: joint-pain-prominent
+    body: |
+      Joint and muscle pain is a more prominent menopause symptom in South Asian women
+      than in white women. This is often attributed to arthritis or dismissed. If you
+      are experiencing joint pain alongside other menopause symptoms, name both to your GP.
+
+      Daily movement — yoga (which has cultural resonance), walking, swimming — is the
+      strongest evidence-supported intervention for menopause-related joint pain.
+
+mindset_context:
+  - id: cultural-silence-punjabi
+    body: |
+      In many Punjabi households — both Sikh, Hindu, and Muslim — menopause is not
+      discussed openly. "Chup raho" (stay quiet) can become the cultural script.
+      Women are expected to manage and carry on.
+
+      This silence is not tradition in the deepest sense — it is the absence of language
+      and space. Aunty Mel is a space where you can name what is happening, understand
+      it, and take it seriously. You are allowed to do that.
+
+  - id: hrt-access-gap
+    body: |
+      Research shows only 6.2% of Asian women in the UK receive HRT compared to
+      23.3% of white women. This gap reflects barriers in access, language, cultural
+      hesitation, and potentially GP assumptions about what South Asian women want.
+
+      HRT is a medical treatment, not a Western one. If your symptoms are significantly
+      affecting your quality of life, asking your GP about all available options —
+      including HRT — is your right. Aunty Mel helps you prepare for that conversation.
+
+supplement_context:
+  - id: vitamin-d-south-asian-uk
+    body: |
+      South Asian women in the UK have some of the highest rates of Vitamin D deficiency.
+      Dietary Vitamin D is limited in traditional South Asian diets (few oily fish, limited
+      fortified foods). Sun exposure through clothing and UK climate is minimal.
+
+      Vitamin D deficiency worsens joint pain, fatigue, mood, and bone health — all
+      elevated during menopause. Test via your GP. Most guidance suggests 1000–2000 IU
+      for South Asian women in the UK, but test first.
+      DISCLAIMER: Always check with your GP. Excess Vitamin D is toxic.
+
+  - id: calcium-bone-health-punjabi
+    body: |
+      South Asian women have higher rates of osteoporosis than white women in the UK.
+      Earlier menopause onset compounds this — more years without oestrogen's bone-
+      protective effects. Dairy (paneer, dahi, milk), sesame seeds (til), almonds,
+      and dark green leafy vegetables are the dietary calcium sources to prioritise.
+      DISCLAIMER: Discuss calcium and Vitamin D supplementation with your GP.

@@ -1,0 +1,180 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# YORUBA (Nigeria) — Community Wellness Modifier
+#
+# Applies to: Yoruba women from Oyo, Lagos, Ogun, Osun, Ekiti, Ondo, Kwara
+# and Yoruba diaspora worldwide
+#
+# Research basis:
+# - Nigerian women: earlier menopause onset than Western average
+# - BusinessDay NG 2021: Amala contains enzymes that help balance hormones
+#   in menopausal women; yam eases menopause symptoms, anti-inflammatory
+# - BMS 2023: Black/African women reach menopause avg 49.6 years
+# - Kochersberger 2024: Black women OR 1.91 hot flashes vs white women
+# - Im EO 2010: Sub-ethnic differences significant within African groups
+#
+# IMPORTANT: This represents general Yoruba dietary and cultural patterns.
+# Individual variation within the community is significant.
+# All recommendations require Pamela's specialist review before deployment.
+# ─────────────────────────────────────────────────────────────────────────────
+
+id: nigeria-yoruba
+label: Yoruba (Nigeria)
+type: cultural_modifier
+region: West Africa
+country: Nigeria
+community: Yoruba
+
+awareness:
+  title: Your body may be ahead of the calendar
+  body: |
+    Nigerian women tend to reach menopause earlier than the UK average of 51.
+    For Yoruba women specifically, perimenopause symptoms can begin in the early-to-mid 40s.
+    If you have been told you are "too young" for menopause, bring this to your GP's attention —
+    it is worth investigating sooner rather than later.
+
+    The Yoruba cultural framing of older womanhood as wisdom and authority — as "iya" —
+    carries real value here. You are not losing something; you are transitioning into it.
+  source: BMS 2023; SWAN Study; BusinessDay NG 2021
+
+diet_context:
+  title: Your kitchen — what helps and what to watch
+  items:
+    - id: amala-yam-hormones
+      body: |
+        Amala — the beloved Yoruba swallow made from dried yam flour — has genuine
+        nutritional relevance to menopause. Nigerian nutritional research documents that
+        yam contains compounds that may help balance hormones that change during menopause,
+        and has anti-inflammatory properties. Amala eaten with ewedu and gbegiri provides
+        a nutritionally balanced, fibre-rich meal that supports blood sugar stability.
+
+        The darker the amala (from unpeeled yam bark), the higher the fibre content.
+        This is a dish you can feel good about keeping in regular rotation.
+
+    - id: ewedu-gbegiri-nutrients
+      body: |
+        Ewedu (jute leaves) is one of the most nutritious vegetables in Yoruba cooking —
+        high in calcium, iron, and Vitamin C. These are all particularly important during
+        menopause when bone density begins to change and energy demands shift.
+        Gbegiri (black-eyed pea soup) adds plant protein and phytoestrogens.
+
+        The combination of ewedu, gbegiri, and stew served with amala or pounded yam
+        is — from a nutritional standpoint — an excellent menopause meal.
+
+    - id: efo-riro-leafy-greens
+      body: |
+        Efo riro (Yoruba vegetable soup) with tete (amaranth greens) or spinach is
+        rich in magnesium, which supports sleep quality and may reduce hot flash frequency.
+        The combination of palm oil (Vitamin E, beta-carotene) and dark leafy greens
+        provides a fat-soluble vitamin delivery that the body uses well.
+
+        Cook efo riro with less oil if weight changes around the abdomen are a concern —
+        the greens are the nutritional star, not the oil quantity.
+
+    - id: pounded-yam-blood-sugar
+      body: |
+        Pounded yam (iyan) is culturally central and nutritious, but has a higher glycaemic
+        impact when eaten in large portions. During menopause, blood sugar stability directly
+        affects hot flash frequency and mood.
+
+        A practical adjustment: smaller pounded yam portions with more soup. The ewedu,
+        egusi, or efo riro can be the larger portion. This keeps the meal and the culture
+        intact while working with your body's changing needs.
+
+    - id: pepper-spice-triggers
+      body: |
+        Yoruba food is known for being well-peppered — ata rodo (scotch bonnet), ata
+        ijosi, and various dried peppers give Yoruba cooking its signature heat.
+        Spicy food can trigger hot flashes in some women during menopause — not all,
+        and not always. Pay attention to whether you notice a flush within 30–60 minutes
+        of a particularly peppery meal.
+
+        If there is a pattern, you don't have to give up the pepper — adjust the quantity
+        and notice whether the heat of the chilli or the heat of the menopause is driving
+        the flush.
+
+    - id: palm-oil-balance
+      body: |
+        Palm oil is present throughout Yoruba cooking and provides Vitamin E, beta-carotene,
+        and saturated fat. In the context of the oestrogen changes of menopause — which
+        affect how fat is metabolised and stored — moderate palm oil use is fine.
+        The key is the overall pattern: complement palm-oil-based cooking with oily fish
+        (mackerel, sardines, tuna) for omega-3 balance, which supports brain health and
+        inflammation management.
+
+    - id: offal-iron
+      body: |
+        Yoruba cooking makes excellent use of offal — shaki (tripe), ponmo (cow skin),
+        kpomo, and organ meats. Liver in particular is very high in iron, which is
+        important if you are still having perimenopausal periods that may be heavier
+        or more irregular than before.
+
+        If fatigue is a significant symptom, ask your GP for a full blood count to check
+        for iron deficiency anaemia — this is often missed in perimenopause.
+
+lifestyle_context:
+  - id: allostatic-load-yoruba
+    body: |
+      The research on allostatic load — the cumulative physiological toll of chronic stress —
+      is particularly relevant for Black British women navigating multiple systems simultaneously:
+      work, family, community expectations, and often racial discrimination.
+
+      In Yoruba culture, the expectation of women as community pillars — as iyá — can
+      mean carrying enormous emotional and practical load. This is honoured; and it is also
+      something to name honestly. The chronic stress response amplifies menopause symptoms.
+      Finding support, naming what you are carrying, and reducing unnecessary load where
+      possible is not weakness — it is wisdom.
+
+  - id: vitamin-d-uk
+    body: |
+      Yoruba women in the UK — as with all women of African heritage — are at high risk
+      of Vitamin D deficiency. Nigerian sunlight vs UK sunlight is not a small difference;
+      it is a 12-month physiological shift that affects bone health, mood, joint pain,
+      and fatigue. All of these symptoms are already elevated during menopause.
+
+      Ask your GP to test your Vitamin D level. If deficient, supplementing properly
+      makes a measurable difference to how you feel.
+
+mindset_context:
+  - id: menopause-not-taboo-here
+    body: |
+      In many Nigerian and Yoruba households, menopause is not discussed directly.
+      It is "the thing that happens" — known, but not named. This silence can mean
+      women suffer through significant symptoms without support, without language,
+      and sometimes without even understanding what is happening to their body.
+
+      You have full permission to name your experience. Tracking it, speaking about it,
+      and seeking support is exactly what this app is for. The wisdom of Yoruba women
+      who went before you — who managed this transition through community, through food,
+      through cultural practice — is the foundation Aunty Mel is built on.
+
+  - id: gp-advocacy
+    body: |
+      Research consistently shows that Black women in UK primary care are less likely
+      to have menopause symptoms taken seriously and less likely to be offered treatment.
+      This is documented, not imagined.
+
+      If your GP is dismissive, you are entitled to ask for a second opinion, to request
+      a referral to a menopause specialist, and to bring written documentation of your
+      symptoms. Keeping a symptom diary is your most powerful tool in that conversation.
+
+supplement_context:
+  - id: vitamin-d-yoruba
+    body: |
+      Vitamin D deficiency is extremely common in Yoruba women living in the UK.
+      Symptoms — fatigue, joint pain, low mood, poor sleep — overlap significantly
+      with menopause symptoms and compound them.
+
+      Test first (via GP), then supplement. Most guidance recommends 1000–2000 IU daily
+      for women of African heritage in the UK, but the dose should reflect your actual level.
+      DISCLAIMER: Always check with your GP before supplementing above the NHS standard
+      400 IU. Excess Vitamin D is toxic.
+
+  - id: iron-perimenopausal-bleeding
+    body: |
+      If you are still having periods and they have become heavier, more frequent, or
+      less predictable — common in Yoruba women entering perimenopause who tend to
+      have more vasomotor symptoms overall — iron monitoring matters.
+
+      Ask for a full blood count. Fatigue is the first sign of iron deficiency anaemia,
+      and it is frequently missed or attributed to age or busyness.
+      DISCLAIMER: Do not supplement iron without testing first. Excess iron is harmful.

@@ -1,0 +1,123 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# WEST AFRICAN CULTURAL WELLNESS MODIFIER
+#
+# Applied when heritage includes: nigerian, ghanaian, sierra_leonean,
+# gambian, senegalese, other_west_african
+#
+# Note: Shares some research basis with Afro-Caribbean modifier.
+# Both are applied if heritage includes multiple selections.
+# ─────────────────────────────────────────────────────────────────────────────
+
+id: west-african-modifier
+label: West African Cultural Context
+type: cultural_modifier
+
+awareness:
+  title: Your timeline and your symptoms may differ from what you've read
+  body: |
+    Most menopause research has been conducted on white, Western, middle-class
+    women. The symptoms, timelines, and experiences described in mainstream
+    health resources may not fully reflect yours.
+
+    Women of African heritage reach menopause earlier and experience symptoms
+    with greater intensity and for longer. If you're experiencing symptoms
+    in your early-to-mid 40s, take them seriously — you are not too young.
+  source: SWAN Study / Kochersberger et al, Menopause Journal 2024
+
+diet_context:
+  items:
+    - id: egusi-pumpkin-seeds
+      body: |
+        Egusi (melon seeds) are nutritionally dense — high in healthy fats,
+        protein, and zinc. Zinc is essential for testosterone synthesis (which
+        affects energy and libido during menopause) and immune function.
+        Egusi soup is a genuinely nutritious meal and worth keeping in the rotation.
+
+    - id: moringa-traditional-remedy
+      body: |
+        Moringa (moringa oleifera) has been used in West African and wider African
+        traditional medicine for generations. It is high in calcium, iron, Vitamin C,
+        and antioxidants. Emerging research supports its use for energy, inflammation,
+        and blood sugar regulation. Moringa powder added to smoothies or soups is
+        a practical way to include it.
+
+    - id: hibiscus-zobo-blood-pressure
+      body: |
+        Zobo (hibiscus) drink is widely consumed in West Africa and has genuine
+        evidence for supporting healthy blood pressure and providing antioxidants.
+        Blood pressure management becomes more important during menopause as the
+        protective cardiovascular effects of oestrogen decline.
+
+        The traditional preparation with lots of sugar undermines some of the
+        benefit. Try reducing sweetness and adding ginger, which has additional
+        anti-inflammatory properties.
+
+    - id: palm-oil-fats
+      body: |
+        Red palm oil is a cultural staple and has a different nutritional profile
+        to processed vegetable oils — it contains beta-carotene and Vitamin E.
+        In moderation it is part of a balanced diet. The key during menopause is
+        overall balance of fats — ensuring oily fish, avocado, and nuts also
+        feature regularly to support brain health and hormone production.
+
+    - id: beans-black-eyed-peas
+      body: |
+        Beans — black-eyed peas, brown beans, kidney beans — are central to West
+        African cooking and excellent for menopause. They are high in plant protein,
+        fibre, and phytoestrogens. Bean-based dishes eaten regularly provide
+        sustained energy, support blood sugar stability, and contain the
+        phytoestrogen building blocks that help manage vasomotor symptoms.
+
+    - id: spicy-food-triggers
+      body: |
+        Pepper soup, suya, and other spicy dishes are deeply cultural and delicious.
+        Spicy food can trigger hot flashes in some women during menopause — not
+        all women, and not always. Pay attention to whether you notice a connection
+        between eating spicy food and a flush within 30–60 minutes.
+
+        If there is a pattern, it doesn't mean giving up spice entirely — just
+        being mindful of timing and quantity, particularly in the evening.
+
+lifestyle_context:
+  - id: stress-and-allostatic-load
+    body: |
+      Research documents that women of African heritage carry higher allostatic
+      load — the cumulative physiological toll of chronic stress. This is not
+      a personal failing; it reflects the structural realities of navigating
+      racism, economic pressure, and caring responsibilities simultaneously.
+
+      This background stress amplifies menopause symptoms. Acknowledging this
+      — to yourself and to your GP — is important. Your symptoms may be more
+      severe not because you are weaker but because you have been carrying more.
+
+  - id: community-wisdom
+    body: |
+      Menopause has long been a community experience in many African cultures —
+      elder women held the knowledge, passed it to those coming behind them.
+      That intergenerational transmission of wisdom is what Aunty Mel is
+      built on. You are not navigating this alone, and the knowledge was
+      never lost — it just needs a modern home.
+
+mindset_context:
+  - id: taboo-and-speaking-up
+    body: |
+      In some West African communities and households, menopause is not spoken
+      about. It may be taboo, or considered private, or associated with aging
+      in ways that carry stigma. Women may be expected to manage quietly.
+
+      You have permission to name your experience. Tracking your symptoms,
+      understanding your body, and seeking support is not a cultural betrayal —
+      it is the most modern form of the wisdom your grandmothers carried.
+
+supplement_context:
+  - id: vitamin-d-africa-to-uk
+    body: |
+      If you grew up in West Africa and moved to the UK, your body went from
+      abundant equatorial sunlight to one of Europe's greyest climates.
+      Vitamin D deficiency is extremely common in West African women living in
+      the UK and directly worsens fatigue, bone health, mood, and joint pain.
+
+      This is a simple, high-impact thing to address — a blood test via your GP
+      will confirm your level. Most guidance recommends 1000–2000 IU daily for
+      women with darker skin in the UK.
+      DISCLAIMER: Always check with your GP before supplementing at doses above the NHS standard 400 IU. Testing first is recommended.

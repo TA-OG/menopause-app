@@ -19,9 +19,10 @@ export default async function AppLayout({
     .eq('id', user.id)
     .single()
 
-  // Redirect to onboarding if not complete
-  // (middleware handles auth; this handles onboarding state)
-  if (profile && !profile.onboarding_complete) {
+  // Profile null = new user (handle_new_user trigger may not have fired yet)
+  // onboarding_complete = false = incomplete onboarding
+  // Either way redirect to /onboarding which is OUTSIDE this layout group — no loop
+  if (!profile || !profile.onboarding_complete) {
     redirect('/onboarding')
   }
 

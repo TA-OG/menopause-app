@@ -37,18 +37,25 @@ export async function POST(request: NextRequest) {
   switch (event.type) {
     case 'checkout.session.completed': {
       const session = event.data.object as Stripe.Checkout.Session
-      const userId = (session as any).subscription_data?.metadata?.supabase_user_id
-        ?? session.metadata?.supabase_user_id
 
-      if (userId && session.subscription) {
-        await admin
-          .from('profiles')
-          .update({
-            subscription_tier: 'premium',
-            subscription_status: 'active',
-            stripe_subscription_id: session.subscription as string,
-          })
-          .eq('id', userId)
+      if (session.subscription) {
+        // Retrieve subscription directly to get reliable metadata
+        const subscription = await stripe.subscriptions.retrieve(
+          session.subscription as string
+        )
+        const userId = subscription.metadata?.supabase_user_id
+          ?? session.metadata?.supabase_user_id
+
+        if (userId) {
+          await admin
+            .from('profiles')
+            .update({
+              subscription_tier: 'premium',
+              subscription_status: 'active',
+              stripe_subscription_id: session.subscription as string,
+            })
+            .eq('id', userId)
+        }
       }
       break
     }
