@@ -1,6 +1,16 @@
-// Community → YAML file mapping for cultural-engine.ts
-// This replaces the HERITAGE_FILE_MAP in cultural-engine.ts
-// More granular: community-level not continent-level
+/**
+ * Community → YAML file mapping for cultural-engine.ts.
+ *
+ * Each key is a normalised community identifier (lowercase, underscored) that
+ * maps to a YAML file path relative to content/wellness/cultural/.
+ *
+ * Specific communities (e.g. Yoruba, Gujarati) map to files under communities/.
+ * Communities without a dedicated file fall back to a regional file at the root
+ * level (e.g. west-african.yaml, south-asian.yaml).
+ *
+ * The cultural engine (loadCulturalModifiers) joins these paths with the
+ * CULTURAL_DIR constant to produce the full filesystem path.
+ */
 
 export const COMMUNITY_FILE_MAP: Record<string, string> = {
 
@@ -23,93 +33,93 @@ export const COMMUNITY_FILE_MAP: Record<string, string> = {
   'northern_nigerian':    'communities/nigeria-hausa.yaml',
 
   // Other Nigerian → fallback to west-african
-  'ijaw':                 'fallbacks/west-african.yaml',
-  'tiv':                  'fallbacks/west-african.yaml',
-  'efik':                 'fallbacks/west-african.yaml',
-  'urhobo':               'fallbacks/west-african.yaml',
-  'edo':                  'fallbacks/west-african.yaml',
-  'nigerian_other':       'fallbacks/west-african.yaml',
-  'nigerian':             'fallbacks/west-african.yaml',
+  'ijaw':                 'west-african.yaml',
+  'tiv':                  'west-african.yaml',
+  'efik':                 'west-african.yaml',
+  'urhobo':               'west-african.yaml',
+  'edo':                  'west-african.yaml',
+  'nigerian_other':       'west-african.yaml',
+  'nigerian':             'west-african.yaml',
 
   // ── GHANA ─────────────────────────────────────────────────────────────────
-  'akan':                 'fallbacks/west-african.yaml',   // TODO: communities/ghana-akan.yaml
-  'ashanti':              'fallbacks/west-african.yaml',
-  'fante':                'fallbacks/west-african.yaml',
-  'ewe':                  'fallbacks/west-african.yaml',
-  'ga':                   'fallbacks/west-african.yaml',
-  'dagomba':              'fallbacks/west-african.yaml',
-  'ghanaian':             'fallbacks/west-african.yaml',
+  'akan':                 'west-african.yaml',   // TODO: communities/ghana-akan.yaml
+  'ashanti':              'west-african.yaml',
+  'fante':                'west-african.yaml',
+  'ewe':                  'west-african.yaml',
+  'ga':                   'west-african.yaml',
+  'dagomba':              'west-african.yaml',
+  'ghanaian':             'west-african.yaml',
 
   // ── SIERRA LEONE ─────────────────────────────────────────────────────────
-  'temne':                'fallbacks/west-african.yaml',
-  'mende':                'fallbacks/west-african.yaml',
-  'sierra_leonean':       'fallbacks/west-african.yaml',
-  'krio':                 'fallbacks/afro-caribbean.yaml',
+  'temne':                'west-african.yaml',
+  'mende':                'west-african.yaml',
+  'sierra_leonean':       'west-african.yaml',
+  'krio':                 'afro-caribbean.yaml',
 
   // ── SENEGAL / GAMBIA ──────────────────────────────────────────────────────
-  'wolof':                'fallbacks/west-african.yaml',
-  'serer':                'fallbacks/west-african.yaml',
-  'senegalese':           'fallbacks/west-african.yaml',
-  'gambian':              'fallbacks/west-african.yaml',
+  'wolof':                'west-african.yaml',
+  'serer':                'west-african.yaml',
+  'senegalese':           'west-african.yaml',
+  'gambian':              'west-african.yaml',
 
   // ── KENYA ─────────────────────────────────────────────────────────────────
-  'kikuyu':               'fallbacks/west-african.yaml',   // TODO: communities/kenya-kikuyu.yaml
-  'luo':                  'fallbacks/west-african.yaml',
-  'luhya':                'fallbacks/west-african.yaml',
-  'kalenjin':             'fallbacks/west-african.yaml',
-  'kamba':                'fallbacks/west-african.yaml',
-  'maasai':               'fallbacks/west-african.yaml',
-  'kenyan':               'fallbacks/west-african.yaml',
+  'kikuyu':               'west-african.yaml',   // TODO: communities/kenya-kikuyu.yaml
+  'luo':                  'west-african.yaml',
+  'luhya':                'west-african.yaml',
+  'kalenjin':             'west-african.yaml',
+  'kamba':                'west-african.yaml',
+  'maasai':               'west-african.yaml',
+  'kenyan':               'west-african.yaml',
 
   // ── UGANDA ────────────────────────────────────────────────────────────────
-  'baganda':              'fallbacks/west-african.yaml',   // TODO: communities/uganda-baganda.yaml
-  'banyankole':           'fallbacks/west-african.yaml',
-  'acholi':               'fallbacks/west-african.yaml',
-  'ugandan':              'fallbacks/west-african.yaml',
+  'baganda':              'west-african.yaml',   // TODO: communities/uganda-baganda.yaml
+  'banyankole':           'west-african.yaml',
+  'acholi':               'west-african.yaml',
+  'ugandan':              'west-african.yaml',
 
   // ── ZAMBIA ────────────────────────────────────────────────────────────────
-  'bemba':                'fallbacks/west-african.yaml',   // TODO: communities/zambia-bemba.yaml
-  'tonga_zambia':         'fallbacks/west-african.yaml',
-  'nyanja':               'fallbacks/west-african.yaml',
-  'lozi':                 'fallbacks/west-african.yaml',
-  'zambian':              'fallbacks/west-african.yaml',
+  'bemba':                'west-african.yaml',   // TODO: communities/zambia-bemba.yaml
+  'tonga_zambia':         'west-african.yaml',
+  'nyanja':               'west-african.yaml',
+  'lozi':                 'west-african.yaml',
+  'zambian':              'west-african.yaml',
 
   // ── ZIMBABWE ──────────────────────────────────────────────────────────────
-  'shona':                'fallbacks/west-african.yaml',
-  'ndebele':              'fallbacks/west-african.yaml',
-  'zimbabwean':           'fallbacks/west-african.yaml',
+  'shona':                'west-african.yaml',
+  'ndebele':              'west-african.yaml',
+  'zimbabwean':           'west-african.yaml',
 
   // ── SOUTH AFRICA ──────────────────────────────────────────────────────────
-  'zulu':                 'fallbacks/west-african.yaml',   // TODO: communities/south-africa-zulu.yaml
-  'xhosa':                'fallbacks/west-african.yaml',
-  'sotho':                'fallbacks/west-african.yaml',
-  'tswana':               'fallbacks/west-african.yaml',
-  'south_african':        'fallbacks/west-african.yaml',
+  'zulu':                 'west-african.yaml',   // TODO: communities/south-africa-zulu.yaml
+  'xhosa':                'west-african.yaml',
+  'sotho':                'west-african.yaml',
+  'tswana':               'west-african.yaml',
+  'south_african':        'west-african.yaml',
 
   // ── ETHIOPIA / ERITREA ────────────────────────────────────────────────────
-  'amhara':               'fallbacks/west-african.yaml',
-  'oromo':                'fallbacks/west-african.yaml',
-  'tigrinya':             'fallbacks/west-african.yaml',
-  'ethiopian':            'fallbacks/west-african.yaml',
-  'eritrean':             'fallbacks/west-african.yaml',
+  'amhara':               'west-african.yaml',
+  'oromo':                'west-african.yaml',
+  'tigrinya':             'west-african.yaml',
+  'ethiopian':            'west-african.yaml',
+  'eritrean':             'west-african.yaml',
 
   // ── SOMALIA ───────────────────────────────────────────────────────────────
-  'somali':               'fallbacks/west-african.yaml',   // TODO: communities/somalia.yaml
+  'somali':               'west-african.yaml',   // TODO: communities/somalia.yaml
 
   // ── CARIBBEAN ─────────────────────────────────────────────────────────────
-  'jamaican':             'fallbacks/afro-caribbean.yaml', // TODO: communities/jamaica.yaml
-  'trinidadian':          'fallbacks/afro-caribbean.yaml',
-  'barbadian':            'fallbacks/afro-caribbean.yaml',
-  'guyanese':             'fallbacks/afro-caribbean.yaml',
-  'haitian':              'fallbacks/afro-caribbean.yaml',
-  'bajan':                'fallbacks/afro-caribbean.yaml',
-  'grenadian':            'fallbacks/afro-caribbean.yaml',
-  'vincentian':           'fallbacks/afro-caribbean.yaml',
-  'kittitian':            'fallbacks/afro-caribbean.yaml',
-  'antiguan':             'fallbacks/afro-caribbean.yaml',
-  'st_lucian':            'fallbacks/afro-caribbean.yaml',
-  'dominican_caribbean':  'fallbacks/afro-caribbean.yaml',
-  'caribbean':            'fallbacks/afro-caribbean.yaml',
+  'jamaican':             'afro-caribbean.yaml', // TODO: communities/jamaica.yaml
+  'trinidadian':          'afro-caribbean.yaml',
+  'barbadian':            'afro-caribbean.yaml',
+  'guyanese':             'afro-caribbean.yaml',
+  'haitian':              'afro-caribbean.yaml',
+  'bajan':                'afro-caribbean.yaml',
+  'grenadian':            'afro-caribbean.yaml',
+  'vincentian':           'afro-caribbean.yaml',
+  'kittitian':            'afro-caribbean.yaml',
+  'antiguan':             'afro-caribbean.yaml',
+  'st_lucian':            'afro-caribbean.yaml',
+  'dominican_caribbean':  'afro-caribbean.yaml',
+  'caribbean':            'afro-caribbean.yaml',
 
   // ── SOUTH ASIA — INDIA ────────────────────────────────────────────────────
   'punjabi':              'communities/india-punjabi.yaml',
@@ -122,107 +132,107 @@ export const COMMUNITY_FILE_MAP: Record<string, string> = {
   'jain':                 'communities/india-gujarati.yaml',
   'patel':                'communities/india-gujarati.yaml',
 
-  'bengali_india':        'fallbacks/south-asian.yaml',   // TODO: communities/india-bengali.yaml
-  'bengali':              'fallbacks/south-asian.yaml',
+  'bengali_india':        'south-asian.yaml',   // TODO: communities/india-bengali.yaml
+  'bengali':              'south-asian.yaml',
 
-  'tamil':                'fallbacks/south-asian.yaml',   // TODO: communities/india-tamil.yaml
-  'tamil_india':          'fallbacks/south-asian.yaml',
-  'malayali':             'fallbacks/south-asian.yaml',   // TODO: communities/india-malayali.yaml
-  'kerala':               'fallbacks/south-asian.yaml',
-  'marathi':              'fallbacks/south-asian.yaml',
-  'kannada':              'fallbacks/south-asian.yaml',
-  'telugu':               'fallbacks/south-asian.yaml',
-  'bihari':               'fallbacks/south-asian.yaml',
-  'rajasthani':           'fallbacks/south-asian.yaml',
-  'indian':               'fallbacks/south-asian.yaml',
+  'tamil':                'south-asian.yaml',   // TODO: communities/india-tamil.yaml
+  'tamil_india':          'south-asian.yaml',
+  'malayali':             'south-asian.yaml',   // TODO: communities/india-malayali.yaml
+  'kerala':               'south-asian.yaml',
+  'marathi':              'south-asian.yaml',
+  'kannada':              'south-asian.yaml',
+  'telugu':               'south-asian.yaml',
+  'bihari':               'south-asian.yaml',
+  'rajasthani':           'south-asian.yaml',
+  'indian':               'south-asian.yaml',
 
   // ── SOUTH ASIA — PAKISTAN ─────────────────────────────────────────────────
-  'sindhi':               'fallbacks/south-asian.yaml',   // TODO: communities/pakistan-sindhi.yaml
-  'pashtun':              'fallbacks/south-asian.yaml',
-  'pashto':               'fallbacks/south-asian.yaml',
-  'balochi':              'fallbacks/south-asian.yaml',
-  'kashmiri':             'fallbacks/south-asian.yaml',
-  'pakistani':            'fallbacks/south-asian.yaml',
+  'sindhi':               'south-asian.yaml',   // TODO: communities/pakistan-sindhi.yaml
+  'pashtun':              'south-asian.yaml',
+  'pashto':               'south-asian.yaml',
+  'balochi':              'south-asian.yaml',
+  'kashmiri':             'south-asian.yaml',
+  'pakistani':            'south-asian.yaml',
 
   // ── SOUTH ASIA — BANGLADESH ───────────────────────────────────────────────
-  'bangladeshi':          'fallbacks/south-asian.yaml',   // TODO: communities/bangladesh.yaml
-  'sylheti':              'fallbacks/south-asian.yaml',
+  'bangladeshi':          'south-asian.yaml',   // TODO: communities/bangladesh.yaml
+  'sylheti':              'south-asian.yaml',
 
   // ── SOUTH ASIA — SRI LANKA ───────────────────────────────────────────────
-  'sinhalese':            'fallbacks/south-asian.yaml',
-  'tamil_sri_lanka':      'fallbacks/south-asian.yaml',
-  'sri_lankan':           'fallbacks/south-asian.yaml',
+  'sinhalese':            'south-asian.yaml',
+  'tamil_sri_lanka':      'south-asian.yaml',
+  'sri_lankan':           'south-asian.yaml',
 
   // ── EAST ASIA ─────────────────────────────────────────────────────────────
-  'cantonese':            'fallbacks/east-asian.yaml',    // TODO: communities/china-cantonese.yaml
-  'hakka':                'fallbacks/east-asian.yaml',
-  'mandarin':             'fallbacks/east-asian.yaml',
-  'shanghainese':         'fallbacks/east-asian.yaml',
-  'hokkien':              'fallbacks/east-asian.yaml',
-  'chinese':              'fallbacks/east-asian.yaml',
+  'cantonese':            'east-asian.yaml',    // TODO: communities/china-cantonese.yaml
+  'hakka':                'east-asian.yaml',
+  'mandarin':             'east-asian.yaml',
+  'shanghainese':         'east-asian.yaml',
+  'hokkien':              'east-asian.yaml',
+  'chinese':              'east-asian.yaml',
 
-  'japanese':             'fallbacks/east-asian.yaml',    // TODO: communities/japan.yaml
-  'korean':               'fallbacks/east-asian.yaml',    // TODO: communities/korea.yaml
-  'taiwanese':            'fallbacks/east-asian.yaml',
+  'japanese':             'east-asian.yaml',    // TODO: communities/japan.yaml
+  'korean':               'east-asian.yaml',    // TODO: communities/korea.yaml
+  'taiwanese':            'east-asian.yaml',
 
   // ── SOUTHEAST ASIA ───────────────────────────────────────────────────────
-  'vietnamese':           'fallbacks/east-asian.yaml',
-  'thai':                 'fallbacks/east-asian.yaml',
-  'filipino':             'fallbacks/east-asian.yaml',
-  'tagalog':              'fallbacks/east-asian.yaml',
-  'cebuano':              'fallbacks/east-asian.yaml',
-  'malay':                'fallbacks/east-asian.yaml',
-  'javanese':             'fallbacks/east-asian.yaml',
-  'indonesian':           'fallbacks/east-asian.yaml',
-  'cambodian':            'fallbacks/east-asian.yaml',
-  'myanmar':              'fallbacks/east-asian.yaml',
+  'vietnamese':           'east-asian.yaml',
+  'thai':                 'east-asian.yaml',
+  'filipino':             'east-asian.yaml',
+  'tagalog':              'east-asian.yaml',
+  'cebuano':              'east-asian.yaml',
+  'malay':                'east-asian.yaml',
+  'javanese':             'east-asian.yaml',
+  'indonesian':           'east-asian.yaml',
+  'cambodian':            'east-asian.yaml',
+  'myanmar':              'east-asian.yaml',
 
   // ── MIDDLE EAST / NORTH AFRICA ────────────────────────────────────────────
-  'arab':                 'fallbacks/west-african.yaml',   // TODO: communities/arabic.yaml
-  'moroccan':             'fallbacks/west-african.yaml',
-  'algerian':             'fallbacks/west-african.yaml',
-  'egyptian':             'fallbacks/west-african.yaml',
-  'lebanese':             'fallbacks/west-african.yaml',
-  'iranian':              'fallbacks/west-african.yaml',
-  'persian':              'fallbacks/west-african.yaml',
-  'turkish':              'fallbacks/west-african.yaml',
-  'kurdish':              'fallbacks/west-african.yaml',
-  'middle_eastern':       'fallbacks/west-african.yaml',
+  'arab':                 'west-african.yaml',   // TODO: communities/arabic.yaml
+  'moroccan':             'west-african.yaml',
+  'algerian':             'west-african.yaml',
+  'egyptian':             'west-african.yaml',
+  'lebanese':             'west-african.yaml',
+  'iranian':              'west-african.yaml',
+  'persian':              'west-african.yaml',
+  'turkish':              'west-african.yaml',
+  'kurdish':              'west-african.yaml',
+  'middle_eastern':       'west-african.yaml',
 
   // ── LATIN AMERICA ────────────────────────────────────────────────────────
-  'mexican':              'fallbacks/hispanic-latina.yaml',
-  'colombian':            'fallbacks/hispanic-latina.yaml',
-  'puerto_rican':         'fallbacks/hispanic-latina.yaml',
-  'cuban':                'fallbacks/hispanic-latina.yaml',
-  'dominican':            'fallbacks/hispanic-latina.yaml',
-  'peruvian':             'fallbacks/hispanic-latina.yaml',
-  'ecuadorian':           'fallbacks/hispanic-latina.yaml',
-  'guatemalan':           'fallbacks/hispanic-latina.yaml',
-  'brazilian':            'fallbacks/hispanic-latina.yaml',
-  'argentina':            'fallbacks/hispanic-latina.yaml',
-  'chilean':              'fallbacks/hispanic-latina.yaml',
-  'venezuelan':           'fallbacks/hispanic-latina.yaml',
-  'bolivian':             'fallbacks/hispanic-latina.yaml',
-  'hispanic':             'fallbacks/hispanic-latina.yaml',
-  'latina':               'fallbacks/hispanic-latina.yaml',
+  'mexican':              'hispanic-latina.yaml',
+  'colombian':            'hispanic-latina.yaml',
+  'puerto_rican':         'hispanic-latina.yaml',
+  'cuban':                'hispanic-latina.yaml',
+  'dominican':            'hispanic-latina.yaml',
+  'peruvian':             'hispanic-latina.yaml',
+  'ecuadorian':           'hispanic-latina.yaml',
+  'guatemalan':           'hispanic-latina.yaml',
+  'brazilian':            'hispanic-latina.yaml',
+  'argentina':            'hispanic-latina.yaml',
+  'chilean':              'hispanic-latina.yaml',
+  'venezuelan':           'hispanic-latina.yaml',
+  'bolivian':             'hispanic-latina.yaml',
+  'hispanic':             'hispanic-latina.yaml',
+  'latina':               'hispanic-latina.yaml',
 
   // ── WHITE BRITISH / EUROPEAN ──────────────────────────────────────────────
-  'white_british':        'fallbacks/white-british-irish.yaml',
-  'english':              'fallbacks/white-british-irish.yaml',
-  'scottish':             'fallbacks/white-british-irish.yaml',
-  'welsh':                'fallbacks/white-british-irish.yaml',
-  'white_irish':          'fallbacks/white-british-irish.yaml',
-  'irish':                'fallbacks/white-british-irish.yaml',
-  'white_european':       'fallbacks/white-british-irish.yaml',
-  'eastern_european':     'fallbacks/white-british-irish.yaml',
-  'polish':               'fallbacks/white-british-irish.yaml',
-  'romanian':             'fallbacks/white-british-irish.yaml',
-  'ukrainian':            'fallbacks/white-british-irish.yaml',
-  'mediterranean':        'fallbacks/white-british-irish.yaml',
-  'italian':              'fallbacks/white-british-irish.yaml',
-  'greek':                'fallbacks/white-british-irish.yaml',
-  'spanish':              'fallbacks/white-british-irish.yaml',
-  'portuguese':           'fallbacks/white-british-irish.yaml',
+  'white_british':        'white-british-irish.yaml',
+  'english':              'white-british-irish.yaml',
+  'scottish':             'white-british-irish.yaml',
+  'welsh':                'white-british-irish.yaml',
+  'white_irish':          'white-british-irish.yaml',
+  'irish':                'white-british-irish.yaml',
+  'white_european':       'white-british-irish.yaml',
+  'eastern_european':     'white-british-irish.yaml',
+  'polish':               'white-british-irish.yaml',
+  'romanian':             'white-british-irish.yaml',
+  'ukrainian':            'white-british-irish.yaml',
+  'mediterranean':        'white-british-irish.yaml',
+  'italian':              'white-british-irish.yaml',
+  'greek':                'white-british-irish.yaml',
+  'spanish':              'white-british-irish.yaml',
+  'portuguese':           'white-british-irish.yaml',
 
 }
 
