@@ -26,10 +26,8 @@ function WaitlistForm() {
   const [loading, setLoading] = useState(false)
   const [done, setDone] = useState(false)
   const [referralUrl, setReferralUrl] = useState('')
-  const [referralCode, setReferralCode] = useState('')
   const [isPriority, setIsPriority] = useState(false)
   const [error, setError] = useState('')
-  const [referrerName, setReferrerName] = useState('')
   const [copied, setCopied] = useState(false)
 
   useEffect(() => {
@@ -63,7 +61,6 @@ function WaitlistForm() {
       }
 
       setReferralUrl(data.referral_url)
-      setReferralCode(data.referral_code)
       setIsPriority(data.priority_access)
       setDone(true)
     } catch {

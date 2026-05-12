@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import type { JournalEntry, SymptomKey } from '@/types/database'
 
@@ -29,7 +29,9 @@ const EFFECT_LABELS = {
 }
 
 export default function JournalPage() {
-  const supabase = createClient()
+  // Stable client instance — recreating on every render would cause loadEntries
+  // to change identity each render, making the useEffect dependency loop infinitely.
+  const supabase = useMemo(() => createClient(), [])
   const [entries, setEntries] = useState<JournalEntry[]>([])
   const [loading, setLoading] = useState(true)
   const [showNew, setShowNew] = useState(false)
@@ -43,11 +45,7 @@ export default function JournalPage() {
   const [wouldContinue, setWouldContinue] = useState<boolean | null>(null)
   const [saving, setSaving] = useState(false)
 
-  useEffect(() => {
-    loadEntries()
-  }, [])
-
-  async function loadEntries() {
+  const loadEntries = useCallback(async () => {
     const { data } = await supabase
       .from('journal_entries')
       .select('*')
@@ -55,7 +53,11 @@ export default function JournalPage() {
       .limit(20)
     setEntries(data ?? [])
     setLoading(false)
-  }
+  }, [supabase])
+
+  useEffect(() => {
+    loadEntries()
+  }, [loadEntries])
 
   async function saveEntry() {
     if (!content.trim()) return
