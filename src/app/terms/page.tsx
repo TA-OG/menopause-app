@@ -74,8 +74,8 @@ export default function TermsPage() {
               <p className="font-bold text-gray-900 mb-1">How to claim your refund</p>
               <p className="text-sm text-gray-700">
                 Email{' '}
-                <a href="mailto:hello@auntymel.com" className="text-brand-600 underline font-medium">
-                  hello@auntymel.com
+                <a href="mailto:hello@auntymel.app" className="text-brand-600 underline font-medium">
+                  hello@auntymel.app
                 </a>{' '}
                 with the subject line <strong>&ldquo;Refund request&rdquo;</strong> and the
                 email address on your account. That&apos;s it. We&apos;ll process it within
@@ -109,8 +109,8 @@ export default function TermsPage() {
             By creating an account or using our service, you agree to these terms. If you
             don&apos;t agree, please don&apos;t use the service — and if something feels unfair,
             please tell us at{' '}
-            <a href="mailto:hello@auntymel.com" className="text-brand-600 underline">
-              hello@auntymel.com
+            <a href="mailto:hello@auntymel.app" className="text-brand-600 underline">
+              hello@auntymel.app
             </a>
             . We want these terms to be fair.
           </p>
@@ -136,8 +136,8 @@ export default function TermsPage() {
             You must be 18 or older to use Aunty Mel. You are responsible for keeping your
             login credentials secure and for all activity on your account. Please let us know
             immediately at{' '}
-            <a href="mailto:hello@auntymel.com" className="text-brand-600 underline">
-              hello@auntymel.com
+            <a href="mailto:hello@auntymel.app" className="text-brand-600 underline">
+              hello@auntymel.app
             </a>{' '}
             if you suspect unauthorised access.
           </p>
@@ -249,8 +249,8 @@ export default function TermsPage() {
             <p className="font-semibold text-gray-900 text-sm">Aunty Mel Ltd</p>
             <p className="text-gray-600 text-sm mt-1">
               Email:{' '}
-              <a href="mailto:hello@auntymel.com" className="text-brand-600 underline">
-                hello@auntymel.com
+              <a href="mailto:hello@auntymel.app" className="text-brand-600 underline">
+                hello@auntymel.app
               </a>
             </p>
           </div>

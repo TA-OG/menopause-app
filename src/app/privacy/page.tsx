@@ -61,8 +61,8 @@ export default function PrivacyPage() {
           <p>
             <strong>Data controller:</strong> Aunty Mel Ltd<br />
             <strong>Contact:</strong>{' '}
-            <a href="mailto:privacy@auntymel.com" className="text-brand-600 underline">
-              privacy@auntymel.com
+            <a href="mailto:privacy@auntymel.app" className="text-brand-600 underline">
+              privacy@auntymel.app
             </a>
           </p>
           <p>
@@ -249,8 +249,8 @@ export default function PrivacyPage() {
           </ul>
           <p className="mt-4">
             To exercise any of these rights, email us at{' '}
-            <a href="mailto:privacy@auntymel.com" className="text-brand-600 underline">
-              privacy@auntymel.com
+            <a href="mailto:privacy@auntymel.app" className="text-brand-600 underline">
+              privacy@auntymel.app
             </a>
             . We will respond within <strong>30 days</strong>. There is no charge for
             most requests.
@@ -308,8 +308,8 @@ export default function PrivacyPage() {
             Aunty Mel is designed for adults. We do not knowingly collect personal data
             from anyone under the age of 18. If you believe a child has provided us with
             personal data, please contact us immediately at{' '}
-            <a href="mailto:privacy@auntymel.com" className="text-brand-600 underline">
-              privacy@auntymel.com
+            <a href="mailto:privacy@auntymel.app" className="text-brand-600 underline">
+              privacy@auntymel.app
             </a>{' '}
             and we will delete it promptly.
           </p>
@@ -334,8 +334,8 @@ export default function PrivacyPage() {
             <p className="font-semibold text-gray-900">Aunty Mel — Privacy Team</p>
             <p className="text-gray-600 mt-1">
               Email:{' '}
-              <a href="mailto:privacy@auntymel.com" className="text-brand-600 underline">
-                privacy@auntymel.com
+              <a href="mailto:privacy@auntymel.app" className="text-brand-600 underline">
+                privacy@auntymel.app
               </a>
             </p>
           </div>

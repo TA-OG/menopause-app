@@ -3,7 +3,7 @@ import { updateSession } from '@/lib/supabase/middleware'
 
 const PROTECTED_ROUTES = ['/dashboard','/my-plan','/symptom-checkin','/journal','/learn','/profile','/pay','/onboarding']
 const AUTH_ROUTES = ['/auth/sign-in', '/auth/sign-up']
-const PUBLIC_ROUTES = ['/waitlist', '/terms', '/privacy', '/offline']
+const PUBLIC_ROUTES = ['/waitlist', '/terms', '/privacy', '/support', '/data-deletion', '/cookies', '/accessibility', '/offline']
 
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname
