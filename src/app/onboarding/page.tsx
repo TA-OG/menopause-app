@@ -37,7 +37,9 @@ const STEPS = [
   'exercise',
   'sleep',
   'stress',
+  'continent',
   'heritage',
+  'location',
   'previously_tried',
   'complete',
 ] as const
@@ -56,7 +58,10 @@ interface Answers {
   exercise_level?: string
   sleep_quality?: string
   stress_level?: string
+  continent?: string
   heritage?: string[]
+  city?: string
+  timezone?: string
   previously_tried?: string[]
 }
 
@@ -140,6 +145,81 @@ const TRIED_OPTIONS = [
   'Counselling or therapy',
   'Acupuncture',
   'Other',
+]
+
+// ─── Continent options ────────────────────────────────────────────────────────
+
+const CONTINENT_OPTIONS = [
+  { value: 'africa',        label: 'Africa',                       emoji: '🌍' },
+  { value: 'caribbean',     label: 'Caribbean',                    emoji: '🌴' },
+  { value: 'south_asia',    label: 'South Asia',                   emoji: '🌏' },
+  { value: 'east_asia',     label: 'East & Southeast Asia',        emoji: '🌸' },
+  { value: 'mena',          label: 'Middle East & North Africa',   emoji: '🌙' },
+  { value: 'latin_america', label: 'Latin America',                emoji: '🌎' },
+  { value: 'europe',        label: 'Europe & British Isles',       emoji: '🏰' },
+  { value: 'other',         label: 'Mixed / Other',                emoji: '🌐' },
+]
+
+/** Maps a continent value to the COMMUNITY_OPTIONS group names to show */
+const CONTINENT_TO_GROUPS: Record<string, string[]> = {
+  africa:        ['Nigeria', 'Ghana', 'East & Southern Africa', 'West Africa (other)'],
+  caribbean:     ['Caribbean'],
+  south_asia:    ['South Asia — India', 'South Asia — Pakistan & Bangladesh'],
+  east_asia:     ['East Asia', 'Southeast Asia'],
+  mena:          ['Middle East & North Africa'],
+  latin_america: ['Latin America'],
+  europe:        ['White British & European'],
+  other:         ['Other'],
+}
+
+// ─── Timezone options ─────────────────────────────────────────────────────────
+
+const TIMEZONE_OPTIONS = [
+  { group: 'UK & Ireland',    options: [
+    { value: 'Europe/London',       label: 'London / Dublin (GMT / BST)' },
+  ]},
+  { group: 'Europe',          options: [
+    { value: 'Europe/Paris',        label: 'Paris / Berlin / Amsterdam (CET)' },
+    { value: 'Europe/Helsinki',     label: 'Helsinki / Tallinn (EET)' },
+    { value: 'Europe/Lisbon',       label: 'Lisbon / Canary Islands (WET)' },
+  ]},
+  { group: 'Africa',          options: [
+    { value: 'Africa/Lagos',        label: 'Lagos / Accra / Abidjan (WAT)' },
+    { value: 'Africa/Nairobi',      label: 'Nairobi / Kampala / Dar es Salaam (EAT)' },
+    { value: 'Africa/Johannesburg', label: 'Johannesburg / Harare / Lusaka (SAST)' },
+    { value: 'Africa/Cairo',        label: 'Cairo / Khartoum (EET)' },
+    { value: 'Africa/Casablanca',   label: 'Casablanca / Rabat (WET)' },
+  ]},
+  { group: 'Middle East',     options: [
+    { value: 'Asia/Dubai',          label: 'Dubai / Abu Dhabi (GST)' },
+    { value: 'Asia/Riyadh',         label: 'Riyadh / Kuwait / Baghdad (AST)' },
+    { value: 'Asia/Beirut',         label: 'Beirut / Amman / Nicosia (EET)' },
+    { value: 'Asia/Tehran',         label: 'Tehran (IRST)' },
+  ]},
+  { group: 'South Asia',      options: [
+    { value: 'Asia/Kolkata',        label: 'India (IST)' },
+    { value: 'Asia/Karachi',        label: 'Pakistan (PKT)' },
+    { value: 'Asia/Dhaka',          label: 'Bangladesh (BST)' },
+    { value: 'Asia/Colombo',        label: 'Sri Lanka (SLST)' },
+  ]},
+  { group: 'East & SE Asia',  options: [
+    { value: 'Asia/Shanghai',       label: 'China / Hong Kong / Taiwan (CST)' },
+    { value: 'Asia/Tokyo',          label: 'Japan / Korea (JST)' },
+    { value: 'Asia/Singapore',      label: 'Singapore / Malaysia / Philippines (SGT)' },
+    { value: 'Asia/Bangkok',        label: 'Thailand / Vietnam / Indonesia (ICT)' },
+  ]},
+  { group: 'Americas',        options: [
+    { value: 'America/New_York',    label: 'New York / Toronto / Miami (ET)' },
+    { value: 'America/Chicago',     label: 'Chicago / Mexico City (CT)' },
+    { value: 'America/Denver',      label: 'Denver / Phoenix (MT)' },
+    { value: 'America/Los_Angeles', label: 'Los Angeles / Vancouver (PT)' },
+    { value: 'America/Jamaica',     label: 'Jamaica / Caribbean (EST)' },
+    { value: 'America/Sao_Paulo',   label: 'São Paulo / Buenos Aires (BRT)' },
+  ]},
+  { group: 'Pacific',         options: [
+    { value: 'Australia/Sydney',    label: 'Sydney / Melbourne (AEST)' },
+    { value: 'Pacific/Auckland',    label: 'New Zealand (NZST)' },
+  ]},
 ]
 
 // ─── Granular community options — grouped by region ──────────────────────────
@@ -711,54 +791,93 @@ export default function OnboardingPage() {
           </div>
         )}
 
-        {/* ── STEP: Heritage — granular community selection ──────────────── */}
+        {/* ── STEP: Continent ───────────────────────────────────────────── */}
+        {step === 'continent' && (
+          <div className="space-y-4">
+            <StepHeader
+              title="Where is your heritage from?"
+              subtitle="Pick the region that best represents your cultural background. We'll then show you more specific options."
+            />
+            <div className="grid grid-cols-2 gap-3">
+              {CONTINENT_OPTIONS.map((opt) => (
+                <button
+                  key={opt.value}
+                  type="button"
+                  onClick={() => {
+                    setAnswers({ ...answers, continent: opt.value, heritage: [] })
+                    next()
+                  }}
+                  className={`flex flex-col items-center gap-2 px-3 py-5 rounded-2xl border text-sm font-medium transition-all ${
+                    answers.continent === opt.value
+                      ? 'bg-brand-900 text-white border-brand-900'
+                      : 'bg-white text-gray-700 border-gray-200 hover:border-brand-300 hover:bg-brand-50'
+                  }`}
+                >
+                  <span className="text-3xl">{opt.emoji}</span>
+                  <span className="text-center leading-tight">{opt.label}</span>
+                </button>
+              ))}
+            </div>
+            <button
+              type="button"
+              onClick={next}
+              className="w-full text-sm text-gray-400 py-1"
+            >
+              Skip this question
+            </button>
+          </div>
+        )}
+
+        {/* ── STEP: Heritage — filtered by continent ────────────────────── */}
         {step === 'heritage' && (
           <div className="space-y-4">
             <StepHeader
-              title="What is your cultural background?"
-              subtitle="Aunty Mel uses this to make your recommendations genuinely relevant — referencing foods, traditions, and experiences you actually know. Select all that apply."
+              title="Which communities do you identify with?"
+              subtitle="Select all that apply. The more specific you are, the more relevant your plan."
             />
 
-            {/* Research context — explains why we ask */}
             <div className="bg-brand-50 rounded-xl p-3 border border-brand-100">
               <p className="text-xs text-brand-700 leading-relaxed">
                 Research shows menopause affects different communities differently — in timing,
-                symptoms, and which foods help most. The more specific you are, the more
-                relevant your plan. This information stays private and is never shared.
+                symptoms, and which foods help most. This stays private and is never shared.
               </p>
             </div>
 
-            {/* Grouped options in a scrollable list */}
-            <div className="space-y-4 max-h-96 overflow-y-auto pr-1">
-              {COMMUNITY_OPTIONS.map((group) => (
-                <div key={group.group}>
-                  <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2 sticky top-0 bg-white py-1">
-                    {group.group}
-                  </p>
-                  <div className="space-y-1.5">
-                    {group.options.map((opt) => (
-                      <button
-                        key={opt.value}
-                        type="button"
-                        onClick={() => toggleMulti('heritage', opt.value)}
-                        className={`w-full text-left px-3 py-2.5 rounded-xl border text-sm transition-all ${
-                          (answers.heritage ?? []).includes(opt.value)
-                            ? 'bg-brand-900 text-white border-brand-900'
-                            : 'bg-white text-gray-700 border-gray-200 hover:border-brand-300 hover:bg-brand-50'
-                        }`}
-                      >
-                        {opt.label}
-                      </button>
-                    ))}
+            <div className="space-y-4 max-h-[28rem] overflow-y-auto pr-1">
+              {COMMUNITY_OPTIONS
+                .filter((group) => {
+                  if (!answers.continent) return true
+                  const allowed = CONTINENT_TO_GROUPS[answers.continent] ?? []
+                  return allowed.includes(group.group)
+                })
+                .map((group) => (
+                  <div key={group.group}>
+                    <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2 sticky top-0 bg-white py-1">
+                      {group.group}
+                    </p>
+                    <div className="space-y-1.5">
+                      {group.options.map((opt) => (
+                        <button
+                          key={opt.value}
+                          type="button"
+                          onClick={() => toggleMulti('heritage', opt.value)}
+                          className={`w-full text-left px-3 py-2.5 rounded-xl border text-sm transition-all ${
+                            (answers.heritage ?? []).includes(opt.value)
+                              ? 'bg-brand-900 text-white border-brand-900'
+                              : 'bg-white text-gray-700 border-gray-200 hover:border-brand-300 hover:bg-brand-50'
+                          }`}
+                        >
+                          {opt.label}
+                        </button>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
             </div>
 
-            {/* Selection summary */}
             {(answers.heritage ?? []).length > 0 && (
               <div className="bg-brand-50 rounded-xl p-2 text-xs text-brand-700">
-                Selected: {(answers.heritage ?? []).join(', ')}
+                ✓ {(answers.heritage ?? []).length} selected
               </div>
             )}
 
@@ -770,11 +889,57 @@ export default function OnboardingPage() {
               }
               onClick={next}
             />
-            <button
-              type="button"
-              onClick={next}
-              className="w-full text-sm text-gray-400 py-1"
-            >
+            <button type="button" onClick={next} className="w-full text-sm text-gray-400 py-1">
+              Skip this question
+            </button>
+          </div>
+        )}
+
+        {/* ── STEP: Location — city + timezone ──────────────────────────── */}
+        {step === 'location' && (
+          <div className="space-y-5">
+            <StepHeader
+              title="Where do you live?"
+              subtitle="Your heritage shapes your culture, but your location shapes your day. We use this to contextualise timing and local food availability."
+            />
+
+            {/* City */}
+            <div>
+              <label className="text-sm font-medium text-gray-700 block mb-1.5">
+                City or town
+              </label>
+              <input
+                type="text"
+                value={answers.city ?? ''}
+                onChange={(e) => setAnswers({ ...answers, city: e.target.value })}
+                placeholder="e.g. London, Lagos, Toronto"
+                className="w-full border border-gray-200 rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-300"
+              />
+            </div>
+
+            {/* Timezone */}
+            <div>
+              <label className="text-sm font-medium text-gray-700 block mb-1.5">
+                Your timezone
+              </label>
+              <select
+                value={answers.timezone ?? ''}
+                onChange={(e) => setAnswers({ ...answers, timezone: e.target.value })}
+                className="w-full border border-gray-200 rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-300 bg-white"
+              >
+                <option value="">Select your timezone</option>
+                {TIMEZONE_OPTIONS.map((group) => (
+                  <optgroup key={group.group} label={group.group}>
+                    {group.options.map((tz) => (
+                      <option key={tz.value} value={tz.value}>{tz.label}</option>
+                    ))}
+                  </optgroup>
+                ))}
+              </select>
+            </div>
+
+            <PrimaryButton label="Continue" onClick={next} />
+            <button type="button" onClick={next} className="w-full text-sm text-gray-400 py-1">
               Skip this question
             </button>
           </div>
