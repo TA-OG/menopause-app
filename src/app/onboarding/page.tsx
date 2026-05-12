@@ -20,6 +20,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { DISCLAIMER } from '@/lib/disclaimer'
+import Logo from '@/components/ui/Logo'
 
 // ─── Step definitions ────────────────────────────────────────────────────────
 // Order matters: this array drives the wizard flow and progress bar.
@@ -502,8 +503,9 @@ export default function OnboardingPage() {
         {step === 'disclaimer' && (
           <div className="space-y-6">
             <div className="text-center">
-              <div className="text-5xl mb-4">🌸</div>
-              <h1 className="text-3xl font-bold text-brand-900">Welcome</h1>
+              <div className="flex justify-center mb-5">
+                <Logo size="lg" />
+              </div>
               <p className="text-gray-500 mt-2">
                 Let&apos;s build your personalised wellness plan.
               </p>

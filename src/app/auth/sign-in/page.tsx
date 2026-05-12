@@ -11,6 +11,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
+import Logo from '@/components/ui/Logo'
 
 // ─── Google logo SVG paths (brand-compliant colours) ─────────────────────────
 
@@ -122,9 +123,10 @@ export default function SignInPage() {
 
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="text-4xl mb-3">🌸</div>
-          <h1 className="text-3xl font-bold text-brand-900">Welcome back</h1>
-          <p className="text-gray-500 mt-2 text-sm">
+          <div className="flex justify-center mb-4">
+            <Logo size="lg" />
+          </div>
+          <p className="text-gray-500 text-sm">
             Sign in to your wellness plan.
           </p>
         </div>

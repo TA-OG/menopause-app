@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
+import Logo from '@/components/ui/Logo'
 
 const SYMPTOM_OPTIONS = [
   { value: 'hot_flashes', label: '🔥 Hot flushes' },
@@ -183,7 +184,9 @@ function WaitlistForm() {
 
         {/* Hero — manifesto */}
         <div className="text-center mb-10">
-          <div className="text-5xl mb-4">🌸</div>
+          <div className="flex justify-center mb-5">
+            <Logo size="lg" />
+          </div>
           <h1 className="text-3xl font-bold text-brand-900 leading-tight mb-4">
             Every body needs an Aunty Mel
           </h1>

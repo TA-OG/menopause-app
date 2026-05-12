@@ -1,14 +1,12 @@
 import Link from 'next/link'
+import Logo from '@/components/ui/Logo'
 
 export default function LandingPage() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-cream to-white">
       {/* Nav */}
       <nav className="flex items-center justify-between px-6 py-4 max-w-4xl mx-auto">
-        <span className="text-brand-900 font-bold text-xl">
-          {/* TODO: Replace with logo */}
-          Aunty Mel
-        </span>
+        <Logo size="md" />
         <div className="flex gap-3">
           <Link
             href="/auth/sign-in"
