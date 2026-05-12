@@ -10,31 +10,32 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          50:  '#f4f0fa',
-          100: '#e9e0f5',
-          200: '#d3c1eb',
-          300: '#b899dc',
-          400: '#9a6eca',
-          500: '#7b4fb5',
-          600: '#663d99',
-          700: '#54307d',
-          800: '#462a68',
-          900: '#3b1f6b', // primary brand
-          950: '#240f44',
+          50:  '#fef0f8',
+          100: '#fcd8ef',
+          200: '#f9b0de',
+          300: '#f37ec5',
+          400: '#e853ae',
+          500: '#d6409a',
+          600: '#c653a0', // primary magenta
+          700: '#a63d82',
+          800: '#852d66',
+          900: '#6b204f', // dark text / primary CTA
+          950: '#420c30',
         },
         border: '#E5E7EB',
         blush: {
-          50:  '#fdf4f7',
-          100: '#fce8f1',
-          200: '#f9d1e3',
-          300: '#f4aacb',
-          400: '#ec79ab',
-          500: '#e04d8d',
-          600: '#cc3071',
-          700: '#ab225b',
-          800: '#8e1f4d',
-          900: '#781e43',
+          50:  '#fff1f3',
+          100: '#ffdde2',
+          200: '#ffb8c3',
+          300: '#ff8fa0',
+          400: '#f5637e',
+          500: '#ec5473', // coral accent
+          600: '#d93b5b',
+          700: '#b82a49',
+          800: '#97233b',
+          900: '#7e2034',
         },
+        cream: '#fff5db',
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],

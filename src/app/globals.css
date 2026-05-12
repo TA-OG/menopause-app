@@ -4,9 +4,10 @@
 
 @layer base {
   :root {
-    --brand: 59 31 107;        /* #3B1F6B */
-    --brand-light: 201 184 232; /* #C9B8E8 */
-    --blush: 224 77 141;        /* #E04D8D */
+    --brand: 107 32 79;         /* #6b204f */
+    --brand-light: 243 126 197; /* #f37ec5 */
+    --blush: 236 84 115;        /* #ec5473 */
+    --cream: 255 245 219;       /* #fff5db */
   }
 
   * {

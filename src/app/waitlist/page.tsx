@@ -26,10 +26,8 @@ function WaitlistForm() {
   const [loading, setLoading] = useState(false)
   const [done, setDone] = useState(false)
   const [referralUrl, setReferralUrl] = useState('')
-  const [referralCode, setReferralCode] = useState('')
   const [isPriority, setIsPriority] = useState(false)
   const [error, setError] = useState('')
-  const [referrerName, setReferrerName] = useState('')
   const [copied, setCopied] = useState(false)
 
   useEffect(() => {
@@ -63,7 +61,6 @@ function WaitlistForm() {
       }
 
       setReferralUrl(data.referral_url)
-      setReferralCode(data.referral_code)
       setIsPriority(data.priority_access)
       setDone(true)
     } catch {
@@ -93,7 +90,7 @@ function WaitlistForm() {
   // ── Success state ────────────────────────────────────────────────────────────
   if (done) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-brand-50 to-white flex items-center justify-center px-6 py-12">
+      <div className="min-h-screen bg-cream flex items-center justify-center px-6 py-12">
         <div className="w-full max-w-sm space-y-6">
           {/* Header */}
           <div className="text-center">
@@ -172,7 +169,7 @@ function WaitlistForm() {
 
   // ── Signup form ──────────────────────────────────────────────────────────────
   return (
-    <div className="min-h-screen bg-gradient-to-b from-brand-50 to-white">
+    <div className="min-h-screen bg-cream">
       <div className="max-w-lg mx-auto px-6 py-12">
 
         {/* Priority badge */}

@@ -104,7 +104,7 @@ export async function POST(request: NextRequest) {
       null
 
     // Insert signup
-    const { data: signup, error: insertError } = await admin
+    const { error: insertError } = await admin
       .from('waitlist_signups')
       .insert({
         email,

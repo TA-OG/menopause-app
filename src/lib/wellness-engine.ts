@@ -86,13 +86,11 @@ function sortByPriority(
 
 function applyPreferenceFilters(
   recs: WellnessRecommendation[],
-  preferences: Partial<UserPreferences>
+  _preferences: Partial<UserPreferences>
 ): WellnessRecommendation[] {
-  return recs.filter((rec) => {
-    // Filter out supplement suggestions if user hasn't opted in
-    // (for now we include all — Pamela's 'who_for' field handles targeting)
-    return true
-  })
+  // Pamela's 'who_for' field on each recommendation handles targeting for now.
+  // Expand this function when preference-based filtering is implemented.
+  return recs.filter(() => true)
 }
 
 export function buildPlan(
@@ -103,7 +101,6 @@ export function buildPlan(
   const allLifestyle = matchedFrameworks.flatMap((f) => f.lifestyle_adjustments)
   const allMindset = matchedFrameworks.flatMap((f) => f.mindset_recommendations)
   const allSupplements = matchedFrameworks.flatMap((f) => f.supplement_suggestions)
-  const allContentIds = matchedFrameworks.flatMap((f) => f.content_module_ids)
 
   return {
     framework_ids: matchedFrameworks.map((f) => f.id),

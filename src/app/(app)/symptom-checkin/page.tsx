@@ -20,7 +20,7 @@ function ScaleInput({
 }: {
   label: string
   value: number
-  onChange: (v: number) => void
+  onChange: (_v: number) => void
   low: string
   high: string
 }) {
@@ -52,7 +52,7 @@ function SymptomRow({
 }: {
   label: string
   severity: number | null
-  onChange: (v: number | null) => void
+  onChange: (_v: number | null) => void
 }) {
   return (
     <div className="flex items-center justify-between py-2">
@@ -84,7 +84,6 @@ export default function SymptomCheckinPage() {
   const [moodScore, setMoodScore] = useState(3)
   const [energyLevel, setEnergyLevel] = useState(3)
   const [sleepHours, setSleepHours] = useState(7)
-  const [triedToday, setTriedToday] = useState<string[]>([])
   const [notes, setNotes] = useState('')
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
@@ -115,7 +114,7 @@ export default function SymptomCheckinPage() {
           mood_score: moodScore,
           energy_level: energyLevel,
           sleep_hours: sleepHours,
-          tried_today: triedToday,
+          tried_today: [],
           notes: notes.trim() || null,
         }),
       })
