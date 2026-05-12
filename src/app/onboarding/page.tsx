@@ -797,7 +797,7 @@ export default function OnboardingPage() {
                 />
               ))}
             </div>
-            <PrimaryButton label="Build my plan &rarr;" onClick={next} />
+            <PrimaryButton label="Build my plan →" onClick={next} />
           </div>
         )}
 
@@ -823,7 +823,7 @@ export default function OnboardingPage() {
             )}
 
             <PrimaryButton
-              label={saving ? 'Building your plan...' : 'See my plan &rarr;'}
+              label={saving ? 'Building your plan...' : 'See my plan →'}
               onClick={completeOnboarding}
               disabled={saving}
             />

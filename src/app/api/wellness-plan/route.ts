@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
-import { createAdminClient } from '@/lib/supabase/admin'
 import { matchFrameworks, buildPlan, applyTierGating } from '@/lib/wellness-engine'
 import { loadFrameworks } from '@/lib/load-frameworks'
 import { loadCulturalModifiers, buildCulturalContext } from '@/lib/cultural-engine'
@@ -46,7 +45,6 @@ export async function POST(request: NextRequest) {
   if (!success) return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
 
   const supabase = createClient()
-  const admin = createAdminClient()
 
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
@@ -82,7 +80,7 @@ export async function POST(request: NextRequest) {
     const culturalContext = buildCulturalContext(culturalModifiers)
 
     // Save the plan (deactivate_previous_plans trigger fires automatically)
-    const { data: savedPlan, error: planError } = await admin
+    const { data: savedPlan, error: planError } = await supabase
       .from('wellness_plans')
       .insert({
         user_id: user.id,
