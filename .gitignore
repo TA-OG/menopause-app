@@ -40,3 +40,9 @@ next-env.d.ts
 # android keystore — NEVER COMMIT
 android/*.keystore
 android/*.jks
+
+# Google OAuth client secret downloads — NEVER COMMIT
+client_secret*.json
+
+# Claude internal files
+.claude/

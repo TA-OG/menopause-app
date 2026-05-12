@@ -16,11 +16,15 @@
  *   for ethnicity-aware supplement and diet recommendations.
  */
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { DISCLAIMER } from '@/lib/disclaimer'
 import Logo from '@/components/ui/Logo'
+
+// sessionStorage keys — persist answers and step across browser-back
+const SS_ANSWERS = 'onboarding_answers'
+const SS_STEP    = 'onboarding_step'
 
 // ─── Step definitions ────────────────────────────────────────────────────────
 // Order matters: this array drives the wizard flow and progress bar.
@@ -458,6 +462,28 @@ export default function OnboardingPage() {
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
 
+  // ── Restore progress from sessionStorage on mount (survives browser-back) ──
+  useEffect(() => {
+    try {
+      const savedAnswers = sessionStorage.getItem(SS_ANSWERS)
+      if (savedAnswers) setAnswers(JSON.parse(savedAnswers))
+      const savedStep = sessionStorage.getItem(SS_STEP)
+      if (savedStep) {
+        const idx = parseInt(savedStep, 10)
+        if (!isNaN(idx) && idx >= 0 && idx < STEPS.length) setStepIndex(idx)
+      }
+    } catch {}
+  }, [])
+
+  // ── Persist answers and step whenever they change ────────────────────────
+  useEffect(() => {
+    try { sessionStorage.setItem(SS_ANSWERS, JSON.stringify(answers)) } catch {}
+  }, [answers])
+
+  useEffect(() => {
+    try { sessionStorage.setItem(SS_STEP, String(stepIndex)) } catch {}
+  }, [stepIndex])
+
   const step: Step = STEPS[stepIndex]
   const progress = Math.round((stepIndex / (STEPS.length - 1)) * 100)
 
@@ -514,9 +540,19 @@ export default function OnboardingPage() {
           return [{ user_id: user.id, question_key: key, answer_value: String(value) }]
         })
 
+      // Delete existing answers then insert fresh rows.
+      // We cannot upsert here because array-type questions (symptoms, heritage,
+      // previously_tried) produce multiple rows with the same question_key, and
+      // any upsert conflict key that includes question_key would reject them.
+      const { error: deleteError } = await supabase
+        .from('onboarding_answers')
+        .delete()
+        .eq('user_id', user.id)
+      if (deleteError) throw deleteError
+
       const { error: answersError } = await supabase
         .from('onboarding_answers')
-        .upsert(answerRows, { onConflict: 'user_id,question_key' })
+        .insert(answerRows)
       if (answersError) throw answersError
 
       // Mark profile as onboarded
@@ -545,9 +581,17 @@ export default function OnboardingPage() {
       // Trigger initial wellness plan generation
       await fetch('/api/wellness-plan', { method: 'POST' })
 
+      // Clear saved progress — onboarding is done
+      try {
+        sessionStorage.removeItem(SS_ANSWERS)
+        sessionStorage.removeItem(SS_STEP)
+      } catch {}
+
       router.push('/dashboard')
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Something went wrong')
+      // PostgrestError from Supabase has .message but is not instanceof Error
+      const msg = (err as any)?.message ?? 'Something went wrong. Please try again.'
+      setError(msg)
       setSaving(false)
     }
   }
@@ -566,7 +610,7 @@ export default function OnboardingPage() {
                 onClick={back}
                 className="text-sm text-gray-400 hover:text-gray-600 font-medium"
               >
-                &larr; Back
+                ← Back
               </button>
               <span className="text-xs text-gray-400">{progress}%</span>
             </div>
