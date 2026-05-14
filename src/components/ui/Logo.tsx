@@ -12,12 +12,13 @@ import Image from 'next/image'
  *   <Logo size="sm" />          — compact / mobile nav
  */
 
-type Size = 'sm' | 'md' | 'lg'
+type Size = 'sm' | 'md' | 'lg' | 'xl'
 
 const DIMENSIONS: Record<Size, { width: number; height: number }> = {
   sm: { width: 90,  height: 36  },
   md: { width: 130, height: 52  },
   lg: { width: 200, height: 80  },
+  xl: { width: 300, height: 120 },
 }
 
 export default function Logo({ size = 'md' }: { size?: Size }) {

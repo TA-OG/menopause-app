@@ -4,9 +4,8 @@ import Logo from '@/components/ui/Logo'
 export default function LandingPage() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-cream to-white">
-      {/* Nav */}
-      <nav className="flex items-center justify-between px-6 py-4 max-w-4xl mx-auto">
-        <Logo size="md" />
+      {/* Nav — auth links only, logo lives in the hero */}
+      <nav className="flex items-center justify-end px-6 py-4 max-w-4xl mx-auto">
         <div className="flex gap-3">
           <Link
             href="/auth/sign-in"
@@ -24,7 +23,13 @@ export default function LandingPage() {
       </nav>
 
       {/* Hero — manifesto */}
-      <section className="text-center px-6 py-16 max-w-2xl mx-auto">
+      <section className="text-center px-6 pt-4 pb-16 max-w-2xl mx-auto">
+
+        {/* Logo — large and centred above the headline */}
+        <div className="flex justify-center mb-8">
+          <Logo size="xl" />
+        </div>
+
         <p className="text-brand-600 font-semibold text-sm uppercase tracking-widest mb-4">
           Every body needs an Aunty Mel
         </p>
