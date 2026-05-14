@@ -1,0 +1,157 @@
+id: sleep_fatigue
+label: Sleep Problems & Fatigue
+description: >
+  Sleep and energy framework — addresses disrupted sleep and low energy through
+  sleep hygiene, nutrition timing, restorative movement, and supplement support.
+
+trigger_conditions:
+  - question: symptoms
+    answer:
+      - sleep_problems
+      - fatigue
+    min_matches: 1
+
+diet_adjustments:
+  - id: df_sleep_tryptophan
+    category: diet
+    title: Eat tryptophan-rich foods in the evening
+    body: >
+      Tryptophan is a precursor to serotonin and melatonin — the hormones that
+      regulate sleep. Foods high in tryptophan include turkey, chicken, eggs,
+      pumpkin seeds, oats, and dairy. A small protein-and-carb snack 90 minutes
+      before bed (e.g. a small bowl of oat porridge or a banana with a few
+      walnuts) can support melatonin production.
+    priority: high
+    who_for: all
+
+  - id: df_caffeine_cutoff
+    category: diet
+    title: Set a hard caffeine cutoff at 1pm
+    body: >
+      Caffeine has a half-life of 5–6 hours — a 3pm coffee still has half its
+      caffeine in your system at 8pm. Shifting your cutoff to 1pm is the
+      single most impactful dietary change most women can make for sleep quality.
+      Switch to herbal tea, rooibos, or decaf after lunch.
+    priority: high
+    who_for: all
+
+  - id: df_energy_blood_sugar
+    category: diet
+    title: Eat for stable energy across the day
+    body: >
+      Fatigue is often worsened by blood sugar crashes. Avoid skipping meals
+      and aim for protein, healthy fat, and fibre at every meal to sustain
+      energy. A small mid-morning and mid-afternoon snack (a handful of nuts,
+      an apple with nut butter) prevents the 3pm crash many perimenopausal
+      women describe.
+    priority: medium
+    who_for: all
+
+lifestyle_adjustments:
+  - id: lf_sleep_consistency
+    category: lifestyle
+    title: Fix your wake time — it anchors your whole sleep cycle
+    body: >
+      Your circadian rhythm is set primarily by your wake time, not your
+      bedtime. Getting up at the same time every day (including weekends)
+      within 30 minutes is the single most evidence-backed sleep behaviour
+      change. It feels counterintuitive when you've had a bad night, but
+      lying in makes the next night worse.
+    priority: high
+    who_for: all
+
+  - id: lf_morning_light
+    category: lifestyle
+    title: Morning light — 10 minutes outside within an hour of waking
+    body: >
+      Outdoor light (even on a cloudy day) is 10–50x brighter than indoor
+      lighting. Exposure within the first hour of waking suppresses residual
+      melatonin, improves daytime alertness, and anchors your sleep-wake cycle.
+      A short walk or sitting by an open window counts. This is free and
+      takes 10 minutes.
+    priority: high
+    who_for: all
+
+  - id: lf_restorative_movement
+    category: lifestyle
+    title: Restorative movement for fatigue — not rest
+    body: >
+      Counterintuitively, rest makes fatigue worse in most cases. Gentle,
+      consistent movement — a 20-minute walk, yoga, swimming — activates
+      energy systems and improves mitochondrial efficiency. Aim for movement
+      every day even if it's just 15 minutes. Save high-intensity for when
+      you have more energy in reserve.
+    priority: medium
+    who_for: all
+
+  - id: lf_wind_down
+    category: lifestyle
+    title: A 30-minute wind-down routine every night
+    body: >
+      Your nervous system needs a transition signal between "daytime mode"
+      and sleep. Build a consistent 30-minute routine: dim lights, no screens,
+      something low-stimulus (reading, gentle stretching, a bath or shower).
+      Doing the same sequence every night trains your body to associate it
+      with sleep onset.
+    priority: medium
+    who_for: all
+
+mindset_recommendations:
+  - id: mr_sleep_effort
+    category: mindset
+    title: Stop trying to sleep — paradoxical intention
+    body: >
+      The harder you try to sleep, the more alert you become. Cognitive
+      therapy for insomnia (CBT-I) teaches "stimulus control" and "paradoxical
+      intention" — if you're awake after 20 minutes, get up, do something
+      calm in dim light, and only return to bed when sleepy. This breaks the
+      anxiety loop around sleep. Ask your GP for a referral to a CBT-I
+      programme or look for the Sleepio app via the NHS.
+    priority: high
+    who_for: all
+
+  - id: mr_fatigue_self_compassion
+    category: mindset
+    title: Rest without guilt
+    body: >
+      Many women push through fatigue because they feel they "should" be
+      managing. Fatigue in perimenopause is physiological — it is your body
+      adjusting to hormonal shifts, not a character flaw. Scheduling one
+      deliberate rest period daily (even 20 minutes of lying down) and
+      treating it as maintenance rather than weakness changes the emotional
+      experience of fatigue significantly.
+    priority: medium
+    who_for: all
+
+supplement_suggestions:
+  - id: ss_magnesium_sleep
+    category: supplement
+    title: Magnesium glycinate — for sleep quality
+    body: >
+      Magnesium glycinate (200–400mg, 30–60 minutes before bed) has good
+      evidence for improving sleep onset and continuity. It relaxes smooth
+      muscle, lowers cortisol, and supports GABA — the brain's main calming
+      neurotransmitter. Start at 200mg and increase if needed.
+    priority: high
+    who_for: all
+    disclaimer: >
+      Supplements are not regulated medicines. Always check with your GP or
+      pharmacist before starting, especially if you take any prescribed
+      medications or have kidney or heart conditions.
+
+  - id: ss_vitamin_d
+    category: supplement
+    title: Vitamin D — energy, mood, and immune support
+    body: >
+      Most UK adults are deficient in Vitamin D by winter. Deficiency is
+      strongly associated with fatigue, low mood, and poor sleep. The NHS
+      recommends 10 micrograms (400 IU) daily for all adults from October
+      to March; women with darker skin or limited sun exposure may benefit
+      from year-round supplementation at 1000–2000 IU. Ask your GP for a
+      blood test to check your level before supplementing at higher doses.
+    priority: high
+    who_for: all
+    disclaimer: >
+      Very high doses of Vitamin D (above 4000 IU/day) can cause toxicity.
+      Get your levels checked before supplementing above 2000 IU. Consult
+      your GP if you have any history of kidney stones or hypercalcaemia.

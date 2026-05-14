@@ -1,0 +1,173 @@
+id: hot_flashes_night_sweats
+label: Hot Flushes & Night Sweats
+description: >
+  Vasomotor symptom framework — addresses hot flushes and night sweats through
+  dietary cooling foods, lifestyle thermoregulation, mindset regulation, and
+  evidence-based supplement support.
+
+trigger_conditions:
+  - question: symptoms
+    answer:
+      - hot_flashes
+      - night_sweats
+    min_matches: 1
+
+diet_adjustments:
+  - id: df_cool_foods
+    category: diet
+    title: Prioritise cooling foods
+    body: >
+      Foods rich in phytoestrogens — ground flaxseed, edamame, tofu, tempeh —
+      can help buffer oestrogen fluctuations that drive hot flushes.
+      Aim for 1–2 tablespoons of ground flaxseed daily added to porridge,
+      yoghurt, or smoothies.
+    priority: high
+    who_for: all
+
+  - id: df_reduce_triggers
+    category: diet
+    title: Reduce common flush triggers
+    body: >
+      Caffeine, alcohol, spicy food, and very hot drinks are the most commonly
+      reported dietary triggers for hot flushes. Try removing one at a time for
+      two weeks and note whether flush frequency or severity decreases.
+      Many women find morning coffee is the single biggest driver.
+    priority: high
+    who_for: all
+
+  - id: df_blood_sugar
+    category: diet
+    title: Stabilise blood sugar to reduce flush frequency
+    body: >
+      Blood sugar spikes and crashes can trigger vasomotor events. Eating
+      protein and healthy fat at every meal (e.g. eggs, nuts, oily fish,
+      avocado) slows glucose absorption and helps keep flushes calmer.
+      Avoid refined carbs and sugary snacks on an empty stomach.
+    priority: medium
+    who_for: all
+
+  - id: df_hydration
+    category: diet
+    title: Stay consistently hydrated
+    body: >
+      Dehydration raises core body temperature, making flushes more intense.
+      Aim for 6–8 glasses of water daily. Start with a large glass of cold
+      water first thing in the morning and keep one by your bed for night sweats.
+    priority: medium
+    who_for: all
+
+lifestyle_adjustments:
+  - id: lf_layers_bedding
+    category: lifestyle
+    title: Layer bedding — the single most practical night-sweat fix
+    body: >
+      Switch to moisture-wicking, breathable bedding (bamboo or cotton percale).
+      Sleep with layers you can kick off: a sheet, a light blanket, a duvet —
+      rather than one heavy duvet. A small fan directed away from you (so it
+      cools the room, not blows on you) can reduce night-sweat severity by
+      keeping ambient temperature below 18°C.
+    priority: high
+    who_for: all
+
+  - id: lf_paced_breathing
+    category: lifestyle
+    title: Paced breathing to abort a flush
+    body: >
+      Research shows slow, paced breathing (4–5 breaths per minute) can reduce
+      flush intensity when started at the first sign of one. Try: breathe in
+      for 4 counts, hold for 2, breathe out for 6. Practise it daily so it
+      becomes automatic. It takes about 2 weeks of practice before it works
+      reliably in the moment.
+    priority: high
+    who_for: all
+
+  - id: lf_exercise_timing
+    category: lifestyle
+    title: Exercise timing matters
+    body: >
+      Regular moderate exercise reduces overall vasomotor symptom frequency —
+      but exercising in heat or at high intensity can temporarily trigger
+      flushes. Morning exercise in cool air tends to work better than evening
+      exercise for women with significant night sweats.
+    priority: medium
+    who_for: all
+
+  - id: lf_clothing
+    category: lifestyle
+    title: Dress in natural fibre layers
+    body: >
+      Synthetic fabrics trap heat. Natural fibres — cotton, linen, bamboo,
+      merino — allow moisture to evaporate. At work, a cardigan or blazer
+      you can remove quickly gives more control than a single heavier garment.
+      Keep a small fan on your desk if you can.
+    priority: low
+    who_for: all
+
+mindset_recommendations:
+  - id: mr_flush_normalise
+    category: mindset
+    title: Reframe the flush — anxiety makes them worse
+    body: >
+      Anxiety about an impending flush is itself a trigger: it activates the
+      sympathetic nervous system, which raises core temperature. Women who
+      learn to observe a flush without catastrophising ("this will pass in
+      90 seconds") report significantly lower severity scores over time.
+      Cognitive Behavioural Therapy (CBT) for menopause has strong evidence —
+      ask your GP about the CHOICE programme or look up menopause CBT on
+      the NHS website.
+    priority: high
+    who_for: all
+
+  - id: mr_sleep_hygiene
+    category: mindset
+    title: Protect sleep despite night sweats
+    body: >
+      Night sweats often cause secondary sleep anxiety ("I dread going to bed").
+      Keep your pre-sleep routine consistent and calm. A cool shower before
+      bed lowers core temperature for 60–90 minutes — the window when it helps
+      most. Avoid screens for 30 minutes beforehand. If you wake from a sweat,
+      have your water and fan ready and avoid looking at your phone.
+    priority: high
+    who_for: all
+
+  - id: mr_track_patterns
+    category: mindset
+    title: Track triggers for two weeks
+    body: >
+      Use your daily check-in to note flush frequency, time of day, and what
+      you ate or drank in the 2 hours before. Most women find 2–3 clear
+      patterns within two weeks. Knowing your triggers gives you agency —
+      which is itself associated with lower perceived symptom burden.
+    priority: medium
+    who_for: all
+
+supplement_suggestions:
+  - id: ss_magnesium_glycinate
+    category: supplement
+    title: Magnesium glycinate — sleep and flush support
+    body: >
+      Magnesium glycinate (200–400mg before bed) is well-tolerated and has
+      early evidence for reducing night-sweat frequency and improving sleep
+      quality in perimenopause. It is also calming for the nervous system.
+      The glycinate form is gentler on the digestive system than magnesium oxide.
+    priority: high
+    who_for: all
+    disclaimer: >
+      Supplements are not regulated medicines. Always check with your GP or
+      pharmacist before starting, especially if you take any prescribed
+      medications or have kidney or heart conditions.
+
+  - id: ss_sage_extract
+    category: supplement
+    title: Sage extract — modest evidence for flush reduction
+    body: >
+      Sage (Salvia officinalis) standardised extract has a small body of
+      clinical evidence showing a modest reduction in hot flush frequency.
+      Studies typically used 300–600mg daily. Effects take 4–8 weeks to build.
+      Not a replacement for HRT if flushes are severe.
+    priority: medium
+    who_for: all
+    disclaimer: >
+      Sage supplements can interact with some medications including anticonvulsants
+      and diabetes drugs. Not suitable during pregnancy. Consult your GP before
+      use, particularly if you have any ongoing health conditions.

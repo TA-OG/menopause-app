@@ -196,11 +196,11 @@ async function sendWelcomeEmail(
       : `${firstName}, you're on the Aunty Mel list 🌸`,
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 520px; margin: 0 auto; color: #1a1a1a;">
-        <div style="background: #3B1F6B; padding: 32px 24px; border-radius: 16px 16px 0 0; text-align: center;">
+        <div style="background: #6b204f; padding: 32px 24px; border-radius: 16px 16px 0 0; text-align: center;">
           <h1 style="color: white; font-size: 24px; margin: 0;">🌸 Aunty Mel</h1>
-          <p style="color: #C9B8E8; font-size: 14px; margin: 8px 0 0;">Every body needs an Aunty Mel</p>
+          <p style="color: #f0c4e4; font-size: 14px; margin: 8px 0 0;">Every body needs an Aunty Mel</p>
         </div>
-        <div style="background: #f4f0fa; padding: 32px 24px; border-radius: 0 0 16px 16px;">
+        <div style="background: #fff5db; padding: 32px 24px; border-radius: 0 0 16px 16px;">
           <p style="font-size: 16px;">Hi ${firstName},</p>
           ${isPriority
             ? `<p style="font-size: 16px;">Because someone referred you, you'll get <strong>priority early access</strong> when we launch. You're ahead of the queue.</p>`
@@ -210,11 +210,11 @@ async function sendWelcomeEmail(
 
           <div style="background: white; border-radius: 12px; padding: 20px; margin: 24px 0; text-align: center;">
             <p style="font-size: 13px; color: #666; margin: 0 0 8px;">Your personal referral link</p>
-            <p style="font-size: 14px; font-weight: bold; color: #3B1F6B; word-break: break-all;">${referralUrl}</p>
+            <p style="font-size: 14px; font-weight: bold; color: #6b204f; word-break: break-all;">${referralUrl}</p>
             <p style="font-size: 13px; color: #666; margin: 8px 0 0;">Your code: <strong>${referralCode}</strong></p>
           </div>
 
-          <a href="${referralUrl}" style="display: block; background: #3B1F6B; color: white; text-decoration: none; padding: 14px 24px; border-radius: 12px; font-weight: bold; font-size: 15px; text-align: center; margin-bottom: 24px;">
+          <a href="${referralUrl}" style="display: block; background: #6b204f; color: white; text-decoration: none; padding: 14px 24px; border-radius: 12px; font-weight: bold; font-size: 15px; text-align: center; margin-bottom: 24px;">
             Share your link →
           </a>
 

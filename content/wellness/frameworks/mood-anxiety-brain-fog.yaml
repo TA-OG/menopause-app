@@ -1,0 +1,166 @@
+id: mood_anxiety_brain_fog
+label: Mood, Anxiety & Brain Fog
+description: >
+  Psychological and cognitive symptom framework — addresses mood instability,
+  anxiety, irritability, and brain fog through blood sugar regulation,
+  stress management, nervous system support, and targeted supplementation.
+
+trigger_conditions:
+  - question: symptoms
+    answer:
+      - mood_changes
+      - anxiety
+      - brain_fog
+    min_matches: 1
+
+diet_adjustments:
+  - id: df_omega3_brain
+    category: diet
+    title: Omega-3 fatty acids for brain and mood
+    body: >
+      DHA (a type of omega-3) is essential for brain cell membrane function and
+      serotonin signalling. Declining oestrogen reduces the brain's efficiency
+      at using omega-3. Eat oily fish (salmon, sardines, mackerel) 2–3 times
+      weekly, or supplement with 1000mg EPA+DHA daily if you don't eat fish.
+      Ground flaxseed and walnuts provide ALA (a plant-based omega-3 precursor).
+    priority: high
+    who_for: all
+
+  - id: df_fermented_foods
+    category: diet
+    title: Gut health and the mood connection
+    body: >
+      The gut-brain axis is well established — gut bacteria produce around 90%
+      of the body's serotonin. Include fermented foods daily: live yoghurt,
+      kefir, kimchi, sauerkraut, miso. These feed beneficial gut bacteria
+      linked to better mood regulation and lower anxiety. Aim for variety
+      across the week rather than large amounts of one thing.
+    priority: medium
+    who_for: all
+
+  - id: df_protein_neurotransmitters
+    category: diet
+    title: Protein at every meal — amino acids build your mood chemicals
+    body: >
+      Serotonin, dopamine, and GABA are built from amino acids that come from
+      dietary protein. Skipping meals or eating low-protein snacks can
+      deplete the building blocks your brain needs. Aim for 20–30g of protein
+      at breakfast (eggs, Greek yoghurt, smoked salmon) — this sets up your
+      neurotransmitter production for the day.
+    priority: high
+    who_for: all
+
+lifestyle_adjustments:
+  - id: lf_exercise_mood
+    category: lifestyle
+    title: Exercise is the most evidence-backed mood intervention available
+    body: >
+      30 minutes of moderate cardio (brisk walking, cycling, swimming) 3–5
+      times weekly increases BDNF (brain-derived neurotrophic factor) —
+      the brain's own growth and repair protein. It also raises endorphins,
+      lowers cortisol, and directly counteracts the anxiety and low mood of
+      perimenopause. The effect begins within the first session and compounds
+      over weeks. If you do nothing else on this list, do this.
+    priority: high
+    who_for: all
+
+  - id: lf_stress_boundary
+    category: lifestyle
+    title: Identify one thing you can stop doing
+    body: >
+      Perimenopause often coincides with peak career pressure and family
+      caring responsibilities. Women who describe themselves as "overwhelmed"
+      frequently report that their mood and brain fog improve substantially
+      when they reduce one regular obligation — not add more recovery tools.
+      Review your week and identify one thing you can remove, delegate,
+      or reduce in frequency.
+    priority: high
+    who_for: all
+
+  - id: lf_brain_fog_tactics
+    category: lifestyle
+    title: Practical tactics for brain fog at work
+    body: >
+      Brain fog is real — oestrogen regulates the prefrontal cortex.
+      Practical adaptions: write things down immediately rather than trying
+      to hold them; use calendar reminders for things you'd normally remember;
+      block focus time in the morning when cognitive function is typically
+      highest; take short movement breaks every 90 minutes to reset
+      concentration. These are not failures — they are adaptations.
+    priority: medium
+    who_for: all
+
+mindset_recommendations:
+  - id: mr_anxiety_breathwork
+    category: mindset
+    title: Physiological sigh — the fastest anxiety reset
+    body: >
+      The "physiological sigh" (double inhale through the nose, long slow exhale
+      through the mouth) activates the parasympathetic nervous system faster
+      than any other breathing technique. Use it at the onset of anxiety or
+      irritability. Unlike extended breathwork sessions, this takes 5 seconds
+      and can be done anywhere, including mid-conversation or in a meeting.
+    priority: high
+    who_for: all
+
+  - id: mr_mood_journalling
+    category: mindset
+    title: Track mood triggers — awareness reduces reactivity
+    body: >
+      Many women find their mood changes feel random and uncontrollable, which
+      is itself distressing. Using your journal to note mood, energy, and what
+      happened before a difficult moment for two weeks typically reveals 2–3
+      clear patterns. Knowing that the Tuesday morning meeting reliably triggers
+      anxiety, for example, allows preparation rather than surprise. Predictability
+      reduces the threat response.
+    priority: medium
+    who_for: all
+
+  - id: mr_self_compassion_mood
+    category: mindset
+    title: Your brain is not broken — it is adapting
+    body: >
+      Oestrogen decline affects the amygdala (the brain's threat detector) and
+      the hippocampus (memory). The irritability, tearfulness, and brain fog
+      you experience are neurological, not personal weakness. Self-compassion
+      practices — treating yourself with the same warmth you'd offer a friend
+      who was struggling — are associated with lower anxiety and faster
+      emotional recovery. Research by Kristin Neff at UT Austin is a good
+      starting point if you want to explore this further.
+    priority: medium
+    who_for: all
+
+supplement_suggestions:
+  - id: ss_b_complex
+    category: supplement
+    title: B-vitamin complex — mood, energy, and brain function
+    body: >
+      B vitamins (particularly B6, B9/folate, and B12) are essential cofactors
+      in serotonin and dopamine production. B12 deficiency — common in women
+      over 45, especially those on metformin or PPIs — causes fatigue, brain
+      fog, and low mood indistinguishable from menopause. A daily B-complex
+      with methylated forms (methylfolate, methylcobalamin) is well-tolerated
+      and appropriate for most women.
+    priority: high
+    who_for: all
+    disclaimer: >
+      High-dose B6 (above 10mg/day long term) can cause peripheral neuropathy.
+      Use a standard B-complex (typically 2–10mg B6) rather than isolated
+      high-dose B6. Consult your GP if you have any kidney conditions.
+
+  - id: ss_ashwagandha
+    category: supplement
+    title: Ashwagandha — adaptogen for stress and anxiety
+    body: >
+      Ashwagandha (KSM-66 extract, 300–600mg daily) has a reasonable body of
+      clinical evidence for reducing cortisol, perceived stress, and anxiety
+      in adults. It typically takes 6–8 weeks to see the full effect.
+      Best taken with food. It is one of the better-evidenced adaptogens for
+      perimenopausal anxiety.
+    priority: medium
+    who_for: all
+    disclaimer: >
+      Ashwagandha can interact with thyroid medications and immunosuppressants.
+      Not suitable during pregnancy. Some people experience digestive upset —
+      take with food. Consult your GP before use if you have thyroid conditions
+      or take any regular medications.

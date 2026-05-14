@@ -1,0 +1,166 @@
+id: weight_joint_energy
+label: Weight Changes, Joint Pain & Low Energy
+description: >
+  Metabolic and physical symptom framework — addresses weight changes,
+  joint and muscle aches, and low energy through anti-inflammatory
+  nutrition, strength-focused movement, and metabolic support.
+
+trigger_conditions:
+  - question: symptoms
+    answer:
+      - weight_changes
+      - joint_pain
+      - fatigue
+    min_matches: 1
+
+diet_adjustments:
+  - id: df_protein_muscle
+    category: diet
+    title: Prioritise protein — muscle is your metabolic engine
+    body: >
+      Oestrogen decline accelerates muscle loss (sarcopenia), which slows
+      metabolism and makes weight management harder. Aim for 1.2–1.6g of
+      protein per kg of body weight daily. Spread this across meals: 25–30g
+      per meal is more effective for muscle protein synthesis than eating
+      most of it at dinner. Sources: eggs, chicken, fish, Greek yoghurt,
+      legumes, cottage cheese, tofu.
+    priority: high
+    who_for: all
+
+  - id: df_anti_inflammatory
+    category: diet
+    title: Anti-inflammatory eating for joint pain
+    body: >
+      Joint pain in perimenopause is partly driven by inflammation as
+      oestrogen's anti-inflammatory effect declines. Foods that support
+      the anti-inflammatory pathway: olive oil, oily fish, berries,
+      turmeric, ginger, dark leafy greens, colourful vegetables.
+      Foods that drive inflammation: ultra-processed foods, refined sugar,
+      seed oils (sunflower, vegetable), excessive alcohol.
+    priority: high
+    who_for: all
+
+  - id: df_reduce_refined_carbs
+    category: diet
+    title: Reduce refined carbohydrates — not all carbs
+    body: >
+      The hormonal changes of perimenopause increase insulin resistance,
+      meaning refined carbs (white bread, pastries, sugary drinks, white rice)
+      spike blood sugar more than they used to. This drives fat storage,
+      particularly around the abdomen. Focus on complex carbohydrates:
+      oats, sweet potato, legumes, whole grain bread. You don't need to
+      eliminate carbs — just choose ones that come with fibre.
+    priority: high
+    who_for: all
+
+  - id: df_collagen_joints
+    category: diet
+    title: Support joint health with collagen-building foods
+    body: >
+      Vitamin C is essential for collagen synthesis in cartilage and connective
+      tissue. Include citrus fruit, kiwi, red pepper, broccoli, and strawberries
+      daily. Bone broth contains collagen precursors. Silica-rich foods
+      (oats, leeks, green beans) also support connective tissue repair.
+    priority: medium
+    who_for: all
+
+lifestyle_adjustments:
+  - id: lf_strength_training
+    category: lifestyle
+    title: Strength training — the most important exercise for menopause
+    body: >
+      Resistance training (weights, resistance bands, bodyweight exercises)
+      is the most evidence-backed intervention for perimenopause weight
+      management, bone density, joint stability, and metabolism. It does not
+      mean heavy powerlifting — even 2–3 sessions of 30 minutes weekly doing
+      squats, lunges, press-ups, and rows produces measurable metabolic benefit.
+      Start light and focus on form. YouTube channels like pahlavanifitness
+      have free beginner menopause-specific programmes.
+    priority: high
+    who_for: all
+
+  - id: lf_low_impact_joints
+    category: lifestyle
+    title: Protect joints with low-impact movement
+    body: >
+      For joint pain, prioritise movement that loads joints without impact:
+      swimming, cycling, yoga, Pilates, walking on even ground. Avoid
+      high-impact running or HIIT on hard surfaces until joint pain is managed.
+      Warmup and cool-down are more important now than they were in your 30s —
+      allow 5–10 minutes at each end of any workout.
+    priority: high
+    who_for: all
+
+  - id: lf_movement_consistency
+    category: lifestyle
+    title: Consistency beats intensity for metabolic health
+    body: >
+      Short bursts of high intensity exercise followed by days of rest
+      are less effective for menopausal weight management than consistent
+      moderate daily movement. A 30-minute walk every day produces more
+      cumulative metabolic benefit than two intense 90-minute sessions per
+      week. The goal is to avoid prolonged sitting — break it up every 60–90
+      minutes with even a 5-minute walk.
+    priority: medium
+    who_for: all
+
+mindset_recommendations:
+  - id: mr_weight_compassion
+    category: mindset
+    title: Weight changes in menopause are hormonal — not your fault
+    body: >
+      The average woman gains 2–5kg during the menopausal transition without
+      any change in diet or activity. This is driven by declining oestrogen
+      affecting fat distribution, not overeating. The shift from hip/thigh
+      fat storage to abdominal storage is a hormonal response. Shame and
+      restriction dieting worsen the metabolic picture. The goal is metabolic
+      health — strength, energy, blood markers — not the number on the scale.
+    priority: high
+    who_for: all
+
+  - id: mr_joint_pain_movement_anxiety
+    category: mindset
+    title: Joint pain creates fear of movement — which makes it worse
+    body: >
+      Pain causes protective movement avoidance, which leads to muscle
+      weakness around joints, which leads to more pain. This is called
+      kinesiophobia (fear of movement) and it's extremely common. Gentle,
+      consistent, low-pain-level movement — even when joints ache — is
+      therapeutic. If movement reliably increases your pain for more than
+      a day after, speak to your GP about physiotherapy.
+    priority: medium
+    who_for: all
+
+supplement_suggestions:
+  - id: ss_omega3_joints
+    category: supplement
+    title: Omega-3 (EPA+DHA) — anti-inflammatory for joints and metabolism
+    body: >
+      High-dose omega-3 (2000–3000mg EPA+DHA daily from fish oil or algae oil)
+      has clinical evidence for reducing joint stiffness and inflammatory
+      markers. The metabolic benefits (improved insulin sensitivity, reduced
+      triglycerides) are also relevant for menopausal weight management.
+      Take with a meal containing fat. Algae-based omega-3 is the
+      plant-based equivalent.
+    priority: high
+    who_for: all
+    disclaimer: >
+      Omega-3 at high doses (above 3g EPA+DHA) can thin the blood. If you take
+      anticoagulants (warfarin, aspirin, apixaban) or are due for surgery,
+      consult your GP or pharmacist before supplementing.
+
+  - id: ss_collagen_peptides
+    category: supplement
+    title: Collagen peptides — joint and connective tissue support
+    body: >
+      Hydrolysed collagen peptides (10–15g daily in a hot drink or smoothie)
+      have emerging evidence for reducing joint pain and improving skin
+      elasticity. The evidence is not as strong as omega-3 but it is
+      well-tolerated and generally safe. Look for products with Verisol or
+      UC-II standardised collagen.
+    priority: medium
+    who_for: all
+    disclaimer: >
+      Collagen supplements are generally safe for most adults. If you have a
+      fish or shellfish allergy, check the source of the collagen.
+      Consult your GP before use if you have any ongoing health conditions.

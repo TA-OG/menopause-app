@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
+import Greeting from '@/components/ui/Greeting'
 
 export default async function DashboardPage() {
   const supabase = createClient()
@@ -12,22 +13,13 @@ export default async function DashboardPage() {
     .eq('id', user.id)
     .single()
 
-  const hour = new Date().getHours()
-  const greeting = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening'
   const firstName = profile?.full_name?.split(' ')[0] ?? 'there'
   const isPremium = profile?.subscription_tier === 'premium'
 
   return (
     <div className="space-y-6 py-4">
-      {/* Greeting */}
-      <div>
-        <h1 className="text-2xl font-bold text-brand-900">
-          {greeting}, {firstName} 👋
-        </h1>
-        <p className="text-gray-500 mt-1 text-sm">
-          How are you feeling today?
-        </p>
-      </div>
+      {/* Greeting — client component so it uses the user's local device time */}
+      <Greeting firstName={firstName} />
 
       {/* Daily check-in prompt */}
       <a

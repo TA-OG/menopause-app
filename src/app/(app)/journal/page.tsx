@@ -1,7 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback, useMemo } from 'react'
-import { createClient } from '@/lib/supabase/client'
+import { useState, useEffect, useCallback } from 'react'
 import type { JournalEntry, SymptomKey } from '@/types/database'
 
 const SYMPTOM_LABELS: Record<SymptomKey, string> = {
@@ -29,12 +28,11 @@ const EFFECT_LABELS = {
 }
 
 export default function JournalPage() {
-  // Stable client instance — recreating on every render would cause loadEntries
-  // to change identity each render, making the useEffect dependency loop infinitely.
-  const supabase = useMemo(() => createClient(), [])
   const [entries, setEntries] = useState<JournalEntry[]>([])
+  const [isLimited, setIsLimited] = useState(false)
   const [loading, setLoading] = useState(true)
   const [showNew, setShowNew] = useState(false)
+  const [saveError, setSaveError] = useState('')
 
   // New entry form state
   const [content, setContent] = useState('')
@@ -45,15 +43,19 @@ export default function JournalPage() {
   const [wouldContinue, setWouldContinue] = useState<boolean | null>(null)
   const [saving, setSaving] = useState(false)
 
+  // Load via API — enforces free-tier 7-day restriction server-side
   const loadEntries = useCallback(async () => {
-    const { data } = await supabase
-      .from('journal_entries')
-      .select('*')
-      .order('created_at', { ascending: false })
-      .limit(20)
-    setEntries(data ?? [])
-    setLoading(false)
-  }, [supabase])
+    try {
+      const res = await fetch('/api/journal?limit=50')
+      if (res.ok) {
+        const { data, limited } = await res.json()
+        setEntries(data ?? [])
+        setIsLimited(!!limited)
+      }
+    } finally {
+      setLoading(false)
+    }
+  }, [])
 
   useEffect(() => {
     loadEntries()
@@ -62,17 +64,28 @@ export default function JournalPage() {
   async function saveEntry() {
     if (!content.trim()) return
     setSaving(true)
+    setSaveError('')
 
-    const { error } = await supabase.from('journal_entries').insert({
-      content: content.trim(),
-      symptom_focus: symptomFocus || null,
-      plan_item_title: planItemTitle || null,
-      days_tried: daysTried !== '' ? Number(daysTried) : null,
-      perceived_effect: perceivedEffect || null,
-      would_continue: wouldContinue,
-    })
+    try {
+      const res = await fetch('/api/journal', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          content: content.trim(),
+          symptom_focus: symptomFocus || null,
+          plan_item_title: planItemTitle || null,
+          days_tried: daysTried !== '' ? Number(daysTried) : null,
+          perceived_effect: perceivedEffect || null,
+          would_continue: wouldContinue,
+        }),
+      })
 
-    if (!error) {
+      if (!res.ok) {
+        const { error } = await res.json()
+        setSaveError(error ?? 'Could not save entry. Please try again.')
+        return
+      }
+
       setContent('')
       setSymptomFocus('')
       setPlanItemTitle('')
@@ -81,8 +94,11 @@ export default function JournalPage() {
       setWouldContinue(null)
       setShowNew(false)
       loadEntries()
+    } catch {
+      setSaveError('Could not save entry. Please check your connection.')
+    } finally {
+      setSaving(false)
     }
-    setSaving(false)
   }
 
   return (
@@ -214,6 +230,10 @@ export default function JournalPage() {
             />
           </div>
 
+          {saveError && (
+            <p className="text-red-600 text-sm bg-red-50 rounded-xl px-3 py-2">{saveError}</p>
+          )}
+
           <div className="flex gap-2">
             <button
               onClick={saveEntry}
@@ -229,6 +249,22 @@ export default function JournalPage() {
               Cancel
             </button>
           </div>
+        </div>
+      )}
+
+      {/* Free-tier restriction notice */}
+      {isLimited && (
+        <div className="bg-brand-50 border border-brand-200 rounded-2xl p-4">
+          <p className="text-sm font-semibold text-brand-900">Showing your last 7 days</p>
+          <p className="text-sm text-brand-700 mt-1 mb-3">
+            Upgrade to Premium to access your full journal history.
+          </p>
+          <a
+            href="/pay"
+            className="inline-block bg-brand-900 text-white text-sm font-semibold px-4 py-2 rounded-xl"
+          >
+            Upgrade — £7.99/month
+          </a>
         </div>
       )}
 

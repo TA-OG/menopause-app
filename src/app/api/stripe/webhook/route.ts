@@ -25,10 +25,31 @@ export async function POST(request: NextRequest) {
 
   const admin = createAdminClient()
 
-  // Log the event
+  // Idempotency: if we've already processed this event, return immediately.
+  // stripe_event_id has a UNIQUE constraint — a duplicate insert would error.
+  const { data: existing } = await admin
+    .from('payment_events')
+    .select('id')
+    .eq('stripe_event_id', event.id)
+    .single()
+  if (existing) {
+    return NextResponse.json({ received: true, duplicate: true })
+  }
+
+  // Resolve user_id from the event where possible (for audit trail)
+  let eventUserId: string | null = null
+  const obj = event.data.object as any
+  if (obj?.metadata?.supabase_user_id) {
+    eventUserId = obj.metadata.supabase_user_id
+  } else if (obj?.subscription) {
+    // Will be resolved below per-case — set after retrieval
+  }
+
+  // Log the event with user_id where available
   await admin.from('payment_events').insert({
     stripe_event_id: event.id,
     event_type: event.type,
+    user_id: eventUserId,
     data: event.data.object as unknown as Record<string, unknown>,
   }).then(({ error }) => {
     if (error) console.error('Failed to log payment event:', error)
@@ -55,6 +76,8 @@ export async function POST(request: NextRequest) {
               stripe_subscription_id: session.subscription as string,
             })
             .eq('id', userId)
+        } else {
+          console.error('checkout.session.completed: no supabase_user_id in metadata', event.id)
         }
       }
       break
@@ -90,6 +113,8 @@ export async function POST(request: NextRequest) {
             stripe_subscription_id: null,
           })
           .eq('id', userId)
+      } else {
+        console.error('customer.subscription.deleted: no supabase_user_id in metadata', event.id)
       }
       break
     }

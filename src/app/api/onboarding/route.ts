@@ -34,9 +34,18 @@ export async function POST(request: NextRequest) {
       answer_value: a.answer_value,
     }))
 
+    // Delete then insert — cannot upsert because multiple rows share the same
+    // question_key for array-type answers (symptoms, heritage, previously_tried).
+    // The unique constraint is now on (user_id, question_key, answer_value).
+    const { error: deleteError } = await supabase
+      .from('onboarding_answers')
+      .delete()
+      .eq('user_id', user.id)
+    if (deleteError) throw deleteError
+
     const { error } = await supabase
       .from('onboarding_answers')
-      .upsert(rows, { onConflict: 'user_id,question_key' })
+      .insert(rows)
 
     if (error) throw error
 
