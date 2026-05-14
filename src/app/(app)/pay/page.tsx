@@ -5,19 +5,26 @@ import { useState } from 'react'
 export default function PayPage() {
   const [loading, setLoading] = useState(false)
   const [currency, setCurrency] = useState<'gbp' | 'usd'>('gbp')
+  const [error, setError] = useState('')
 
   async function startCheckout() {
     setLoading(true)
-    const res = await fetch('/api/stripe/create-checkout', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ currency }),
-    })
-    const { url, error } = await res.json()
-    if (url) {
-      window.location.href = url
-    } else {
-      console.error(error)
+    setError('')
+    try {
+      const res = await fetch('/api/stripe/create-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ currency }),
+      })
+      const { url, error: apiError } = await res.json()
+      if (url) {
+        window.location.href = url
+      } else {
+        setError(apiError ?? 'Something went wrong. Please try again.')
+        setLoading(false)
+      }
+    } catch {
+      setError('Could not connect. Please check your connection and try again.')
       setLoading(false)
     }
   }
@@ -75,6 +82,12 @@ export default function PayPage() {
             $ USD
           </button>
         </div>
+
+        {error && (
+          <p className="text-red-600 text-sm bg-red-50 rounded-xl px-4 py-3 text-center">
+            {error}
+          </p>
+        )}
 
         <button
           onClick={startCheckout}

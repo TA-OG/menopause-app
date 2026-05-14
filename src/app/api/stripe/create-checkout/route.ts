@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
-import { createAdminClient } from '@/lib/supabase/admin'
 import Stripe from 'stripe'
 import { sanitizeError } from '@/lib/sanitize-error'
 import { rateLimit } from '@/lib/rate-limit'
@@ -14,7 +13,6 @@ export async function POST(request: NextRequest) {
   if (!success) return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
 
   const supabase = createClient()
-  const admin = createAdminClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
@@ -43,7 +41,7 @@ export async function POST(request: NextRequest) {
       })
       customerId = customer.id
 
-      await admin
+      await supabase
         .from('profiles')
         .update({ stripe_customer_id: customerId })
         .eq('id', user.id)
