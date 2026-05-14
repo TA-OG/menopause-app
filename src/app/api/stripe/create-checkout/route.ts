@@ -17,12 +17,25 @@ export async function POST(request: NextRequest) {
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
   try {
+    // Fail fast with a clear message if Stripe env vars are missing
+    if (!process.env.STRIPE_SECRET_KEY) {
+      return NextResponse.json({ error: 'STRIPE_SECRET_KEY is not set in environment variables' }, { status: 500 })
+    }
+
     const { currency } = await request.json()
     const isUSD = currency === 'usd'
 
     const priceId = isUSD
-      ? process.env.STRIPE_PRICE_USD_MONTHLY!
-      : process.env.STRIPE_PRICE_GBP_MONTHLY!
+      ? process.env.STRIPE_PRICE_USD_MONTHLY
+      : process.env.STRIPE_PRICE_GBP_MONTHLY
+
+    if (!priceId) {
+      return NextResponse.json({ error: `Stripe price ID not set (${isUSD ? 'STRIPE_PRICE_USD_MONTHLY' : 'STRIPE_PRICE_GBP_MONTHLY'})` }, { status: 500 })
+    }
+
+    if (!process.env.NEXT_PUBLIC_APP_URL) {
+      return NextResponse.json({ error: 'NEXT_PUBLIC_APP_URL is not set in environment variables' }, { status: 500 })
+    }
 
     // Get or create Stripe customer
     const { data: profile } = await supabase
@@ -53,7 +66,7 @@ export async function POST(request: NextRequest) {
       customer: customerId,
       mode: 'subscription',
       payment_method_types: ['card'],
-      line_items: [{ price: priceId, quantity: 1 }],
+      line_items: [{ price: priceId as string, quantity: 1 }],
       success_url: `${appUrl}/dashboard?upgraded=true`,
       cancel_url: `${appUrl}/pay`,
       subscription_data: {
@@ -63,7 +76,8 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ url: session.url })
   } catch (err) {
-    console.error('Stripe checkout error:', err)
-    return NextResponse.json({ error: sanitizeError(err) }, { status: 500 })
+    const msg = (err as any)?.message ?? 'Something went wrong'
+    console.error('Stripe checkout error:', msg)
+    return NextResponse.json({ error: msg }, { status: 500 })
   }
 }
