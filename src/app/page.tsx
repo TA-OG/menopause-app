@@ -30,21 +30,25 @@ export default function LandingPage() {
           <Logo size="xl" />
         </div>
 
-        <p className="text-brand-600 font-semibold text-sm uppercase tracking-widest mb-4">
-          Every body needs an Aunty Mel
+        <p className="text-lg text-gray-700 mb-6 leading-relaxed italic">
+          There are things that have always been passed between women — quietly, carefully, sometimes not at all.
         </p>
-        <h1 className="text-4xl font-bold text-brand-900 leading-tight mb-6">
-          The wisdom women have always shared — finally in your pocket
-        </h1>
-        <p className="text-lg text-gray-600 mb-4 leading-relaxed">
-          For eons, the secrets of menopause have been passed from mother to daughter,
-          aunty to niece, grandmother to granddaughter. That wisdom was never lost.
-          It just needs a home.
+        <p className="text-base text-gray-600 mb-4 leading-relaxed">
+          Menopause was one of the <em>not at all</em>.
         </p>
-        <p className="text-base text-gray-500 mb-8 leading-relaxed">
-          Aunty Mel gives you personalised wellness guidance — built on real specialist
-          expertise — to help you understand your body, manage your symptoms, and
-          have a more powerful conversation with your doctor.
+        <p className="text-base text-gray-600 mb-4 leading-relaxed">
+          The mother-daughter bond carries so much. But not always this. Too much history. Too much to protect.
+        </p>
+        <p className="text-base text-gray-600 mb-4 leading-relaxed">
+          It was always the aunty who bridged that gap. Who sat with you. Who answered the questions
+          you were too afraid to ask your mum. Who treated your becoming like something worth
+          celebrating, not hiding.
+        </p>
+        <p className="text-base text-gray-600 mb-4 leading-relaxed">
+          That wisdom never left.
+        </p>
+        <p className="text-lg font-semibold text-brand-900 mb-8">
+          Aunty Mel is simply where it lives now.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link
