@@ -7,6 +7,8 @@ const PRICES = {
     monthly: { display: '£7.99', sub: 'per month', priceId: 'monthly' },
     yearly:  { display: '£65.79', sub: '£5.48/mo — save £30 a year', priceId: 'yearly' },
   },
+  // USD pricing not yet enabled — re-introduce the currency toggle once
+  // STRIPE_PRICE_USD_MONTHLY and STRIPE_PRICE_USD_YEARLY are configured in Vercel.
   usd: {
     monthly: { display: '$9.99', sub: 'per month', priceId: 'monthly' },
     yearly:  { display: '$79.99', sub: '$6.67/mo — save $40 a year', priceId: 'yearly' },
@@ -15,7 +17,8 @@ const PRICES = {
 
 export default function PayPage() {
   const [loading, setLoading]   = useState(false)
-  const [currency, setCurrency] = useState<'gbp' | 'usd'>('gbp')
+  // Currency hardcoded to GBP for now — see PRICES note above
+  const currency: 'gbp' | 'usd' = 'gbp'
   const [interval, setInterval] = useState<'monthly' | 'yearly'>('yearly')
   const [error, setError]       = useState('')
 
@@ -108,29 +111,7 @@ export default function PayPage() {
           ))}
         </div>
 
-        {/* Currency toggle */}
-        <div className="flex rounded-xl border border-gray-200 overflow-hidden">
-          <button
-            onClick={() => setCurrency('gbp')}
-            className={`flex-1 py-2 text-sm font-medium transition-colors ${
-              currency === 'gbp'
-                ? 'bg-brand-900 text-white'
-                : 'bg-white text-gray-600 hover:bg-gray-50'
-            }`}
-          >
-            £ GBP
-          </button>
-          <button
-            onClick={() => setCurrency('usd')}
-            className={`flex-1 py-2 text-sm font-medium transition-colors ${
-              currency === 'usd'
-                ? 'bg-brand-900 text-white'
-                : 'bg-white text-gray-600 hover:bg-gray-50'
-            }`}
-          >
-            $ USD
-          </button>
-        </div>
+        {/* Currency toggle hidden until USD prices are configured — see PRICES note above */}
 
         {error && (
           <p className="text-red-600 text-sm bg-red-50 rounded-xl px-4 py-3 text-center">
