@@ -28,6 +28,24 @@ export default async function AdminPage() {
   return (
     <div className="space-y-8">
 
+      {/* Diagnostics */}
+      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 flex items-center justify-between">
+        <div>
+          <p className="font-semibold text-brand-900 text-sm">Stripe diagnostics</p>
+          <p className="text-xs text-gray-500 mt-0.5">
+            Confirms which Stripe account your live key belongs to and whether each configured price exists.
+          </p>
+        </div>
+        <a
+          href="/api/admin/stripe-diagnose"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs bg-brand-900 text-white px-3 py-1.5 rounded-lg hover:bg-brand-800 transition-colors whitespace-nowrap"
+        >
+          Run diagnostic →
+        </a>
+      </div>
+
       {/* Stats */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         {[
