@@ -29,21 +29,42 @@ export default async function AdminPage() {
     <div className="space-y-8">
 
       {/* Diagnostics */}
-      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 flex items-center justify-between">
-        <div>
-          <p className="font-semibold text-brand-900 text-sm">Stripe diagnostics</p>
-          <p className="text-xs text-gray-500 mt-0.5">
-            Confirms which Stripe account your live key belongs to and whether each configured price exists.
-          </p>
+      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 space-y-3">
+        <p className="font-semibold text-brand-900 text-sm">Diagnostics</p>
+
+        <div className="flex items-center justify-between gap-4">
+          <div className="flex-1">
+            <p className="text-sm font-medium text-gray-800">Environment variables</p>
+            <p className="text-xs text-gray-500 mt-0.5">
+              Inventory every env var the app uses, with status (missing / invalid / ok). Values are masked.
+            </p>
+          </div>
+          <a
+            href="/api/admin/env-diagnose"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs bg-brand-900 text-white px-3 py-1.5 rounded-lg hover:bg-brand-800 transition-colors whitespace-nowrap"
+          >
+            Check env →
+          </a>
         </div>
-        <a
-          href="/api/admin/stripe-diagnose"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-xs bg-brand-900 text-white px-3 py-1.5 rounded-lg hover:bg-brand-800 transition-colors whitespace-nowrap"
-        >
-          Run diagnostic →
-        </a>
+
+        <div className="flex items-center justify-between gap-4 pt-3 border-t border-gray-100">
+          <div className="flex-1">
+            <p className="text-sm font-medium text-gray-800">Stripe configuration</p>
+            <p className="text-xs text-gray-500 mt-0.5">
+              Confirms which Stripe account your key authenticates as, and whether each price ID exists in it.
+            </p>
+          </div>
+          <a
+            href="/api/admin/stripe-diagnose"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs bg-brand-900 text-white px-3 py-1.5 rounded-lg hover:bg-brand-800 transition-colors whitespace-nowrap"
+          >
+            Check Stripe →
+          </a>
+        </div>
       </div>
 
       {/* Stats */}

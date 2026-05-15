@@ -30,25 +30,15 @@ export default function LandingPage() {
           <Logo size="xl" />
         </div>
 
-        <p className="text-lg text-gray-700 mb-6 leading-relaxed italic">
-          There are things that have always been passed between women — quietly, carefully, sometimes not at all.
+        <p className="text-base text-gray-700 mb-5 leading-relaxed">
+          There are things that have always been passed between women — quietly, carefully,
+          sometimes not at all. Menopause was one of the <em>not at all</em>. The mother-daughter
+          bond carries so much, but not always this. Too much history. Too much to protect.
         </p>
-        <p className="text-base text-gray-600 mb-4 leading-relaxed">
-          Menopause was one of the <em>not at all</em>.
-        </p>
-        <p className="text-base text-gray-600 mb-4 leading-relaxed">
-          The mother-daughter bond carries so much. But not always this. Too much history. Too much to protect.
-        </p>
-        <p className="text-base text-gray-600 mb-4 leading-relaxed">
-          It was always the aunty who bridged that gap. Who sat with you. Who answered the questions
-          you were too afraid to ask your mum. Who treated your becoming like something worth
-          celebrating, not hiding.
-        </p>
-        <p className="text-base text-gray-600 mb-4 leading-relaxed">
-          That wisdom never left.
-        </p>
-        <p className="text-lg font-semibold text-brand-900 mb-8">
-          Aunty Mel is simply where it lives now.
+        <p className="text-base text-gray-700 mb-8 leading-relaxed">
+          It was always the aunty who bridged that gap — who answered the questions you were
+          too afraid to ask your mum, and treated your becoming like something worth celebrating,
+          not hiding. <span className="font-semibold text-brand-900">Aunty Mel is simply where that wisdom lives now.</span>
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link
