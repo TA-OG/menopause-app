@@ -21,15 +21,21 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'STRIPE_SECRET_KEY is not set in environment variables' }, { status: 500 })
     }
 
-    const { currency } = await request.json()
+    const { currency, interval } = await request.json()
     const isUSD = currency === 'usd'
+    const isYearly = interval === 'yearly'
 
-    const priceId = isUSD
-      ? process.env.STRIPE_PRICE_USD_MONTHLY
-      : process.env.STRIPE_PRICE_GBP_MONTHLY
+    // Pick the correct Stripe price ID from env
+    let priceEnvKey: string
+    if (isUSD) {
+      priceEnvKey = isYearly ? 'STRIPE_PRICE_USD_YEARLY' : 'STRIPE_PRICE_USD_MONTHLY'
+    } else {
+      priceEnvKey = isYearly ? 'STRIPE_PRICE_GBP_YEARLY' : 'STRIPE_PRICE_GBP_MONTHLY'
+    }
+    const priceId = process.env[priceEnvKey]
 
     if (!priceId) {
-      return NextResponse.json({ error: `Stripe price ID not set (${isUSD ? 'STRIPE_PRICE_USD_MONTHLY' : 'STRIPE_PRICE_GBP_MONTHLY'})` }, { status: 500 })
+      return NextResponse.json({ error: `Stripe price ID not configured (${priceEnvKey})` }, { status: 500 })
     }
 
     if (!process.env.NEXT_PUBLIC_APP_URL) {
