@@ -122,7 +122,19 @@ export interface WellnessRecommendation {
   priority: RecommendationPriority
   category: RecommendationCategory
   disclaimer?: string                  // Required for supplements
-  for_whom?: string
+  /**
+   * Audience tag for preference-based filtering in the engine.
+   * 'all'         — shown to everyone (default)
+   * 'active_only' — hidden for users with exercise_level='limited' or 'not_active'
+   *
+   * Field name matches the YAML convention (who_for) for direct parse compatibility.
+   */
+  who_for?: 'all' | 'active_only' | string
+  /**
+   * Symptom IDs this recommendation most directly addresses.
+   * Used by the engine to boost priority when it matches primary_symptom.
+   */
+  targets_symptoms?: string[]
 }
 
 export interface JournalEntry {
@@ -179,12 +191,18 @@ export interface AuditLog {
 export interface WellnessFramework {
   id: string
   label: string
+  /**
+   * If true, this framework fires for every user regardless of their answers.
+   * Used for universal foundations (hydration, vitamin D, GP signpost etc).
+   * When trigger_all is true, trigger_conditions is ignored.
+   */
+  trigger_all?: boolean
   trigger_conditions: TriggerCondition[]
   diet_adjustments: WellnessRecommendation[]
   lifestyle_adjustments: WellnessRecommendation[]
   mindset_recommendations: WellnessRecommendation[]
   supplement_suggestions: WellnessRecommendation[]
-  content_module_ids: string[]
+  content_module_ids?: string[]
 }
 
 export interface TriggerCondition {

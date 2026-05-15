@@ -68,9 +68,14 @@ export async function POST(request: NextRequest) {
     // Load all wellness frameworks from YAML
     const frameworks = await loadFrameworks()
 
+    // Extract primary symptom for priority boosting
+    const primarySymptom = (answers ?? [])
+      .find((a) => a.question_key === 'primary_symptom')
+      ?.answer_value
+
     // Run the engine
     const matchedFrameworks = matchFrameworks(answers ?? [], frameworks)
-    const plan = buildPlan(matchedFrameworks, preferences ?? {})
+    const plan = buildPlan(matchedFrameworks, preferences ?? {}, primarySymptom)
 
     // Load cultural modifiers based on heritage answers
     const heritageAnswers = (answers ?? [])

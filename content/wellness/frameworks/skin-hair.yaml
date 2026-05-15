@@ -1,0 +1,186 @@
+id: skin_hair
+label: Skin & Hair Changes
+description: >
+  Addresses the skin and hair changes that accompany the menopausal
+  transition — driven by collagen loss, reduced oil production, and
+  follicle miniaturisation. Practical, evidence-informed approaches
+  to nutrition, topical skincare, and scalp health.
+
+trigger_conditions:
+  - question: symptoms
+    answer:
+      - skin_changes
+      - hair_changes
+    min_matches: 1
+
+diet_adjustments:
+  - id: df_collagen_nutrition
+    category: diet
+    title: Eat for collagen production — skin loses 30% in the first 5 years
+    body: >
+      Skin collagen declines by approximately 30% in the first five years
+      post-menopause, and around 2% per year thereafter. This is driven
+      by oestrogen loss, not age per se. To support collagen synthesis:
+      eat vitamin C-rich foods daily (citrus, red pepper, kiwi, broccoli);
+      include protein at every meal (collagen is made from amino acids);
+      and limit sugar and ultra-processed foods which drive glycation —
+      a process that cross-links and damages collagen.
+    priority: high
+    who_for: all
+    targets_symptoms:
+      - skin_changes
+
+  - id: df_biotin_zinc_hair
+    category: diet
+    title: Protein, zinc, and iron — the nutrient triad for hair loss
+    body: >
+      Hair loss in menopause is partly hormonal (androgenic alopecia as
+      the oestrogen:androgen ratio shifts), but nutritional deficiencies
+      accelerate it significantly. The most common deficiencies in
+      perimenopausal women are iron (particularly ferritin — ask for
+      a ferritin test, not just haemoglobin) and protein. Zinc-rich
+      foods (pumpkin seeds, oysters, beef, lentils) and biotin-containing
+      foods (eggs, nuts, sweet potato) also support hair follicle health.
+    priority: high
+    who_for: all
+    targets_symptoms:
+      - hair_changes
+
+  - id: df_omega3_skin_barrier
+    category: diet
+    title: Omega-3 fats restore the skin's moisture barrier
+    body: >
+      The skin's lipid barrier weakens as oestrogen declines, causing
+      dryness, sensitivity, and impaired healing. Omega-3 fatty acids
+      (oily fish, flaxseed, walnuts, algae oil) directly incorporate
+      into skin cell membranes and strengthen the moisture barrier.
+      A 12-week increase in oily fish consumption (3x weekly) produces
+      measurable improvements in skin hydration and texture.
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - skin_changes
+
+lifestyle_adjustments:
+  - id: lf_sun_protection
+    category: lifestyle
+    title: SPF every day — thinning skin burns and ages much faster
+    body: >
+      Post-menopausal skin is thinner, produces less melanin, and heals
+      more slowly. UV exposure is the primary driver of visible skin
+      ageing — more impactful than any other environmental factor.
+      Apply a broad-spectrum SPF 30–50 to face, neck, and décolletage
+      every morning, including in winter. This is the single most
+      evidence-backed topical intervention for skin health.
+    priority: high
+    who_for: all
+    targets_symptoms:
+      - skin_changes
+
+  - id: lf_scalp_care
+    category: lifestyle
+    title: Scalp massage and gentle handling — less breakage, better growth
+    body: >
+      A 4-minute scalp massage daily (fingertips only, no nails) increases
+      blood flow to hair follicles and has pilot evidence for improving
+      hair thickness after 24 weeks. Use a wide-toothed comb on wet hair
+      (which is elastic and breaks easily), reduce heat styling, and avoid
+      tight hairstyles that create traction alopecia. Switching to a
+      sulphate-free shampoo reduces scalp irritation.
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - hair_changes
+
+  - id: lf_retinol_skincare
+    category: lifestyle
+    title: Retinol — the most evidence-backed topical for skin ageing
+    body: >
+      Retinol (vitamin A) is the only topical skincare ingredient with
+      robust clinical evidence for stimulating collagen production and
+      increasing skin cell turnover. Start with a low-concentration
+      0.1–0.25% formula twice weekly at night, increasing slowly.
+      It takes 12 weeks to see results. It causes initial dryness and
+      peeling — this is normal. Use an SPF in the morning when using
+      retinol. Prescription-strength tretinoin is available from your
+      GP for more significant results.
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - skin_changes
+
+mindset_recommendations:
+  - id: mr_hair_loss_emotional
+    category: mindset
+    title: Hair loss is deeply affecting — it's not vanity to grieve it
+    body: >
+      Hair loss in women carries a significant psychological burden. Studies
+      show women with menopausal hair thinning report higher rates of social
+      anxiety, self-consciousness, and reduced quality of life than men with
+      comparable hair loss. These feelings are normal and proportionate.
+      Getting an accurate diagnosis (ask for ferritin, thyroid, and
+      androgens alongside the GP consultation) matters — much hair loss
+      at this stage is addressable if caught early.
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - hair_changes
+
+  - id: mr_skin_changing_body_image
+    category: mindset
+    title: Your skin is changing — that does not mean it is failing you
+    body: >
+      Skin changes in menopause are among the most visually confronting
+      aspects of the transition for many women. Western culture ties female
+      value to youthful appearance in ways that make this harder than it
+      needs to be. Your skin is adapting to a new hormonal environment.
+      Caring for it consistently (nutrition, SPF, hydration, sleep) is
+      the most productive response — not pursuing drastic interventions
+      or withdrawing from social situations.
+    priority: low
+    who_for: all
+    targets_symptoms:
+      - skin_changes
+
+supplement_suggestions:
+  - id: ss_collagen_skin
+    category: supplement
+    title: Hydrolysed collagen peptides — emerging evidence for skin and hair
+    body: >
+      Hydrolysed marine collagen peptides (10g daily in a hot drink or
+      smoothie) have a growing body of randomised trial evidence for
+      improving skin elasticity, hydration, and wrinkle depth at 8–12
+      weeks. Some trials show improvements in nail growth and strength.
+      Hair evidence is weaker. Look for Verisol or PEPTAN branded collagen
+      which are the most studied formulations.
+    priority: medium
+    who_for: all
+    disclaimer: >
+      Collagen peptides are generally well-tolerated. If you have a fish or
+      shellfish allergy, check the source carefully (marine vs bovine vs
+      plant-based options exist). Consult your GP before use if you have
+      any ongoing health conditions.
+    targets_symptoms:
+      - skin_changes
+      - hair_changes
+
+  - id: ss_biotin_hair
+    category: supplement
+    title: Biotin — only effective if you are actually deficient
+    body: >
+      Biotin (vitamin B7) is widely marketed for hair and nail health.
+      It works if you are deficient, but biotin deficiency is actually
+      uncommon. If your diet includes eggs, nuts, and wholegrains, you
+      are likely not deficient. High-dose biotin (10mg+) interferes with
+      thyroid and troponin blood tests — an important safety consideration.
+      Iron and ferritin deficiency are far more common causes of hair loss
+      in perimenopausal women — get tested before supplementing biotin.
+    priority: low
+    who_for: all
+    disclaimer: >
+      High-dose biotin (>5mg/day) can cause false results on thyroid
+      function tests, troponin tests, and other immunoassay blood tests.
+      Inform your GP if you are taking biotin before any blood tests.
+      Consult your GP before use.
+    targets_symptoms:
+      - hair_changes

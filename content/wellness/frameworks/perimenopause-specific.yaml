@@ -1,0 +1,138 @@
+id: perimenopause_specific
+label: Perimenopause — Navigating the Transition
+description: >
+  Specific guidance for women who are in perimenopause — the transitional
+  phase that can last 4–10 years before the final period. Focuses on
+  cycle tracking, hormonal fluctuation, and preparing the body and mind
+  for the transition ahead.
+
+trigger_conditions:
+  - question: menopause_stage
+    answer:
+      - perimenopause
+    min_matches: 1
+
+diet_adjustments:
+  - id: df_peri_blood_sugar
+    category: diet
+    title: Blood sugar stability is your most powerful tool in perimenopause
+    body: >
+      Oestrogen fluctuates dramatically in perimenopause — sometimes very
+      high, sometimes very low, within the same month. These swings impair
+      insulin sensitivity and make blood sugar regulation harder. You may
+      notice mood crashes, afternoon energy dips, and cravings you didn't
+      have before. The fix: eat protein and fat first at every meal before
+      carbohydrates, never eat carbohydrates alone, and avoid skipping meals.
+      A stable blood sugar produces dramatically more stable mood and energy.
+    priority: high
+    who_for: all
+    targets_symptoms:
+      - mood_changes
+      - fatigue
+      - weight_changes
+      - brain_fog
+
+  - id: df_peri_fibre
+    category: diet
+    title: 30g fibre daily — for oestrogen metabolism and gut microbiome
+    body: >
+      Excess oestrogen is cleared by the liver and excreted through the
+      gut. A healthy gut microbiome (the "estrobolome") helps recycle
+      oestrogen appropriately. Low-fibre diets allow oestrogen to be
+      reabsorbed from the gut, contributing to oestrogen dominance
+      symptoms (heavy periods, bloating, breast tenderness) in early
+      perimenopause. Aim for 30g fibre daily: wholegrains, legumes,
+      vegetables, and fruit. A diverse plant-based diet is the most
+      efficient way to achieve this.
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - mood_changes
+
+lifestyle_adjustments:
+  - id: lf_cycle_tracking
+    category: lifestyle
+    title: Track your cycle — patterns reveal your hormonal picture
+    body: >
+      Perimenopause is defined by irregularity, but tracking your cycles
+      reveals patterns in your symptoms that feel random until you see them
+      visually. Apps like Clue or Natural Cycles (or a paper diary) let
+      you log symptoms, mood, energy, and sleep alongside your cycle.
+      Over 3–4 months, most women identify predictable windows (typically
+      the week before a period, or the days around ovulation) when specific
+      symptoms peak. This turns "I never know how I'll feel" into
+      "I can prepare for Tuesday."
+    priority: high
+    who_for: all
+    targets_symptoms:
+      - mood_changes
+      - sleep_problems
+      - hot_flashes
+
+  - id: lf_peri_strength_early
+    category: lifestyle
+    title: Start strength training now — before bone loss accelerates
+    body: >
+      The most significant window to protect long-term bone density and
+      muscle mass is perimenopause — before the accelerated loss that
+      occurs in the 5 years after the final period. Building a strength
+      training habit now (even 2x weekly, 30 minutes) creates a reserve
+      of bone density and muscle that cushions the transition. Women who
+      establish this habit in perimenopause adapt significantly better
+      to the postmenopausal phase.
+    priority: high
+    who_for: all
+
+mindset_recommendations:
+  - id: mr_peri_mourning
+    category: mindset
+    title: Grief is a legitimate response to perimenopause
+    body: >
+      Perimenopause often arrives alongside significant life milestones —
+      children leaving home, ageing parents, peak career demands, and a
+      changing relationship with fertility. The emotional weight of this
+      phase is real and frequently unacknowledged. Feeling grief, anger,
+      or loss during this transition is not depression or weakness — it is
+      a proportionate response to change. Naming this as grief, rather
+      than fighting it, is often the first step toward moving through it.
+    priority: medium
+    who_for: all
+
+  - id: mr_peri_information_power
+    category: mindset
+    title: The better you understand perimenopause, the less frightening it is
+    body: >
+      Women who report the most difficult experiences of perimenopause
+      are often those who had the least information before it started.
+      Every symptom you're experiencing has a mechanism — a reason it's
+      happening that is hormonal, not imagined. Dr Louise Newson's Balance
+      app and website, the Menopause Charity, and books such as
+      "Perimenopause Power" by Maisie Hill are evidence-informed resources.
+      Knowledge does not fix symptoms, but it removes the fear that something
+      is uniquely wrong with you.
+    priority: medium
+    who_for: all
+
+supplement_suggestions:
+  - id: ss_magnesium_peri
+    category: supplement
+    title: Magnesium — for PMS-like symptoms, mood, and sleep
+    body: >
+      In early perimenopause, progesterone declines first — before
+      oestrogen — producing PMS-like symptoms: irritability, breast
+      tenderness, sleep disruption, and bloating in the luteal phase.
+      Magnesium glycinate (300–400mg at night) directly addresses
+      many of these symptoms by supporting GABA, reducing cortisol,
+      and relaxing smooth muscle. It is one of the most evidence-backed
+      supplements for perimenopause specifically.
+    priority: high
+    who_for: all
+    disclaimer: >
+      Magnesium supplements are generally well-tolerated. High doses
+      can cause loose stools — start at 200mg and increase slowly.
+      Consult your GP before use if you have kidney disease or heart
+      conditions, or take any prescribed medications.
+    targets_symptoms:
+      - sleep_problems
+      - mood_changes
+      - anxiety

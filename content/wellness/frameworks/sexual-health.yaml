@@ -1,0 +1,152 @@
+id: sexual_health
+label: Sexual Health & Vaginal Wellbeing
+description: >
+  Addresses low libido and vaginal dryness — among the most common and
+  least discussed menopause symptoms. Includes local and systemic
+  approaches, relationship communication, and strong GP signposting
+  for prescription options.
+
+trigger_conditions:
+  - question: symptoms
+    answer:
+      - low_libido
+      - vaginal_dryness
+    min_matches: 1
+
+diet_adjustments:
+  - id: df_circulation_foods
+    category: diet
+    title: Eat for circulation — blood flow matters for libido
+    body: >
+      Sexual arousal is fundamentally a vascular process. Foods that
+      support healthy circulation include dark leafy greens (nitrates),
+      pomegranate juice, dark chocolate (>70% cacao), beets, and oily
+      fish (omega-3). Avoid high-sodium processed foods, which impair
+      vascular function. Staying well-hydrated also reduces vaginal
+      tissue dryness. These changes compound over weeks, not days.
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - low_libido
+      - vaginal_dryness
+
+  - id: df_omega3_inflammation
+    category: diet
+    title: Omega-3 fats support tissue health and hormone production
+    body: >
+      The adrenal glands continue to produce small amounts of oestrogen
+      after menopause from cholesterol — a process supported by healthy
+      fat intake. Include oily fish 2–3x weekly, flaxseed, walnuts, and
+      avocado. Omega-3 also reduces vaginal inflammation. A well-nourished
+      body with adequate essential fats maintains vaginal tissue health
+      better than a low-fat diet.
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - vaginal_dryness
+      - low_libido
+
+lifestyle_adjustments:
+  - id: lf_local_moisturiser
+    category: lifestyle
+    title: Vaginal moisturisers — use them regularly, not just during sex
+    body: >
+      Vaginal dryness (GSM — genitourinary syndrome of menopause) worsens
+      progressively without treatment. Over-the-counter vaginal moisturisers
+      (Replens, YES VM, Hyalofemme) used 2–3 times weekly restore moisture
+      to the vaginal tissue and reduce discomfort during everyday activities
+      and sex. They are not lubricants — they work continuously. Lubricants
+      are used at the time of sexual activity. You need both if you are
+      sexually active.
+    priority: high
+    who_for: all
+    targets_symptoms:
+      - vaginal_dryness
+
+  - id: lf_pelvic_floor
+    category: lifestyle
+    title: Pelvic floor exercises — for comfort, sensation, and continence
+    body: >
+      The pelvic floor muscles support the bladder, bowel, and uterus and
+      are directly affected by oestrogen decline. Strengthening them
+      (Kegel exercises: hold for 10 seconds, release, repeat 10 times,
+      3 sets daily) improves sensation during sex, reduces urgency
+      incontinence, and supports pelvic organ health. The NHS Squeezy app
+      guides you through a progressive programme with reminders.
+    priority: high
+    who_for: all
+    targets_symptoms:
+      - vaginal_dryness
+      - low_libido
+
+  - id: lf_sexual_activity_maintenance
+    category: lifestyle
+    title: Regular sexual activity helps maintain vaginal health
+    body: >
+      Regular sexual activity (including solo activity) increases blood
+      flow to vaginal tissue, which maintains elasticity and moisture.
+      If penetrative sex is painful, start with non-penetrative activity
+      and a good lubricant. Gradually reintroducing penetrative activity
+      with plenty of lubricant and patience prevents the cycle of avoidance
+      that accelerates atrophy. This is not about performance — it is
+      about vascular and tissue maintenance.
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - vaginal_dryness
+      - low_libido
+
+mindset_recommendations:
+  - id: mr_gp_vaginal_oestrogen
+    category: mindset
+    title: Ask your GP about local vaginal oestrogen — it's safe for most women
+    body: >
+      Vaginal oestrogen cream or pessary (e.g. Vagifem, Ovestin, Estring)
+      is the most effective treatment for GSM. It acts locally with minimal
+      systemic absorption and is considered safe even for women who cannot
+      take systemic HRT, including many breast cancer survivors. It is
+      chronically undertreated because women and GPs don't raise it.
+      You can ask for it specifically. It is not a cosmetic treatment —
+      it is treating a progressive condition.
+    priority: high
+    who_for: all
+    targets_symptoms:
+      - vaginal_dryness
+
+  - id: mr_libido_whole_person
+    category: mindset
+    title: Libido is complex — it is rarely just hormonal
+    body: >
+      Sexual desire in women is context-dependent. Fatigue, relationship
+      dynamics, stress, body image, and mood all have more influence on
+      libido than hormone levels alone. If you feel disconnected from
+      your sexuality, it is worth separating the physical (address dryness
+      and discomfort first) from the relational and psychological.
+      A psychosexual therapist can help if desire has been absent for
+      several months. Low libido that distresses you or your partner is
+      worth taking seriously — and it is treatable.
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - low_libido
+
+supplement_suggestions:
+  - id: ss_maca_libido
+    category: supplement
+    title: Maca root — some evidence for libido and energy
+    body: >
+      Maca (Lepidium meyenii) root extract (1500–3000mg daily) has a small
+      number of randomised trials showing improvement in sexual dysfunction
+      and self-reported libido in postmenopausal women. Effects are modest
+      and take 6–8 weeks. It does not contain hormones. Evidence quality
+      is fair — not as robust as pharmaceutical options — but it is
+      well-tolerated with few reported side effects.
+    priority: low
+    who_for: all
+    disclaimer: >
+      Maca is generally considered safe for most adults. However, as it
+      may act on the hypothalamic-pituitary axis, consult your GP before
+      use if you have thyroid conditions or hormone-sensitive cancers.
+      Not a substitute for medical treatment of GSM.
+    targets_symptoms:
+      - low_libido

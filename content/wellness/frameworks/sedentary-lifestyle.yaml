@@ -1,0 +1,161 @@
+id: sedentary_lifestyle
+label: Getting Started with Movement
+description: >
+  Designed for women who describe themselves as not active or having
+  limited mobility. Takes a genuinely encouraging, non-judgemental
+  approach — focused on starting small, building confidence, and finding
+  movement that is sustainable rather than aspirational.
+
+trigger_conditions:
+  - question: exercise_level
+    answer:
+      - not_active
+      - limited
+    min_matches: 1
+
+diet_adjustments:
+  - id: df_sedentary_protein_preserve
+    category: diet
+    title: Protein is even more important when you're not exercising regularly
+    body: >
+      Muscle mass is lost faster in women who are both sedentary and in
+      menopause — a double hit. Without the stimulus of resistance exercise
+      to trigger muscle protein synthesis, dietary protein becomes the
+      primary lever for slowing muscle loss. Aim for 1.2–1.6g protein per
+      kg of body weight daily. Spread it across meals — 25–30g per meal
+      rather than most of it at dinner. This is not about building muscle —
+      it is about protecting what you have.
+    priority: high
+    who_for: all
+    targets_symptoms:
+      - fatigue
+      - weight_changes
+      - joint_pain
+
+  - id: df_sedentary_anti_inflammatory
+    category: diet
+    title: Food as anti-inflammatory medicine — when movement is limited
+    body: >
+      When mobility is restricted, nutrition does more of the protective
+      work. An anti-inflammatory eating pattern (olive oil, oily fish,
+      berries, turmeric, ginger, dark leafy greens, colourful vegetables)
+      helps manage the systemic inflammation that increases with both
+      menopause and physical inactivity. This reduces joint pain and fatigue
+      and supports metabolic health. These are accessible changes regardless
+      of physical capacity.
+    priority: high
+    who_for: all
+    targets_symptoms:
+      - joint_pain
+      - fatigue
+
+lifestyle_adjustments:
+  - id: lf_sedentary_start_walking
+    category: lifestyle
+    title: Start with 10 minutes — not 30
+    body: >
+      Recommendations to exercise for 150 minutes weekly are accurate but
+      create a psychological barrier for women who are not currently active.
+      The most evidence-backed approach for beginning a movement habit is to
+      start with 10 minutes daily — short enough that it is hard to say no
+      to, long enough to have a real effect. A 10-minute walk after one meal
+      per day improves blood sugar, mood, and sleep. After 2 weeks, extend
+      to 15 minutes. The habit comes before the duration.
+    priority: high
+    who_for: all
+    targets_symptoms:
+      - fatigue
+      - mood_changes
+      - weight_changes
+      - sleep_problems
+
+  - id: lf_sedentary_seated_movement
+    category: lifestyle
+    title: Seated exercise counts — do not underestimate it
+    body: >
+      If mobility is limited, seated resistance exercises (chair squats,
+      seated leg raises, seated upper body resistance band exercises) maintain
+      muscle mass and improve circulation. Yoga for seniors or chair yoga
+      (widely available on YouTube for free) improves flexibility and balance
+      which directly reduces fall risk. Water aerobics (available at most
+      community pools) is excellent for joint pain as water removes 90%
+      of body weight impact. Movement at any capacity is therapeutic.
+    priority: high
+    who_for: all
+    targets_symptoms:
+      - joint_pain
+      - fatigue
+
+  - id: lf_sedentary_break_sitting
+    category: lifestyle
+    title: Break up sitting every 60–90 minutes — even 2 minutes helps
+    body: >
+      Prolonged sitting (more than 8 hours daily) is independently
+      associated with poor metabolic health, even in people who also
+      exercise. Setting a timer to stand and move for 2–3 minutes
+      every 60–90 minutes — a walk to the kitchen, some calf raises,
+      marching on the spot — reduces this risk. This is not
+      instead of exercise; it is a separate, additional protective
+      behaviour. A simple phone alarm works as the trigger.
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - fatigue
+      - weight_changes
+
+mindset_recommendations:
+  - id: mr_sedentary_no_shame
+    category: mindset
+    title: There is no failure here — just a starting point
+    body: >
+      Women who are not currently active often carry years of gym
+      memberships that didn't stick, fitness programmes that felt
+      designed for someone else, and internalised messages about
+      discipline and willpower. None of that is relevant to where
+      you start from today. Physical inactivity during menopause is
+      extremely common — and extremely reversible. A 10-minute walk
+      today is worth more than a perfect programme that doesn't happen.
+      Start from exactly where you are.
+    priority: high
+    who_for: all
+
+  - id: mr_sedentary_pain_barrier
+    category: mindset
+    title: If pain is limiting your movement — that deserves medical attention
+    body: >
+      If joint pain, back pain, or another physical condition is the reason
+      you are not active, this is worth pursuing with your GP rather than
+      working around. Physiotherapy is often available on the NHS for joint
+      pain and is dramatically more effective than rest for most conditions.
+      A DEXA scan can identify whether osteoporosis is contributing to pain.
+      Pain that limits activity is a medical problem — not a lifestyle choice.
+      Address the barrier rather than accepting it.
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - joint_pain
+
+supplement_suggestions:
+  - id: ss_creatine_muscle
+    category: supplement
+    title: Creatine monohydrate — supports muscle maintenance with minimal exercise
+    body: >
+      Creatine monohydrate (3–5g daily) is one of the most extensively
+      studied sports supplements and has emerging evidence for muscle
+      preservation in older adults and postmenopausal women — even without
+      significant exercise. It also shows promise for cognitive function
+      and fatigue. It is safe, inexpensive, and effective in this dose range.
+      Take consistently — the effects build over 4–6 weeks rather than
+      immediately.
+    priority: medium
+    who_for: all
+    disclaimer: >
+      Creatine is very well-tolerated in the doses described. It may
+      cause a small, temporary increase in body weight due to water
+      retention in muscle. Consult your GP before use if you have
+      kidney disease, as creatine increases creatinine levels
+      (a kidney function marker) — this is not harmful but can
+      complicate blood test interpretation.
+    targets_symptoms:
+      - fatigue
+      - weight_changes

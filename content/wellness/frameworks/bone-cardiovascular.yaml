@@ -1,0 +1,169 @@
+id: bone_cardiovascular
+label: Bone & Heart Health
+description: >
+  Protective framework for bone density and cardiovascular health —
+  the two long-term risks most significantly elevated by oestrogen decline.
+  Targeted at women in menopause and postmenopause, with strong
+  preventive and GP signposting focus.
+
+trigger_conditions:
+  - question: menopause_stage
+    answer:
+      - menopause
+      - postmenopause
+      - surgical
+    min_matches: 1
+
+diet_adjustments:
+  - id: df_calcium_bone
+    category: diet
+    title: 700–1200mg calcium daily — from food first
+    body: >
+      Oestrogen directly regulates bone resorption. Its decline accelerates
+      bone loss by up to 20% in the first 5–7 years post-menopause.
+      Calcium intake is fundamental. Aim for 700–1200mg daily from food:
+      dairy (milk, cheese, yoghurt), fortified plant milks, canned
+      sardines and salmon (eat the bones), broccoli, kale, almonds,
+      and tofu made with calcium sulphate. Food-based calcium is better
+      absorbed than supplements. Supplementing above 1000mg daily from
+      tablets alone has weak evidence and may increase cardiovascular risk.
+    priority: high
+    who_for: all
+    targets_symptoms:
+      - joint_pain
+
+  - id: df_heart_healthy_fats
+    category: diet
+    title: Unsaturated fats over saturated — for cardiovascular protection
+    body: >
+      Prior to menopause, oestrogen is cardioprotective — it raises HDL
+      (good cholesterol) and reduces LDL (bad cholesterol). After menopause,
+      this protection is lost, and LDL typically rises 10–15%. Replace
+      saturated fats (butter, red meat, full-fat dairy) with unsaturated
+      sources: olive oil, avocado, nuts, seeds, and oily fish. The
+      Mediterranean pattern is the most cardiovascular-protective dietary
+      approach in this age group.
+    priority: high
+    who_for: all
+
+  - id: df_reduce_sodium
+    category: diet
+    title: Reduce salt — blood pressure rises after menopause
+    body: >
+      Blood pressure often rises in the years following menopause due to
+      vascular changes as oestrogen declines. UK adults consume an average
+      of 8–9g salt daily — the recommended maximum is 6g. Primary sources
+      of hidden sodium: bread, processed meats, cheese, ready meals, sauces.
+      Switching to herbs and lemon juice for flavouring and checking labels
+      for sodium content (target below 0.5g per 100g) can significantly
+      reduce intake without sacrifice.
+    priority: medium
+    who_for: all
+
+lifestyle_adjustments:
+  - id: lf_weight_bearing_bones
+    category: lifestyle
+    title: Weight-bearing exercise is medicine for bones
+    body: >
+      The skeleton responds to mechanical load by building new bone.
+      Weight-bearing exercise (walking, jogging, dancing, weightlifting,
+      tennis) directly stimulates bone formation. Swimming and cycling,
+      while excellent for cardiovascular health, do not load the skeleton
+      and have minimal effect on bone density. Aim for at least 3 sessions
+      weekly of weight-bearing activity. Strength training additionally
+      builds the muscle that protects joints from fracture forces.
+    priority: high
+    who_for: all
+
+  - id: lf_cardio_heart
+    category: lifestyle
+    title: 150 minutes of moderate cardio weekly — for heart health
+    body: >
+      150 minutes of moderate-intensity aerobic activity per week (brisk
+      walking, cycling, swimming, dancing) reduces cardiovascular risk,
+      lowers blood pressure, and improves cholesterol profile. It also
+      reduces the risk of type 2 diabetes, which rises after menopause.
+      Break this into 5 x 30-minute sessions or 6 x 25-minute sessions —
+      consistency across the week matters more than single long sessions.
+    priority: high
+    who_for: all
+
+  - id: lf_smoking_cessation
+    category: lifestyle
+    title: Stopping smoking — the single biggest cardiovascular intervention
+    body: >
+      Smoking doubles the risk of a heart attack and is the primary
+      modifiable risk factor for cardiovascular disease in postmenopausal
+      women. It also accelerates bone loss (smokers have 10–15% lower
+      bone density than non-smokers) and worsens hot flashes. NHS Stop
+      Smoking Services, varenicline (Champix), and combination nicotine
+      replacement therapy are all more effective than willpower alone.
+      Speak to your GP.
+    priority: high
+    who_for: all
+
+mindset_recommendations:
+  - id: mr_bone_density_check
+    category: mindset
+    title: Ask your GP about a DEXA scan — know your baseline
+    body: >
+      A DEXA scan measures bone mineral density and takes 10–15 minutes.
+      NICE recommends it for women who have early menopause (before 45),
+      surgical menopause, or other risk factors (prolonged steroid use,
+      low BMI, family history of hip fracture). Even without these, knowing
+      your bone density baseline at menopause gives you something to measure
+      future interventions against. Ask your GP whether you are eligible
+      for a scan on the NHS.
+    priority: high
+    who_for: all
+
+  - id: mr_heart_risk_awareness
+    category: mindset
+    title: Cardiovascular disease is the leading cause of death in women — not breast cancer
+    body: >
+      Women's cardiovascular risk after menopause surpasses that of men
+      of similar age. Yet women are less likely to be assessed for
+      cardiovascular risk, less likely to recognise their own symptoms,
+      and less likely to receive preventive treatment. Ask your GP for
+      a cardiovascular risk assessment (cholesterol, blood pressure,
+      blood glucose) at your next appointment. Most GP practices offer
+      NHS Health Checks to adults aged 40–74. Prevention is dramatically
+      more effective than treatment.
+    priority: medium
+    who_for: all
+
+supplement_suggestions:
+  - id: ss_calcium_supplement
+    category: supplement
+    title: Calcium supplements — only if diet is insufficient
+    body: >
+      Calcium supplementation (500mg daily, no more) is appropriate only
+      if your dietary calcium consistently falls below 700mg. Most women
+      who eat dairy or use fortified plant milks reach this from food.
+      Calcium carbonate is best taken with food; calcium citrate can be
+      taken without food. Do not exceed 1000mg total daily from food and
+      supplements combined without GP guidance.
+    priority: low
+    who_for: all
+    disclaimer: >
+      Calcium supplements above 1000mg/day may increase cardiovascular
+      risk in some studies. Do not supplement without assessing dietary
+      intake first. Consult your GP if you have a history of kidney
+      stones, hypercalcaemia, or cardiovascular disease.
+
+  - id: ss_vitamin_k2
+    category: supplement
+    title: Vitamin K2 (MK-7) — routes calcium to bones, not arteries
+    body: >
+      Vitamin K2 (menaquinone-7, 100–200mcg daily) activates proteins
+      that direct calcium into bone and teeth rather than arterial walls.
+      It works synergistically with vitamin D3 — take them together.
+      Dietary sources are limited (natto, hard cheeses, egg yolks).
+      Evidence for fracture prevention is emerging but the mechanism
+      is well-established.
+    priority: medium
+    who_for: all
+    disclaimer: >
+      Vitamin K2 interacts with warfarin and other anticoagulants and
+      can reduce their effectiveness. Do not take if you are on
+      anticoagulant medication without explicit GP approval.

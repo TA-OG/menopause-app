@@ -1,0 +1,144 @@
+id: surgical_menopause
+label: Surgical Menopause — Abrupt Transition
+description: >
+  Guidance for women who have entered menopause through surgical removal
+  of both ovaries. Surgical menopause is abrupt — oestrogen drops to
+  near zero within 24–48 hours of surgery, producing more intense and
+  rapid-onset symptoms than natural menopause. This framework addresses
+  the specific challenges of this transition.
+
+trigger_conditions:
+  - question: menopause_stage
+    answer:
+      - surgical
+    min_matches: 1
+
+diet_adjustments:
+  - id: df_surgical_anti_inflammatory
+    category: diet
+    title: Anti-inflammatory eating is especially important after oophorectomy
+    body: >
+      Surgical menopause removes the ovaries' protective oestrogen
+      production suddenly rather than gradually. The inflammatory
+      consequences — joint pain, vascular changes, cognitive changes —
+      can be more pronounced than in natural menopause. An anti-inflammatory
+      dietary pattern (Mediterranean, with emphasis on olive oil, oily fish,
+      colourful vegetables, and limiting ultra-processed foods) helps
+      mitigate this systemic inflammatory shift.
+    priority: high
+    who_for: all
+    targets_symptoms:
+      - joint_pain
+      - hot_flashes
+      - mood_changes
+
+  - id: df_surgical_calcium_urgency
+    category: diet
+    title: Bone protection through diet is urgent — loss is faster after surgical menopause
+    body: >
+      Women who undergo bilateral oophorectomy before natural menopause
+      lose bone density faster than those going through natural menopause.
+      The earlier the surgery, the greater the long-term fracture risk.
+      Calcium from food (700–1200mg daily) and vitamin D are non-negotiable.
+      If you have not yet spoken to your GP about a DEXA scan to establish
+      baseline bone density, prioritise this.
+    priority: high
+    who_for: all
+
+lifestyle_adjustments:
+  - id: lf_surgical_hrt_conversation
+    category: lifestyle
+    title: HRT after surgical menopause — the conversation your GP needs to have with you
+    body: >
+      For women who undergo surgical menopause before the age of 51
+      (the average age of natural menopause), HRT is recommended by
+      most menopause specialists until at least that age. The risk of
+      NOT taking HRT — elevated cardiovascular risk, bone loss, cognitive
+      changes — is well-evidenced and significant. If you have not been
+      offered or discussed HRT, make an appointment specifically about this.
+      The British Menopause Society website has a GP finder for menopause
+      specialists if your GP is not menopause-trained.
+    priority: high
+    who_for: all
+
+  - id: lf_surgical_bone_exercise
+    category: lifestyle
+    title: Start weight-bearing exercise as soon as you are cleared post-surgery
+    body: >
+      Weight-bearing exercise (walking, resistance training) is the most
+      important lifestyle intervention for protecting bone density after
+      surgical menopause. Get clearance from your surgeon on when to begin
+      — for most women, gentle walking starts within weeks of surgery,
+      with progressive strengthening from 6–8 weeks. Establishing this
+      habit early in your recovery directly protects your long-term
+      fracture risk.
+    priority: high
+    who_for: all
+
+mindset_recommendations:
+  - id: mr_surgical_grief_acute
+    category: mindset
+    title: Surgical menopause grief is real — and it is often unacknowledged
+    body: >
+      Women who enter menopause surgically — whether through cancer
+      treatment, endometriosis, or other causes — frequently describe
+      a profound and underacknowledged grief. The abruptness of the
+      hormonal change compounds the emotional impact of the surgery
+      itself. If you had surgery related to cancer or fertility loss,
+      you may be navigating multiple significant losses simultaneously.
+      This deserves proper psychological support — not just symptom
+      management. Ask your surgical team or GP for a referral to a
+      counsellor with experience in women's health.
+    priority: high
+    who_for: all
+
+  - id: mr_surgical_pace
+    category: mindset
+    title: Your body is adapting to a massive hormonal shift — give it time
+    body: >
+      The first 3–6 months after bilateral oophorectomy are often the
+      most intense in terms of symptom severity. Hot flashes, sleep
+      disruption, mood changes, and cognitive fog are common and often
+      severe in this acute phase. This does not represent a permanent
+      state. Symptoms typically settle over months as the body adapts,
+      and with appropriate treatment (HRT, lifestyle changes) most women
+      achieve a quality of life comparable to their pre-surgical baseline.
+      What you are experiencing now is not your new normal.
+    priority: high
+    who_for: all
+
+supplement_suggestions:
+  - id: ss_surgical_vitamin_d
+    category: supplement
+    title: Vitamin D — higher priority after surgical menopause
+    body: >
+      Vitamin D is especially important after surgical menopause given the
+      accelerated bone loss. Ask your GP for a blood test to establish your
+      25(OH)D level. Many menopause specialists recommend 1000–2000 IU daily
+      for women who have undergone oophorectomy. Always combine with calcium
+      from food (not high-dose supplements). Take vitamin D3 (cholecalciferol)
+      rather than D2, and with a meal containing fat for best absorption.
+    priority: high
+    who_for: all
+    disclaimer: >
+      Vitamin D supplementation above 2000 IU/day should be guided by a
+      blood test result. Very high doses (above 4000 IU/day) can cause
+      toxicity. Consult your GP before supplementing at high doses,
+      especially if you have kidney disease or a history of kidney stones.
+
+  - id: ss_omega3_surgical
+    category: supplement
+    title: Omega-3 (EPA+DHA) — anti-inflammatory support after oophorectomy
+    body: >
+      Omega-3 fatty acids (2000–3000mg EPA+DHA daily from fish oil or
+      algae oil) reduce the inflammatory response that can be more pronounced
+      after surgical menopause. There is also emerging evidence for
+      neuroprotective benefits relevant to the cognitive changes some
+      women experience after oophorectomy. Take with food.
+    priority: medium
+    who_for: all
+    disclaimer: >
+      High-dose omega-3 (above 3g EPA+DHA) may thin the blood. If you
+      are on anticoagulants or awaiting further surgery, consult your
+      GP or pharmacist before supplementing. Algae-based omega-3 is the
+      plant-based equivalent of fish oil.

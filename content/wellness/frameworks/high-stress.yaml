@@ -1,0 +1,199 @@
+id: high_stress
+label: High Stress & Cortisol Load
+description: >
+  Targeted at women reporting high or very high stress levels. Chronic
+  stress and elevated cortisol amplify virtually every menopause symptom
+  and disrupt sleep, blood sugar, immune function, and weight. This
+  framework addresses the physiological and practical aspects of stress
+  reduction during the menopausal transition.
+
+trigger_conditions:
+  - question: stress_level
+    answer:
+      - high
+      - very_high
+    min_matches: 1
+
+diet_adjustments:
+  - id: df_stress_blood_sugar
+    category: diet
+    title: Cortisol drives blood sugar spikes — eat to counteract this
+    body: >
+      Cortisol (the stress hormone) directly raises blood glucose by
+      releasing stored sugar from the liver. Combined with the insulin
+      resistance of perimenopause, chronic stress creates a cycle of
+      blood sugar spikes and crashes that worsens mood, drives carbohydrate
+      cravings, and increases abdominal fat storage. Counter this by eating
+      protein and fat before carbohydrates, not skipping meals, and keeping
+      blood sugar-stabilising snacks (nuts, boiled eggs, full-fat yoghurt)
+      available to prevent the stress-hunger spiral.
+    priority: high
+    who_for: all
+    targets_symptoms:
+      - mood_changes
+      - weight_changes
+      - fatigue
+      - brain_fog
+
+  - id: df_stress_magnesium_food
+    category: diet
+    title: Stress depletes magnesium — eat foods that replenish it
+    body: >
+      Magnesium is excreted at higher rates under stress. Magnesium deficiency
+      worsens anxiety, sleep, and muscle tension — creating a feedback loop.
+      Magnesium-rich foods: dark chocolate (>70%), pumpkin seeds, spinach,
+      black beans, almonds, avocado, and bananas. These are better than
+      supplements as a first approach. Reduce alcohol and caffeine, which
+      also increase magnesium excretion.
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - anxiety
+      - sleep_problems
+
+  - id: df_stress_caffeine_limit
+    category: diet
+    title: Caffeine raises cortisol — limit to 1–2 cups before noon
+    body: >
+      Caffeine triggers the adrenal glands to release cortisol and adrenaline
+      — the same stress response that chronic stress already keeps elevated.
+      If you are in a chronic stress state, caffeine adds to the cortisol
+      burden rather than giving you genuine energy. Cut to 1–2 cups of coffee
+      before noon. The withdrawal headache lasts 2–3 days; after that, most
+      women report more stable energy and lower baseline anxiety.
+    priority: high
+    who_for: all
+    targets_symptoms:
+      - anxiety
+      - sleep_problems
+      - hot_flashes
+
+lifestyle_adjustments:
+  - id: lf_stress_minimum_viable_recovery
+    category: lifestyle
+    title: Identify one daily non-negotiable recovery activity
+    body: >
+      Under high stress, recovery activities are the first things dropped —
+      exactly when they are most needed. Research on stress resilience
+      consistently shows that a single daily "micro-recovery" activity of
+      10–20 minutes — a walk outside, 10 minutes of stretching, 5 minutes
+      of deliberate breathing, a cup of tea without a screen — has an
+      outsized effect on daily cortisol regulation. This is not self-indulgence.
+      It is the maintenance that prevents burnout. Identify one specific
+      activity and protect it as an appointment with yourself.
+    priority: high
+    who_for: all
+    targets_symptoms:
+      - anxiety
+      - mood_changes
+      - fatigue
+      - sleep_problems
+
+  - id: lf_stress_sleep_priority
+    category: lifestyle
+    title: Sleep deprivation and high stress form a vicious cycle — break it with a consistent bedtime
+    body: >
+      Chronic stress elevates cortisol at night, making sleep harder.
+      Poor sleep raises baseline cortisol the following day, making
+      stress harder to manage. The most effective single break in this
+      cycle is protecting bedtime. Set a consistent bedtime — 60 minutes
+      earlier than you currently go to bed — for two weeks. Use a 30-minute
+      wind-down routine (no screens, dim lights). Even if you don't fall
+      asleep faster, protecting this time reduces the cortisol-sleep
+      feedback loop.
+    priority: high
+    who_for: all
+    targets_symptoms:
+      - sleep_problems
+      - anxiety
+
+  - id: lf_stress_boundary_work
+    category: lifestyle
+    title: Audit your commitments — high stress is often overcapacity, not weakness
+    body: >
+      Many women experiencing high stress describe being the primary
+      caregiver for both children and ageing parents, while maintaining
+      a career at peak demands. This is a structural load problem, not a
+      resilience problem. A weekly review of commitments — what can be
+      delegated, automated, dropped, or batched — consistently frees up
+      meaningful time. Even 2–3 hours per week of reduced obligation
+      measurably lowers cortisol over a month.
+    priority: medium
+    who_for: all
+
+mindset_recommendations:
+  - id: mr_stress_physiological_sigh
+    category: mindset
+    title: The physiological sigh — a 5-second cortisol interrupt
+    body: >
+      The physiological sigh (a double inhale through the nose followed
+      by a long, slow exhale through the mouth) activates the
+      parasympathetic nervous system faster than any other technique.
+      It works by deflating over-inflated air sacs in the lungs that
+      accumulate under stress. Use it at the onset of anxiety, before
+      a difficult conversation, or when you notice tension building.
+      Stanford neuroscientist Andrew Huberman's work on the mechanism
+      is widely available if you want to understand the science.
+    priority: high
+    who_for: all
+    targets_symptoms:
+      - anxiety
+      - hot_flashes
+
+  - id: mr_stress_not_your_fault
+    category: mindset
+    title: Menopause amplifies stress sensitivity — this is biology, not inadequacy
+    body: >
+      Oestrogen modulates the brain's threat response by regulating serotonin
+      and GABA receptors. As oestrogen declines, the stress response becomes
+      more sensitive and harder to down-regulate. Things that you would have
+      managed without much difficulty before perimenopause may now feel
+      overwhelming. This is a neurological change, not a character change.
+      Understanding this removes the self-blame that often compounds the
+      stress itself.
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - anxiety
+      - mood_changes
+
+supplement_suggestions:
+  - id: ss_ashwagandha_stress
+    category: supplement
+    title: Ashwagandha (KSM-66) — the most evidence-backed adaptogen for cortisol
+    body: >
+      Ashwagandha root extract (KSM-66 or Sensoril formulation,
+      300–600mg daily) has the strongest clinical evidence of any adaptogen
+      for reducing serum cortisol, perceived stress, and anxiety. Multiple
+      randomised trials show significant reductions in cortisol and improved
+      resilience scores at 8 weeks. Take with food. Avoid cheap, unstandardised
+      ashwagandha powders — formulation matters for efficacy.
+    priority: high
+    who_for: all
+    disclaimer: >
+      Ashwagandha can interact with thyroid medications, sedatives, and
+      immunosuppressants. Not suitable in pregnancy. Some people experience
+      digestive upset — take with food. Consult your GP before use if you
+      have thyroid conditions or take any regular medications.
+    targets_symptoms:
+      - anxiety
+      - sleep_problems
+
+  - id: ss_l_theanine
+    category: supplement
+    title: L-theanine — calm without sedation for daytime anxiety
+    body: >
+      L-theanine (200–400mg, taken with caffeine or alone) promotes alpha
+      brain waves associated with calm alertness, without causing drowsiness.
+      It has a rapid onset (30–60 minutes) making it useful for acute
+      stressful situations. Used regularly, it reduces baseline anxiety.
+      It is naturally found in green tea and is extremely well-tolerated
+      with no known significant interactions.
+    priority: medium
+    who_for: all
+    disclaimer: >
+      L-theanine is generally very well tolerated. Theoretical interactions
+      with blood pressure medications exist — consult your GP if you take
+      antihypertensives.
+    targets_symptoms:
+      - anxiety

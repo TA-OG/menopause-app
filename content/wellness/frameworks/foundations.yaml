@@ -1,0 +1,157 @@
+id: foundations
+label: Universal Foundations
+description: >
+  Core lifestyle foundations that benefit every woman in the menopausal
+  transition — hydration, vitamin D, Mediterranean eating pattern, and
+  a clear signpost to discuss HRT and other options with a GP.
+
+trigger_all: true
+
+trigger_conditions: []
+
+diet_adjustments:
+  - id: df_mediterranean_pattern
+    category: diet
+    title: The Mediterranean pattern — the most-studied diet for menopause
+    body: >
+      A Mediterranean-style eating pattern (abundant vegetables, fruit,
+      legumes, whole grains, olive oil, oily fish, and moderate dairy)
+      consistently outperforms other dietary approaches in menopause
+      research — associated with fewer vasomotor symptoms, lower
+      cardiovascular risk, and better mood and cognitive function.
+      It doesn't require eliminating any food group. Think abundance
+      of plants and fish, olive oil as your main fat, and red meat
+      as an occasional choice.
+    priority: high
+    who_for: all
+    targets_symptoms:
+      - hot_flashes
+      - mood_changes
+      - weight_changes
+      - brain_fog
+
+  - id: df_hydration
+    category: diet
+    title: Drink 2 litres of water a day — more than you think you need
+    body: >
+      Oestrogen decline affects thirst regulation, meaning perimenopausal
+      women often become mildly dehydrated without feeling thirsty.
+      Dehydration worsens brain fog, fatigue, joint stiffness, and skin
+      changes. Keep a 500ml bottle visible on your desk and aim to refill
+      it four times across the day. Herbal teas count. Coffee and
+      alcohol are diuretics and don't count toward your total.
+    priority: high
+    who_for: all
+    targets_symptoms:
+      - brain_fog
+      - fatigue
+      - joint_pain
+      - skin_changes
+
+  - id: df_phytoestrogens
+    category: diet
+    title: Phytoestrogens — plant compounds that weakly mimic oestrogen
+    body: >
+      Phytoestrogens (found in soy foods, flaxseed, lentils, and chickpeas)
+      bind weakly to oestrogen receptors and may reduce hot flash frequency
+      in some women. The evidence is modest, but the foods are healthy in
+      their own right. Include fermented soy (edamame, miso, tofu) 2–3
+      times weekly if you are not on tamoxifen or have oestrogen-sensitive
+      conditions — check with your GP in those cases.
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - hot_flashes
+      - night_sweats
+
+lifestyle_adjustments:
+  - id: lf_move_daily
+    category: lifestyle
+    title: Some movement every day — the foundation of everything else
+    body: >
+      Any form of daily physical activity — even 20 minutes of walking
+      — improves sleep quality, mood, hot flash frequency, and metabolic
+      health during menopause. It doesn't have to be formal exercise.
+      Gardening, dancing, housework at pace, taking the stairs — it all
+      counts. Movement is the single intervention with the most consistent
+      evidence across every menopausal symptom category.
+    priority: high
+    who_for: all
+    targets_symptoms:
+      - fatigue
+      - mood_changes
+      - sleep_problems
+      - weight_changes
+      - hot_flashes
+
+  - id: lf_alcohol_reduction
+    category: lifestyle
+    title: Reducing alcohol makes almost everything better
+    body: >
+      Alcohol disrupts sleep architecture, worsens hot flashes and night
+      sweats, lowers mood the following day, contributes to weight gain
+      around the abdomen, and increases breast cancer risk. Even one drink
+      per day has measurable effects. You don't need to stop entirely, but
+      reducing to 2–3 units per week (from a daily habit) typically
+      produces noticeable improvements in sleep and hot flash severity
+      within 2–3 weeks.
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - hot_flashes
+      - night_sweats
+      - sleep_problems
+      - mood_changes
+      - weight_changes
+
+mindset_recommendations:
+  - id: mr_gp_signpost
+    category: mindset
+    title: Talk to your GP about your options — including HRT
+    body: >
+      Hormone Replacement Therapy (HRT) is the most effective treatment
+      for vasomotor symptoms and has protective effects for bone density
+      and cardiovascular health for many women when started within 10 years
+      of menopause. Modern body-identical HRT has a much more favourable
+      safety profile than older formulations. Your GP can discuss whether
+      it is appropriate for you. This app supports your lifestyle — it does
+      not replace medical care. Please book an appointment if your symptoms
+      are significantly affecting your quality of life.
+    priority: high
+    who_for: all
+
+  - id: mr_this_is_real
+    category: mindset
+    title: Your symptoms are real — and widely underestimated
+    body: >
+      Menopause affects virtually every system in the body. Women report
+      an average of 7–10 symptoms simultaneously at peak perimenopause.
+      Yet most women are not asked about menopause by healthcare providers
+      until they raise it themselves. Your experience is real, it has
+      biological causes, and it is not a sign of weakness or ageing
+      'badly'. It is a transition — with a beginning, a middle, and an end.
+    priority: medium
+    who_for: all
+
+supplement_suggestions:
+  - id: ss_vitamin_d_universal
+    category: supplement
+    title: Vitamin D — non-negotiable for bone health and immune function
+    body: >
+      Vitamin D deficiency is almost universal in the UK population and
+      dramatically accelerates in the menopausal transition as oestrogen
+      decline directly affects bone density. The NHS recommends 400 IU
+      daily from October to March for all adults; women in menopause
+      likely benefit from 1000–2000 IU year-round. Ask your GP for a
+      blood test to establish your baseline.
+    priority: high
+    who_for: all
+    disclaimer: >
+      Vitamin D toxicity can occur at very high doses (above 4000 IU/day
+      long-term). Always test before supplementing above 2000 IU and
+      consult your GP if you have kidney disease, hypercalcaemia, or
+      sarcoidosis.
+    targets_symptoms:
+      - fatigue
+      - mood_changes
+      - joint_pain
