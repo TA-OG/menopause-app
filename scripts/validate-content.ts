@@ -33,8 +33,9 @@ function validateFrameworks(frameworks: WellnessFramework[]): string[] {
       continue
     }
 
-    if (!framework.trigger_conditions || framework.trigger_conditions.length === 0) {
-      errors.push(`[${framework.id}] Missing trigger_conditions`)
+    // trigger_all frameworks intentionally have no trigger_conditions
+    if (!framework.trigger_all && (!framework.trigger_conditions || framework.trigger_conditions.length === 0)) {
+      errors.push(`[${framework.id}] Missing trigger_conditions (and trigger_all is not set)`)
     }
 
     // Check supplement disclaimers

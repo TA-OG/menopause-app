@@ -46,7 +46,7 @@ diet_adjustments:
     priority: medium
     who_for: all
 
-  - id: df_hydration
+  - id: df_hf_hydration
     category: diet
     title: Stay consistently hydrated
     body: >

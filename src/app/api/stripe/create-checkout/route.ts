@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import Stripe from 'stripe'
-import { sanitizeError } from '@/lib/sanitize-error'
 import { rateLimit } from '@/lib/rate-limit'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
