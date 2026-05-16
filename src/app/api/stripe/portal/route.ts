@@ -22,12 +22,26 @@ export async function POST(request: NextRequest) {
       return NextResponse.redirect(new URL('/pay', request.url))
     }
 
-    const session = await stripe.billingPortal.sessions.create({
-      customer: profile.stripe_customer_id,
-      return_url: `${process.env.NEXT_PUBLIC_APP_URL}/profile`,
-    })
-
-    return NextResponse.redirect(session.url)
+    try {
+      const session = await stripe.billingPortal.sessions.create({
+        customer: profile.stripe_customer_id,
+        return_url: `${process.env.NEXT_PUBLIC_APP_URL}/profile`,
+      })
+      return NextResponse.redirect(session.url)
+    } catch (err: any) {
+      // Stale customer ID (e.g. Stripe account was rotated) — clear it and
+      // bounce the user back to /pay so they can re-subscribe (which will
+      // create a fresh customer in the current account).
+      if (err?.code === 'resource_missing') {
+        console.warn(`Stale stripe_customer_id ${profile.stripe_customer_id} for user ${user.id} — clearing`)
+        await supabase
+          .from('profiles')
+          .update({ stripe_customer_id: null, subscription_tier: 'free', subscription_status: null })
+          .eq('id', user.id)
+        return NextResponse.redirect(new URL('/pay', request.url))
+      }
+      throw err
+    }
   } catch (err) {
     console.error('Stripe portal error:', err)
     return NextResponse.redirect(new URL('/profile', request.url))

@@ -51,6 +51,27 @@ export async function POST(request: NextRequest) {
 
     let customerId = profile?.stripe_customer_id
 
+    // If we have a stored customer ID, verify it still exists in the current
+    // Stripe account. A stored ID can become stale if:
+    //   - The Stripe account/key was rotated to a different account
+    //   - The customer was manually deleted in the Stripe dashboard
+    // In those cases, treat it as if there's no customer and create a fresh one.
+    if (customerId) {
+      try {
+        const existing = await stripe.customers.retrieve(customerId)
+        if ((existing as any).deleted) {
+          customerId = null  // Stripe returns a deleted-customer stub — fall through to create
+        }
+      } catch (err: any) {
+        if (err?.code === 'resource_missing') {
+          console.warn(`Stale stripe_customer_id ${customerId} for user ${user.id} — creating new`)
+          customerId = null
+        } else {
+          throw err  // Real error — let the outer catch handle it
+        }
+      }
+    }
+
     if (!customerId) {
       const customer = await stripe.customers.create({
         email: user.email!,
