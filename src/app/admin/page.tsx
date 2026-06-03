@@ -1,5 +1,6 @@
 import { createAdminClient } from '@/lib/supabase/admin'
 import InviteButton from './InviteButton'
+import AuthorInviteForm from './AuthorInviteForm'
 
 export const dynamic = 'force-dynamic'
 
@@ -27,6 +28,26 @@ export default async function AdminPage() {
 
   return (
     <div className="space-y-8">
+
+      {/* Content intake */}
+      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4">
+        <div className="flex items-center justify-between gap-4">
+          <div className="flex-1">
+            <p className="text-sm font-medium text-gray-800">Content intake</p>
+            <p className="text-xs text-gray-500 mt-0.5">
+              Guided questionnaire for capturing Pamela&apos;s advice, one topic at a time.
+              Plain English — no code. Answers feed the wellness frameworks.
+            </p>
+          </div>
+          <a
+            href="/admin/intake"
+            className="text-xs bg-brand-900 text-white px-3 py-1.5 rounded-lg hover:bg-brand-800 transition-colors whitespace-nowrap"
+          >
+            Open intake →
+          </a>
+        </div>
+        <AuthorInviteForm />
+      </div>
 
       {/* Diagnostics */}
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 space-y-3">
