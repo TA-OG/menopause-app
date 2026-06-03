@@ -1,0 +1,37 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# LEARN ARTICLE TEMPLATE  (for the in-app "Learn" library)
+#
+# Copy this file into:
+#   content/modules/free/      → article is free to all users
+#   content/modules/premium/   → article requires a premium subscription
+# The folder you place it in sets the tier — do NOT add a `tier:` field.
+#
+# Rename the file to match the slug (e.g. understanding-hot-flashes.yaml).
+# Run `npm run import-content` to publish changes to the live library.
+# ─────────────────────────────────────────────────────────────────────────────
+
+slug: understanding-hot-flashes        # kebab-case, globally unique, used in the URL
+title: Understanding hot flushes        # Shown as the article heading
+category: Symptoms                      # Grouping label (e.g. Symptoms, Nutrition, Sleep)
+tags:                                   # Optional, for future search/filtering
+  - hot_flashes
+  - vasomotor
+estimated_read_minutes: 4               # Optional; shown next to the title
+
+# Set to publish. Leave blank / remove to keep the article as an unpublished draft
+# (drafts are imported but hidden from users until this date is set and in the past).
+published_at: 2026-06-03
+
+# The article body, in Markdown. Headings, lists, bold, links and tables are supported.
+body_md: |
+  Hot flushes are the most common symptom of the menopausal transition...
+
+  ## Why they happen
+
+  Oestrogen decline affects the brain's temperature regulation...
+
+  ## What can help
+
+  - Keep your bedroom cool
+  - Identify and reduce personal triggers (alcohol, caffeine, spicy food)
+  - Speak to your GP about HRT and non-hormonal options
