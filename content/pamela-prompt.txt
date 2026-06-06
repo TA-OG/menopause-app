@@ -1,0 +1,10 @@
+Hi! I'm going to share my clinical knowledge with you so it can be added to the menopause app.
+
+Please read everything I've attached and turn it into the correct app files. Keep all of my explanations in full — don't shorten or summarise anything. If something is unclear, ask me before guessing.
+
+For every supplement recommendation, you MUST include a GP disclaimer (e.g. "Always check with your GP before starting any supplement, especially if you take medication or have a health condition.") — the app will not work without this.
+
+Please output each file as a separate code block with the filename shown above it.
+
+Here is what I'm uploading today:
+[Write one line here describing what you're attaching — e.g. "My notes on hot flushes and sleep problems" or "Transcript from our recording session on anxiety and brain fog"]
