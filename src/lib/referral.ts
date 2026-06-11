@@ -73,7 +73,7 @@ export async function createOrUpdateReferralCoupon(
  * Build the full referral URL for sharing.
  */
 export function buildReferralUrl(referralCode: string): string {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://auntymel.com'
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://auntymel.app'
   return `${baseUrl}/waitlist?ref=${referralCode}`
 }
 
