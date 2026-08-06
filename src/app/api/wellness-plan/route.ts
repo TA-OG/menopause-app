@@ -77,11 +77,14 @@ export async function POST(request: NextRequest) {
     const matchedFrameworks = matchFrameworks(answers ?? [], frameworks)
     const plan = buildPlan(matchedFrameworks, preferences ?? {}, primarySymptom)
 
-    // Load cultural modifiers based on heritage answers
+    // Load cultural modifiers based on heritage answers + country
     const heritageAnswers = (answers ?? [])
       .filter((a) => a.question_key === 'heritage')
       .map((a) => a.answer_value)
-    const culturalModifiers = loadCulturalModifiers(heritageAnswers)
+    const countryCode = (answers ?? [])
+      .find((a) => a.question_key === 'country')
+      ?.answer_value
+    const culturalModifiers = loadCulturalModifiers(heritageAnswers, countryCode)
     const culturalContext = buildCulturalContext(culturalModifiers)
 
     // Save the plan (deactivate_previous_plans trigger fires automatically)

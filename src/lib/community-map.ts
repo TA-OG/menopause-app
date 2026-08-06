@@ -188,16 +188,14 @@ export const COMMUNITY_FILE_MAP: Record<string, string> = {
   'myanmar':              'east-asian.yaml',
 
   // ── MIDDLE EAST / NORTH AFRICA ────────────────────────────────────────────
-  'arab':                 'west-african.yaml',   // TODO: communities/arabic.yaml
-  'moroccan':             'west-african.yaml',
-  'algerian':             'west-african.yaml',
-  'egyptian':             'west-african.yaml',
-  'lebanese':             'west-african.yaml',
-  'iranian':              'west-african.yaml',
-  'persian':              'west-african.yaml',
-  'turkish':              'west-african.yaml',
-  'kurdish':              'west-african.yaml',
-  'middle_eastern':       'west-african.yaml',
+  // Deliberately unmapped: no MENA-specific cultural content exists yet.
+  // These previously fell back to west-african.yaml (egusi soup, moringa —
+  // wrong culture, wrong diet, wrong context), which is worse than showing
+  // no cultural modifier at all. Leave unmapped until a dedicated
+  // communities/arabic.yaml (or similar) is authored — do NOT reintroduce
+  // a fallback to an unrelated region's file.
+  // TODO: 'arab' | 'moroccan' | 'algerian' | 'egyptian' | 'lebanese' |
+  //       'iranian' | 'persian' | 'turkish' | 'kurdish' | 'middle_eastern'
 
   // ── LATIN AMERICA ────────────────────────────────────────────────────────
   'mexican':              'hispanic-latina.yaml',
