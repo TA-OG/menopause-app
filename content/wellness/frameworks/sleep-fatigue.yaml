@@ -155,3 +155,58 @@ supplement_suggestions:
       Very high doses of Vitamin D (above 4000 IU/day) can cause toxicity.
       Get your levels checked before supplementing above 2000 IU. Consult
       your GP if you have any history of kidney stones or hypercalcaemia.
+
+  - id: ss_coq10_ubiquinol_energy
+    category: supplement
+    title: CoQ10 (or Ubiquinol) — for cellular energy production
+    body: >
+      CoQ10 is commonly taken at 100–200mg/day, and is involved in cellular
+      energy production. Ubiquinol is the "active" form your body actually
+      uses — your body naturally converts the standard form (ubiquinone)
+      into this active form, but that conversion becomes less efficient
+      with age, so ubiquinol may be the better choice for women in
+      perimenopause and beyond. If you're on a statin or heart medication,
+      CoQ10 levels can be depleted by the medication, so it's often
+      recommended alongside statins specifically.
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - fatigue
+    disclaimer: >
+      If you're on a statin or other heart medication, this should be
+      GP-guided due to the interaction.
+
+  - id: ss_nmn_pqq_energy
+    category: supplement
+    title: NMN and PQQ — for mitochondrial and cellular energy support
+    body: >
+      NMN (Nicotinamide Mononucleotide), commonly 250–500mg/day, supports
+      NAD+ production, which declines with age and is involved in cellular
+      energy metabolism. PQQ (Pyrroloquinoline Quinone), commonly
+      10–20mg/day, supports mitochondrial function and is often paired
+      with NMN or CoQ10.
+    priority: low
+    who_for: all
+    targets_symptoms:
+      - fatigue
+    disclaimer: >
+      Always check with your GP or pharmacist before starting, especially
+      if you take any prescribed medications.
+
+  - id: ss_nac_glutathione_energy
+    category: supplement
+    title: NAC and Liposomal Glutathione — antioxidant support
+    body: >
+      NAC (N-Acetyl Cysteine), commonly 600mg/day, and/or liposomal
+      glutathione support the body's master antioxidant system, which
+      plays a role in cellular energy production and reducing oxidative
+      stress. Glutathione should specifically be liposomal — standard
+      capsule forms break down in digestion before absorption, so
+      liposomal is needed for it to actually reach the bloodstream.
+    priority: low
+    who_for: all
+    targets_symptoms:
+      - fatigue
+    disclaimer: >
+      Always check with your GP or pharmacist before starting, especially
+      if you take any prescribed medications.

@@ -91,76 +91,286 @@ lifestyle_adjustments:
     who_for: all
 
 mindset_recommendations:
-  - id: mr_anxiety_breathwork
+  - id: mr_physiology_not_personality
     category: mindset
-    title: Physiological sigh — the fastest anxiety reset
+    title: This is physiology, not a personality change
     body: >
-      The "physiological sigh" (double inhale through the nose, long slow exhale
-      through the mouth) activates the parasympathetic nervous system faster
-      than any other breathing technique. Use it at the onset of anxiety or
-      irritability. Unlike extended breathwork sessions, this takes 5 seconds
-      and can be done anywhere, including mid-conversation or in a meeting.
+      The emotional shifts in menopause aren't a personality change or a
+      sign something's wrong with you — they're physiology. Oestrogen has a
+      direct relationship with serotonin and dopamine, so when it drops,
+      mood, motivation and resilience drop with it. This isn't weakness. It
+      isn't "just stress." It's chemistry. But mood is rarely just about
+      oestrogen — it's tangled up with several other systems too, and it's
+      worth understanding the full picture rather than assuming "it's just
+      hormones" or "it's just me."
+
+      Sleep and energy: poor sleep — so common in menopause thanks to night
+      sweats, racing thoughts, or a wired-but-tired nervous system — doesn't
+      just leave you exhausted, it directly lowers your capacity to
+      regulate emotion. A short night's sleep makes the brain's
+      threat-detector more reactive, while dulling the part of the brain
+      that calms things down. Low energy compounds this — when you're
+      running on empty, there's simply less in the tank for patience or
+      perspective. Mood, sleep and energy feed each other in a loop, for
+      better or worse.
+
+      Hormone imbalance and rage: many women recognise "the rage" from
+      perimenopause, when progesterone — which normally has a calming,
+      steadying effect — drops faster than oestrogen, leaving oestrogen
+      relatively unopposed. It's not a flaw in your character — it's a
+      ratio problem, not necessarily "too much" of anything. By menopause,
+      oestrogen has usually dropped low overall too, but if rage or
+      irritability persists, it's worth looking at the wider picture:
+      chronic stress, poor oestrogen clearance, or environmental
+      xenoestrogens can keep that imbalance going.
     priority: high
     who_for: all
+    targets_symptoms:
+      - mood_changes
+      - anxiety
 
-  - id: mr_mood_journalling
+  - id: mr_mood_hidden_drivers
     category: mindset
-    title: Track mood triggers — awareness reduces reactivity
+    title: What else could be driving this — beyond hormones
     body: >
-      Many women find their mood changes feel random and uncontrollable, which
-      is itself distressing. Using your journal to note mood, energy, and what
-      happened before a difficult moment for two weeks typically reveals 2–3
-      clear patterns. Knowing that the Tuesday morning meeting reliably triggers
-      anxiety, for example, allows preparation rather than surprise. Predictability
-      reduces the threat response.
+      Nutrient status: low B12 and folate can mimic or worsen low mood,
+      brain fog, fatigue and irritability — deficiency is common,
+      especially with age, certain medications, or low intake of animal
+      proteins and leafy greens. This is a simple, correctable thing that's
+      too often overlooked.
+
+      Thyroid health: an underactive thyroid in particular can look exactly
+      like "menopause brain and mood" — low mood, fatigue, brain fog,
+      weight gain, feeling flat. It's frequently missed because the
+      standard TSH-only test doesn't tell the full story, and symptoms get
+      written off as "just menopause" when thyroid function hasn't
+      actually been properly checked.
+
+      Blood sugar: pre-diabetes and diabetes affect mood directly — blood
+      sugar swings can cause irritability, anxiety, brain fog and energy
+      crashes that feel identical to "hormonal" mood changes, and poor
+      regulation also worsens sleep and increases inflammation.
+
+      Histamine's wider reach: histamine's effects go well beyond itching,
+      migraines and flushing — it can also contribute to bloating, poor
+      sleep, brain fog and fatigue. If you're ticking several boxes across
+      mood, sleep, energy and digestion without an obvious single cause,
+      histamine is worth considering as a genuine thread running
+      underneath.
+    priority: high
+    who_for: all
+    targets_symptoms:
+      - mood_changes
+      - brain_fog
+
+  - id: mr_mood_complex_history
+    category: mindset
+    title: If you have a history of endometriosis, adenomyosis, or fibroids
+    body: >
+      Women with this history have often spent years managing higher
+      oestrogen load, so they may feel the emotional swings of
+      perimenopause more intensely than other women — the rage, the
+      rollercoaster, the sense of not recognising yourself. This isn't
+      being "more sensitive" or dramatic; your body has genuinely been more
+      attuned to oestrogen fluctuation all along. It's also worth naming
+      that many women with this history have been living with chronic
+      pain for years, sometimes decades, often dismissed or under-treated
+      before diagnosis — and depression is genuinely more common in women
+      with this history. If you're noticing low mood alongside the
+      perimenopausal shifts, it isn't necessarily "just menopause" layered
+      on top — it may be the accumulated weight of pain, and years of not
+      being believed or heard, finally being felt.
+
+      If you're living with long Covid, CFS, or fibromyalgia alongside
+      menopause, the emotional toll of navigating a chronic illness and
+      menopause at the same time is real, and often isolating — it's hard
+      to untangle which symptoms belong to which cause. Both can be true at
+      once, and both deserve care, not competition for which is "the real
+      problem."
     priority: medium
     who_for: all
 
-  - id: mr_self_compassion_mood
+  - id: mr_mood_reframe
     category: mindset
-    title: Your brain is not broken — it is adapting
+    title: Who am I now? — it doesn't have to be a crisis question
     body: >
-      Oestrogen decline affects the amygdala (the brain's threat detector) and
-      the hippocampus (memory). The irritability, tearfulness, and brain fog
-      you experience are neurological, not personal weakness. Self-compassion
-      practices — treating yourself with the same warmth you'd offer a friend
-      who was struggling — are associated with lower anxiety and faster
-      emotional recovery. Research by Kristin Neff at UT Austin is a good
-      starting point if you want to explore this further.
+      How you narrate this chapter to yourself genuinely shapes how you
+      experience it. "Who am I now?" can be a curious question rather than
+      a panicked one — not pretending everything's fine, but recognising
+      that this in-between, unfamiliar version of yourself isn't a problem
+      to solve, it's a person to get to know. A lot of women arrive here
+      feeling like they've lost themselves — that disorientation is real
+      and common, and so often there's more going on underneath than "just
+      hormones," which is exactly why it deserves proper investigation
+      rather than just being pushed through.
+
+      Menopause isn't a problem to fix in isolation — it's a transition
+      that touches hormones, sleep, nutrients, thyroid and metabolic health
+      all at once. The aim isn't to "get back to normal" but to understand
+      what's actually going on underneath the mood, not just manage the
+      mood itself. Tracking patterns — sleep quality, energy dips, mood
+      cycles, triggers — gives you information, not just symptoms to
+      endure.
     priority: medium
+    who_for: all
+
+  - id: mr_mood_gp_red_flags
+    category: mindset
+    title: When to see your GP about mood or anxiety
+    body: >
+      See your GP if: low mood or anxiety is persistent, worsening, or
+      affecting daily functioning; you have any thoughts of self-harm or
+      hopelessness — always same-day; rage or irritability feels out of
+      proportion or frightening to you or those around you; sleep
+      disruption is severe, prolonged, or not responding to lifestyle
+      changes; or mood changes come alongside other red-flag symptoms —
+      significant weight change, heart palpitations, heavy or irregular
+      bleeding, excessive thirst or urination.
+
+      It's worth requesting a full thyroid panel (not just TSH) and
+      B12/folate bloods if these haven't been checked, and HbA1c or fasting
+      glucose if there's a family history of diabetes, weight changes, or
+      blood sugar symptoms alongside mood changes. If you're wondering
+      whether HRT, antidepressants, or other support might help — that's a
+      conversation worth having, not something to white-knuckle through
+      alone.
+    priority: high
     who_for: all
 
 supplement_suggestions:
-  - id: ss_b_complex
+  - id: ss_magnesium_anxiety
     category: supplement
-    title: B-vitamin complex — mood, energy, and brain function
+    title: Magnesium glycinate — for nervous system regulation and calm
     body: >
-      B vitamins (particularly B6, B9/folate, and B12) are essential cofactors
-      in serotonin and dopamine production. B12 deficiency — common in women
-      over 45, especially those on metformin or PPIs — causes fatigue, brain
-      fog, and low mood indistinguishable from menopause. A daily B-complex
-      with methylated forms (methylfolate, methylcobalamin) is well-tolerated
-      and appropriate for most women.
+      Commonly 200–400mg/day. The glycinate form is preferred here over
+      citrate, since the goal isn't a laxative effect.
     priority: high
     who_for: all
+    targets_symptoms:
+      - anxiety
     disclaimer: >
-      High-dose B6 (above 10mg/day long term) can cause peripheral neuropathy.
-      Use a standard B-complex (typically 2–10mg B6) rather than isolated
-      high-dose B6. Consult your GP if you have any kidney conditions.
+      Always check with your GP or pharmacist before starting, especially
+      if you take any prescribed medications or have kidney or heart
+      conditions.
+
+  - id: ss_l_theanine_anxiety
+    category: supplement
+    title: L-Theanine — calm and focus without sedation
+    body: >
+      Commonly 100–200mg. Supports calm and focus without sedation, and can
+      be taken during the day for anxiety rather than just at bedtime.
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - anxiety
+    disclaimer: >
+      Always check with your GP or pharmacist before starting, especially
+      if you take any prescribed medications.
 
   - id: ss_ashwagandha
     category: supplement
-    title: Ashwagandha — adaptogen for stress and anxiety
+    title: Ashwagandha — for the body's stress response
     body: >
-      Ashwagandha (KSM-66 extract, 300–600mg daily) has a reasonable body of
-      clinical evidence for reducing cortisol, perceived stress, and anxiety
-      in adults. It typically takes 6–8 weeks to see the full effect.
-      Best taken with food. It is one of the better-evidenced adaptogens for
-      perimenopausal anxiety.
+      Commonly 300–600mg/day of standardised root extract. Well-researched
+      for supporting the body's stress response and cortisol regulation.
     priority: medium
     who_for: all
+    targets_symptoms:
+      - anxiety
     disclaimer: >
-      Ashwagandha can interact with thyroid medications and immunosuppressants.
-      Not suitable during pregnancy. Some people experience digestive upset —
-      take with food. Consult your GP before use if you have thyroid conditions
-      or take any regular medications.
+      Caution needed if you have autoimmune conditions (can stimulate
+      immune activity), thyroid conditions (can affect thyroid hormone
+      levels), or are pregnant — check with your GP first.
+
+  - id: ss_saffron_mood
+    category: supplement
+    title: Saffron — for mood and anxiety
+    body: >
+      Commonly 30mg/day of standardised extract. Some evidence for
+      supporting mood and anxiety symptoms.
+    priority: low
+    who_for: all
+    targets_symptoms:
+      - anxiety
+      - mood_changes
+    disclaimer: >
+      Always check with your GP or pharmacist before starting, especially
+      if you take any prescribed medications.
+
+  - id: ss_b_complex_mood
+    category: supplement
+    title: B-Complex — for nervous system function and stress resilience
+    body: >
+      Look for methylcobalamin (B12) and methylfolate rather than the
+      cheaper synthetic forms (cyanocobalamin, folic acid). B vitamins play
+      a role in nervous system function and stress resilience, particularly
+      relevant if diet or stress has depleted your levels.
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - anxiety
+      - brain_fog
+    disclaimer: >
+      Always check with your GP or pharmacist before starting, especially
+      if you take any prescribed medications or have kidney conditions.
+
+  - id: ss_omega3_mood_brainfog
+    category: supplement
+    title: Omega-3 (EPA/DHA) — for brain fog, anxiety and mood
+    body: >
+      For brain fog specifically, commonly 2–3g/day combined EPA/DHA — the
+      higher end of the general range, given the specific brain focus.
+      Supports cognitive function and has anti-inflammatory benefits for
+      the brain, alongside evidence for supporting mood and reducing
+      anxiety symptoms.
+    priority: high
+    who_for: all
+    targets_symptoms:
+      - brain_fog
+      - anxiety
+      - mood_changes
+    disclaimer: >
+      Omega-3 at high doses can thin the blood. If you take anticoagulants
+      (warfarin, aspirin, apixaban) or are due for surgery, consult your GP
+      or pharmacist before supplementing.
+
+  - id: ss_acetyl_l_carnitine_brainfog
+    category: supplement
+    title: Acetyl-L-Carnitine — for brain energy metabolism
+    body: >
+      Commonly 1–3g/day. Supports brain energy metabolism and has some
+      evidence for cognitive function and mental clarity.
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - brain_fog
+    disclaimer: >
+      Always check with your GP or pharmacist before starting, especially
+      if you take any prescribed medications.
+
+  - id: ss_ginkgo_brainfog
+    category: supplement
+    title: Ginkgo Biloba — for circulation and memory
+    body: >
+      Commonly 120–240mg/day. Supports circulation to the brain and has
+      some evidence for memory and mental clarity.
+    priority: low
+    who_for: all
+    targets_symptoms:
+      - brain_fog
+    disclaimer: >
+      Can interact with blood-thinning medications — needs a GP check
+      first, especially if you're on anticoagulants or aspirin.
+
+  - id: ss_phosphatidylserine_brainfog
+    category: supplement
+    title: Phosphatidylserine — for memory and cognitive support
+    body: >
+      Commonly 150mg/day. Some evidence for memory and cognitive support.
+    priority: low
+    who_for: all
+    targets_symptoms:
+      - brain_fog
+    disclaimer: >
+      Always check with your GP or pharmacist before starting, especially
+      if you take any prescribed medications.

@@ -123,7 +123,10 @@ mindset_recommendations:
       your sexuality, it is worth separating the physical (address dryness
       and discomfort first) from the relational and psychological.
       A psychosexual therapist can help if desire has been absent for
-      several months. Low libido that distresses you or your partner is
+      several months. Low libido in menopause is rarely just one thing —
+      it's often a combination of hormonal changes, vaginal dryness or
+      discomfort, poor sleep, low energy, stress, and relationship or
+      emotional factors. Low libido that distresses you or your partner is
       worth taking seriously — and it is treatable.
     priority: medium
     who_for: all
@@ -133,20 +136,75 @@ mindset_recommendations:
 supplement_suggestions:
   - id: ss_maca_libido
     category: supplement
-    title: Maca root — some evidence for libido and energy
+    title: Maca root — for libido and hormone balance
     body: >
-      Maca (Lepidium meyenii) root extract (1500–3000mg daily) has a small
-      number of randomised trials showing improvement in sexual dysfunction
-      and self-reported libido in postmenopausal women. Effects are modest
-      and take 6–8 weeks. It does not contain hormones. Evidence quality
-      is fair — not as robust as pharmaceutical options — but it is
-      well-tolerated with few reported side effects.
+      Commonly 1.5–3g/day. One of the most recognised supplements for
+      libido and hormone balance, including in some practitioners'
+      protocols specifically for menopausal women.
     priority: low
     who_for: all
     disclaimer: >
-      Maca is generally considered safe for most adults. However, as it
-      may act on the hypothalamic-pituitary axis, consult your GP before
-      use if you have thyroid conditions or hormone-sensitive cancers.
-      Not a substitute for medical treatment of GSM.
+      Caution needed if you have autoimmune conditions — maca can
+      stimulate the immune system and may aggravate autoimmune flares.
+      Not a substitute for medical treatment of vaginal dryness or GSM.
     targets_symptoms:
       - low_libido
+
+  - id: ss_vitamin_d_libido
+    category: supplement
+    title: Vitamin D — for hormone production
+    body: >
+      Vitamin D plays a role in hormone production broadly, and is worth
+      testing rather than assuming, particularly if libido has changed
+      alongside other symptoms.
+    priority: low
+    who_for: all
+    disclaimer: >
+      Always check with your GP or pharmacist before starting, especially
+      if you take any prescribed medications.
+    targets_symptoms:
+      - low_libido
+
+  - id: ss_zinc_libido
+    category: supplement
+    title: Zinc — for testosterone production
+    body: >
+      Commonly 10–30mg/day. Involved in testosterone production, which
+      plays a role in libido for women too, not just men. Shouldn't be
+      taken long-term at high doses without monitoring, as excess zinc can
+      deplete copper.
+    priority: low
+    who_for: all
+    disclaimer: >
+      Always check with your GP or pharmacist before starting, especially
+      if you take any prescribed medications.
+    targets_symptoms:
+      - low_libido
+
+  - id: ss_ashwagandha_libido
+    category: supplement
+    title: Ashwagandha — for libido alongside stress reduction
+    body: >
+      Commonly 300–600mg/day of standardised root extract. Some evidence
+      for supporting libido alongside its stress-reduction effects.
+    priority: low
+    who_for: all
+    disclaimer: >
+      Caution needed if you have autoimmune conditions, thyroid conditions,
+      or are pregnant — check with your GP first.
+    targets_symptoms:
+      - low_libido
+
+  - id: ss_vaginal_probiotics
+    category: supplement
+    title: Vaginal-specific probiotics — for tissue health and comfort
+    body: >
+      Supports vaginal tissue health and comfort, which can often address a
+      physical barrier to libido — dryness or discomfort.
+    priority: medium
+    who_for: all
+    disclaimer: >
+      Always check with your GP or pharmacist before starting.
+    targets_symptoms:
+      - low_libido
+      - vaginal_dryness

@@ -1,108 +1,290 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Sourced from Pamela's content_intake_responses (topic: foundations, round:
+# foundation), submitted via /admin/intake. Converted from her raw answers —
+# see review/pamela-extraction notes for the source material.
+# ─────────────────────────────────────────────────────────────────────────────
+
 id: foundations
 label: Universal Foundations
 description: >
-  Core lifestyle foundations that benefit every woman in the menopausal
-  transition — hydration, vitamin D, Mediterranean eating pattern, and
-  a clear signpost to discuss HRT and other options with a GP.
+  Core lifestyle foundations that benefit every woman across the full
+  menopause journey — perimenopause, menopause, postmenopause, early
+  menopause, POI, surgical or medical menopause. The specific advice flexes
+  with how she's actually doing (sleep, stress, activity, diet) rather than
+  a fixed rulebook for her stage — but the underlying whole-body, root-cause
+  philosophy holds true throughout, whatever path brought her here.
 
 trigger_all: true
 
 trigger_conditions: []
 
 diet_adjustments:
-  - id: df_mediterranean_pattern
+  - id: df_meal_timing_by_stage
     category: diet
-    title: The Mediterranean pattern — the most-studied diet for menopause
+    title: Meal timing and frequency — different by stage, and by how you're doing
     body: >
-      A Mediterranean-style eating pattern (abundant vegetables, fruit,
-      legumes, whole grains, olive oil, oily fish, and moderate dairy)
-      consistently outperforms other dietary approaches in menopause
-      research — associated with fewer vasomotor symptoms, lower
-      cardiovascular risk, and better mood and cognitive function.
-      It doesn't require eliminating any food group. Think abundance
-      of plants and fish, olive oil as your main fat, and red meat
-      as an occasional choice.
-    priority: high
-    who_for: all
-    targets_symptoms:
-      - hot_flashes
-      - mood_changes
-      - weight_changes
-      - brain_fog
+      In perimenopause, the gold standard is eating breakfast within an hour
+      of waking, in 3 meals a day (4–5 smaller ones if energy is a struggle).
+      In menopause and postmenopause, breaking the fast around 10–11am tends
+      to work better, with 2–3 meals a day.
 
-  - id: df_hydration
-    category: diet
-    title: Drink 2 litres of water a day — more than you think you need
-    body: >
-      Oestrogen decline affects thirst regulation, meaning perimenopausal
-      women often become mildly dehydrated without feeling thirsty.
-      Dehydration worsens brain fog, fatigue, joint stiffness, and skin
-      changes. Keep a 500ml bottle visible on your desk and aim to refill
-      it four times across the day. Herbal teas count. Coffee and
-      alcohol are diuretics and don't count toward your total.
+      But this flexes: if you're struggling with sleep, anxiety, brain fog or
+      low energy, fasting is best avoided altogether at any stage — your body
+      needs consistent fuel, not less of it. More frequent, smaller meals
+      (4–5) tend to serve you better than 2–3 larger ones in that case, and
+      caffeine and alcohol are usually the first things worth reducing, since
+      both directly worsen these exact symptoms.
     priority: high
     who_for: all
     targets_symptoms:
+      - sleep_problems
+      - anxiety
       - brain_fog
       - fatigue
-      - joint_pain
-      - skin_changes
 
-  - id: df_phytoestrogens
+  - id: df_carb_and_eating_order
     category: diet
-    title: Phytoestrogens — plant compounds that weakly mimic oestrogen
+    title: Carbohydrate timing and eating order
     body: >
-      Phytoestrogens (found in soy foods, flaxseed, lentils, and chickpeas)
-      bind weakly to oestrogen receptors and may reduce hot flash frequency
-      in some women. The evidence is modest, but the foods are healthy in
-      their own right. Include fermented soy (edamame, miso, tofu) 2–3
-      times weekly if you are not on tamoxifen or have oestrogen-sensitive
-      conditions — check with your GP in those cases.
+      Most postmenopausal women don't manage carbohydrates well at
+      breakfast — they're generally better tolerated in the afternoon and
+      best avoided or minimised in the evening. This matters less if your
+      overall blood sugar control is already good (e.g. you eat mostly whole
+      foods, low processed).
+
+      A simple, free lever regardless of stage: eat protein and vegetables
+      before carbohydrates at a meal, rather than starting with the carbs.
+      This blunts the blood sugar spike that follows, without changing what
+      you eat — just the order.
     priority: medium
+    who_for: all
+
+  - id: df_evening_eating_window
+    category: diet
+    title: Stop eating 3–5 hours before bed
+    body: >
+      Aim to stop eating 3–5 hours before bed. In summer, with longer
+      daylight hours, eating a little later can work — but this is worth
+      avoiding in winter months, particularly here in the UK.
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - sleep_problems
+
+  - id: df_whole_foods_protein_fibre
+    category: diet
+    title: The core plate — protein, fibre, and colour, at every stage
+    body: >
+      Prioritise whole foods over processed foods, regardless of stage.
+      What to increase: protein at every meal; fibre from vegetables,
+      particularly cruciferous ones (broccoli, cauliflower, kale, cabbage);
+      polyphenol-rich foods; prebiotic foods, and probiotic foods for some
+      women; omega-3s, flaxseeds and chia seeds; and warming foods like
+      ginger, cinnamon, turmeric and red onion.
+    priority: high
+    who_for: all
+    targets_symptoms:
+      - weight_changes
+      - fatigue
+
+  - id: df_hydration_protocol
+    category: diet
+    title: Steady hydration — roughly 2 litres, spread across the day
+    body: >
+      Aim for steady hydration throughout the day rather than large amounts
+      in one go — roughly 2 litres as a general baseline, more if you're
+      active or experiencing night sweats or hot flushes, which increase
+      fluid loss. Start the day with a pint of water on waking — a simple,
+      grounding habit that rehydrates after a night's fast and kickstarts
+      digestion before food. Aim to stop drinking 1–2 hours before bed, to
+      avoid night waking for the bathroom disrupting sleep.
+    priority: high
     who_for: all
     targets_symptoms:
       - hot_flashes
       - night_sweats
+      - sleep_problems
+    disclaimer: >
+      Some women find a pinch of Celtic salt in their water helps with
+      mineral absorption and hydration — check with your GP first if you
+      have high blood pressure or any condition affecting sodium levels.
+
+  - id: df_reduce_sugar_processed_xenoestrogens
+    category: diet
+    title: What to reduce — refined sugar, packaging, and (for some) dairy
+    body: >
+      Refined sugar and ultra-processed foods drive blood sugar swings,
+      inflammation and energy crashes, all of which feed back into the
+      mood/sleep/energy loop. Where possible, choose fresh over heavily
+      packaged or tinned foods, and be mindful of plastic food contact, to
+      reduce xenoestrogen exposure. Excess dairy is worth limiting for some
+      women too, particularly alongside an itching/migraine pattern that can
+      point to histamine sensitivity.
+    priority: medium
+    who_for: all
+
+  - id: df_thyroid_iron_support_foods
+    category: diet
+    title: Thyroid and iron — the two most commonly missed nutritional gaps
+    body: >
+      Thyroid function comes up often alongside menopause symptoms — key
+      food sources worth including are iodine (seaweed, fish, eggs) and
+      selenium (Brazil nuts, just 1–2 a day covers your needs, and fish).
+      Iron deficiency is a common, often-missed cause of fatigue and hair
+      thinning — food sources include red meat, dark leafy greens, lentils
+      and other pulses. Pairing iron-rich plant foods with vitamin C (e.g.
+      lentils with peppers or a squeeze of lemon) helps improve absorption.
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - fatigue
+      - hair_changes
+
+  - id: df_histamine_food_awareness
+    category: diet
+    title: If you notice itching or migraines — histamine may be worth a look
+    body: >
+      If you're experiencing itching or migraines, it's worth trying a
+      reduction in fermented foods, cheese, and alcohol, and increasing
+      foods rich in quercetin and foods that support DAO enzyme activity —
+      this combination tends to point toward a histamine-intolerance
+      pattern, worth flagging to your GP or a practitioner if symptoms
+      persist. Fermented foods (sauerkraut, kefir, kimchi, kombucha) genuinely
+      support a healthy microbiome for many women, but they're also high in
+      histamine, so this is a real trade-off for some — not a silent
+      contradiction with the gut-health advice elsewhere.
+    priority: medium
+    who_for: all
 
 lifestyle_adjustments:
-  - id: lf_move_daily
+  - id: lf_weekly_movement_mix
     category: lifestyle
-    title: Some movement every day — the foundation of everything else
+    title: A weekly mix — incline walking, strength, yoga, Pilates
     body: >
-      Any form of daily physical activity — even 20 minutes of walking
-      — improves sleep quality, mood, hot flash frequency, and metabolic
-      health during menopause. It doesn't have to be formal exercise.
-      Gardening, dancing, housework at pace, taking the stairs — it all
-      counts. Movement is the single intervention with the most consistent
-      evidence across every menopausal symptom category.
+      Walking uphill or on an incline is brilliant for heart health and
+      weight loss, and gentler on joints than running while still building
+      real cardiovascular fitness. Weight training protects muscle mass and
+      bone density, both of which decline faster once oestrogen drops, and
+      also supports blood sugar regulation. Yoga or balance work supports
+      flexibility, nervous system regulation, and balance — increasingly
+      important for fall prevention as we age. Pilates builds core strength
+      and stability, and supports posture and pelvic floor health.
     priority: high
     who_for: all
     targets_symptoms:
-      - fatigue
-      - mood_changes
-      - sleep_problems
       - weight_changes
-      - hot_flashes
+      - joint_pain
+      - fatigue
 
-  - id: lf_alcohol_reduction
+  - id: lf_stair_sprints
     category: lifestyle
-    title: Reducing alcohol makes almost everything better
+    title: 90 seconds of stairs a day
     body: >
-      Alcohol disrupts sleep architecture, worsens hot flashes and night
-      sweats, lowers mood the following day, contributes to weight gain
-      around the abdomen, and increases breast cancer risk. Even one drink
-      per day has measurable effects. You don't need to stop entirely, but
-      reducing to 2–3 units per week (from a daily habit) typically
-      produces noticeable improvements in sleep and hot flash severity
-      within 2–3 weeks.
+      Short bursts like stair walking or running — even just 90 seconds a
+      day — are a brilliant way to improve cardiovascular fitness without
+      needing a long workout.
+    priority: medium
+    who_for: all
+    disclaimer: >
+      Worth a quick GP check first if you have joint issues, high blood
+      pressure, or haven't done intense exercise in a while.
+
+  - id: lf_circadian_light
+    category: lifestyle
+    title: Morning light, evening dimness — the two ends of your body clock
+    body: >
+      Morning bright light exposure — ideally outdoors, within the first
+      hour of waking — helps set the body clock, which supports both sleep
+      quality and daytime mood/energy. In the evening, reduce blue light:
+      screens and overhead LED lighting suppress melatonin production,
+      making it harder to fall asleep and stay asleep. Dim the lights and
+      come off screens (or use blue-light-blocking glasses or night mode)
+      for the hour or two before bed — candles work well in the winter
+      months.
+    priority: high
+    who_for: all
+    targets_symptoms:
+      - sleep_problems
+      - mood_changes
+
+  - id: lf_cold_exposure
+    category: lifestyle
+    title: Cold water exposure
+    body: >
+      Cold showers, wild swimming, splashing your face with cold water,
+      running cold water on your wrists, or simply finishing a shower cold —
+      there's building evidence for mood, energy and stress resilience from
+      this kind of cold exposure.
     priority: medium
     who_for: all
     targets_symptoms:
-      - hot_flashes
-      - night_sweats
-      - sleep_problems
       - mood_changes
-      - weight_changes
+      - fatigue
+
+  - id: lf_postmeal_walk_and_chewing
+    category: lifestyle
+    title: A short walk after eating, and chewing properly
+    body: >
+      Walking after meals — even just 10 minutes — meaningfully blunts
+      blood sugar spikes, which ties back into the mood/energy loop. It
+      sounds small, but chewing each mouthful 30–35 times before swallowing
+      meaningfully improves digestion, blood sugar stability and nutrient
+      absorption, and helps shift the body into a calmer, "rest and digest"
+      state at mealtimes.
+    priority: medium
+    who_for: all
+
+  - id: lf_rebounding_box_jumping
+    category: lifestyle
+    title: Rebounding and box jumping — for bone density
+    body: >
+      Rebounding for 10 minutes a day is a low-impact way to support
+      lymphatic drainage, bone density and cardiovascular fitness, and is
+      easy on the joints compared to running. Box jumping — around 10
+      minutes, 3 times a week — helps build bone density more directly.
+    priority: medium
+    who_for: active_only
+    targets_symptoms:
+      - joint_pain
+
+  - id: lf_vagal_breathwork_and_sauna
+    category: lifestyle
+    title: Breathwork for the vagus nerve, and sauna or heat exposure
+    body: >
+      Simple breathing techniques — box breathing (in for 4, hold for 4,
+      out for 4, hold for 4), the physiological sigh (two short inhales
+      through the nose, one long exhale through the mouth), or humming —
+      activate the vagus nerve and shift the body out of "fight or flight"
+      and into "rest and digest." It takes just a couple of minutes and can
+      be done anywhere. Sauna or heat exposure also has growing evidence for
+      cardiovascular health, and some women find it helps with joint pain
+      and mood.
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - anxiety
+      - joint_pain
+    disclaimer: >
+      If you're prone to hot flushes or already struggle with heat
+      sensitivity, sauna use may need care — shorter sessions, or avoiding
+      it altogether if it triggers symptoms rather than helping.
+
+  - id: lf_nature_and_connection
+    category: lifestyle
+    title: Time in nature, and staying socially connected
+    body: >
+      Time in nature — walking barefoot on grass or sand, or an
+      allotment-type activity — isn't just exercise, it's the grounding,
+      present-moment effect of being outside and doing something with your
+      hands. Strong social connection is linked to better mood, longevity
+      and resilience through hormonal transitions — one of the simplest,
+      most evidence-backed habits there is. Whether that's a regular walk
+      with a friend, a class, or a community, this is a genuine daily or
+      weekly habit worth naming, not just a "nice to have."
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - mood_changes
 
 mindset_recommendations:
   - id: mr_gp_signpost
@@ -117,6 +299,15 @@ mindset_recommendations:
       it is appropriate for you. This app supports your lifestyle — it does
       not replace medical care. Please book an appointment if your symptoms
       are significantly affecting your quality of life.
+
+      This guidance is safe for everyone as a general framework — there's
+      nothing here that's inherently unsuitable. That said, always check
+      with your GP or medical provider first if you're taking any
+      medication (to rule out interactions, particularly with supplements),
+      under the care of a specialist for any condition, or awaiting medical
+      treatment, investigation or a diagnosis. This isn't about gatekeeping
+      the advice — it's about making sure it's layered on top of the right
+      medical oversight, not instead of it.
     priority: high
     who_for: all
 
@@ -133,25 +324,202 @@ mindset_recommendations:
     priority: medium
     who_for: all
 
-supplement_suggestions:
-  - id: ss_vitamin_d_universal
-    category: supplement
-    title: Vitamin D — non-negotiable for bone health and immune function
+  - id: mr_your_window_headline
+    category: mindset
+    title: This is your window
     body: >
-      Vitamin D deficiency is almost universal in the UK population and
-      dramatically accelerates in the menopausal transition as oestrogen
-      decline directly affects bone density. The NHS recommends 400 IU
-      daily from October to March for all adults; women in menopause
-      likely benefit from 1000–2000 IU year-round. Ask your GP for a
-      blood test to establish your baseline.
+      Perimenopause isn't happening to you — it's calling you to act. This
+      is your window of opportunity, not a slow decline, but the moment to
+      take action and change the trajectory of the next 40 years.
+
+      Menopause isn't the end of your window — it's a new one. Who do you
+      want to feel like, be like, 5, 10, 15 years from now? Start practising
+      her now.
     priority: high
     who_for: all
+
+  - id: mr_advice_flexes_to_you
+    category: mindset
+    title: Your plan should flex around how you're doing — not just your stage
+    body: >
+      Sleep, stress, activity levels, diet and genetics all interact, and
+      the right starting point depends on where you actually are, not just
+      what stage you're in. Two women in postmenopause might need
+      completely different advice if one is sleeping well and active, and
+      the other is exhausted, wired, and barely sleeping. Your stage tells
+      us where to start looking; how you're doing in sleep, stress, energy
+      and mood tells us what you actually need. This is also a good moment
+      to look at boundaries — what you're carrying for everyone else, and
+      whether there's room to put yourself back on the list.
+    priority: medium
+    who_for: all
+
+  - id: mr_hormonal_conditions_awareness
+    category: mindset
+    title: Other hormonal imbalances worth ruling out
+    body: >
+      If you have other hormonal imbalances, they can shape what you need
+      here too. Thyroid conditions (hypothyroidism, Hashimoto's,
+      hyperthyroidism) interact closely with oestrogen and progesterone, so
+      symptoms often overlap and amplify each other — a full panel, not just
+      TSH, matters. PCOS, even though usually diagnosed earlier in life,
+      often carries insulin resistance through into perimenopause and
+      menopause, meaning blood sugar stability needs even more attention.
+      Adrenal dysfunction or HPA axis dysregulation — chronic stress
+      affecting cortisol output — competes for the same hormonal building
+      blocks as progesterone, compounding the hormone shifts already
+      happening. Insulin resistance or pre-diabetes is worth naming
+      directly as a hormonal imbalance in its own right, not just a "blood
+      sugar issue." Family history matters too — if your mother or sisters
+      had a particularly difficult perimenopause, early menopause, or
+      conditions like osteoporosis or cardiovascular disease, that's useful
+      information for proactive testing.
+    priority: medium
+    who_for: all
+
+  - id: mr_chronic_illness_pacing
+    category: mindset
+    title: If you're living with long Covid, CFS, or fibromyalgia too
+    body: >
+      All three overlap heavily with perimenopause and menopause symptoms —
+      fatigue, brain fog, poor sleep, mood changes, exercise intolerance —
+      so symptoms can easily be misattributed to hormones alone, delaying
+      proper investigation. Energy pacing matters more here — intense
+      exercise, including short interval bursts, may need to be scaled back
+      if you're experiencing post-exertional symptom flare-ups (a worsening
+      of symptoms after activity, sometimes delayed by a day or two).
+      "Push through it" is the wrong instinct here — with post-exertional
+      symptoms, more activity can set recovery back rather than build
+      resilience. Working alongside your GP or a specialist matters, since
+      standard lifestyle advice may need real modification.
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - fatigue
+      - brain_fog
+
+supplement_suggestions:
+  - id: ss_vitamin_d3_k2
+    category: supplement
+    title: Vitamin D3 (+K2) — ideally guided by a blood test
+    body: >
+      1000–4000 IU/day, ideally guided by a blood test. Look for D3
+      (cholecalciferol) with K2 for proper utilisation. Vitamin D
+      deficiency is almost universal in the UK population and dramatically
+      accelerates in the menopausal transition as oestrogen decline
+      directly affects bone density.
+    priority: high
+    who_for: all
+    targets_symptoms:
+      - fatigue
+      - mood_changes
+      - joint_pain
     disclaimer: >
       Vitamin D toxicity can occur at very high doses (above 4000 IU/day
       long-term). Always test before supplementing above 2000 IU and
       consult your GP if you have kidney disease, hypercalcaemia, or
       sarcoidosis.
-    targets_symptoms:
-      - fatigue
-      - mood_changes
-      - joint_pain
+
+  - id: ss_magnesium_form_guide
+    category: supplement
+    title: Magnesium — the form matters
+    body: >
+      200–400mg/day, started low. Glycinate is gentler on the gut and less
+      likely to cause loose stools — the better choice if the goal is
+      sleep, calm, or nervous system support without a laxative effect.
+      Citrate has a natural laxative effect, so it's the better choice if
+      you're also dealing with constipation or want support with bowel
+      movements — though it may cause loose stools if the dose is too high.
+      Both are better absorbed than magnesium oxide, which is cheaper but
+      poorly absorbed and mostly used for its laxative effect rather than
+      raising magnesium levels.
+    priority: high
+    who_for: all
+    disclaimer: >
+      Supplements are not regulated medicines. Always check with your GP or
+      pharmacist before starting, especially if you take any prescribed
+      medications or have kidney or heart conditions.
+
+  - id: ss_omega3_foundational
+    category: supplement
+    title: Omega-3 (EPA/DHA)
+    body: >
+      1000–2000mg combined EPA/DHA daily. Check the actual EPA/DHA content
+      per capsule, not just total fish oil weight, and look for
+      third-party-tested purity.
+    priority: high
+    who_for: all
+    disclaimer: >
+      Omega-3 at high doses can thin the blood. If you take anticoagulants
+      (warfarin, aspirin, apixaban) or are due for surgery, consult your GP
+      or pharmacist before supplementing.
+
+  - id: ss_b_complex_methylated
+    category: supplement
+    title: B-Complex — look for the active, methylated forms
+    body: >
+      Look for active or methylated forms — methylfolate rather than
+      synthetic folic acid, methylcobalamin rather than synthetic
+      cyanocobalamin. These are better absorbed and used by the body,
+      particularly relevant given how common B12 and folate deficiency are
+      at this life stage.
+    priority: medium
+    who_for: all
+    disclaimer: >
+      Always check with your GP or pharmacist before starting, especially
+      if you take any prescribed medications or have kidney conditions.
+
+  - id: ss_gut_repair_probiotic_prebiotic
+    category: supplement
+    title: Probiotic and prebiotic fibre — for gut health repair
+    body: >
+      A multi-strain probiotic — dose varies by product and CFU count, so
+      look for strains with clinical backing rather than highest CFU alone.
+      Prebiotic fibre (e.g. inulin, PHGG) — start low and build slowly to
+      avoid bloating, particularly if gut health is already compromised.
+    priority: medium
+    who_for: all
+    disclaimer: >
+      Always check with your GP or pharmacist before starting, especially
+      if you take any prescribed medications or have a diagnosed digestive
+      condition.
+
+  - id: ss_digestive_enzymes_hcl
+    category: supplement
+    title: Digestive enzymes and HCL — for bloating, reflux, and absorption
+    body: >
+      Digestive enzymes taken with meals are particularly useful if
+      bloating or discomfort after eating is present. Stomach acid
+      naturally declines with age and through menopause, which can lead to
+      poor protein breakdown, bloating, reflux-like symptoms, and reduced
+      absorption of key nutrients like B12 and iron — HCL (Betaine
+      Hydrochloride) is typically taken with protein-containing meals,
+      starting with 1 capsule and increasing gradually under guidance until
+      you notice a warming sensation in the stomach, at which point you'd
+      drop back to the previous dose.
+    priority: low
+    who_for: all
+    disclaimer: >
+      HCL is not suitable for everyone — particularly anyone with active
+      ulcers, gastritis, or taking anti-inflammatory medications — so it
+      needs a GP or practitioner check before starting.
+
+  - id: ss_calcium_d_glucarate
+    category: supplement
+    title: Calcium D-Glucarate — supporting healthy oestrogen clearance
+    body: >
+      Commonly 500mg–1g/day. Helps the liver clear excess oestrogen out of
+      the body properly, rather than it being reabsorbed back through the
+      gut. This is particularly useful if you have a history of
+      oestrogen-dominant conditions like endometriosis, adenomyosis or
+      fibroids, or if you've been focusing on supporting healthy oestrogen
+      clearance more generally — women with this history have often spent
+      years managing a higher oestrogen load, so supporting clearance
+      (liver function, fibre, cruciferous vegetables, reducing alcohol and
+      xenoestrogen exposure) matters even more through perimenopause.
+    priority: medium
+    who_for: all
+    disclaimer: >
+      Always check with your GP or pharmacist before starting, especially
+      if you take any prescribed medications or have a personal or family
+      history of hormone-sensitive conditions.
