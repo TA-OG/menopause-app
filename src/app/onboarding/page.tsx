@@ -25,6 +25,7 @@ import {
   CONTINENT_OPTIONS,
   CONTINENT_TO_GROUPS,
   COMMUNITY_OPTIONS,
+  COUNTRY_OPTIONS,
   TIMEZONE_OPTIONS,
   type OnboardingStep,
   type AnswerMap,
@@ -513,6 +514,22 @@ function LocationStep({
           placeholder="e.g. London, Lagos, Toronto"
           className="w-full border border-gray-200 rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-300"
         />
+      </div>
+
+      <div>
+        <label className="text-sm font-medium text-gray-700 block mb-1.5">Country</label>
+        <select
+          value={(answers.country as string) ?? ''}
+          onChange={(e) => setAnswers((a) => ({ ...a, country: e.target.value }))}
+          className="w-full border border-gray-200 rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-300 bg-white"
+        >
+          <option value="">Select your country</option>
+          {COUNTRY_OPTIONS.map((c) => (
+            <option key={c.value} value={c.value}>
+              {c.label}
+            </option>
+          ))}
+        </select>
       </div>
 
       <div>

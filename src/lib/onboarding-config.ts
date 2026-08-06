@@ -437,6 +437,21 @@ export const CONTINENT_TO_GROUPS: Record<string, string[]> = {
   other: ['Other'],
 }
 
+/**
+ * ISO 3166-1 alpha-2 codes — must match the keys in LOCATION_FILE_MAP
+ * (src/lib/community-map.ts). This is deliberately a short list: it only
+ * needs to cover countries that have (or are planned to have) a location
+ * modifier file. 'other' means no location modifier is loaded — that's a
+ * safe, honest default, not a gap to fill with an exhaustive country list.
+ */
+export const COUNTRY_OPTIONS: Choice[] = [
+  { value: 'GB', label: 'United Kingdom' },
+  { value: 'US', label: 'United States' },
+  { value: 'CA', label: 'Canada' },
+  { value: 'AU', label: 'Australia' },
+  { value: 'other', label: 'Somewhere else' },
+]
+
 export const TIMEZONE_OPTIONS: Array<{ group: string; options: Choice[] }> = [
   { group: 'UK & Ireland', options: [{ value: 'Europe/London', label: 'London / Dublin (GMT / BST)' }] },
   {
