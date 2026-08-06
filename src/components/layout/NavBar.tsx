@@ -12,10 +12,18 @@ const NAV_ITEMS = [
 export default function NavBar() {
   return (
     <>
-      {/* Top bar with logo */}
+      {/* Top bar with logo + profile/account access (incl. sign out) */}
       <header className="fixed top-0 left-0 right-0 bg-white border-b border-gray-100 z-50">
-        <div className="flex items-center justify-center max-w-lg mx-auto px-4 py-2">
+        <div className="grid grid-cols-[1fr_auto_1fr] items-center max-w-lg mx-auto px-4 py-2">
+          <span />
           <Logo size="sm" />
+          <Link
+            href="/profile"
+            aria-label="Profile and account settings"
+            className="justify-self-end text-xl leading-none p-1.5 rounded-full hover:bg-brand-50 transition-colors"
+          >
+            👤
+          </Link>
         </div>
       </header>
 
