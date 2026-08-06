@@ -149,18 +149,148 @@ supplement_suggestions:
       anticoagulants (warfarin, aspirin, apixaban) or are due for surgery,
       consult your GP or pharmacist before supplementing.
 
-  - id: ss_collagen_peptides
+  - id: ss_collagen_type2_joints
     category: supplement
-    title: Collagen peptides — joint and connective tissue support
+    title: Collagen Type II — specifically for joint cartilage
     body: >
-      Hydrolysed collagen peptides (10–15g daily in a hot drink or smoothie)
-      have emerging evidence for reducing joint pain and improving skin
-      elasticity. The evidence is not as strong as omega-3 but it is
-      well-tolerated and generally safe. Look for products with Verisol or
-      UC-II standardised collagen.
+      Commonly 10g/day of hydrolysed collagen. Look for Type II specifically
+      (e.g. UC-II standardised collagen) — distinct from the Type I collagen
+      used for hair, skin and nails, Type II specifically supports joint
+      cartilage. Worth remembering: collagen is a protein, so your body
+      needs adequate stomach acid and digestive enzymes to properly break it
+      down and absorb it, even in hydrolysed form — if digestion is already
+      compromised, it may not be absorbed as well as expected.
     priority: medium
     who_for: all
     disclaimer: >
       Collagen supplements are generally safe for most adults. If you have a
       fish or shellfish allergy, check the source of the collagen.
       Consult your GP before use if you have any ongoing health conditions.
+
+  - id: ss_curcumin_joints
+    category: supplement
+    title: Curcumin — for joint pain and stiffness
+    body: >
+      Commonly 500mg, 2–4x/day, with piperine (black pepper extract) for
+      absorption. Well-researched anti-inflammatory, often used specifically
+      for joint pain and stiffness.
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - joint_pain
+    disclaimer: >
+      Always check with your GP or pharmacist before starting, especially
+      if you take any prescribed medications.
+
+  - id: ss_glucosamine_chondroitin
+    category: supplement
+    title: Glucosamine and Chondroitin
+    body: >
+      Commonly 1500mg glucosamine plus 1200mg chondroitin per day. A
+      traditional joint-support combination, with some evidence for
+      cartilage support and reducing joint discomfort, particularly in
+      osteoarthritis.
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - joint_pain
+    disclaimer: >
+      Caution if you have a shellfish allergy, as glucosamine is often
+      shellfish-derived. Consult your GP before use.
+
+  - id: ss_msm_joints
+    category: supplement
+    title: MSM (Methylsulfonylmethane)
+    body: >
+      Commonly 1–3g/day. Some evidence for reducing joint pain and
+      inflammation.
+    priority: low
+    who_for: all
+    targets_symptoms:
+      - joint_pain
+    disclaimer: >
+      Always check with your GP or pharmacist before starting, especially
+      if you take any prescribed medications.
+
+  - id: ss_wobenzym_joints
+    category: supplement
+    title: Wobenzym — systemic enzyme blend for joint pain and recovery
+    body: >
+      A systemic enzyme blend (proteases including bromelain, trypsin,
+      chymotrypsin), commonly 3–6 tablets, 2–3x/day on an empty stomach —
+      taken between meals, not with food, so the enzymes work systemically
+      rather than just digestively. Well-researched for joint pain,
+      inflammation and recovery support.
+    priority: low
+    who_for: all
+    targets_symptoms:
+      - joint_pain
+    disclaimer: >
+      Can interact with blood-thinning medications — needs a GP check
+      first, particularly if you're on anticoagulants or aspirin.
+
+  - id: ss_berberine_weight
+    category: supplement
+    title: Berberine — for blood sugar and metabolic health
+    body: >
+      Commonly 500mg, 2–3x/day before meals. Supports blood sugar
+      regulation and metabolic health.
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - weight_changes
+    disclaimer: >
+      Can interact with blood sugar and blood pressure medications — this
+      one especially needs a GP check first.
+
+  - id: ss_myo_inositol_weight
+    category: supplement
+    title: Myo-Inositol — for insulin sensitivity and blood sugar balance
+    body: >
+      Commonly 2–4g/day. Supports insulin sensitivity and blood sugar
+      balance. Also well-studied for PCOS, where insulin resistance is
+      often a core driver.
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - weight_changes
+    disclaimer: >
+      Always check with your GP or pharmacist before starting, especially
+      if you take any prescribed medications.
+
+  - id: ss_protein_fibre_weight
+    category: supplement
+    title: Protein powder and fibre supplements
+    body: >
+      Protein powder (whey, pea, or collagen-based) is not a fat-loss
+      supplement in itself, but supports satiety, muscle maintenance and
+      blood sugar stability when protein intake from food alone is hard to
+      hit. A fibre supplement (e.g. PHGG, psyllium) supports satiety and
+      blood sugar stability too, particularly useful if you're not yet
+      consistently hitting fibre targets from food.
+    priority: medium
+    who_for: all
+    targets_symptoms:
+      - weight_changes
+    disclaimer: >
+      Always check with your GP or pharmacist before starting, especially
+      if you take any prescribed medications or have a diagnosed digestive
+      condition.
+
+  - id: ss_green_tea_ala_weight
+    category: supplement
+    title: Green tea extract and Alpha-Lipoic Acid — for metabolic support
+    body: >
+      Green tea extract (EGCG), commonly 250–500mg/day, has modest evidence
+      for metabolic support. Alpha-Lipoic Acid (ALA), commonly 300–600mg/day,
+      supports blood sugar regulation and insulin sensitivity, and acts as
+      an antioxidant supporting cellular energy production.
+    priority: low
+    who_for: all
+    targets_symptoms:
+      - weight_changes
+    disclaimer: >
+      Green tea extract needs caution with liver conditions or caffeine
+      sensitivity. ALA can interact with blood sugar and thyroid
+      medications — this one especially needs a GP check first if you're
+      on either.

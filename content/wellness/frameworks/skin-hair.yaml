@@ -145,14 +145,19 @@ mindset_recommendations:
 supplement_suggestions:
   - id: ss_collagen_skin
     category: supplement
-    title: Hydrolysed collagen peptides — emerging evidence for skin and hair
+    title: Hydrolysed collagen — emerging evidence for skin, hair and nails
     body: >
-      Hydrolysed marine collagen peptides (10g daily in a hot drink or
-      smoothie) have a growing body of randomised trial evidence for
-      improving skin elasticity, hydration, and wrinkle depth at 8–12
-      weeks. Some trials show improvements in nail growth and strength.
-      Hair evidence is weaker. Look for Verisol or PEPTAN branded collagen
-      which are the most studied formulations.
+      Commonly 10g/day. Look for hydrolysed Type I bovine collagen —
+      hydrolysed means it's been broken down into smaller peptides your
+      body can actually absorb and use, and Type I is the most abundant
+      collagen type, supporting skin, hair, nails, joints, bones and gut
+      lining. Natural collagen production declines with age, so
+      supplementing helps support the body's ongoing repair and renewal.
+      Worth remembering: collagen is a protein, so your body needs
+      adequate stomach acid and digestive enzymes to properly break it
+      down and absorb it — even a hydrolysed form. If digestion is already
+      compromised, it may not be absorbed as well as expected until that's
+      addressed.
     priority: medium
     who_for: all
     disclaimer: >
@@ -162,6 +167,37 @@ supplement_suggestions:
       any ongoing health conditions.
     targets_symptoms:
       - skin_changes
+      - hair_changes
+
+  - id: ss_zinc_hair
+    category: supplement
+    title: Zinc — for hair growth and repair
+    body: >
+      Commonly 10–30mg/day. Supports hair growth and repair. Shouldn't be
+      taken long-term at high doses without monitoring, as excess zinc can
+      deplete copper.
+    priority: medium
+    who_for: all
+    disclaimer: >
+      Always check with your GP or pharmacist before starting, especially
+      if you take any prescribed medications.
+    targets_symptoms:
+      - hair_changes
+
+  - id: ss_iron_hair
+    category: supplement
+    title: Iron — only if bloods confirm deficiency
+    body: >
+      Low iron is a common, often-missed cause of hair thinning and
+      shedding at this life stage — but this is only worth supplementing
+      if bloods confirm a deficiency, not on assumption. Ask for a
+      ferritin test specifically, not just haemoglobin.
+    priority: medium
+    who_for: all
+    disclaimer: >
+      Always get levels checked by your GP before supplementing iron —
+      unnecessary iron supplementation can cause its own problems.
+    targets_symptoms:
       - hair_changes
 
   - id: ss_biotin_hair

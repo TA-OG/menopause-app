@@ -104,6 +104,18 @@ lifestyle_adjustments:
     who_for: all
 
 mindset_recommendations:
+  - id: mr_flush_not_just_supplements
+    category: mindset
+    title: Hot flushes aren't just a supplement problem
+    body: >
+      Gut health and blood sugar stability play a real role too. Poor
+      oestrogen clearance (often a gut or liver issue) and blood sugar
+      swings (which trigger adrenaline and can bring on or worsen flushes)
+      are often underlying drivers. Addressing those foundations often does
+      more for flush frequency and severity than any single supplement.
+    priority: medium
+    who_for: all
+
   - id: mr_flush_normalise
     category: mindset
     title: Reframe the flush — anxiety makes them worse
@@ -159,15 +171,57 @@ supplement_suggestions:
 
   - id: ss_sage_extract
     category: supplement
-    title: Sage extract — modest evidence for flush reduction
+    title: Sage — for hot flushes and night sweats
     body: >
       Sage (Salvia officinalis) standardised extract has a small body of
       clinical evidence showing a modest reduction in hot flush frequency.
-      Studies typically used 300–600mg daily. Effects take 4–8 weeks to build.
-      Not a replacement for HRT if flushes are severe.
+      Studies typically used 300–600mg daily, or you can take it as a tea
+      before bed — sage has traditionally been used specifically for
+      excessive sweating, including night sweats. Effects take 4–8 weeks to
+      build. Not a replacement for HRT if flushes are severe.
     priority: medium
     who_for: all
     disclaimer: >
       Sage supplements can interact with some medications including anticonvulsants
       and diabetes drugs. Not suitable during pregnancy. Consult your GP before
       use, particularly if you have any ongoing health conditions.
+
+  - id: ss_omega3_vasomotor
+    category: supplement
+    title: Omega-3 (EPA/DHA) — for hot flushes and night sweats
+    body: >
+      Some evidence for reducing the frequency and severity of vasomotor
+      symptoms — hot flushes and night sweats — alongside its other
+      general health benefits.
+    priority: medium
+    who_for: all
+    disclaimer: >
+      Omega-3 at high doses can thin the blood. If you take anticoagulants
+      (warfarin, aspirin, apixaban) or are due for surgery, consult your GP
+      or pharmacist before supplementing.
+
+  - id: ss_vitamin_e_vasomotor
+    category: supplement
+    title: Vitamin E — for vasomotor symptoms
+    body: >
+      Commonly 400 IU/day. Some evidence for reducing the frequency and
+      severity of vasomotor symptoms, including night sweats.
+    priority: low
+    who_for: all
+    disclaimer: >
+      Always check with your GP or pharmacist before starting, especially
+      if you take any prescribed medications.
+
+  - id: ss_maca_hot_flushes
+    category: supplement
+    title: Maca — for hormone balance, energy, mood and libido
+    body: >
+      Maca (e.g. Dr Anna Cabeca's formulations, or standard maca root
+      powder or capsules) supports hormone balance, energy, mood and
+      libido for many women.
+    priority: low
+    who_for: all
+    disclaimer: >
+      Caution needed if you have autoimmune conditions — maca can stimulate
+      the immune system and may aggravate autoimmune flares. Worth a GP or
+      specialist check first if this applies to you.
