@@ -29,6 +29,44 @@ export default async function AdminPage() {
   return (
     <div className="space-y-8">
 
+      {/* Performance dashboard */}
+      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4">
+        <div className="flex items-center justify-between gap-4">
+          <div className="flex-1">
+            <p className="text-sm font-medium text-gray-800">Performance dashboard</p>
+            <p className="text-xs text-gray-500 mt-0.5">
+              App performance by jurisdiction, and per-country access control —
+              turn each market Off, Info Only (no personalised plan), or Live.
+            </p>
+          </div>
+          <a
+            href="/admin/dashboard"
+            className="text-xs bg-brand-900 text-white px-3 py-1.5 rounded-lg hover:bg-brand-800 transition-colors whitespace-nowrap"
+          >
+            Open dashboard →
+          </a>
+        </div>
+      </div>
+
+      {/* App monitoring */}
+      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4">
+        <div className="flex items-center justify-between gap-4">
+          <div className="flex-1">
+            <p className="text-sm font-medium text-gray-800">App monitoring</p>
+            <p className="text-xs text-gray-500 mt-0.5">
+              Self-hosted error tracking &amp; performance — recent errors with stack traces,
+              error rate, and the slowest routes. Our own lightweight Sentry, no third party.
+            </p>
+          </div>
+          <a
+            href="/admin/monitoring"
+            className="text-xs bg-brand-900 text-white px-3 py-1.5 rounded-lg hover:bg-brand-800 transition-colors whitespace-nowrap"
+          >
+            Open monitoring →
+          </a>
+        </div>
+      </div>
+
       {/* Content intake */}
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4">
         <div className="flex items-center justify-between gap-4">
@@ -36,7 +74,8 @@ export default async function AdminPage() {
             <p className="text-sm font-medium text-gray-800">Content intake</p>
             <p className="text-xs text-gray-500 mt-0.5">
               Guided questionnaire for capturing Pamela&apos;s advice, one topic at a time.
-              Plain English — no code. Answers feed the wellness frameworks.
+              Plain English — no code. Answers feed the wellness frameworks. Upload her
+              studies and documents, and record the references that back them, per topic.
             </p>
           </div>
           <a

@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { getUserAccess } from '@/lib/access'
 import { sanitizeError } from '@/lib/sanitize-error'
 import { rateLimit } from '@/lib/rate-limit'
+import { withMonitoring, recordEvent } from '@/lib/monitoring'
 import { z } from 'zod'
 
 const JournalEntrySchema = z.object({
@@ -14,7 +16,7 @@ const JournalEntrySchema = z.object({
   would_continue: z.boolean().optional().nullable(),
 })
 
-export async function POST(request: NextRequest) {
+async function postHandler(request: NextRequest) {
   const { success } = rateLimit(request, { limit: 20, windowMs: 60_000 })
   if (!success) return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
 
@@ -39,11 +41,17 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ data }, { status: 201 })
   } catch (err) {
+    await recordEvent({
+      type: 'error', route: '/api/journal', method: 'POST', status: 500,
+      message: err instanceof Error ? err.message : String(err),
+      stack: err instanceof Error ? err.stack ?? null : null,
+      userId: user.id,
+    })
     return NextResponse.json({ error: sanitizeError(err) }, { status: 500 })
   }
 }
 
-export async function GET(request: NextRequest) {
+async function getHandler(request: NextRequest) {
   const { success } = rateLimit(request, { limit: 30, windowMs: 60_000 })
   if (!success) return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
 
@@ -51,14 +59,8 @@ export async function GET(request: NextRequest) {
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
-  // Check tier — free users get last 7 days only
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('subscription_tier')
-    .eq('id', user.id)
-    .single()
-
-  const isPremium = profile?.subscription_tier === 'premium'
+  // Check tier — free users get last 7 days only (admins get full access)
+  const { isPremium } = await getUserAccess(supabase, user.id)
   const { searchParams } = new URL(request.url)
   const limit = Math.min(parseInt(searchParams.get('limit') ?? '20'), 50)
 
@@ -78,7 +80,16 @@ export async function GET(request: NextRequest) {
 
   const { data, error } = await query
 
-  if (error) return NextResponse.json({ error: sanitizeError(error) }, { status: 500 })
+  if (error) {
+    await recordEvent({
+      type: 'error', route: '/api/journal', method: 'GET', status: 500,
+      message: error.message, userId: user.id,
+    })
+    return NextResponse.json({ error: sanitizeError(error) }, { status: 500 })
+  }
 
   return NextResponse.json({ data, limited: !isPremium })
 }
+
+export const POST = withMonitoring('/api/journal', postHandler)
+export const GET = withMonitoring('/api/journal', getHandler)

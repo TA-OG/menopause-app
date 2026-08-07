@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server'
+import { getUserAccess } from '@/lib/access'
 import { redirect, notFound } from 'next/navigation'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
@@ -12,13 +13,7 @@ export default async function ArticlePage({
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/auth/sign-in')
 
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('subscription_tier')
-    .eq('id', user.id)
-    .single()
-
-  const isPremium = profile?.subscription_tier === 'premium'
+  const { isPremium } = await getUserAccess(supabase, user.id)
 
   const { data: article } = await supabase
     .from('content_modules')

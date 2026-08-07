@@ -1,9 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { getUserAccess } from '@/lib/access'
 import { sanitizeError } from '@/lib/sanitize-error'
 import { rateLimit } from '@/lib/rate-limit'
+import { withMonitoring, recordEvent } from '@/lib/monitoring'
 
-export async function GET(request: NextRequest) {
+async function getHandler(request: NextRequest) {
   const { success } = rateLimit(request, { limit: 30, windowMs: 60_000 })
   if (!success) return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
 
@@ -15,13 +17,7 @@ export async function GET(request: NextRequest) {
   const category = searchParams.get('category')
   const slug = searchParams.get('slug')
 
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('subscription_tier')
-    .eq('id', user.id)
-    .single()
-
-  const isPremium = profile?.subscription_tier === 'premium'
+  const { isPremium } = await getUserAccess(supabase, user.id)
 
   try {
     let query = supabase
@@ -49,6 +45,14 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ data, is_premium: isPremium })
   } catch (err) {
+    await recordEvent({
+      type: 'error', route: '/api/content', method: 'GET', status: 500,
+      message: err instanceof Error ? err.message : String(err),
+      stack: err instanceof Error ? err.stack ?? null : null,
+      userId: user.id,
+    })
     return NextResponse.json({ error: sanitizeError(err) }, { status: 500 })
   }
 }
+
+export const GET = withMonitoring('/api/content', getHandler)
