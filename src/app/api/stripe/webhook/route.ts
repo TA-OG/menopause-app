@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { qualifyReferral, consumeBankedMonths } from '@/lib/referral-rewards'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2024-04-10',
@@ -76,6 +77,15 @@ export async function POST(request: NextRequest) {
               stripe_subscription_id: session.subscription as string,
             })
             .eq('id', userId)
+
+          // Redeem any banked referral months consumed as this subscription's
+          // trial period, then check whether this user's own signup was a
+          // referral that has now qualified (first successful payment).
+          const consumedMonths = Number(subscription.metadata?.referral_trial_months_consumed ?? 0)
+          if (consumedMonths > 0) {
+            await consumeBankedMonths(admin, userId, consumedMonths)
+          }
+          await qualifyReferral(admin, userId)
         } else {
           console.error('checkout.session.completed: no supabase_user_id in metadata', event.id)
         }

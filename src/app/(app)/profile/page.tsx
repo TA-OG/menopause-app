@@ -75,6 +75,17 @@ export default async function ProfilePage() {
         </div>
       )}
 
+      {/* Referrals */}
+      <a
+        href="/refer"
+        className="block bg-brand-50 border border-brand-200 rounded-2xl p-5 hover:bg-brand-100 transition-colors"
+      >
+        <p className="font-semibold text-brand-900">🎁 Invite friends, get a free month</p>
+        <p className="text-brand-700 text-sm mt-1">
+          You and your friend both get a free month. Stack up to 6.
+        </p>
+      </a>
+
       {/* Update plan */}
       <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
         <p className="font-semibold text-gray-900 mb-1">Update your wellness plan</p>

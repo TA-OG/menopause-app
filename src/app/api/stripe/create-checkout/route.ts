@@ -45,9 +45,15 @@ export async function POST(request: NextRequest) {
     // Get or create Stripe customer
     const { data: profile } = await supabase
       .from('profiles')
-      .select('stripe_customer_id, full_name')
+      .select('stripe_customer_id, full_name, referral_months_banked')
       .eq('id', user.id)
       .single()
+
+    // Banked referral months (earned before this user had a subscription to
+    // extend directly) are redeemed now as a trial period on the new
+    // subscription. Consumed exactly once the subscription is confirmed —
+    // see the referral_trial_months_consumed handling in the Stripe webhook.
+    const bankedMonths = profile?.referral_months_banked ?? 0
 
     let customerId = profile?.stripe_customer_id
 
@@ -96,7 +102,11 @@ export async function POST(request: NextRequest) {
       success_url: `${appUrl}/dashboard?upgraded=true`,
       cancel_url: `${appUrl}/pay`,
       subscription_data: {
-        metadata: { supabase_user_id: user.id },
+        metadata: {
+          supabase_user_id: user.id,
+          ...(bankedMonths > 0 ? { referral_trial_months_consumed: String(bankedMonths) } : {}),
+        },
+        ...(bankedMonths > 0 ? { trial_period_days: bankedMonths * 30 } : {}),
       },
     })
 

@@ -60,6 +60,17 @@ export default async function DashboardPage() {
         </p>
       </div>
 
+      {/* Referral promo */}
+      <a
+        href="/refer"
+        className="block bg-brand-50 border border-brand-200 rounded-2xl p-5 hover:bg-brand-100 transition-colors"
+      >
+        <p className="font-semibold text-brand-900">🎁 Invite a friend, get a free month</p>
+        <p className="text-brand-700 text-sm mt-1">
+          You both get one month free — stack up to 6 referrals.
+        </p>
+      </a>
+
       {/* Upgrade prompt for free users */}
       {!isPremium && (
         <div className="bg-blush-50 border border-blush-200 rounded-2xl p-5">

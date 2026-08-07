@@ -35,7 +35,7 @@ export default function PrivacyPage() {
           </Link>
           <h1 className="text-3xl font-bold text-brand-900 mt-4 mb-2">Privacy Policy</h1>
           <p className="text-gray-500 text-sm">
-            Last updated: 12 May 2026 &nbsp;·&nbsp; Effective: 12 May 2026
+            Last updated: 7 August 2026 &nbsp;·&nbsp; Effective: 7 August 2026
           </p>
         </div>
 
@@ -55,11 +55,21 @@ export default function PrivacyPage() {
         <Section title="1. Who we are">
           <p>
             Aunty Mel is a digital wellness platform designed to support women through
-            perimenopause and menopause. It is operated by <strong>Aunty Mel Ltd</strong>
-            {' '}(a company registered in England and Wales).
+            perimenopause and menopause. The app is built and operated by{' '}
+            <strong>Velanium Holdings Ltd</strong> (company number 17285945), a company
+            registered in England and Wales with its registered office at 3rd Floor,
+            86-90 Paul St, London, United Kingdom, EC2A 4NE.
           </p>
           <p>
-            <strong>Data controller:</strong> Aunty Mel Ltd<br />
+            Your personal data is managed on our behalf by{' '}
+            <strong>THEOKELLOGROUP.COM LTD</strong>, which acts as the data controller for
+            Aunty Mel and is registered with the UK Information Commissioner&apos;s Office
+            (ICO registration number: <em>[ICO registration number pending — to be added
+            before this policy goes live]</em>).
+          </p>
+          <p>
+            <strong>Data controller:</strong> THEOKELLOGROUP.COM LTD<br />
+            <strong>Data Protection Officer:</strong> Allan Okello<br />
             <strong>Contact:</strong>{' '}
             <a href="mailto:privacy@auntymel.app" className="text-brand-600 underline">
               privacy@auntymel.app
@@ -67,7 +77,8 @@ export default function PrivacyPage() {
           </p>
           <p>
             References to &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo; in this
-            policy mean Aunty Mel Ltd.
+            policy mean THEOKELLOGROUP.COM LTD, unless the context clearly refers to Velanium
+            Holdings Ltd as the app operator.
           </p>
         </Section>
 
@@ -106,6 +117,17 @@ export default function PrivacyPage() {
             </p>
           </SubSection>
 
+          <SubSection title="Referral program data">
+            <p>
+              If you use our referral program, we collect and store your personal referral
+              code, the link between you and anyone who signs up using it, and whether that
+              referral has qualified for a reward. We use this only to credit free months to
+              the correct accounts and to detect abuse of the program (e.g. duplicate or
+              fake accounts). It is not shared with the friends you refer beyond confirming
+              that a referral was made.
+            </p>
+          </SubSection>
+
           <SubSection title="Usage data">
             <p>
               We collect basic usage information — pages visited, features used, and error logs —
@@ -137,6 +159,7 @@ export default function PrivacyPage() {
                   ['Creating and managing your account', 'Contract'],
                   ['Personalising your wellness plan', 'Explicit consent (health data)'],
                   ['Processing your subscription payment', 'Contract'],
+                  ['Running the referral program (crediting free months, preventing abuse)', 'Contract / Legitimate interests'],
                   ['Sending transactional emails (magic links, receipts)', 'Contract'],
                   ['Sending wellness tips and updates (if opted in)', 'Consent'],
                   ['Improving the app and fixing bugs', 'Legitimate interests'],
@@ -331,7 +354,8 @@ export default function PrivacyPage() {
             Questions, requests, or concerns about your privacy? We&apos;d love to hear from you:
           </p>
           <div className="bg-white rounded-2xl p-4 border border-gray-100 mt-2 text-sm">
-            <p className="font-semibold text-gray-900">Aunty Mel — Privacy Team</p>
+            <p className="font-semibold text-gray-900">THEOKELLOGROUP.COM LTD</p>
+            <p className="text-gray-600 mt-1">Data Protection Officer: Allan Okello</p>
             <p className="text-gray-600 mt-1">
               Email:{' '}
               <a href="mailto:privacy@auntymel.app" className="text-brand-600 underline">
