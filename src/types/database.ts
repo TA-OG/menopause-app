@@ -75,6 +75,7 @@ export interface ReferralReward {
   status: ReferralRewardStatus
   application_method: 'stripe_trial_extension' | 'banked_credit' | null
   applied_at: string | null
+  notified_at: string | null
   created_at: string
 }
 

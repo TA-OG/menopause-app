@@ -168,6 +168,13 @@ async function grantReward(
  * on top of their current paid-through/trial date, not a replacement of it.
  * If they have no subscription yet, the months are banked on their profile
  * and consumed as a trial period on their next checkout.
+ *
+ * Important: this function never sets profiles.subscription_tier/status
+ * itself. A user with no subscription only gets a banked credit — actual
+ * premium access still requires them to complete a real Stripe Checkout
+ * (which always collects a card, see payment_method_collection: 'always'
+ * in create-checkout) and only ever gets flipped on by the Stripe webhook.
+ * A referral can make a month free; it can never skip requiring a card.
  */
 async function applyReward(
   admin: SupabaseClient,

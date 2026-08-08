@@ -98,6 +98,12 @@ export async function POST(request: NextRequest) {
       customer: customerId,
       mode: 'subscription',
       payment_method_types: ['card'],
+      // Explicit, not left to Stripe's default: a referral-banked free trial
+      // must still require a card on file — the user is charged £0 for the
+      // trial period, not let in without a payment method. Without this,
+      // Stripe's handling of payment_method_collection for trial subscriptions
+      // could otherwise skip card collection entirely.
+      payment_method_collection: 'always',
       line_items: [{ price: priceId as string, quantity: 1 }],
       success_url: `${appUrl}/dashboard?upgraded=true`,
       cancel_url: `${appUrl}/pay`,
