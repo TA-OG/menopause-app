@@ -64,8 +64,7 @@ export default function PrivacyPage() {
             Your personal data is managed on our behalf by{' '}
             <strong>THEOKELLOGROUP.COM LTD</strong>, which acts as the data controller for
             Aunty Mel and is registered with the UK Information Commissioner&apos;s Office
-            (ICO registration number: <em>[ICO registration number pending — to be added
-            before this policy goes live]</em>).
+            (ICO registration reference: <strong>ZB547251</strong>).
           </p>
           <p>
             <strong>Data controller:</strong> THEOKELLOGROUP.COM LTD<br />
