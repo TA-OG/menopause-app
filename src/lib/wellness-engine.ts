@@ -140,12 +140,31 @@ function deduplicateRecommendations(
 
 const PRIORITY_ORDER = { high: 0, medium: 1, low: 2 }
 
+/**
+ * Sort by priority tier (high → medium → low), then — within a tier — by
+ * whether the recommendation targets the user's primary symptom.
+ *
+ * Without the second key, ties fall back to Array.sort's stable order, which
+ * is just "framework array order" (effectively alphabetical by YAML
+ * filename). That silently let e.g. bone-cardiovascular.yaml's diet items
+ * dominate the free-tier "top 3" teaser regardless of what the user actually
+ * said bothered them most, making boostForPrimarySymptom's priority bump
+ * largely ineffective for anyone whose primary symptom wasn't in an
+ * alphabetically-early framework.
+ */
 function sortByPriority(
-  recs: WellnessRecommendation[]
+  recs: WellnessRecommendation[],
+  primarySymptom?: string
 ): WellnessRecommendation[] {
-  return [...recs].sort(
-    (a, b) => PRIORITY_ORDER[a.priority] - PRIORITY_ORDER[b.priority]
-  )
+  return [...recs].sort((a, b) => {
+    const priorityDiff = PRIORITY_ORDER[a.priority] - PRIORITY_ORDER[b.priority]
+    if (priorityDiff !== 0) return priorityDiff
+    if (!primarySymptom) return 0
+
+    const aTargets = a.targets_symptoms?.includes(primarySymptom) ? 0 : 1
+    const bTargets = b.targets_symptoms?.includes(primarySymptom) ? 0 : 1
+    return aTargets - bTargets
+  })
 }
 
 // ─── Plan building ────────────────────────────────────────────────────────────
@@ -175,7 +194,8 @@ export function buildPlan(
           preferences
         ),
         primarySymptom
-      )
+      ),
+      primarySymptom,
     )
   }
 

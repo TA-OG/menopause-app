@@ -94,6 +94,31 @@ describe('buildPlan', () => {
     expect(plan.lifestyle_adjustments[1].priority).toBe('medium')
     expect(plan.lifestyle_adjustments[2].priority).toBe('low')
   })
+
+  it('within the same priority tier, surfaces recs targeting the primary symptom first', () => {
+    // Both 'high' priority — file order alone would put 'other-high' first.
+    // Regression test for the bug found during the intake->plan accuracy
+    // audit: free-tier top-3 was dominated by whichever framework happened
+    // to sort first alphabetically, ignoring the user's stated primary
+    // symptom entirely.
+    const framework: WellnessFramework = {
+      ...mockFramework,
+      lifestyle_adjustments: [
+        { id: 'other-high', title: 'Unrelated', body: '', priority: 'high', category: 'lifestyle' },
+        {
+          id: 'targeted-high',
+          title: 'Targets hot flashes',
+          body: '',
+          priority: 'high',
+          category: 'lifestyle',
+          targets_symptoms: ['hot_flashes'],
+        },
+      ],
+    }
+    const plan = buildPlan([framework], {}, 'hot_flashes')
+    expect(plan.lifestyle_adjustments[0].id).toBe('targeted-high')
+    expect(plan.lifestyle_adjustments[1].id).toBe('other-high')
+  })
 })
 
 describe('applyTierGating', () => {
@@ -117,6 +142,29 @@ describe('applyTierGating', () => {
       gated.lifestyle_adjustments.length +
       gated.mindset_recommendations.length
     expect(total).toBeLessThanOrEqual(3)
+  })
+
+  it('free-tier top 3 includes the primary-symptom-relevant rec, not just file order', () => {
+    const framework: WellnessFramework = {
+      ...mockFramework,
+      diet_adjustments: [
+        { id: 'd1', title: 'Unrelated 1', body: '', priority: 'high', category: 'diet' },
+        { id: 'd2', title: 'Unrelated 2', body: '', priority: 'high', category: 'diet' },
+        { id: 'd3', title: 'Unrelated 3', body: '', priority: 'high', category: 'diet' },
+        {
+          id: 'd4-targeted',
+          title: 'Targets hot flashes',
+          body: '',
+          priority: 'high',
+          category: 'diet',
+          targets_symptoms: ['hot_flashes'],
+        },
+      ],
+    }
+    const plan = buildPlan([framework], {}, 'hot_flashes')
+    const gated = applyTierGating(plan, 'free')
+    const ids = gated.diet_adjustments.map((r) => r.id)
+    expect(ids).toContain('d4-targeted')
   })
 })
 
