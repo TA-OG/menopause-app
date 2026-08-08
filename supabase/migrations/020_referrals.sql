@@ -1,5 +1,5 @@
 -- ============================================================
--- 017_referrals.sql
+-- 020_referrals.sql
 -- In-app referral program for authenticated users.
 --
 -- Mechanic: a user shares their referral code/link. When the
