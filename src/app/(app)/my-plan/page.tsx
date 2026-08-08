@@ -1,4 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
+import { getUserAccess } from '@/lib/access'
+import { getGeoAccess } from '@/lib/geo'
 import { redirect } from 'next/navigation'
 import { applyTierGating } from '@/lib/wellness-engine'
 import { DISCLAIMER } from '@/lib/disclaimer'
@@ -58,11 +61,32 @@ export default async function MyPlanPage() {
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/auth/sign-in')
 
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('subscription_tier, full_name')
-    .eq('id', user.id)
-    .single()
+  const { tier, isPremium } = await getUserAccess(supabase, user.id)
+
+  // Jurisdiction gate — in 'info_only' regions the personalised plan is
+  // withheld for compliance. Point the user to the educational library instead.
+  const geo = await getGeoAccess(createAdminClient(), user.id)
+  if (!geo.personalisedAllowed) {
+    return (
+      <div className="py-12 text-center space-y-4">
+        <div className="text-5xl">📚</div>
+        <h1 className="text-xl font-bold text-brand-900">
+          Personalised plans aren&apos;t available in your region
+        </h1>
+        <p className="text-gray-500 text-sm max-w-sm mx-auto">
+          Because of local health regulations, Aunty Mel can&apos;t give you an
+          individualised plan here yet — but our evidence-informed guides are
+          available to you in full.
+        </p>
+        <a
+          href="/learn"
+          className="inline-block bg-brand-900 text-white font-semibold px-6 py-3 rounded-2xl"
+        >
+          Explore the guides
+        </a>
+      </div>
+    )
+  }
 
   const { data: plan } = await supabase
     .from('wellness_plans')
@@ -70,9 +94,6 @@ export default async function MyPlanPage() {
     .eq('user_id', user.id)
     .eq('is_active', true)
     .single()
-
-  const tier = profile?.subscription_tier ?? 'free'
-  const isPremium = tier === 'premium'
 
   const gatedPlan = plan
     ? applyTierGating(plan as unknown as WellnessPlan, tier)

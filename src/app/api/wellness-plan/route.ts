@@ -1,13 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
+import { getUserAccess } from '@/lib/access'
+import { getGeoAccess } from '@/lib/geo'
 import { matchFrameworks, buildPlan, applyTierGating } from '@/lib/wellness-engine'
 import { loadFrameworks } from '@/lib/load-frameworks'
 import { loadCulturalModifiers, buildCulturalContext } from '@/lib/cultural-engine'
 import { sanitizeError } from '@/lib/sanitize-error'
 import { rateLimit } from '@/lib/rate-limit'
+import { withMonitoring, recordEvent } from '@/lib/monitoring'
+
+export const dynamic = 'force-dynamic'
 
 // GET — fetch active wellness plan
-export async function GET(request: NextRequest) {
+async function getHandler(request: NextRequest) {
   const { success } = rateLimit(request, { limit: 30, windowMs: 60_000 })
   if (!success) return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
 
@@ -15,11 +21,14 @@ export async function GET(request: NextRequest) {
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('subscription_tier')
-    .eq('id', user.id)
-    .single()
+  // Jurisdiction gate — in 'info_only' regions the personalised plan is
+  // withheld for compliance; educational content (Learn) stays available.
+  const geo = await getGeoAccess(createAdminClient(), user.id)
+  if (!geo.personalisedAllowed) {
+    return NextResponse.json({ data: null, geoBlocked: true, mode: geo.mode }, { status: 200 })
+  }
+
+  const { tier } = await getUserAccess(supabase, user.id)
 
   const { data: plan, error } = await supabase
     .from('wellness_plans')
@@ -32,15 +41,14 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ data: null }, { status: 200 })
   }
 
-  // Apply tier gating before returning
-  const tier = profile?.subscription_tier ?? 'free'
+  // Apply tier gating before returning (admins resolve to 'premium')
   const gatedPlan = applyTierGating(plan as any, tier)
 
   return NextResponse.json({ data: { ...plan, ...gatedPlan } })
 }
 
 // POST — generate a new wellness plan from onboarding answers
-export async function POST(request: NextRequest) {
+async function postHandler(request: NextRequest) {
   const { success } = rateLimit(request, { limit: 10, windowMs: 60_000 })
   if (!success) return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
 
@@ -48,6 +56,16 @@ export async function POST(request: NextRequest) {
 
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
+  // Jurisdiction gate — do not generate a personalised plan in 'info_only'
+  // (or disabled) regions.
+  const geo = await getGeoAccess(createAdminClient(), user.id)
+  if (!geo.personalisedAllowed) {
+    return NextResponse.json(
+      { error: 'A personalised plan is not available in your region.', geoBlocked: true },
+      { status: 403 },
+    )
+  }
 
   try {
     // Load user's onboarding answers
@@ -107,6 +125,15 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ data: savedPlan }, { status: 201 })
   } catch (err) {
     console.error('wellness-plan POST error:', err)
+    await recordEvent({
+      type: 'error', route: '/api/wellness-plan', method: 'POST', status: 500,
+      message: err instanceof Error ? err.message : String(err),
+      stack: err instanceof Error ? err.stack ?? null : null,
+      userId: user.id,
+    })
     return NextResponse.json({ error: sanitizeError(err) }, { status: 500 })
   }
 }
+
+export const GET = withMonitoring('/api/wellness-plan', getHandler)
+export const POST = withMonitoring('/api/wellness-plan', postHandler)

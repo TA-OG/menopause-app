@@ -1,21 +1,45 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   TOPICS,
   QUESTIONS,
   REQUIRED_QUESTION_IDS,
+  FOUNDATION_ROUND,
   type IntakeTopic,
 } from '@/lib/content-intake-config'
 import type { SavedTopic } from './page'
+import TopicSources from './TopicSources'
 
 type SaveState = 'idle' | 'saving' | 'saved' | 'error'
+type Answers = Record<string, Record<string, string>>
+
+// Local draft cache. Survives refresh / accidental close / crash, on this
+// browser, so nothing typed is lost before it reaches the database.
+const DRAFT_KEY = `intake_draft_${FOUNDATION_ROUND}`
+
+interface Draft {
+  topics: IntakeTopic[]
+  answers: Answers
+}
 
 function slugify(label: string): string {
   return label
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '_')
     .replace(/^_+|_+$/g, '')
+}
+
+/** True if a topic's current answers differ from what's on the server. */
+function topicDiffersFromServer(
+  cur: Record<string, string>,
+  server: Record<string, string>,
+): boolean {
+  const keys = Array.from(new Set([...Object.keys(cur), ...Object.keys(server)]))
+  for (const k of keys) {
+    if ((cur[k] ?? '') !== (server[k] ?? '')) return true
+  }
+  return false
 }
 
 export default function IntakeForm({
@@ -25,15 +49,23 @@ export default function IntakeForm({
   saved: SavedTopic[]
   customTopics: IntakeTopic[]
 }) {
+  // Server-truth answers, kept so we can tell what's genuinely unsaved.
+  const serverAnswers = useMemo(() => {
+    const map: Answers = {}
+    for (const t of saved) map[t.topicId] = { ...t.answers }
+    return map
+  }, [saved])
+
   // Combined topic list: predefined config topics + any custom ones already saved.
   const [topics, setTopics] = useState<IntakeTopic[]>(() => {
     const known = new Set(TOPICS.map((t) => t.id))
     return [...TOPICS, ...customTopics.filter((t) => !known.has(t.id))]
   })
 
-  // answers[topicId][questionId] = text
-  const [answers, setAnswers] = useState<Record<string, Record<string, string>>>(() => {
-    const init: Record<string, Record<string, string>> = {}
+  // answers[topicId][questionId] = text. Seeded from the server on first render
+  // (matches SSR output); any local draft is merged in after mount.
+  const [answers, setAnswers] = useState<Answers>(() => {
+    const init: Answers = {}
     for (const t of saved) init[t.topicId] = { ...t.answers }
     return init
   })
@@ -42,10 +74,79 @@ export default function IntakeForm({
   const [dirty, setDirty] = useState<Record<string, boolean>>({})
   const [saveState, setSaveState] = useState<SaveState>('idle')
   const [errorMsg, setErrorMsg] = useState<string>('')
+  const [restoredDraft, setRestoredDraft] = useState(false)
 
   // Add-your-own-topic UI
   const [addingTopic, setAddingTopic] = useState(false)
   const [newTopicName, setNewTopicName] = useState('')
+
+  // Gate localStorage writes until after we've restored, so the initial
+  // server-seeded render doesn't clobber an existing draft.
+  const hydratedRef = useRef(false)
+
+  // ── Restore any local draft on mount (after hydration, to avoid mismatch) ──
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(DRAFT_KEY)
+      if (raw) {
+        const draft = JSON.parse(raw) as Partial<Draft>
+        const draftAnswers = draft.answers ?? {}
+        const draftTopics = draft.topics ?? []
+
+        // Merge draft answers over server answers.
+        const merged: Answers = {}
+        for (const t of saved) merged[t.topicId] = { ...t.answers }
+        for (const [tid, qs] of Object.entries(draftAnswers)) {
+          merged[tid] = { ...(merged[tid] ?? {}), ...qs }
+        }
+
+        // Re-add custom topics from the draft (incl. their labels) so unsaved
+        // user-created topics aren't orphaned/invisible.
+        setTopics((prev) => {
+          const have = new Set(prev.map((t) => t.id))
+          const extras = draftTopics.filter((t) => t && t.id && !have.has(t.id))
+          return extras.length ? [...prev, ...extras] : prev
+        })
+
+        // Flag every topic that differs from the server as unsaved.
+        const nextDirty: Record<string, boolean> = {}
+        for (const tid of Object.keys(merged)) {
+          nextDirty[tid] = topicDiffersFromServer(merged[tid], serverAnswers[tid] ?? {})
+        }
+
+        setAnswers(merged)
+        setDirty(nextDirty)
+        if (Object.values(nextDirty).some(Boolean)) setRestoredDraft(true)
+      }
+    } catch {
+      // Corrupt/unavailable storage — ignore, fall back to server data.
+    }
+    hydratedRef.current = true
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  // ── Persist the draft (topics + answers) on every change ──
+  useEffect(() => {
+    if (!hydratedRef.current) return
+    try {
+      const draft: Draft = { topics, answers }
+      localStorage.setItem(DRAFT_KEY, JSON.stringify(draft))
+    } catch {
+      // Quota/availability issues shouldn't break editing.
+    }
+  }, [topics, answers])
+
+  // ── Warn before leaving if anything is unsaved ──
+  useEffect(() => {
+    const anyDirty = Object.values(dirty).some(Boolean)
+    if (!anyDirty) return
+    const handler = (e: BeforeUnloadEvent) => {
+      e.preventDefault()
+      e.returnValue = ''
+    }
+    window.addEventListener('beforeunload', handler)
+    return () => window.removeEventListener('beforeunload', handler)
+  }, [dirty])
 
   const activeTopic = topics.find((t) => t.id === activeId)
   const activeAnswers = answers[activeId] ?? {}
@@ -74,7 +175,53 @@ export default function IntakeForm({
     if (saveState !== 'idle') setSaveState('idle')
   }
 
-  function selectTopic(id: string) {
+  /**
+   * Persist one topic to the database. Returns true on success.
+   * `silent` mode (used by autosave) avoids flipping the visible save banner.
+   */
+  async function saveTopic(topicId: string, opts?: { silent?: boolean }): Promise<boolean> {
+    const topic = topics.find((t) => t.id === topicId)
+    if (!topic) return false
+    if (!opts?.silent) {
+      setSaveState('saving')
+      setErrorMsg('')
+    }
+    try {
+      const res = await fetch('/api/admin/intake', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          topicId: topic.id,
+          topicLabel: topic.label,
+          answers: answers[topicId] ?? {},
+        }),
+      })
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        throw new Error(data.error ?? `Save failed (${res.status})`)
+      }
+      setDirty((prev) => ({ ...prev, [topicId]: false }))
+      if (!opts?.silent) {
+        setSaveState('saved')
+        setRestoredDraft(false)
+      }
+      return true
+    } catch (err) {
+      if (!opts?.silent) {
+        setErrorMsg((err as Error).message)
+        setSaveState('error')
+      }
+      return false
+    }
+  }
+
+  async function selectTopic(id: string) {
+    if (id === activeId) return
+    // Best-effort autosave of the topic we're leaving. Even if it fails
+    // (e.g. offline), the local draft still holds the work.
+    if (dirty[activeId]) {
+      await saveTopic(activeId, { silent: true })
+    }
     setActiveId(id)
     setSaveState('idle')
     setErrorMsg('')
@@ -95,33 +242,7 @@ export default function IntakeForm({
     setTopics((prev) => [...prev, { id, label }])
     setNewTopicName('')
     setAddingTopic(false)
-    selectTopic(id)
-  }
-
-  async function save() {
-    if (!activeTopic) return
-    setSaveState('saving')
-    setErrorMsg('')
-    try {
-      const res = await fetch('/api/admin/intake', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          topicId: activeTopic.id,
-          topicLabel: activeTopic.label,
-          answers: activeAnswers,
-        }),
-      })
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}))
-        throw new Error(data.error ?? `Save failed (${res.status})`)
-      }
-      setDirty((prev) => ({ ...prev, [activeId]: false }))
-      setSaveState('saved')
-    } catch (err) {
-      setErrorMsg((err as Error).message)
-      setSaveState('error')
-    }
+    void selectTopic(id)
   }
 
   const statusDot = (state: 'empty' | 'partial' | 'complete') =>
@@ -142,6 +263,12 @@ export default function IntakeForm({
           and turned into the app&apos;s advice later. Nothing here is shown to users until
           it&apos;s reviewed. You can come back and edit any topic any time.
         </p>
+        {restoredDraft && (
+          <p className="mt-3 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
+            We restored answers you’d typed but not yet saved. Review them and click
+            <span className="font-semibold"> Save this topic</span> to store them for good.
+          </p>
+        )}
       </div>
 
       <div className="flex flex-col md:flex-row gap-6">
@@ -155,7 +282,7 @@ export default function IntakeForm({
               {topics.map((t) => (
                 <li key={t.id}>
                   <button
-                    onClick={() => selectTopic(t.id)}
+                    onClick={() => void selectTopic(t.id)}
                     className={`w-full flex items-center gap-2 px-4 py-2.5 text-left text-sm transition-colors ${
                       t.id === activeId
                         ? 'bg-brand-50 text-brand-900 font-medium'
@@ -257,7 +384,7 @@ export default function IntakeForm({
               {/* Save bar */}
               <div className="flex items-center gap-3 pt-2 border-t border-gray-100">
                 <button
-                  onClick={save}
+                  onClick={() => void saveTopic(activeId)}
                   disabled={saveState === 'saving'}
                   className="bg-brand-900 text-white text-sm font-medium px-5 py-2.5 rounded-xl hover:bg-brand-800 transition-colors disabled:opacity-50"
                 >
@@ -273,6 +400,9 @@ export default function IntakeForm({
                   <span className="text-sm text-gray-400">Unsaved changes</span>
                 )}
               </div>
+
+              {/* Source documents & external references for this topic */}
+              <TopicSources topicId={activeTopic.id} topicLabel={activeTopic.label} />
             </div>
           )}
         </section>
