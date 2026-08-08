@@ -6,6 +6,8 @@ import { rateLimit } from '@/lib/rate-limit'
 import { withMonitoring, recordEvent } from '@/lib/monitoring'
 import { z } from 'zod'
 
+export const dynamic = 'force-dynamic'
+
 const JournalEntrySchema = z.object({
   content: z.string().max(10000),
   symptom_focus: z.string().optional().nullable(),

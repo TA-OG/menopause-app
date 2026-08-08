@@ -59,7 +59,7 @@ export async function recordEvent(e: AppEventInput): Promise<void> {
 
 type RouteHandler = (
   _request: NextRequest,
-  _context?: any,
+  _context?: { params: Record<string, string> },
 ) => Promise<Response> | Response
 
 /**

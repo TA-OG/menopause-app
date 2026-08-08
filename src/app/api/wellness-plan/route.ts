@@ -10,6 +10,8 @@ import { sanitizeError } from '@/lib/sanitize-error'
 import { rateLimit } from '@/lib/rate-limit'
 import { withMonitoring, recordEvent } from '@/lib/monitoring'
 
+export const dynamic = 'force-dynamic'
+
 // GET — fetch active wellness plan
 async function getHandler(request: NextRequest) {
   const { success } = rateLimit(request, { limit: 30, windowMs: 60_000 })

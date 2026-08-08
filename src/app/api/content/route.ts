@@ -5,6 +5,8 @@ import { sanitizeError } from '@/lib/sanitize-error'
 import { rateLimit } from '@/lib/rate-limit'
 import { withMonitoring, recordEvent } from '@/lib/monitoring'
 
+export const dynamic = 'force-dynamic'
+
 async function getHandler(request: NextRequest) {
   const { success } = rateLimit(request, { limit: 30, windowMs: 60_000 })
   if (!success) return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
