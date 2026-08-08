@@ -11,8 +11,9 @@
  * during the Vercel build phase.
  */
 
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
 import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { DISCLAIMER } from '@/lib/disclaimer'
 import Logo from '@/components/ui/Logo'
@@ -38,7 +39,10 @@ function GoogleIcon() {
 
 // ─── Main component ──────────────────────────────────────────────────────────
 
-export default function SignUpPage() {
+function SignUpForm() {
+  const searchParams = useSearchParams()
+  const refCode = searchParams.get('ref')
+
   const [email, setEmail] = useState('')
   const [name, setName] = useState('')
   const [consentData, setConsentData] = useState(false)
@@ -66,10 +70,13 @@ export default function SignUpPage() {
     setError('')
 
     const supabase = createClient()
+    const redirectTo = new URL('/auth/callback', window.location.origin)
+    if (refCode) redirectTo.searchParams.set('ref', refCode)
+
     const { error: authError } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
+        redirectTo: redirectTo.toString(),
         queryParams: { access_type: 'offline', prompt: 'consent' },
       },
     })
@@ -105,6 +112,7 @@ export default function SignUpPage() {
           consent_data: consentData,
           consent_marketing: consentMarketing,
           consent_terms: consentTerms,
+          ...(refCode ? { referral_code: refCode } : {}),
         },
         emailRedirectTo: `${window.location.origin}/auth/callback`,
       },
@@ -157,6 +165,15 @@ export default function SignUpPage() {
             Your personalised wellness plan is waiting.
           </p>
         </div>
+
+        {/* Referral banner — shown when arriving via a friend's link */}
+        {refCode && (
+          <div className="text-center mb-6">
+            <div className="inline-block bg-brand-900 text-white text-xs font-semibold px-4 py-1.5 rounded-full">
+              🎁 You&apos;ve been invited — you&apos;ll both get a free month
+            </div>
+          </div>
+        )}
 
         {/* ── Consent checkboxes — shown before any auth action ─────────── */}
         <div className="bg-white rounded-2xl p-4 border border-gray-100 space-y-3 mb-5">
@@ -274,5 +291,17 @@ export default function SignUpPage() {
         </p>
       </div>
     </div>
+  )
+}
+
+export default function SignUpPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-brand-900">Loading...</div>
+      </div>
+    }>
+      <SignUpForm />
+    </Suspense>
   )
 }

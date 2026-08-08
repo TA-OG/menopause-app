@@ -43,8 +43,39 @@ export interface Profile {
   date_of_birth: string | null         // ISO date string
   country: string | null               // ISO 3166-1 alpha-2
   currency: 'gbp' | 'usd' | null
+  referral_code: string | null
+  referral_months_banked: number
   created_at: string
   updated_at: string
+}
+
+// ─── Referral program ─────────────────────────────────────────────────────────
+
+export type ReferralStatus = 'pending' | 'qualified' | 'expired'
+export type ReferralRewardRole = 'referrer' | 'referred'
+export type ReferralRewardStatus = 'pending' | 'applied' | 'failed'
+
+export interface Referral {
+  id: string
+  referrer_id: string
+  referred_id: string
+  referral_code_used: string
+  status: ReferralStatus
+  qualified_at: string | null
+  created_at: string
+  updated_at: string
+}
+
+export interface ReferralReward {
+  id: string
+  referral_id: string
+  user_id: string
+  role: ReferralRewardRole
+  months: number
+  status: ReferralRewardStatus
+  application_method: 'stripe_trial_extension' | 'banked_credit' | null
+  applied_at: string | null
+  created_at: string
 }
 
 export interface MenopauseProfile {
