@@ -99,7 +99,7 @@ export default function PayPage() {
             'Full personalised wellness plan',
             'All diet, lifestyle & mindset recommendations',
             'Supplement guidance with evidence notes',
-            'Complete Pamela content library',
+            'Articles grounded in reputable research',
             'Unlimited journal history',
             'Daily symptom trend insights',
             'Push notification daily nudges',

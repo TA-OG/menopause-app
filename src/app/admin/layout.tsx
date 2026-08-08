@@ -35,6 +35,24 @@ export default async function AdminLayout({
           ← Back to app
         </a>
       </header>
+      <nav className="bg-brand-900 border-t border-brand-800 px-6">
+        <div className="max-w-6xl mx-auto flex gap-1 overflow-x-auto">
+          {[
+            { href: '/admin',            label: 'Overview' },
+            { href: '/admin/dashboard',  label: 'Performance' },
+            { href: '/admin/monitoring', label: 'Monitoring' },
+            { href: '/admin/intake',     label: 'Content intake' },
+          ].map((tab) => (
+            <a
+              key={tab.href}
+              href={tab.href}
+              className="text-sm text-brand-200 hover:text-white px-3 py-2.5 border-b-2 border-transparent hover:border-brand-400 transition-colors whitespace-nowrap"
+            >
+              {tab.label}
+            </a>
+          ))}
+        </div>
+      </nav>
       <main className="max-w-6xl mx-auto px-6 py-8">
         {children}
       </main>

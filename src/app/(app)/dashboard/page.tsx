@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server'
+import { getUserAccess } from '@/lib/access'
 import { redirect } from 'next/navigation'
 import Greeting from '@/components/ui/Greeting'
 
@@ -9,12 +10,12 @@ export default async function DashboardPage() {
 
   const { data: profile } = await supabase
     .from('profiles')
-    .select('full_name, subscription_tier')
+    .select('full_name')
     .eq('id', user.id)
     .single()
 
   const firstName = profile?.full_name?.split(' ')[0] ?? 'there'
-  const isPremium = profile?.subscription_tier === 'premium'
+  const { isPremium } = await getUserAccess(supabase, user.id)
 
   return (
     <div className="space-y-6 py-4">
