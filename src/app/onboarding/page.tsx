@@ -29,6 +29,7 @@ import {
   TIMEZONE_OPTIONS,
   type OnboardingStep,
   type AnswerMap,
+  type Choice,
 } from '@/lib/onboarding-config'
 
 // sessionStorage keys — persist answers and step across browser-back
@@ -41,19 +42,24 @@ function OptionButton({
   label,
   selected,
   onClick,
+  disabled = false,
 }: {
   label: string
   selected: boolean
   onClick: () => void
+  disabled?: boolean
 }) {
   return (
     <button
       type="button"
       onClick={onClick}
+      disabled={disabled}
       className={`w-full text-left px-4 py-3 rounded-2xl border text-sm font-medium transition-all ${
         selected
           ? 'bg-brand-900 text-white border-brand-900'
-          : 'bg-white text-gray-700 border-gray-200 hover:border-brand-300 hover:bg-brand-50'
+          : disabled
+            ? 'bg-gray-50 text-gray-300 border-gray-100 cursor-not-allowed'
+            : 'bg-white text-gray-700 border-gray-200 hover:border-brand-300 hover:bg-brand-50'
       }`}
     >
       {label}
@@ -140,12 +146,21 @@ export default function OnboardingPage() {
     next()
   }
 
-  function toggleMulti(key: string, value: string) {
+  function toggleMulti(key: string, value: string, choices: Choice[] = []) {
     setAnswers((a) => {
       const current = (a[key] as string[] | undefined) ?? []
-      const updated = current.includes(value)
-        ? current.filter((v) => v !== value)
-        : [...current, value]
+      const isExclusive = choices.find((c) => c.value === value)?.exclusive ?? false
+      let updated: string[]
+      if (isExclusive) {
+        // Selecting an exclusive choice (e.g. "None of these") clears everything else.
+        updated = current.includes(value) ? [] : [value]
+      } else if (current.includes(value)) {
+        updated = current.filter((v) => v !== value)
+      } else {
+        // Selecting a regular choice clears any exclusive choice already selected.
+        const exclusiveValues = choices.filter((c) => c.exclusive).map((c) => c.value)
+        updated = [...current.filter((v) => !exclusiveValues.includes(v)), value]
+      }
       return { ...a, [key]: updated }
     })
   }
@@ -324,23 +339,33 @@ function MultiStep({
 }: {
   step: Extract<OnboardingStep, { kind: 'multi' }>
   answers: AnswerMap
-  toggleMulti: (key: string, value: string) => void
+  toggleMulti: (key: string, value: string, choices?: Choice[]) => void
   next: () => void
 }) {
   const selected = (answers[step.key] as string[] | undefined) ?? []
   const meetsMin = selected.length >= (step.minSelect ?? 0)
+  // Once an exclusive choice ("None of these") is selected, every other choice is
+  // disabled — and vice versa: picking any regular choice disables the exclusive one.
+  const exclusiveSelected = step.choices.some((c) => c.exclusive && selected.includes(c.value))
+  const regularSelected = selected.some((v) => !step.choices.find((c) => c.value === v)?.exclusive)
   return (
     <div className="space-y-4">
       <StepHeader title={step.title} subtitle={step.subtitle} />
       <div className="space-y-2">
-        {step.choices.map((choice) => (
-          <OptionButton
-            key={choice.value}
-            label={choice.label}
-            selected={selected.includes(choice.value)}
-            onClick={() => toggleMulti(step.key, choice.value)}
-          />
-        ))}
+        {step.choices.map((choice) => {
+          const isSelected = selected.includes(choice.value)
+          const isDisabled =
+            !isSelected && ((choice.exclusive && regularSelected) || (!choice.exclusive && exclusiveSelected))
+          return (
+            <OptionButton
+              key={choice.value}
+              label={choice.label}
+              selected={isSelected}
+              disabled={isDisabled}
+              onClick={() => toggleMulti(step.key, choice.value, step.choices)}
+            />
+          )
+        })}
       </div>
       <PrimaryButton label={step.ctaLabel ?? 'Continue'} onClick={next} disabled={!meetsMin} />
       {step.skippable && (
