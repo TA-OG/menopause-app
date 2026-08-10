@@ -1,5 +1,5 @@
 -- ============================================================
--- 021_referral_reward_notifications.sql
+-- 022_referral_reward_notifications.sql
 -- Tracks whether a user has been shown the in-app "you earned a
 -- free month" banner for a given referral reward, so it appears
 -- exactly once per reward rather than on every page load.
