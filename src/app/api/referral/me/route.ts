@@ -1,8 +1,12 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { getOrCreateReferralCode, buildAppReferralUrl, REFERRAL_CAP_MONTHS } from '@/lib/referral-rewards'
+import { rateLimit } from '@/lib/rate-limit'
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const { success } = rateLimit(request, { limit: 20, windowMs: 60_000 })
+  if (!success) return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
+
   const supabase = createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })

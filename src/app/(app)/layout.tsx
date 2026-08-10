@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { getGeoAccess } from '@/lib/geo'
 import NavBar from '@/components/layout/NavBar'
+import ReferralRewardBanner from '@/components/referral/ReferralRewardBanner'
 
 export default async function AppLayout({
   children,
@@ -60,6 +61,7 @@ export default async function AppLayout({
   return (
     <div className="min-h-screen bg-cream pb-20 pt-16">
       <main className="max-w-lg mx-auto px-4 pt-4">
+        <ReferralRewardBanner />
         {children}
       </main>
       <NavBar />
