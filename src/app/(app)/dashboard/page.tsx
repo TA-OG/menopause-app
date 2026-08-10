@@ -1,9 +1,16 @@
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 import { getUserAccess } from '@/lib/access'
+import { syncSubscriptionFromStripe } from '@/lib/subscription-sync'
 import { redirect } from 'next/navigation'
 import Greeting from '@/components/ui/Greeting'
+import RefreshSubscriptionButton from '@/components/ui/RefreshSubscriptionButton'
 
-export default async function DashboardPage() {
+export default async function DashboardPage({
+  searchParams,
+}: {
+  searchParams: { upgraded?: string }
+}) {
   const supabase = createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/auth/sign-in')
@@ -15,6 +22,20 @@ export default async function DashboardPage() {
     .single()
 
   const firstName = profile?.full_name?.split(' ')[0] ?? 'there'
+
+  // Just returned from Stripe checkout — the webhook may not have landed
+  // yet, or may have failed to resolve the user (see migration 023 and
+  // api/stripe/webhook/route.ts). Re-derive the truth straight from Stripe
+  // before deciding whether to show the upgrade prompt, so a paying user
+  // never lands here and sees "Upgrade" right after paying.
+  if (searchParams.upgraded === 'true') {
+    try {
+      await syncSubscriptionFromStripe(createAdminClient(), user.id)
+    } catch (err) {
+      console.error('post-checkout subscription sync failed:', err)
+    }
+  }
+
   const { isPremium } = await getUserAccess(supabase, user.id)
 
   return (
@@ -79,12 +100,15 @@ export default async function DashboardPage() {
           <p className="text-blush-700 text-sm mt-1 mb-3">
             Get access to all recommendations, content, and your complete journal history.
           </p>
-          <a
-            href="/pay"
-            className="inline-block bg-blush-600 text-white text-sm font-semibold px-4 py-2 rounded-xl hover:bg-blush-700 transition-colors"
-          >
-            Upgrade — £7.99/month
-          </a>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <a
+              href="/pay"
+              className="inline-block bg-blush-600 text-white text-sm font-semibold px-4 py-2 rounded-xl hover:bg-blush-700 transition-colors"
+            >
+              Upgrade — £7.99/month
+            </a>
+            <RefreshSubscriptionButton />
+          </div>
         </div>
       )}
     </div>

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 import Stripe from 'stripe'
 import { rateLimit } from '@/lib/rate-limit'
 
@@ -86,7 +87,11 @@ export async function POST(request: NextRequest) {
       })
       customerId = customer.id
 
-      await supabase
+      // stripe_customer_id is a protected column (see migration 023) — the
+      // user-scoped client can't write it even for their own row, so this
+      // trusted server-side write goes through the admin client instead.
+      const admin = createAdminClient()
+      await admin
         .from('profiles')
         .update({ stripe_customer_id: customerId })
         .eq('id', user.id)
