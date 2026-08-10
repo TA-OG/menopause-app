@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server'
+import { getUserAccess } from '@/lib/access'
 import { redirect } from 'next/navigation'
 
 export default async function ProfilePage() {
@@ -12,7 +13,12 @@ export default async function ProfilePage() {
     .eq('id', user.id)
     .single()
 
-  const isPremium = profile?.subscription_tier === 'premium'
+  // Single source of truth for effective access — matches every other page.
+  // isPaidPremium (not isPremium) gates the Stripe "Manage billing" link
+  // below: an admin has full access but no real Stripe subscription to
+  // manage, so they should see the upgrade prompt, not a billing portal
+  // link that has nothing behind it.
+  const { isPremium, isPaidPremium } = await getUserAccess(supabase, user.id)
 
   async function signOut() {
     'use server'
@@ -48,7 +54,7 @@ export default async function ProfilePage() {
       </div>
 
       {/* Subscription management */}
-      {isPremium ? (
+      {isPaidPremium ? (
         <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
           <p className="font-semibold text-gray-900 mb-3">Subscription</p>
           <form action="/api/stripe/portal" method="POST">
