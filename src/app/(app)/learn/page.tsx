@@ -30,7 +30,7 @@ export default async function LearnPage() {
       <div>
         <h1 className="text-2xl font-bold text-brand-900">Learn</h1>
         <p className="text-gray-500 text-sm mt-1">
-          Evidence-informed articles from Pamela
+          Real answers for the questions you&apos;ve been Googling at 3am — straight from Pamela, no fluff, no jargon
         </p>
       </div>
 

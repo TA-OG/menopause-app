@@ -114,6 +114,8 @@ export default function AdminDashboard() {
   const [toggling, setToggling] = useState<string | null>(null)
   const [cycleError, setCycleError] = useState<string | null>(null)
 
+  const [countryFilter, setCountryFilter] = useState('')
+
   const [overrideEmail, setOverrideEmail] = useState('')
   const [overrideReason, setOverrideReason] = useState('')
   const [granting, setGranting] = useState(false)
@@ -215,6 +217,15 @@ export default function AdminDashboard() {
   }
 
   const maxUsers = Math.max(1, ...(metrics?.byJurisdiction ?? []).map((j) => j.users))
+
+  const filteredRestrictions = countryFilter.trim()
+    ? restrictions.filter((r) => {
+        const q = countryFilter.trim().toLowerCase()
+        return r.country_name.toLowerCase().includes(q) || r.country_code.toLowerCase().includes(q)
+      })
+    : restrictions
+
+  const liveCount = restrictions.filter((r) => r.mode !== 'disabled').length
 
   return (
     <div className="space-y-8">
@@ -318,6 +329,21 @@ export default function AdminDashboard() {
           <span className="font-semibold text-green-600">Live</span> — all features
         </p>
 
+        {!loading && (
+          <div className="flex items-center justify-between gap-3 mb-3">
+            <input
+              type="text"
+              placeholder="Search countries…"
+              value={countryFilter}
+              onChange={(e) => setCountryFilter(e.target.value)}
+              className="flex-1 max-w-xs px-3 py-1.5 text-sm rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-200"
+            />
+            <p className="text-xs text-gray-400 whitespace-nowrap">
+              {liveCount} of {restrictions.length} markets live/info-only
+            </p>
+          </div>
+        )}
+
         {cycleError && (
           <div className="mb-3 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-600">
             {cycleError}
@@ -327,8 +353,11 @@ export default function AdminDashboard() {
         {loading ? (
           <p className="text-sm text-gray-400">Loading…</p>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-            {restrictions.map((r) => {
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 max-h-[32rem] overflow-y-auto pr-1">
+            {filteredRestrictions.length === 0 && (
+              <p className="text-sm text-gray-400 col-span-full py-4 text-center">No countries match &ldquo;{countryFilter}&rdquo;.</p>
+            )}
+            {filteredRestrictions.map((r) => {
               const isToggling = toggling === r.country_code
               const btnTone =
                 r.mode === 'full'
