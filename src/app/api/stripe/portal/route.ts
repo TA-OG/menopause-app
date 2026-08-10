@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 import Stripe from 'stripe'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
@@ -34,7 +35,10 @@ export async function POST(request: NextRequest) {
       // create a fresh customer in the current account).
       if (err?.code === 'resource_missing') {
         console.warn(`Stale stripe_customer_id ${profile.stripe_customer_id} for user ${user.id} — clearing`)
-        await supabase
+        // Billing columns are protected (see migration 023) — use the admin
+        // client for this trusted server-side cleanup write.
+        const admin = createAdminClient()
+        await admin
           .from('profiles')
           .update({ stripe_customer_id: null, subscription_tier: 'free', subscription_status: null })
           .eq('id', user.id)
