@@ -32,6 +32,8 @@ export interface Choice {
   value: string
   label: string
   emoji?: string
+  /** Selecting this choice on a multi-select clears every other choice (and vice versa) — e.g. "None of these". */
+  exclusive?: boolean
 }
 
 interface BaseStep {
@@ -187,7 +189,7 @@ const STRESS_CHOICES: Choice[] = [
 ]
 
 const MEDICAL_FLAG_CHOICES: Choice[] = [
-  { value: 'none', label: 'None of these' },
+  { value: 'none', label: 'None of these', exclusive: true },
   { value: 'on_hrt', label: "I'm currently on HRT" },
   { value: 'oestrogen_sensitive', label: 'History of breast/ovarian cancer or an oestrogen-sensitive condition' },
   { value: 'blood_thinners', label: 'I take blood thinners (e.g. warfarin)' },
