@@ -124,13 +124,8 @@ export default async function MyPlanPage() {
     gatedPlan.supplement_suggestions.length
 
   // Cultural context — stored as JSONB on the plan
-  const culturalContext = (plan as any)?.cultural_context as {
-    awareness?: Array<{ title: string; body: string; source?: string }>
-    diet?: Array<{ id: string; title?: string; body: string }>
-    lifestyle?: Array<{ id: string; body: string }>
-    mindset?: Array<{ id: string; body: string }>
-    supplements?: Array<{ id: string; body: string }>
-  } | null
+  const culturalContext: WellnessPlan['cultural_context'] =
+    (plan as unknown as WellnessPlan)?.cultural_context ?? null
 
   const hasCulturalContext = culturalContext && (
     (culturalContext.awareness?.length ?? 0) > 0 ||

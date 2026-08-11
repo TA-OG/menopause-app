@@ -1,3 +1,5 @@
+import type { CulturalContext } from '@/lib/cultural-engine'
+
 export type SubscriptionTier = 'free' | 'premium'
 export type SubscriptionStatus = 'active' | 'cancelled' | 'past_due' | 'trialing' | null
 export type MenopauseStage = 'perimenopause' | 'menopause' | 'postmenopause' | 'surgical' | 'unsure'
@@ -142,6 +144,10 @@ export interface WellnessPlan {
   lifestyle_adjustments: WellnessRecommendation[]
   mindset_recommendations: WellnessRecommendation[]
   supplement_suggestions: WellnessRecommendation[]
+  // Optional: buildPlan()'s return type omits this (populated separately
+  // by the wellness-plan API route from the cultural engine), and older
+  // rows predating the column may not have it either.
+  cultural_context?: CulturalContext | null
   is_active: boolean
   version: number
   created_at: string
