@@ -78,6 +78,8 @@ export function loadCulturalModifiers(
   return modifiers
 }
 
+export type CulturalContext = ReturnType<typeof buildCulturalContext>
+
 /**
  * Build structured cultural context from loaded modifiers.
  */

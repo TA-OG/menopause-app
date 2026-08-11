@@ -225,7 +225,17 @@ export default function OnboardingPage() {
         .upsert(prefUpdate, { onConflict: 'user_id' })
       if (prefError) throw prefError
 
-      await fetch('/api/wellness-plan', { method: 'POST' })
+      // Answers are saved at this point — only the plan itself is still
+      // pending. Check the response: a failure here must NOT be treated as
+      // success, or the user is silently dropped on a dashboard with no
+      // plan behind it and no idea anything went wrong.
+      const planRes = await fetch('/api/wellness-plan', { method: 'POST' })
+      if (!planRes.ok) {
+        const body = await planRes.json().catch(() => ({}))
+        throw new Error(
+          body.error ?? 'Your answers were saved, but we couldn\'t build your plan. Please try again.'
+        )
+      }
 
       try {
         sessionStorage.removeItem(SS_ANSWERS)
