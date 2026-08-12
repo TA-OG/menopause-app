@@ -1,7 +1,7 @@
 # Wellness plan — plain-English review
 
 _This is what the app will tell users, generated from the current content._
-_Reviewed: 3 June 2026_
+_Reviewed: 12 August 2026_
 
 ---
 ## Bone & Heart Health
@@ -16,7 +16,7 @@ Shown when their **menopause stage** is any of: "menopause", "postmenopause", "s
 - **Unsaturated fats over saturated — for cardiovascular protection**  _(high priority)_
   Prior to menopause, oestrogen is cardioprotective — it raises HDL (good cholesterol) and reduces LDL (bad cholesterol). After menopause, this protection is lost, and LDL typically rises 10–15%. Replace saturated fats (butter, red meat, full-fat dairy) with unsaturated sources: olive oil, avocado, nuts, seeds, and oily fish. The Mediterranean pattern is the most cardiovascular-protective dietary approach in this age group.
 - **Reduce salt — blood pressure rises after menopause**  _(medium priority)_
-  Blood pressure often rises in the years following menopause due to vascular changes as oestrogen declines. UK adults consume an average of 8–9g salt daily — the recommended maximum is 6g. Primary sources of hidden sodium: bread, processed meats, cheese, ready meals, sauces. Switching to herbs and lemon juice for flavouring and checking labels for sodium content (target below 0.5g per 100g) can significantly reduce intake without sacrifice.
+  Blood pressure often rises in the years following menopause due to vascular changes as oestrogen declines. UK adults consume an average of 8–9g salt daily — the recommended maximum is 6g. Primary sources of hidden salt: bread, processed meats, cheese, ready meals, sauces. Switching to herbs and lemon juice for flavouring makes a real difference. On front-of-pack labels, 0.3g salt per 100g or less is the green "low" band, and anything above 1.5g per 100g is red "high" — so comparing two products on that number alone is an easy win.
 
 ### Lifestyle
 
@@ -51,38 +51,98 @@ Shown to **every user**, regardless of their answers.
 
 ### Food & diet
 
-- **The Mediterranean pattern — the most-studied diet for menopause**  _(high priority)_
-  A Mediterranean-style eating pattern (abundant vegetables, fruit, legumes, whole grains, olive oil, oily fish, and moderate dairy) consistently outperforms other dietary approaches in menopause research — associated with fewer vasomotor symptoms, lower cardiovascular risk, and better mood and cognitive function. It doesn't require eliminating any food group. Think abundance of plants and fish, olive oil as your main fat, and red meat as an occasional choice.
-  _Targets: hot flashes, mood changes, weight changes, brain fog_
-- **Drink 2 litres of water a day — more than you think you need**  _(high priority)_
-  Oestrogen decline affects thirst regulation, meaning perimenopausal women often become mildly dehydrated without feeling thirsty. Dehydration worsens brain fog, fatigue, joint stiffness, and skin changes. Keep a 500ml bottle visible on your desk and aim to refill it four times across the day. Herbal teas count. Coffee and alcohol are diuretics and don't count toward your total.
-  _Targets: brain fog, fatigue, joint pain, skin changes_
-- **Phytoestrogens — plant compounds that weakly mimic oestrogen**  _(medium priority)_
-  Phytoestrogens (found in soy foods, flaxseed, lentils, and chickpeas) bind weakly to oestrogen receptors and may reduce hot flash frequency in some women. The evidence is modest, but the foods are healthy in their own right. Include fermented soy (edamame, miso, tofu) 2–3 times weekly if you are not on tamoxifen or have oestrogen-sensitive conditions — check with your GP in those cases.
-  _Targets: hot flashes, night sweats_
+- **Meal timing and frequency — different by stage, and by how you're doing**  _(high priority)_
+  In perimenopause, the gold standard is eating breakfast within an hour of waking, in 3 meals a day (4–5 smaller ones if energy is a struggle). In menopause and postmenopause, breaking the fast around 10–11am tends to work better, with 2–3 meals a day. But this flexes: if you're struggling with sleep, anxiety, brain fog or low energy, fasting is best avoided altogether at any stage — your body needs consistent fuel, not less of it. More frequent, smaller meals (4–5) tend to serve you better than 2–3 larger ones in that case, and caffeine and alcohol are usually the first things worth reducing, since both directly worsen these exact symptoms.
+  _Targets: sleep problems, anxiety, brain fog, fatigue_
+- **Carbohydrate timing and eating order**  _(medium priority)_
+  Most postmenopausal women don't manage carbohydrates well at breakfast — they're generally better tolerated in the afternoon and best avoided or minimised in the evening. This matters less if your overall blood sugar control is already good (e.g. you eat mostly whole foods, low processed). A simple, free lever regardless of stage: eat protein and vegetables before carbohydrates at a meal, rather than starting with the carbs. This blunts the blood sugar spike that follows, without changing what you eat — just the order.
+- **Stop eating 3–5 hours before bed**  _(medium priority)_
+  Aim to stop eating 3–5 hours before bed. In summer, with longer daylight hours, eating a little later can work — but this is worth avoiding in winter months, particularly here in the UK.
+  _Targets: sleep problems_
+- **The core plate — protein, fibre, and colour, at every stage**  _(high priority)_
+  Prioritise whole foods over processed foods, regardless of stage. What to increase: protein at every meal; fibre from vegetables, particularly cruciferous ones (broccoli, cauliflower, kale, cabbage); polyphenol-rich foods; prebiotic foods, and probiotic foods for some women; omega-3s, flaxseeds and chia seeds; and warming foods like ginger, cinnamon, turmeric and red onion.
+  _Targets: weight changes, fatigue_
+- **Steady hydration — roughly 2 litres, spread across the day**  _(high priority)_
+  Aim for steady hydration throughout the day rather than large amounts in one go — roughly 2 litres as a general baseline, more if you're active or experiencing night sweats or hot flushes, which increase fluid loss. Start the day with a pint of water on waking — a simple, grounding habit that rehydrates after a night's fast and kickstarts digestion before food. Aim to stop drinking 1–2 hours before bed, to avoid night waking for the bathroom disrupting sleep.
+  _Targets: hot flashes, night sweats, sleep problems_
+  _Disclaimer: Some women find a pinch of Celtic salt in their water helps with mineral absorption and hydration — check with your GP first if you have high blood pressure or any condition affecting sodium levels._
+- **What to reduce — refined sugar, packaging, and (for some) dairy**  _(medium priority)_
+  Refined sugar and ultra-processed foods drive blood sugar swings, inflammation and energy crashes, all of which feed back into the mood/sleep/energy loop. Where possible, choose fresh over heavily packaged or tinned foods, and be mindful of plastic food contact, to reduce xenoestrogen exposure. Excess dairy is worth limiting for some women too, particularly alongside an itching/migraine pattern that can point to histamine sensitivity.
+- **Thyroid and iron — the two most commonly missed nutritional gaps**  _(medium priority)_
+  Thyroid function comes up often alongside menopause symptoms — key food sources worth including are iodine (seaweed, fish, eggs) and selenium (Brazil nuts, just 1–2 a day covers your needs, and fish). Iron deficiency is a common, often-missed cause of fatigue and hair thinning — food sources include red meat, dark leafy greens, lentils and other pulses. Pairing iron-rich plant foods with vitamin C (e.g. lentils with peppers or a squeeze of lemon) helps improve absorption.
+  _Targets: fatigue, hair changes_
+- **If you notice itching or migraines — histamine may be worth a look**  _(medium priority)_
+  If you're experiencing itching or migraines, it's worth trying a reduction in fermented foods, cheese, and alcohol, and increasing foods rich in quercetin and foods that support DAO enzyme activity — this combination tends to point toward a histamine-intolerance pattern, worth flagging to your GP or a practitioner if symptoms persist. Fermented foods (sauerkraut, kefir, kimchi, kombucha) genuinely support a healthy microbiome for many women, but they're also high in histamine, so this is a real trade-off for some — not a silent contradiction with the gut-health advice elsewhere.
 
 ### Lifestyle
 
-- **Some movement every day — the foundation of everything else**  _(high priority)_
-  Any form of daily physical activity — even 20 minutes of walking — improves sleep quality, mood, hot flash frequency, and metabolic health during menopause. It doesn't have to be formal exercise. Gardening, dancing, housework at pace, taking the stairs — it all counts. Movement is the single intervention with the most consistent evidence across every menopausal symptom category.
-  _Targets: fatigue, mood changes, sleep problems, weight changes, hot flashes_
-- **Reducing alcohol makes almost everything better**  _(medium priority)_
-  Alcohol disrupts sleep architecture, worsens hot flashes and night sweats, lowers mood the following day, contributes to weight gain around the abdomen, and increases breast cancer risk. Even one drink per day has measurable effects. You don't need to stop entirely, but reducing to 2–3 units per week (from a daily habit) typically produces noticeable improvements in sleep and hot flash severity within 2–3 weeks.
-  _Targets: hot flashes, night sweats, sleep problems, mood changes, weight changes_
+- **A weekly mix — incline walking, strength, yoga, Pilates**  _(high priority)_
+  Walking uphill or on an incline is brilliant for heart health and weight loss, and gentler on joints than running while still building real cardiovascular fitness. Weight training protects muscle mass and bone density, both of which decline faster once oestrogen drops, and also supports blood sugar regulation. Yoga or balance work supports flexibility, nervous system regulation, and balance — increasingly important for fall prevention as we age. Pilates builds core strength and stability, and supports posture and pelvic floor health.
+  _Targets: weight changes, joint pain, fatigue_
+- **90 seconds of stairs a day**  _(medium priority)_
+  Short bursts like stair walking or running — even just 90 seconds a day — are a brilliant way to improve cardiovascular fitness without needing a long workout.
+  _Disclaimer: Worth a quick GP check first if you have joint issues, high blood pressure, or haven't done intense exercise in a while._
+- **Morning light, evening dimness — the two ends of your body clock**  _(high priority)_
+  Morning bright light exposure — ideally outdoors, within the first hour of waking — helps set the body clock, which supports both sleep quality and daytime mood/energy. In the evening, reduce blue light: screens and overhead LED lighting suppress melatonin production, making it harder to fall asleep and stay asleep. Dim the lights and come off screens (or use blue-light-blocking glasses or night mode) for the hour or two before bed — candles work well in the winter months.
+  _Targets: sleep problems, mood changes_
+- **Cold water exposure**  _(medium priority)_
+  Cold showers, wild swimming, splashing your face with cold water, running cold water on your wrists, or simply finishing a shower cold — there's building evidence for mood, energy and stress resilience from this kind of cold exposure.
+  _Targets: mood changes, fatigue_
+- **A short walk after eating, and chewing properly**  _(medium priority)_
+  Walking after meals — even just 10 minutes — meaningfully blunts blood sugar spikes, which ties back into the mood/energy loop. It sounds small, but chewing each mouthful 30–35 times before swallowing meaningfully improves digestion, blood sugar stability and nutrient absorption, and helps shift the body into a calmer, "rest and digest" state at mealtimes.
+- **Rebounding and box jumping — for bone density**  _(medium priority)_
+  Rebounding for 10 minutes a day is a low-impact way to support lymphatic drainage, bone density and cardiovascular fitness, and is easy on the joints compared to running — it is the gentler of the two options here. Box jumping — around 10 minutes, 3 times a week — loads the skeleton harder and so builds bone density more directly, but it is genuinely high-impact: it is not the right starting point if your joints are already painful, and rebounding or weight training will serve you better in that case.
+  _Only shown to: active only_
+  _Targets: joint pain_
+  _Disclaimer: Check with your GP before starting jump-based training if you have joint problems, a known or suspected low bone density, high blood pressure, any pelvic floor symptoms, or you haven't done impact exercise in a while. Build up gradually rather than starting at the full amount._
+- **Breathwork for the vagus nerve, and sauna or heat exposure**  _(medium priority)_
+  Simple breathing techniques — box breathing (in for 4, hold for 4, out for 4, hold for 4), the physiological sigh (two short inhales through the nose, one long exhale through the mouth), or humming — activate the vagus nerve and shift the body out of "fight or flight" and into "rest and digest." It takes just a couple of minutes and can be done anywhere. Sauna or heat exposure also has growing evidence for cardiovascular health, and some women find it helps with joint pain and mood.
+  _Targets: anxiety, joint pain_
+  _Disclaimer: If you're prone to hot flushes or already struggle with heat sensitivity, sauna use may need care — shorter sessions, or avoiding it altogether if it triggers symptoms rather than helping._
+- **Time in nature, and staying socially connected**  _(medium priority)_
+  Time in nature — walking barefoot on grass or sand, or an allotment-type activity — isn't just exercise, it's the grounding, present-moment effect of being outside and doing something with your hands. Strong social connection is linked to better mood, longevity and resilience through hormonal transitions — one of the simplest, most evidence-backed habits there is. Whether that's a regular walk with a friend, a class, or a community, this is a genuine daily or weekly habit worth naming, not just a "nice to have."
+  _Targets: mood changes_
 
 ### Mindset & emotional
 
 - **Talk to your GP about your options — including HRT**  _(high priority)_
-  Hormone Replacement Therapy (HRT) is the most effective treatment for vasomotor symptoms and has protective effects for bone density and cardiovascular health for many women when started within 10 years of menopause. Modern body-identical HRT has a much more favourable safety profile than older formulations. Your GP can discuss whether it is appropriate for you. This app supports your lifestyle — it does not replace medical care. Please book an appointment if your symptoms are significantly affecting your quality of life.
+  Hormone Replacement Therapy (HRT) is the most effective treatment for vasomotor symptoms and has protective effects for bone density and cardiovascular health for many women when started within 10 years of menopause. Modern body-identical HRT has a much more favourable safety profile than older formulations. Your GP can discuss whether it is appropriate for you. This app supports your lifestyle — it does not replace medical care. Please book an appointment if your symptoms are significantly affecting your quality of life. This guidance is safe for everyone as a general framework — there's nothing here that's inherently unsuitable. That said, always check with your GP or medical provider first if you're taking any medication (to rule out interactions, particularly with supplements), under the care of a specialist for any condition, or awaiting medical treatment, investigation or a diagnosis. This isn't about gatekeeping the advice — it's about making sure it's layered on top of the right medical oversight, not instead of it.
 - **Your symptoms are real — and widely underestimated**  _(medium priority)_
   Menopause affects virtually every system in the body. Women report an average of 7–10 symptoms simultaneously at peak perimenopause. Yet most women are not asked about menopause by healthcare providers until they raise it themselves. Your experience is real, it has biological causes, and it is not a sign of weakness or ageing 'badly'. It is a transition — with a beginning, a middle, and an end.
+- **This is your window**  _(high priority)_
+  Perimenopause isn't happening to you — it's calling you to act. This is your window of opportunity, not a slow decline, but the moment to take action and change the trajectory of the next 40 years. Menopause isn't the end of your window — it's a new one. Who do you want to feel like, be like, 5, 10, 15 years from now? Start practising her now.
+- **Your plan should flex around how you're doing — not just your stage**  _(medium priority)_
+  Sleep, stress, activity levels, diet and genetics all interact, and the right starting point depends on where you actually are, not just what stage you're in. Two women in postmenopause might need completely different advice if one is sleeping well and active, and the other is exhausted, wired, and barely sleeping. Your stage tells us where to start looking; how you're doing in sleep, stress, energy and mood tells us what you actually need. This is also a good moment to look at boundaries — what you're carrying for everyone else, and whether there's room to put yourself back on the list.
+- **Other hormonal imbalances worth ruling out**  _(medium priority)_
+  If you have other hormonal imbalances, they can shape what you need here too. Thyroid conditions (hypothyroidism, Hashimoto's, hyperthyroidism) interact closely with oestrogen and progesterone, so symptoms often overlap and amplify each other — a full panel, not just TSH, matters. PCOS, even though usually diagnosed earlier in life, often carries insulin resistance through into perimenopause and menopause, meaning blood sugar stability needs even more attention. Adrenal dysfunction or HPA axis dysregulation — chronic stress affecting cortisol output — competes for the same hormonal building blocks as progesterone, compounding the hormone shifts already happening. Insulin resistance or pre-diabetes is worth naming directly as a hormonal imbalance in its own right, not just a "blood sugar issue." Family history matters too — if your mother or sisters had a particularly difficult perimenopause, early menopause, or conditions like osteoporosis or cardiovascular disease, that's useful information for proactive testing.
+- **If you're living with long Covid, CFS, or fibromyalgia too**  _(medium priority)_
+  All three overlap heavily with perimenopause and menopause symptoms — fatigue, brain fog, poor sleep, mood changes, exercise intolerance — so symptoms can easily be misattributed to hormones alone, delaying proper investigation. Energy pacing matters more here — intense exercise, including short interval bursts, may need to be scaled back if you're experiencing post-exertional symptom flare-ups (a worsening of symptoms after activity, sometimes delayed by a day or two). "Push through it" is the wrong instinct here — with post-exertional symptoms, more activity can set recovery back rather than build resilience. Working alongside your GP or a specialist matters, since standard lifestyle advice may need real modification.
+  _Targets: fatigue, brain fog_
 
 ### Supplements
 
-- **Vitamin D — non-negotiable for bone health and immune function**  _(high priority)_
-  Vitamin D deficiency is almost universal in the UK population and dramatically accelerates in the menopausal transition as oestrogen decline directly affects bone density. The NHS recommends 400 IU daily from October to March for all adults; women in menopause likely benefit from 1000–2000 IU year-round. Ask your GP for a blood test to establish your baseline.
+- **Vitamin D3 (+K2) — ideally guided by a blood test**  _(high priority)_
+  1000–4000 IU/day, ideally guided by a blood test. Look for D3 (cholecalciferol) with K2 for proper utilisation. Vitamin D deficiency is almost universal in the UK population and dramatically accelerates in the menopausal transition as oestrogen decline directly affects bone density.
   _Targets: fatigue, mood changes, joint pain_
   _Disclaimer: Vitamin D toxicity can occur at very high doses (above 4000 IU/day long-term). Always test before supplementing above 2000 IU and consult your GP if you have kidney disease, hypercalcaemia, or sarcoidosis._
+- **Magnesium — the form matters**  _(high priority)_
+  200–400mg/day, started low. Glycinate is gentler on the gut and less likely to cause loose stools — the better choice if the goal is sleep, calm, or nervous system support without a laxative effect. Citrate has a natural laxative effect, so it's the better choice if you're also dealing with constipation or want support with bowel movements — though it may cause loose stools if the dose is too high. Both are better absorbed than magnesium oxide, which is cheaper but poorly absorbed and mostly used for its laxative effect rather than raising magnesium levels.
+  _Disclaimer: Supplements are not regulated medicines. Always check with your GP or pharmacist before starting, especially if you take any prescribed medications or have kidney or heart conditions._
+- **Omega-3 (EPA/DHA)**  _(high priority)_
+  1000–2000mg combined EPA/DHA daily. Check the actual EPA/DHA content per capsule, not just total fish oil weight, and look for third-party-tested purity.
+  _Disclaimer: Omega-3 at high doses can thin the blood. If you take anticoagulants (warfarin, aspirin, apixaban) or are due for surgery, consult your GP or pharmacist before supplementing._
+- **B-Complex — look for the active, methylated forms**  _(medium priority)_
+  Look for active or methylated forms — methylfolate rather than synthetic folic acid, methylcobalamin rather than synthetic cyanocobalamin. These are better absorbed and used by the body, particularly relevant given how common B12 and folate deficiency are at this life stage.
+  _Disclaimer: Always check with your GP or pharmacist before starting, especially if you take any prescribed medications or have kidney conditions._
+- **Probiotic and prebiotic fibre — for gut health repair**  _(medium priority)_
+  A multi-strain probiotic — dose varies by product and CFU count, so look for strains with clinical backing rather than highest CFU alone. Prebiotic fibre (e.g. inulin, PHGG) — start low and build slowly to avoid bloating, particularly if gut health is already compromised.
+  _Disclaimer: Always check with your GP or pharmacist before starting, especially if you take any prescribed medications or have a diagnosed digestive condition._
+- **Digestive enzymes and HCL — for bloating, reflux, and absorption**  _(low priority)_
+  Digestive enzymes taken with meals are particularly useful if bloating or discomfort after eating is present. Stomach acid naturally declines with age and through menopause, which can lead to poor protein breakdown, bloating, reflux-like symptoms, and reduced absorption of key nutrients like B12 and iron — HCL (Betaine Hydrochloride) is typically taken with protein-containing meals, starting with 1 capsule and increasing gradually under guidance until you notice a warming sensation in the stomach, at which point you'd drop back to the previous dose.
+  _Disclaimer: HCL is not suitable for everyone — particularly anyone with active ulcers, gastritis, or taking anti-inflammatory medications — so it needs a GP or practitioner check before starting._
+- **Calcium D-Glucarate — supporting healthy oestrogen clearance**  _(medium priority)_
+  Commonly 500mg–1g/day. Helps the liver clear excess oestrogen out of the body properly, rather than it being reabsorbed back through the gut. This is particularly useful if you have a history of oestrogen-dominant conditions like endometriosis, adenomyosis or fibroids, or if you've been focusing on supporting healthy oestrogen clearance more generally — women with this history have often spent years managing a higher oestrogen load, so supporting clearance (liver function, fibre, cruciferous vegetables, reducing alcohol and xenoestrogen exposure) matters even more through perimenopause.
+  _Disclaimer: Always check with your GP or pharmacist before starting, especially if you take any prescribed medications or have a personal or family history of hormone-sensitive conditions._
 
 ---
 
@@ -99,7 +159,7 @@ Shown when their **stress level** is any of: "high", "very high".
   Magnesium is excreted at higher rates under stress. Magnesium deficiency worsens anxiety, sleep, and muscle tension — creating a feedback loop. Magnesium-rich foods: dark chocolate (>70%), pumpkin seeds, spinach, black beans, almonds, avocado, and bananas. These are better than supplements as a first approach. Reduce alcohol and caffeine, which also increase magnesium excretion.
   _Targets: anxiety, sleep problems_
 - **Caffeine raises cortisol — limit to 1–2 cups before noon**  _(high priority)_
-  Caffeine triggers the adrenal glands to release cortisol and adrenaline — the same stress response that chronic stress already keeps elevated. If you are in a chronic stress state, caffeine adds to the cortisol burden rather than giving you genuine energy. Cut to 1–2 cups of coffee before noon. The withdrawal headache lasts 2–3 days; after that, most women report more stable energy and lower baseline anxiety.
+  Caffeine triggers the adrenal glands to release cortisol and adrenaline — the same stress response that chronic stress already keeps elevated. If you are in a chronic stress state, caffeine adds to the cortisol burden rather than giving you genuine energy. Cut to 1–2 cups of coffee, finishing before noon — deliberately earlier than the general 1pm cutoff for sleep, because you are managing the cortisol load as well as the sleep effect. The withdrawal headache lasts 2–3 days; after that, most women report more stable energy and lower baseline anxiety.
   _Targets: anxiety, sleep problems, hot flashes_
 
 ### Lifestyle
@@ -148,7 +208,7 @@ Shown when their **symptoms** is any of: "hot flashes", "night sweats".
 - **Stabilise blood sugar to reduce flush frequency**  _(medium priority)_
   Blood sugar spikes and crashes can trigger vasomotor events. Eating protein and healthy fat at every meal (e.g. eggs, nuts, oily fish, avocado) slows glucose absorption and helps keep flushes calmer. Avoid refined carbs and sugary snacks on an empty stomach.
 - **Stay consistently hydrated**  _(medium priority)_
-  Dehydration raises core body temperature, making flushes more intense. Aim for 6–8 glasses of water daily. Start with a large glass of cold water first thing in the morning and keep one by your bed for night sweats.
+  Dehydration raises core body temperature, making flushes more intense. Keep to the same roughly 2 litres a day baseline as the rest of your plan, spread across the day — and a little more if you are sweating at night, since that loses fluid. Start with a large glass of cold water first thing, and keep one by your bed for night sweats.
 
 ### Lifestyle
 
@@ -163,8 +223,10 @@ Shown when their **symptoms** is any of: "hot flashes", "night sweats".
 
 ### Mindset & emotional
 
+- **Hot flushes aren't just a supplement problem**  _(medium priority)_
+  Gut health and blood sugar stability play a real role too. Poor oestrogen clearance (often a gut or liver issue) and blood sugar swings (which trigger adrenaline and can bring on or worsen flushes) are often underlying drivers. Addressing those foundations often does more for flush frequency and severity than any single supplement.
 - **Reframe the flush — anxiety makes them worse**  _(high priority)_
-  Anxiety about an impending flush is itself a trigger: it activates the sympathetic nervous system, which raises core temperature. Women who learn to observe a flush without catastrophising ("this will pass in 90 seconds") report significantly lower severity scores over time. Cognitive Behavioural Therapy (CBT) for menopause has strong evidence — ask your GP about the CHOICE programme or look up menopause CBT on the NHS website.
+  Anxiety about an impending flush is itself a trigger: it activates the sympathetic nervous system, which raises core temperature. Women who learn to observe a flush without catastrophising ("this will pass in 90 seconds") report significantly lower severity scores over time. Cognitive Behavioural Therapy (CBT) for menopausal symptoms is recognised by NICE as an option for vasomotor symptoms alongside or instead of HRT. You can self-refer to NHS Talking Therapies in England without going through your GP, and the Women's Health Concern (the patient arm of the British Menopause Society) publishes a free factsheet on CBT for menopausal symptoms.
 - **Protect sleep despite night sweats**  _(high priority)_
   Night sweats often cause secondary sleep anxiety ("I dread going to bed"). Keep your pre-sleep routine consistent and calm. A cool shower before bed lowers core temperature for 60–90 minutes — the window when it helps most. Avoid screens for 30 minutes beforehand. If you wake from a sweat, have your water and fan ready and avoid looking at your phone.
 - **Track triggers for two weeks**  _(medium priority)_
@@ -175,9 +237,18 @@ Shown when their **symptoms** is any of: "hot flashes", "night sweats".
 - **Magnesium glycinate — sleep and flush support**  _(high priority)_
   Magnesium glycinate (200–400mg before bed) is well-tolerated and has early evidence for reducing night-sweat frequency and improving sleep quality in perimenopause. It is also calming for the nervous system. The glycinate form is gentler on the digestive system than magnesium oxide.
   _Disclaimer: Supplements are not regulated medicines. Always check with your GP or pharmacist before starting, especially if you take any prescribed medications or have kidney or heart conditions._
-- **Sage extract — modest evidence for flush reduction**  _(medium priority)_
-  Sage (Salvia officinalis) standardised extract has a small body of clinical evidence showing a modest reduction in hot flush frequency. Studies typically used 300–600mg daily. Effects take 4–8 weeks to build. Not a replacement for HRT if flushes are severe.
+- **Sage — for hot flushes and night sweats**  _(medium priority)_
+  Sage (Salvia officinalis) standardised extract has a small body of clinical evidence showing a modest reduction in hot flush frequency. Studies typically used 300–600mg daily, or you can take it as a tea before bed — sage has traditionally been used specifically for excessive sweating, including night sweats. Effects take 4–8 weeks to build. Not a replacement for HRT if flushes are severe.
   _Disclaimer: Sage supplements can interact with some medications including anticonvulsants and diabetes drugs. Not suitable during pregnancy. Consult your GP before use, particularly if you have any ongoing health conditions._
+- **Omega-3 (EPA/DHA) — for hot flushes and night sweats**  _(medium priority)_
+  Some evidence for reducing the frequency and severity of vasomotor symptoms — hot flushes and night sweats — alongside its other general health benefits.
+  _Disclaimer: Omega-3 at high doses can thin the blood. If you take anticoagulants (warfarin, aspirin, apixaban) or are due for surgery, consult your GP or pharmacist before supplementing._
+- **Vitamin E — for vasomotor symptoms**  _(low priority)_
+  Commonly 400 IU/day. Some evidence for reducing the frequency and severity of vasomotor symptoms, including night sweats.
+  _Disclaimer: Always check with your GP or pharmacist before starting, especially if you take any prescribed medications._
+- **Maca — for hormone balance, energy, mood and libido**  _(low priority)_
+  Maca (e.g. Dr Anna Cabeca's formulations, or standard maca root powder or capsules) supports hormone balance, energy, mood and libido for many women.
+  _Disclaimer: Caution needed if you have autoimmune conditions — maca can stimulate the immune system and may aggravate autoimmune flares. Worth a GP or specialist check first if this applies to you._
 
 ---
 
@@ -190,7 +261,7 @@ Shown when their **symptoms** is any of: "mood changes", "anxiety", "brain fog".
 - **Omega-3 fatty acids for brain and mood**  _(high priority)_
   DHA (a type of omega-3) is essential for brain cell membrane function and serotonin signalling. Declining oestrogen reduces the brain's efficiency at using omega-3. Eat oily fish (salmon, sardines, mackerel) 2–3 times weekly, or supplement with 1000mg EPA+DHA daily if you don't eat fish. Ground flaxseed and walnuts provide ALA (a plant-based omega-3 precursor).
 - **Gut health and the mood connection**  _(medium priority)_
-  The gut-brain axis is well established — gut bacteria produce around 90% of the body's serotonin. Include fermented foods daily: live yoghurt, kefir, kimchi, sauerkraut, miso. These feed beneficial gut bacteria linked to better mood regulation and lower anxiety. Aim for variety across the week rather than large amounts of one thing.
+  The gut-brain axis is well established, though it is often described loosely. Around 90% of the body's serotonin is made in the gut — but by your own enterochromaffin cells, not by gut bacteria, and that serotonin does not cross into the brain. What gut bacteria do is influence how much is produced, and communicate with the brain by other routes. So this is worth doing, just not because you are "topping up" brain serotonin. Include fermented foods daily: live yoghurt, kefir, kimchi, sauerkraut, miso. Aim for variety across the week rather than large amounts of one thing.
 - **Protein at every meal — amino acids build your mood chemicals**  _(high priority)_
   Serotonin, dopamine, and GABA are built from amino acids that come from dietary protein. Skipping meals or eating low-protein snacks can deplete the building blocks your brain needs. Aim for 20–30g of protein at breakfast (eggs, Greek yoghurt, smoked salmon) — this sets up your neurotransmitter production for the day.
 
@@ -205,21 +276,57 @@ Shown when their **symptoms** is any of: "mood changes", "anxiety", "brain fog".
 
 ### Mindset & emotional
 
-- **Physiological sigh — the fastest anxiety reset**  _(high priority)_
-  The "physiological sigh" (double inhale through the nose, long slow exhale through the mouth) activates the parasympathetic nervous system faster than any other breathing technique. Use it at the onset of anxiety or irritability. Unlike extended breathwork sessions, this takes 5 seconds and can be done anywhere, including mid-conversation or in a meeting.
-- **Track mood triggers — awareness reduces reactivity**  _(medium priority)_
-  Many women find their mood changes feel random and uncontrollable, which is itself distressing. Using your journal to note mood, energy, and what happened before a difficult moment for two weeks typically reveals 2–3 clear patterns. Knowing that the Tuesday morning meeting reliably triggers anxiety, for example, allows preparation rather than surprise. Predictability reduces the threat response.
-- **Your brain is not broken — it is adapting**  _(medium priority)_
-  Oestrogen decline affects the amygdala (the brain's threat detector) and the hippocampus (memory). The irritability, tearfulness, and brain fog you experience are neurological, not personal weakness. Self-compassion practices — treating yourself with the same warmth you'd offer a friend who was struggling — are associated with lower anxiety and faster emotional recovery. Research by Kristin Neff at UT Austin is a good starting point if you want to explore this further.
+- **This is physiology, not a personality change**  _(high priority)_
+  The emotional shifts in menopause aren't a personality change or a sign something's wrong with you — they're physiology. Oestrogen has a direct relationship with serotonin and dopamine, so when it drops, mood, motivation and resilience drop with it. This isn't weakness. It isn't "just stress." It's chemistry. But mood is rarely just about oestrogen — it's tangled up with several other systems too, and it's worth understanding the full picture rather than assuming "it's just hormones" or "it's just me." Sleep and energy: poor sleep — so common in menopause thanks to night sweats, racing thoughts, or a wired-but-tired nervous system — doesn't just leave you exhausted, it directly lowers your capacity to regulate emotion. A short night's sleep makes the brain's threat-detector more reactive, while dulling the part of the brain that calms things down. Low energy compounds this — when you're running on empty, there's simply less in the tank for patience or perspective. Mood, sleep and energy feed each other in a loop, for better or worse. Hormone imbalance and rage: many women recognise "the rage" from perimenopause, when progesterone — which normally has a calming, steadying effect — drops faster than oestrogen, leaving oestrogen relatively unopposed. It's not a flaw in your character — it's a ratio problem, not necessarily "too much" of anything. By menopause, oestrogen has usually dropped low overall too, but if rage or irritability persists, it's worth looking at the wider picture: chronic stress, poor oestrogen clearance, or environmental xenoestrogens can keep that imbalance going.
+  _Targets: mood changes, anxiety_
+- **What else could be driving this — beyond hormones**  _(high priority)_
+  Nutrient status: low B12 and folate can mimic or worsen low mood, brain fog, fatigue and irritability — deficiency is common, especially with age, certain medications, or low intake of animal proteins and leafy greens. This is a simple, correctable thing that's too often overlooked. Thyroid health: an underactive thyroid in particular can look exactly like "menopause brain and mood" — low mood, fatigue, brain fog, weight gain, feeling flat. It's frequently missed because the standard TSH-only test doesn't tell the full story, and symptoms get written off as "just menopause" when thyroid function hasn't actually been properly checked. Blood sugar: pre-diabetes and diabetes affect mood directly — blood sugar swings can cause irritability, anxiety, brain fog and energy crashes that feel identical to "hormonal" mood changes, and poor regulation also worsens sleep and increases inflammation. Histamine's wider reach: histamine's effects go well beyond itching, migraines and flushing — it can also contribute to bloating, poor sleep, brain fog and fatigue. If you're ticking several boxes across mood, sleep, energy and digestion without an obvious single cause, histamine is worth considering as a genuine thread running underneath.
+  _Targets: mood changes, brain fog_
+- **If you have a history of endometriosis, adenomyosis, or fibroids**  _(medium priority)_
+  Women with this history have often spent years managing higher oestrogen load, so they may feel the emotional swings of perimenopause more intensely than other women — the rage, the rollercoaster, the sense of not recognising yourself. This isn't being "more sensitive" or dramatic; your body has genuinely been more attuned to oestrogen fluctuation all along. It's also worth naming that many women with this history have been living with chronic pain for years, sometimes decades, often dismissed or under-treated before diagnosis — and depression is genuinely more common in women with this history. If you're noticing low mood alongside the perimenopausal shifts, it isn't necessarily "just menopause" layered on top — it may be the accumulated weight of pain, and years of not being believed or heard, finally being felt. If you're living with long Covid, CFS, or fibromyalgia alongside menopause, the emotional toll of navigating a chronic illness and menopause at the same time is real, and often isolating — it's hard to untangle which symptoms belong to which cause. Both can be true at once, and both deserve care, not competition for which is "the real problem."
+- **Who am I now? — it doesn't have to be a crisis question**  _(medium priority)_
+  How you narrate this chapter to yourself genuinely shapes how you experience it. "Who am I now?" can be a curious question rather than a panicked one — not pretending everything's fine, but recognising that this in-between, unfamiliar version of yourself isn't a problem to solve, it's a person to get to know. A lot of women arrive here feeling like they've lost themselves — that disorientation is real and common, and so often there's more going on underneath than "just hormones," which is exactly why it deserves proper investigation rather than just being pushed through. Menopause isn't a problem to fix in isolation — it's a transition that touches hormones, sleep, nutrients, thyroid and metabolic health all at once. The aim isn't to "get back to normal" but to understand what's actually going on underneath the mood, not just manage the mood itself. Tracking patterns — sleep quality, energy dips, mood cycles, triggers — gives you information, not just symptoms to endure.
+- **When to see your GP about mood or anxiety**  _(high priority)_
+  See your GP if: low mood or anxiety is persistent, worsening, or affecting daily functioning; you have any thoughts of self-harm or hopelessness — always same-day; rage or irritability feels out of proportion or frightening to you or those around you; sleep disruption is severe, prolonged, or not responding to lifestyle changes; or mood changes come alongside other red-flag symptoms — significant weight change, heart palpitations, heavy or irregular bleeding, excessive thirst or urination. It's worth requesting a full thyroid panel (not just TSH) and B12/folate bloods if these haven't been checked, and HbA1c or fasting glucose if there's a family history of diabetes, weight changes, or blood sugar symptoms alongside mood changes. If you're wondering whether HRT, antidepressants, or other support might help — that's a conversation worth having, not something to white-knuckle through alone.
 
 ### Supplements
 
-- **B-vitamin complex — mood, energy, and brain function**  _(high priority)_
-  B vitamins (particularly B6, B9/folate, and B12) are essential cofactors in serotonin and dopamine production. B12 deficiency — common in women over 45, especially those on metformin or PPIs — causes fatigue, brain fog, and low mood indistinguishable from menopause. A daily B-complex with methylated forms (methylfolate, methylcobalamin) is well-tolerated and appropriate for most women.
-  _Disclaimer: High-dose B6 (above 10mg/day long term) can cause peripheral neuropathy. Use a standard B-complex (typically 2–10mg B6) rather than isolated high-dose B6. Consult your GP if you have any kidney conditions._
-- **Ashwagandha — adaptogen for stress and anxiety**  _(medium priority)_
-  Ashwagandha (KSM-66 extract, 300–600mg daily) has a reasonable body of clinical evidence for reducing cortisol, perceived stress, and anxiety in adults. It typically takes 6–8 weeks to see the full effect. Best taken with food. It is one of the better-evidenced adaptogens for perimenopausal anxiety.
-  _Disclaimer: Ashwagandha can interact with thyroid medications and immunosuppressants. Not suitable during pregnancy. Some people experience digestive upset — take with food. Consult your GP before use if you have thyroid conditions or take any regular medications._
+- **Magnesium glycinate — for nervous system regulation and calm**  _(high priority)_
+  Commonly 200–400mg/day. The glycinate form is preferred here over citrate, since the goal isn't a laxative effect.
+  _Targets: anxiety_
+  _Disclaimer: Always check with your GP or pharmacist before starting, especially if you take any prescribed medications or have kidney or heart conditions._
+- **L-Theanine — calm and focus without sedation**  _(medium priority)_
+  Commonly 100–200mg. Supports calm and focus without sedation, and can be taken during the day for anxiety rather than just at bedtime.
+  _Targets: anxiety_
+  _Disclaimer: Always check with your GP or pharmacist before starting, especially if you take any prescribed medications._
+- **Ashwagandha — for the body's stress response**  _(medium priority)_
+  Commonly 300–600mg/day of standardised root extract. Well-researched for supporting the body's stress response and cortisol regulation.
+  _Targets: anxiety_
+  _Disclaimer: Caution needed if you have autoimmune conditions (can stimulate immune activity), thyroid conditions (can affect thyroid hormone levels), or are pregnant — check with your GP first._
+- **Saffron — for mood and anxiety**  _(low priority)_
+  Commonly 30mg/day of standardised extract. Some evidence for supporting mood and anxiety symptoms.
+  _Targets: anxiety, mood changes_
+  _Disclaimer: Always check with your GP or pharmacist before starting, especially if you take any prescribed medications._
+- **B-Complex — for nervous system function and stress resilience**  _(medium priority)_
+  Look for methylcobalamin (B12) and methylfolate rather than the cheaper synthetic forms (cyanocobalamin, folic acid). B vitamins play a role in nervous system function and stress resilience, particularly relevant if diet or stress has depleted your levels.
+  _Targets: anxiety, brain fog_
+  _Disclaimer: Always check with your GP or pharmacist before starting, especially if you take any prescribed medications or have kidney conditions._
+- **Omega-3 (EPA/DHA) — for brain fog, anxiety and mood**  _(high priority)_
+  For brain fog specifically, commonly 2–3g/day combined EPA/DHA — the higher end of the general range, given the specific brain focus. Supports cognitive function and has anti-inflammatory benefits for the brain, alongside evidence for supporting mood and reducing anxiety symptoms.
+  _Targets: brain fog, anxiety, mood changes_
+  _Disclaimer: Omega-3 at high doses can thin the blood. If you take anticoagulants (warfarin, aspirin, apixaban) or are due for surgery, consult your GP or pharmacist before supplementing._
+- **Acetyl-L-Carnitine — for brain energy metabolism**  _(medium priority)_
+  Commonly 1–3g/day. Supports brain energy metabolism and has some evidence for cognitive function and mental clarity.
+  _Targets: brain fog_
+  _Disclaimer: Always check with your GP or pharmacist before starting, especially if you take any prescribed medications._
+- **Ginkgo Biloba — for circulation and memory**  _(low priority)_
+  Commonly 120–240mg/day. Supports circulation to the brain and has some evidence for memory and mental clarity.
+  _Targets: brain fog_
+  _Disclaimer: Can interact with blood-thinning medications — needs a GP check first, especially if you're on anticoagulants or aspirin._
+- **Phosphatidylserine — for memory and cognitive support**  _(low priority)_
+  Commonly 150mg/day. Some evidence for memory and cognitive support.
+  _Targets: brain fog_
+  _Disclaimer: Always check with your GP or pharmacist before starting, especially if you take any prescribed medications._
 
 ---
 
@@ -321,7 +428,7 @@ Shown when their **symptoms** is any of: "low libido", "vaginal dryness".
   Vaginal dryness (GSM — genitourinary syndrome of menopause) worsens progressively without treatment. Over-the-counter vaginal moisturisers (Replens, YES VM, Hyalofemme) used 2–3 times weekly restore moisture to the vaginal tissue and reduce discomfort during everyday activities and sex. They are not lubricants — they work continuously. Lubricants are used at the time of sexual activity. You need both if you are sexually active.
   _Targets: vaginal dryness_
 - **Pelvic floor exercises — for comfort, sensation, and continence**  _(high priority)_
-  The pelvic floor muscles support the bladder, bowel, and uterus and are directly affected by oestrogen decline. Strengthening them (Kegel exercises: hold for 10 seconds, release, repeat 10 times, 3 sets daily) improves sensation during sex, reduces urgency incontinence, and supports pelvic organ health. The NHS Squeezy app guides you through a progressive programme with reminders.
+  The pelvic floor muscles support the bladder, bowel, and uterus and are directly affected by oestrogen decline. Strengthening them (Kegel exercises: hold for 10 seconds, release, repeat 10 times, 3 sets daily) improves sensation during sex, reduces urgency incontinence, and supports pelvic organ health. If reminders help you keep it up, Squeezy — an app developed by NHS pelvic health physiotherapists — guides you through a progressive programme, though it is a paid app rather than a free NHS one. You can also ask your GP to refer you to an NHS pelvic health physiotherapist, which is free and is the better route if symptoms are affecting you day to day.
   _Targets: vaginal dryness, low libido_
 - **Regular sexual activity helps maintain vaginal health**  _(medium priority)_
   Regular sexual activity (including solo activity) increases blood flow to vaginal tissue, which maintains elasticity and moisture. If penetrative sex is painful, start with non-penetrative activity and a good lubricant. Gradually reintroducing penetrative activity with plenty of lubricant and patience prevents the cycle of avoidance that accelerates atrophy. This is not about performance — it is about vascular and tissue maintenance.
@@ -333,15 +440,31 @@ Shown when their **symptoms** is any of: "low libido", "vaginal dryness".
   Vaginal oestrogen cream or pessary (e.g. Vagifem, Ovestin, Estring) is the most effective treatment for GSM. It acts locally with minimal systemic absorption and is considered safe even for women who cannot take systemic HRT, including many breast cancer survivors. It is chronically undertreated because women and GPs don't raise it. You can ask for it specifically. It is not a cosmetic treatment — it is treating a progressive condition.
   _Targets: vaginal dryness_
 - **Libido is complex — it is rarely just hormonal**  _(medium priority)_
-  Sexual desire in women is context-dependent. Fatigue, relationship dynamics, stress, body image, and mood all have more influence on libido than hormone levels alone. If you feel disconnected from your sexuality, it is worth separating the physical (address dryness and discomfort first) from the relational and psychological. A psychosexual therapist can help if desire has been absent for several months. Low libido that distresses you or your partner is worth taking seriously — and it is treatable.
+  Sexual desire in women is context-dependent. Fatigue, relationship dynamics, stress, body image, and mood all have more influence on libido than hormone levels alone. If you feel disconnected from your sexuality, it is worth separating the physical (address dryness and discomfort first) from the relational and psychological. A psychosexual therapist can help if desire has been absent for several months. Low libido in menopause is rarely just one thing — it's often a combination of hormonal changes, vaginal dryness or discomfort, poor sleep, low energy, stress, and relationship or emotional factors. Low libido that distresses you or your partner is worth taking seriously — and it is treatable.
   _Targets: low libido_
 
 ### Supplements
 
-- **Maca root — some evidence for libido and energy**  _(low priority)_
-  Maca (Lepidium meyenii) root extract (1500–3000mg daily) has a small number of randomised trials showing improvement in sexual dysfunction and self-reported libido in postmenopausal women. Effects are modest and take 6–8 weeks. It does not contain hormones. Evidence quality is fair — not as robust as pharmaceutical options — but it is well-tolerated with few reported side effects.
+- **Maca root — for libido and hormone balance**  _(low priority)_
+  Commonly 1.5–3g/day. One of the most recognised supplements for libido and hormone balance, including in some practitioners' protocols specifically for menopausal women.
   _Targets: low libido_
-  _Disclaimer: Maca is generally considered safe for most adults. However, as it may act on the hypothalamic-pituitary axis, consult your GP before use if you have thyroid conditions or hormone-sensitive cancers. Not a substitute for medical treatment of GSM._
+  _Disclaimer: Caution needed if you have autoimmune conditions — maca can stimulate the immune system and may aggravate autoimmune flares. Not a substitute for medical treatment of vaginal dryness or GSM._
+- **Vitamin D — for hormone production**  _(low priority)_
+  Vitamin D plays a role in hormone production broadly, and is worth testing rather than assuming, particularly if libido has changed alongside other symptoms.
+  _Targets: low libido_
+  _Disclaimer: Always check with your GP or pharmacist before starting, especially if you take any prescribed medications._
+- **Zinc — for testosterone production**  _(low priority)_
+  Commonly 10–30mg/day. Involved in testosterone production, which plays a role in libido for women too, not just men. Shouldn't be taken long-term at high doses without monitoring, as excess zinc can deplete copper.
+  _Targets: low libido_
+  _Disclaimer: Always check with your GP or pharmacist before starting, especially if you take any prescribed medications._
+- **Ashwagandha — for libido alongside stress reduction**  _(low priority)_
+  Commonly 300–600mg/day of standardised root extract. Some evidence for supporting libido alongside its stress-reduction effects.
+  _Targets: low libido_
+  _Disclaimer: Caution needed if you have autoimmune conditions, thyroid conditions, or are pregnant — check with your GP first._
+- **Vaginal-specific probiotics — for tissue health and comfort**  _(medium priority)_
+  Supports vaginal tissue health and comfort, which can often address a physical barrier to libido — dryness or discomfort.
+  _Targets: low libido, vaginal dryness_
+  _Disclaimer: Always check with your GP or pharmacist before starting._
 
 ---
 
@@ -384,10 +507,18 @@ Shown when their **symptoms** is any of: "skin changes", "hair changes".
 
 ### Supplements
 
-- **Hydrolysed collagen peptides — emerging evidence for skin and hair**  _(medium priority)_
-  Hydrolysed marine collagen peptides (10g daily in a hot drink or smoothie) have a growing body of randomised trial evidence for improving skin elasticity, hydration, and wrinkle depth at 8–12 weeks. Some trials show improvements in nail growth and strength. Hair evidence is weaker. Look for Verisol or PEPTAN branded collagen which are the most studied formulations.
+- **Hydrolysed collagen — emerging evidence for skin, hair and nails**  _(medium priority)_
+  Commonly 10g/day. Look for hydrolysed Type I bovine collagen — hydrolysed means it's been broken down into smaller peptides your body can actually absorb and use, and Type I is the most abundant collagen type, supporting skin, hair, nails, joints, bones and gut lining. Natural collagen production declines with age, so supplementing helps support the body's ongoing repair and renewal. Worth remembering: collagen is a protein, so your body needs adequate stomach acid and digestive enzymes to properly break it down and absorb it — even a hydrolysed form. If digestion is already compromised, it may not be absorbed as well as expected until that's addressed.
   _Targets: skin changes, hair changes_
   _Disclaimer: Collagen peptides are generally well-tolerated. If you have a fish or shellfish allergy, check the source carefully (marine vs bovine vs plant-based options exist). Consult your GP before use if you have any ongoing health conditions._
+- **Zinc — for hair growth and repair**  _(medium priority)_
+  Commonly 10–30mg/day. Supports hair growth and repair. Shouldn't be taken long-term at high doses without monitoring, as excess zinc can deplete copper.
+  _Targets: hair changes_
+  _Disclaimer: Always check with your GP or pharmacist before starting, especially if you take any prescribed medications._
+- **Iron — only if bloods confirm deficiency**  _(medium priority)_
+  Low iron is a common, often-missed cause of hair thinning and shedding at this life stage — but this is only worth supplementing if bloods confirm a deficiency, not on assumption. Ask for a ferritin test specifically, not just haemoglobin.
+  _Targets: hair changes_
+  _Disclaimer: Always get levels checked by your GP before supplementing iron — unnecessary iron supplementation can cause its own problems._
 - **Biotin — only effective if you are actually deficient**  _(low priority)_
   Biotin (vitamin B7) is widely marketed for hair and nail health. It works if you are deficient, but biotin deficiency is actually uncommon. If your diet includes eggs, nuts, and wholegrains, you are likely not deficient. High-dose biotin (10mg+) interferes with thyroid and troponin blood tests — an important safety consideration. Iron and ferritin deficiency are far more common causes of hair loss in perimenopausal women — get tested before supplementing biotin.
   _Targets: hair changes_
@@ -434,6 +565,18 @@ Shown when their **symptoms** is any of: "sleep problems", "fatigue".
 - **Vitamin D — energy, mood, and immune support**  _(high priority)_
   Most UK adults are deficient in Vitamin D by winter. Deficiency is strongly associated with fatigue, low mood, and poor sleep. The NHS recommends 10 micrograms (400 IU) daily for all adults from October to March; women with darker skin or limited sun exposure may benefit from year-round supplementation at 1000–2000 IU. Ask your GP for a blood test to check your level before supplementing at higher doses.
   _Disclaimer: Very high doses of Vitamin D (above 4000 IU/day) can cause toxicity. Get your levels checked before supplementing above 2000 IU. Consult your GP if you have any history of kidney stones or hypercalcaemia._
+- **CoQ10 (or Ubiquinol) — for cellular energy production**  _(medium priority)_
+  CoQ10 is commonly taken at 100–200mg/day, and is involved in cellular energy production. Ubiquinol is the "active" form your body actually uses — your body naturally converts the standard form (ubiquinone) into this active form, but that conversion becomes less efficient with age, so ubiquinol may be the better choice for women in perimenopause and beyond. If you're on a statin or heart medication, CoQ10 levels can be depleted by the medication, so it's often recommended alongside statins specifically.
+  _Targets: fatigue_
+  _Disclaimer: If you're on a statin or other heart medication, this should be GP-guided due to the interaction._
+- **NMN and PQQ — for mitochondrial and cellular energy support**  _(low priority)_
+  NMN (Nicotinamide Mononucleotide), commonly 250–500mg/day, supports NAD+ production, which declines with age and is involved in cellular energy metabolism. PQQ (Pyrroloquinoline Quinone), commonly 10–20mg/day, supports mitochondrial function and is often paired with NMN or CoQ10.
+  _Targets: fatigue_
+  _Disclaimer: Always check with your GP or pharmacist before starting, especially if you take any prescribed medications._
+- **NAC and Liposomal Glutathione — antioxidant support**  _(low priority)_
+  NAC (N-Acetyl Cysteine), commonly 600mg/day, and/or liposomal glutathione support the body's master antioxidant system, which plays a role in cellular energy production and reducing oxidative stress. Glutathione should specifically be liposomal — standard capsule forms break down in digestion before absorption, so liposomal is needed for it to actually reach the bloodstream.
+  _Targets: fatigue_
+  _Disclaimer: Always check with your GP or pharmacist before starting, especially if you take any prescribed medications._
 
 ---
 
@@ -492,7 +635,7 @@ Shown when their **symptoms** is any of: "weight changes", "joint pain", "fatigu
 ### Lifestyle
 
 - **Strength training — the most important exercise for menopause**  _(high priority)_
-  Resistance training (weights, resistance bands, bodyweight exercises) is the most evidence-backed intervention for perimenopause weight management, bone density, joint stability, and metabolism. It does not mean heavy powerlifting — even 2–3 sessions of 30 minutes weekly doing squats, lunges, press-ups, and rows produces measurable metabolic benefit. Start light and focus on form. YouTube channels like pahlavanifitness have free beginner menopause-specific programmes.
+  Resistance training (weights, resistance bands, bodyweight exercises) is the most evidence-backed intervention for perimenopause weight management, bone density, joint stability, and metabolism. It does not mean heavy powerlifting — even 2–3 sessions of 30 minutes weekly doing squats, lunges, press-ups, and rows produces measurable metabolic benefit. Start light and focus on form. If you want somewhere free to begin, the NHS publishes a Strength and Flex plan — a five-week series of equipment-free exercises — alongside its Fitness Studio workout videos.
 - **Protect joints with low-impact movement**  _(high priority)_
   For joint pain, prioritise movement that loads joints without impact: swimming, cycling, yoga, Pilates, walking on even ground. Avoid high-impact running or HIIT on hard surfaces until joint pain is managed. Warmup and cool-down are more important now than they were in your 30s — allow 5–10 minutes at each end of any workout.
 - **Consistency beats intensity for metabolic health**  _(medium priority)_
@@ -510,6 +653,38 @@ Shown when their **symptoms** is any of: "weight changes", "joint pain", "fatigu
 - **Omega-3 (EPA+DHA) — anti-inflammatory for joints and metabolism**  _(high priority)_
   High-dose omega-3 (2000–3000mg EPA+DHA daily from fish oil or algae oil) has clinical evidence for reducing joint stiffness and inflammatory markers. The metabolic benefits (improved insulin sensitivity, reduced triglycerides) are also relevant for menopausal weight management. Take with a meal containing fat. Algae-based omega-3 is the plant-based equivalent.
   _Disclaimer: Omega-3 at high doses (above 3g EPA+DHA) can thin the blood. If you take anticoagulants (warfarin, aspirin, apixaban) or are due for surgery, consult your GP or pharmacist before supplementing._
-- **Collagen peptides — joint and connective tissue support**  _(medium priority)_
-  Hydrolysed collagen peptides (10–15g daily in a hot drink or smoothie) have emerging evidence for reducing joint pain and improving skin elasticity. The evidence is not as strong as omega-3 but it is well-tolerated and generally safe. Look for products with Verisol or UC-II standardised collagen.
+- **Collagen Type II — specifically for joint cartilage**  _(medium priority)_
+  Commonly 10g/day of hydrolysed collagen. Look for Type II specifically (e.g. UC-II standardised collagen) — distinct from the Type I collagen used for hair, skin and nails, Type II specifically supports joint cartilage. Worth remembering: collagen is a protein, so your body needs adequate stomach acid and digestive enzymes to properly break it down and absorb it, even in hydrolysed form — if digestion is already compromised, it may not be absorbed as well as expected.
   _Disclaimer: Collagen supplements are generally safe for most adults. If you have a fish or shellfish allergy, check the source of the collagen. Consult your GP before use if you have any ongoing health conditions._
+- **Curcumin — for joint pain and stiffness**  _(medium priority)_
+  Commonly 500mg, 2–4x/day, with piperine (black pepper extract) for absorption. Well-researched anti-inflammatory, often used specifically for joint pain and stiffness.
+  _Targets: joint pain_
+  _Disclaimer: Always check with your GP or pharmacist before starting, especially if you take any prescribed medications._
+- **Glucosamine and Chondroitin**  _(medium priority)_
+  Commonly 1500mg glucosamine plus 1200mg chondroitin per day. A traditional joint-support combination, with some evidence for cartilage support and reducing joint discomfort, particularly in osteoarthritis.
+  _Targets: joint pain_
+  _Disclaimer: Caution if you have a shellfish allergy, as glucosamine is often shellfish-derived. Consult your GP before use._
+- **MSM (Methylsulfonylmethane)**  _(low priority)_
+  Commonly 1–3g/day. Some evidence for reducing joint pain and inflammation.
+  _Targets: joint pain_
+  _Disclaimer: Always check with your GP or pharmacist before starting, especially if you take any prescribed medications._
+- **Wobenzym — systemic enzyme blend for joint pain and recovery**  _(low priority)_
+  A systemic enzyme blend (proteases including bromelain, trypsin, chymotrypsin), commonly 3–6 tablets, 2–3x/day on an empty stomach — taken between meals, not with food, so the enzymes work systemically rather than just digestively. Well-researched for joint pain, inflammation and recovery support.
+  _Targets: joint pain_
+  _Disclaimer: Can interact with blood-thinning medications — needs a GP check first, particularly if you're on anticoagulants or aspirin._
+- **Berberine — for blood sugar and metabolic health**  _(medium priority)_
+  Commonly 500mg, 2–3x/day before meals. Supports blood sugar regulation and metabolic health.
+  _Targets: weight changes_
+  _Disclaimer: Can interact with blood sugar and blood pressure medications — this one especially needs a GP check first._
+- **Myo-Inositol — for insulin sensitivity and blood sugar balance**  _(medium priority)_
+  Commonly 2–4g/day. Supports insulin sensitivity and blood sugar balance. Also well-studied for PCOS, where insulin resistance is often a core driver.
+  _Targets: weight changes_
+  _Disclaimer: Always check with your GP or pharmacist before starting, especially if you take any prescribed medications._
+- **Protein powder and fibre supplements**  _(medium priority)_
+  Protein powder (whey, pea, or collagen-based) is not a fat-loss supplement in itself, but supports satiety, muscle maintenance and blood sugar stability when protein intake from food alone is hard to hit. A fibre supplement (e.g. PHGG, psyllium) supports satiety and blood sugar stability too, particularly useful if you're not yet consistently hitting fibre targets from food.
+  _Targets: weight changes_
+  _Disclaimer: Always check with your GP or pharmacist before starting, especially if you take any prescribed medications or have a diagnosed digestive condition._
+- **Green tea extract and Alpha-Lipoic Acid — for metabolic support**  _(low priority)_
+  Green tea extract (EGCG), commonly 250–500mg/day, has modest evidence for metabolic support. Alpha-Lipoic Acid (ALA), commonly 300–600mg/day, supports blood sugar regulation and insulin sensitivity, and acts as an antioxidant supporting cellular energy production.
+  _Targets: weight changes_
+  _Disclaimer: Green tea extract needs caution with liver conditions or caffeine sensitivity. ALA can interact with blood sugar and thyroid medications — this one especially needs a GP check first if you're on either._

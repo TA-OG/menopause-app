@@ -12,6 +12,7 @@ import { validateFrameworks as validateFrameworksEngine } from '../src/lib/welln
 
 const FRAMEWORKS_DIR = path.join(process.cwd(), 'content/wellness/frameworks')
 const REGISTRY_PATH = path.join(process.cwd(), 'content/wellness/substances.yaml')
+const CLAIMS_PATH = path.join(process.cwd(), 'content/wellness/claims.yaml')
 const SKIP_FILES = ['template.yaml']
 
 function loadSubstances(): SubstanceEntry[] | null {
@@ -22,6 +23,113 @@ function loadSubstances(): SubstanceEntry[] | null {
   } catch {
     return null
   }
+}
+
+interface NumericClaim {
+  id: string
+  rec_id: string
+  asserts: string
+  verified: boolean
+  authority?: string
+  note?: string
+}
+
+function loadClaims(): NumericClaim[] | null {
+  try {
+    const raw = fs.readFileSync(CLAIMS_PATH, 'utf8')
+    const parsed = yaml.load(raw) as { claims?: NumericClaim[] } | null
+    return parsed?.claims ?? []
+  } catch {
+    return null
+  }
+}
+
+/** YAML folding turns newlines into spaces; normalise before substring matching. */
+function normalise(text: string): string {
+  return text.replace(/\s+/g, ' ').trim()
+}
+
+/**
+ * Validate the numeric claim register.
+ *
+ * The salt error ("below 0.5g per 100g", when the green band is 0.3g) shipped
+ * AND passed a human review pass. Reading for tone and checking a number
+ * against a published standard are different jobs. This pins each figure to
+ * the recommendation it appears in, so editing the number breaks the build and
+ * forces the question "against what source?" at the moment of the edit.
+ */
+function validateNumericClaims(
+  frameworks: WellnessFramework[],
+  claims: NumericClaim[] | null
+): string[] {
+  const errors: string[] = []
+
+  if (claims === null) {
+    return [
+      `Numeric claim register missing or unparseable at content/wellness/claims.yaml.`,
+    ]
+  }
+
+  // Index every recommendation's searchable text.
+  const recText = new Map<string, string>()
+  for (const framework of frameworks) {
+    const allRecs = [
+      ...(framework.diet_adjustments ?? []),
+      ...(framework.lifestyle_adjustments ?? []),
+      ...(framework.mindset_recommendations ?? []),
+      ...(framework.supplement_suggestions ?? []),
+    ]
+    for (const rec of allRecs) {
+      recText.set(rec.id, normalise(`${rec.title} ${rec.body} ${rec.disclaimer ?? ''}`))
+    }
+  }
+
+  const seenIds = new Set<string>()
+
+  for (const claim of claims) {
+    if (!claim.id) {
+      errors.push(`A numeric claim is missing an 'id'`)
+      continue
+    }
+    if (seenIds.has(claim.id)) {
+      errors.push(`Duplicate numeric claim id "${claim.id}"`)
+    }
+    seenIds.add(claim.id)
+
+    if (claim.verified) {
+      if (!claim.authority?.trim()) {
+        errors.push(
+          `[claim:${claim.id}] is marked verified but names no authority. ` +
+          `A figure we cannot point at a source for must not be marked verified.`
+        )
+      }
+    } else if (claim.authority) {
+      errors.push(
+        `[claim:${claim.id}] is not verified but names an authority. ` +
+        `Either verify it and set verified: true, or remove the authority so the ` +
+        `figure does not appear sourced when it is not.`
+      )
+    }
+
+    const text = recText.get(claim.rec_id)
+    if (text === undefined) {
+      errors.push(
+        `[claim:${claim.id}] references recommendation "${claim.rec_id}", which does not exist.`
+      )
+      continue
+    }
+
+    if (!text.includes(normalise(claim.asserts))) {
+      errors.push(
+        `[claim:${claim.id}] no longer matches "${claim.rec_id}". Expected to find:\n` +
+        `       "${normalise(claim.asserts)}"\n` +
+        `     The content changed but the register did not. If you changed a number, ` +
+        `confirm the new one against a source and update claims.yaml.`
+      )
+    }
+  }
+
+  return errors
 }
 
 /**
@@ -194,6 +302,13 @@ if (frameworks.length === 0) {
 const substances = loadSubstances()
 console.log(`   Found ${substances?.length ?? 0} registered substance(s)`)
 
+const claims = loadClaims()
+const unverifiedClaims = (claims ?? []).filter((c) => !c.verified).length
+console.log(
+  `   Found ${claims?.length ?? 0} registered numeric claim(s)` +
+  (unverifiedClaims > 0 ? ` — ${unverifiedClaims} awaiting source verification` : '')
+)
+
 const errors = [
   ...validateFrameworks(frameworks),
   // The engine exports its own checks (supplement disclaimers, empty
@@ -201,6 +316,7 @@ const errors = [
   // one of them is a rule that silently stops being enforced.
   ...validateFrameworksEngine(frameworks),
   ...validateSubstanceRegistry(frameworks, substances),
+  ...validateNumericClaims(frameworks, claims),
 ]
 
 if (errors.length > 0) {
