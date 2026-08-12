@@ -1,6 +1,12 @@
 -- ============================================================
--- 025_notification_schedules.sql
+-- 028_notification_schedules.sql
 -- Drip-feed and interval reminder infrastructure.
+--
+-- Numbered 028, not 025: this was authored in a sandboxed checkout whose
+-- migrations directory only went up to 024, so it was originally created as
+-- 025. The real project database already has unrelated 025/026/027
+-- migrations (EU geo-restrictions, content-module premium RLS, rate
+-- limits) applied. Renumbered to the next free slot rather than colliding.
 --
 -- Foundation for turning the wellness plan into scheduled push reminders.
 -- Three things:
