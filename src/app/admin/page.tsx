@@ -85,6 +85,23 @@ export default async function AdminPage() {
             Open intake →
           </a>
         </div>
+        <div className="flex items-center justify-between gap-4 border-t border-gray-100 pt-3">
+          <div className="flex-1">
+            <p className="text-sm font-medium text-gray-800">Safe daily limits</p>
+            <p className="text-xs text-gray-500 mt-0.5">
+              The most a woman should take of each supplement in a day. The app can already
+              stop the same supplement being suggested twice over, but it can only show a
+              ceiling where a person has signed one off. Answers here are recorded for
+              review — they do not change the app on their own.
+            </p>
+          </div>
+          <a
+            href="/admin/clinical-limits"
+            className="text-xs bg-brand-900 text-white px-3 py-1.5 rounded-lg hover:bg-brand-800 transition-colors whitespace-nowrap"
+          >
+            Open limits →
+          </a>
+        </div>
         <AuthorInviteForm />
       </div>
 
