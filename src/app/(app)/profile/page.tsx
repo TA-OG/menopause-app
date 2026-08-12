@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { getUserAccess } from '@/lib/access'
 import { redirect } from 'next/navigation'
+import NotificationSettings from '@/components/NotificationSettings'
 
 export default async function ProfilePage() {
   const supabase = createClient()
@@ -19,6 +20,12 @@ export default async function ProfilePage() {
   // manage, so they should see the upgrade prompt, not a billing portal
   // link that has nothing behind it.
   const { isPremium, isPaidPremium } = await getUserAccess(supabase, user.id)
+
+  const { data: preferences } = await supabase
+    .from('user_preferences')
+    .select('notification_enabled, notification_hour')
+    .eq('user_id', user.id)
+    .single()
 
   async function signOut() {
     'use server'
@@ -91,6 +98,14 @@ export default async function ProfilePage() {
           You and your friend both get a free month. Stack up to 6.
         </p>
       </a>
+
+      {/* Notifications */}
+      <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
+        <NotificationSettings
+          initialEnabled={preferences?.notification_enabled ?? false}
+          initialHour={preferences?.notification_hour ?? null}
+        />
+      </div>
 
       {/* Update plan */}
       <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
