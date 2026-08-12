@@ -30,11 +30,15 @@ diet_adjustments:
     category: diet
     title: Gut health and the mood connection
     body: >
-      The gut-brain axis is well established — gut bacteria produce around 90%
-      of the body's serotonin. Include fermented foods daily: live yoghurt,
-      kefir, kimchi, sauerkraut, miso. These feed beneficial gut bacteria
-      linked to better mood regulation and lower anxiety. Aim for variety
-      across the week rather than large amounts of one thing.
+      The gut-brain axis is well established, though it is often described
+      loosely. Around 90% of the body's serotonin is made in the gut — but by
+      your own enterochromaffin cells, not by gut bacteria, and that serotonin
+      does not cross into the brain. What gut bacteria do is influence how much
+      is produced, and communicate with the brain by other routes. So this is
+      worth doing, just not because you are "topping up" brain serotonin.
+      Include fermented foods daily: live yoghurt, kefir, kimchi, sauerkraut,
+      miso. Aim for variety across the week rather than large amounts of one
+      thing.
     priority: medium
     who_for: all
 

@@ -22,7 +22,15 @@ awareness:
     Women of African heritage reach menopause earlier and experience symptoms
     with greater intensity and for longer. If you're experiencing symptoms
     in your early-to-mid 40s, take them seriously — you are not too young.
-  source: SWAN Study / Kochersberger et al, Menopause Journal 2024
+
+    Worth knowing where that comes from: the studies behind it are largely
+    American, and they describe averages, not your individual timeline.
+  source: >-
+    Age at menopause — Palmer et al, Am J Public Health 2003 (mean 49.6 years in
+    women of African/Caribbean descent). Symptom duration and prevalence —
+    British Menopause Society, Menopause in Ethnic Minority Women (2023).
+    Symptom severity — Kochersberger et al, Menopause 2024;31(6):476–483
+    (hot flushes odds ratio 1.91 vs white women, n=68,864).
 
 diet_context:
   items:
@@ -63,10 +71,17 @@ diet_context:
     - id: beans-black-eyed-peas
       body: |
         Beans — black-eyed peas, brown beans, kidney beans — are central to West
-        African cooking and excellent for menopause. They are high in plant protein,
-        fibre, and phytoestrogens. Bean-based dishes eaten regularly provide
-        sustained energy, support blood sugar stability, and contain the
-        phytoestrogen building blocks that help manage vasomotor symptoms.
+        African cooking and genuinely good for you through menopause. They are high
+        in plant protein and fibre, so bean-based dishes eaten regularly provide
+        sustained energy and support blood sugar stability, which matters for
+        energy, mood and weight.
+
+        One honest caveat, because you may have read otherwise: the evidence that
+        phytoestrogens ease hot flushes is specific to soy, and soy contains far
+        more isoflavones than other beans — on the order of a hundred times more.
+        Beans are worth eating for the protein and fibre. If you want to try the
+        phytoestrogen route for flushes specifically, that means soy foods —
+        edamame, tofu, tempeh — or ground flaxseed, rather than beans generally.
 
     - id: spicy-food-triggers
       body: |
@@ -89,6 +104,10 @@ lifestyle_context:
       This background stress amplifies menopause symptoms. Acknowledging this
       — to yourself and to your GP — is important. Your symptoms may be more
       severe not because you are weaker but because you have been carrying more.
+    source: >-
+      Richardson et al, SSM Popul Health 2021, and Geronimus et al, Am J Public
+      Health 2006 (the "weathering" hypothesis), cited in British Menopause
+      Society, Menopause in Ethnic Minority Women (2023). Both are US studies.
 
   - id: community-wisdom
     body: |

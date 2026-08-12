@@ -240,12 +240,21 @@ lifestyle_adjustments:
     body: >
       Rebounding for 10 minutes a day is a low-impact way to support
       lymphatic drainage, bone density and cardiovascular fitness, and is
-      easy on the joints compared to running. Box jumping — around 10
-      minutes, 3 times a week — helps build bone density more directly.
+      easy on the joints compared to running — it is the gentler of the two
+      options here. Box jumping — around 10 minutes, 3 times a week — loads
+      the skeleton harder and so builds bone density more directly, but it is
+      genuinely high-impact: it is not the right starting point if your joints
+      are already painful, and rebounding or weight training will serve you
+      better in that case.
     priority: medium
     who_for: active_only
     targets_symptoms:
       - joint_pain
+    disclaimer: >
+      Check with your GP before starting jump-based training if you have joint
+      problems, a known or suspected low bone density, high blood pressure, any
+      pelvic floor symptoms, or you haven't done impact exercise in a while.
+      Build up gradually rather than starting at the full amount.
 
   - id: lf_vagal_breathwork_and_sauna
     category: lifestyle

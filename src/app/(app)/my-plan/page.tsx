@@ -213,6 +213,9 @@ export default async function MyPlanPage() {
                 <p className="text-sm text-gray-600 leading-relaxed whitespace-pre-line">
                   {item.body}
                 </p>
+                {item.source && (
+                  <p className="text-xs text-gray-400 mt-2">Source: {item.source}</p>
+                )}
               </div>
             ))}
           </div>
@@ -231,6 +234,9 @@ export default async function MyPlanPage() {
                 <p className="text-sm text-gray-600 leading-relaxed whitespace-pre-line">
                   {item.body}
                 </p>
+                {item.source && (
+                  <p className="text-xs text-gray-400 mt-2">Source: {item.source}</p>
+                )}
               </div>
             ))}
           </div>
