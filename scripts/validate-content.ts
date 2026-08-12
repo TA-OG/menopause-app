@@ -37,8 +37,18 @@ interface NumericClaim {
 function loadClaims(): NumericClaim[] | null {
   try {
     const raw = fs.readFileSync(CLAIMS_PATH, 'utf8')
-    const parsed = yaml.load(raw) as { claims?: NumericClaim[] } | null
-    return parsed?.claims ?? []
+    const parsed = yaml.load(raw)
+    // Fail closed: an empty or malformed file must not silently pass as "zero
+    // claims registered". null here becomes the "registry missing" build error
+    // below, same as an unreadable file — not an empty, apparently-valid list.
+    if (
+      !parsed ||
+      typeof parsed !== 'object' ||
+      !Array.isArray((parsed as { claims?: unknown }).claims)
+    ) {
+      return null
+    }
+    return (parsed as { claims: NumericClaim[] }).claims
   } catch {
     return null
   }
@@ -89,6 +99,12 @@ function validateNumericClaims(
   for (const claim of claims) {
     if (!claim.id) {
       errors.push(`A numeric claim is missing an 'id'`)
+      continue
+    }
+    // An empty asserts value would make every .includes('') check pass
+    // trivially — the tripwire would exist in name only.
+    if (typeof claim.asserts !== 'string' || claim.asserts.trim() === '') {
+      errors.push(`[claim:${claim.id}] is missing a non-empty 'asserts' value`)
       continue
     }
     if (seenIds.has(claim.id)) {

@@ -126,9 +126,13 @@ function stripHeader(doc: string): string {
 }
 
 function loadFrameworks(): WellnessFramework[] {
+  // Sorted so output order is deterministic. readdirSync's order is
+  // filesystem-dependent, not lexicographic — without sorting, --check could
+  // report drift from nothing but a reordered file listing.
   const files = fs
     .readdirSync(FRAMEWORKS_DIR)
     .filter((f) => f.endsWith('.yaml') && !SKIP_FILES.includes(f))
+    .sort()
 
   return files
     .map((f) => yaml.load(fs.readFileSync(path.join(FRAMEWORKS_DIR, f), 'utf8')) as WellnessFramework)
@@ -136,6 +140,16 @@ function loadFrameworks(): WellnessFramework[] {
 }
 
 function main() {
+  // Validated before loading anything: --check compares the WHOLE document,
+  // so a framework id doesn't make sense with it. Checking this before
+  // loadFrameworks() matters because an unknown id would otherwise filter
+  // down to an empty list and exit 0 as if nothing were wrong, rather than
+  // rejecting the invalid invocation.
+  if (checkMode && onlyId) {
+    console.error('--check compares the whole document; do not pass a framework id with it.')
+    process.exit(1)
+  }
+
   const frameworks = loadFrameworks()
 
   if (frameworks.length === 0) {
@@ -157,11 +171,6 @@ function main() {
   const doc = header + body
 
   if (checkMode) {
-    if (onlyId) {
-      console.error('--check compares the whole document; do not pass a framework id with it.')
-      process.exit(1)
-    }
-
     let committed: string
     try {
       committed = fs.readFileSync(OUT_FILE, 'utf8')

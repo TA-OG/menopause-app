@@ -420,10 +420,10 @@ supplement_suggestions:
       menopause because falling oestrogen already affects bone density. Many
       women take a supplement in the range of 1000–4000 IU a day, ideally
       guided by a blood test rather than guesswork — testing first tells you
-      whether you need it at all, and how much. If you're choosing one, D3
-      (cholecalciferol) paired with K2 is the combination most often
-      recommended. This is a suggestion that helps many women, not medical
-      advice, so please check with your GP or pharmacist first.
+      whether you need it at all, and how much. Some women choose a D3
+      (cholecalciferol) and K2 combination product, since K2 supports how the
+      body uses calcium. This is a suggestion that helps many women, not
+      medical advice, so please check with your GP or pharmacist first.
     priority: high
     who_for: all
     targets_symptoms:
@@ -432,7 +432,10 @@ supplement_suggestions:
       - joint_pain
     disclaimer: >
       Vitamin D toxicity can occur at very high doses (above 4000 IU/day
-      long-term). Always test before supplementing above 2000 IU and
+      long-term). The K2 component can interact with warfarin and other
+      anticoagulant medication — do not take this combination if you are on
+      anticoagulants without explicit GP approval. Always test before
+      supplementing above 2000 IU and
       consult your GP if you have kidney disease, hypercalcaemia, or
       sarcoidosis.
 
@@ -476,13 +479,16 @@ supplement_suggestions:
 
   - id: ss_b_complex_methylated
     category: supplement
-    title: B-Complex — look for the active, methylated forms
+    title: B-Complex — methylated forms are worth knowing about
     body: >
-      If you're considering a B-complex, the form is worth a second look —
-      methylfolate rather than synthetic folic acid, methylcobalamin rather
-      than synthetic cyanocobalamin. Many find these are better absorbed and
-      used by the body, which matters given how common B12 and folate
-      deficiency are at this life stage.
+      If you're considering a B-complex, the form is worth knowing about —
+      methylfolate as an alternative to synthetic folic acid, methylcobalamin
+      as an alternative to synthetic cyanocobalamin. These aren't universally
+      "better" for everyone, but some women — particularly those with a
+      genetic variation affecting folate metabolism (MTHFR) — process the
+      methylated forms more easily. Given how common B12 and folate
+      deficiency are at this life stage, it's worth knowing the options exist
+      rather than assuming one form fits everyone.
     priority: medium
     who_for: all
     disclaimer: >
@@ -511,37 +517,44 @@ supplement_suggestions:
     title: Digestive enzymes and HCL — for bloating, reflux, and absorption
     body: >
       Some women find digestive enzymes taken with meals helpful if bloating
-      or discomfort after eating is a regular thing. Stomach acid naturally
-      declines with age and through menopause, which can lead to poor
-      protein breakdown, bloating, reflux-like symptoms, and reduced
-      absorption of key nutrients like B12 and iron. Where HCL (Betaine
-      Hydrochloride) is used, it's typically taken with protein-containing
-      meals, starting with 1 capsule and increasing gradually under guidance
-      until you notice a warming sensation in the stomach — at which point
-      you'd drop back to the previous dose.
+      or discomfort after eating is a regular thing. Some practitioners
+      suggest reduced stomach acid can play a role in this for some women —
+      it's a contested idea rather than a settled one, so worth treating as a
+      theory to discuss with a GP or practitioner rather than a given.
+      Betaine Hydrochloride (HCL) is one option some women try under
+      guidance, alongside protein-containing meals. Self-adjusting the dose
+      based on how it feels isn't something we'll spell out here — that's
+      exactly the kind of thing a practitioner should walk you through in
+      person, given how unsuitable it is for some people.
     priority: low
     who_for: all
     disclaimer: >
       HCL is not suitable for everyone — particularly anyone with active
       ulcers, gastritis, or taking anti-inflammatory medications — so it
-      needs a GP or practitioner check before starting.
+      needs a GP or practitioner check before starting, including for
+      guidance on dose.
 
   - id: ss_calcium_d_glucarate
     category: supplement
-    title: Calcium D-Glucarate — supporting healthy oestrogen clearance
+    title: Calcium D-Glucarate — for oestrogen clearance support
     body: >
-      Some women look at calcium D-glucarate — commonly used around
-      500mg–1g/day — to support the liver in clearing excess oestrogen out
-      of the body properly, rather than it being reabsorbed back through the
-      gut. This tends to come up particularly for women with a history of
-      oestrogen-dominant conditions like endometriosis, adenomyosis or
-      fibroids, since that history often means managing a higher oestrogen
-      load for years — so supporting clearance more broadly (liver function,
-      fibre, cruciferous vegetables, reducing alcohol and xenoestrogen
-      exposure) matters even more through perimenopause.
+      Some women look at calcium D-glucarate, often cited around 500mg–1g/day
+      in doses people report using, on the theory that it supports the liver
+      in clearing oestrogen rather than it being reabsorbed through the gut.
+      This idea comes up particularly for women with a history of
+      oestrogen-sensitive conditions like endometriosis, adenomyosis or
+      fibroids. It's worth being honest that the human evidence for this
+      specific effect is limited — most of what's known comes from lab and
+      animal research rather than clinical trials in women. If it's something
+      you want to explore, broader support for oestrogen clearance — liver
+      function, fibre, cruciferous vegetables, reducing alcohol and
+      xenoestrogen exposure — has a firmer evidence base and is worth
+      prioritising either way.
     priority: medium
     who_for: all
     disclaimer: >
       Always check with your GP or pharmacist before starting, especially
       if you take any prescribed medications or have a personal or family
-      history of hormone-sensitive conditions.
+      history of hormone-sensitive conditions. Calcium D-glucarate can affect
+      how the liver processes some medications, so this check matters even
+      more if you take regular prescriptions.

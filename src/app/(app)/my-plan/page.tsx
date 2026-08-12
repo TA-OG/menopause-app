@@ -33,7 +33,7 @@ function RecommendationCard({ rec }: { rec: WellnessRecommendation }) {
           can each suggest the same substance; they are collapsed into one card,
           and these are the other reasons it was suggested. */}
       {rec.also_for && rec.also_for.length > 0 && (
-        <div className="mt-3 text-xs text-gray-500">
+        <div className="mt-3 text-xs text-gray-600">
           <p className="font-medium text-gray-600">Also suggested for:</p>
           <ul className="list-disc list-inside mt-1 space-y-0.5">
             {rec.also_for.map((reason, i) => (
