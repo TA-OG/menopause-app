@@ -507,7 +507,7 @@ Shown when their **symptoms** is any of: "skin changes", "hair changes".
 ### Supplements
 
 - **Hydrolysed collagen — emerging evidence for skin, hair and nails**  _(medium priority)_
-  Commonly 10g/day. Look for hydrolysed Type I bovine collagen — hydrolysed means it's been broken down into smaller peptides your body can actually absorb and use, and Type I is the most abundant collagen type, supporting skin, hair, nails, joints, bones and gut lining. Natural collagen production declines with age, so supplementing helps support the body's ongoing repair and renewal. Worth remembering: collagen is a protein, so your body needs adequate stomach acid and digestive enzymes to properly break it down and absorb it — even a hydrolysed form. If digestion is already compromised, it may not be absorbed as well as expected until that's addressed.
+  Commonly 10g/day. Look for hydrolysed Type I bovine collagen — hydrolysed means it's been broken down into smaller peptides your body can actually absorb and use, and Type I is the most abundant collagen type, supporting skin, hair, nails, joints, bones and gut lining. Natural collagen production declines with age, so supplementing helps support the body's ongoing repair and renewal.
   _Targets: skin changes, hair changes_
   _Disclaimer: Collagen peptides are generally well-tolerated. If you have a fish or shellfish allergy, check the source carefully (marine vs bovine vs plant-based options exist). Consult your GP before use if you have any ongoing health conditions._
 - **Zinc — for hair growth and repair**  _(medium priority)_
