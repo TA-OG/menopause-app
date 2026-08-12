@@ -309,9 +309,15 @@ export function buildPlan(
     return enforceDoseCeilings(
       sortByPriority(
         boostForPrimarySymptom(
-          applyPreferenceFilters(
-            deduplicateRecommendations(recs, substanceIndex),
-            preferences
+          // Preference filtering MUST run before deduplication. Dedup keeps the
+          // highest-priority card for a substance and discards its siblings — so
+          // if that winner is `active_only` and the user has limited mobility,
+          // filtering afterwards would remove the whole substance, including a
+          // sibling card she was eligible for. Filtering first means dedup only
+          // ever chooses between cards she can actually use.
+          deduplicateRecommendations(
+            applyPreferenceFilters(recs, preferences),
+            substanceIndex
           ),
           primarySymptom
         ),

@@ -174,6 +174,12 @@ function validateSubstanceRegistry(
     }
     seenKeys.add(substance.key)
 
+    // buildLimitTopics uses display_name as the admin label and sorts on it —
+    // a missing one renders a blank row and throws in localeCompare.
+    if (!substance.display_name?.trim()) {
+      errors.push(`[${substance.key}] is missing a 'display_name'`)
+    }
+
     if (substance.limit_status === 'verified') {
       if (!substance.max_daily) {
         errors.push(
@@ -309,7 +315,9 @@ console.log(
   (unverifiedClaims > 0 ? ` — ${unverifiedClaims} awaiting source verification` : '')
 )
 
-const errors = [
+// Deduplicated: the two framework validators overlap on the supplement
+// disclaimer rule, so without this each such defect is reported twice.
+const errors = Array.from(new Set([
   ...validateFrameworks(frameworks),
   // The engine exports its own checks (supplement disclaimers, empty
   // frameworks). Run both — they had drifted apart, and a rule enforced in only
@@ -317,7 +325,7 @@ const errors = [
   ...validateFrameworksEngine(frameworks),
   ...validateSubstanceRegistry(frameworks, substances),
   ...validateNumericClaims(frameworks, claims),
-]
+]))
 
 if (errors.length > 0) {
   console.error('\n❌ Content validation failed:\n')

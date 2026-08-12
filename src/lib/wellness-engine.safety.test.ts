@@ -189,6 +189,43 @@ describe('substances that must never be merged', () => {
   })
 })
 
+describe('preference filtering runs before deduplication', () => {
+  /**
+   * Regression test. Deduplication keeps the highest-priority card for a
+   * substance and discards its siblings. If filtering ran afterwards, a winner
+   * marked `who_for: active_only` would take the whole substance with it for a
+   * user with limited mobility — including a sibling card she was eligible for.
+   * Filtering first means dedup only ever chooses between cards she can use.
+   */
+  it('never loses a substance that still has an eligible card', () => {
+    const unfiltered = buildPlan(frameworks, {}, undefined, substances)
+    const limited = buildPlan(frameworks, { exercise_level: 'limited' }, undefined, substances)
+
+    const eligibleSubstances = new Set(
+      frameworks
+        .flatMap((f) => f.supplement_suggestions ?? [])
+        .filter((rec) => (rec.who_for ?? 'all') !== 'active_only')
+        .map((rec) => substanceIndex.get(rec.id)?.key)
+        .filter((key): key is string => Boolean(key))
+    )
+
+    const survived = new Set(substanceKeysOf(limited.supplement_suggestions))
+
+    for (const key of Array.from(eligibleSubstances)) {
+      expect(
+        survived.has(key),
+        `"${key}" has a card a limited-mobility user is eligible for, but vanished from her plan`
+      ).toBe(true)
+    }
+
+    // And filtering must not silently remove everything
+    expect(limited.supplement_suggestions.length).toBeGreaterThan(0)
+    expect(limited.supplement_suggestions.length).toBeLessThanOrEqual(
+      unfiltered.supplement_suggestions.length
+    )
+  })
+})
+
 describe('ceilings are only attached where verified', () => {
   it('attaches no ceiling note to substances pending clinical review', () => {
     const plan = buildPlan(frameworks, {}, undefined, substances)

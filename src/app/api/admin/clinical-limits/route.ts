@@ -4,6 +4,7 @@ import { createAdminClient } from '@/lib/supabase/admin'
 import { requireAdmin } from '@/lib/admin-auth'
 import { sanitizeError } from '@/lib/sanitize-error'
 import { LIMIT_QUESTIONS, CLINICAL_LIMITS_ROUND } from '@/lib/clinical-limits-config'
+import { loadSubstanceRegistry } from '@/lib/substance-registry'
 
 /**
  * Save one substance's clinical-limit answers.
@@ -34,12 +35,22 @@ export async function POST(request: NextRequest) {
   }
 
   const substanceKey = body.substanceKey?.trim()
-  const substanceLabel = body.substanceLabel?.trim()
   const answers = body.answers ?? {}
 
-  if (!substanceKey || !substanceLabel) {
+  if (!substanceKey) {
     return NextResponse.json({ error: 'Missing substance' }, { status: 400 })
   }
+
+  // Resolve against the registry rather than trusting the client. The stored
+  // topic_id is what a developer later transcribes a signed-off limit against,
+  // so a typo or a stale tab must not create a review record pointing at a
+  // substance that does not exist. The label comes from the registry too, so it
+  // cannot drift from display_name.
+  const entry = loadSubstanceRegistry().find((s) => s.key === substanceKey)
+  if (!entry) {
+    return NextResponse.json({ error: 'Unknown substance' }, { status: 400 })
+  }
+  const substanceLabel = entry.display_name
 
   // A proposed ceiling with no source is exactly what this whole mechanism
   // exists to prevent, so refuse the combination rather than storing it.

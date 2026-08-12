@@ -29,11 +29,18 @@ export function loadSubstanceRegistry(): SubstanceEntry[] {
     const substances = parsed?.substances ?? []
     cachedRegistry = substances
     return substances
-  } catch {
+  } catch (err) {
     // Registry unreadable — return empty. The engine falls back to ID-level
     // dedupe, which is weaker but never *less* safe than before this existed.
     // validate-content fails the build if the registry is missing or invalid,
-    // so this path should be unreachable in a deployed build.
+    // so this path should be unreachable in a deployed build — which is exactly
+    // why it must be loud if it ever happens. Silently losing every dose ceiling
+    // is the kind of failure this file exists to prevent.
+    console.error(
+      '[substance-registry] Could not read content/wellness/substances.yaml — ' +
+      'substance deduplication and all dose ceilings are DISABLED for this request:',
+      err
+    )
     return []
   }
 }

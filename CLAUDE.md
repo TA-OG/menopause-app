@@ -48,6 +48,7 @@ or lose trust in guidance they genuinely need. Every action must be gold standar
 Next.js 14 (App Router) + Supabase (Postgres + RLS + Auth) + Stripe + Vercel hosting.
 
 ### Key commands
+
 | Command | Purpose |
 |---|---|
 | `npm run dev` | Local dev server |
@@ -63,8 +64,14 @@ Pure functions, no I/O. Flow: onboarding answers + frameworks → `matchFramewor
 `buildPlan()`. Frameworks are YAML in `content/wellness/frameworks/*.yaml`; a framework
 fires on `trigger_all: true` or when **all** its `trigger_conditions` match (OR within a
 condition via `min_matches`, default 1). `buildPlan()` flattens matched frameworks and runs
-dedupe → preference filter → primary-symptom boost → priority sort. Tier gating is separate
-(`applyTierGating`): free = top 3 non-supplement recs, supplements are premium-only.
+preference filter → substance dedupe → primary-symptom boost → priority sort → dose ceilings.
+Tier gating is separate (`applyTierGating`): free = top 3 non-supplement recs, supplements
+are premium-only.
+
+**That order matters.** Filtering must precede dedupe: dedupe keeps the highest-priority card
+per substance and discards the rest, so an `active_only` winner would otherwise take an
+eligible sibling card with it for a limited-mobility user. There is a regression test for this
+in `wellness-engine.safety.test.ts`.
 
 **Cultural personalisation** — `src/lib/cultural-engine.ts`, `content/wellness/cultural/*.yaml`
 Driven by self-declared `heritage` / `country` onboarding answers (skippable), mapped via

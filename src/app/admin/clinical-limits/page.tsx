@@ -21,6 +21,21 @@ export default async function ClinicalLimitsPage() {
     }
   }
 
+  // An unreadable registry also yields an empty array. Without this check the
+  // form would render "Every substance has a signed-off limit. Nothing to answer
+  // here." — a clinician would read a load failure as a completed sign-off.
+  if (substances.length === 0) {
+    return (
+      <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-red-700 text-sm">
+        The substance registry could not be read, so no limits can be shown.
+        <p className="mt-2 text-xs text-red-600">
+          Please do not treat this as a completed list — it is a loading failure,
+          not a sign-off. Check content/wellness/substances.yaml.
+        </p>
+      </div>
+    )
+  }
+
   const topics = buildLimitTopics(substances, supplementsById)
   const verifiedCount = substances.filter((s) => s.limit_status === 'verified').length
 

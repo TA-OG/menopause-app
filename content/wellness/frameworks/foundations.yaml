@@ -248,8 +248,12 @@ lifestyle_adjustments:
       better in that case.
     priority: medium
     who_for: active_only
-    targets_symptoms:
-      - joint_pain
+    # Deliberately NOT targeting joint_pain. targets_symptoms does not filter —
+    # it raises priority when that symptom is the user's primary one, which
+    # would push jump training to the top of the plan for exactly the women who
+    # should approach it most cautiously, and could place it in the free tier's
+    # top three. Rebounding is joint-friendly, but it is bundled with box
+    # jumping in this card, so the card as a whole must not be boosted.
     disclaimer: >
       Check with your GP before starting jump-based training if you have joint
       problems, a known or suspected low bone density, high blood pressure, any

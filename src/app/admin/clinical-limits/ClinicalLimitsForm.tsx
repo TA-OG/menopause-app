@@ -49,8 +49,10 @@ export default function ClinicalLimitsForm({ topics, savedAnswers, verifiedCount
           answers: answers[topic.id] ?? {},
         }),
       })
-      const data = await res.json()
-      if (!res.ok) throw new Error(data?.error ?? 'Could not save')
+      // A proxy or gateway error returns HTML, not JSON — parsing first would
+      // surface "Unexpected token '<'" to the reviewer instead of a save failure.
+      const data = await res.json().catch(() => null)
+      if (!res.ok) throw new Error(data?.error ?? `Could not save (${res.status})`)
       setSaveState((prev) => ({ ...prev, [topic.id]: 'saved' }))
     } catch (err) {
       setSaveState((prev) => ({ ...prev, [topic.id]: 'error' }))

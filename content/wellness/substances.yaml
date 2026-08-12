@@ -20,11 +20,16 @@
 #      whether an upper limit is known): a substance can appear at most ONCE in
 #      a generated plan. Doses are never summed across frameworks.
 #
-#   2. NUMERIC CEILING (only where `limit_status: verified`): the emitted range
-#      is capped at `max_daily` and the ceiling is surfaced to the user once.
+#   2. NUMERIC CEILING (only where `limit_status: verified`): the cumulative
+#      ceiling from `max_daily` is surfaced to the user once, on the single card
+#      for that substance. Note what this does NOT do — enforceDoseCeilings()
+#      attaches a note; it does not rewrite or clamp the dose range written in
+#      the card body. The protection against a total that is too high comes from
+#      guarantee 1 (the substance appears once, so ranges never sum) plus the
+#      ceiling being stated plainly to the reader.
 #
 # Both are asserted by a property test that enumerates every possible
-# combination of frameworks. See src/lib/wellness-engine.test.ts.
+# combination of frameworks. See src/lib/wellness-engine.safety.test.ts.
 #
 # RULES FOR EDITING
 #
