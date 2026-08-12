@@ -23,10 +23,13 @@ diet_adjustments:
     category: diet
     title: Meal timing and frequency — different by stage, and by how you're doing
     body: >
-      In perimenopause, the gold standard is eating breakfast within an hour
-      of waking, in 3 meals a day (4–5 smaller ones if energy is a struggle).
-      In menopause and postmenopause, breaking the fast around 10–11am tends
-      to work better, with 2–3 meals a day.
+      There's no universal rule backed by strong evidence here, but a
+      pattern some women and practitioners find works: in perimenopause,
+      eating breakfast within an hour of waking, in 3 meals a day (4–5
+      smaller ones if energy is a struggle). In menopause and
+      postmenopause, some find breaking the fast a little later — around
+      10–11am — sits better, with 2–3 meals a day. Treat this as a starting
+      point to experiment with, not a fixed prescription.
 
       But this flexes: if you're struggling with sleep, anxiety, brain fog or
       low energy, fasting is best avoided altogether at any stage — your body
@@ -104,10 +107,6 @@ diet_adjustments:
       - hot_flashes
       - night_sweats
       - sleep_problems
-    disclaimer: >
-      Some women find a pinch of Celtic salt in their water helps with
-      mineral absorption and hydration — check with your GP first if you
-      have high blood pressure or any condition affecting sodium levels.
 
   - id: df_reduce_sugar_processed_xenoestrogens
     category: diet
@@ -144,15 +143,17 @@ diet_adjustments:
     category: diet
     title: If you notice itching or migraines — histamine may be worth a look
     body: >
-      If you're experiencing itching or migraines, it's worth trying a
-      reduction in fermented foods, cheese, and alcohol, and increasing
-      foods rich in quercetin and foods that support DAO enzyme activity —
-      this combination tends to point toward a histamine-intolerance
-      pattern, worth flagging to your GP or a practitioner if symptoms
-      persist. Fermented foods (sauerkraut, kefir, kimchi, kombucha) genuinely
-      support a healthy microbiome for many women, but they're also high in
-      histamine, so this is a real trade-off for some — not a silent
-      contradiction with the gut-health advice elsewhere.
+      If you're experiencing itching or migraines alongside other symptoms
+      like bloating or flushing, histamine intolerance is one thing some
+      practitioners consider — it's not something you can self-diagnose from
+      diet alone, so this is worth raising with your GP or a practitioner
+      rather than a reliable at-home test. If you do want to experiment,
+      some women try reducing fermented foods, cheese and alcohol for a
+      couple of weeks and see whether symptoms shift. Fermented foods
+      (sauerkraut, kefir, kimchi, kombucha) genuinely support a healthy
+      microbiome for many women, but they're also high in histamine, so
+      this is a real trade-off for some — not a silent contradiction with
+      the gut-health advice elsewhere.
     priority: medium
     who_for: all
 
@@ -211,15 +212,22 @@ lifestyle_adjustments:
     category: lifestyle
     title: Cold water exposure
     body: >
-      Cold showers, wild swimming, splashing your face with cold water,
-      running cold water on your wrists, or simply finishing a shower cold —
-      there's building evidence for mood, energy and stress resilience from
-      this kind of cold exposure.
+      Cold showers, splashing your face with cold water, running cold water
+      on your wrists, or simply finishing a shower cold — there's building
+      evidence for mood, energy and stress resilience from this kind of cold
+      exposure. If wild swimming appeals, build up gradually rather than
+      jumping straight into cold open water, and don't swim alone.
     priority: medium
     who_for: all
     targets_symptoms:
       - mood_changes
       - fatigue
+    disclaimer: >
+      Sudden cold-water immersion can sharply raise heart rate and blood
+      pressure and trigger an involuntary gasp response, which carries real
+      risk for anyone with cardiovascular disease or high blood pressure —
+      check with your GP first if either applies to you. Build up gradually
+      (start with cooler showers before open water), and never swim alone.
 
   - id: lf_postmeal_walk_and_chewing
     category: lifestyle
@@ -227,10 +235,9 @@ lifestyle_adjustments:
     body: >
       Walking after meals — even just 10 minutes — meaningfully blunts
       blood sugar spikes, which ties back into the mood/energy loop. It
-      sounds small, but chewing each mouthful 30–35 times before swallowing
-      meaningfully improves digestion, blood sugar stability and nutrient
-      absorption, and helps shift the body into a calmer, "rest and digest"
-      state at mealtimes.
+      sounds small, but eating more slowly and chewing thoroughly rather
+      than rushing is worth trying too — many women find it helps them feel
+      calmer at mealtimes and more comfortable afterwards.
     priority: medium
     who_for: all
 
@@ -280,7 +287,11 @@ lifestyle_adjustments:
     disclaimer: >
       If you're prone to hot flushes or already struggle with heat
       sensitivity, sauna use may need care — shorter sessions, or avoiding
-      it altogether if it triggers symptoms rather than helping.
+      it altogether if it triggers symptoms rather than helping. Check with
+      your GP first if you have cardiovascular disease, uncontrolled blood
+      pressure, or a condition affecting hydration, and if you take
+      medication that affects blood pressure or fluid balance — heat
+      exposure raises heart rate and can affect blood pressure quickly.
 
   - id: lf_nature_and_connection
     category: lifestyle
@@ -304,18 +315,23 @@ mindset_recommendations:
     category: mindset
     title: Talk to your GP about your options — including HRT
     body: >
-      Hormone Replacement Therapy (HRT) is the most effective treatment
-      for vasomotor symptoms and has protective effects for bone density
+      Hormone Replacement Therapy (HRT) is the most effective treatment for
+      vasomotor symptoms, and can have protective effects for bone density
       and cardiovascular health for many women when started within 10 years
-      of menopause. Modern body-identical HRT has a much more favourable
-      safety profile than older formulations. Your GP can discuss whether
-      it is appropriate for you. This app supports your lifestyle — it does
-      not replace medical care. Please book an appointment if your symptoms
-      are significantly affecting your quality of life.
+      of menopause. Modern body-identical HRT generally has a more favourable
+      safety profile than older formulations. Whether it's appropriate for
+      you depends on your own symptoms, age, medical history and personal
+      risk factors — it isn't suitable for everyone, and that's a
+      conversation for your GP, not something to self-assess. This app
+      supports your lifestyle — it does not replace medical care. Please
+      book an appointment if your symptoms are significantly affecting your
+      quality of life.
 
-      This guidance is safe for everyone as a general framework — there's
-      nothing here that's inherently unsuitable. That said, always check
-      with your GP or medical provider first if you're taking any
+      Separately from HRT specifically: the lifestyle suggestions in this
+      app — diet, movement, sleep, mindset — are intended as a general
+      framework suitable for most women, with nothing in them inherently
+      unsuitable the way a prescription medicine can be. That said, always
+      check with your GP or medical provider first if you're taking any
       medication (to rule out interactions, particularly with supplements),
       under the care of a specialist for any condition, or awaiting medical
       treatment, investigation or a diagnosis. This isn't about gatekeeping
@@ -374,19 +390,22 @@ mindset_recommendations:
       If you have other hormonal imbalances, they can shape what you need
       here too. Thyroid conditions (hypothyroidism, Hashimoto's,
       hyperthyroidism) interact closely with oestrogen and progesterone, so
-      symptoms often overlap and amplify each other — a full panel, not just
-      TSH, matters. PCOS, even though usually diagnosed earlier in life,
-      often carries insulin resistance through into perimenopause and
-      menopause, meaning blood sugar stability needs even more attention.
-      Adrenal dysfunction or HPA axis dysregulation — chronic stress
-      affecting cortisol output — competes for the same hormonal building
-      blocks as progesterone, compounding the hormone shifts already
-      happening. Insulin resistance or pre-diabetes is worth naming
-      directly as a hormonal imbalance in its own right, not just a "blood
-      sugar issue." Family history matters too — if your mother or sisters
-      had a particularly difficult perimenopause, early menopause, or
-      conditions like osteoporosis or cardiovascular disease, that's useful
-      information for proactive testing.
+      symptoms often overlap and amplify each other — TSH is the standard
+      first test, with further tests (like FT4) added if that's abnormal or
+      symptoms strongly suggest a thyroid cause despite a normal result.
+      PCOS, even though usually diagnosed earlier in life, often carries
+      insulin resistance through into perimenopause and menopause, meaning
+      blood sugar stability needs even more attention. You may also read
+      about "adrenal fatigue" or chronic stress "depleting" your hormones —
+      worth knowing that's not a recognised medical diagnosis, though
+      genuine adrenal insufficiency is a real, separately diagnosed
+      condition your GP can test for if you're concerned. Insulin resistance
+      or pre-diabetes is worth naming directly as a hormonal imbalance in
+      its own right, not just a "blood sugar issue." Family history matters
+      too — if your mother or sisters had a particularly difficult
+      perimenopause, early menopause, or conditions like osteoporosis or
+      cardiovascular disease, that's useful information for proactive
+      testing.
     priority: medium
     who_for: all
 

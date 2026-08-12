@@ -160,14 +160,15 @@ supplement_suggestions:
     category: supplement
     title: CoQ10 (or Ubiquinol) — for cellular energy production
     body: >
-      CoQ10 is commonly taken at 100–200mg/day, and is involved in cellular
-      energy production. Ubiquinol is the "active" form your body actually
-      uses — your body naturally converts the standard form (ubiquinone)
-      into this active form, but that conversion becomes less efficient
-      with age, so ubiquinol may be the better choice for women in
-      perimenopause and beyond. If you're on a statin or heart medication,
-      CoQ10 levels can be depleted by the medication, so it's often
-      recommended alongside statins specifically.
+      CoQ10 is commonly taken at 100–200mg/day and is genuinely involved in
+      cellular energy production, though the evidence that supplementing it
+      measurably improves fatigue is mixed rather than settled. Ubiquinol is
+      the "active" form your body converts the standard form (ubiquinone)
+      into — that conversion may become less efficient with age, which is
+      why some women choose ubiquinol, though it isn't firmly established as
+      clinically better for everyone. Statins are known to lower CoQ10
+      levels in the body, which is the main reason it's often discussed
+      specifically for women on statins or other heart medication.
     priority: medium
     who_for: all
     targets_symptoms:
@@ -178,13 +179,16 @@ supplement_suggestions:
 
   - id: ss_nmn_pqq_energy
     category: supplement
-    title: NMN and PQQ — for mitochondrial and cellular energy support
+    title: NMN and PQQ — emerging, not established, for energy support
     body: >
-      NMN (Nicotinamide Mononucleotide), commonly 250–500mg/day, supports
-      NAD+ production, which declines with age and is involved in cellular
-      energy metabolism. PQQ (Pyrroloquinoline Quinone), commonly
-      10–20mg/day, supports mitochondrial function and is often paired
-      with NMN or CoQ10.
+      NMN (Nicotinamide Mononucleotide, commonly 250–500mg/day) reliably
+      raises NAD+ levels, which decline with age and are involved in cellular
+      energy metabolism — but human trials haven't yet established that this
+      translates into a clear fatigue benefit; most research so far is small
+      and short-term. PQQ (Pyrroloquinoline Quinone, commonly 10–20mg/day) is
+      sometimes paired with it and is generally well tolerated, with a
+      similar gap between promising mechanism and proven outcome. Worth
+      thinking of these as experimental rather than a reliable fix.
     priority: low
     who_for: all
     targets_symptoms:
@@ -195,14 +199,15 @@ supplement_suggestions:
 
   - id: ss_nac_glutathione_energy
     category: supplement
-    title: NAC and Liposomal Glutathione — antioxidant support
+    title: NAC and Glutathione — antioxidant support
     body: >
-      NAC (N-Acetyl Cysteine), commonly 600mg/day, and/or liposomal
-      glutathione support the body's master antioxidant system, which
-      plays a role in cellular energy production and reducing oxidative
-      stress. Glutathione should specifically be liposomal — standard
-      capsule forms break down in digestion before absorption, so
-      liposomal is needed for it to actually reach the bloodstream.
+      NAC (N-Acetyl Cysteine, commonly 600mg/day) and/or glutathione support
+      the body's master antioxidant system, which plays a role in cellular
+      energy production and reducing oxidative stress. You may read that
+      glutathione has to be liposomal to work — some studies show standard
+      oral glutathione can raise levels in the body too, so it isn't a
+      strict requirement, though formulation does affect absorption and
+      research on the best form is still developing.
     priority: low
     who_for: all
     targets_symptoms:

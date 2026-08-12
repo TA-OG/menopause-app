@@ -189,11 +189,14 @@ supplement_suggestions:
     title: Sage — for hot flushes and night sweats
     body: >
       Sage (Salvia officinalis) standardised extract has a small body of
-      clinical evidence showing a modest reduction in hot flush frequency.
-      Studies typically used 300–600mg daily, or you can take it as a tea
-      before bed — sage has traditionally been used specifically for
-      excessive sweating, including night sweats. Effects take 4–8 weeks to
-      build. Not a replacement for HRT if flushes are severe.
+      clinical evidence showing a modest reduction in hot flush frequency —
+      studies typically used 300–600mg daily of a standardised extract, so
+      that's a different thing to a cup of sage tea, which hasn't been
+      studied at a known dose and doesn't carry the same evidence. Sage tea
+      before bed is a traditional remedy for excessive sweating some women
+      still reach for, just worth knowing it's a different basis to the
+      extract research. Effects from the standardised extract take 4–8
+      weeks to build. Not a replacement for HRT if flushes are severe.
     priority: medium
     who_for: all
     disclaimer: >
@@ -219,13 +222,17 @@ supplement_suggestions:
     category: supplement
     title: Vitamin E — for vasomotor symptoms
     body: >
-      Commonly 400 IU/day. Some evidence for reducing the frequency and
-      severity of vasomotor symptoms, including night sweats.
+      Some women try vitamin E, commonly around 400 IU/day, for reducing the
+      frequency and severity of vasomotor symptoms including night sweats —
+      the evidence for this specific effect is modest. 400 IU is a high
+      supplemental dose, well above what you'd get from food.
     priority: low
     who_for: all
     disclaimer: >
-      Always check with your GP or pharmacist before starting, especially
-      if you take any prescribed medications.
+      High-dose vitamin E can increase bleeding risk, particularly alongside
+      anticoagulant or antiplatelet medication (warfarin, aspirin) or before
+      surgery. Always check with your GP or pharmacist before starting,
+      especially if you take any prescribed medications.
 
   - id: ss_maca_hot_flushes
     category: supplement
