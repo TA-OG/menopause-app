@@ -49,6 +49,7 @@ interface GeoRestriction {
   mode: GeoMode
   enabled: boolean
   updated_at: string
+  is_eu: boolean
 }
 
 interface GeoOverride {
@@ -163,8 +164,18 @@ export default function AdminDashboard() {
         return
       }
       const confirmed = body.restriction as GeoRestriction
+      // EU countries move in lockstep (EU non-discrimination law) — the API
+      // cascades the change server-side and returns every affected EU row
+      // so we can reflect all of them here, not just the one clicked.
+      const cascaded = body.cascaded as GeoRestriction[] | undefined
       setRestrictions((prev) =>
-        prev.map((r) => (r.country_code === confirmed.country_code ? confirmed : r)),
+        prev.map((r) => {
+          if (cascaded) {
+            const match = cascaded.find((c) => c.country_code === r.country_code)
+            if (match) return match
+          }
+          return r.country_code === confirmed.country_code ? confirmed : r
+        }),
       )
       // Refresh metrics so the active-markets count + jurisdiction modes track.
       fetch('/api/admin/metrics').then((r) => r.json()).then((m) => {
@@ -323,10 +334,15 @@ export default function AdminDashboard() {
           <h2 className="font-semibold text-brand-900">Geo access control</h2>
           <p className="text-xs text-gray-400">Tap a country to change its mode</p>
         </div>
-        <p className="text-xs text-gray-400 mb-4">
+        <p className="text-xs text-gray-400 mb-1">
           <span className="font-semibold text-gray-500">Off</span> — blocked, user sees an unavailable notice ·{' '}
           <span className="font-semibold text-amber-600">Info Only</span> — app + articles, no personalised plan ·{' '}
           <span className="font-semibold text-green-600">Live</span> — all features
+        </p>
+        <p className="text-xs text-gray-400 mb-4">
+          <span className="font-semibold text-blue-600">EU</span>-flagged countries change together — EU
+          non-discrimination law forbids treating one member state differently from another. Changing any EU
+          country&rsquo;s mode moves every EU country to match.
         </p>
 
         {!loading && (
@@ -372,7 +388,17 @@ export default function AdminDashboard() {
                   onClick={() => cycleMode(r.country_code, r.mode)}
                   className={`flex items-center justify-between px-4 py-3 rounded-xl border text-left transition-colors disabled:opacity-50 ${btnTone}`}
                 >
-                  <span className="text-sm text-brand-900">{r.country_name}</span>
+                  <span className="text-sm text-brand-900 flex items-center gap-1.5">
+                    {r.country_name}
+                    {r.is_eu && (
+                      <span
+                        title="EU non-discrimination: this country's mode moves in lockstep with every other EU country"
+                        className="text-[9px] font-bold uppercase px-1.5 py-0.5 rounded-full bg-blue-100 text-blue-700"
+                      >
+                        EU
+                      </span>
+                    )}
+                  </span>
                   <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded-full ${modeBadgeClass(r.mode)}`}>
                     {isToggling ? '…' : modeLabel(r.mode)}
                   </span>

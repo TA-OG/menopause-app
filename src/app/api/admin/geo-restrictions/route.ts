@@ -16,9 +16,16 @@ const VALID_MODES: GeoMode[] = ['disabled', 'info_only', 'full']
  *        body: { country_code: string (2 chars), mode: 'disabled'|'info_only'|'full' }
  *
  * Admin only. `enabled` is kept in sync with mode (enabled = mode !== 'disabled').
+ *
+ * EU non-discrimination: every EU member state (`is_eu = true`) must carry the
+ * same mode — the geo_restrictions trigger (migration 025) cascades this at
+ * the DB level whenever an EU row changes. When a PUT targets an EU country,
+ * the response includes `cascaded`: the full, post-cascade set of EU rows,
+ * so the caller can update every affected country in the UI, not just the
+ * one it asked for.
  */
 export async function GET(request: NextRequest) {
-  const { success } = rateLimit(request, { limit: 60, windowMs: 60_000 })
+  const { success } = await rateLimit(request, { limit: 60, windowMs: 60_000 })
   if (!success) return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
 
   const supabase = createClient()
@@ -29,7 +36,7 @@ export async function GET(request: NextRequest) {
     const admin = createAdminClient()
     const { data, error } = await admin
       .from('geo_restrictions')
-      .select('country_code, country_name, mode, enabled, updated_at')
+      .select('country_code, country_name, mode, enabled, updated_at, is_eu')
       .order('country_name')
 
     if (error) throw error
@@ -40,7 +47,7 @@ export async function GET(request: NextRequest) {
 }
 
 export async function PUT(request: NextRequest) {
-  const { success } = rateLimit(request, { limit: 60, windowMs: 60_000 })
+  const { success } = await rateLimit(request, { limit: 60, windowMs: 60_000 })
   if (!success) return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
 
   const supabase = createClient()
@@ -75,7 +82,7 @@ export async function PUT(request: NextRequest) {
         updated_by: auth.id,
       })
       .eq('country_code', country_code.toUpperCase())
-      .select('country_code, country_name, mode, enabled, updated_at')
+      .select('country_code, country_name, mode, enabled, updated_at, is_eu')
       .single()
 
     if (error) {
@@ -88,7 +95,20 @@ export async function PUT(request: NextRequest) {
       throw error
     }
 
-    return NextResponse.json({ ok: true, restriction: updated })
+    // EU countries move in lockstep (migration 025 cascades this in a DB
+    // trigger). Return the full post-cascade EU set so the caller can
+    // reflect every affected country, not just the one it targeted.
+    let cascaded: typeof updated[] | undefined
+    if (updated.is_eu) {
+      const { data: euRows, error: euError } = await admin
+        .from('geo_restrictions')
+        .select('country_code, country_name, mode, enabled, updated_at, is_eu')
+        .eq('is_eu', true)
+      if (euError) throw euError
+      cascaded = euRows ?? undefined
+    }
+
+    return NextResponse.json({ ok: true, restriction: updated, cascaded })
   } catch (err) {
     return NextResponse.json({ error: sanitizeError(err) }, { status: 500 })
   }
