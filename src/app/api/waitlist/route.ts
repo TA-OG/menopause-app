@@ -27,7 +27,7 @@ const WaitlistSchema = z.object({
 
 export async function POST(request: NextRequest) {
   // Strict rate limiting — prevent abuse
-  const { success } = rateLimit(request, { limit: 3, windowMs: 60_000 })
+  const { success } = await rateLimit(request, { limit: 3, windowMs: 60_000 })
   if (!success) {
     return NextResponse.json(
       { error: 'Too many attempts. Please try again in a minute.' },

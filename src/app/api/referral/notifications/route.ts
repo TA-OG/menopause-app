@@ -6,7 +6,7 @@ import { rateLimit } from '@/lib/rate-limit'
 // Unseen, already-applied referral rewards — the "you just earned a free
 // month" banner shows these once, then the client marks them seen via POST.
 export async function GET(request: NextRequest) {
-  const { success } = rateLimit(request, { limit: 20, windowMs: 60_000 })
+  const { success } = await rateLimit(request, { limit: 20, windowMs: 60_000 })
   if (!success) return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
 
   const supabase = createClient()
@@ -25,7 +25,7 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  const { success } = rateLimit(request, { limit: 20, windowMs: 60_000 })
+  const { success } = await rateLimit(request, { limit: 20, windowMs: 60_000 })
   if (!success) return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
 
   const supabase = createClient()

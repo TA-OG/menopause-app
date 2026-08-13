@@ -13,7 +13,7 @@ export const dynamic = 'force-dynamic'
  * and length-capped. If the request carries a session we attach the user id.
  */
 export async function POST(request: NextRequest) {
-  const { success } = rateLimit(request, { limit: 30, windowMs: 60_000 })
+  const { success } = await rateLimit(request, { limit: 30, windowMs: 60_000 })
   if (!success) return NextResponse.json({ ok: false }, { status: 429 })
 
   try {

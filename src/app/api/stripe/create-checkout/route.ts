@@ -9,7 +9,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 })
 
 export async function POST(request: NextRequest) {
-  const { success } = rateLimit(request, { limit: 5, windowMs: 60_000 })
+  const { success } = await rateLimit(request, { limit: 5, windowMs: 60_000 })
   if (!success) return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
 
   const supabase = createClient()

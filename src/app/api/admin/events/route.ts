@@ -67,7 +67,7 @@ function percentile(sorted: number[], p: number): number {
  * Admin only. Reads app_events via the service-role client (RLS blocks all else).
  */
 export async function GET(request: NextRequest) {
-  const { success } = rateLimit(request, { limit: 60, windowMs: 60_000 })
+  const { success } = await rateLimit(request, { limit: 60, windowMs: 60_000 })
   if (!success) return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
 
   const supabase = createClient()

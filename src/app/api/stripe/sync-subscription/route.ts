@@ -11,7 +11,7 @@ import { syncSubscriptionFromStripe } from '@/lib/subscription-sync'
  * api/stripe/webhook/route.ts for the failure mode this recovers from).
  */
 export async function POST(request: NextRequest) {
-  const { success } = rateLimit(request, { limit: 10, windowMs: 60_000 })
+  const { success } = await rateLimit(request, { limit: 10, windowMs: 60_000 })
   if (!success) return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
 
   const supabase = createClient()

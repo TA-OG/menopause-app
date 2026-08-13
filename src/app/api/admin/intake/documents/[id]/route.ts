@@ -15,7 +15,7 @@ export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } },
 ) {
-  const { success } = rateLimit(request, { limit: 60, windowMs: 60_000 })
+  const { success } = await rateLimit(request, { limit: 60, windowMs: 60_000 })
   if (!success) return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
 
   const supabase = createClient()
@@ -51,7 +51,7 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: { id: string } },
 ) {
-  const { success } = rateLimit(request, { limit: 30, windowMs: 60_000 })
+  const { success } = await rateLimit(request, { limit: 30, windowMs: 60_000 })
   if (!success) return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
 
   const supabase = createClient()

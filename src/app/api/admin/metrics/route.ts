@@ -35,7 +35,7 @@ export interface AdminMetrics {
  * against geo_restrictions for each country's configured mode.
  */
 export async function GET(request: NextRequest) {
-  const { success } = rateLimit(request, { limit: 60, windowMs: 60_000 })
+  const { success } = await rateLimit(request, { limit: 60, windowMs: 60_000 })
   if (!success) return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
 
   const supabase = createClient()

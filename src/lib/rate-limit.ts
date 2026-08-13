@@ -1,45 +1,59 @@
 import { NextRequest } from 'next/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 
 /**
- * IMPORTANT — in-memory rate limiter. Works within a single Node.js process
- * (local dev, single container). On Vercel serverless each invocation may be
- * a fresh process so the Map is always empty and this provides NO protection
- * in production.
+ * Postgres-backed rate limiter (see supabase/migrations/027_rate_limits.sql).
  *
- * TODO: Replace with Redis / Upstash-based rate limiting for production
- * hardening. For now it is retained for local dev feedback and as a pattern
- * placeholder. Do not rely on it to prevent abuse in production.
+ * Replaces a previous in-memory Map implementation that provided NO real
+ * protection in production: on Vercel serverless, each invocation can land
+ * on a fresh process, so a module-level Map is empty every time. Postgres
+ * is the one piece of state every invocation can reach, so the counter
+ * lives there instead — a single atomic RPC call per check.
  */
-const rateMap = new Map<string, { count: number; reset: number }>()
 
 interface RateLimitOptions {
   limit: number        // max requests
   windowMs: number     // window in milliseconds
 }
 
-export function rateLimit(
+interface RateLimitResult {
+  success: boolean
+  remaining: number
+}
+
+export async function rateLimit(
   request: NextRequest,
   options: RateLimitOptions = { limit: 20, windowMs: 60_000 }
-): { success: boolean; remaining: number } {
+): Promise<RateLimitResult> {
   const ip =
-    request.headers.get('x-forwarded-for')?.split(',')[0] ??
+    request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ??
     request.headers.get('x-real-ip') ??
     'unknown'
 
   const key = `${ip}:${request.nextUrl.pathname}`
-  const now = Date.now()
-  const entry = rateMap.get(key)
 
-  if (!entry || now > entry.reset) {
-    rateMap.set(key, { count: 1, reset: now + options.windowMs })
-    return { success: true, remaining: options.limit - 1 }
+  try {
+    const admin = createAdminClient()
+    const { data, error } = await admin
+      .rpc('check_rate_limit', {
+        p_key: key,
+        p_limit: options.limit,
+        p_window_ms: options.windowMs,
+      })
+      .single()
+
+    if (error) throw error
+
+    const result = data as { allowed: boolean; remaining: number }
+    return { success: result.allowed, remaining: result.remaining }
+  } catch (err) {
+    // Fail OPEN, not closed: if the rate-limit store itself is unreachable,
+    // blocking every request would turn a rate-limiter outage into a full
+    // app outage. The DB being down already breaks every other route in
+    // this app, so this doesn't meaningfully widen the blast radius — but
+    // it does mean abuse protection briefly lapses instead of the app
+    // going dark. Logged so a persistent failure here doesn't go unnoticed.
+    console.error(`rate-limit check failed for ${request.nextUrl.pathname}:`, err)
+    return { success: true, remaining: options.limit }
   }
-
-  entry.count++
-
-  if (entry.count > options.limit) {
-    return { success: false, remaining: 0 }
-  }
-
-  return { success: true, remaining: options.limit - entry.count }
 }

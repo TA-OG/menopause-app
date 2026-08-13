@@ -12,7 +12,7 @@ import { FOUNDATION_ROUND } from '@/lib/content-intake-config'
  * Lists uploaded source documents for a topic, newest first.
  */
 export async function GET(request: NextRequest) {
-  const { success } = rateLimit(request, { limit: 60, windowMs: 60_000 })
+  const { success } = await rateLimit(request, { limit: 60, windowMs: 60_000 })
   if (!success) return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
 
   const supabase = createClient()
@@ -50,7 +50,7 @@ export async function GET(request: NextRequest) {
  *         sourceNote?, brandingNote? }
  */
 export async function POST(request: NextRequest) {
-  const { success } = rateLimit(request, { limit: 30, windowMs: 60_000 })
+  const { success } = await rateLimit(request, { limit: 30, windowMs: 60_000 })
   if (!success) return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
 
   const supabase = createClient()
