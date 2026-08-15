@@ -1,7 +1,7 @@
 # Wellness plan — plain-English review
 
 _This is what the app will tell users, generated from the current content._
-_Reviewed: 12 August 2026_
+_Reviewed: 15 August 2026_
 
 ---
 ## Bone & Heart Health
@@ -131,7 +131,7 @@ Shown to **every user**, regardless of their answers.
   Many women take a combined EPA/DHA supplement, commonly in the range of 1000–2000mg a day. If you're choosing one, it's worth checking the actual EPA/DHA content per capsule rather than just the total fish oil weight, and looking for third-party-tested purity.
   _Disclaimer: Omega-3 at high doses can thin the blood. If you take anticoagulants (warfarin, aspirin, apixaban) or are due for surgery, consult your GP or pharmacist before supplementing._
 - **B-Complex — methylated forms are worth knowing about**  _(medium priority)_
-  If you're considering a B-complex, the form is worth knowing about — methylfolate as an alternative to synthetic folic acid, methylcobalamin as an alternative to synthetic cyanocobalamin. These aren't universally "better" for everyone, but some women — particularly those with a genetic variation affecting folate metabolism (MTHFR) — process the methylated forms more easily. Given how common B12 and folate deficiency are at this life stage, it's worth knowing the options exist rather than assuming one form fits everyone.
+  If you're considering a B-complex, the form is worth knowing about — methylfolate as an alternative to synthetic folic acid, methylcobalamin as an alternative to synthetic cyanocobalamin. Neither form is universally "better" — having a common MTHFR gene variant is not on its own a reason to prefer methylated forms, whatever you may read elsewhere; if you know your MTHFR status and want that to inform your choice, discuss it with your GP rather than deciding from general information like this. Given how common B12 and folate deficiency are at this life stage, it's worth knowing the options exist rather than assuming one form fits everyone.
   _Disclaimer: Always check with your GP or pharmacist before starting, especially if you take any prescribed medications or have kidney conditions._
 - **Probiotic and prebiotic fibre — for gut health repair**  _(medium priority)_
   Some women find a multi-strain probiotic helps with gut health through this transition — dose varies by product and CFU count, so it's worth looking for strains with clinical backing rather than the highest CFU alone. Prebiotic fibre (e.g. inulin, PHGG) is another option many try — starting low and building slowly helps avoid bloating, particularly if gut health is already compromised.
@@ -223,7 +223,7 @@ Shown when their **symptoms** is any of: "hot flashes", "night sweats".
 ### Mindset & emotional
 
 - **Hot flushes aren't just a supplement problem**  _(medium priority)_
-  Gut health and blood sugar stability play a real role too. Blood sugar swings trigger adrenaline release, which can bring on or worsen a flush — this is a well-established mechanism, and stabilising blood sugar through the day is genuinely worth prioritising. You may also read that poor oestrogen clearance (a gut or liver issue) drives flushes — this is a theory some practitioners use, not something mainstream menopause guidance treats as an established cause, so worth holding lightly. Either way, addressing the foundations — sleep, stress, blood sugar, movement — often does more for flush frequency and severity than any single supplement.
+  Gut health and blood sugar stability may play a role too. Some women notice blood sugar swings bring on or worsen a flush, plausibly via the adrenaline released to correct a low — but this isn't an established trigger for menopausal flushes generally, just a pattern some women report and worth watching for in yourself. Stabilising blood sugar through the day is a reasonable foundation regardless. You may also read that poor oestrogen clearance (a gut or liver issue) drives flushes — this is a theory some practitioners use, not something mainstream menopause guidance treats as an established cause, so worth holding lightly. Either way, addressing the foundations — sleep, stress, blood sugar, movement — often does more for flush frequency and severity than any single supplement.
 - **Reframe the flush — anxiety makes them worse**  _(high priority)_
   Anxiety about an impending flush is itself a trigger: it activates the sympathetic nervous system, which raises core temperature. Women who learn to observe a flush without catastrophising ("this will pass in 90 seconds") report significantly lower severity scores over time. Cognitive Behavioural Therapy (CBT) for menopausal symptoms is recognised by NICE as an option for vasomotor symptoms alongside or instead of HRT. In England you can self-refer to NHS Talking Therapies where you are eligible, though that service is aimed at anxiety and depression and menopause-specific CBT is not offered everywhere — so it is worth asking your GP about menopause-specific CBT or a referral to a menopause service too. The Women's Health Concern (the patient arm of the British Menopause Society) publishes a free factsheet on CBT for menopausal symptoms.
 - **Protect sleep despite night sweats**  _(high priority)_
@@ -668,7 +668,7 @@ Shown when their **symptoms** is any of: "weight changes", "joint pain", "fatigu
   _Targets: joint pain_
   _Disclaimer: Always check with your GP or pharmacist before starting, especially if you take any prescribed medications._
 - **Systemic enzyme blends — for joint pain and recovery**  _(low priority)_
-  Systemic enzyme blends (proteases including bromelain, trypsin and chymotrypsin — Wobenzym is one well-known brand) are taken on an empty stomach, between meals rather than with food, so the enzymes work systemically rather than just digestively. There's a reasonable body of research behind this class for joint pain, inflammation and recovery support. Formulations and enzyme strengths vary a lot between products, so the dose depends entirely on which one you choose — follow the specific product's label rather than a general rule, and a pharmacist can help you compare products.
+  Systemic enzyme blends (proteases including bromelain, trypsin and chymotrypsin — Wobenzym is the most studied brand) are commonly taken on an empty stomach, between meals rather than with food, following the product's own dosing guidance. Evidence for joint pain and recovery is limited and mixed, and varies between products and studies — this isn't a class with strong, settled evidence behind it, so treat it as worth discussing rather than an established option. Formulations and enzyme strengths vary a lot between products, so the dose depends entirely on which one you choose — follow the specific product's label rather than a general rule, and a pharmacist can help you compare products.
   _Targets: joint pain_
   _Disclaimer: Can interact with blood-thinning medications — needs a GP check first, particularly if you're on anticoagulants or aspirin._
 - **Berberine — for blood sugar and metabolic health**  _(medium priority)_
