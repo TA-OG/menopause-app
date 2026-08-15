@@ -43,8 +43,15 @@ self.addEventListener('notificationclick', (event) => {
       // one — most users will already have the app open somewhere.
       for (const client of clientList) {
         if ('focus' in client) {
-          client.navigate(targetUrl)
-          return client.focus()
+          // includeUncontrolled can hand back a client this service worker
+          // doesn't control, and navigate() rejects on those — chain it
+          // (rather than fire-and-forget) and fall back to opening a new
+          // window if either focus or navigate fails, so the click always
+          // lands somewhere instead of silently going nowhere.
+          return client
+            .focus()
+            .then(() => client.navigate(targetUrl))
+            .catch(() => self.clients.openWindow(targetUrl))
         }
       }
       return self.clients.openWindow(targetUrl)

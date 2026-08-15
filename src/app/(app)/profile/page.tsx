@@ -25,7 +25,7 @@ export default async function ProfilePage() {
     .from('user_preferences')
     .select('notification_enabled, notification_hour')
     .eq('user_id', user.id)
-    .single()
+    .maybeSingle()
 
   async function signOut() {
     'use server'

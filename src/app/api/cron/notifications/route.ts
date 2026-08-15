@@ -20,9 +20,14 @@ import webpush from 'web-push'
  * local to the user's timezone" meaningful instead of a UTC hour every user
  * happens to share.
  *
- * Idempotency: `notification_log` is checked for a plan_drip already sent to
- * a user "today" in their own timezone, so overlapping or retried ticks
- * within the same local hour cannot double-send.
+ * Idempotency: `notification_log.local_date` (migration 029) carries a unique
+ * index on (user_id, kind, local_date) for plan_drip. Each tick claims the
+ * user's local day by inserting that row *before* sending; a concurrent or
+ * retried tick that reaches the same point hits a unique-violation and backs
+ * off instead of sending a duplicate. A cheaper read-based check earlier in
+ * the loop skips the fan-out for users already known to be done for today,
+ * but the database constraint — not that read — is what actually prevents a
+ * double-send.
  */
 
 // ─── Route ──────────────────────────────────────────────────────────────────
@@ -63,16 +68,20 @@ export async function GET(request: NextRequest) {
         continue
       }
 
-      // Idempotency: has this user already had a plan_drip today, in their
-      // own local date? Guards against overlapping/retried cron ticks within
-      // the same local hour sending twice.
-      const dayStartUtc = new Date(`${local.date}T00:00:00Z`)
+      // Idempotency pre-check: has this user already had a plan_drip logged
+      // for their local calendar date? This is an optimization only, to
+      // avoid the fan-out below for a user we already know is done for
+      // today — it is NOT what makes double-sending impossible. That
+      // guarantee is the unique index on (user_id, kind, local_date)
+      // enforced at insert time (see the claim step further down), since
+      // two overlapping or retried ticks could otherwise both pass this
+      // read before either has written its row.
       const { data: sentToday } = await admin
         .from('notification_log')
         .select('id')
         .eq('user_id', pref.user_id)
         .eq('kind', 'plan_drip')
-        .gte('sent_at', dayStartUtc.toISOString())
+        .eq('local_date', local.date)
         .limit(1)
 
       if (sentToday && sentToday.length > 0) {
@@ -138,6 +147,29 @@ export async function GET(request: NextRequest) {
         continue
       }
 
+      // Claim this user's local day before sending, not after. The unique
+      // index on (user_id, kind, local_date) — migration 029 — is what
+      // actually makes a double-send impossible: if a concurrent or retried
+      // tick reached this same point, its insert hits a 23505
+      // unique-violation and it backs off instead of sending a duplicate.
+      // Logging after sending (the previous approach) left a window where
+      // two overlapping ticks could both pass the read check above before
+      // either had written a row.
+      const { error: claimError } = await admin.from('notification_log').insert({
+        user_id: pref.user_id,
+        kind: 'plan_drip',
+        recommendation_id: next.id,
+        local_date: local.date,
+      })
+
+      if (claimError) {
+        if (claimError.code === '23505') {
+          skipped++
+          continue
+        }
+        throw claimError
+      }
+
       const payload = JSON.stringify({
         title: 'Aunty Mel',
         body: `${next.title} — ${truncate(next.body)}`,
@@ -163,14 +195,11 @@ export async function GET(request: NextRequest) {
         }
       }
 
-      if (deliveredToAny) {
-        sent++
-        await admin.from('notification_log').insert({
-          user_id: pref.user_id,
-          kind: 'plan_drip',
-          recommendation_id: next.id,
-        })
-      }
+      // The day stays claimed even if delivery failed to every subscription
+      // — no retry today. Acceptable for a soft engagement nudge: retrying
+      // would reopen the exact double-send race the claim above exists to
+      // close, and rotation resumes tomorrow regardless.
+      if (deliveredToAny) sent++
     }
 
     return NextResponse.json({ sent, failed, skipped })

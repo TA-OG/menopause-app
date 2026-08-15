@@ -34,13 +34,28 @@ interface NumericClaim {
   note?: string
 }
 
+function isValidClaimShape(claim: unknown): claim is NumericClaim {
+  if (!claim || typeof claim !== 'object') return false
+  const c = claim as Record<string, unknown>
+  return (
+    typeof c.id === 'string' &&
+    typeof c.rec_id === 'string' &&
+    typeof c.asserts === 'string' &&
+    typeof c.verified === 'boolean' &&
+    (c.authority === undefined || typeof c.authority === 'string')
+  )
+}
+
 function loadClaims(): NumericClaim[] | null {
   try {
     const raw = fs.readFileSync(CLAIMS_PATH, 'utf8')
     const parsed = yaml.load(raw)
-    // Fail closed: an empty or malformed file must not silently pass as "zero
-    // claims registered". null here becomes the "registry missing" build error
-    // below, same as an unreadable file — not an empty, apparently-valid list.
+    // Fail closed: an empty, malformed, or structurally-invalid file must not
+    // silently pass as "zero claims registered" or hand validateNumericClaims
+    // an entry it has to trust blindly (a non-object element would throw when
+    // read, and an empty array reports "all claims valid" for a registry that
+    // asserts nothing). null here becomes the "registry missing" build error
+    // below, same as an unreadable file.
     if (
       !parsed ||
       typeof parsed !== 'object' ||
@@ -48,7 +63,11 @@ function loadClaims(): NumericClaim[] | null {
     ) {
       return null
     }
-    return (parsed as { claims: NumericClaim[] }).claims
+    const claims = (parsed as { claims: unknown[] }).claims
+    if (claims.length === 0 || !claims.every(isValidClaimShape)) {
+      return null
+    }
+    return claims
   } catch {
     return null
   }

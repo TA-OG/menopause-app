@@ -56,9 +56,9 @@ export async function POST(request: NextRequest) {
       .from('user_preferences')
       .select('notification_hour, timezone')
       .eq('user_id', user.id)
-      .single()
+      .maybeSingle()
 
-    await supabase
+    const { error: prefsError } = await supabase
       .from('user_preferences')
       .upsert(
         {
@@ -69,6 +69,12 @@ export async function POST(request: NextRequest) {
         },
         { onConflict: 'user_id' }
       )
+
+    // If this write fails, the push subscription is saved but
+    // notification_enabled never flips on — the cron would never select this
+    // user while the client shows the toggle as successfully turned on. Fail
+    // the request so the client rolls back instead of showing a false "on".
+    if (prefsError) throw prefsError
 
     return NextResponse.json({ data }, { status: 201 })
   } catch (err) {

@@ -153,6 +153,14 @@ function main() {
   const frameworks = loadFrameworks()
 
   if (frameworks.length === 0) {
+    // In --check mode, silently exiting 0 here would mean a broken or empty
+    // frameworks directory skips the drift check entirely rather than
+    // catching that the committed review doc can no longer be validated
+    // against anything.
+    if (checkMode) {
+      console.error('No frameworks found; cannot validate the committed review file.')
+      process.exit(1)
+    }
     console.log(onlyId ? `No framework found with id "${onlyId}".` : 'No frameworks found.')
     return
   }

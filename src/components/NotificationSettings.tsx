@@ -37,6 +37,7 @@ export default function NotificationSettings({ initialEnabled, initialHour }: Pr
   const [status, setStatus] = useState<Status>('idle')
   const [error, setError] = useState<string | null>(null)
   const [hour, setHour] = useState<number>(initialHour ?? 9)
+  const [lastSavedHour, setLastSavedHour] = useState<number>(initialHour ?? 9)
   const [hourSaved, setHourSaved] = useState(true)
 
   useEffect(() => {
@@ -123,6 +124,11 @@ export default function NotificationSettings({ initialEnabled, initialHour }: Pr
 
       if (!res.ok) {
         const data = await res.json().catch(() => null)
+        // Don't leave a live browser subscription the server has no working
+        // record of — otherwise the next mount's getSubscription() finds it
+        // and shows "subscribed" even though notification_enabled was never
+        // set and nothing will ever be sent to it.
+        await subscription.unsubscribe().catch(() => {})
         throw new Error(data?.error ?? 'Could not save subscription')
       }
 
@@ -177,6 +183,7 @@ export default function NotificationSettings({ initialEnabled, initialHour }: Pr
   const isBusy = status === 'checking' || status === 'subscribing' || status === 'unsubscribing'
 
   async function saveHour(newHour: number) {
+    setError(null)
     setHour(newHour)
     setHourSaved(false)
     try {
@@ -185,10 +192,16 @@ export default function NotificationSettings({ initialEnabled, initialHour }: Pr
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ notification_hour: newHour }),
       })
-      if (res.ok) setHourSaved(true)
+      if (!res.ok) throw new Error('Could not save your reminder time')
+      setLastSavedHour(newHour)
+      setHourSaved(true)
     } catch {
-      // Non-critical — the picker just won't show "saved" until the next
-      // successful attempt. Not worth surfacing an error banner for.
+      // A silently-failed save left the picker showing an hour the server
+      // never actually stored, with no indication anything went wrong —
+      // revert to what's actually persisted and say so.
+      setHour(lastSavedHour)
+      setHourSaved(true)
+      setError('Could not save your reminder time — please try again.')
     }
   }
 
