@@ -1,8 +1,8 @@
 -- ============================================================
--- 029_notification_log_local_date.sql
+-- 030_notification_log_local_date.sql
 -- Database-backed once-per-local-day guarantee for notification_log.
 --
--- Two related bugs in the 028 plan-drip cron, found by CodeRabbit review:
+-- Two related bugs in the 029 plan-drip cron, found by CodeRabbit review:
 --
 --   1. The cron's idempotency check compared a user's local calendar date
 --      against a UTC midnight boundary (`${local.date}T00:00:00Z`). For any

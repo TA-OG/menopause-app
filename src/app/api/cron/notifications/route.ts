@@ -20,7 +20,7 @@ import webpush from 'web-push'
  * local to the user's timezone" meaningful instead of a UTC hour every user
  * happens to share.
  *
- * Idempotency: `notification_log.local_date` (migration 029) carries a unique
+ * Idempotency: `notification_log.local_date` (migration 030) carries a unique
  * index on (user_id, kind, local_date) for plan_drip. Each tick claims the
  * user's local day by inserting that row *before* sending; a concurrent or
  * retried tick that reaches the same point hits a unique-violation and backs
@@ -161,7 +161,7 @@ export async function GET(request: NextRequest) {
       }
 
       // Claim this user's local day before sending, not after. The unique
-      // index on (user_id, kind, local_date) — migration 029 — is what
+      // index on (user_id, kind, local_date) — migration 030 — is what
       // actually makes a double-send impossible: if a concurrent or retried
       // tick reached this same point, its insert hits a 23505
       // unique-violation and it backs off instead of sending a duplicate.
