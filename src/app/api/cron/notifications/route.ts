@@ -53,10 +53,17 @@ export async function GET(request: NextRequest) {
   const admin = createAdminClient()
 
   try {
-    const { data: prefs } = await admin
+    const { data: prefs, error: prefsError } = await admin
       .from('user_preferences')
       .select('user_id, notification_hour, timezone')
       .eq('notification_enabled', true)
+
+    // A query error here (missing column, broken RLS, connection issue —
+    // this was caught live when a schema migration hadn't actually been
+    // applied yet) must not be indistinguishable from "genuinely zero
+    // enabled users". Discarding it silently turned a broken cron into a
+    // false "0 sent" success on every tick.
+    if (prefsError) throw prefsError
 
     if (!prefs || prefs.length === 0) {
       return NextResponse.json({ sent: 0, skipped: 0 })
