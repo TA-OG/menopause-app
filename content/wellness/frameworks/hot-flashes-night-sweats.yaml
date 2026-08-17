@@ -37,11 +37,14 @@ diet_adjustments:
 
   - id: df_blood_sugar
     category: diet
-    title: Stabilise blood sugar to reduce flush frequency
+    title: Stabilise blood sugar as a general foundation
     body: >
-      Blood sugar spikes and crashes can trigger vasomotor events. Eating
-      protein and healthy fat at every meal (e.g. eggs, nuts, oily fish,
-      avocado) slows glucose absorption and helps keep flushes calmer.
+      Some women notice blood sugar spikes and crashes seem to bring on or
+      worsen a flush, though this isn't an established trigger for
+      menopausal vasomotor symptoms generally — worth watching for in
+      yourself rather than assuming it applies. Eating protein and healthy
+      fat at every meal (e.g. eggs, nuts, oily fish, avocado) slows glucose
+      absorption regardless, and is a reasonable foundation either way.
       Avoid refined carbs and sugary snacks on an empty stomach.
     priority: medium
     who_for: all

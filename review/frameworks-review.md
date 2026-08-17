@@ -1,7 +1,7 @@
 # Wellness plan — plain-English review
 
 _This is what the app will tell users, generated from the current content._
-_Reviewed: 15 August 2026_
+_Reviewed: 17 August 2026_
 
 ---
 ## Bone & Heart Health
@@ -204,8 +204,8 @@ Shown when their **symptoms** is any of: "hot flashes", "night sweats".
   Foods rich in phytoestrogens — ground flaxseed, edamame, tofu, tempeh — can help buffer oestrogen fluctuations that drive hot flushes. Aim for 1–2 tablespoons of ground flaxseed daily added to porridge, yoghurt, or smoothies.
 - **Reduce common flush triggers**  _(high priority)_
   Caffeine, alcohol, spicy food, and very hot drinks are the most commonly reported dietary triggers for hot flushes. Try removing one at a time for two weeks and note whether flush frequency or severity decreases. Many women find morning coffee is the single biggest driver.
-- **Stabilise blood sugar to reduce flush frequency**  _(medium priority)_
-  Blood sugar spikes and crashes can trigger vasomotor events. Eating protein and healthy fat at every meal (e.g. eggs, nuts, oily fish, avocado) slows glucose absorption and helps keep flushes calmer. Avoid refined carbs and sugary snacks on an empty stomach.
+- **Stabilise blood sugar as a general foundation**  _(medium priority)_
+  Some women notice blood sugar spikes and crashes seem to bring on or worsen a flush, though this isn't an established trigger for menopausal vasomotor symptoms generally — worth watching for in yourself rather than assuming it applies. Eating protein and healthy fat at every meal (e.g. eggs, nuts, oily fish, avocado) slows glucose absorption regardless, and is a reasonable foundation either way. Avoid refined carbs and sugary snacks on an empty stomach.
 - **Stay consistently hydrated**  _(medium priority)_
   Dehydration raises core body temperature, making flushes more intense. Roughly 2 litres a day is the usual rule of thumb, spread across the day, and a little more if you are sweating at night — but it is a guide, not a target, and what you actually need varies with your size, the weather and how active you are. If a doctor has told you to limit fluids — for example with heart or kidney failure — follow their limit, not this. Start with a large glass of cold water first thing, and keep one by your bed.
 

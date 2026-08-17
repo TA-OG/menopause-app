@@ -33,8 +33,14 @@ import webpush from 'web-push'
 // ─── Route ──────────────────────────────────────────────────────────────────
 
 export async function GET(request: NextRequest) {
+  // Checked separately from the header comparison below: if CRON_SECRET were
+  // ever unset, `Bearer ${undefined}` becomes the literal string
+  // "Bearer undefined", which a caller could send verbatim and pass the
+  // comparison. Failing closed here means a missing secret can only ever
+  // reject every caller, never accidentally authenticate one.
+  const cronSecret = process.env.CRON_SECRET
   const authHeader = request.headers.get('authorization')
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+  if (!cronSecret || authHeader !== `Bearer ${cronSecret}`) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
