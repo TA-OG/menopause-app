@@ -6,8 +6,10 @@
  * Sections:
  *   1. Totals       — users, premium, conversion, new, active markets
  *   2. Jurisdiction — per-country performance (users / premium / mode)
- *   3. Geo control  — set each country Off / Info Only / Live
- *   4. Overrides    — grant specific users full access regardless of country
+ *   3. Invite log   — everyone invited from the admin panel + their
+ *                     complimentary premium status
+ *   4. Geo control  — set each country Off / Info Only / Live
+ *   5. Overrides    — grant specific users full access regardless of country
  *
  * Admin-only: the /admin layout already gates on profiles.is_admin, and every
  * API this page calls re-checks it server-side via requireAdmin().
@@ -62,6 +64,32 @@ interface GeoOverride {
   created_at: string
 }
 
+type ComplimentaryStatus = 'granted' | 'already_subscribed' | 'failed' | 'not_attempted'
+
+interface AdminInvite {
+  id: string
+  email: string
+  first_name: string | null
+  user_id: string | null
+  invite_kind: 'waitlist' | 'author'
+  already_registered: boolean
+  complimentary_status: ComplimentaryStatus
+  complimentary_months: number | null
+  complimentary_expires_at: string | null
+  error: string | null
+  created_at: string
+}
+
+interface InviteLog {
+  invites: AdminInvite[]
+  summary: {
+    total: number
+    granted: number
+    alreadySubscribed: number
+    failed: number
+  }
+}
+
 // ── small helpers ──────────────────────────────────────────────────────────
 
 function modeLabel(mode: GeoMode | 'unconfigured'): string {
@@ -82,6 +110,34 @@ function modeBadgeClass(mode: GeoMode | 'unconfigured'): string {
     : mode === 'disabled'
     ? 'bg-gray-100 text-gray-500'
     : 'bg-gray-100 text-gray-400'
+}
+
+function compLabel(status: ComplimentaryStatus): string {
+  return status === 'granted'
+    ? 'Premium granted'
+    : status === 'already_subscribed'
+    ? 'Already subscribed'
+    : status === 'failed'
+    ? 'NOT granted'
+    : 'Admin access'
+}
+
+function compBadgeClass(status: ComplimentaryStatus): string {
+  return status === 'granted'
+    ? 'bg-green-100 text-green-700'
+    : status === 'already_subscribed'
+    ? 'bg-blue-100 text-blue-700'
+    : status === 'failed'
+    ? 'bg-red-100 text-red-700'
+    : 'bg-gray-100 text-gray-500'
+}
+
+function shortDate(iso: string): string {
+  return new Date(iso).toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  })
 }
 
 function relTime(iso: string): string {
@@ -110,6 +166,7 @@ export default function AdminDashboard() {
   const [metrics, setMetrics] = useState<Metrics | null>(null)
   const [restrictions, setRestrictions] = useState<GeoRestriction[]>([])
   const [overrides, setOverrides] = useState<GeoOverride[]>([])
+  const [inviteLog, setInviteLog] = useState<InviteLog | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [toggling, setToggling] = useState<string | null>(null)
@@ -126,18 +183,21 @@ export default function AdminDashboard() {
     setLoading(true)
     setError(null)
     try {
-      const [mRes, rRes, oRes] = await Promise.all([
+      const [mRes, rRes, oRes, iRes] = await Promise.all([
         fetch('/api/admin/metrics'),
         fetch('/api/admin/geo-restrictions'),
         fetch('/api/admin/geo-restrictions/overrides'),
+        fetch('/api/admin/invites'),
       ])
-      const [m, r, o] = await Promise.all([mRes.json(), rRes.json(), oRes.json()])
+      const [m, r, o, i] = await Promise.all([mRes.json(), rRes.json(), oRes.json(), iRes.json()])
       if (!mRes.ok) throw new Error(m.error ?? `metrics ${mRes.status}`)
       if (!rRes.ok) throw new Error(r.error ?? `geo-restrictions ${rRes.status}`)
       if (!oRes.ok) throw new Error(o.error ?? `overrides ${oRes.status}`)
+      if (!iRes.ok) throw new Error(i.error ?? `invites ${iRes.status}`)
       setMetrics(m)
       setRestrictions(r.restrictions ?? [])
       setOverrides(o.overrides ?? [])
+      setInviteLog(i)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load dashboard')
     } finally {
@@ -320,6 +380,116 @@ export default function AdminDashboard() {
                 <tr>
                   <td colSpan={5} className="px-6 py-12 text-center text-gray-400 text-sm">
                     No users yet.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* Invite log */}
+      <section className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+        <div className="px-6 py-4 border-b border-gray-100">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <h2 className="font-semibold text-brand-900">Invited users</h2>
+              <p className="text-xs text-gray-400 mt-0.5">
+                Everyone invited from the admin panel. Waitlist invites include{' '}
+                <span className="font-semibold text-gray-500">12 months complimentary premium</span>,
+                applied automatically.
+              </p>
+            </div>
+            {inviteLog && (
+              <div className="text-right shrink-0">
+                <p className="text-xs text-gray-400">
+                  {inviteLog.summary.total} invited · {inviteLog.summary.granted} premium
+                </p>
+                {inviteLog.summary.failed > 0 && (
+                  <p className="text-xs font-semibold text-red-600 mt-0.5">
+                    {inviteLog.summary.failed} without premium
+                  </p>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* A failed grant means someone was invited but never got the premium
+            they were promised — surface it loudly, not as a table cell. */}
+        {(inviteLog?.summary.failed ?? 0) > 0 && (
+          <div className="mx-6 mt-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+            {inviteLog!.summary.failed} invited{' '}
+            {inviteLog!.summary.failed === 1 ? 'person' : 'people'} did not receive complimentary
+            premium. They will hit the paywall — check the reason below and re-invite once fixed.
+          </div>
+        )}
+
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="bg-gray-50 text-left text-xs text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3">Name</th>
+                <th className="px-4 py-3">Email</th>
+                <th className="px-4 py-3">Type</th>
+                <th className="px-4 py-3">Invited</th>
+                <th className="px-4 py-3">Premium</th>
+                <th className="px-4 py-3">Until</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-50">
+              {(inviteLog?.invites ?? []).map((inv) => (
+                <tr key={inv.id} className="hover:bg-gray-50 align-top">
+                  <td className="px-6 py-3 font-medium text-brand-900">
+                    {inv.first_name ?? '—'}
+                  </td>
+                  <td className="px-4 py-3 text-gray-600 break-all">{inv.email}</td>
+                  <td className="px-4 py-3 text-gray-500">
+                    {inv.invite_kind === 'author' ? 'Author' : 'Waitlist'}
+                    {inv.already_registered && (
+                      <span
+                        title="Already had an account — no new invite email was sent"
+                        className="ml-1 text-[9px] font-bold uppercase px-1.5 py-0.5 rounded-full bg-gray-100 text-gray-500"
+                      >
+                        existing
+                      </span>
+                    )}
+                  </td>
+                  <td className="px-4 py-3 text-gray-400 whitespace-nowrap">
+                    {shortDate(inv.created_at)}
+                  </td>
+                  <td className="px-4 py-3">
+                    <span
+                      className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded-full whitespace-nowrap ${compBadgeClass(
+                        inv.complimentary_status,
+                      )}`}
+                    >
+                      {compLabel(inv.complimentary_status)}
+                    </span>
+                    {inv.complimentary_status === 'failed' && inv.error && (
+                      <p className="text-[11px] text-red-500 mt-1 max-w-xs">{inv.error}</p>
+                    )}
+                  </td>
+                  <td className="px-4 py-3 text-gray-500 whitespace-nowrap">
+                    {inv.complimentary_expires_at ? (
+                      <>
+                        {shortDate(inv.complimentary_expires_at)}
+                        <span className="text-gray-300"> · {relTime(inv.complimentary_expires_at)}</span>
+                      </>
+                    ) : (
+                      '—'
+                    )}
+                  </td>
+                </tr>
+              ))}
+              {!loading && (inviteLog?.invites.length ?? 0) === 0 && (
+                <tr>
+                  <td colSpan={6} className="px-6 py-12 text-center text-gray-400 text-sm">
+                    Nobody invited yet. Invites are sent from the{' '}
+                    <a href="/admin" className="text-brand-600 hover:underline">
+                      waitlist
+                    </a>
+                    .
                   </td>
                 </tr>
               )}

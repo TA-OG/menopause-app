@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
-import type { SupabaseClient } from '@supabase/supabase-js'
+import { findUserIdByEmail } from '@/lib/find-user'
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -86,6 +86,28 @@ export async function POST(request: NextRequest) {
 
     if (updateError) throw updateError
 
+    // Record the invite alongside waitlist invites so the admin dashboard
+    // shows one complete list of everyone who has been invited.
+    //
+    // No complimentary premium is granted here, and that is not an omission:
+    // an author has is_admin = true, and getUserAccess() already resolves
+    // every admin to full premium access regardless of subscription
+    // (see src/lib/access.ts). Giving them a Stripe subscription on top would
+    // create a billing artefact for access they already have.
+    const { error: logError } = await admin.from('admin_invites').insert({
+      email,
+      first_name: fullName ?? null,
+      user_id: authorId,
+      invited_by: user.id,
+      invite_kind: 'author',
+      already_registered: alreadyRegistered,
+      complimentary_status: 'not_attempted',
+    })
+
+    if (logError) {
+      console.error('Invite author: failed to write admin_invites log row', logError)
+    }
+
     return NextResponse.json({ success: true, email, alreadyRegistered })
   } catch (err) {
     console.error('Invite author error:', err)
@@ -94,20 +116,4 @@ export async function POST(request: NextRequest) {
       { status: 500 },
     )
   }
-}
-
-/** Find an existing auth user's id by email (paginated admin listing). */
-async function findUserIdByEmail(
-  admin: SupabaseClient,
-  email: string,
-): Promise<string | null> {
-  const perPage = 1000
-  for (let page = 1; page <= 10; page++) {
-    const { data, error } = await admin.auth.admin.listUsers({ page, perPage })
-    if (error) throw error
-    const match = data.users.find((u) => u.email?.toLowerCase() === email)
-    if (match) return match.id
-    if (data.users.length < perPage) break
-  }
-  return null
 }
