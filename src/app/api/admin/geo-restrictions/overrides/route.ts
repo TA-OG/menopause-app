@@ -4,6 +4,7 @@ import { createAdminClient } from '@/lib/supabase/admin'
 import { requireAdmin } from '@/lib/admin-auth'
 import { rateLimit } from '@/lib/rate-limit'
 import { sanitizeError } from '@/lib/sanitize-error'
+import { findUserIdByEmail } from '@/lib/find-user'
 
 export const dynamic = 'force-dynamic'
 
@@ -76,16 +77,7 @@ export async function POST(request: NextRequest) {
   try {
     const admin = createAdminClient()
 
-    // Resolve the email to a user id (paginated admin listing).
-    let userId: string | null = null
-    const perPage = 1000
-    for (let page = 1; page <= 10 && !userId; page++) {
-      const { data, error } = await admin.auth.admin.listUsers({ page, perPage })
-      if (error) throw error
-      const match = data.users.find((u) => u.email?.toLowerCase() === email)
-      if (match) userId = match.id
-      if (data.users.length < perPage) break
-    }
+    const userId = await findUserIdByEmail(admin, email)
 
     if (!userId) {
       return NextResponse.json(

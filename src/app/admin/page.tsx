@@ -164,7 +164,10 @@ export default async function AdminPage() {
         <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
           <h2 className="font-semibold text-brand-900">Waitlist</h2>
           <p className="text-xs text-gray-400">
-            Invite sends a Supabase magic-link sign-up email directly to the user.
+            Invite sends a magic-link sign-up email and grants 12 months complimentary premium.{' '}
+            <a href="/admin/dashboard" className="text-brand-600 hover:underline">
+              See invite log →
+            </a>
           </p>
         </div>
 
