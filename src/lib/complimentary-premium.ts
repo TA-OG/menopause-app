@@ -11,6 +11,9 @@ export const COMPLIMENTARY_PREMIUM_MONTHS = 12
 
 export type ComplimentaryGrantStatus = 'granted' | 'already_subscribed' | 'failed'
 
+/** Recorded on an invite whose complimentary months start at first sign-in. */
+export const PENDING_ACTIVATION = 'pending_activation' as const
+
 export interface ComplimentaryGrantResult {
   status: ComplimentaryGrantStatus
   months: number
@@ -263,5 +266,94 @@ export async function grantComplimentaryPremium(
       message,
     )
     return failed(message)
+  }
+}
+
+/**
+ * Run any complimentary premium grant that is waiting on this user's first
+ * sign-in, and record the outcome on their admin_invites row.
+ *
+ * The clock deliberately starts here rather than at invite time: granting on
+ * invite began the 12 months before the woman had an account she could use, so
+ * someone who accepted three months later received nine months of real access.
+ * It also created a Stripe customer and subscription for every invitee,
+ * including those who never accepted.
+ *
+ * Safe to call on every login, and intended to be — exactly like claimReferral
+ * alongside it in the auth callback. It is a no-op when there is no pending
+ * invite, which is the case for every sign-in after the first.
+ *
+ * Concurrency: the pending_activation -> activating move is a conditional
+ * UPDATE, so of two simultaneous sign-ins only one claims the row. Stripe's
+ * idempotency key on the subscription create is a second line of defence.
+ *
+ * Never throws. A failure here must not break the user's sign-in — they are
+ * standing at the door of a health app, and a Stripe outage is not a reason to
+ * keep them out. The failure is recorded on the invite row instead, where the
+ * dashboard surfaces it for follow-up.
+ *
+ * Requires a service-role client.
+ */
+export async function activatePendingComplimentaryPremium(
+  admin: SupabaseClient,
+  userId: string,
+  email: string,
+): Promise<ComplimentaryGrantResult | null> {
+  try {
+    const { data: pending } = await admin
+      .from('admin_invites')
+      .select('id, complimentary_months')
+      .eq('user_id', userId)
+      .eq('complimentary_status', PENDING_ACTIVATION)
+      .maybeSingle()
+
+    if (!pending) return null
+
+    // Claim the row. The .eq on the current status makes this the atomic
+    // gate: a second concurrent sign-in matches zero rows and backs off.
+    const { data: claimed } = await admin
+      .from('admin_invites')
+      .update({ complimentary_status: 'activating' })
+      .eq('id', pending.id)
+      .eq('complimentary_status', PENDING_ACTIVATION)
+      .select('id')
+      .maybeSingle()
+
+    if (!claimed) return null
+
+    const result = await grantComplimentaryPremium(admin, {
+      userId,
+      email,
+      months: pending.complimentary_months ?? COMPLIMENTARY_PREMIUM_MONTHS,
+    })
+
+    const { error: logError } = await admin
+      .from('admin_invites')
+      .update({
+        complimentary_status: result.status,
+        complimentary_months: result.months,
+        complimentary_expires_at: result.expiresAt,
+        stripe_subscription_id: result.stripeSubscriptionId,
+        error: result.error,
+        activated_at: new Date().toISOString(),
+      })
+      .eq('id', pending.id)
+
+    if (logError) {
+      // The grant itself may well have succeeded; only the bookkeeping
+      // failed. Log loudly rather than misreporting either way.
+      console.error(
+        `activatePendingComplimentaryPremium: grant recorded as "${result.status}" for user ${userId}, but the admin_invites row could not be updated`,
+        logError,
+      )
+    }
+
+    return result
+  } catch (err) {
+    console.error(
+      `activatePendingComplimentaryPremium: unexpected failure for user ${userId}:`,
+      err instanceof Error ? err.message : String(err),
+    )
+    return null
   }
 }

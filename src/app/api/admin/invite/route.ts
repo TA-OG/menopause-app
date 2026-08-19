@@ -5,9 +5,8 @@ import { requireAdmin } from '@/lib/admin-auth'
 import { rateLimit } from '@/lib/rate-limit'
 import { findUserIdByEmail } from '@/lib/find-user'
 import {
-  grantComplimentaryPremium,
   COMPLIMENTARY_PREMIUM_MONTHS,
-  type ComplimentaryGrantResult,
+  PENDING_ACTIVATION,
 } from '@/lib/complimentary-premium'
 
 /**
@@ -18,12 +17,16 @@ import {
  * makes, so it is applied automatically rather than being a per-invite choice
  * someone can forget to tick.
  *
+ * The grant itself is deliberately NOT made here. It is recorded as
+ * 'pending_activation' and runs the first time the user signs in (see
+ * activatePendingComplimentaryPremium, called from the auth callback), so the
+ * 12 months always mean twelve months of usable access rather than starting
+ * while the invite sits unread in an inbox. It also means no Stripe customer
+ * or subscription is created for an invite nobody ever accepts.
+ *
  * Ordering matters and is deliberate: the Supabase invite email goes first and
- * cannot be recalled once sent. Everything after it is therefore best-effort
- * and fully recorded — a failed grant still produces an admin_invites row with
- * complimentary_status = 'failed' and the reason, so an invited woman who did
- * not actually receive her 12 months is visible in the dashboard rather than
- * silently hitting a paywall she was told she would not see.
+ * cannot be recalled once sent. The admin_invites row is written after it, so
+ * the log always reflects what actually happened.
  */
 export async function POST(request: NextRequest) {
   // Creating Stripe subscriptions is a real side effect — bound how fast it
@@ -71,22 +74,14 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // 2. Grant the complimentary premium account.
-    const complimentary: ComplimentaryGrantResult = userId
-      ? await grantComplimentaryPremium(admin, {
-          userId,
-          email: normalisedEmail,
-          fullName: firstName,
-          grantedBy: auth.id,
-        })
-      : {
-          status: 'failed',
-          months: COMPLIMENTARY_PREMIUM_MONTHS,
-          expiresAt: null,
-          stripeSubscriptionId: null,
-          error:
-            'Invite sent, but the invited user could not be located, so complimentary premium was not applied.',
-        }
+    // 2. Record the complimentary premium as pending. It is granted on their
+    //    first sign-in so the 12 months start when they can actually use them.
+    //    Without a user id there is nothing to attach the pending grant to, so
+    //    that case is recorded as a failure needing follow-up.
+    const complimentaryStatus = userId ? PENDING_ACTIVATION : 'failed'
+    const complimentaryError = userId
+      ? null
+      : 'Invite sent, but the invited user could not be located, so no complimentary premium was scheduled.'
 
     // 3. Mark as converted on the waitlist.
     const { error: updateError } = await admin
@@ -109,11 +104,9 @@ export async function POST(request: NextRequest) {
       invited_by: auth.id,
       invite_kind: 'waitlist',
       already_registered: alreadyRegistered,
-      complimentary_status: complimentary.status,
-      complimentary_months: complimentary.months,
-      complimentary_expires_at: complimentary.expiresAt,
-      stripe_subscription_id: complimentary.stripeSubscriptionId,
-      error: complimentary.error,
+      complimentary_status: complimentaryStatus,
+      complimentary_months: COMPLIMENTARY_PREMIUM_MONTHS,
+      error: complimentaryError,
     })
 
     if (logError) {
@@ -123,7 +116,11 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       alreadyRegistered,
-      complimentary,
+      complimentary: {
+        status: complimentaryStatus,
+        months: COMPLIMENTARY_PREMIUM_MONTHS,
+        error: complimentaryError,
+      },
     })
   } catch (err) {
     console.error('Admin invite error:', err)

@@ -31,7 +31,7 @@ export async function GET(request: NextRequest) {
       // Kept as a single string literal, not a concatenation: supabase-js
       // infers the row type from the literal, and splitting it across an
       // expression collapses that inference to an error type.
-      .select('id, email, first_name, user_id, invite_kind, already_registered, complimentary_status, complimentary_months, complimentary_expires_at, error, created_at')
+      .select('id, email, first_name, user_id, invite_kind, already_registered, complimentary_status, complimentary_months, complimentary_expires_at, activated_at, error, created_at')
       .order('created_at', { ascending: false })
       .limit(500)
 
@@ -44,6 +44,13 @@ export async function GET(request: NextRequest) {
       summary: {
         total: rows.length,
         granted: rows.filter((i) => i.complimentary_status === 'granted').length,
+        // 'activating' is a transient state during a sign-in; counted with
+        // pending so a mid-flight row never looks like it went missing.
+        awaitingSignIn: rows.filter(
+          (i) =>
+            i.complimentary_status === 'pending_activation' ||
+            i.complimentary_status === 'activating',
+        ).length,
         alreadySubscribed: rows.filter((i) => i.complimentary_status === 'already_subscribed').length,
         failed: rows.filter((i) => i.complimentary_status === 'failed').length,
       },
