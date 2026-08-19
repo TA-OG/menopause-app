@@ -1,0 +1,391 @@
+# ============================================================================
+# SUBSTANCE REGISTRY
+# ============================================================================
+#
+# WHY THIS FILE EXISTS
+#
+# A user can match many frameworks at once. `foundations` fires for everyone
+# (trigger_all: true), and the symptom frameworks fire off an independent
+# multi-select checkbox. Before this registry existed, each framework
+# contributed its own card for the same substance and the plan rendered them
+# as separate suggestions with separate dose ranges — so a woman reporting hot
+# flushes, brain fog and joint pain saw four omega-3 cards whose upper bounds
+# summed to 11,000mg/day.
+#
+# THE GUARANTEE
+#
+# Two separate protections, enforced in code, not by authoring discipline:
+#
+#   1. STRUCTURAL (universal, applies to every substance below regardless of
+#      whether an upper limit is known): a substance can appear at most ONCE in
+#      a generated plan. Doses are never summed across frameworks.
+#
+#   2. NUMERIC CEILING (only where `limit_status: verified`): the cumulative
+#      ceiling from `max_daily` is surfaced to the user once, on the single card
+#      for that substance. Note what this does NOT do — enforceDoseCeilings()
+#      attaches a note; it does not rewrite or clamp the dose range written in
+#      the card body. The protection against a total that is too high comes from
+#      guarantee 1 (the substance appears once, so ranges never sum) plus the
+#      ceiling being stated plainly to the reader.
+#
+# Both are asserted by a property test that enumerates every possible
+# combination of frameworks. See src/lib/wellness-engine.safety.test.ts.
+#
+# RULES FOR EDITING
+#
+#   * Every supplement recommendation ID in content/wellness/frameworks/*.yaml
+#     must appear exactly once in this file. `npm run validate-content` fails
+#     the build otherwise — including for any newly added supplement.
+#   * NEVER merge two substances by name similarity. Calcium and calcium
+#     D-glucarate are different substances. Collagen Type I and Type II are
+#     different substances. They are deliberately kept separate below.
+#   * `max_daily` may only be set when `limit_status: verified`, and it MUST
+#     carry a real, checkable citation. If a limit cannot be verified to a
+#     named authority, leave it null and mark `needs_clinical_review`. Do not
+#     estimate, infer, or carry a number over from another substance.
+#
+# STATUS: most entries below are `needs_clinical_review`. That is deliberate
+# and honest — those upper limits have not yet been verified against a primary
+# source, so no numeric ceiling is asserted for them. The structural guarantee
+# still fully applies. Populating them is a clinical sign-off task.
+# ============================================================================
+
+substances:
+  # ── Multi-framework substances (the ones that were stacking) ──────────────
+
+  - key: omega_3_epa_dha
+    display_name: Omega-3 (EPA/DHA)
+    limit_status: verified
+    max_daily:
+      amount: 5000
+      unit: mg
+      basis: combined EPA + DHA from supplements, adults
+      source: >-
+        EFSA Panel on Dietetic Products, Nutrition and Allergies (NDA).
+        Scientific Opinion on the Tolerable Upper Intake Level of eicosapentaenoic
+        acid (EPA), docosahexaenoic acid (DHA) and docosapentaenoic acid (DPA).
+        EFSA Journal 2012;10(7):2815. DOI 10.2903/j.efsa.2012.2815 — concluded
+        that supplemental intakes of EPA and DHA combined at doses up to 5 g/day
+        do not raise safety concerns for adults.
+    note: >-
+      Highest-risk substance in the registry: five separate frameworks each
+      carried an omega-3 card, with upper bounds of 2000 + 3000 + 3000 + 3000mg
+      plus one unspecified. All five collapse to a single card.
+    recommendation_ids:
+      - ss_omega3_foundational
+      - ss_omega3_vasomotor
+      - ss_omega3_mood_brainfog
+      - ss_omega3_surgical
+      - ss_omega3_joints
+
+  - key: magnesium
+    display_name: Magnesium
+    limit_status: needs_clinical_review
+    max_daily: null
+    note: >-
+      Five cards, each 200–400mg. EU and US authorities differ on the
+      supplemental upper level, and the figure applies to readily dissociable
+      salts rather than magnesium generally — needs a clinician to pin down
+      which figure this app should state.
+    recommendation_ids:
+      - ss_magnesium_form_guide
+      - ss_magnesium_glycinate
+      - ss_magnesium_anxiety
+      - ss_magnesium_peri
+      - ss_magnesium_sleep
+
+  - key: vitamin_d
+    display_name: Vitamin D
+    limit_status: needs_clinical_review
+    max_daily: null
+    note: >-
+      Four cards, and they disagree with each other: one says 1000–4000 IU,
+      another cites the NHS 400 IU autumn/winter line, a third 1000–2000 IU for
+      darker skin or limited sun. Existing card disclaimers already warn above
+      4000 IU/day. FLAG FOR REVIEW — ss_vitamin_d3_k2 is a *combination* product
+      (D3 + K2), so it also contributes vitamin K2 alongside the standalone
+      ss_vitamin_k2 card. v1 dedupes on the primary substance only; the K2
+      overlap is not yet handled and needs a decision.
+    recommendation_ids:
+      - ss_vitamin_d3_k2
+      - ss_vitamin_d
+      - ss_vitamin_d_libido
+      - ss_surgical_vitamin_d
+
+  - key: ashwagandha
+    display_name: Ashwagandha
+    limit_status: needs_clinical_review
+    max_daily: null
+    note: Three cards, all 300–600mg standardised root extract.
+    recommendation_ids:
+      - ss_ashwagandha_stress
+      - ss_ashwagandha
+      - ss_ashwagandha_libido
+
+  - key: l_theanine
+    display_name: L-theanine
+    limit_status: needs_clinical_review
+    max_daily: null
+    note: >-
+      Two cards with genuinely conflicting doses — 200–400mg and 100–200mg.
+      The conflict must be resolved by a clinician, not split the difference.
+    recommendation_ids:
+      - ss_l_theanine
+      - ss_l_theanine_anxiety
+
+  - key: b_complex
+    display_name: B-Complex
+    limit_status: needs_clinical_review
+    max_daily: null
+    note: >-
+      Two cards. A B-complex is a multi-nutrient product — any upper limit is
+      per-vitamin (B6 in particular has a low ceiling and a real neuropathy
+      risk), not per-complex. Needs clinical input on how to express that.
+    recommendation_ids:
+      - ss_b_complex_methylated
+      - ss_b_complex_mood
+
+  - key: maca
+    display_name: Maca
+    limit_status: needs_clinical_review
+    max_daily: null
+    recommendation_ids:
+      - ss_maca_hot_flushes
+      - ss_maca_libido
+
+  - key: zinc
+    display_name: Zinc
+    limit_status: needs_clinical_review
+    max_daily: null
+    note: >-
+      Two cards (libido, hair). EU and US upper levels differ materially;
+      needs a decision on which this UK-facing app states. One card already
+      notes that long-term high-dose zinc depletes copper.
+    recommendation_ids:
+      - ss_zinc_libido
+      - ss_zinc_hair
+
+  # ── Deliberately separate — DO NOT MERGE ──────────────────────────────────
+  # These pairs look similar by name but are different substances with
+  # different actions. Merging them by fuzzy title matching would be a defect.
+
+  - key: calcium
+    display_name: Calcium
+    limit_status: needs_clinical_review
+    max_daily: null
+    note: >-
+      DISTINCT from calcium_d_glucarate — different substance, different
+      purpose. Never merge. Card already caps itself at 500mg supplemental and
+      warns against exceeding 1000mg combined with diet.
+    recommendation_ids:
+      - ss_calcium_supplement
+
+  - key: calcium_d_glucarate
+    display_name: Calcium D-Glucarate
+    limit_status: needs_clinical_review
+    max_daily: null
+    note: DISTINCT from calcium — supports oestrogen clearance, not bone mineral intake.
+    recommendation_ids:
+      - ss_calcium_d_glucarate
+
+  - key: collagen_type_i
+    display_name: Collagen (Type I)
+    limit_status: needs_clinical_review
+    max_daily: null
+    note: DISTINCT from collagen_type_ii — Type I is skin/hair/nails. Never merge.
+    recommendation_ids:
+      - ss_collagen_skin
+
+  - key: collagen_type_ii
+    display_name: Collagen (Type II)
+    limit_status: needs_clinical_review
+    max_daily: null
+    note: DISTINCT from collagen_type_i — Type II is joint cartilage. Never merge.
+    recommendation_ids:
+      - ss_collagen_type2_joints
+
+  - key: probiotic_prebiotic
+    display_name: Probiotic and prebiotic fibre
+    limit_status: needs_clinical_review
+    max_daily: null
+    note: DISTINCT from vaginal_probiotic — different route and strains.
+    recommendation_ids:
+      - ss_gut_repair_probiotic_prebiotic
+
+  - key: vaginal_probiotic
+    display_name: Vaginal-specific probiotics
+    limit_status: needs_clinical_review
+    max_daily: null
+    note: DISTINCT from probiotic_prebiotic — different route and strains.
+    recommendation_ids:
+      - ss_vaginal_probiotics
+
+  # ── Single-framework substances ───────────────────────────────────────────
+
+  - key: vitamin_k2
+    display_name: Vitamin K2 (MK-7)
+    limit_status: needs_clinical_review
+    max_daily: null
+    note: >-
+      See the vitamin_d note — ss_vitamin_d3_k2 is a combination product that
+      also contains K2. Overlap not yet handled.
+    recommendation_ids:
+      - ss_vitamin_k2
+
+  - key: vitamin_e
+    display_name: Vitamin E
+    limit_status: needs_clinical_review
+    max_daily: null
+    recommendation_ids:
+      - ss_vitamin_e_vasomotor
+
+  - key: iron
+    display_name: Iron
+    limit_status: needs_clinical_review
+    max_daily: null
+    note: >-
+      Iron is a genuine overdose risk and is dangerous in excess, particularly
+      where there is undiagnosed haemochromatosis. Priority for clinical review.
+    recommendation_ids:
+      - ss_iron_hair
+
+  - key: biotin
+    display_name: Biotin
+    limit_status: needs_clinical_review
+    max_daily: null
+    note: >-
+      Biotin interferes with several common lab assays, including thyroid and
+      troponin tests. Given how often this app points women toward thyroid
+      testing, that interaction is worth surfacing on the card.
+    recommendation_ids:
+      - ss_biotin_hair
+
+  - key: sage
+    display_name: Sage (Salvia officinalis)
+    limit_status: needs_clinical_review
+    max_daily: null
+    recommendation_ids:
+      - ss_sage_extract
+
+  - key: saffron
+    display_name: Saffron
+    limit_status: needs_clinical_review
+    max_daily: null
+    recommendation_ids:
+      - ss_saffron_mood
+
+  - key: acetyl_l_carnitine
+    display_name: Acetyl-L-Carnitine
+    limit_status: needs_clinical_review
+    max_daily: null
+    recommendation_ids:
+      - ss_acetyl_l_carnitine_brainfog
+
+  - key: ginkgo_biloba
+    display_name: Ginkgo Biloba
+    limit_status: needs_clinical_review
+    max_daily: null
+    recommendation_ids:
+      - ss_ginkgo_brainfog
+
+  - key: phosphatidylserine
+    display_name: Phosphatidylserine
+    limit_status: needs_clinical_review
+    max_daily: null
+    recommendation_ids:
+      - ss_phosphatidylserine_brainfog
+
+  - key: creatine
+    display_name: Creatine
+    limit_status: needs_clinical_review
+    max_daily: null
+    recommendation_ids:
+      - ss_creatine_muscle
+
+  - key: coq10
+    display_name: CoQ10 / Ubiquinol
+    limit_status: needs_clinical_review
+    max_daily: null
+    recommendation_ids:
+      - ss_coq10_ubiquinol_energy
+
+  - key: nmn_pqq
+    display_name: NMN and PQQ
+    limit_status: needs_clinical_review
+    max_daily: null
+    recommendation_ids:
+      - ss_nmn_pqq_energy
+
+  - key: nac_glutathione
+    display_name: NAC and liposomal glutathione
+    limit_status: needs_clinical_review
+    max_daily: null
+    recommendation_ids:
+      - ss_nac_glutathione_energy
+
+  - key: digestive_enzymes_hcl
+    display_name: Digestive enzymes and Betaine HCL
+    limit_status: needs_clinical_review
+    max_daily: null
+    recommendation_ids:
+      - ss_digestive_enzymes_hcl
+
+  - key: curcumin
+    display_name: Curcumin
+    limit_status: needs_clinical_review
+    max_daily: null
+    recommendation_ids:
+      - ss_curcumin_joints
+
+  - key: glucosamine_chondroitin
+    display_name: Glucosamine and Chondroitin
+    limit_status: needs_clinical_review
+    max_daily: null
+    recommendation_ids:
+      - ss_glucosamine_chondroitin
+
+  - key: msm
+    display_name: MSM (Methylsulfonylmethane)
+    limit_status: needs_clinical_review
+    max_daily: null
+    recommendation_ids:
+      - ss_msm_joints
+
+  - key: systemic_enzymes
+    display_name: Systemic enzyme blend
+    limit_status: needs_clinical_review
+    max_daily: null
+    note: >-
+      Card currently names a specific commercial product. The content intake
+      rules in review/pamela-extraction/README.md require brand names to be
+      reproduced generically — flagged for content review.
+    recommendation_ids:
+      - ss_wobenzym_joints
+
+  - key: berberine
+    display_name: Berberine
+    limit_status: needs_clinical_review
+    max_daily: null
+    recommendation_ids:
+      - ss_berberine_weight
+
+  - key: myo_inositol
+    display_name: Myo-Inositol
+    limit_status: needs_clinical_review
+    max_daily: null
+    recommendation_ids:
+      - ss_myo_inositol_weight
+
+  - key: protein_fibre_supplement
+    display_name: Protein powder and fibre supplements
+    limit_status: needs_clinical_review
+    max_daily: null
+    recommendation_ids:
+      - ss_protein_fibre_weight
+
+  - key: green_tea_ala
+    display_name: Green tea extract and Alpha-Lipoic Acid
+    limit_status: needs_clinical_review
+    max_daily: null
+    recommendation_ids:
+      - ss_green_tea_ala_weight

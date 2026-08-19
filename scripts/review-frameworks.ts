@@ -24,7 +24,20 @@ const OUT_DIR = path.join(process.cwd(), 'review')
 const OUT_FILE = path.join(OUT_DIR, 'frameworks-review.md')
 const SKIP_FILES = ['template.yaml']
 
-const onlyId = process.argv[2]
+const args = process.argv.slice(2)
+/**
+ * --check regenerates the review document and compares it to the committed one
+ * WITHOUT writing, failing if they differ. Wired into `npm run build`.
+ *
+ * This exists because review/frameworks-review.md is the plain-English artefact
+ * Pamela signs off, and it had silently drifted from what actually ships — it
+ * described foundations items ("The Mediterranean pattern", "Drink 2 litres of
+ * water a day", "Phytoestrogens") that no longer exist in the YAML. A sign-off
+ * document that doesn't match the shipped content is worse than none, because
+ * it looks like assurance.
+ */
+const checkMode = args.includes('--check')
+const onlyId = args.find((a) => !a.startsWith('--'))
 
 function humanize(value: string): string {
   return value.replace(/_/g, ' ').trim()
@@ -102,10 +115,24 @@ function renderFramework(framework: WellnessFramework): string {
   return out.join('\n')
 }
 
+/**
+ * Drop everything up to and including the `---` separator that closes the
+ * header, so the generated "Reviewed:" date doesn't register as drift.
+ */
+function stripHeader(doc: string): string {
+  const marker = '\n---\n'
+  const i = doc.indexOf(marker)
+  return (i === -1 ? doc : doc.slice(i + marker.length)).trim()
+}
+
 function loadFrameworks(): WellnessFramework[] {
+  // Sorted so output order is deterministic. readdirSync's order is
+  // filesystem-dependent, not lexicographic — without sorting, --check could
+  // report drift from nothing but a reordered file listing.
   const files = fs
     .readdirSync(FRAMEWORKS_DIR)
     .filter((f) => f.endsWith('.yaml') && !SKIP_FILES.includes(f))
+    .sort()
 
   return files
     .map((f) => yaml.load(fs.readFileSync(path.join(FRAMEWORKS_DIR, f), 'utf8')) as WellnessFramework)
@@ -113,9 +140,27 @@ function loadFrameworks(): WellnessFramework[] {
 }
 
 function main() {
+  // Validated before loading anything: --check compares the WHOLE document,
+  // so a framework id doesn't make sense with it. Checking this before
+  // loadFrameworks() matters because an unknown id would otherwise filter
+  // down to an empty list and exit 0 as if nothing were wrong, rather than
+  // rejecting the invalid invocation.
+  if (checkMode && onlyId) {
+    console.error('--check compares the whole document; do not pass a framework id with it.')
+    process.exit(1)
+  }
+
   const frameworks = loadFrameworks()
 
   if (frameworks.length === 0) {
+    // In --check mode, silently exiting 0 here would mean a broken or empty
+    // frameworks directory skips the drift check entirely rather than
+    // catching that the committed review doc can no longer be validated
+    // against anything.
+    if (checkMode) {
+      console.error('No frameworks found; cannot validate the committed review file.')
+      process.exit(1)
+    }
     console.log(onlyId ? `No framework found with id "${onlyId}".` : 'No frameworks found.')
     return
   }
@@ -132,6 +177,36 @@ function main() {
 
   const body = frameworks.map(renderFramework).join('\n---\n\n')
   const doc = header + body
+
+  if (checkMode) {
+    let committed: string
+    try {
+      committed = fs.readFileSync(OUT_FILE, 'utf8')
+    } catch {
+      console.error(
+        `\n❌ ${path.relative(process.cwd(), OUT_FILE)} is missing.\n` +
+        `   Run \`npm run review-frameworks\` and commit the result.\n`
+      )
+      process.exit(1)
+    }
+
+    // The header carries a generated date, which would otherwise differ on
+    // every run. Only the content below it is meaningful for drift.
+    if (stripHeader(committed) !== stripHeader(doc)) {
+      console.error(
+        `\n❌ ${path.relative(process.cwd(), OUT_FILE)} is out of date.\n\n` +
+        `   It no longer matches the frameworks it is supposed to describe, which\n` +
+        `   means the plain-English document being signed off is not what the app\n` +
+        `   actually says.\n\n` +
+        `   Fix: run \`npm run review-frameworks\` and commit the regenerated file.\n` +
+        `   Then have the content changes re-checked before release.\n`
+      )
+      process.exit(1)
+    }
+
+    console.log('   ✅ Plain-English review document matches the current frameworks')
+    return
+  }
 
   fs.mkdirSync(OUT_DIR, { recursive: true })
   fs.writeFileSync(OUT_FILE, doc, 'utf8')

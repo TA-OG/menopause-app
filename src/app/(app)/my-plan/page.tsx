@@ -29,6 +29,27 @@ function RecommendationCard({ rec }: { rec: WellnessRecommendation }) {
         <div className={`w-2 h-2 rounded-full mt-1 flex-shrink-0 ${PRIORITY_DOT[rec.priority]}`} />
       </div>
       <p className="text-sm text-gray-600 leading-relaxed whitespace-pre-line">{rec.body}</p>
+      {/* Why this card is in your plan more than once over. Several frameworks
+          can each suggest the same substance; they are collapsed into one card,
+          and these are the other reasons it was suggested. */}
+      {rec.also_for && rec.also_for.length > 0 && (
+        <div className="mt-3 text-xs text-gray-600">
+          <p className="font-medium text-gray-600">Also suggested for:</p>
+          <ul className="list-disc list-inside mt-1 space-y-0.5">
+            {rec.also_for.map((reason, i) => (
+              <li key={i}>{reason}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {/* The cumulative ceiling across the whole plan — this is the visible half
+          of the dose-stacking guarantee, so it must render above the disclaimer
+          and never be silently dropped. */}
+      {rec.max_daily_note && (
+        <p className="text-xs text-red-800 mt-3 bg-red-50 rounded-xl px-3 py-2 border border-red-200 font-medium">
+          🛑 {rec.max_daily_note}
+        </p>
+      )}
       {rec.disclaimer && (
         <p className="text-xs text-amber-700 mt-3 bg-amber-50 rounded-xl px-3 py-2 border border-amber-100">
           ⚠️ {rec.disclaimer}
@@ -213,6 +234,9 @@ export default async function MyPlanPage() {
                 <p className="text-sm text-gray-600 leading-relaxed whitespace-pre-line">
                   {item.body}
                 </p>
+                {item.source && (
+                  <p className="text-xs text-gray-600 mt-2">Source: {item.source}</p>
+                )}
               </div>
             ))}
           </div>
@@ -231,6 +255,9 @@ export default async function MyPlanPage() {
                 <p className="text-sm text-gray-600 leading-relaxed whitespace-pre-line">
                   {item.body}
                 </p>
+                {item.source && (
+                  <p className="text-xs text-gray-600 mt-2">Source: {item.source}</p>
+                )}
               </div>
             ))}
           </div>

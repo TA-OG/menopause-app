@@ -27,6 +27,15 @@ export interface CulturalItem {
   id: string
   title?: string
   body: string
+  /**
+   * Citation for any health claim this item makes. Optional because plenty of
+   * items are cultural or practical rather than clinical — but where an item
+   * asserts something about physiology, symptoms or outcomes, it must carry the
+   * source that actually supports THAT claim. One claim, one source: compressing
+   * several studies into a single attribution line is how the awareness block
+   * came to credit a symptom-severity paper for a finding about age at onset.
+   */
+  source?: string
 }
 
 let fileCache: Map<string, CulturalModifier> = new Map()

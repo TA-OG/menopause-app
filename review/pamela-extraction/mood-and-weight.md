@@ -235,5 +235,3 @@ No new third-party decks in this group (the cycle-map issue stays in `sleep-fati
    can't reference it.
 7. **Brands** — confirm we strip all brand names (Quicksilver, Cytoplan, Nutri Advanced, etc.) and
    keep substances generic.
-</content>
-</invoke>

@@ -23,10 +23,13 @@ diet_adjustments:
     category: diet
     title: Meal timing and frequency — different by stage, and by how you're doing
     body: >
-      In perimenopause, the gold standard is eating breakfast within an hour
-      of waking, in 3 meals a day (4–5 smaller ones if energy is a struggle).
-      In menopause and postmenopause, breaking the fast around 10–11am tends
-      to work better, with 2–3 meals a day.
+      There's no universal rule backed by strong evidence here, but a
+      pattern some women and practitioners find works: in perimenopause,
+      eating breakfast within an hour of waking, in 3 meals a day (4–5
+      smaller ones if energy is a struggle). In menopause and
+      postmenopause, some find breaking the fast a little later — around
+      10–11am — sits better, with 2–3 meals a day. Treat this as a starting
+      point to experiment with, not a fixed prescription.
 
       But this flexes: if you're struggling with sleep, anxiety, brain fog or
       low energy, fasting is best avoided altogether at any stage — your body
@@ -104,10 +107,6 @@ diet_adjustments:
       - hot_flashes
       - night_sweats
       - sleep_problems
-    disclaimer: >
-      Some women find a pinch of Celtic salt in their water helps with
-      mineral absorption and hydration — check with your GP first if you
-      have high blood pressure or any condition affecting sodium levels.
 
   - id: df_reduce_sugar_processed_xenoestrogens
     category: diet
@@ -144,15 +143,17 @@ diet_adjustments:
     category: diet
     title: If you notice itching or migraines — histamine may be worth a look
     body: >
-      If you're experiencing itching or migraines, it's worth trying a
-      reduction in fermented foods, cheese, and alcohol, and increasing
-      foods rich in quercetin and foods that support DAO enzyme activity —
-      this combination tends to point toward a histamine-intolerance
-      pattern, worth flagging to your GP or a practitioner if symptoms
-      persist. Fermented foods (sauerkraut, kefir, kimchi, kombucha) genuinely
-      support a healthy microbiome for many women, but they're also high in
-      histamine, so this is a real trade-off for some — not a silent
-      contradiction with the gut-health advice elsewhere.
+      If you're experiencing itching or migraines alongside other symptoms
+      like bloating or flushing, histamine intolerance is one thing some
+      practitioners consider — it's not something you can self-diagnose from
+      diet alone, so this is worth raising with your GP or a practitioner
+      rather than a reliable at-home test. If you do want to experiment,
+      some women try reducing fermented foods, cheese and alcohol for a
+      couple of weeks and see whether symptoms shift. Fermented foods
+      (sauerkraut, kefir, kimchi, kombucha) genuinely support a healthy
+      microbiome for many women, but they're also high in histamine, so
+      this is a real trade-off for some — not a silent contradiction with
+      the gut-health advice elsewhere.
     priority: medium
     who_for: all
 
@@ -211,15 +212,22 @@ lifestyle_adjustments:
     category: lifestyle
     title: Cold water exposure
     body: >
-      Cold showers, wild swimming, splashing your face with cold water,
-      running cold water on your wrists, or simply finishing a shower cold —
-      there's building evidence for mood, energy and stress resilience from
-      this kind of cold exposure.
+      Cold showers, splashing your face with cold water, running cold water
+      on your wrists, or simply finishing a shower cold — there's building
+      evidence for mood, energy and stress resilience from this kind of cold
+      exposure. If wild swimming appeals, build up gradually rather than
+      jumping straight into cold open water, and don't swim alone.
     priority: medium
     who_for: all
     targets_symptoms:
       - mood_changes
       - fatigue
+    disclaimer: >
+      Sudden cold-water immersion can sharply raise heart rate and blood
+      pressure and trigger an involuntary gasp response, which carries real
+      risk for anyone with cardiovascular disease or high blood pressure —
+      check with your GP first if either applies to you. Build up gradually
+      (start with cooler showers before open water), and never swim alone.
 
   - id: lf_postmeal_walk_and_chewing
     category: lifestyle
@@ -227,10 +235,9 @@ lifestyle_adjustments:
     body: >
       Walking after meals — even just 10 minutes — meaningfully blunts
       blood sugar spikes, which ties back into the mood/energy loop. It
-      sounds small, but chewing each mouthful 30–35 times before swallowing
-      meaningfully improves digestion, blood sugar stability and nutrient
-      absorption, and helps shift the body into a calmer, "rest and digest"
-      state at mealtimes.
+      sounds small, but eating more slowly and chewing thoroughly rather
+      than rushing is worth trying too — many women find it helps them feel
+      calmer at mealtimes and more comfortable afterwards.
     priority: medium
     who_for: all
 
@@ -240,12 +247,25 @@ lifestyle_adjustments:
     body: >
       Rebounding for 10 minutes a day is a low-impact way to support
       lymphatic drainage, bone density and cardiovascular fitness, and is
-      easy on the joints compared to running. Box jumping — around 10
-      minutes, 3 times a week — helps build bone density more directly.
+      easy on the joints compared to running — it is the gentler of the two
+      options here. Box jumping — around 10 minutes, 3 times a week — loads
+      the skeleton harder and so builds bone density more directly, but it is
+      genuinely high-impact: it is not the right starting point if your joints
+      are already painful, and rebounding or weight training will serve you
+      better in that case.
     priority: medium
     who_for: active_only
-    targets_symptoms:
-      - joint_pain
+    # Deliberately NOT targeting joint_pain. targets_symptoms does not filter —
+    # it raises priority when that symptom is the user's primary one, which
+    # would push jump training to the top of the plan for exactly the women who
+    # should approach it most cautiously, and could place it in the free tier's
+    # top three. Rebounding is joint-friendly, but it is bundled with box
+    # jumping in this card, so the card as a whole must not be boosted.
+    disclaimer: >
+      Check with your GP before starting jump-based training if you have joint
+      problems, a known or suspected low bone density, high blood pressure, any
+      pelvic floor symptoms, or you haven't done impact exercise in a while.
+      Build up gradually rather than starting at the full amount.
 
   - id: lf_vagal_breathwork_and_sauna
     category: lifestyle
@@ -267,7 +287,11 @@ lifestyle_adjustments:
     disclaimer: >
       If you're prone to hot flushes or already struggle with heat
       sensitivity, sauna use may need care — shorter sessions, or avoiding
-      it altogether if it triggers symptoms rather than helping.
+      it altogether if it triggers symptoms rather than helping. Check with
+      your GP first if you have cardiovascular disease, uncontrolled blood
+      pressure, or a condition affecting hydration, and if you take
+      medication that affects blood pressure or fluid balance — heat
+      exposure raises heart rate and can affect blood pressure quickly.
 
   - id: lf_nature_and_connection
     category: lifestyle
@@ -291,18 +315,23 @@ mindset_recommendations:
     category: mindset
     title: Talk to your GP about your options — including HRT
     body: >
-      Hormone Replacement Therapy (HRT) is the most effective treatment
-      for vasomotor symptoms and has protective effects for bone density
+      Hormone Replacement Therapy (HRT) is the most effective treatment for
+      vasomotor symptoms, and can have protective effects for bone density
       and cardiovascular health for many women when started within 10 years
-      of menopause. Modern body-identical HRT has a much more favourable
-      safety profile than older formulations. Your GP can discuss whether
-      it is appropriate for you. This app supports your lifestyle — it does
-      not replace medical care. Please book an appointment if your symptoms
-      are significantly affecting your quality of life.
+      of menopause. Modern body-identical HRT generally has a more favourable
+      safety profile than older formulations. Whether it's appropriate for
+      you depends on your own symptoms, age, medical history and personal
+      risk factors — it isn't suitable for everyone, and that's a
+      conversation for your GP, not something to self-assess. This app
+      supports your lifestyle — it does not replace medical care. Please
+      book an appointment if your symptoms are significantly affecting your
+      quality of life.
 
-      This guidance is safe for everyone as a general framework — there's
-      nothing here that's inherently unsuitable. That said, always check
-      with your GP or medical provider first if you're taking any
+      Separately from HRT specifically: the lifestyle suggestions in this
+      app — diet, movement, sleep, mindset — are intended as a general
+      framework suitable for most women, with nothing in them inherently
+      unsuitable the way a prescription medicine can be. That said, always
+      check with your GP or medical provider first if you're taking any
       medication (to rule out interactions, particularly with supplements),
       under the care of a specialist for any condition, or awaiting medical
       treatment, investigation or a diagnosis. This isn't about gatekeeping
@@ -361,19 +390,22 @@ mindset_recommendations:
       If you have other hormonal imbalances, they can shape what you need
       here too. Thyroid conditions (hypothyroidism, Hashimoto's,
       hyperthyroidism) interact closely with oestrogen and progesterone, so
-      symptoms often overlap and amplify each other — a full panel, not just
-      TSH, matters. PCOS, even though usually diagnosed earlier in life,
-      often carries insulin resistance through into perimenopause and
-      menopause, meaning blood sugar stability needs even more attention.
-      Adrenal dysfunction or HPA axis dysregulation — chronic stress
-      affecting cortisol output — competes for the same hormonal building
-      blocks as progesterone, compounding the hormone shifts already
-      happening. Insulin resistance or pre-diabetes is worth naming
-      directly as a hormonal imbalance in its own right, not just a "blood
-      sugar issue." Family history matters too — if your mother or sisters
-      had a particularly difficult perimenopause, early menopause, or
-      conditions like osteoporosis or cardiovascular disease, that's useful
-      information for proactive testing.
+      symptoms often overlap and amplify each other — TSH is the standard
+      first test, with further tests (like FT4) added if that's abnormal or
+      symptoms strongly suggest a thyroid cause despite a normal result.
+      PCOS, even though usually diagnosed earlier in life, often carries
+      insulin resistance through into perimenopause and menopause, meaning
+      blood sugar stability needs even more attention. You may also read
+      about "adrenal fatigue" or chronic stress "depleting" your hormones —
+      worth knowing that's not a recognised medical diagnosis, though
+      genuine adrenal insufficiency is a real, separately diagnosed
+      condition your GP can test for if you're concerned. Insulin resistance
+      or pre-diabetes is worth naming directly as a hormonal imbalance in
+      its own right, not just a "blood sugar issue." Family history matters
+      too — if your mother or sisters had a particularly difficult
+      perimenopause, early menopause, or conditions like osteoporosis or
+      cardiovascular disease, that's useful information for proactive
+      testing.
     priority: medium
     who_for: all
 
@@ -403,11 +435,14 @@ supplement_suggestions:
     category: supplement
     title: Vitamin D3 (+K2) — ideally guided by a blood test
     body: >
-      1000–4000 IU/day, ideally guided by a blood test. Look for D3
-      (cholecalciferol) with K2 for proper utilisation. Vitamin D
-      deficiency is almost universal in the UK population and dramatically
-      accelerates in the menopausal transition as oestrogen decline
-      directly affects bone density.
+      Low vitamin D is very common in the UK, and it matters more through
+      menopause because falling oestrogen already affects bone density. Many
+      women take a supplement in the range of 1000–4000 IU a day, ideally
+      guided by a blood test rather than guesswork — testing first tells you
+      whether you need it at all, and how much. Some women choose a D3
+      (cholecalciferol) and K2 combination product, since K2 supports how the
+      body uses calcium. This is a suggestion that helps many women, not
+      medical advice, so please check with your GP or pharmacist first.
     priority: high
     who_for: all
     targets_symptoms:
@@ -416,7 +451,10 @@ supplement_suggestions:
       - joint_pain
     disclaimer: >
       Vitamin D toxicity can occur at very high doses (above 4000 IU/day
-      long-term). Always test before supplementing above 2000 IU and
+      long-term). The K2 component can interact with warfarin and other
+      anticoagulant medication — do not take this combination if you are on
+      anticoagulants without explicit GP approval. Always test before
+      supplementing above 2000 IU and
       consult your GP if you have kidney disease, hypercalcaemia, or
       sarcoidosis.
 
@@ -424,9 +462,12 @@ supplement_suggestions:
     category: supplement
     title: Magnesium — the form matters
     body: >
-      200–400mg/day, started low. Glycinate is gentler on the gut and less
-      likely to cause loose stools — the better choice if the goal is
-      sleep, calm, or nervous system support without a laxative effect.
+      If you try magnesium, the form makes more difference than most people
+      realise. Women who take it commonly use somewhere around 200–400mg a
+      day, starting at the lower end. Glycinate is gentler on the gut and
+      less likely to cause loose stools — usually the better fit if what
+      you're after is sleep, calm, or nervous system support without a
+      laxative effect.
       Citrate has a natural laxative effect, so it's the better choice if
       you're also dealing with constipation or want support with bowel
       movements — though it may cause loose stools if the dose is too high.
@@ -444,9 +485,10 @@ supplement_suggestions:
     category: supplement
     title: Omega-3 (EPA/DHA)
     body: >
-      1000–2000mg combined EPA/DHA daily. Check the actual EPA/DHA content
-      per capsule, not just total fish oil weight, and look for
-      third-party-tested purity.
+      Many women take a combined EPA/DHA supplement, commonly in the range of
+      1000–2000mg a day. If you're choosing one, it's worth checking the
+      actual EPA/DHA content per capsule rather than just the total fish oil
+      weight, and looking for third-party-tested purity.
     priority: high
     who_for: all
     disclaimer: >
@@ -456,13 +498,18 @@ supplement_suggestions:
 
   - id: ss_b_complex_methylated
     category: supplement
-    title: B-Complex — look for the active, methylated forms
+    title: B-Complex — methylated forms are worth knowing about
     body: >
-      Look for active or methylated forms — methylfolate rather than
-      synthetic folic acid, methylcobalamin rather than synthetic
-      cyanocobalamin. These are better absorbed and used by the body,
-      particularly relevant given how common B12 and folate deficiency are
-      at this life stage.
+      If you're considering a B-complex, the form is worth knowing about —
+      methylfolate as an alternative to synthetic folic acid, methylcobalamin
+      as an alternative to synthetic cyanocobalamin. Neither form is
+      universally "better" — having a common MTHFR gene variant is not on
+      its own a reason to prefer methylated forms, whatever you may read
+      elsewhere; if you know your MTHFR status and want that to inform your
+      choice, discuss it with your GP rather than deciding from general
+      information like this. Given how common B12 and folate deficiency are
+      at this life stage, it's worth knowing the options exist rather than
+      assuming one form fits everyone.
     priority: medium
     who_for: all
     disclaimer: >
@@ -473,10 +520,12 @@ supplement_suggestions:
     category: supplement
     title: Probiotic and prebiotic fibre — for gut health repair
     body: >
-      A multi-strain probiotic — dose varies by product and CFU count, so
-      look for strains with clinical backing rather than highest CFU alone.
-      Prebiotic fibre (e.g. inulin, PHGG) — start low and build slowly to
-      avoid bloating, particularly if gut health is already compromised.
+      Some women find a multi-strain probiotic helps with gut health through
+      this transition — dose varies by product and CFU count, so it's worth
+      looking for strains with clinical backing rather than the highest CFU
+      alone. Prebiotic fibre (e.g. inulin, PHGG) is another option many try —
+      starting low and building slowly helps avoid bloating, particularly if
+      gut health is already compromised.
     priority: medium
     who_for: all
     disclaimer: >
@@ -488,38 +537,45 @@ supplement_suggestions:
     category: supplement
     title: Digestive enzymes and HCL — for bloating, reflux, and absorption
     body: >
-      Digestive enzymes taken with meals are particularly useful if
-      bloating or discomfort after eating is present. Stomach acid
-      naturally declines with age and through menopause, which can lead to
-      poor protein breakdown, bloating, reflux-like symptoms, and reduced
-      absorption of key nutrients like B12 and iron — HCL (Betaine
-      Hydrochloride) is typically taken with protein-containing meals,
-      starting with 1 capsule and increasing gradually under guidance until
-      you notice a warming sensation in the stomach, at which point you'd
-      drop back to the previous dose.
+      Some women find digestive enzymes taken with meals helpful if bloating
+      or discomfort after eating is a regular thing. Some practitioners
+      suggest reduced stomach acid can play a role in this for some women —
+      it's a contested idea rather than a settled one, so worth treating as a
+      theory to discuss with a GP or practitioner rather than a given.
+      Betaine Hydrochloride (HCL) is one option some women try under
+      guidance, alongside protein-containing meals. Self-adjusting the dose
+      based on how it feels isn't something we'll spell out here — that's
+      exactly the kind of thing a practitioner should walk you through in
+      person, given how unsuitable it is for some people.
     priority: low
     who_for: all
     disclaimer: >
       HCL is not suitable for everyone — particularly anyone with active
       ulcers, gastritis, or taking anti-inflammatory medications — so it
-      needs a GP or practitioner check before starting.
+      needs a GP or practitioner check before starting, including for
+      guidance on dose.
 
   - id: ss_calcium_d_glucarate
     category: supplement
-    title: Calcium D-Glucarate — supporting healthy oestrogen clearance
+    title: Calcium D-Glucarate — for oestrogen clearance support
     body: >
-      Commonly 500mg–1g/day. Helps the liver clear excess oestrogen out of
-      the body properly, rather than it being reabsorbed back through the
-      gut. This is particularly useful if you have a history of
-      oestrogen-dominant conditions like endometriosis, adenomyosis or
-      fibroids, or if you've been focusing on supporting healthy oestrogen
-      clearance more generally — women with this history have often spent
-      years managing a higher oestrogen load, so supporting clearance
-      (liver function, fibre, cruciferous vegetables, reducing alcohol and
-      xenoestrogen exposure) matters even more through perimenopause.
+      Some women look at calcium D-glucarate, often cited around 500mg–1g/day
+      in doses people report using, on the theory that it supports the liver
+      in clearing oestrogen rather than it being reabsorbed through the gut.
+      This idea comes up particularly for women with a history of
+      oestrogen-sensitive conditions like endometriosis, adenomyosis or
+      fibroids. It's worth being honest that the human evidence for this
+      specific effect is limited — most of what's known comes from lab and
+      animal research rather than clinical trials in women. If it's something
+      you want to explore, broader support for oestrogen clearance — liver
+      function, fibre, cruciferous vegetables, reducing alcohol and
+      xenoestrogen exposure — has a firmer evidence base and is worth
+      prioritising either way.
     priority: medium
     who_for: all
     disclaimer: >
       Always check with your GP or pharmacist before starting, especially
       if you take any prescribed medications or have a personal or family
-      history of hormone-sensitive conditions.
+      history of hormone-sensitive conditions. Calcium D-glucarate can affect
+      how the liver processes some medications, so this check matters even
+      more if you take regular prescriptions.

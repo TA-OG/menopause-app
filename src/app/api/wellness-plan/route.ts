@@ -5,6 +5,7 @@ import { getUserAccess } from '@/lib/access'
 import { getGeoAccess } from '@/lib/geo'
 import { matchFrameworks, buildPlan, applyTierGating } from '@/lib/wellness-engine'
 import { loadFrameworks } from '@/lib/load-frameworks'
+import { loadSubstanceRegistry } from '@/lib/substance-registry'
 import { loadCulturalModifiers, buildCulturalContext } from '@/lib/cultural-engine'
 import { sanitizeError } from '@/lib/sanitize-error'
 import { rateLimit } from '@/lib/rate-limit'
@@ -93,7 +94,12 @@ async function postHandler(request: NextRequest) {
 
     // Run the engine
     const matchedFrameworks = matchFrameworks(answers ?? [], frameworks)
-    const plan = buildPlan(matchedFrameworks, preferences ?? {}, primarySymptom)
+    // The substance registry collapses same-substance suggestions contributed by
+    // different frameworks and attaches cumulative dose ceilings. Without it a
+    // user matching several frameworks receives the same supplement more than
+    // once, with dose ranges that read as additive.
+    const substances = loadSubstanceRegistry()
+    const plan = buildPlan(matchedFrameworks, preferences ?? {}, primarySymptom, substances)
 
     // Load cultural modifiers based on heritage answers + country
     const heritageAnswers = (answers ?? [])

@@ -37,11 +37,14 @@ diet_adjustments:
 
   - id: df_blood_sugar
     category: diet
-    title: Stabilise blood sugar to reduce flush frequency
+    title: Stabilise blood sugar as a general foundation
     body: >
-      Blood sugar spikes and crashes can trigger vasomotor events. Eating
-      protein and healthy fat at every meal (e.g. eggs, nuts, oily fish,
-      avocado) slows glucose absorption and helps keep flushes calmer.
+      Some women notice blood sugar spikes and crashes seem to bring on or
+      worsen a flush, though this isn't an established trigger for
+      menopausal vasomotor symptoms generally — worth watching for in
+      yourself rather than assuming it applies. Eating protein and healthy
+      fat at every meal (e.g. eggs, nuts, oily fish, avocado) slows glucose
+      absorption regardless, and is a reasonable foundation either way.
       Avoid refined carbs and sugary snacks on an empty stomach.
     priority: medium
     who_for: all
@@ -51,8 +54,12 @@ diet_adjustments:
     title: Stay consistently hydrated
     body: >
       Dehydration raises core body temperature, making flushes more intense.
-      Aim for 6–8 glasses of water daily. Start with a large glass of cold
-      water first thing in the morning and keep one by your bed for night sweats.
+      Roughly 2 litres a day is the usual rule of thumb, spread across the day,
+      and a little more if you are sweating at night — but it is a guide, not a
+      target, and what you actually need varies with your size, the weather and
+      how active you are. If a doctor has told you to limit fluids — for example
+      with heart or kidney failure — follow their limit, not this. Start with a
+      large glass of cold water first thing, and keep one by your bed.
     priority: medium
     who_for: all
 
@@ -108,11 +115,19 @@ mindset_recommendations:
     category: mindset
     title: Hot flushes aren't just a supplement problem
     body: >
-      Gut health and blood sugar stability play a real role too. Poor
-      oestrogen clearance (often a gut or liver issue) and blood sugar
-      swings (which trigger adrenaline and can bring on or worsen flushes)
-      are often underlying drivers. Addressing those foundations often does
-      more for flush frequency and severity than any single supplement.
+      Gut health and blood sugar stability may play a role too. Some women
+      notice blood sugar swings bring on or worsen a flush, plausibly via
+      the adrenaline released to correct a low — but this isn't an
+      established trigger for menopausal flushes generally, just a pattern
+      some women report and worth watching for in yourself. Stabilising
+      blood sugar through the day is a reasonable foundation regardless. You
+      may also
+      read that poor oestrogen clearance (a gut or liver issue) drives
+      flushes — this is a theory some practitioners use, not something
+      mainstream menopause guidance treats as an established cause, so worth
+      holding lightly. Either way, addressing the foundations — sleep,
+      stress, blood sugar, movement — often does more for flush frequency
+      and severity than any single supplement.
     priority: medium
     who_for: all
 
@@ -124,9 +139,15 @@ mindset_recommendations:
       sympathetic nervous system, which raises core temperature. Women who
       learn to observe a flush without catastrophising ("this will pass in
       90 seconds") report significantly lower severity scores over time.
-      Cognitive Behavioural Therapy (CBT) for menopause has strong evidence —
-      ask your GP about the CHOICE programme or look up menopause CBT on
-      the NHS website.
+      Cognitive Behavioural Therapy (CBT) for menopausal symptoms is
+      recognised by NICE as an option for vasomotor symptoms alongside or
+      instead of HRT. In England you can self-refer to NHS Talking Therapies
+      where you are eligible, though that service is aimed at anxiety and
+      depression and menopause-specific CBT is not offered everywhere — so it
+      is worth asking your GP about menopause-specific CBT or a referral to a
+      menopause service too. The Women's Health Concern (the patient arm of the
+      British Menopause Society) publishes a free factsheet on CBT for
+      menopausal symptoms.
     priority: high
     who_for: all
 
@@ -174,11 +195,14 @@ supplement_suggestions:
     title: Sage — for hot flushes and night sweats
     body: >
       Sage (Salvia officinalis) standardised extract has a small body of
-      clinical evidence showing a modest reduction in hot flush frequency.
-      Studies typically used 300–600mg daily, or you can take it as a tea
-      before bed — sage has traditionally been used specifically for
-      excessive sweating, including night sweats. Effects take 4–8 weeks to
-      build. Not a replacement for HRT if flushes are severe.
+      clinical evidence showing a modest reduction in hot flush frequency —
+      studies typically used 300–600mg daily of a standardised extract, so
+      that's a different thing to a cup of sage tea, which hasn't been
+      studied at a known dose and doesn't carry the same evidence. Sage tea
+      before bed is a traditional remedy for excessive sweating some women
+      still reach for, just worth knowing it's a different basis to the
+      extract research. Effects from the standardised extract take 4–8
+      weeks to build. Not a replacement for HRT if flushes are severe.
     priority: medium
     who_for: all
     disclaimer: >
@@ -204,13 +228,17 @@ supplement_suggestions:
     category: supplement
     title: Vitamin E — for vasomotor symptoms
     body: >
-      Commonly 400 IU/day. Some evidence for reducing the frequency and
-      severity of vasomotor symptoms, including night sweats.
+      Some women try vitamin E, commonly around 400 IU/day, for reducing the
+      frequency and severity of vasomotor symptoms including night sweats —
+      the evidence for this specific effect is modest. 400 IU is a high
+      supplemental dose, well above what you'd get from food.
     priority: low
     who_for: all
     disclaimer: >
-      Always check with your GP or pharmacist before starting, especially
-      if you take any prescribed medications.
+      High-dose vitamin E can increase bleeding risk, particularly alongside
+      anticoagulant or antiplatelet medication (warfarin, aspirin) or before
+      surgery. Always check with your GP or pharmacist before starting,
+      especially if you take any prescribed medications.
 
   - id: ss_maca_hot_flushes
     category: supplement

@@ -5,6 +5,7 @@ import type {
   OnboardingAnswer,
   UserPreferences,
   TriggerCondition,
+  SubstanceEntry,
 } from '@/types/database'
 
 /**
@@ -127,14 +128,129 @@ function boostForPrimarySymptom(
 
 // ─── Deduplication & sorting ──────────────────────────────────────────────────
 
+/**
+ * Build a lookup of recommendation ID → substance entry, from a registry that
+ * the caller has already loaded. Pure, so the engine keeps doing no I/O.
+ */
+export function buildSubstanceIndex(
+  substances: SubstanceEntry[]
+): Map<string, SubstanceEntry> {
+  const index = new Map<string, SubstanceEntry>()
+  for (const substance of substances) {
+    for (const recId of substance.recommendation_ids ?? []) {
+      index.set(recId, substance)
+    }
+  }
+  return index
+}
+
+/**
+ * Human-readable cumulative ceiling for a substance, or null when no limit has
+ * been verified. Returns null rather than guessing — an invented ceiling in a
+ * health app is worse than no ceiling, because it looks authoritative.
+ */
+export function formatMaxDailyNote(substance: SubstanceEntry): string | null {
+  if (substance.limit_status !== 'verified' || !substance.max_daily) return null
+
+  const { amount, unit, basis } = substance.max_daily
+  return (
+    `Maximum ${amount}${unit} per day in total (${basis}) — this is the combined ` +
+    `ceiling across everything in your plan, not per suggestion. ` +
+    `Check with your GP or pharmacist before going near it.`
+  )
+}
+
+/**
+ * Collapse recommendations that refer to the same underlying substance.
+ *
+ * SAFETY-CRITICAL. A user can match many frameworks at once — `foundations`
+ * fires for everyone, and the symptom frameworks fire off an independent
+ * multi-select checkbox. Deduplicating by `rec.id` alone (which is what this
+ * did originally) let five different frameworks each contribute their own
+ * omega-3 card, with upper bounds that read as additive: 2000 + 3000 + 3000 +
+ * 3000mg plus one unspecified. Nothing told the user those were the same
+ * substance.
+ *
+ * Grouping is driven by content/wellness/substances.yaml — an explicit,
+ * hand-authored mapping. It is deliberately NOT fuzzy title matching: calcium
+ * and calcium D-glucarate, and collagen Type I and Type II, are different
+ * substances that must never be merged.
+ *
+ * Recommendations with no registry entry fall back to ID-level dedupe, which
+ * is the previous behaviour — never worse than before.
+ */
 function deduplicateRecommendations(
-  recs: WellnessRecommendation[]
+  recs: WellnessRecommendation[],
+  substanceIndex: Map<string, SubstanceEntry> = new Map()
 ): WellnessRecommendation[] {
-  const seen = new Set<string>()
-  return recs.filter((rec) => {
-    if (seen.has(rec.id)) return false
-    seen.add(rec.id)
-    return true
+  const seenIds = new Set<string>()
+  const groups = new Map<string, WellnessRecommendation[]>()
+  const order: string[] = []
+
+  for (const rec of recs) {
+    // Exact-duplicate IDs collapse first (the original behaviour)
+    if (seenIds.has(rec.id)) continue
+    seenIds.add(rec.id)
+
+    const substance = substanceIndex.get(rec.id)
+    const groupKey = substance ? `substance:${substance.key}` : `id:${rec.id}`
+
+    if (!groups.has(groupKey)) {
+      groups.set(groupKey, [])
+      order.push(groupKey)
+    }
+    groups.get(groupKey)!.push(rec)
+  }
+
+  return order.map((groupKey) => {
+    const group = groups.get(groupKey)!
+    if (group.length === 1) return group[0]
+
+    // Several frameworks contributed a card for one substance. Keep the
+    // highest-priority card as the base; first occurrence wins a tie.
+    const [base, ...collapsed] = [...group].sort(
+      (a, b) => PRIORITY_ORDER[a.priority] - PRIORITY_ORDER[b.priority]
+    )
+
+    const mergedSymptoms = Array.from(
+      new Set(group.flatMap((rec) => rec.targets_symptoms ?? []))
+    )
+
+    return {
+      ...base,
+      targets_symptoms: mergedSymptoms.length > 0 ? mergedSymptoms : undefined,
+      // Record what was collapsed so the symptom-specific framing isn't simply
+      // lost. Polished per-symptom copy is a separate content task; this keeps
+      // a faithful record in the meantime.
+      also_for: collapsed.map((rec) => rec.title),
+    }
+  })
+}
+
+/**
+ * Attach the single cumulative ceiling for each substance, where one has been
+ * verified against a named authority.
+ *
+ * This runs on the FINAL list, after deduplication, unconditionally — it does
+ * not depend on which frameworks fired or on anything the client sent. That
+ * matters because /api/onboarding does not currently validate answer values
+ * against an allowlist, so framework matching cannot be treated as trusted
+ * input. Substances with `limit_status: needs_clinical_review` get no numeric
+ * ceiling: we do not invent one. They remain protected structurally, because
+ * deduplication guarantees they can appear at most once.
+ */
+function enforceDoseCeilings(
+  recs: WellnessRecommendation[],
+  substanceIndex: Map<string, SubstanceEntry>
+): WellnessRecommendation[] {
+  return recs.map((rec) => {
+    const substance = substanceIndex.get(rec.id)
+    if (!substance) return rec
+
+    const note = formatMaxDailyNote(substance)
+    if (!note) return rec
+
+    return { ...rec, max_daily_note: note }
   })
 }
 
@@ -179,23 +295,35 @@ function sortByPriority(
 export function buildPlan(
   matchedFrameworks: WellnessFramework[],
   preferences: Partial<UserPreferences> = {},
-  primarySymptom?: string
+  primarySymptom?: string,
+  substances: SubstanceEntry[] = []
 ): Omit<WellnessPlan, 'id' | 'user_id' | 'generated_at' | 'is_active' | 'version' | 'created_at'> {
   const allDiet        = matchedFrameworks.flatMap((f) => f.diet_adjustments)
   const allLifestyle   = matchedFrameworks.flatMap((f) => f.lifestyle_adjustments)
   const allMindset     = matchedFrameworks.flatMap((f) => f.mindset_recommendations)
   const allSupplements = matchedFrameworks.flatMap((f) => f.supplement_suggestions)
 
+  const substanceIndex = buildSubstanceIndex(substances)
+
   function processList(recs: WellnessRecommendation[]) {
-    return sortByPriority(
-      boostForPrimarySymptom(
-        applyPreferenceFilters(
-          deduplicateRecommendations(recs),
-          preferences
+    return enforceDoseCeilings(
+      sortByPriority(
+        boostForPrimarySymptom(
+          // Preference filtering MUST run before deduplication. Dedup keeps the
+          // highest-priority card for a substance and discards its siblings — so
+          // if that winner is `active_only` and the user has limited mobility,
+          // filtering afterwards would remove the whole substance, including a
+          // sibling card she was eligible for. Filtering first means dedup only
+          // ever chooses between cards she can actually use.
+          deduplicateRecommendations(
+            applyPreferenceFilters(recs, preferences),
+            substanceIndex
+          ),
+          primarySymptom
         ),
-        primarySymptom
+        primarySymptom,
       ),
-      primarySymptom,
+      substanceIndex,
     )
   }
 

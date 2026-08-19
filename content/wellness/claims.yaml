@@ -1,0 +1,139 @@
+# ============================================================================
+# NUMERIC CLAIM REGISTER
+# ============================================================================
+#
+# WHY THIS FILE EXISTS
+#
+# The app told women to look for salt "below 0.5g per 100g". The actual
+# front-of-pack green "low" band is 0.3g per 100g — 0.5g sits in amber. That
+# error shipped, and it also passed a human review pass: it was sitting in
+# review/frameworks-review.md, the plain-English document reviewed on 3 June,
+# and nobody caught it. Reading for tone and reading a number against a
+# published standard are different jobs, and only one of them was happening.
+#
+# This register pins every externally-checkable number in the frameworks to the
+# authority it came from.
+#
+# WHAT IT ENFORCES
+#
+#   1. TRIPWIRE — the `asserts` text must still appear in the recommendation it
+#      belongs to. Change the number in the content and the build fails until
+#      you come back here, which forces the question "against what source?" at
+#      exactly the moment someone is editing a figure.
+#
+#   2. SOURCING — `verified: true` requires an `authority`. `needs_verification`
+#      requires the absence of one, so an unchecked number can never look
+#      sourced. Same two-way rule as substances.yaml.
+#
+# HONEST STATUS: most entries below are `needs_verification`. Those numbers are
+# not necessarily wrong — they simply have not been checked against a primary
+# source, and saying so is better than implying otherwise. Verifying them is a
+# discrete, boring, high-value task.
+#
+# ADDING A NUMBER TO CONTENT? Add it here too. If you cannot name where it came
+# from, that is the signal — not the paperwork.
+# ============================================================================
+
+claims:
+  # ── Verified against a primary source ────────────────────────────────────
+
+  - id: salt_low_band
+    rec_id: df_reduce_sodium
+    asserts: '0.3g salt per 100g or less is the green "low" band'
+    verified: true
+    authority: >-
+      UK front-of-pack traffic light labelling (Food Standards Agency / DHSC
+      guidance): salt at or below 0.3g per 100g is green "low"; above 0.3g up
+      to 1.5g is amber "medium"; above 1.5g per 100g is red "high". Checked
+      August 2026. NOTE: this replaced an incorrect "below 0.5g per 100g",
+      which falls in the amber band.
+
+  - id: salt_high_band
+    rec_id: df_reduce_sodium
+    asserts: 'above 1.5g per 100g is red "high"'
+    verified: true
+    authority: >-
+      UK front-of-pack traffic light labelling (Food Standards Agency / DHSC
+      guidance): above 1.5g salt per 100g is the red "high" band.
+
+  # ── Not yet checked against a primary source ─────────────────────────────
+  # These assert no authority. They are flagged, not endorsed.
+
+  - id: salt_daily_max
+    rec_id: df_reduce_sodium
+    asserts: the recommended maximum is 6g
+    verified: false
+    note: >-
+      Widely cited as the UK adult maximum, but not verified here against SACN
+      or NHS directly. Confirm before relying on it.
+
+  - id: salt_uk_average_intake
+    rec_id: df_reduce_sodium
+    asserts: 8–9g salt daily
+    verified: false
+    note: Average UK adult intake — needs a dated source, as this figure shifts.
+
+  - id: bone_loss_post_menopause
+    rec_id: df_calcium_bone
+    asserts: up to 20% in the first 5–7 years post-menopause
+    verified: false
+    note: Priority to verify — it is the headline justification for the calcium advice.
+
+  - id: calcium_daily_target
+    rec_id: df_calcium_bone
+    asserts: 700–1200mg daily
+    verified: false
+    note: >-
+      The UK RNI for adult women is commonly given as 700mg; the upper end here
+      needs a source, and should be reconciled with the calcium supplement card
+      which caps supplementation at 500mg and total intake at 1000mg.
+
+  - id: ldl_rise_post_menopause
+    rec_id: df_heart_healthy_fats
+    asserts: LDL typically rises 10–15%
+    verified: false
+
+  - id: smoking_bone_density
+    rec_id: lf_smoking_cessation
+    asserts: smokers have 10–15% lower bone density than non-smokers
+    verified: false
+
+  - id: moderate_activity_weekly
+    rec_id: lf_cardio_heart
+    asserts: 150 minutes of moderate-intensity aerobic activity per week
+    verified: false
+    note: >-
+      Matches the UK Chief Medical Officers' physical activity guidelines as
+      commonly quoted, but not verified against the publication here.
+
+  - id: caffeine_half_life
+    rec_id: df_caffeine_cutoff
+    asserts: half-life of 5–6 hours
+    verified: false
+    note: >-
+      Half-life varies substantially between individuals (genetics, hormonal
+      contraception, pregnancy, smoking). If verified, consider saying so.
+
+  - id: protein_per_kg
+    rec_id: df_protein_muscle
+    asserts: 1.2–1.6g of protein per kg of body weight daily
+    verified: false
+
+  - id: menopause_weight_gain
+    rec_id: mr_weight_compassion
+    asserts: gains 2–5kg during the menopausal transition
+    verified: false
+
+  - id: symptom_count_average
+    rec_id: mr_this_is_real
+    asserts: an average of 7–10 symptoms
+    verified: false
+
+  - id: nhs_vitamin_d_dose
+    rec_id: ss_vitamin_d
+    asserts: 10 micrograms (400 IU) daily for all adults from October to March
+    verified: false
+    note: >-
+      Attributed to the NHS in the copy, so this one is asserting an authority
+      in user-facing text and should be verified or reworded. Cross-check with
+      the vitamin_d entry in substances.yaml, which is also pending review.

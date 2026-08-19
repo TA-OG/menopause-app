@@ -173,6 +173,56 @@ export interface WellnessRecommendation {
    * Used by the engine to boost priority when it matches primary_symptom.
    */
   targets_symptoms?: string[]
+  /**
+   * Populated by the engine (not authored in YAML) when several frameworks
+   * each contributed a card for the same substance. Carries the symptom-specific
+   * framing from the cards that were collapsed away, so personalisation survives
+   * deduplication.
+   */
+  also_for?: string[]
+  /**
+   * Populated by the engine (not authored in YAML) from the substance registry.
+   * A single, explicit cumulative ceiling for this substance, shown once so a
+   * user who matched several frameworks cannot read four cards as four doses.
+   */
+  max_daily_note?: string
+}
+
+/**
+ * Substance registry — the single auditable place where we declare which
+ * supplement recommendations refer to the same underlying substance, and what
+ * the maximum safe combined daily intake is.
+ *
+ * This exists because one user can legitimately match many frameworks at once.
+ * Without it, each framework contributes its own card for (say) omega-3 and the
+ * doses read as additive. See enforceDoseCeilings() in wellness-engine.ts.
+ */
+export interface SubstanceMaxDaily {
+  amount: number
+  unit: string
+  /** What the figure is measured over, e.g. "combined EPA+DHA from supplements" */
+  basis: string
+  /** Full citation for the figure. Never leave this empty. */
+  source: string
+}
+
+export interface SubstanceEntry {
+  /** Stable key, e.g. 'omega_3_epa_dha' */
+  key: string
+  display_name: string
+  /**
+   * 'verified'              — max_daily is set and carries a real citation
+   * 'needs_clinical_review' — no upper limit encoded yet; must be null
+   *
+   * Structural protection (one card per substance, doses never summed) applies
+   * either way. This flag only governs whether a *numeric* ceiling is enforced.
+   */
+  limit_status: 'verified' | 'needs_clinical_review'
+  max_daily: SubstanceMaxDaily | null
+  /** Every supplement recommendation ID that refers to this substance. */
+  recommendation_ids: string[]
+  /** Free-text note for anything a reviewer must know (e.g. combination products). */
+  note?: string
 }
 
 export interface JournalEntry {
