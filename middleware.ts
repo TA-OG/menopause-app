@@ -3,7 +3,10 @@ import { updateSession } from '@/lib/supabase/middleware'
 
 const PROTECTED_ROUTES = ['/dashboard','/my-plan','/symptom-checkin','/journal','/learn','/profile','/pay','/onboarding']
 const AUTH_ROUTES = ['/auth/sign-in', '/auth/sign-up']
-const PUBLIC_ROUTES = ['/waitlist', '/terms', '/privacy', '/support', '/data-deletion', '/cookies', '/accessibility', '/offline']
+// Public marketing/legal surface. These skip the Supabase session round-trip
+// entirely — /blog, /sitemap.xml and /robots.txt are crawler-facing, and making
+// an auth call per crawl request is pure waste.
+const PUBLIC_ROUTES = ['/waitlist', '/terms', '/privacy', '/support', '/data-deletion', '/cookies', '/accessibility', '/offline', '/blog', '/sitemap.xml', '/robots.txt']
 
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname
