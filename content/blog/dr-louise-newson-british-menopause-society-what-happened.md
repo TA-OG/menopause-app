@@ -247,8 +247,11 @@ right order.
 
 ## Where Aunty Mel fits
 
-Aunty Mel is a menopause wellness app currently in pre-launch, with a waiting list
-open. Being straight with you about what it is and isn't:
+Aunty Mel is a menopause wellness app, and we are opening it to a limited group of
+women first — by invitation and from the waiting list — ahead of the wider launch.
+That is deliberate: a smaller first group means we can work closely with the women
+in it and get this right before it goes out to everyone. Being straight with you
+about what it is and isn't:
 
 **What it does.** You tell it what you are actually experiencing — the 3am
 insomnia, the brain fog, the joints that have started filing complaints — and it
@@ -268,4 +271,4 @@ is not "trust wellness instead of medicine." It is **be suspicious of anyone,
 prescribing or not, who tells you there is one lever and they happen to be selling
 it.**
 
-[Join the Aunty Mel waiting list →](/waitlist)
+[Claim your place on the early-access list →](/waitlist)

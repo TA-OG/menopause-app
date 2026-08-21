@@ -204,18 +204,22 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
         <aside className="mt-6 bg-white border border-gray-100 rounded-2xl p-5">
           <p className="font-semibold text-brand-900">
-            Want a plan built around your symptoms?
+            Get early access to Aunty Mel
           </p>
           <p className="text-gray-700 text-sm mt-2 leading-relaxed">
-            Aunty Mel turns what you are actually experiencing into a personalised
+            We are opening Aunty Mel to a limited group of women ahead of the wider
+            launch. It turns what you are actually experiencing into a personalised
             nutrition, movement, sleep and stress plan — and helps you walk into your
             next GP appointment with the full picture.
+          </p>
+          <p className="text-gray-500 text-xs mt-2">
+            Referred by a friend? You go to the front of the queue.
           </p>
           <Link
             href="/waitlist"
             className="inline-block mt-4 bg-brand-900 text-white text-sm font-semibold px-4 py-2 rounded-xl hover:bg-brand-800 transition-colors"
           >
-            Join the waitlist →
+            Claim your place →
           </Link>
         </aside>
       </article>
