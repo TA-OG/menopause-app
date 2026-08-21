@@ -64,7 +64,13 @@ interface GeoOverride {
   created_at: string
 }
 
-type ComplimentaryStatus = 'granted' | 'already_subscribed' | 'failed' | 'not_attempted'
+type ComplimentaryStatus =
+  | 'pending_activation'
+  | 'activating'
+  | 'granted'
+  | 'already_subscribed'
+  | 'failed'
+  | 'not_attempted'
 
 interface AdminInvite {
   id: string
@@ -76,6 +82,7 @@ interface AdminInvite {
   complimentary_status: ComplimentaryStatus
   complimentary_months: number | null
   complimentary_expires_at: string | null
+  activated_at: string | null
   error: string | null
   created_at: string
 }
@@ -85,6 +92,7 @@ interface InviteLog {
   summary: {
     total: number
     granted: number
+    awaitingSignIn: number
     alreadySubscribed: number
     failed: number
   }
@@ -114,7 +122,11 @@ function modeBadgeClass(mode: GeoMode | 'unconfigured'): string {
 
 function compLabel(status: ComplimentaryStatus): string {
   return status === 'granted'
-    ? 'Premium granted'
+    ? 'Premium active'
+    : status === 'pending_activation'
+    ? 'Starts on sign-in'
+    : status === 'activating'
+    ? 'Starting…'
     : status === 'already_subscribed'
     ? 'Already subscribed'
     : status === 'failed'
@@ -125,6 +137,8 @@ function compLabel(status: ComplimentaryStatus): string {
 function compBadgeClass(status: ComplimentaryStatus): string {
   return status === 'granted'
     ? 'bg-green-100 text-green-700'
+    : status === 'pending_activation' || status === 'activating'
+    ? 'bg-amber-100 text-amber-700'
     : status === 'already_subscribed'
     ? 'bg-blue-100 text-blue-700'
     : status === 'failed'
@@ -397,13 +411,14 @@ export default function AdminDashboard() {
               <p className="text-xs text-gray-400 mt-0.5">
                 Everyone invited from the admin panel. Waitlist invites include{' '}
                 <span className="font-semibold text-gray-500">12 months complimentary premium</span>,
-                applied automatically.
+                starting the first time they sign in.
               </p>
             </div>
             {inviteLog && (
               <div className="text-right shrink-0">
                 <p className="text-xs text-gray-400">
-                  {inviteLog.summary.total} invited · {inviteLog.summary.granted} premium
+                  {inviteLog.summary.total} invited · {inviteLog.summary.granted} active ·{' '}
+                  {inviteLog.summary.awaitingSignIn} awaiting sign-in
                 </p>
                 {inviteLog.summary.failed > 0 && (
                   <p className="text-xs font-semibold text-red-600 mt-0.5">
@@ -476,6 +491,9 @@ export default function AdminDashboard() {
                         {shortDate(inv.complimentary_expires_at)}
                         <span className="text-gray-300"> · {relTime(inv.complimentary_expires_at)}</span>
                       </>
+                    ) : inv.complimentary_status === 'pending_activation' ||
+                      inv.complimentary_status === 'activating' ? (
+                      <span className="text-gray-400">not started yet</span>
                     ) : (
                       '—'
                     )}

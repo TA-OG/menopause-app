@@ -9,9 +9,8 @@ interface Props {
 }
 
 interface ComplimentaryResult {
-  status: 'granted' | 'already_subscribed' | 'failed'
+  status: 'pending_activation' | 'failed'
   months: number
-  expiresAt: string | null
   error: string | null
 }
 
@@ -23,7 +22,8 @@ export default function InviteButton({ waitlistId, email, firstName }: Props) {
     if (
       !confirm(
         `Send a sign-up invite to ${firstName} (${email})?\n\n` +
-          'They will also receive 12 months of complimentary premium.',
+          'They will receive 12 months of complimentary premium, starting the ' +
+          'first time they sign in.',
       )
     ) {
       return
@@ -45,20 +45,18 @@ export default function InviteButton({ waitlistId, email, firstName }: Props) {
       }
 
       // The invite email has been sent either way. What varies is whether the
-      // complimentary premium actually landed — a silent failure here would
-      // leave her hitting a paywall she was told she would not see, so it is
-      // surfaced right where the invite was sent, not just in the log.
+      // complimentary premium was successfully scheduled — a silent failure
+      // would leave her hitting a paywall she was told she would not see, so
+      // it is surfaced right where the invite was sent, not just in the log.
+      // The grant itself runs on her first sign-in.
       const comp = json.complimentary as ComplimentaryResult | undefined
 
-      if (comp?.status === 'granted') {
+      if (comp?.status === 'pending_activation') {
         setState('done')
-        setMessage(`Invited ✓ · ${comp.months}m premium`)
-      } else if (comp?.status === 'already_subscribed') {
-        setState('done')
-        setMessage('Invited ✓ · already subscribed')
+        setMessage(`Invited ✓ · ${comp.months}m on sign-in`)
       } else {
         setState('warning')
-        setMessage(comp?.error ?? 'Complimentary premium was not applied')
+        setMessage(comp?.error ?? 'Complimentary premium was not scheduled')
       }
     } catch {
       setState('error')
