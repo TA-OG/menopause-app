@@ -9,6 +9,7 @@ import * as path from 'path'
 import * as yaml from 'js-yaml'
 import type { WellnessFramework, SubstanceEntry } from '../src/types/database'
 import { validateFrameworks as validateFrameworksEngine } from '../src/lib/wellness-engine'
+import { getAllPosts } from '../src/lib/blog'
 
 const FRAMEWORKS_DIR = path.join(process.cwd(), 'content/wellness/frameworks')
 const REGISTRY_PATH = path.join(process.cwd(), 'content/wellness/substances.yaml')
@@ -329,6 +330,22 @@ function validateFrameworks(frameworks: WellnessFramework[]): string[] {
 }
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
+
+// Blog posts first: this runs before the "no frameworks" early exit below, so a
+// broken post can never slip through a build that happens to have no frameworks.
+console.log('🔍 Validating SEO blog posts...')
+try {
+  const posts = getAllPosts()
+  console.log(
+    `   ✅ ${posts.length} post(s) valid` +
+    ` — ${posts.reduce((n, p) => n + p.sources.length, 0)} citation(s) registered`
+  )
+} catch (error) {
+  console.error('\n❌ Blog content validation failed:\n')
+  console.error(`   ${error instanceof Error ? error.message : String(error)}`)
+  console.error('\nFix these errors before building.\n')
+  process.exit(1)
+}
 
 console.log('🔍 Validating wellness frameworks...')
 
