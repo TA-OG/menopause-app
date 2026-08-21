@@ -216,7 +216,8 @@ describe('loadPostsFrom', () => {
 const STOP_ADVICE_RE =
   /\b(stop|quit|come off|ditch)\s+(?:taking\s+)?(?:your\s+)?(hrt|hormones|medication|treatment)\b/gi
 
-const NEGATORS = /\b(not|never|don'?t|cannot|can'?t|shouldn'?t|isn'?t)\b/i
+const NEGATORS =
+  /\b(not|never|nothing|no reason|don'?t|cannot|can'?t|shouldn'?t|isn'?t)\b/i
 
 export function findUnnegatedStopAdvice(text: string): string | null {
   // exec-loop rather than matchAll: the project targets a tsconfig lib below
@@ -252,6 +253,8 @@ describe('findUnnegatedStopAdvice', () => {
   it.each([
     'Stopping HRT abruptly because of a news story is a bad plan',
     'do not stop your HRT because of a news story',
+    'Nothing here is a reason to stop your HRT tonight.',
+    'There is no reason to stop your HRT over a headline',
     "don't stop your medication without talking to your GP",
     'This is not a reason to stop your HRT',
     'Talk to your prescriber about your dose',
