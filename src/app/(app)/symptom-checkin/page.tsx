@@ -1,8 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import type { SymptomKey } from '@/types/database'
+import type { SymptomCheckin, SymptomKey } from '@/types/database'
+import { localCalendarDate, parseLocalCalendarDate } from '@/lib/checkin-schema'
 
 const SYMPTOMS: { key: SymptomKey; label: string }[] = [
   { key: 'hot_flashes', label: 'Hot flushes' },
@@ -14,6 +15,10 @@ const SYMPTOMS: { key: SymptomKey; label: string }[] = [
   { key: 'fatigue', label: 'Fatigue' },
   { key: 'low_libido', label: 'Low libido' },
 ]
+
+const DEFAULT_MOOD = 3
+const DEFAULT_ENERGY = 3
+const DEFAULT_SLEEP = 7
 
 function ScaleInput({
   label, value, onChange, low, high,
@@ -61,7 +66,10 @@ function SymptomRow({
         {[1, 2, 3, 4, 5].map((v) => (
           <button
             key={v}
+            type="button"
             onClick={() => onChange(severity === v ? null : v)}
+            aria-pressed={severity === v}
+            aria-label={`${label}: severity ${v} of 5`}
             className={`w-8 h-8 rounded-full text-xs font-bold transition-all ${
               severity === v
                 ? 'bg-brand-900 text-white'
@@ -78,15 +86,53 @@ function SymptomRow({
 
 export default function SymptomCheckinPage() {
   const router = useRouter()
-  const today = new Date().toISOString().split('T')[0]
+
+  // Captured once, from the user's LOCAL calendar — not the UTC date. Held in
+  // state so the header, the entry we load, and the row we upsert can never
+  // disagree about which day this check-in belongs to.
+  const [today] = useState(localCalendarDate)
 
   const [symptoms, setSymptoms] = useState<Partial<Record<SymptomKey, number>>>({})
-  const [moodScore, setMoodScore] = useState(3)
-  const [energyLevel, setEnergyLevel] = useState(3)
-  const [sleepHours, setSleepHours] = useState(7)
+  const [moodScore, setMoodScore] = useState(DEFAULT_MOOD)
+  const [energyLevel, setEnergyLevel] = useState(DEFAULT_ENERGY)
+  const [sleepHours, setSleepHours] = useState(DEFAULT_SLEEP)
   const [notes, setNotes] = useState('')
+  const [loading, setLoading] = useState(true)
+  const [alreadyLogged, setAlreadyLogged] = useState(false)
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
+
+  // Load any check-in already saved for today. Saving upserts on
+  // (user_id, checkin_date), so without this a user who re-opens the form
+  // would silently overwrite what they logged earlier with blank defaults.
+  useEffect(() => {
+    let cancelled = false
+
+    async function loadToday() {
+      try {
+        const res = await fetch(`/api/symptom-checkin?date=${today}`)
+        if (!res.ok) return // Non-fatal: fall back to a blank form.
+
+        const { data } = (await res.json()) as { data: SymptomCheckin[] | null }
+        const existing = data?.[0]
+        if (cancelled || !existing) return
+
+        setSymptoms(existing.symptoms ?? {})
+        if (existing.mood_score !== null) setMoodScore(existing.mood_score)
+        if (existing.energy_level !== null) setEnergyLevel(existing.energy_level)
+        if (existing.sleep_hours !== null) setSleepHours(Number(existing.sleep_hours))
+        setNotes(existing.notes ?? '')
+        setAlreadyLogged(true)
+      } catch {
+        // Offline or a transient failure — a blank form is still usable.
+      } finally {
+        if (!cancelled) setLoading(false)
+      }
+    }
+
+    loadToday()
+    return () => { cancelled = true }
+  }, [today])
 
   function setSymptom(key: SymptomKey, value: number | null) {
     setSymptoms((prev) => {
@@ -100,7 +146,7 @@ export default function SymptomCheckinPage() {
     })
   }
 
-  async function saveCheckin() {
+  const saveCheckin = useCallback(async () => {
     setSaving(true)
     setError('')
 
@@ -115,28 +161,52 @@ export default function SymptomCheckinPage() {
           energy_level: energyLevel,
           sleep_hours: sleepHours,
           tried_today: [],
+          // Explicit null clears a note the user has deleted. The API accepts
+          // null for every nullable column, so this no longer fails validation.
           notes: notes.trim() || null,
         }),
       })
 
-      if (!res.ok) throw new Error('Failed to save')
+      if (!res.ok) {
+        // Tell the user what actually happened. A session that expired needs a
+        // sign-in, not a retry, and "try again" is actively wrong for a 429.
+        if (res.status === 401) {
+          setError('Your session has expired. Please sign in again to save your check-in.')
+        } else if (res.status === 429) {
+          setError('Too many attempts just now. Please wait a moment and try again.')
+        } else {
+          const message = await res.json()
+            .then((body: { error?: string }) => body?.error)
+            .catch(() => undefined)
+          setError(message ?? 'Could not save your check-in. Please try again.')
+        }
+        setSaving(false)
+        return
+      }
 
       router.push('/dashboard')
     } catch {
-      setError('Could not save your check-in. Please try again.')
+      setError('Could not reach the server. Check your connection and try again.')
       setSaving(false)
     }
-  }
+  }, [today, symptoms, moodScore, energyLevel, sleepHours, notes, router])
+
+  const headerDate = parseLocalCalendarDate(today) ?? new Date()
 
   return (
     <div className="space-y-6 py-4">
       <div>
         <h1 className="text-2xl font-bold text-brand-900">Daily check-in</h1>
         <p className="text-gray-500 text-sm mt-1">
-          {new Date().toLocaleDateString('en-GB', {
+          {headerDate.toLocaleDateString('en-GB', {
             weekday: 'long', day: 'numeric', month: 'long',
           })}
         </p>
+        {alreadyLogged && (
+          <p className="text-brand-700 text-sm mt-2">
+            You already logged today — this will update that entry.
+          </p>
+        )}
       </div>
 
       {/* Symptom severity */}
@@ -205,20 +275,22 @@ export default function SymptomCheckinPage() {
           onChange={(e) => setNotes(e.target.value)}
           placeholder="Anything you noticed today? Triggers, patterns, things that helped..."
           rows={3}
+          maxLength={2000}
           className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-brand-300"
         />
       </div>
 
       {error && (
-        <p className="text-red-600 text-sm bg-red-50 rounded-xl px-4 py-2">{error}</p>
+        <p role="alert" className="text-red-600 text-sm bg-red-50 rounded-xl px-4 py-2">{error}</p>
       )}
 
       <button
+        type="button"
         onClick={saveCheckin}
-        disabled={saving}
+        disabled={saving || loading}
         className="w-full bg-brand-900 text-white font-semibold py-3 rounded-2xl hover:bg-brand-800 transition-colors disabled:opacity-50"
       >
-        {saving ? 'Saving...' : 'Save today\'s check-in'}
+        {loading ? 'Loading...' : saving ? 'Saving...' : 'Save today\'s check-in'}
       </button>
     </div>
   )

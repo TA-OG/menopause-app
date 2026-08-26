@@ -2,20 +2,12 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { sanitizeError } from '@/lib/sanitize-error'
 import { rateLimit } from '@/lib/rate-limit'
-import { z } from 'zod'
+import { withMonitoring, recordEvent } from '@/lib/monitoring'
+import { CheckinSchema } from '@/lib/checkin-schema'
 
-const CheckinSchema = z.object({
-  checkin_date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
-  symptoms: z.record(z.number().min(1).max(5)).optional(),
-  severity_overall: z.number().min(1).max(5).optional(),
-  mood_score: z.number().min(1).max(5).optional(),
-  energy_level: z.number().min(1).max(5).optional(),
-  sleep_hours: z.number().min(0).max(24).optional(),
-  tried_today: z.array(z.string()).optional(),
-  notes: z.string().max(2000).optional(),
-})
+export const dynamic = 'force-dynamic'
 
-export async function POST(request: NextRequest) {
+async function postHandler(request: NextRequest) {
   const { success } = await rateLimit(request, { limit: 10, windowMs: 60_000 })
   if (!success) return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
 
@@ -27,6 +19,32 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const parsed = CheckinSchema.safeParse(body)
     if (!parsed.success) {
+      // A rejected check-in is a real failure the user sees as "could not
+      // save", so record which field was rejected. Without this, a contract
+      // mismatch between page and route is invisible in production — the
+      // client only ever shows a generic message.
+      //
+      // Field path + issue code only, never zod's default message: those
+      // interpolate the received VALUE, which here would mean a user's symptom
+      // ratings or free-text notes landing in the monitoring table. This is
+      // menopause health data, so the log records the shape of the failure and
+      // nothing about its content.
+      await recordEvent({
+        type: 'error',
+        level: 'warning',
+        route: '/api/symptom-checkin',
+        method: 'POST',
+        status: 400,
+        message: `Check-in validation failed: ${parsed.error.issues
+          .map((i) => {
+            const field = i.path.join('.') || '(root)'
+            const detail =
+              i.code === 'invalid_type' ? ` (expected ${i.expected}, got ${i.received})` : ''
+            return `${field}: ${i.code}${detail}`
+          })
+          .join('; ')}`,
+        userId: user.id,
+      })
       return NextResponse.json({ error: 'Invalid check-in data' }, { status: 400 })
     }
 
@@ -43,11 +61,17 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ data }, { status: 201 })
   } catch (err) {
+    await recordEvent({
+      type: 'error', route: '/api/symptom-checkin', method: 'POST', status: 500,
+      message: err instanceof Error ? err.message : String(err),
+      stack: err instanceof Error ? err.stack ?? null : null,
+      userId: user.id,
+    })
     return NextResponse.json({ error: sanitizeError(err) }, { status: 500 })
   }
 }
 
-export async function GET(request: NextRequest) {
+async function getHandler(request: NextRequest) {
   const { success } = await rateLimit(request, { limit: 30, windowMs: 60_000 })
   if (!success) return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 })
 
@@ -56,16 +80,40 @@ export async function GET(request: NextRequest) {
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
   const { searchParams } = new URL(request.url)
-  const limit = Math.min(parseInt(searchParams.get('limit') ?? '30'), 90)
 
-  const { data, error } = await supabase
+  let query = supabase
     .from('symptom_checkins')
     .select('*')
     .eq('user_id', user.id)
-    .order('checkin_date', { ascending: false })
-    .limit(limit)
 
-  if (error) return NextResponse.json({ error: sanitizeError(error) }, { status: 500 })
+  // Single-day lookup, used by the check-in page to load an existing entry so
+  // re-opening the form shows what was already logged instead of blank
+  // defaults that would overwrite it on the next upsert.
+  const date = searchParams.get('date')
+  if (date !== null) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+      return NextResponse.json({ error: 'Invalid date' }, { status: 400 })
+    }
+    query = query.eq('checkin_date', date)
+  }
+
+  const limit = Math.min(parseInt(searchParams.get('limit') ?? '30'), 90)
+  query = query
+    .order('checkin_date', { ascending: false })
+    .limit(Number.isNaN(limit) ? 30 : limit)
+
+  const { data, error } = await query
+
+  if (error) {
+    await recordEvent({
+      type: 'error', route: '/api/symptom-checkin', method: 'GET', status: 500,
+      message: error.message, userId: user.id,
+    })
+    return NextResponse.json({ error: sanitizeError(error) }, { status: 500 })
+  }
 
   return NextResponse.json({ data })
 }
+
+export const POST = withMonitoring('/api/symptom-checkin', postHandler)
+export const GET = withMonitoring('/api/symptom-checkin', getHandler)
