@@ -181,6 +181,133 @@ describe('the omega-3 case that prompted this', () => {
   })
 })
 
+/**
+ * Merging must be lossless.
+ *
+ * Collapsing five magnesium cards into one is only safe if the one card still
+ * carries everything the five did. The original merge kept `{...base}`, which
+ * silently discarded four bodies and four disclaimers — the perimenopause
+ * card's "start at 200mg and increase slowly... kidney disease" among them.
+ * These are property tests over every framework combination, so the guarantee
+ * does not rest on anyone having imagined the right symptom mix.
+ */
+describe('collapsing a substance loses nothing that was authored', () => {
+  it('keeps every distinct disclaimer from every collapsed card', () => {
+    const lost: string[] = []
+    const normalise = (t: string) => t.replace(/\s+/g, ' ').trim().toLowerCase()
+
+    for (const combination of subsets(frameworks)) {
+      const plan = buildPlan(combination, {}, undefined, substances)
+
+      for (const surviving of plan.supplement_suggestions) {
+        const key = substanceIndex.get(surviving.id)?.key
+        if (!key) continue
+
+        // Every authored card for this substance in this combination.
+        const authored = combination
+          .flatMap((f) => f.supplement_suggestions ?? [])
+          .filter((rec) => substanceIndex.get(rec.id)?.key === key)
+
+        const shown = [
+          surviving.disclaimer,
+          ...(surviving.additional_disclaimers ?? []),
+        ]
+          .filter((t): t is string => Boolean(t?.trim()))
+          .map(normalise)
+
+        for (const rec of authored) {
+          const text = rec.disclaimer?.trim()
+          if (!text) continue
+          // Present verbatim, or contained word for word in one that is.
+          const covered = shown.some((s) => s.includes(normalise(text)))
+          if (!covered) lost.push(`${rec.id} (merged into ${surviving.id})`)
+        }
+      }
+    }
+
+    expect(Array.from(new Set(lost))).toEqual([])
+  })
+
+  it('keeps every collapsed card\'s authored body, not just its title', () => {
+    const plan = buildPlan(frameworks, {}, undefined, substances)
+
+    for (const rec of plan.supplement_suggestions) {
+      const key = substanceIndex.get(rec.id)?.key
+      if (!key) continue
+
+      const authored = frameworks
+        .flatMap((f) => f.supplement_suggestions ?? [])
+        .filter((r) => substanceIndex.get(r.id)?.key === key)
+      if (authored.length < 2) continue
+
+      const carried = new Set([
+        rec.body?.trim(),
+        ...(rec.also_for ?? []).map((b) =>
+          typeof b === 'string' ? undefined : b.body?.trim()
+        ),
+      ])
+
+      for (const source of authored) {
+        const body = source.body?.trim()
+        if (!body) continue
+        expect(
+          carried.has(body),
+          `"${source.id}" lost its body when merged into "${rec.id}"`
+        ).toBe(true)
+      }
+    }
+  })
+
+  it('never rewrites a collapsed body — copies are verbatim', () => {
+    const plan = buildPlan(frameworks, {}, undefined, substances)
+    const byId = new Map(
+      frameworks
+        .flatMap((f) => f.supplement_suggestions ?? [])
+        .map((r) => [r.id, r])
+    )
+
+    for (const rec of plan.supplement_suggestions) {
+      for (const benefit of rec.also_for ?? []) {
+        if (typeof benefit === 'string') continue
+        const source = byId.get(benefit.id)
+        expect(source, `unknown merged benefit id ${benefit.id}`).toBeDefined()
+        expect(
+          benefit.body,
+          `"${benefit.id}" was altered on its way into "${rec.id}"`
+        ).toBe(source!.body)
+        expect(benefit.title).toBe(source!.title)
+      }
+    }
+  })
+
+  it('leads a merged card with the framing written for her primary symptom', () => {
+    // Every magnesium card is authored `high`, so before the tie-break this
+    // always resolved to foundations' generic "the form matters" explainer,
+    // whatever she said bothered her most.
+    const plan = buildPlan(frameworks, {}, 'sleep_problems', substances)
+    const magnesium = plan.supplement_suggestions.filter(
+      (rec) => substanceIndex.get(rec.id)?.key === 'magnesium'
+    )
+
+    expect(magnesium).toHaveLength(1)
+    expect(magnesium[0].targets_symptoms).toContain('sleep_problems')
+
+    // ...and the cards it beat are still on it, in full.
+    expect(magnesium[0].also_for?.length).toBeGreaterThan(0)
+  })
+
+  it('still collapses to exactly one card per substance', () => {
+    // The tie-break chooses WITHIN a group; it must not change group count.
+    for (const primary of [undefined, 'sleep_problems', 'anxiety', 'joint_pain']) {
+      const plan = buildPlan(frameworks, {}, primary, substances)
+      const keys = substanceKeysOf(plan.supplement_suggestions)
+      expect(new Set(keys).size, `duplicate substance for primary=${primary}`).toBe(
+        keys.length
+      )
+    }
+  })
+})
+
 describe('substances that must never be merged', () => {
   it('keeps calcium and calcium D-glucarate separate', () => {
     const plan = buildPlan(frameworks, {}, undefined, substances)

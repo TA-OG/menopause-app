@@ -38,7 +38,15 @@ const CAUTIONED: WellnessRecommendation = {
     because: ['blood_thinners'],
     text: 'PERSONAL-SENTINEL: you told us you take blood thinners.',
   },
-  also_for: ['ALSO-FOR-SENTINEL'],
+  additional_disclaimers: ['MERGED-GP-CHECK-SENTINEL: start at 200mg.'],
+  targets_symptoms: ['sleep_problems', 'anxiety'],
+  also_for: [
+    {
+      id: 'ss_merged',
+      title: 'ALSO-FOR-SENTINEL',
+      body: 'ALSO-FOR-BODY-SENTINEL',
+    },
+  ],
 }
 
 function render(rec: WellnessRecommendation): string {
@@ -53,6 +61,10 @@ describe('PlanCard renders the collapse rule it is given', () => {
       'PERSONAL-SENTINEL',
       'CEILING-SENTINEL',
       'GP-CHECK-SENTINEL',
+      // Inherited from a card collapsed into this one. It is a caution that
+      // used to be discarded by the merge entirely — it must render, and it
+      // must render while collapsed like every other caution.
+      'MERGED-GP-CHECK-SENTINEL',
     ]) {
       expect(html, `${sentinel} is missing from the collapsed card`).toContain(
         sentinel
@@ -95,6 +107,38 @@ describe('PlanCard renders the collapse rule it is given', () => {
 
   it('keeps the collapsible extras out of the collapsed card', () => {
     expect(html).not.toContain('ALSO-FOR-SENTINEL')
+    expect(html).not.toContain('ALSO-FOR-BODY-SENTINEL')
+  })
+
+  it('shows which symptoms the card covers without expanding it', () => {
+    // The headline of a merged card: she can see her symptom is covered
+    // without opening anything. Labels come from SYMPTOM_CHOICES.
+    expect(html).toContain('Sleep problems')
+    expect(html).toContain('Anxiety')
+  })
+
+  it('renders several GP-checks as one caution block, not a stack of boxes', () => {
+    // Both texts present...
+    expect(html).toContain('GP-CHECK-SENTINEL')
+    expect(html).toContain('MERGED-GP-CHECK-SENTINEL')
+    // ...inside a single amber container. Three near-identical warning boxes
+    // is how a caution turns into wallpaper.
+    const boxes = html.split('bg-amber-50').length - 1
+    expect(boxes).toBe(1)
+  })
+
+  it('renders a plan stored with the legacy string[] also_for', () => {
+    // Plans generated before also_for carried bodies are still in the DB.
+    const legacy = render({
+      id: 'legacy',
+      title: 'Legacy',
+      body: LONG_BODY,
+      priority: 'medium',
+      category: 'supplement',
+      also_for: ['LEGACY-TITLE-SENTINEL'],
+    })
+    expect(legacy).toContain('Read more')
+    expect(legacy).not.toContain('LEGACY-TITLE-SENTINEL')
   })
 
   it('offers an accessible, large-enough toggle', () => {
