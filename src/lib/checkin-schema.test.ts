@@ -2,6 +2,8 @@ import { describe, it, expect } from 'vitest'
 import {
   CheckinSchema,
   SYMPTOM_KEYS,
+  buildCheckinPayload,
+  FIELDS_THE_CHECKIN_FORM_MUST_NOT_SEND,
   localCalendarDate,
   parseLocalCalendarDate,
 } from './checkin-schema'
@@ -16,16 +18,25 @@ import {
  * check-in". Only check-ins that happened to include typed notes ever saved.
  */
 
-/** The exact payload src/app/(app)/symptom-checkin/page.tsx sends. */
+/**
+ * The payload src/app/(app)/symptom-checkin/page.tsx sends.
+ *
+ * Built by calling the SAME function the page calls, not copied out by hand.
+ * The hand-copied version of this helper is why the `tried_today: []` defect
+ * survived: it was commented "the exact payload the page sends" and it faithfully
+ * reproduced the bug, so every test here passed while the real save wiped the
+ * column on every check-in.
+ */
 function pagePayload(overrides: Record<string, unknown> = {}) {
   return {
-    checkin_date: '2026-08-26',
-    symptoms: {},
-    mood_score: 3,
-    energy_level: 3,
-    sleep_hours: 7,
-    tried_today: [],
-    notes: null,
+    ...buildCheckinPayload({
+      checkin_date: '2026-08-26',
+      symptoms: {},
+      mood_score: 3,
+      energy_level: 3,
+      sleep_hours: 7,
+      notes: '',
+    }),
     ...overrides,
   }
 }
@@ -193,5 +204,68 @@ describe('parseLocalCalendarDate', () => {
     // The whole point: header and stored row must never disagree.
     const today = localCalendarDate()
     expect(localCalendarDate(parseLocalCalendarDate(today) as Date)).toBe(today)
+  })
+})
+
+describe('buildCheckinPayload — the form only sends what it owns', () => {
+  const payload = buildCheckinPayload({
+    checkin_date: '2026-08-26',
+    symptoms: { hot_flashes: 3 },
+    mood_score: 4,
+    energy_level: 2,
+    sleep_hours: 6.5,
+    notes: '  ',
+  })
+
+  /**
+   * THE REGRESSION THIS FILE EXISTS FOR.
+   *
+   * The route upserts on (user_id, checkin_date), so any column present in the
+   * payload is overwritten on conflict. The form used to hard-code
+   * `tried_today: []`, which meant a daily check-in silently blanked whatever
+   * had ticked plan items off that day. Nothing writes the column yet, so the
+   * damage was invisible — it would have surfaced only once the plan could tick
+   * items, far from the cause.
+   */
+  it('omits every column the form does not own', () => {
+    for (const field of FIELDS_THE_CHECKIN_FORM_MUST_NOT_SEND) {
+      expect(
+        Object.prototype.hasOwnProperty.call(payload, field),
+        `the check-in form must not send "${field}" — the route upserts, so ` +
+          `including it blanks out whatever else wrote that column`
+      ).toBe(false)
+    }
+  })
+
+  it('sends exactly the fields the form collects, and nothing else', () => {
+    expect(Object.keys(payload).sort()).toEqual([
+      'checkin_date',
+      'energy_level',
+      'mood_score',
+      'notes',
+      'sleep_hours',
+      'symptoms',
+    ])
+  })
+
+  it('produces a body the route will accept', () => {
+    const result = CheckinSchema.safeParse(payload)
+    expect(result.success).toBe(true)
+  })
+
+  it('clears a note the user emptied, because the form does own that field', () => {
+    expect(payload.notes).toBeNull()
+  })
+
+  it('keeps a note the user typed, trimmed', () => {
+    const withNote = buildCheckinPayload({
+      checkin_date: '2026-08-26',
+      symptoms: {},
+      mood_score: 3,
+      energy_level: 3,
+      sleep_hours: 7,
+      notes: '  hot flushes at 3am  ',
+    })
+    expect(withNote.notes).toBe('hot flushes at 3am')
   })
 })
