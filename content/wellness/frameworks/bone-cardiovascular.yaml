@@ -45,6 +45,10 @@ diet_adjustments:
       approach in this age group.
     priority: high
     who_for: all
+    relevant_when:
+      # Cardiovascular protection — the card's whole subject.
+      - question: medical_flags
+        answer: [high_blood_pressure]
 
   - id: df_reduce_sodium
     category: diet
@@ -61,6 +65,10 @@ diet_adjustments:
       use the same 0.3g / 1.5g bands, just measured per 100ml instead.)
     priority: medium
     who_for: all
+    relevant_when:
+      # Card's subject IS salt and blood pressure.
+      - question: medical_flags
+        answer: [high_blood_pressure]
 
 lifestyle_adjustments:
   - id: lf_weight_bearing_bones
@@ -89,6 +97,10 @@ lifestyle_adjustments:
       consistency across the week matters more than single long sessions.
     priority: high
     who_for: all
+    relevant_when:
+      # The card names lowering blood pressure and type 2 diabetes risk as its effects.
+      - question: medical_flags
+        answer: [high_blood_pressure, diabetes]
 
   - id: lf_smoking_cessation
     category: lifestyle
@@ -139,6 +151,10 @@ mindset_recommendations:
       more effective than treatment.
     priority: medium
     who_for: all
+    relevant_when:
+      # Asking for a cardiovascular risk assessment matters most to her.
+      - question: medical_flags
+        answer: [high_blood_pressure, diabetes]
 
 supplement_suggestions:
   - id: ss_calcium_supplement

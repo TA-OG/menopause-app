@@ -15,8 +15,10 @@ Shown when their **menopause stage** is any of: "menopause", "postmenopause", "s
   _Targets: joint pain_
 - **Unsaturated fats over saturated — for cardiovascular protection**  _(high priority)_
   Prior to menopause, oestrogen is cardioprotective — it raises HDL (good cholesterol) and reduces LDL (bad cholesterol). After menopause, this protection is lost, and LDL typically rises 10–15%. Replace saturated fats (butter, red meat, full-fat dairy) with unsaturated sources: olive oil, avocado, nuts, seeds, and oily fish. The Mediterranean pattern is the most cardiovascular-protective dietary approach in this age group.
+  _Raised up her plan when: medical flags is high blood pressure_
 - **Reduce salt — blood pressure rises after menopause**  _(medium priority)_
   Blood pressure often rises in the years following menopause due to vascular changes as oestrogen declines. UK adults consume an average of 8–9g salt daily — the recommended maximum is 6g. Primary sources of hidden salt: bread, processed meats, cheese, ready meals, sauces. Switching to herbs and lemon juice for flavouring makes a real difference. On front-of-pack labels for foods, 0.3g salt per 100g or less is the green "low" band, and anything above 1.5g per 100g is red "high" — so comparing two products on that number alone is an easy win. (Drinks use the same 0.3g / 1.5g bands, just measured per 100ml instead.)
+  _Raised up her plan when: medical flags is high blood pressure_
 
 ### Lifestyle
 
@@ -24,6 +26,7 @@ Shown when their **menopause stage** is any of: "menopause", "postmenopause", "s
   The skeleton responds to mechanical load by building new bone. Weight-bearing exercise (walking, jogging, dancing, weightlifting, tennis) directly stimulates bone formation. Swimming and cycling, while excellent for cardiovascular health, do not load the skeleton and have minimal effect on bone density. Aim for at least 3 sessions weekly of weight-bearing activity. Strength training additionally builds the muscle that protects joints from fracture forces.
 - **150 minutes of moderate cardio weekly — for heart health**  _(high priority)_
   150 minutes of moderate-intensity aerobic activity per week (brisk walking, cycling, swimming, dancing) reduces cardiovascular risk, lowers blood pressure, and improves cholesterol profile. It also reduces the risk of type 2 diabetes, which rises after menopause. Break this into 5 x 30-minute sessions or 6 x 25-minute sessions — consistency across the week matters more than single long sessions.
+  _Raised up her plan when: medical flags is high blood pressure or diabetes_
 - **Stopping smoking — the single biggest cardiovascular intervention**  _(high priority)_
   Smoking doubles the risk of a heart attack and is the primary modifiable risk factor for cardiovascular disease in postmenopausal women. It also accelerates bone loss (smokers have 10–15% lower bone density than non-smokers) and worsens hot flashes. NHS Stop Smoking Services, varenicline (Champix), and combination nicotine replacement therapy are all more effective than willpower alone. Speak to your GP.
   _Raised up her plan when: smoking status is occasional smoker or regular smoker_
@@ -34,6 +37,7 @@ Shown when their **menopause stage** is any of: "menopause", "postmenopause", "s
   A DEXA scan measures bone mineral density and takes 10–15 minutes. NICE recommends it for women who have early menopause (before 45), surgical menopause, or other risk factors (prolonged steroid use, low BMI, family history of hip fracture). Even without these, knowing your bone density baseline at menopause gives you something to measure future interventions against. Ask your GP whether you are eligible for a scan on the NHS.
 - **Cardiovascular disease is the leading cause of death in women — not breast cancer**  _(medium priority)_
   Women's cardiovascular risk after menopause surpasses that of men of similar age. Yet women are less likely to be assessed for cardiovascular risk, less likely to recognise their own symptoms, and less likely to receive preventive treatment. Ask your GP for a cardiovascular risk assessment (cholesterol, blood pressure, blood glucose) at your next appointment. Most GP practices offer NHS Health Checks to adults aged 40–74. Prevention is dramatically more effective than treatment.
+  _Raised up her plan when: medical flags is high blood pressure or diabetes_
 
 ### Supplements
 
@@ -57,20 +61,24 @@ Shown to **every user**, regardless of their answers.
   _Targets: sleep problems, anxiety, brain fog, fatigue_
 - **Carbohydrate timing and eating order**  _(medium priority)_
   Most postmenopausal women don't manage carbohydrates well at breakfast — they're generally better tolerated in the afternoon and best avoided or minimised in the evening. This matters less if your overall blood sugar control is already good (e.g. you eat mostly whole foods, low processed). A simple, free lever regardless of stage: eat protein and vegetables before carbohydrates at a meal, rather than starting with the carbs. This blunts the blood sugar spike that follows, without changing what you eat — just the order.
+  _Raised up her plan when: diet type is mixed or convenience or unaware, OR medical flags is diabetes_
 - **Stop eating 3–5 hours before bed**  _(medium priority)_
   Aim to stop eating 3–5 hours before bed. In summer, with longer daylight hours, eating a little later can work — but this is worth avoiding in winter months, particularly here in the UK.
   _Targets: sleep problems_
 - **The core plate — protein, fibre, and colour, at every stage**  _(high priority)_
   Prioritise whole foods over processed foods, regardless of stage. What to increase: protein at every meal; fibre from vegetables, particularly cruciferous ones (broccoli, cauliflower, kale, cabbage); polyphenol-rich foods; prebiotic foods, and probiotic foods for some women; omega-3s, flaxseeds and chia seeds; and warming foods like ginger, cinnamon, turmeric and red onion.
   _Targets: weight changes, fatigue_
+  _Raised up her plan when: diet type is convenience or unaware or mixed_
 - **Steady hydration — roughly 2 litres, spread across the day**  _(high priority)_
   Aim for steady hydration throughout the day rather than large amounts in one go — roughly 2 litres as a general baseline, more if you're active or experiencing night sweats or hot flushes, which increase fluid loss. Start the day with a pint of water on waking — a simple, grounding habit that rehydrates after a night's fast and kickstarts digestion before food. Aim to stop drinking 1–2 hours before bed, to avoid night waking for the bathroom disrupting sleep.
   _Targets: hot flashes, night sweats, sleep problems_
 - **What to reduce — refined sugar, packaging, and (for some) dairy**  _(medium priority)_
   Refined sugar and ultra-processed foods drive blood sugar swings, inflammation and energy crashes, all of which feed back into the mood/sleep/energy loop. Where possible, choose fresh over heavily packaged or tinned foods, and be mindful of plastic food contact, to reduce xenoestrogen exposure. Excess dairy is worth limiting for some women too, particularly alongside an itching/migraine pattern that can point to histamine sensitivity.
+  _Raised up her plan when: diet type is convenience or unaware_
 - **Thyroid and iron — the two most commonly missed nutritional gaps**  _(medium priority)_
   Thyroid function comes up often alongside menopause symptoms — key food sources worth including are iodine (seaweed, fish, eggs) and selenium (Brazil nuts, just 1–2 a day covers your needs, and fish). Iron deficiency is a common, often-missed cause of fatigue and hair thinning — food sources include red meat, dark leafy greens, lentils and other pulses. Pairing iron-rich plant foods with vitamin C (e.g. lentils with peppers or a squeeze of lemon) helps improve absorption.
   _Targets: fatigue, hair changes_
+  _Raised up her plan when: medical flags is thyroid_
 - **If you notice itching or migraines — histamine may be worth a look**  _(medium priority)_
   If you're experiencing itching or migraines alongside other symptoms like bloating or flushing, histamine intolerance is one thing some practitioners consider — it's not something you can self-diagnose from diet alone, so this is worth raising with your GP or a practitioner rather than a reliable at-home test. If you do want to experiment, some women try reducing fermented foods, cheese and alcohol for a couple of weeks and see whether symptoms shift. Fermented foods (sauerkraut, kefir, kimchi, kombucha) genuinely support a healthy microbiome for many women, but they're also high in histamine, so this is a real trade-off for some — not a silent contradiction with the gut-health advice elsewhere.
   _Raised up her plan when: alcohol intake is regular or frequent_
@@ -86,12 +94,15 @@ Shown to **every user**, regardless of their answers.
 - **Morning light, evening dimness — the two ends of your body clock**  _(high priority)_
   Morning bright light exposure — ideally outdoors, within the first hour of waking — helps set the body clock, which supports both sleep quality and daytime mood/energy. In the evening, reduce blue light: screens and overhead LED lighting suppress melatonin production, making it harder to fall asleep and stay asleep. Dim the lights and come off screens (or use blue-light-blocking glasses or night mode) for the hour or two before bed — candles work well in the winter months.
   _Targets: sleep problems, mood changes_
+  _Raised up her plan when: sleep quality is poor or very poor_
 - **Cold water exposure**  _(medium priority)_
   Cold showers, splashing your face with cold water, running cold water on your wrists, or simply finishing a shower cold — there's building evidence for mood, energy and stress resilience from this kind of cold exposure. If wild swimming appeals, build up gradually rather than jumping straight into cold open water, and don't swim alone.
   _Targets: mood changes, fatigue_
+  _Raised up her plan when: stress level is high or very high_
   _Disclaimer: Sudden cold-water immersion can sharply raise heart rate and blood pressure and trigger an involuntary gasp response, which carries real risk for anyone with cardiovascular disease or high blood pressure — check with your GP first if either applies to you. Build up gradually (start with cooler showers before open water), and never swim alone._
 - **A short walk after eating, and chewing properly**  _(medium priority)_
   Walking after meals — even just 10 minutes — meaningfully blunts blood sugar spikes, which ties back into the mood/energy loop. It sounds small, but eating more slowly and chewing thoroughly rather than rushing is worth trying too — many women find it helps them feel calmer at mealtimes and more comfortable afterwards.
+  _Raised up her plan when: medical flags is diabetes_
 - **Rebounding and box jumping — for bone density**  _(medium priority)_
   Rebounding for 10 minutes a day is a low-impact way to support lymphatic drainage, bone density and cardiovascular fitness, and is easy on the joints compared to running — it is the gentler of the two options here. Box jumping — around 10 minutes, 3 times a week — loads the skeleton harder and so builds bone density more directly, but it is genuinely high-impact: it is not the right starting point if your joints are already painful, and rebounding or weight training will serve you better in that case.
   _Only shown to: active only_
@@ -99,6 +110,7 @@ Shown to **every user**, regardless of their answers.
 - **Breathwork for the vagus nerve, and sauna or heat exposure**  _(medium priority)_
   Simple breathing techniques — box breathing (in for 4, hold for 4, out for 4, hold for 4), the physiological sigh (two short inhales through the nose, one long exhale through the mouth), or humming — activate the vagus nerve and shift the body out of "fight or flight" and into "rest and digest." It takes just a couple of minutes and can be done anywhere. Sauna or heat exposure also has growing evidence for cardiovascular health, and some women find it helps with joint pain and mood.
   _Targets: anxiety, joint pain_
+  _Raised up her plan when: stress level is high or very high_
   _Disclaimer: If you're prone to hot flushes or already struggle with heat sensitivity, sauna use may need care — shorter sessions, or avoiding it altogether if it triggers symptoms rather than helping. Check with your GP first if you have cardiovascular disease, uncontrolled blood pressure, or a condition affecting hydration, and if you take medication that affects blood pressure or fluid balance — heat exposure raises heart rate and can affect blood pressure quickly._
 - **Time in nature, and staying socially connected**  _(medium priority)_
   Time in nature — walking barefoot on grass or sand, or an allotment-type activity — isn't just exercise, it's the grounding, present-moment effect of being outside and doing something with your hands. Strong social connection is linked to better mood, longevity and resilience through hormonal transitions — one of the simplest, most evidence-backed habits there is. Whether that's a regular walk with a friend, a class, or a community, this is a genuine daily or weekly habit worth naming, not just a "nice to have."
@@ -116,9 +128,11 @@ Shown to **every user**, regardless of their answers.
   Sleep, stress, activity levels, diet and genetics all interact, and the right starting point depends on where you actually are, not just what stage you're in. Two women in postmenopause might need completely different advice if one is sleeping well and active, and the other is exhausted, wired, and barely sleeping. Your stage tells us where to start looking; how you're doing in sleep, stress, energy and mood tells us what you actually need. This is also a good moment to look at boundaries — what you're carrying for everyone else, and whether there's room to put yourself back on the list.
 - **Other hormonal imbalances worth ruling out**  _(medium priority)_
   If you have other hormonal imbalances, they can shape what you need here too. Thyroid conditions (hypothyroidism, Hashimoto's, hyperthyroidism) interact closely with oestrogen and progesterone, so symptoms often overlap and amplify each other — TSH is the standard first test, with further tests (like FT4) added if that's abnormal or symptoms strongly suggest a thyroid cause despite a normal result. PCOS, even though usually diagnosed earlier in life, often carries insulin resistance through into perimenopause and menopause, meaning blood sugar stability needs even more attention. You may also read about "adrenal fatigue" or chronic stress "depleting" your hormones — worth knowing that's not a recognised medical diagnosis, though genuine adrenal insufficiency is a real, separately diagnosed condition your GP can test for if you're concerned. Insulin resistance or pre-diabetes is worth naming directly as a hormonal imbalance in its own right, not just a "blood sugar issue." Family history matters too — if your mother or sisters had a particularly difficult perimenopause, early menopause, or conditions like osteoporosis or cardiovascular disease, that's useful information for proactive testing.
+  _Raised up her plan when: medical flags is thyroid or diabetes_
 - **If you're living with long Covid, CFS, or fibromyalgia too**  _(medium priority)_
   All three overlap heavily with perimenopause and menopause symptoms — fatigue, brain fog, poor sleep, mood changes, exercise intolerance — so symptoms can easily be misattributed to hormones alone, delaying proper investigation. Energy pacing matters more here — intense exercise, including short interval bursts, may need to be scaled back if you're experiencing post-exertional symptom flare-ups (a worsening of symptoms after activity, sometimes delayed by a day or two). "Push through it" is the wrong instinct here — with post-exertional symptoms, more activity can set recovery back rather than build resilience. Working alongside your GP or a specialist matters, since standard lifestyle advice may need real modification.
   _Targets: fatigue, brain fog_
+  _Raised up her plan when: exercise level is limited_
 
 ### Supplements
 
@@ -156,6 +170,7 @@ Shown when their **stress level** is any of: "high", "very high".
 - **Cortisol drives blood sugar spikes — eat to counteract this**  _(high priority)_
   Cortisol (the stress hormone) directly raises blood glucose by releasing stored sugar from the liver. Combined with the insulin resistance of perimenopause, chronic stress creates a cycle of blood sugar spikes and crashes that worsens mood, drives carbohydrate cravings, and increases abdominal fat storage. Counter this by eating protein and fat before carbohydrates, not skipping meals, and keeping blood sugar-stabilising snacks (nuts, boiled eggs, full-fat yoghurt) available to prevent the stress-hunger spiral.
   _Targets: mood changes, weight changes, fatigue, brain fog_
+  _Raised up her plan when: medical flags is diabetes_
 - **Stress depletes magnesium — eat foods that replenish it**  _(medium priority)_
   Magnesium is excreted at higher rates under stress. Magnesium deficiency worsens anxiety, sleep, and muscle tension — creating a feedback loop. Magnesium-rich foods: dark chocolate (>70%), pumpkin seeds, spinach, black beans, almonds, avocado, and bananas. These are better than supplements as a first approach. Reduce alcohol and caffeine, which also increase magnesium excretion.
   _Targets: anxiety, sleep problems_
@@ -173,6 +188,7 @@ Shown when their **stress level** is any of: "high", "very high".
 - **Sleep deprivation and high stress form a vicious cycle — break it with a consistent bedtime**  _(high priority)_
   Chronic stress elevates cortisol at night, making sleep harder. Poor sleep raises baseline cortisol the following day, making stress harder to manage. The most effective single break in this cycle is protecting bedtime. Set a consistent bedtime — 60 minutes earlier than you currently go to bed — for two weeks. Use a 30-minute wind-down routine (no screens, dim lights). Even if you don't fall asleep faster, protecting this time reduces the cortisol-sleep feedback loop.
   _Targets: sleep problems, anxiety_
+  _Raised up her plan when: sleep quality is poor or very poor_
 - **Audit your commitments — high stress is often overcapacity, not weakness**  _(medium priority)_
   Many women experiencing high stress describe being the primary caregiver for both children and ageing parents, while maintaining a career at peak demands. This is a structural load problem, not a resilience problem. A weekly review of commitments — what can be delegated, automated, dropped, or batched — consistently frees up meaningful time. Even 2–3 hours per week of reduced obligation measurably lowers cortisol over a month.
 
@@ -211,6 +227,7 @@ Shown when their **symptoms** is any of: "hot flashes", "night sweats".
   _Raised up her plan when: caffeine intake is moderate or high, OR alcohol intake is regular or frequent_
 - **Stabilise blood sugar as a general foundation**  _(medium priority)_
   Some women notice blood sugar spikes and crashes seem to bring on or worsen a flush, though this isn't an established trigger for menopausal vasomotor symptoms generally — worth watching for in yourself rather than assuming it applies. Eating protein and healthy fat at every meal (e.g. eggs, nuts, oily fish, avocado) slows glucose absorption regardless, and is a reasonable foundation either way. Avoid refined carbs and sugary snacks on an empty stomach.
+  _Raised up her plan when: medical flags is diabetes_
 - **Stay consistently hydrated**  _(medium priority)_
   Dehydration raises core body temperature, making flushes more intense. Roughly 2 litres a day is the usual rule of thumb, spread across the day, and a little more if you are sweating at night — but it is a guide, not a target, and what you actually need varies with your size, the weather and how active you are. If a doctor has told you to limit fluids — for example with heart or kidney failure — follow their limit, not this. Start with a large glass of cold water first thing, and keep one by your bed.
 
@@ -218,6 +235,7 @@ Shown when their **symptoms** is any of: "hot flashes", "night sweats".
 
 - **Layer bedding — the single most practical night-sweat fix**  _(high priority)_
   Switch to moisture-wicking, breathable bedding (bamboo or cotton percale). Sleep with layers you can kick off: a sheet, a light blanket, a duvet — rather than one heavy duvet. A small fan directed away from you (so it cools the room, not blows on you) can reduce night-sweat severity by keeping ambient temperature below 18°C.
+  _Raised up her plan when: sleep quality is poor or very poor_
 - **Paced breathing to abort a flush**  _(high priority)_
   Research shows slow, paced breathing (4–5 breaths per minute) can reduce flush intensity when started at the first sign of one. Try: breathe in for 4 counts, hold for 2, breathe out for 6. Practise it daily so it becomes automatic. It takes about 2 weeks of practice before it works reliably in the moment.
 - **Exercise timing matters**  _(medium priority)_
@@ -233,6 +251,7 @@ Shown when their **symptoms** is any of: "hot flashes", "night sweats".
   Anxiety about an impending flush is itself a trigger: it activates the sympathetic nervous system, which raises core temperature. Women who learn to observe a flush without catastrophising ("this will pass in 90 seconds") report significantly lower severity scores over time. Cognitive Behavioural Therapy (CBT) for menopausal symptoms is recognised by NICE as an option for vasomotor symptoms alongside or instead of HRT. In England you can self-refer to NHS Talking Therapies where you are eligible, though that service is aimed at anxiety and depression and menopause-specific CBT is not offered everywhere — so it is worth asking your GP about menopause-specific CBT or a referral to a menopause service too. The Women's Health Concern (the patient arm of the British Menopause Society) publishes a free factsheet on CBT for menopausal symptoms.
 - **Protect sleep despite night sweats**  _(high priority)_
   Night sweats often cause secondary sleep anxiety ("I dread going to bed"). Keep your pre-sleep routine consistent and calm. A cool shower before bed lowers core temperature for 60–90 minutes — the window when it helps most. Avoid screens for 30 minutes beforehand. If you wake from a sweat, have your water and fan ready and avoid looking at your phone.
+  _Raised up her plan when: sleep quality is poor or very poor_
 - **Track triggers for two weeks**  _(medium priority)_
   Use your daily check-in to note flush frequency, time of day, and what you ate or drank in the 2 hours before. Most women find 2–3 clear patterns within two weeks. Knowing your triggers gives you agency — which is itself associated with lower perceived symptom burden.
 
@@ -273,8 +292,10 @@ Shown when their **symptoms** is any of: "mood changes", "anxiety", "brain fog".
 
 - **Exercise is the most evidence-backed mood intervention available**  _(high priority)_
   30 minutes of moderate cardio (brisk walking, cycling, swimming) 3–5 times weekly increases BDNF (brain-derived neurotrophic factor) — the brain's own growth and repair protein. It also raises endorphins, lowers cortisol, and directly counteracts the anxiety and low mood of perimenopause. The effect begins within the first session and compounds over weeks. If you do nothing else on this list, do this.
+  _Raised up her plan when: exercise level is not active or lightly active_
 - **Identify one thing you can stop doing**  _(high priority)_
   Perimenopause often coincides with peak career pressure and family caring responsibilities. Women who describe themselves as "overwhelmed" frequently report that their mood and brain fog improve substantially when they reduce one regular obligation — not add more recovery tools. Review your week and identify one thing you can remove, delegate, or reduce in frequency.
+  _Raised up her plan when: stress level is high or very high_
 - **Practical tactics for brain fog at work**  _(medium priority)_
   Brain fog is real — oestrogen regulates the prefrontal cortex. Practical adaptions: write things down immediately rather than trying to hold them; use calendar reminders for things you'd normally remember; block focus time in the morning when cognitive function is typically highest; take short movement breaks every 90 minutes to reset concentration. These are not failures — they are adaptations.
 
@@ -286,8 +307,10 @@ Shown when their **symptoms** is any of: "mood changes", "anxiety", "brain fog".
 - **What else could be driving this — beyond hormones**  _(high priority)_
   Nutrient status: low B12 and folate can mimic or worsen low mood, brain fog, fatigue and irritability — deficiency is common, especially with age, certain medications, or low intake of animal proteins and leafy greens. This is a simple, correctable thing that's too often overlooked. Thyroid health: an underactive thyroid in particular can look exactly like "menopause brain and mood" — low mood, fatigue, brain fog, weight gain, feeling flat. It's frequently missed because the standard TSH-only test doesn't tell the full story, and symptoms get written off as "just menopause" when thyroid function hasn't actually been properly checked. Blood sugar: pre-diabetes and diabetes affect mood directly — blood sugar swings can cause irritability, anxiety, brain fog and energy crashes that feel identical to "hormonal" mood changes, and poor regulation also worsens sleep and increases inflammation. Histamine's wider reach: histamine's effects go well beyond itching, migraines and flushing — it can also contribute to bloating, poor sleep, brain fog and fatigue. If you're ticking several boxes across mood, sleep, energy and digestion without an obvious single cause, histamine is worth considering as a genuine thread running underneath.
   _Targets: mood changes, brain fog_
+  _Raised up her plan when: medical flags is thyroid or diabetes_
 - **If you have a history of endometriosis, adenomyosis, or fibroids**  _(medium priority)_
   Endometriosis, adenomyosis and fibroids are oestrogen-sensitive conditions, and some women with this history describe feeling the emotional swings of perimenopause more intensely — the rage, the rollercoaster, the sense of not recognising yourself. This isn't established as a general rule for everyone with this history, and it isn't being "more sensitive" or dramatic if it's how it feels for you. It's also worth naming that many women with this history have been living with chronic pain for years, sometimes decades, often dismissed or under-treated before diagnosis — and depression is genuinely more common in women with this history. If you're noticing low mood alongside the perimenopausal shifts, it isn't necessarily "just menopause" layered on top — it may be the accumulated weight of pain, and years of not being believed or heard, finally being felt. If you're living with long Covid, CFS, or fibromyalgia alongside menopause, the emotional toll of navigating a chronic illness and menopause at the same time is real, and often isolating — it's hard to untangle which symptoms belong to which cause. Both can be true at once, and both deserve care, not competition for which is "the real problem."
+  _Raised up her plan when: medical flags is oestrogen sensitive_
 - **Who am I now? — it doesn't have to be a crisis question**  _(medium priority)_
   How you narrate this chapter to yourself genuinely shapes how you experience it. "Who am I now?" can be a curious question rather than a panicked one — not pretending everything's fine, but recognising that this in-between, unfamiliar version of yourself isn't a problem to solve, it's a person to get to know. A lot of women arrive here feeling like they've lost themselves — that disorientation is real and common, and so often there's more going on underneath than "just hormones," which is exactly why it deserves proper investigation rather than just being pushed through. Menopause isn't a problem to fix in isolation — it's a transition that touches hormones, sleep, nutrients, thyroid and metabolic health all at once. The aim isn't to "get back to normal" but to understand what's actually going on underneath the mood, not just manage the mood itself. Tracking patterns — sleep quality, energy dips, mood cycles, triggers — gives you information, not just symptoms to endure.
 - **When to see your GP about mood or anxiety**  _(high priority)_
@@ -343,6 +366,7 @@ Shown when their **menopause stage** is "perimenopause".
 - **Blood sugar stability is your most powerful tool in perimenopause**  _(high priority)_
   Oestrogen fluctuates dramatically in perimenopause — sometimes very high, sometimes very low, within the same month. These swings impair insulin sensitivity and make blood sugar regulation harder. You may notice mood crashes, afternoon energy dips, and cravings you didn't have before. The fix: eat protein and fat first at every meal before carbohydrates, never eat carbohydrates alone, and avoid skipping meals. A stable blood sugar produces dramatically more stable mood and energy.
   _Targets: mood changes, fatigue, weight changes, brain fog_
+  _Raised up her plan when: medical flags is diabetes_
 - **30g fibre daily — for oestrogen metabolism and gut microbiome**  _(medium priority)_
   Excess oestrogen is cleared by the liver and excreted through the gut. A healthy gut microbiome (the "estrobolome") helps recycle oestrogen appropriately. Low-fibre diets allow oestrogen to be reabsorbed from the gut, contributing to oestrogen dominance symptoms (heavy periods, bloating, breast tenderness) in early perimenopause. Aim for 30g fibre daily: wholegrains, legumes, vegetables, and fruit. A diverse plant-based diet is the most efficient way to achieve this.
   _Targets: mood changes_
@@ -354,6 +378,7 @@ Shown when their **menopause stage** is "perimenopause".
   _Targets: mood changes, sleep problems, hot flashes_
 - **Start strength training now — before bone loss accelerates**  _(high priority)_
   The most significant window to protect long-term bone density and muscle mass is perimenopause — before the accelerated loss that occurs in the 5 years after the final period. Building a strength training habit now (even 2x weekly, 30 minutes) creates a reserve of bone density and muscle that cushions the transition. Women who establish this habit in perimenopause adapt significantly better to the postmenopausal phase.
+  _Raised up her plan when: exercise level is not active or lightly active_
 
 ### Mindset & emotional
 
@@ -443,6 +468,7 @@ Shown when their **symptoms** is any of: "low libido", "vaginal dryness".
 - **Ask your GP about local vaginal oestrogen — it's safe for most women**  _(high priority)_
   Vaginal oestrogen cream or pessary (e.g. Vagifem, Ovestin, Estring) is the most effective treatment for GSM. It acts locally with minimal systemic absorption and is considered safe even for women who cannot take systemic HRT, including many breast cancer survivors. It is chronically undertreated because women and GPs don't raise it. You can ask for it specifically. It is not a cosmetic treatment — it is treating a progressive condition.
   _Targets: vaginal dryness_
+  _Raised up her plan when: medical flags is oestrogen sensitive_
 - **Libido is complex — it is rarely just hormonal**  _(medium priority)_
   Sexual desire in women is context-dependent. Fatigue, relationship dynamics, stress, body image, and mood all have more influence on libido than hormone levels alone. If you feel disconnected from your sexuality, it is worth separating the physical (address dryness and discomfort first) from the relational and psychological. A psychosexual therapist can help if desire has been absent for several months. Low libido in menopause is rarely just one thing — it's often a combination of hormonal changes, vaginal dryness or discomfort, poor sleep, low energy, stress, and relationship or emotional factors. Low libido that distresses you or your partner is worth taking seriously — and it is treatable.
   _Targets: low libido_
@@ -538,27 +564,34 @@ Shown when their **symptoms** is any of: "sleep problems", "fatigue".
 
 - **Eat tryptophan-rich foods in the evening**  _(high priority)_
   Tryptophan is a precursor to serotonin and melatonin — the hormones that regulate sleep. Foods high in tryptophan include turkey, chicken, eggs, pumpkin seeds, oats, and dairy. A small protein-and-carb snack 90 minutes before bed (e.g. a small bowl of oat porridge or a banana with a few walnuts) can support melatonin production.
+  _Raised up her plan when: sleep quality is poor or very poor_
 - **Set a hard caffeine cutoff at 1pm**  _(high priority)_
   Caffeine has a half-life of 5–6 hours — a 3pm coffee still has half its caffeine in your system at 8pm. Shifting your cutoff to 1pm is the single most impactful dietary change most women can make for sleep quality. Switch to herbal tea, rooibos, or decaf after lunch.
   _Raised up her plan when: caffeine intake is moderate or high_
 - **Eat for stable energy across the day**  _(medium priority)_
   Fatigue is often worsened by blood sugar crashes. Avoid skipping meals and aim for protein, healthy fat, and fibre at every meal to sustain energy. A small mid-morning and mid-afternoon snack (a handful of nuts, an apple with nut butter) prevents the 3pm crash many perimenopausal women describe.
+  _Raised up her plan when: medical flags is diabetes_
 
 ### Lifestyle
 
 - **Fix your wake time — it anchors your whole sleep cycle**  _(high priority)_
   Your circadian rhythm is set primarily by your wake time, not your bedtime. Getting up at the same time every day (including weekends) within 30 minutes is the single most evidence-backed sleep behaviour change. It feels counterintuitive when you've had a bad night, but lying in makes the next night worse.
+  _Raised up her plan when: sleep quality is poor or very poor_
 - **Morning light — 10 minutes outside within an hour of waking**  _(high priority)_
   Outdoor light (even on a cloudy day) is 10–50x brighter than indoor lighting. Exposure within the first hour of waking suppresses residual melatonin, improves daytime alertness, and anchors your sleep-wake cycle. A short walk or sitting by an open window counts. This is free and takes 10 minutes.
+  _Raised up her plan when: sleep quality is poor or very poor_
 - **Restorative movement for fatigue — not rest**  _(medium priority)_
   Counterintuitively, rest makes fatigue worse in most cases. Gentle, consistent movement — a 20-minute walk, yoga, swimming — activates energy systems and improves mitochondrial efficiency. Aim for movement every day even if it's just 15 minutes. Save high-intensity for when you have more energy in reserve.
+  _Raised up her plan when: exercise level is not active or lightly active_
 - **A 30-minute wind-down routine every night**  _(medium priority)_
   Your nervous system needs a transition signal between "daytime mode" and sleep. Build a consistent 30-minute routine: dim lights, no screens, something low-stimulus (reading, gentle stretching, a bath or shower). Doing the same sequence every night trains your body to associate it with sleep onset.
+  _Raised up her plan when: sleep quality is poor or very poor_
 
 ### Mindset & emotional
 
 - **Stop trying to sleep — paradoxical intention**  _(high priority)_
   The harder you try to sleep, the more alert you become. Cognitive therapy for insomnia (CBT-I) teaches "stimulus control" and "paradoxical intention" — if you're awake after 20 minutes, get up, do something calm in dim light, and only return to bed when sleepy. This breaks the anxiety loop around sleep. Ask your GP for a referral to a CBT-I programme or look for the Sleepio app via the NHS.
+  _Raised up her plan when: sleep quality is poor or very poor_
 - **Rest without guilt**  _(medium priority)_
   Many women push through fatigue because they feel they "should" be managing. Fatigue in perimenopause is physiological — it is your body adjusting to hormonal shifts, not a character flaw. Scheduling one deliberate rest period daily (even 20 minutes of lying down) and treating it as maintenance rather than weakness changes the emotional experience of fatigue significantly.
 
@@ -635,6 +668,7 @@ Shown when their **symptoms** is any of: "weight changes", "joint pain", "fatigu
   _Raised up her plan when: alcohol intake is regular or frequent_
 - **Reduce refined carbohydrates — not all carbs**  _(high priority)_
   The hormonal changes of perimenopause increase insulin resistance, meaning refined carbs (white bread, pastries, sugary drinks, white rice) spike blood sugar more than they used to. This drives fat storage, particularly around the abdomen. Focus on complex carbohydrates: oats, sweet potato, legumes, whole grain bread. You don't need to eliminate carbs — just choose ones that come with fibre.
+  _Raised up her plan when: medical flags is diabetes, OR diet type is convenience or unaware or mixed_
 - **Support joint health with collagen-building foods**  _(medium priority)_
   Vitamin C is essential for collagen synthesis in cartilage and connective tissue. Include citrus fruit, kiwi, red pepper, broccoli, and strawberries daily. Bone broth contains collagen precursors. Silica-rich foods (oats, leeks, green beans) also support connective tissue repair.
 
@@ -642,8 +676,10 @@ Shown when their **symptoms** is any of: "weight changes", "joint pain", "fatigu
 
 - **Strength training — the most important exercise for menopause**  _(high priority)_
   Resistance training (weights, resistance bands, bodyweight exercises) is the most evidence-backed intervention for perimenopause weight management, bone density, joint stability, and metabolism. It does not mean heavy powerlifting — even 2–3 sessions of 30 minutes weekly doing squats, lunges, press-ups, and rows produces measurable metabolic benefit. Start light and focus on form. If you want somewhere free to begin, the NHS publishes a Strength and Flex plan — a five-week series of equipment-free exercises — alongside its Fitness Studio workout videos.
+  _Raised up her plan when: exercise level is not active or lightly active_
 - **Protect joints with low-impact movement**  _(high priority)_
   For joint pain, prioritise movement that loads joints without impact: swimming, cycling, yoga, Pilates, walking on even ground. Avoid high-impact running or HIIT on hard surfaces until joint pain is managed. Warmup and cool-down are more important now than they were in your 30s — allow 5–10 minutes at each end of any workout.
+  _Raised up her plan when: exercise level is limited or not active_
 - **Consistency beats intensity for metabolic health**  _(medium priority)_
   Short bursts of high intensity exercise followed by days of rest are less effective for menopausal weight management than consistent moderate daily movement. A 30-minute walk every day produces more cumulative metabolic benefit than two intense 90-minute sessions per week. The goal is to avoid prolonged sitting — break it up every 60–90 minutes with even a 5-minute walk.
 
@@ -653,6 +689,7 @@ Shown when their **symptoms** is any of: "weight changes", "joint pain", "fatigu
   The average woman gains 2–5kg during the menopausal transition without any change in diet or activity. This is driven by declining oestrogen affecting fat distribution, not overeating. The shift from hip/thigh fat storage to abdominal storage is a hormonal response. Shame and restriction dieting worsen the metabolic picture. The goal is metabolic health — strength, energy, blood markers — not the number on the scale.
 - **Joint pain creates fear of movement — which makes it worse**  _(medium priority)_
   Pain causes protective movement avoidance, which leads to muscle weakness around joints, which leads to more pain. This is called kinesiophobia (fear of movement) and it's extremely common. Gentle, consistent, low-pain-level movement — even when joints ache — is therapeutic. If movement reliably increases your pain for more than a day after, speak to your GP about physiotherapy.
+  _Raised up her plan when: exercise level is not active or limited_
 
 ### Supplements
 

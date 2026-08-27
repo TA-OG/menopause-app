@@ -55,6 +55,12 @@ diet_adjustments:
       eliminate carbs — just choose ones that come with fibre.
     priority: high
     who_for: all
+    relevant_when:
+      # Refined carbs and insulin resistance.
+      - question: medical_flags
+        answer: [diabetes]
+      - question: diet_type
+        answer: [convenience, unaware, mixed]
 
   - id: df_collagen_joints
     category: diet
@@ -82,6 +88,10 @@ lifestyle_adjustments:
       equipment-free exercises — alongside its Fitness Studio workout videos.
     priority: high
     who_for: all
+    relevant_when:
+      # Starting resistance training.
+      - question: exercise_level
+        answer: [not_active, lightly_active]
 
   - id: lf_low_impact_joints
     category: lifestyle
@@ -94,6 +104,10 @@ lifestyle_adjustments:
       allow 5–10 minutes at each end of any workout.
     priority: high
     who_for: all
+    relevant_when:
+      # Low-impact options for someone whose movement is restricted.
+      - question: exercise_level
+        answer: [limited, not_active]
 
   - id: lf_movement_consistency
     category: lifestyle
@@ -134,6 +148,10 @@ mindset_recommendations:
       a day after, speak to your GP about physiotherapy.
     priority: medium
     who_for: all
+    relevant_when:
+      # Fear-of-movement cycle.
+      - question: exercise_level
+        answer: [not_active, limited]
 
 supplement_suggestions:
   - id: ss_omega3_joints

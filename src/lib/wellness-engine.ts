@@ -380,6 +380,26 @@ export const SCORE_WEIGHTS = {
   SYMPTOM_OVERLAP_CAP: 36,
   /** An authored `relevant_when` condition matched her answers. */
   DIRECTLY_RELEVANT: 45,
+  /**
+   * The card declares when it is relevant — and none of it applies to her.
+   *
+   * The symmetric half of DIRECTLY_RELEVANT, and it matters as much. Boosting
+   * alone leaves "Caffeine raises cortisol — limit to 1–2 cups before noon"
+   * leading the plan of a woman who told us she drinks one cup a day, because
+   * the card still wins on symptom match. An author who writes `relevant_when`
+   * has stated the conditions under which the card earns attention; when none
+   * hold, it has demonstrably less claim on hers.
+   *
+   * Applies ONLY to cards that declare `relevant_when`. An untagged card is
+   * untouched — silence from an author means "no view", never "irrelevant",
+   * so the 122 cards with no tag are not quietly demoted beneath the 44 tagged
+   * ones.
+   *
+   * Deliberately modest, and never removal: paired with DIRECTLY_RELEVANT it
+   * makes an ~85-point swing between "this is about you" and "this isn't",
+   * which reorders within a priority tier without burying content.
+   */
+  NOT_RELEVANT: -40,
   /** Severe/moderate primary symptom, on a card that targets her symptoms. */
   SEVERITY_SEVERE: 25,
   SEVERITY_MODERATE: 12,
@@ -433,6 +453,31 @@ export const MAX_POSITIVE_BONUS =
   SCORE_WEIGHTS.DIET_GAP
 
 /**
+ * The largest penalty an UNCAUTIONED recommendation can accumulate — every
+ * non-caution penalty at once (declared-but-irrelevant, already-explored, and
+ * a diet card for someone already eating well; DIRECTLY_RELEVANT and
+ * NOT_RELEVANT are mutually exclusive, so only the latter counts here).
+ *
+ * Needed because it sets the FLOOR of the uncautioned range, and the caution
+ * guarantee is about the whole range, not just the top of it.
+ */
+export const MAX_NEGATIVE_PENALTY =
+  SCORE_WEIGHTS.NOT_RELEVANT +
+  SCORE_WEIGHTS.PENALTY_PREVIOUSLY_TRIED +
+  SCORE_WEIGHTS.PENALTY_DIET_COVERED
+
+/**
+ * The full spread of scores an uncautioned recommendation can occupy:
+ * best case (high priority, every bonus) minus worst case (low priority, every
+ * penalty). `|CAUTION_DECLARED|` must exceed this, or a cautioned card could
+ * still outrank an uncautioned one. Asserted in wellness-engine.safety.test.ts.
+ */
+export const UNCAUTIONED_SCORE_SPREAD =
+  SCORE_WEIGHTS.PRIORITY_HIGH +
+  MAX_POSITIVE_BONUS -
+  (SCORE_WEIGHTS.PRIORITY_LOW + MAX_NEGATIVE_PENALTY)
+
+/**
  * Score a recommendation against everything she told us.
  *
  * Pure and deterministic: same recommendation + same signals ⇒ same score,
@@ -479,9 +524,15 @@ export function scoreRecommendation(
   if (goalSymptoms.some((s) => targets.includes(s))) score += W.GOAL_ALIGNED
 
   // ── Her day-to-day: authored relevance conditions ─────────────────────────
-  // This is how caffeine_intake, alcohol_intake, smoking_status, age_range and
-  // medical_flags reach the ranking — content declares when it matters.
-  if (isDirectlyRelevant(rec, answers)) score += W.DIRECTLY_RELEVANT
+  // This is how caffeine_intake, alcohol_intake, smoking_status, diet_type,
+  // exercise_level, sleep_quality, stress_level, age_range and medical_flags
+  // reach the ranking — content declares when it matters, in both directions.
+  // A card with no `relevant_when` is left alone: no author view, no adjustment.
+  if ((rec.relevant_when?.length ?? 0) > 0) {
+    score += isDirectlyRelevant(rec, answers)
+      ? W.DIRECTLY_RELEVANT
+      : W.NOT_RELEVANT
+  }
 
   // ── Lifestyle needs the content already targets by symptom ────────────────
   if (

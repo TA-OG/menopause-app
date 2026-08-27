@@ -21,7 +21,8 @@ import {
   matchFrameworks,
   selectFocus,
   SCORE_WEIGHTS,
-  MAX_POSITIVE_BONUS,
+  UNCAUTIONED_SCORE_SPREAD,
+  scoreRecommendation,
 } from './wellness-engine'
 import { deriveUserSignals } from './user-signals'
 import { loadFrameworks } from './load-frameworks'
@@ -293,15 +294,47 @@ describe('declared circumstances de-rank but never remove', () => {
   }
 
   it('the caution weight provably dominates every other signal combined', () => {
-    // A cautioned card must fall below the LOWEST-scoring uncautioned one,
-    // not merely below an identical twin. That bound is the full spread of
-    // achievable uncautioned scores.
-    const spread =
-      SCORE_WEIGHTS.PRIORITY_HIGH + MAX_POSITIVE_BONUS - SCORE_WEIGHTS.PRIORITY_LOW
+    // A cautioned card must fall below the LOWEST-scoring uncautioned one, not
+    // merely below an identical twin — so the bound is the full spread of
+    // achievable uncautioned scores, penalties included. Taking only
+    // PRIORITY_HIGH + bonuses - PRIORITY_LOW understates it: the floor moved
+    // down when NOT_RELEVANT was added, and a bound that ignores penalties
+    // would silently stop being sufficient the next time one is added.
     expect(
       Math.abs(SCORE_WEIGHTS.CAUTION_DECLARED),
-      `CAUTION_DECLARED must exceed ${spread} or a cautioned card can outrank an uncautioned one`
-    ).toBeGreaterThan(spread)
+      `CAUTION_DECLARED must exceed the uncautioned spread (${UNCAUTIONED_SCORE_SPREAD}) ` +
+        `or a cautioned card can outrank an uncautioned one`
+    ).toBeGreaterThan(UNCAUTIONED_SCORE_SPREAD)
+  })
+
+  it('no real recommendation can beat a cautioned one, at any weighting', () => {
+    // The arithmetic bound above, demonstrated on the actual content: score
+    // every card in a full plan for a user declaring each flag, and require
+    // every cautioned card to sit below every uncautioned one.
+    for (const flag of ['blood_thinners', 'thyroid', 'diabetes']) {
+      const { plan, signals } = planFor(withFlag(flag))
+      const all = [
+        ...plan.diet_adjustments,
+        ...plan.lifestyle_adjustments,
+        ...plan.mindset_recommendations,
+        ...plan.supplement_suggestions,
+      ]
+      const scored = all.map((r) => ({
+        id: r.id,
+        cautioned: Boolean(r.personal_note),
+        score: scoreRecommendation(r, signals),
+      }))
+      const worstUncautioned = Math.min(
+        ...scored.filter((s) => !s.cautioned).map((s) => s.score)
+      )
+      for (const s of scored.filter((s) => s.cautioned)) {
+        expect(
+          s.score,
+          `[${flag}] cautioned "${s.id}" scored ${s.score}, at or above the worst ` +
+            `uncautioned card (${worstUncautioned})`
+        ).toBeLessThan(worstUncautioned)
+      }
+    }
   })
 
   it('removes nothing at all when a flag is declared', () => {

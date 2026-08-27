@@ -29,6 +29,10 @@ diet_adjustments:
       available to prevent the stress-hunger spiral.
     priority: high
     who_for: all
+    relevant_when:
+      # Subject is blood glucose regulation.
+      - question: medical_flags
+        answer: [diabetes]
     targets_symptoms:
       - mood_changes
       - weight_changes
@@ -115,6 +119,10 @@ lifestyle_adjustments:
       feedback loop.
     priority: high
     who_for: all
+    relevant_when:
+      # The stress-sleep cycle specifically.
+      - question: sleep_quality
+        answer: [poor, very_poor]
     targets_symptoms:
       - sleep_problems
       - anxiety

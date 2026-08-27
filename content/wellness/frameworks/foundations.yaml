@@ -61,6 +61,12 @@ diet_adjustments:
       you eat — just the order.
     priority: medium
     who_for: all
+    relevant_when:
+      # The card itself says this 'matters less if your blood sugar control is already good'.
+      - question: diet_type
+        answer: [mixed, convenience, unaware]
+      - question: medical_flags
+        answer: [diabetes]
 
   - id: df_evening_eating_window
     category: diet
@@ -86,6 +92,10 @@ diet_adjustments:
       ginger, cinnamon, turmeric and red onion.
     priority: high
     who_for: all
+    relevant_when:
+      # The foundational whole-foods card — most relevant to someone who told us she isn't eating that way.
+      - question: diet_type
+        answer: [convenience, unaware, mixed]
     targets_symptoms:
       - weight_changes
       - fatigue
@@ -121,6 +131,10 @@ diet_adjustments:
       point to histamine sensitivity.
     priority: medium
     who_for: all
+    relevant_when:
+      # Directly about reducing processed food.
+      - question: diet_type
+        answer: [convenience, unaware]
 
   - id: df_thyroid_iron_support_foods
     category: diet
@@ -135,6 +149,10 @@ diet_adjustments:
       lentils with peppers or a squeeze of lemon) helps improve absorption.
     priority: medium
     who_for: all
+    relevant_when:
+      # The card is literally about thyroid nutrition.
+      - question: medical_flags
+        answer: [thyroid]
     targets_symptoms:
       - fatigue
       - hair_changes
@@ -207,6 +225,10 @@ lifestyle_adjustments:
       months.
     priority: high
     who_for: all
+    relevant_when:
+      # Light timing for sleep quality.
+      - question: sleep_quality
+        answer: [poor, very_poor]
     targets_symptoms:
       - sleep_problems
       - mood_changes
@@ -222,6 +244,10 @@ lifestyle_adjustments:
       jumping straight into cold open water, and don't swim alone.
     priority: medium
     who_for: all
+    relevant_when:
+      # Card's stated purpose is mood, energy and stress resilience.
+      - question: stress_level
+        answer: [high, very_high]
     targets_symptoms:
       - mood_changes
       - fatigue
@@ -243,6 +269,10 @@ lifestyle_adjustments:
       calmer at mealtimes and more comfortable afterwards.
     priority: medium
     who_for: all
+    relevant_when:
+      # Post-meal walking to blunt blood sugar spikes.
+      - question: medical_flags
+        answer: [diabetes]
 
   - id: lf_rebounding_box_jumping
     category: lifestyle
@@ -284,6 +314,10 @@ lifestyle_adjustments:
       and mood.
     priority: medium
     who_for: all
+    relevant_when:
+      # Shifting out of fight-or-flight — fires in foundations for everyone, so this is what makes it hers.
+      - question: stress_level
+        answer: [high, very_high]
     targets_symptoms:
       - anxiety
       - joint_pain
@@ -411,6 +445,10 @@ mindset_recommendations:
       testing.
     priority: medium
     who_for: all
+    relevant_when:
+      # Explicitly about thyroid conditions and insulin resistance.
+      - question: medical_flags
+        answer: [thyroid, diabetes]
 
   - id: mr_chronic_illness_pacing
     category: mindset
@@ -429,6 +467,10 @@ mindset_recommendations:
       standard lifestyle advice may need real modification.
     priority: medium
     who_for: all
+    relevant_when:
+      # Energy pacing where a condition limits activity — 'limited' is exactly that self-declaration.
+      - question: exercise_level
+        answer: [limited]
     targets_symptoms:
       - fatigue
       - brain_fog

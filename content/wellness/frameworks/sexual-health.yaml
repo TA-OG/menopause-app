@@ -115,6 +115,10 @@ mindset_recommendations:
       it is treating a progressive condition.
     priority: high
     who_for: all
+    relevant_when:
+      # Carries the reassurance this reader specifically needs: safe for many who cannot take systemic HRT.
+      - question: medical_flags
+        answer: [oestrogen_sensitive]
     targets_symptoms:
       - vaginal_dryness
 

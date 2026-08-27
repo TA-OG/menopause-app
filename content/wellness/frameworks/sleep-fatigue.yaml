@@ -23,6 +23,10 @@ diet_adjustments:
       walnuts) can support melatonin production.
     priority: high
     who_for: all
+    relevant_when:
+      # Evening foods specifically for sleep.
+      - question: sleep_quality
+        answer: [poor, very_poor]
 
   - id: df_caffeine_cutoff
     category: diet
@@ -50,6 +54,10 @@ diet_adjustments:
       women describe.
     priority: medium
     who_for: all
+    relevant_when:
+      # Subject is blood sugar and energy crashes.
+      - question: medical_flags
+        answer: [diabetes]
 
 lifestyle_adjustments:
   - id: lf_sleep_consistency
@@ -63,6 +71,10 @@ lifestyle_adjustments:
       lying in makes the next night worse.
     priority: high
     who_for: all
+    relevant_when:
+      # The single most evidence-backed sleep behaviour in the card's own words.
+      - question: sleep_quality
+        answer: [poor, very_poor]
 
   - id: lf_morning_light
     category: lifestyle
@@ -75,6 +87,10 @@ lifestyle_adjustments:
       takes 10 minutes.
     priority: high
     who_for: all
+    relevant_when:
+      # Anchoring the sleep-wake cycle.
+      - question: sleep_quality
+        answer: [poor, very_poor]
 
   - id: lf_restorative_movement
     category: lifestyle
@@ -87,6 +103,10 @@ lifestyle_adjustments:
       you have more energy in reserve.
     priority: medium
     who_for: all
+    relevant_when:
+      # Movement for fatigue when barely moving.
+      - question: exercise_level
+        answer: [not_active, lightly_active]
 
   - id: lf_wind_down
     category: lifestyle
@@ -99,6 +119,10 @@ lifestyle_adjustments:
       with sleep onset.
     priority: medium
     who_for: all
+    relevant_when:
+      # A wind-down routine for sleep onset.
+      - question: sleep_quality
+        answer: [poor, very_poor]
 
 mindset_recommendations:
   - id: mr_sleep_effort
@@ -113,6 +137,10 @@ mindset_recommendations:
       programme or look for the Sleepio app via the NHS.
     priority: high
     who_for: all
+    relevant_when:
+      # CBT-I for the anxiety loop around sleep.
+      - question: sleep_quality
+        answer: [poor, very_poor]
 
   - id: mr_fatigue_self_compassion
     category: mindset
