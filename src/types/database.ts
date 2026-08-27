@@ -186,6 +186,111 @@ export interface WellnessRecommendation {
    * user who matched several frameworks cannot read four cards as four doses.
    */
   max_daily_note?: string
+  /**
+   * Onboarding answers that make this recommendation *directly* relevant to
+   * this user, e.g. the caffeine-cutoff card for someone drinking 4+ cups.
+   *
+   * SEMANTICS DIFFER FROM `trigger_conditions` — READ THIS.
+   *   trigger_conditions : AND across conditions (all must match to fire).
+   *   relevant_when      : OR  across conditions (any match = directly relevant).
+   *
+   * The difference is deliberate. A framework fires when a user's whole
+   * situation matches. Relevance is naturally disjunctive: "this matters to
+   * you if any of these apply". Within a single condition, the `answer` array
+   * and `min_matches` behave exactly as they do for triggers.
+   *
+   * Relevance only ever adjusts RANKING. A recommendation is never removed for
+   * failing to match — a non-smoker still has the smoking-cessation card in her
+   * library, it simply stops competing for space at the top of her plan.
+   */
+  relevant_when?: TriggerCondition[]
+  /**
+   * Medical flags (from the `medical_flags` onboarding question) that this
+   * recommendation's OWN disclaimer already addresses.
+   *
+   * This is an INDEX INTO EXISTING VERIFIED CONTENT, never an independent
+   * clinical claim. `validateFlagTags()` enforces both directions: a tag whose
+   * disclaimer says nothing about that condition fails the build, and a
+   * disclaimer that names a condition without the matching tag fails too. So
+   * these tags cannot drift from — or invent beyond — the authored copy.
+   *
+   * A flag NEVER removes a recommendation. It surfaces the caution the author
+   * already wrote, and de-ranks the card out of the lead position.
+   */
+  caution_for?: string[]
+  /**
+   * Dietary restrictions (from the `diet_restrictions` onboarding question)
+   * that this recommendation needs adapting for — e.g. the two collagen cards,
+   * whose own copy says "if you have a fish or shellfish allergy, check the
+   * source", and glucosamine, which is "often shellfish-derived".
+   *
+   * Like `caution_for`, this indexes existing authored copy rather than adding
+   * a claim, and it NEVER removes a card. Removal would actively misfire on
+   * this content: every omega-3 card already reads "from fish oil or algae
+   * oil ... algae-based is the plant-based equivalent", so dropping it for a
+   * vegan would delete advice the author had deliberately made vegan-safe.
+   */
+  adapt_for?: string[]
+  /**
+   * Populated by the engine (not authored in YAML) when one of this user's own
+   * answers bears directly on this card — a medical flag it cautions about, or
+   * a dietary restriction it needs adapting for. This is what makes the plan
+   * visibly hers rather than generically correct.
+   */
+  personal_note?: PersonalNote
+}
+
+/**
+ * A single piece of "this applies to you, specifically" context attached to a
+ * recommendation by the engine, from the user's own onboarding answers.
+ */
+export interface PersonalNote {
+  /**
+   * 'caution' — a declared medical flag this card's disclaimer speaks to.
+   *             Always surfaced ABOVE any collapsed/"read more" boundary.
+   * 'adapt'   — a dietary restriction the card can be adapted for.
+   */
+  kind: 'caution' | 'adapt'
+  /** The onboarding answer values that produced this note, e.g. ['blood_thinners']. */
+  because: string[]
+  /** Reader-facing sentence. Never asserts anything the card does not already say. */
+  text: string
+}
+
+/**
+ * A normalised, total view of everything the user told us at intake.
+ *
+ * WHY THIS EXISTS
+ * `buildPlan()` used to receive only `preferences` and `primarySymptom`, and
+ * the engine read exactly one field off `preferences` (`exercise_level`). That
+ * meant 11 of the 20 questions onboarding asks could not possibly influence the
+ * plan — not because of a bug in the ranking, but because their answers were
+ * never passed to the code that builds it. Every one of them was written to the
+ * database and then never read again.
+ *
+ * Deriving one explicit object, from the full answer set, makes the engine's
+ * inputs visible and testable, and makes "which questions actually shape the
+ * plan?" a question with a checkable answer. See `onboarding-influence.test.ts`,
+ * which fails the build if a collected question stops mattering.
+ */
+export interface UserSignals {
+  age_range?: string
+  menopause_stage?: string
+  /** Every symptom she ticked. */
+  symptoms: string[]
+  primary_symptom?: string
+  symptom_severity?: string
+  primary_goal?: string
+  diet_type?: string
+  diet_restrictions: string[]
+  exercise_level?: string
+  smoking_status?: string
+  alcohol_intake?: string
+  caffeine_intake?: string
+  sleep_quality?: string
+  stress_level?: string
+  medical_flags: string[]
+  previously_tried: string[]
 }
 
 /**

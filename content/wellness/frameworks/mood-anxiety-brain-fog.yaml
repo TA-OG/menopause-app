@@ -68,6 +68,10 @@ lifestyle_adjustments:
       over weeks. If you do nothing else on this list, do this.
     priority: high
     who_for: all
+    relevant_when:
+      # The 'if you do nothing else, do this' starting card.
+      - question: exercise_level
+        answer: [not_active, lightly_active]
 
   - id: lf_stress_boundary
     category: lifestyle
@@ -81,6 +85,10 @@ lifestyle_adjustments:
       or reduce in frequency.
     priority: high
     who_for: all
+    relevant_when:
+      # Reducing obligations when overwhelmed.
+      - question: stress_level
+        answer: [high, very_high]
 
   - id: lf_brain_fog_tactics
     category: lifestyle
@@ -166,6 +174,10 @@ mindset_recommendations:
       underneath.
     priority: high
     who_for: all
+    relevant_when:
+      # Names thyroid and blood sugar as mood drivers people miss.
+      - question: medical_flags
+        answer: [thyroid, diabetes]
     targets_symptoms:
       - mood_changes
       - brain_fog
@@ -197,6 +209,10 @@ mindset_recommendations:
       problem."
     priority: medium
     who_for: all
+    relevant_when:
+      # Written for women with an oestrogen-sensitive history — endometriosis, adenomyosis, fibroids.
+      - question: medical_flags
+        answer: [oestrogen_sensitive]
 
   - id: mr_mood_reframe
     category: mindset

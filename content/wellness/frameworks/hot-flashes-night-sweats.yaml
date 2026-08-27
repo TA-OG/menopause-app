@@ -34,6 +34,12 @@ diet_adjustments:
       Many women find morning coffee is the single biggest driver.
     priority: high
     who_for: all
+    relevant_when:
+      # OR semantics: either answer makes this directly relevant to her.
+      - question: caffeine_intake
+        answer: [moderate, high]
+      - question: alcohol_intake
+        answer: [regular, frequent]
 
   - id: df_blood_sugar
     category: diet
@@ -48,6 +54,10 @@ diet_adjustments:
       Avoid refined carbs and sugary snacks on an empty stomach.
     priority: medium
     who_for: all
+    relevant_when:
+      # Subject is blood sugar stabilisation.
+      - question: medical_flags
+        answer: [diabetes]
 
   - id: df_hf_hydration
     category: diet
@@ -75,6 +85,10 @@ lifestyle_adjustments:
       keeping ambient temperature below 18°C.
     priority: high
     who_for: all
+    relevant_when:
+      # Practical night-sweat fix for sleeping through.
+      - question: sleep_quality
+        answer: [poor, very_poor]
 
   - id: lf_paced_breathing
     category: lifestyle
@@ -162,6 +176,10 @@ mindset_recommendations:
       have your water and fan ready and avoid looking at your phone.
     priority: high
     who_for: all
+    relevant_when:
+      # Protecting sleep through night sweats.
+      - question: sleep_quality
+        answer: [poor, very_poor]
 
   - id: mr_track_patterns
     category: mindset

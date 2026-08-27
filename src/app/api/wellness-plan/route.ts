@@ -4,6 +4,7 @@ import { createAdminClient } from '@/lib/supabase/admin'
 import { getUserAccess } from '@/lib/access'
 import { getGeoAccess } from '@/lib/geo'
 import { matchFrameworks, buildPlan, applyTierGating } from '@/lib/wellness-engine'
+import { deriveUserSignals } from '@/lib/user-signals'
 import { loadFrameworks } from '@/lib/load-frameworks'
 import { loadSubstanceRegistry } from '@/lib/substance-registry'
 import { loadCulturalModifiers, buildCulturalContext } from '@/lib/cultural-engine'
@@ -87,10 +88,16 @@ async function postHandler(request: NextRequest) {
     // Load all wellness frameworks from YAML
     const frameworks = await loadFrameworks()
 
+    // Everything she told us at intake, normalised into one object the engine
+    // can actually read. Before this existed, buildPlan() received only
+    // `preferences` (of which it read a single field) and `primarySymptom`, so
+    // 11 of the 20 questions onboarding asks — diet restrictions, medical
+    // flags, alcohol, caffeine, smoking, severity, goal, and the rest — were
+    // stored and then never looked at again. See src/lib/user-signals.ts.
+    const signals = deriveUserSignals(answers ?? [], preferences ?? {})
+
     // Extract primary symptom for priority boosting
-    const primarySymptom = (answers ?? [])
-      .find((a) => a.question_key === 'primary_symptom')
-      ?.answer_value
+    const primarySymptom = signals.primary_symptom
 
     // Run the engine
     const matchedFrameworks = matchFrameworks(answers ?? [], frameworks)
@@ -99,7 +106,13 @@ async function postHandler(request: NextRequest) {
     // user matching several frameworks receives the same supplement more than
     // once, with dose ranges that read as additive.
     const substances = loadSubstanceRegistry()
-    const plan = buildPlan(matchedFrameworks, preferences ?? {}, primarySymptom, substances)
+    const plan = buildPlan(
+      matchedFrameworks,
+      preferences ?? {},
+      primarySymptom,
+      substances,
+      signals,
+    )
 
     // Load cultural modifiers based on heritage answers + country
     const heritageAnswers = (answers ?? [])
