@@ -15,13 +15,22 @@
  */
 
 import { describe, it, expect, beforeAll } from 'vitest'
-import { buildPlan, buildSubstanceIndex } from './wellness-engine'
+import {
+  buildPlan,
+  buildSubstanceIndex,
+  matchFrameworks,
+  selectFocus,
+  SCORE_WEIGHTS,
+  MAX_POSITIVE_BONUS,
+} from './wellness-engine'
+import { deriveUserSignals } from './user-signals'
 import { loadFrameworks } from './load-frameworks'
 import { loadSubstanceRegistry } from './substance-registry'
 import type {
   WellnessFramework,
   SubstanceEntry,
   WellnessRecommendation,
+  OnboardingAnswer,
 } from '@/types/database'
 
 let frameworks: WellnessFramework[]
@@ -239,5 +248,149 @@ describe('ceilings are only attached where verified', () => {
         ).toBeUndefined()
       }
     }
+  })
+})
+
+/**
+ * ─────────────────────────────────────────────────────────────────────────────
+ * DECLARED MEDICAL FLAGS AND DIETARY RESTRICTIONS
+ *
+ * These answers were collected from every user since launch and read by
+ * nothing. Wiring them up creates two new ways to cause harm, and these tests
+ * exist to close both:
+ *
+ *   1. A cautioned supplement leading her plan — the caution present but too
+ *      far down to be read before she buys something.
+ *   2. A card silently vanishing because she declared something — which looks
+ *      like safety and is the opposite. Suppression would hide the very
+ *      caution she most needs, and on THIS content it also misfires: every
+ *      omega-3 card already offers algae oil as the plant-based equivalent, so
+ *      dropping it for a vegan would delete advice written to be vegan-safe.
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
+describe('declared circumstances de-rank but never remove', () => {
+  const SEVERE_MULTI: OnboardingAnswer[] = [
+    { id: '1', user_id: 'u', question_key: 'menopause_stage', answer_value: 'postmenopause', answered_at: '' },
+    ...['hot_flashes', 'sleep_problems', 'joint_pain', 'skin_changes', 'anxiety'].map(
+      (s, i) => ({ id: `s${i}`, user_id: 'u', question_key: 'symptoms', answer_value: s, answered_at: '' })
+    ),
+    { id: 'p', user_id: 'u', question_key: 'primary_symptom', answer_value: 'joint_pain', answered_at: '' },
+    { id: 'sev', user_id: 'u', question_key: 'symptom_severity', answer_value: 'severe', answered_at: '' },
+  ]
+
+  const withFlag = (flag: string): OnboardingAnswer[] => [
+    ...SEVERE_MULTI,
+    { id: 'f', user_id: 'u', question_key: 'medical_flags', answer_value: flag, answered_at: '' },
+  ]
+
+  function planFor(answers: OnboardingAnswer[]) {
+    const signals = deriveUserSignals(answers, {})
+    const matched = matchFrameworks(answers, frameworks)
+    return {
+      signals,
+      plan: buildPlan(matched, {}, signals.primary_symptom, substances, signals),
+    }
+  }
+
+  it('the caution weight provably dominates every other signal combined', () => {
+    // A cautioned card must fall below the LOWEST-scoring uncautioned one,
+    // not merely below an identical twin. That bound is the full spread of
+    // achievable uncautioned scores.
+    const spread =
+      SCORE_WEIGHTS.PRIORITY_HIGH + MAX_POSITIVE_BONUS - SCORE_WEIGHTS.PRIORITY_LOW
+    expect(
+      Math.abs(SCORE_WEIGHTS.CAUTION_DECLARED),
+      `CAUTION_DECLARED must exceed ${spread} or a cautioned card can outrank an uncautioned one`
+    ).toBeGreaterThan(spread)
+  })
+
+  it('removes nothing at all when a flag is declared', () => {
+    const base = planFor(SEVERE_MULTI).plan
+    const flagged = planFor(withFlag('blood_thinners')).plan
+
+    const ids = (p: typeof base) =>
+      [
+        ...p.diet_adjustments,
+        ...p.lifestyle_adjustments,
+        ...p.mindset_recommendations,
+        ...p.supplement_suggestions,
+      ]
+        .map((r) => r.id)
+        .sort()
+
+    // Same recommendations, start to finish. Only the order and the notes move.
+    expect(ids(flagged)).toEqual(ids(base))
+  })
+
+  it('surfaces a personal note on every card that cautions about her flag', () => {
+    const { plan } = planFor(withFlag('blood_thinners'))
+    const noted = plan.supplement_suggestions.filter((r) => r.personal_note)
+
+    // Anticoagulants are cautioned on omega-3, K2, ginkgo, vitamin E,
+    // curcumin, glucosamine and the enzyme blends — several must survive
+    // dedupe into any plan this broad.
+    expect(noted.length).toBeGreaterThan(0)
+    for (const rec of noted) {
+      expect(rec.personal_note?.because).toContain('blood_thinners')
+      expect(rec.personal_note?.kind).toBe('caution')
+      // The note must never replace the author's own disclaimer.
+      expect(rec.disclaimer?.trim()).toBeTruthy()
+    }
+  })
+
+  it('never lets a cautioned recommendation lead her plan', () => {
+    for (const flag of ['blood_thinners', 'pregnant_breastfeeding', 'thyroid', 'diabetes']) {
+      const { plan, signals } = planFor(withFlag(flag))
+      const focus = selectFocus(plan, signals, 5)
+
+      for (const rec of focus) {
+        expect(
+          rec.personal_note,
+          `[${flag}] "${rec.id}" carries a caution she declared and is still in her top 5`
+        ).toBeUndefined()
+      }
+    }
+  })
+
+  it('keeps every cautioned card reachable, with its caution intact', () => {
+    const { plan } = planFor(withFlag('blood_thinners'))
+    const cautioned = plan.supplement_suggestions.filter(
+      (r) => r.personal_note?.because.includes('blood_thinners')
+    )
+    for (const rec of cautioned) {
+      // Still in the plan, still carrying everything a reader needs.
+      expect(plan.supplement_suggestions).toContain(rec)
+      expect(rec.disclaimer).toBeTruthy()
+      expect(rec.personal_note?.text).toMatch(/GP or pharmacist/)
+    }
+  })
+
+  it('treats a dietary restriction as adaptation, not exclusion', () => {
+    const answers: OnboardingAnswer[] = [
+      ...SEVERE_MULTI,
+      { id: 'd', user_id: 'u', question_key: 'diet_restrictions', answer_value: 'shellfish_allergy', answered_at: '' },
+    ]
+    const { plan } = planFor(answers)
+    const adapted = plan.supplement_suggestions.filter((r) =>
+      r.personal_note?.because.includes('shellfish_allergy')
+    )
+
+    // Collagen and glucosamine both name shellfish sourcing in their own copy.
+    expect(adapted.length).toBeGreaterThan(0)
+    for (const rec of adapted) {
+      expect(rec.personal_note?.kind).toBe('adapt')
+      expect(plan.supplement_suggestions).toContain(rec)
+    }
+  })
+
+  it('adds no note for a flag she did not declare', () => {
+    const { plan } = planFor(SEVERE_MULTI)
+    const all = [
+      ...plan.diet_adjustments,
+      ...plan.lifestyle_adjustments,
+      ...plan.mindset_recommendations,
+      ...plan.supplement_suggestions,
+    ]
+    expect(all.every((r) => r.personal_note === undefined)).toBe(true)
   })
 })

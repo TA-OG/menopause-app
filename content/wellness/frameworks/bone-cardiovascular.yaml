@@ -103,6 +103,12 @@ lifestyle_adjustments:
       Speak to your GP.
     priority: high
     who_for: all
+    relevant_when:
+      # Authored `priority: high` because smoking is the biggest modifiable
+      # cardiovascular risk after menopause — but it led the plan of every
+      # non-smoker who reached this framework. This makes it lead a smoker's.
+      - question: smoking_status
+        answer: [occasional_smoker, regular_smoker]
 
 mindset_recommendations:
   - id: mr_bone_density_check

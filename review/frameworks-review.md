@@ -1,7 +1,7 @@
 # Wellness plan — plain-English review
 
 _This is what the app will tell users, generated from the current content._
-_Reviewed: 17 August 2026_
+_Reviewed: 27 August 2026_
 
 ---
 ## Bone & Heart Health
@@ -26,6 +26,7 @@ Shown when their **menopause stage** is any of: "menopause", "postmenopause", "s
   150 minutes of moderate-intensity aerobic activity per week (brisk walking, cycling, swimming, dancing) reduces cardiovascular risk, lowers blood pressure, and improves cholesterol profile. It also reduces the risk of type 2 diabetes, which rises after menopause. Break this into 5 x 30-minute sessions or 6 x 25-minute sessions — consistency across the week matters more than single long sessions.
 - **Stopping smoking — the single biggest cardiovascular intervention**  _(high priority)_
   Smoking doubles the risk of a heart attack and is the primary modifiable risk factor for cardiovascular disease in postmenopausal women. It also accelerates bone loss (smokers have 10–15% lower bone density than non-smokers) and worsens hot flashes. NHS Stop Smoking Services, varenicline (Champix), and combination nicotine replacement therapy are all more effective than willpower alone. Speak to your GP.
+  _Raised up her plan when: smoking status is occasional smoker or regular smoker_
 
 ### Mindset & emotional
 
@@ -72,6 +73,7 @@ Shown to **every user**, regardless of their answers.
   _Targets: fatigue, hair changes_
 - **If you notice itching or migraines — histamine may be worth a look**  _(medium priority)_
   If you're experiencing itching or migraines alongside other symptoms like bloating or flushing, histamine intolerance is one thing some practitioners consider — it's not something you can self-diagnose from diet alone, so this is worth raising with your GP or a practitioner rather than a reliable at-home test. If you do want to experiment, some women try reducing fermented foods, cheese and alcohol for a couple of weeks and see whether symptoms shift. Fermented foods (sauerkraut, kefir, kimchi, kombucha) genuinely support a healthy microbiome for many women, but they're also high in histamine, so this is a real trade-off for some — not a silent contradiction with the gut-health advice elsewhere.
+  _Raised up her plan when: alcohol intake is regular or frequent_
 
 ### Lifestyle
 
@@ -157,9 +159,11 @@ Shown when their **stress level** is any of: "high", "very high".
 - **Stress depletes magnesium — eat foods that replenish it**  _(medium priority)_
   Magnesium is excreted at higher rates under stress. Magnesium deficiency worsens anxiety, sleep, and muscle tension — creating a feedback loop. Magnesium-rich foods: dark chocolate (>70%), pumpkin seeds, spinach, black beans, almonds, avocado, and bananas. These are better than supplements as a first approach. Reduce alcohol and caffeine, which also increase magnesium excretion.
   _Targets: anxiety, sleep problems_
+  _Raised up her plan when: caffeine intake is moderate or high, OR alcohol intake is regular or frequent_
 - **Caffeine raises cortisol — limit to 1–2 cups before noon**  _(high priority)_
   Caffeine triggers the adrenal glands to release cortisol and adrenaline — the same stress response that chronic stress already keeps elevated. If you are in a chronic stress state, caffeine adds to the cortisol burden rather than giving you genuine energy. Cut to 1–2 cups of coffee, finishing before noon — deliberately earlier than the general 1pm cutoff for sleep, because you are managing the cortisol load as well as the sleep effect. The withdrawal headache lasts 2–3 days; after that, most women report more stable energy and lower baseline anxiety.
   _Targets: anxiety, sleep problems, hot flashes_
+  _Raised up her plan when: caffeine intake is moderate or high_
 
 ### Lifestyle
 
@@ -204,6 +208,7 @@ Shown when their **symptoms** is any of: "hot flashes", "night sweats".
   Foods rich in phytoestrogens — ground flaxseed, edamame, tofu, tempeh — can help buffer oestrogen fluctuations that drive hot flushes. Aim for 1–2 tablespoons of ground flaxseed daily added to porridge, yoghurt, or smoothies.
 - **Reduce common flush triggers**  _(high priority)_
   Caffeine, alcohol, spicy food, and very hot drinks are the most commonly reported dietary triggers for hot flushes. Try removing one at a time for two weeks and note whether flush frequency or severity decreases. Many women find morning coffee is the single biggest driver.
+  _Raised up her plan when: caffeine intake is moderate or high, OR alcohol intake is regular or frequent_
 - **Stabilise blood sugar as a general foundation**  _(medium priority)_
   Some women notice blood sugar spikes and crashes seem to bring on or worsen a flush, though this isn't an established trigger for menopausal vasomotor symptoms generally — worth watching for in yourself rather than assuming it applies. Eating protein and healthy fat at every meal (e.g. eggs, nuts, oily fish, avocado) slows glucose absorption regardless, and is a reasonable foundation either way. Avoid refined carbs and sugary snacks on an empty stomach.
 - **Stay consistently hydrated**  _(medium priority)_
@@ -535,6 +540,7 @@ Shown when their **symptoms** is any of: "sleep problems", "fatigue".
   Tryptophan is a precursor to serotonin and melatonin — the hormones that regulate sleep. Foods high in tryptophan include turkey, chicken, eggs, pumpkin seeds, oats, and dairy. A small protein-and-carb snack 90 minutes before bed (e.g. a small bowl of oat porridge or a banana with a few walnuts) can support melatonin production.
 - **Set a hard caffeine cutoff at 1pm**  _(high priority)_
   Caffeine has a half-life of 5–6 hours — a 3pm coffee still has half its caffeine in your system at 8pm. Shifting your cutoff to 1pm is the single most impactful dietary change most women can make for sleep quality. Switch to herbal tea, rooibos, or decaf after lunch.
+  _Raised up her plan when: caffeine intake is moderate or high_
 - **Eat for stable energy across the day**  _(medium priority)_
   Fatigue is often worsened by blood sugar crashes. Avoid skipping meals and aim for protein, healthy fat, and fibre at every meal to sustain energy. A small mid-morning and mid-afternoon snack (a handful of nuts, an apple with nut butter) prevents the 3pm crash many perimenopausal women describe.
 
@@ -626,6 +632,7 @@ Shown when their **symptoms** is any of: "weight changes", "joint pain", "fatigu
   Oestrogen decline accelerates muscle loss (sarcopenia), which slows metabolism and makes weight management harder. Aim for 1.2–1.6g of protein per kg of body weight daily. Spread this across meals: 25–30g per meal is more effective for muscle protein synthesis than eating most of it at dinner. Sources: eggs, chicken, fish, Greek yoghurt, legumes, cottage cheese, tofu.
 - **Anti-inflammatory eating for joint pain**  _(high priority)_
   Joint pain in perimenopause is partly driven by inflammation as oestrogen's anti-inflammatory effect declines. Foods that support the anti-inflammatory pathway: olive oil, oily fish, berries, turmeric, ginger, dark leafy greens, colourful vegetables. Foods that drive inflammation: ultra-processed foods, refined sugar, seed oils (sunflower, vegetable), excessive alcohol.
+  _Raised up her plan when: alcohol intake is regular or frequent_
 - **Reduce refined carbohydrates — not all carbs**  _(high priority)_
   The hormonal changes of perimenopause increase insulin resistance, meaning refined carbs (white bread, pastries, sugary drinks, white rice) spike blood sugar more than they used to. This drives fat storage, particularly around the abdomen. Focus on complex carbohydrates: oats, sweet potato, legumes, whole grain bread. You don't need to eliminate carbs — just choose ones that come with fibre.
 - **Support joint health with collagen-building foods**  _(medium priority)_

@@ -47,6 +47,12 @@ diet_adjustments:
       also increase magnesium excretion.
     priority: medium
     who_for: all
+    relevant_when:
+      # OR semantics: either answer makes this directly relevant to her.
+      - question: caffeine_intake
+        answer: [moderate, high]
+      - question: alcohol_intake
+        answer: [regular, frequent]
     targets_symptoms:
       - anxiety
       - sleep_problems
@@ -65,6 +71,10 @@ diet_adjustments:
       women report more stable energy and lower baseline anxiety.
     priority: high
     who_for: all
+    relevant_when:
+      # She drinks 2+ cups a day — this card is about her, not general advice.
+      - question: caffeine_intake
+        answer: [moderate, high]
     targets_symptoms:
       - anxiety
       - sleep_problems

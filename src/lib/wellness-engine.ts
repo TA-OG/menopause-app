@@ -6,7 +6,11 @@ import type {
   UserPreferences,
   TriggerCondition,
   SubstanceEntry,
+  UserSignals,
+  PersonalNote,
 } from '@/types/database'
+import { signalsToAnswers } from './user-signals'
+import { circumstancesFor, labelFor, noteKindFor } from './medical-flags'
 
 /**
  * Wellness Recommendation Engine
@@ -283,7 +287,316 @@ function sortByPriority(
   })
 }
 
+// ─── Signal-driven relevance and ranking ──────────────────────────────────────
+
+/**
+ * Does this recommendation speak directly to something she told us?
+ *
+ * OR semantics across conditions — see the `relevant_when` doc comment in
+ * types/database.ts. Deliberately different from `trigger_conditions`, which
+ * are AND. Relevance is "any of these apply to you"; triggering is "your whole
+ * situation matches this framework".
+ *
+ * Evaluated with the SAME `evaluateCondition` used for framework triggers, so a
+ * condition an author writes behaves identically wherever they write it.
+ */
+function isDirectlyRelevant(
+  rec: WellnessRecommendation,
+  answers: OnboardingAnswer[]
+): boolean {
+  const conditions = rec.relevant_when ?? []
+  if (conditions.length === 0) return false
+  return conditions.some((condition) => evaluateCondition(condition, answers))
+}
+
+/**
+ * Goals, in her words, mapped to the symptoms they're about.
+ *
+ * This is a UX mapping of the user's OWN stated goal onto the vocabulary the
+ * content already uses — not a clinical inference. Keys are the exact
+ * `answer_value`s from GOAL_CHOICES in onboarding-config.ts;
+ * `onboarding-influence.test.ts` fails the build if they drift apart.
+ *
+ * 'Understand my body better' and 'All of the above' map to nothing on purpose:
+ * neither singles out a symptom, so neither should quietly re-rank her plan.
+ */
+const GOAL_TO_SYMPTOMS: Record<string, string[]> = {
+  'Improve sleep': ['sleep_problems', 'fatigue'],
+  'Manage mood and stress': ['mood_changes', 'anxiety', 'brain_fog'],
+  'Manage weight': ['weight_changes'],
+  'Boost energy': ['fatigue'],
+  'Improve relationships and intimacy': ['low_libido', 'vaginal_dryness'],
+  'Reduce physical symptoms': ['hot_flashes', 'night_sweats', 'joint_pain'],
+}
+
+/**
+ * `previously_tried` answers mapped onto recommendation categories.
+ *
+ * READ THE CAVEAT. The question asks "Have you tried anything to manage your
+ * symptoms?" — it does NOT ask whether it helped. The step's own subtitle
+ * promises "we won't repeat what hasn't worked", which the answer cannot
+ * actually establish: she may have tried diet changes and be doing well on them.
+ *
+ * So this applies a SMALL nudge (see PENALTY_PREVIOUSLY_TRIED) that lets
+ * approaches she hasn't explored surface first, and nothing stronger. It never
+ * removes anything. Turning this into a real signal needs a follow-up question
+ * ("did it help?"), which is a product change, not an engine one.
+ */
+const TRIED_TO_CATEGORY: Record<string, WellnessRecommendation['category']> = {
+  'Diet changes': 'diet',
+  Exercise: 'lifestyle',
+  'Natural supplements': 'supplement',
+  'Mindfulness / meditation': 'mindset',
+}
+
+/**
+ * Scoring weights. Exported so tests can assert on intent rather than on magic
+ * numbers, and so the ordering of a plan is explainable to the woman reading it.
+ *
+ * TIER CROSSING IS INTENDED, UPWARDS.
+ * Authored priority is the largest single term, but the positive bonuses can
+ * sum past the 100-point gap between tiers (see MAX_POSITIVE_BONUS below), and
+ * that is the point: a 'medium' card that targets her primary symptom, matches
+ * her stated goal and speaks to her caffeine intake SHOULD outrank a 'high'
+ * card that applies to nobody in her situation. The smoking-cessation card is
+ * the clearest case — authored `high` because smoking is the single biggest
+ * cardiovascular risk, and it earns DIRECTLY_RELEVANT for a smoker while
+ * correctly sinking for the ~80% of users who have never smoked.
+ *
+ * CAUTIONS CROSS DOWNWARDS, ABSOLUTELY.
+ * CAUTION_DECLARED is set so that a cautioned card can never outrank ANY
+ * uncautioned one, whatever else it has going for it. That guarantee is
+ * asserted in wellness-engine.safety.test.ts rather than left to inspection.
+ */
+export const SCORE_WEIGHTS = {
+  PRIORITY_HIGH: 300,
+  PRIORITY_MEDIUM: 200,
+  PRIORITY_LOW: 100,
+  /** Card targets the symptom she said bothers her most. */
+  PRIMARY_SYMPTOM: 60,
+  /** Per additional symptom of hers the card targets. */
+  SYMPTOM_OVERLAP: 12,
+  /** Cap on stacked symptom-overlap bonus, so a broad card can't run away. */
+  SYMPTOM_OVERLAP_CAP: 36,
+  /** An authored `relevant_when` condition matched her answers. */
+  DIRECTLY_RELEVANT: 45,
+  /** Severe/moderate primary symptom, on a card that targets her symptoms. */
+  SEVERITY_SEVERE: 25,
+  SEVERITY_MODERATE: 12,
+  /** Card is about a symptom named by her stated goal. */
+  GOAL_ALIGNED: 30,
+  /** Diet cards, for someone who told us diet is her weak point. */
+  DIET_GAP: 20,
+  /** Diet cards, for someone already eating mostly whole foods. */
+  PENALTY_DIET_COVERED: -15,
+  /** Poor sleep, on a card targeting sleep. */
+  SLEEP_NEED: 25,
+  /** High stress, on a card targeting anxiety or mood. */
+  STRESS_NEED: 20,
+  /** She's already explored this category — see TRIED_TO_CATEGORY caveat. */
+  PENALTY_PREVIOUSLY_TRIED: -25,
+  /**
+   * A circumstance she declared is cautioned about on this card.
+   *
+   * MUST dominate every other term combined. The guarantee it buys is:
+   *
+   *     a cautioned card never outranks an uncautioned one — ever
+   *
+   * For that, |CAUTION_DECLARED| must exceed the full spread of achievable
+   * uncautioned scores, i.e. (PRIORITY_HIGH + MAX_POSITIVE_BONUS) −
+   * PRIORITY_LOW = (300 + 261) − 100 = 461. A merely "large" −250 would NOT
+   * do it: a high-priority, highly-relevant cautioned supplement would score
+   * 300 + 261 − 250 = 311 and still sit above an uncautioned high card on 300.
+   * −1000 clears the bound with room for future weights, and is checked by
+   * `SCORE_WEIGHTS` invariants rather than trusted.
+   *
+   * It de-ranks; it never removes. The card stays present, readable, and
+   * carrying its caution — see medical-flags.ts for why suppression is the
+   * more dangerous option here.
+   */
+  CAUTION_DECLARED: -1000,
+} as const
+
+/**
+ * The largest bonus any single recommendation can accumulate, if every positive
+ * signal fires at once. Derived, not typed in, so it cannot fall out of date
+ * when a weight is added or changed.
+ */
+export const MAX_POSITIVE_BONUS =
+  SCORE_WEIGHTS.PRIMARY_SYMPTOM +
+  SCORE_WEIGHTS.SYMPTOM_OVERLAP_CAP +
+  SCORE_WEIGHTS.DIRECTLY_RELEVANT +
+  SCORE_WEIGHTS.SEVERITY_SEVERE +
+  SCORE_WEIGHTS.GOAL_ALIGNED +
+  SCORE_WEIGHTS.SLEEP_NEED +
+  SCORE_WEIGHTS.STRESS_NEED +
+  SCORE_WEIGHTS.DIET_GAP
+
+/**
+ * Score a recommendation against everything she told us.
+ *
+ * Pure and deterministic: same recommendation + same signals ⇒ same score,
+ * always. That matters because "why is this at the top of my plan?" has to have
+ * a stable answer.
+ */
+export function scoreRecommendation(
+  rec: WellnessRecommendation,
+  signals: UserSignals,
+  answers: OnboardingAnswer[] = signalsToAnswers(signals)
+): number {
+  const W = SCORE_WEIGHTS
+  let score =
+    rec.priority === 'high'
+      ? W.PRIORITY_HIGH
+      : rec.priority === 'medium'
+        ? W.PRIORITY_MEDIUM
+        : W.PRIORITY_LOW
+
+  const targets = rec.targets_symptoms ?? []
+  const hers = new Set(signals.symptoms)
+
+  // ── What she came here for ────────────────────────────────────────────────
+  if (signals.primary_symptom && targets.includes(signals.primary_symptom)) {
+    score += W.PRIMARY_SYMPTOM
+  }
+
+  const overlap = targets.filter(
+    (s) => hers.has(s) && s !== signals.primary_symptom
+  ).length
+  score += Math.min(overlap * W.SYMPTOM_OVERLAP, W.SYMPTOM_OVERLAP_CAP)
+
+  // ── How much it's affecting her ───────────────────────────────────────────
+  const touchesHerSymptoms = targets.some((s) => hers.has(s))
+  if (touchesHerSymptoms) {
+    if (signals.symptom_severity === 'severe') score += W.SEVERITY_SEVERE
+    else if (signals.symptom_severity === 'moderate') score += W.SEVERITY_MODERATE
+  }
+
+  // ── What she said she wants ───────────────────────────────────────────────
+  const goalSymptoms = signals.primary_goal
+    ? (GOAL_TO_SYMPTOMS[signals.primary_goal] ?? [])
+    : []
+  if (goalSymptoms.some((s) => targets.includes(s))) score += W.GOAL_ALIGNED
+
+  // ── Her day-to-day: authored relevance conditions ─────────────────────────
+  // This is how caffeine_intake, alcohol_intake, smoking_status, age_range and
+  // medical_flags reach the ranking — content declares when it matters.
+  if (isDirectlyRelevant(rec, answers)) score += W.DIRECTLY_RELEVANT
+
+  // ── Lifestyle needs the content already targets by symptom ────────────────
+  if (
+    (signals.sleep_quality === 'poor' || signals.sleep_quality === 'very_poor') &&
+    targets.includes('sleep_problems')
+  ) {
+    score += W.SLEEP_NEED
+  }
+  if (
+    (signals.stress_level === 'high' || signals.stress_level === 'very_high') &&
+    (targets.includes('anxiety') || targets.includes('mood_changes'))
+  ) {
+    score += W.STRESS_NEED
+  }
+
+  // ── Where her biggest gap is ──────────────────────────────────────────────
+  if (rec.category === 'diet') {
+    if (signals.diet_type === 'convenience' || signals.diet_type === 'unaware') {
+      score += W.DIET_GAP
+    } else if (signals.diet_type === 'whole_foods') {
+      score += W.PENALTY_DIET_COVERED
+    }
+  }
+
+  // ── What she's already explored (small nudge only — see caveat above) ─────
+  const triedCategories = new Set(
+    signals.previously_tried
+      .map((t) => TRIED_TO_CATEGORY[t])
+      .filter((c): c is WellnessRecommendation['category'] => Boolean(c))
+  )
+  if (triedCategories.has(rec.category)) score += W.PENALTY_PREVIOUSLY_TRIED
+
+  // ── Anything she declared that this card cautions about ───────────────────
+  const declared = new Set([...signals.medical_flags, ...signals.diet_restrictions])
+  const applicable = circumstancesFor(rec).filter((c) => declared.has(c))
+  if (applicable.length > 0) score += W.CAUTION_DECLARED
+
+  return score
+}
+
+/**
+ * Attach "this applies to you" context drawn from her own answers.
+ *
+ * The note repeats the card's existing caution in her terms; it never asserts
+ * anything the card does not already say. `personal_note` is rendered ABOVE any
+ * "read more" boundary, alongside `disclaimer` and `max_daily_note` — a caution
+ * that collapses is a caution that doesn't exist.
+ */
+function attachPersonalNotes(
+  recs: WellnessRecommendation[],
+  signals: UserSignals
+): WellnessRecommendation[] {
+  const declared = new Set([...signals.medical_flags, ...signals.diet_restrictions])
+  if (declared.size === 0) return recs
+
+  return recs.map((rec) => {
+    const applicable = circumstancesFor(rec).filter((c) => declared.has(c))
+    if (applicable.length === 0) return rec
+
+    const labels = applicable
+      .map((value) => labelFor(value))
+      .filter((l): l is string => Boolean(l))
+    if (labels.length === 0) return rec
+
+    // 'caution' wins when both kinds apply — it is the more serious of the two.
+    const kind: PersonalNote['kind'] = applicable.some(
+      (c) => noteKindFor(c) === 'caution'
+    )
+      ? 'caution'
+      : 'adapt'
+
+    const because = labels.join(', and ')
+    const text =
+      kind === 'caution'
+        ? `You told us ${because}. This one carries a caution that applies to you — ` +
+          `read it below and check with your GP or pharmacist before starting.`
+        : `You told us ${because}. This one needs checking or adapting — ` +
+          `see the note below before you buy anything.`
+
+    return { ...rec, personal_note: { kind, because: applicable, text } }
+  })
+}
+
 // ─── Plan building ────────────────────────────────────────────────────────────
+
+/**
+ * Rank a processed category by everything the user told us, and attach her
+ * personal notes.
+ *
+ * Runs LAST, on the already-filtered, already-deduplicated, already-priority-
+ * sorted list. Ordering matters:
+ *
+ *   - after dedupe, so a substance is scored once, on the surviving card
+ *     (scoring before dedupe could pick a different winner and quietly undo
+ *     the dose-stacking guarantee)
+ *   - after sortByPriority, so its deterministic tie-break survives as the
+ *     baseline order that equal scores fall back to
+ *
+ * `Array.prototype.sort` is stable in every engine this runs on (required by
+ * spec since ES2019), so recommendations with equal scores keep exactly the
+ * order sortByPriority gave them. That is what preserves the primary-symptom
+ * tie-break the regression test in wellness-engine.test.ts guards.
+ */
+function rankBySignals(
+  recs: WellnessRecommendation[],
+  signals: UserSignals,
+  answers: OnboardingAnswer[]
+): WellnessRecommendation[] {
+  const scored = attachPersonalNotes(recs, signals)
+  return [...scored].sort(
+    (a, b) =>
+      scoreRecommendation(b, signals, answers) -
+      scoreRecommendation(a, signals, answers)
+  )
+}
 
 /**
  * Build a personalised wellness plan from matched frameworks.
@@ -291,12 +604,20 @@ function sortByPriority(
  * @param matchedFrameworks  Frameworks that fired for this user
  * @param preferences        User lifestyle preferences (for filtering)
  * @param primarySymptom     User's declared #1 symptom (for priority boost)
+ * @param substances         Substance registry (dedupe + dose ceilings)
+ * @param signals            Everything else she told us at intake. OPTIONAL, and
+ *                           omitting it reproduces the previous behaviour
+ *                           exactly — no scoring pass, no personal notes. That
+ *                           keeps every existing caller and test valid while the
+ *                           signal-aware path is adopted; /api/wellness-plan
+ *                           passes it.
  */
 export function buildPlan(
   matchedFrameworks: WellnessFramework[],
   preferences: Partial<UserPreferences> = {},
   primarySymptom?: string,
-  substances: SubstanceEntry[] = []
+  substances: SubstanceEntry[] = [],
+  signals?: UserSignals
 ): Omit<WellnessPlan, 'id' | 'user_id' | 'generated_at' | 'is_active' | 'version' | 'created_at'> {
   const allDiet        = matchedFrameworks.flatMap((f) => f.diet_adjustments)
   const allLifestyle   = matchedFrameworks.flatMap((f) => f.lifestyle_adjustments)
@@ -305,8 +626,12 @@ export function buildPlan(
 
   const substanceIndex = buildSubstanceIndex(substances)
 
+  // Derived once, not per recommendation — signalsToAnswers() is pure but
+  // rebuilding it inside a comparator would run it O(n log n) times.
+  const signalAnswers = signals ? signalsToAnswers(signals) : []
+
   function processList(recs: WellnessRecommendation[]) {
-    return enforceDoseCeilings(
+    const processed = enforceDoseCeilings(
       sortByPriority(
         boostForPrimarySymptom(
           // Preference filtering MUST run before deduplication. Dedup keeps the
@@ -325,6 +650,8 @@ export function buildPlan(
       ),
       substanceIndex,
     )
+
+    return signals ? rankBySignals(processed, signals, signalAnswers) : processed
   }
 
   return {
@@ -334,6 +661,60 @@ export function buildPlan(
     mindset_recommendations: processList(allMindset),
     supplement_suggestions: processList(allSupplements),
   }
+}
+
+// ─── Focus selection — the small, cross-category set that leads her plan ─────
+
+/** The four category arrays of a built plan. */
+type PlanCategories = Pick<
+  WellnessPlan,
+  | 'diet_adjustments'
+  | 'lifestyle_adjustments'
+  | 'mindset_recommendations'
+  | 'supplement_suggestions'
+>
+
+/**
+ * The handful of recommendations that should lead her plan, chosen across all
+ * four categories at once.
+ *
+ * WHY THIS HAS TO BE CROSS-CATEGORY
+ * A plan is stored as four separate arrays. Ranking *within* an array means any
+ * signal that moves every card in a category by the same amount changes
+ * nothing — "you eat mostly convenience food, so diet matters more for you"
+ * lifts all 34 diet cards equally and reorders none of them. Judged only
+ * per-category, `diet_type` and `previously_tried` would be no-ops dressed up
+ * as personalisation. Comparing across categories is what lets them count.
+ *
+ * Not stored on `wellness_plans` — derived at render time from the plan and her
+ * signals, so it needs no migration and stays correct if her answers change.
+ *
+ * Supplements are eligible. That is safe because a supplement carrying a
+ * caution she has declared scores below every uncautioned card (see
+ * CAUTION_DECLARED), so it cannot lead her plan — while still appearing, with
+ * its caution, in the supplements tab.
+ */
+export function selectFocus(
+  plan: PlanCategories,
+  signals: UserSignals,
+  limit = 3
+): WellnessRecommendation[] {
+  const answers = signalsToAnswers(signals)
+  const all = [
+    ...plan.diet_adjustments,
+    ...plan.lifestyle_adjustments,
+    ...plan.mindset_recommendations,
+    ...plan.supplement_suggestions,
+  ]
+
+  // Stable sort: equal scores keep the order buildPlan produced.
+  return [...all]
+    .sort(
+      (a, b) =>
+        scoreRecommendation(b, signals, answers) -
+        scoreRecommendation(a, signals, answers)
+    )
+    .slice(0, Math.max(0, limit))
 }
 
 // ─── Tier gating — free users see top 3 recs only ────────────────────────────

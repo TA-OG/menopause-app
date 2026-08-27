@@ -34,6 +34,12 @@ diet_adjustments:
       Many women find morning coffee is the single biggest driver.
     priority: high
     who_for: all
+    relevant_when:
+      # OR semantics: either answer makes this directly relevant to her.
+      - question: caffeine_intake
+        answer: [moderate, high]
+      - question: alcohol_intake
+        answer: [regular, frequent]
 
   - id: df_blood_sugar
     category: diet

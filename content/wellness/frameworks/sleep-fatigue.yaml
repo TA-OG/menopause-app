@@ -34,6 +34,10 @@ diet_adjustments:
       Switch to herbal tea, rooibos, or decaf after lunch.
     priority: high
     who_for: all
+    relevant_when:
+      # She drinks 2+ cups a day — this card is about her, not general advice.
+      - question: caffeine_intake
+        answer: [moderate, high]
 
   - id: df_energy_blood_sugar
     category: diet

@@ -28,6 +28,26 @@ function RecommendationCard({ rec }: { rec: WellnessRecommendation }) {
         <h3 className="font-semibold text-gray-900 text-sm leading-snug">{rec.title}</h3>
         <div className={`w-2 h-2 rounded-full mt-1 flex-shrink-0 ${PRIORITY_DOT[rec.priority]}`} />
       </div>
+      {/* "This applies to you, specifically" — built from her own intake
+          answers (medical flags, dietary restrictions). It sits ABOVE the body
+          deliberately: it is the reason this card reads differently for her
+          than for anyone else, and when the body moves behind a "read more"
+          fold this must stay on the visible side of it. A caution that
+          collapses is a caution that does not exist.
+          The text never asserts anything the card's own disclaimer does not
+          already say — see src/lib/medical-flags.ts. */}
+      {rec.personal_note && (
+        <p
+          className={
+            rec.personal_note.kind === 'caution'
+              ? 'text-xs text-red-900 mb-3 bg-red-50 rounded-xl px-3 py-2 border border-red-200 font-medium'
+              : 'text-xs text-amber-900 mb-3 bg-amber-50 rounded-xl px-3 py-2 border border-amber-200 font-medium'
+          }
+        >
+          {rec.personal_note.kind === 'caution' ? '🩺 ' : '🍽️ '}
+          {rec.personal_note.text}
+        </p>
+      )}
       <p className="text-sm text-gray-600 leading-relaxed whitespace-pre-line">{rec.body}</p>
       {/* Why this card is in your plan more than once over. Several frameworks
           can each suggest the same substance; they are collapsed into one card,

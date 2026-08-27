@@ -77,6 +77,15 @@ function describeRec(rec: WellnessRecommendation): string {
   if (rec.targets_symptoms?.length) {
     lines.push(`  _Targets: ${rec.targets_symptoms.map(humanize).join(', ')}_`)
   }
+  // Relevance conditions change who this card leads the plan for, so a content
+  // reviewer has to be able to see them. OR semantics — any one is enough.
+  if (rec.relevant_when?.length) {
+    const clauses = rec.relevant_when.map((c) => {
+      const values = (Array.isArray(c.answer) ? c.answer : [c.answer]).map(humanize)
+      return `${humanize(c.question)} is ${values.join(' or ')}`
+    })
+    lines.push(`  _Raised up her plan when: ${clauses.join(', OR ')}_`)
+  }
   if (rec.disclaimer) {
     lines.push(`  _Disclaimer: ${rec.disclaimer.trim().replace(/\s*\n\s*/g, ' ')}_`)
   }

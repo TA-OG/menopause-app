@@ -9,6 +9,8 @@ import * as path from 'path'
 import * as yaml from 'js-yaml'
 import type { WellnessFramework, SubstanceEntry } from '../src/types/database'
 import { validateFrameworks as validateFrameworksEngine } from '../src/lib/wellness-engine'
+import { ALL_CIRCUMSTANCE_PATTERNS, justifiedBy } from '../src/lib/medical-flags'
+import { collectedKeys } from '../src/lib/onboarding-config'
 
 const FRAMEWORKS_DIR = path.join(process.cwd(), 'content/wellness/frameworks')
 const REGISTRY_PATH = path.join(process.cwd(), 'content/wellness/substances.yaml')
@@ -328,6 +330,120 @@ function validateFrameworks(frameworks: WellnessFramework[]): string[] {
   return errors
 }
 
+/**
+ * Personal-circumstance tags must index real, authored copy.
+ *
+ * Cautions are DERIVED from each card's disclaimer at runtime, so the common
+ * case needs no authoring and cannot be forgotten. `caution_for` / `adapt_for`
+ * exist only for the minority of cards where the relevant sentence sits in the
+ * body instead. This check is what stops one being used to assert something no
+ * author has written: a tag whose own copy says nothing about that condition is
+ * an invented clinical claim, and fails the build.
+ *
+ * It also validates `relevant_when`, which must reference a question onboarding
+ * actually collects — a condition on a key nobody is asked can never fire, and
+ * would silently mean the card is never treated as relevant to anyone.
+ */
+function validateCircumstanceTags(frameworks: WellnessFramework[]): string[] {
+  const errors: string[] = []
+  const collected = new Set(collectedKeys())
+
+  for (const framework of frameworks) {
+    const allRecs = [
+      ...(framework.diet_adjustments ?? []),
+      ...(framework.lifestyle_adjustments ?? []),
+      ...(framework.mindset_recommendations ?? []),
+      ...(framework.supplement_suggestions ?? []),
+    ]
+
+    for (const rec of allRecs) {
+      for (const value of [...(rec.caution_for ?? []), ...(rec.adapt_for ?? [])]) {
+        if (!ALL_CIRCUMSTANCE_PATTERNS.some((p) => p.value === value)) {
+          errors.push(
+            `[${framework.id}] "${rec.id}" tags an unknown circumstance "${value}". ` +
+            `It must be a real onboarding answer value with a pattern in src/lib/medical-flags.ts.`
+          )
+          continue
+        }
+        if (!justifiedBy(value, rec)) {
+          errors.push(
+            `[${framework.id}] "${rec.id}" is tagged "${value}" but neither its body nor its ` +
+            `disclaimer says anything about it. A tag must point at copy an author wrote — ` +
+            `write the caution into the card, or drop the tag. Do not assert it here.`
+          )
+        }
+      }
+
+      for (const condition of rec.relevant_when ?? []) {
+        if (!condition?.question) {
+          errors.push(`[${framework.id}] "${rec.id}" has a relevant_when entry with no 'question'`)
+          continue
+        }
+        if (!collected.has(condition.question)) {
+          errors.push(
+            `[${framework.id}] "${rec.id}" is relevant_when "${condition.question}", which ` +
+            `onboarding never collects — the condition can never match. ` +
+            `Add the question to onboarding-config.ts or correct the key.`
+          )
+        }
+        if (
+          condition.answer === undefined ||
+          (Array.isArray(condition.answer) && condition.answer.length === 0)
+        ) {
+          errors.push(
+            `[${framework.id}] "${rec.id}" relevant_when "${condition.question}" has no answer value(s)`
+          )
+        }
+      }
+    }
+  }
+
+  return errors
+}
+
+/**
+ * Report — not an error — on cautions the content raises for conditions
+ * onboarding never asks about.
+ *
+ * These cannot reach the woman they are for: she is never given the chance to
+ * tell us the flag applies to her, so no note can ever fire. Closing the gap is
+ * a product decision (extend MEDICAL_FLAG_CHOICES), so this prints rather than
+ * failing the build — but it prints every time, so it stays visible.
+ */
+function reportUnaskedCautions(frameworks: WellnessFramework[]): void {
+  const KNOWN_UNASKED: [string, RegExp][] = [
+    ['autoimmune conditions', /autoimmune/i],
+    ['kidney disease', /kidney disease/i],
+    ['liver conditions', /liver (injury|concerns|conditions)|processes some medications/i],
+    ['statins / heart medication', /statin|heart (medication|conditions)/i],
+    ['ulcers / gastritis', /ulcer|gastritis/i],
+  ]
+
+  const found = new Map<string, string[]>()
+  for (const framework of frameworks) {
+    for (const rec of framework.supplement_suggestions ?? []) {
+      const text = `${rec.disclaimer ?? ''} ${rec.body ?? ''}`
+      for (const [label, pattern] of KNOWN_UNASKED) {
+        if (!pattern.test(text)) continue
+        if (!found.has(label)) found.set(label, [])
+        found.get(label)!.push(rec.id)
+      }
+    }
+  }
+
+  if (found.size === 0) return
+  console.log(
+    `\n   ℹ️  ${found.size} condition(s) are cautioned about in content but never asked at intake,`
+  )
+  console.log(`      so no user can ever be warned about them personally:`)
+  for (const [label, ids] of Array.from(found)) {
+    console.log(`      • ${label} — ${ids.length} supplement(s): ${ids.slice(0, 4).join(', ')}${ids.length > 4 ? '…' : ''}`)
+  }
+  console.log(
+    `      Fix: add matching options to MEDICAL_FLAG_CHOICES in src/lib/onboarding-config.ts.`
+  )
+}
+
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
 console.log('🔍 Validating wellness frameworks...')
@@ -360,6 +476,7 @@ const errors = Array.from(new Set([
   ...validateFrameworksEngine(frameworks),
   ...validateSubstanceRegistry(frameworks, substances),
   ...validateNumericClaims(frameworks, claims),
+  ...validateCircumstanceTags(frameworks),
 ]))
 
 if (errors.length > 0) {
@@ -368,6 +485,8 @@ if (errors.length > 0) {
   console.error('\nFix these errors before building.\n')
   process.exit(1)
 }
+
+reportUnaskedCautions(frameworks)
 
 console.log(`   ✅ All ${frameworks.length} framework(s) valid\n`)
 process.exit(0)

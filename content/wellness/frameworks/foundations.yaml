@@ -156,6 +156,9 @@ diet_adjustments:
       the gut-health advice elsewhere.
     priority: medium
     who_for: all
+    relevant_when:
+      - question: alcohol_intake
+        answer: [regular, frequent]
 
 lifestyle_adjustments:
   - id: lf_weekly_movement_mix

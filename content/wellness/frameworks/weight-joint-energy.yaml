@@ -39,6 +39,9 @@ diet_adjustments:
       seed oils (sunflower, vegetable), excessive alcohol.
     priority: high
     who_for: all
+    relevant_when:
+      - question: alcohol_intake
+        answer: [regular, frequent]
 
   - id: df_reduce_refined_carbs
     category: diet
