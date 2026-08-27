@@ -1,0 +1,92 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# CI — the checks in CLAUDE.md's verification checklist, enforced on GitHub
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# Until this existed the repository had no GitHub Actions at all. Vercel's
+# preview deploy was the only external check on a pull request, and it does not
+# run the type checker, the test suite, or content validation. So every
+# guarantee this repo relies on — the dose-stacking property test, the
+# GP-disclaimer rule, the numeric-claim register, "every onboarding question
+# shapes the plan" — was enforced only on whichever machine last happened to
+# run `npm test`. A pull request could go green with all of them failing.
+#
+# For a health application that is the wrong default. These are the same four
+# commands CLAUDE.md asks a contributor to run before claiming work is done;
+# this file makes them a merge gate rather than an honour system.
+#
+# WHY THE FULL BUILD RUNS HERE
+# `npm run build` is validate-content → review-frameworks --check → next build.
+# It was verified to complete with NO environment variables set, so CI needs no
+# secrets: nothing is deployed, nothing is published, and a fork's pull request
+# gets the same signal as a branch. If a future change makes the build need a
+# secret at build time, that is worth knowing about — it will surface here as a
+# failure rather than silently at deploy.
+
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# A new push supersedes the run in flight for the same ref. Without this,
+# pushing twice in a minute leaves a stale run to finish and report on code
+# nobody is looking at any more.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+# Least privilege: this workflow only ever reads the repository.
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Type-check, lint, test, build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # Read from .nvmrc so this file, a contributor's shell and Vercel
+          # cannot drift onto three different Node versions.
+          node-version-file: .nvmrc
+          cache: npm
+
+      # `npm ci`, not `npm install` — installs exactly the lockfile and fails
+      # if package.json and package-lock.json have drifted apart, instead of
+      # quietly resolving to something nobody has tested.
+      - name: Install dependencies
+        run: npm ci
+
+      # Ordered cheapest-failure-first, so a broken type surfaces in ~30s
+      # rather than after a four-minute build.
+      - name: Type-check
+        run: npm run type-check
+
+      # Reports warnings without failing on them: there are pre-existing
+      # `no-unused-vars` warnings in the repo, and turning them into errors
+      # here would block unrelated work on a cleanup nobody has scheduled.
+      # Tighten with `--max-warnings 0` once they are cleared.
+      - name: Lint
+        run: npm run lint
+
+      - name: Tests
+        run: npm run test:run
+
+      # Run explicitly, ahead of the build that also runs them, so a content
+      # defect reports as "Validate wellness content" failing rather than as a
+      # generic build failure. Both are seconds long; the clearer signal is
+      # worth more than the duplication — a missing supplement disclaimer
+      # should be unmissable in the checks list.
+      - name: Validate wellness content
+        run: npm run validate-content
+
+      - name: Check plain-English framework review is current
+        run: npm run review-frameworks -- --check
+
+      - name: Build
+        run: npm run build
