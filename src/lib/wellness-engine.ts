@@ -580,8 +580,19 @@ export function scoreRecommendation(
  * anything the card does not already say. `personal_note` is rendered ABOVE any
  * "read more" boundary, alongside `disclaimer` and `max_daily_note` — a caution
  * that collapses is a caution that doesn't exist.
+ *
+ * EXPORTED because it must also run at RENDER time, not only when the plan is
+ * generated. A plan is stored in `wellness_plans` at intake and then read back
+ * for months. If a woman starts anticoagulants — or is prescribed them between
+ * one plan and the next — the cautions on her stored plan would still reflect
+ * the flags she declared long ago. Re-attaching from her CURRENT answers keeps
+ * the safety layer live while leaving the plan's content and order as the
+ * record of what she was actually given.
+ *
+ * Cheap enough to do on every page view: pure, no I/O, and it only pattern-
+ * matches text already in memory.
  */
-function attachPersonalNotes(
+export function attachPersonalNotes(
   recs: WellnessRecommendation[],
   signals: UserSignals
 ): WellnessRecommendation[] {

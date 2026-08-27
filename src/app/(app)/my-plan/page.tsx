@@ -3,101 +3,26 @@ import { createAdminClient } from '@/lib/supabase/admin'
 import { getUserAccess } from '@/lib/access'
 import { getGeoAccess } from '@/lib/geo'
 import { redirect } from 'next/navigation'
-import { applyTierGating } from '@/lib/wellness-engine'
+import { applyTierGating, attachPersonalNotes } from '@/lib/wellness-engine'
+import { deriveUserSignals } from '@/lib/user-signals'
 import { DISCLAIMER } from '@/lib/disclaimer'
-import type { WellnessPlan, WellnessRecommendation } from '@/types/database'
+import PlanTabs from '@/components/plan/PlanTabs'
+import type { WellnessPlan } from '@/types/database'
 
-const CATEGORY_CONFIG = {
-  diet: { label: 'Diet & Nutrition', emoji: '🥗', bg: 'bg-blue-50', border: 'border-blue-100' },
-  lifestyle: { label: 'Lifestyle', emoji: '🌿', bg: 'bg-green-50', border: 'border-green-100' },
-  mindset: { label: 'Mindset & Wellbeing', emoji: '🧘', bg: 'bg-purple-50', border: 'border-purple-100' },
-  supplement: { label: 'Supplements', emoji: '💊', bg: 'bg-amber-50', border: 'border-amber-100' },
-}
+/**
+ * Your plan — four tabs, collapsed cards.
+ *
+ * This page used to render every recommendation in one continuous column with
+ * every word of every body expanded: 105+ cards and roughly 10,000 words, about
+ * 45 minutes of reading, on a phone. The content was not the problem; the
+ * delivery was. Nothing has been deleted here — it has been sorted and folded.
+ */
 
-const PRIORITY_DOT = {
-  high: 'bg-red-400',
-  medium: 'bg-amber-400',
-  low: 'bg-green-400',
-}
-
-function RecommendationCard({ rec }: { rec: WellnessRecommendation }) {
-  const config = CATEGORY_CONFIG[rec.category]
-  return (
-    <div className={`rounded-2xl p-4 border ${config.bg} ${config.border}`}>
-      <div className="flex items-start justify-between gap-2 mb-2">
-        <h3 className="font-semibold text-gray-900 text-sm leading-snug">{rec.title}</h3>
-        <div className={`w-2 h-2 rounded-full mt-1 flex-shrink-0 ${PRIORITY_DOT[rec.priority]}`} />
-      </div>
-      {/* "This applies to you, specifically" — built from her own intake
-          answers (medical flags, dietary restrictions). It sits ABOVE the body
-          deliberately: it is the reason this card reads differently for her
-          than for anyone else, and when the body moves behind a "read more"
-          fold this must stay on the visible side of it. A caution that
-          collapses is a caution that does not exist.
-          The text never asserts anything the card's own disclaimer does not
-          already say — see src/lib/medical-flags.ts. */}
-      {rec.personal_note && (
-        <p
-          className={
-            rec.personal_note.kind === 'caution'
-              ? 'text-xs text-red-900 mb-3 bg-red-50 rounded-xl px-3 py-2 border border-red-200 font-medium'
-              : 'text-xs text-amber-900 mb-3 bg-amber-50 rounded-xl px-3 py-2 border border-amber-200 font-medium'
-          }
-        >
-          {rec.personal_note.kind === 'caution' ? '🩺 ' : '🍽️ '}
-          {rec.personal_note.text}
-        </p>
-      )}
-      <p className="text-sm text-gray-600 leading-relaxed whitespace-pre-line">{rec.body}</p>
-      {/* Why this card is in your plan more than once over. Several frameworks
-          can each suggest the same substance; they are collapsed into one card,
-          and these are the other reasons it was suggested. */}
-      {rec.also_for && rec.also_for.length > 0 && (
-        <div className="mt-3 text-xs text-gray-600">
-          <p className="font-medium text-gray-600">Also suggested for:</p>
-          <ul className="list-disc list-inside mt-1 space-y-0.5">
-            {rec.also_for.map((reason, i) => (
-              <li key={i}>{reason}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-      {/* The cumulative ceiling across the whole plan — this is the visible half
-          of the dose-stacking guarantee, so it must render above the disclaimer
-          and never be silently dropped. */}
-      {rec.max_daily_note && (
-        <p className="text-xs text-red-800 mt-3 bg-red-50 rounded-xl px-3 py-2 border border-red-200 font-medium">
-          🛑 {rec.max_daily_note}
-        </p>
-      )}
-      {rec.disclaimer && (
-        <p className="text-xs text-amber-700 mt-3 bg-amber-50 rounded-xl px-3 py-2 border border-amber-100">
-          ⚠️ {rec.disclaimer}
-        </p>
-      )}
-    </div>
-  )
-}
-
-function CategorySection({
-  title, emoji, recs,
-}: { title: string; emoji: string; recs: WellnessRecommendation[] }) {
-  if (recs.length === 0) return null
-  return (
-    <div>
-      <h2 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
-        <span>{emoji}</span> {title}
-      </h2>
-      <div className="space-y-3">
-        {recs.map((rec) => (
-          <RecommendationCard key={rec.id} rec={rec} />
-        ))}
-      </div>
-    </div>
-  )
-}
-
-export default async function MyPlanPage() {
+export default async function MyPlanPage({
+  searchParams,
+}: {
+  searchParams: { tab?: string }
+}) {
   const supabase = createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/auth/sign-in')
@@ -109,19 +34,19 @@ export default async function MyPlanPage() {
   const geo = await getGeoAccess(createAdminClient(), user.id)
   if (!geo.personalisedAllowed) {
     return (
-      <div className="py-12 text-center space-y-4">
+      <div className="space-y-4 py-12 text-center">
         <div className="text-5xl">📚</div>
         <h1 className="text-xl font-bold text-brand-900">
           Personalised plans aren&apos;t available in your region
         </h1>
-        <p className="text-gray-500 text-sm max-w-sm mx-auto">
+        <p className="mx-auto max-w-sm text-base text-gray-600">
           Because of local health regulations, Aunty Mel can&apos;t give you an
           individualised plan here yet — but our evidence-informed guides are
           available to you in full.
         </p>
         <a
           href="/learn"
-          className="inline-block bg-brand-900 text-white font-semibold px-6 py-3 rounded-2xl"
+          className="inline-block rounded-2xl bg-brand-900 px-6 py-3 font-semibold text-white"
         >
           Explore the guides
         </a>
@@ -136,21 +61,17 @@ export default async function MyPlanPage() {
     .eq('is_active', true)
     .single()
 
-  const gatedPlan = plan
-    ? applyTierGating(plan as unknown as WellnessPlan, tier)
-    : null
-
-  if (!gatedPlan) {
+  if (!plan) {
     return (
-      <div className="py-12 text-center space-y-4">
+      <div className="space-y-4 py-12 text-center">
         <div className="text-5xl">✨</div>
         <h1 className="text-xl font-bold text-brand-900">No plan yet</h1>
-        <p className="text-gray-500 text-sm">
+        <p className="text-base text-gray-600">
           Complete your intake to generate your personalised wellness plan.
         </p>
         <a
           href="/onboarding"
-          className="inline-block bg-brand-900 text-white font-semibold px-6 py-3 rounded-2xl"
+          className="inline-block rounded-2xl bg-brand-900 px-6 py-3 font-semibold text-white"
         >
           Start intake
         </a>
@@ -158,104 +79,120 @@ export default async function MyPlanPage() {
     )
   }
 
-  const totalRecs =
-    gatedPlan.diet_adjustments.length +
-    gatedPlan.lifestyle_adjustments.length +
-    gatedPlan.mindset_recommendations.length +
-    gatedPlan.supplement_suggestions.length
+  const gatedPlan = applyTierGating(plan as unknown as WellnessPlan, tier)
+
+  // Cautions are re-derived from her CURRENT answers rather than read off the
+  // stored plan. A plan generated months ago carries the flags she declared
+  // then; if she has started anticoagulants since, the stored cautions would be
+  // wrong in the direction that matters. See attachPersonalNotes().
+  const { data: answers } = await supabase
+    .from('onboarding_answers')
+    .select('*')
+    .eq('user_id', user.id)
+  const { data: preferences } = await supabase
+    .from('user_preferences')
+    .select('*')
+    .eq('user_id', user.id)
+    .single()
+
+  const signals = deriveUserSignals(answers ?? [], preferences ?? {})
+  const withNotes = (recs: WellnessPlan['diet_adjustments']) =>
+    attachPersonalNotes(recs, signals)
+
+  const diet = withNotes(gatedPlan.diet_adjustments)
+  const lifestyle = withNotes(gatedPlan.lifestyle_adjustments)
+  const mindset = withNotes(gatedPlan.mindset_recommendations)
+  const supplements = isPremium ? withNotes(gatedPlan.supplement_suggestions) : []
+
+  const totalRecs = diet.length + lifestyle.length + mindset.length + supplements.length
+  const flagged = [...diet, ...lifestyle, ...mindset, ...supplements].filter(
+    (r) => r.personal_note
+  ).length
 
   // Cultural context — stored as JSONB on the plan
   const culturalContext: WellnessPlan['cultural_context'] =
     (plan as unknown as WellnessPlan)?.cultural_context ?? null
-
-  const hasCulturalContext = culturalContext && (
-    (culturalContext.awareness?.length ?? 0) > 0 ||
-    (culturalContext.diet?.length ?? 0) > 0 ||
-    (culturalContext.lifestyle?.length ?? 0) > 0
-  )
+  const hasCulturalContext =
+    culturalContext &&
+    ((culturalContext.awareness?.length ?? 0) > 0 ||
+      (culturalContext.diet?.length ?? 0) > 0 ||
+      (culturalContext.lifestyle?.length ?? 0) > 0)
 
   return (
-    <div className="space-y-8 py-4">
+    <div className="space-y-5 py-4">
       <div>
-        <h1 className="text-2xl font-bold text-brand-900">Your wellness plan</h1>
-        <p className="text-gray-500 text-sm mt-1">
-          {totalRecs} personalised recommendation{totalRecs !== 1 ? 's' : ''} for you
+        <h1 className="text-2xl font-bold text-brand-900">Your plan</h1>
+        <p className="mt-1 text-base text-gray-600">
+          {totalRecs} suggestion{totalRecs !== 1 ? 's' : ''}, sorted for you.
+          {' '}Tap any one to read more.
         </p>
+        {/* Says plainly that her answers changed what she is looking at. */}
+        {flagged > 0 && (
+          <p className="mt-2 rounded-xl bg-blush-50 px-3 py-2 text-sm font-medium text-blush-900">
+            🩺 {flagged} {flagged === 1 ? 'suggestion carries a note' : 'suggestions carry notes'}{' '}
+            based on what you told us about your health.
+          </p>
+        )}
       </div>
 
       {/* Cultural awareness — shown first if present */}
-      {hasCulturalContext && culturalContext?.awareness?.map((item, i) => (
-        <div key={i} className="bg-brand-50 border border-brand-200 rounded-2xl p-4">
-          <p className="text-sm font-bold text-brand-900 mb-2">🌍 {item.title}</p>
-          <p className="text-sm text-brand-800 leading-relaxed whitespace-pre-line">
-            {item.body}
-          </p>
-          {item.source && (
-            <p className="text-xs text-brand-500 mt-2">Source: {item.source}</p>
-          )}
-        </div>
-      ))}
+      {hasCulturalContext &&
+        culturalContext?.awareness?.map((item, i) => (
+          <div key={i} className="rounded-2xl border border-brand-200 bg-brand-50 p-4">
+            <p className="mb-2 text-base font-bold text-brand-900">🌍 {item.title}</p>
+            <p className="whitespace-pre-line text-base leading-relaxed text-brand-800">
+              {item.body}
+            </p>
+            {item.source && (
+              <p className="mt-2 text-sm text-brand-600">Source: {item.source}</p>
+            )}
+          </div>
+        ))}
 
       {/* Free tier upgrade prompt */}
       {!isPremium && (
-        <div className="bg-brand-50 border border-brand-200 rounded-2xl p-4">
-          <p className="text-sm font-semibold text-brand-900">
+        <div className="rounded-2xl border border-brand-200 bg-brand-50 p-4">
+          <p className="text-base font-semibold text-brand-900">
             You&apos;re seeing your top 3 recommendations
           </p>
-          <p className="text-sm text-brand-700 mt-1 mb-3">
+          <p className="mb-3 mt-1 text-base text-brand-800">
             Upgrade to unlock your full plan including all diet, lifestyle,
             mindset, and supplement recommendations.
           </p>
           <a
             href="/pay"
-            className="inline-block bg-brand-900 text-white text-sm font-semibold px-4 py-2 rounded-xl"
+            className="inline-block rounded-xl bg-brand-900 px-4 py-2.5 text-base font-semibold text-white"
           >
             Unlock full plan — £7.99/month
           </a>
         </div>
       )}
 
-      {/* Recommendations by category */}
-      <CategorySection
-        title={CATEGORY_CONFIG.diet.label}
-        emoji={CATEGORY_CONFIG.diet.emoji}
-        recs={gatedPlan.diet_adjustments}
+      <PlanTabs
+        diet={diet}
+        lifestyle={lifestyle}
+        mindset={mindset}
+        supplements={supplements}
+        initialTab={searchParams.tab}
       />
-      <CategorySection
-        title={CATEGORY_CONFIG.lifestyle.label}
-        emoji={CATEGORY_CONFIG.lifestyle.emoji}
-        recs={gatedPlan.lifestyle_adjustments}
-      />
-      <CategorySection
-        title={CATEGORY_CONFIG.mindset.label}
-        emoji={CATEGORY_CONFIG.mindset.emoji}
-        recs={gatedPlan.mindset_recommendations}
-      />
-      {isPremium && (
-        <CategorySection
-          title={CATEGORY_CONFIG.supplement.label}
-          emoji={CATEGORY_CONFIG.supplement.emoji}
-          recs={gatedPlan.supplement_suggestions}
-        />
-      )}
 
-      {/* Cultural food context — premium only, shown after main recs */}
+      {/* Cultural food context — premium only */}
       {isPremium && hasCulturalContext && (culturalContext?.diet?.length ?? 0) > 0 && (
         <div>
-          <h2 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
-            <span>🍽️</span> Foods from your culture
+          <h2 className="mb-3 flex items-center gap-2 font-bold text-gray-900">
+            <span aria-hidden="true">🍽️</span> Foods from your culture
           </h2>
           <div className="space-y-3">
             {culturalContext!.diet!.map((item) => (
-              <div key={item.id} className="bg-amber-50 rounded-2xl p-4 border border-amber-100">
+              <div key={item.id} className="rounded-2xl border border-amber-100 bg-amber-50 p-4">
                 {item.title && (
-                  <h3 className="font-semibold text-gray-900 text-sm mb-2">{item.title}</h3>
+                  <h3 className="mb-2 text-base font-semibold text-gray-900">{item.title}</h3>
                 )}
-                <p className="text-sm text-gray-600 leading-relaxed whitespace-pre-line">
+                <p className="whitespace-pre-line text-base leading-relaxed text-gray-700">
                   {item.body}
                 </p>
                 {item.source && (
-                  <p className="text-xs text-gray-600 mt-2">Source: {item.source}</p>
+                  <p className="mt-2 text-sm text-gray-600">Source: {item.source}</p>
                 )}
               </div>
             ))}
@@ -266,17 +203,17 @@ export default async function MyPlanPage() {
       {/* Cultural lifestyle context */}
       {isPremium && hasCulturalContext && (culturalContext?.lifestyle?.length ?? 0) > 0 && (
         <div>
-          <h2 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
-            <span>💫</span> For your experience specifically
+          <h2 className="mb-3 flex items-center gap-2 font-bold text-gray-900">
+            <span aria-hidden="true">💫</span> For your experience specifically
           </h2>
           <div className="space-y-3">
             {culturalContext!.lifestyle!.map((item) => (
-              <div key={item.id} className="bg-purple-50 rounded-2xl p-4 border border-purple-100">
-                <p className="text-sm text-gray-600 leading-relaxed whitespace-pre-line">
+              <div key={item.id} className="rounded-2xl border border-purple-100 bg-purple-50 p-4">
+                <p className="whitespace-pre-line text-base leading-relaxed text-gray-700">
                   {item.body}
                 </p>
                 {item.source && (
-                  <p className="text-xs text-gray-600 mt-2">Source: {item.source}</p>
+                  <p className="mt-2 text-sm text-gray-600">Source: {item.source}</p>
                 )}
               </div>
             ))}
@@ -285,21 +222,13 @@ export default async function MyPlanPage() {
       )}
 
       {/* GP signpost — always shown */}
-      <div className="bg-gray-50 rounded-2xl p-4 border border-gray-100">
-        <p className="text-xs text-gray-500 leading-relaxed">
-          {DISCLAIMER.gpSignpost}
-        </p>
+      <div className="rounded-2xl border border-gray-200 bg-gray-50 p-4">
+        <p className="text-sm leading-relaxed text-gray-600">{DISCLAIMER.gpSignpost}</p>
       </div>
 
-      {/* Regenerate plan */}
-      <div className="text-center pb-4">
-        <p className="text-xs text-gray-400 mb-2">
-          Updated your lifestyle or symptoms?
-        </p>
-        <a
-          href="/onboarding"
-          className="text-sm text-brand-700 font-medium underline"
-        >
+      <div className="pb-4 text-center">
+        <p className="mb-2 text-sm text-gray-500">Updated your lifestyle or symptoms?</p>
+        <a href="/onboarding" className="text-base font-medium text-brand-700 underline">
           Redo my intake to update my plan
         </a>
       </div>
