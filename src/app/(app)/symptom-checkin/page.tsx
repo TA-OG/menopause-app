@@ -3,7 +3,11 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import type { SymptomCheckin, SymptomKey } from '@/types/database'
-import { localCalendarDate, parseLocalCalendarDate } from '@/lib/checkin-schema'
+import {
+  buildCheckinPayload,
+  localCalendarDate,
+  parseLocalCalendarDate,
+} from '@/lib/checkin-schema'
 
 const SYMPTOMS: { key: SymptomKey; label: string }[] = [
   { key: 'hot_flashes', label: 'Hot flushes' },
@@ -154,17 +158,20 @@ export default function SymptomCheckinPage() {
       const res = await fetch('/api/symptom-checkin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          checkin_date: today,
-          symptoms,
-          mood_score: moodScore,
-          energy_level: energyLevel,
-          sleep_hours: sleepHours,
-          tried_today: [],
-          // Explicit null clears a note the user has deleted. The API accepts
-          // null for every nullable column, so this no longer fails validation.
-          notes: notes.trim() || null,
-        }),
+        // One definition of this payload, shared with the tests that guard it.
+        // It deliberately omits `tried_today`: the route upserts, so sending
+        // the empty array this used to send would blank the column out on
+        // every check-in. See FIELDS_THE_CHECKIN_FORM_MUST_NOT_SEND.
+        body: JSON.stringify(
+          buildCheckinPayload({
+            checkin_date: today,
+            symptoms,
+            mood_score: moodScore,
+            energy_level: energyLevel,
+            sleep_hours: sleepHours,
+            notes,
+          })
+        ),
       })
 
       if (!res.ok) {

@@ -89,6 +89,68 @@ export const CheckinSchema = z.object({
 export type CheckinInput = z.input<typeof CheckinSchema>
 export type CheckinPayload = z.output<typeof CheckinSchema>
 
+// ─── What the daily check-in form is allowed to send ─────────────────────────
+
+/**
+ * Columns the check-in form does NOT own, and must therefore never include in
+ * its payload.
+ *
+ * `tried_today` is the one that bit. The form hard-coded `tried_today: []` into
+ * every save, and because the route upserts, that set the column to empty on
+ * conflict — so anything else that ever wrote it would be wiped the next time
+ * she filled in her daily check-in. Nothing writes it today, which is exactly
+ * why it went unnoticed: the damage only appears once the plan can tick items
+ * off, at which point a woman's ticks vanish at her next check-in and the cause
+ * is nowhere near the symptom.
+ *
+ * `severity_overall` is listed for the same reason — a nullable column the form
+ * has no field for. Sending it would clear whatever else set it.
+ *
+ * Omission is the mechanism, and it is the one this schema already documents:
+ * "a column absent from the payload is left untouched on conflict, so omitting
+ * a field must never blank out what is already stored."
+ */
+export const FIELDS_THE_CHECKIN_FORM_MUST_NOT_SEND = [
+  'tried_today',
+  'severity_overall',
+] as const
+
+/** The values the daily check-in form actually collects. */
+export interface CheckinFormValues {
+  checkin_date: string
+  symptoms: Partial<Record<SymptomKey, number>>
+  mood_score: number
+  energy_level: number
+  sleep_hours: number
+  notes: string
+}
+
+/**
+ * Build the request body for a daily check-in.
+ *
+ * Exists so the payload has ONE definition. It was previously written out
+ * inline in the page and copied by hand into the test fixture — a helper
+ * literally commented "the exact payload the page sends" — with nothing
+ * keeping the two in step. So the fixture mirrored the `tried_today: []`
+ * defect rather than catching it, and the tests passed while the bug shipped.
+ *
+ * Now the page and the tests call this, and a test asserts the result contains
+ * none of FIELDS_THE_CHECKIN_FORM_MUST_NOT_SEND. Re-adding one fails the build.
+ */
+export function buildCheckinPayload(values: CheckinFormValues): CheckinInput {
+  return {
+    checkin_date: values.checkin_date,
+    symptoms: values.symptoms,
+    mood_score: values.mood_score,
+    energy_level: values.energy_level,
+    sleep_hours: values.sleep_hours,
+    // Explicit null clears a note the user has deleted; the column is nullable.
+    // This differs from the omitted fields above precisely because the form
+    // DOES own this one — clearing it is a thing she can mean to do.
+    notes: values.notes.trim() || null,
+  }
+}
+
 /**
  * Today's calendar date (YYYY-MM-DD) in the *local* timezone of the caller.
  *
