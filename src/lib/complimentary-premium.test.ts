@@ -23,6 +23,7 @@ vi.mock('stripe', () => ({
 import {
   grantComplimentaryPremium,
   activatePendingComplimentaryPremium,
+  scheduleComplimentaryPremium,
   addMonths,
   COMPLIMENTARY_PREMIUM_MONTHS,
 } from './complimentary-premium'
@@ -59,32 +60,41 @@ function makeFakeSupabase(profile: Record<string, unknown> | null) {
 /**
  * Table-aware fake covering both tables the activation path touches, with the
  * chained shapes it actually uses:
- *   admin_invites: select().eq().eq().maybeSingle()
+ *   admin_invites: select().eq().eq().order().limit()          (pending lookup)
  *                  update().eq().eq().select().maybeSingle()   (the claim)
  *                  update().eq()                               (final write)
  *   profiles:      select().eq().maybeSingle()
  *                  update().eq()
+ *
+ * Holds a list of invite rows, so the duplicate case — which used to break
+ * activation outright — is representable. Pass `invite` for the single-row
+ * case or `invites` for several.
  */
 function makeFakeSupabaseWithInvites(opts: {
   profile: Record<string, unknown> | null
-  invite: Record<string, unknown> | null
+  invite?: Record<string, unknown> | null
+  invites?: Record<string, unknown>[]
 }) {
-  const invite = opts.invite ? { ...opts.invite } : null
+  const rows: Record<string, unknown>[] = (
+    opts.invites ?? (opts.invite ? [opts.invite] : [])
+  ).map((row) => ({ ...row }))
   const inviteUpdates: Record<string, unknown>[] = []
   const profileUpdates: Record<string, unknown>[] = []
+
+  const matching = (filters: Record<string, unknown>) =>
+    rows.filter((row) => Object.entries(filters).every(([col, val]) => row[col] === val))
 
   function inviteUpdateBuilder(patch: Record<string, unknown>) {
     const filters: Record<string, unknown> = {}
 
-    // Applies the patch only if every .eq() filter matches — this is what
+    // Applies the patch only to rows every .eq() filter matches — this is what
     // makes the conditional claim testable.
-    const apply = (): boolean => {
-      if (!invite) return false
-      const matches = Object.entries(filters).every(([col, val]) => invite[col] === val)
-      if (!matches) return false
-      Object.assign(invite, patch)
+    const apply = (): Record<string, unknown> | null => {
+      const [row] = matching(filters)
+      if (!row) return null
+      Object.assign(row, patch)
       inviteUpdates.push(patch)
-      return true
+      return row
     }
 
     const builder = {
@@ -94,10 +104,10 @@ function makeFakeSupabaseWithInvites(opts: {
       },
       select() {
         return {
-          maybeSingle: async () => ({
-            data: apply() ? { id: invite!.id } : null,
-            error: null,
-          }),
+          maybeSingle: async () => {
+            const row = apply()
+            return { data: row ? { id: row.id } : null, error: null }
+          },
         }
       },
       // Awaited directly for the final write, with no .select().
@@ -120,10 +130,11 @@ function makeFakeSupabaseWithInvites(opts: {
                 filters[col] = val
                 return chain
               },
-              maybeSingle: async () => {
-                const matches =
-                  invite && Object.entries(filters).every(([c, v]) => invite[c] === v)
-                return { data: matches ? invite : null, error: null }
+              order() {
+                return chain
+              },
+              async limit(n: number) {
+                return { data: matching(filters).slice(0, n), error: null }
               },
             }
             return chain
@@ -142,13 +153,15 @@ function makeFakeSupabaseWithInvites(opts: {
         },
       }
     },
-    _invite: () => invite,
+    _invite: () => rows[0] ?? null,
+    _invites: () => rows,
     _inviteUpdates: inviteUpdates,
     _profileUpdates: profileUpdates,
   }
 
   return client as unknown as Parameters<typeof activatePendingComplimentaryPremium>[0] & {
     _invite: () => Record<string, unknown> | null
+    _invites: () => Record<string, unknown>[]
     _inviteUpdates: Record<string, unknown>[]
     _profileUpdates: Record<string, unknown>[]
   }
@@ -402,6 +415,46 @@ describe('activatePendingComplimentaryPremium', () => {
     expect(stripeMock.subscriptions.create).not.toHaveBeenCalled()
   })
 
+  it('still grants when an older duplicate pending row exists', async () => {
+    // Re-inviting the same person before the duplicate guard existed wrote a
+    // second pending row. The lookup used to be .maybeSingle(), which errors
+    // on two matches — so those women silently received nothing at all.
+    const supabase = makeFakeSupabaseWithInvites({
+      profile: { stripe_customer_id: null, stripe_subscription_id: null, full_name: null },
+      invites: [
+        {
+          id: 'invite-dup-1',
+          user_id: 'user-dup',
+          complimentary_status: 'pending_activation',
+          complimentary_months: 12,
+        },
+        {
+          id: 'invite-dup-2',
+          user_id: 'user-dup',
+          complimentary_status: 'pending_activation',
+          complimentary_months: 12,
+        },
+      ],
+    })
+    stripeMock.customers.create.mockResolvedValue({ id: 'cus_dup' })
+    stripeMock.subscriptions.create.mockResolvedValue({ id: 'sub_dup', status: 'trialing' })
+
+    const result = await activatePendingComplimentaryPremium(
+      supabase,
+      'user-dup',
+      'dup@example.com',
+    )
+
+    expect(result?.status).toBe('granted')
+    expect(stripeMock.subscriptions.create).toHaveBeenCalledTimes(1)
+
+    // Only the first row is claimed and granted; the duplicate is left for a
+    // later sign-in, where the live subscription makes it a no-op.
+    const [first, second] = supabase._invites()
+    expect(first.complimentary_status).toBe('granted')
+    expect(second.complimentary_status).toBe('pending_activation')
+  })
+
   it('records a failed grant on the invite row rather than throwing', async () => {
     const supabase = makeFakeSupabaseWithInvites({
       profile: { stripe_customer_id: 'cus_y', stripe_subscription_id: null, full_name: null },
@@ -426,5 +479,304 @@ describe('activatePendingComplimentaryPremium', () => {
     const invite = supabase._invite()!
     expect(invite.complimentary_status).toBe('failed')
     expect(invite.error).toContain('Stripe is down')
+  })
+})
+
+// ─── Fake for scheduleComplimentaryPremium ─────────────────────────────────
+// Chains it actually uses:
+//   admin_invites: select('id').eq().in().limit()   (the duplicate guard)
+//                  insert(row)                      (the audit row)
+//   profiles:      select().eq().maybeSingle(), update().eq()  (via the grant)
+
+function makeFakeSupabaseForSchedule(opts: {
+  profile?: Record<string, unknown> | null
+  /** Invite rows already in the table, used by the duplicate guard. */
+  existingInvites?: Record<string, unknown>[]
+  /** Make the guard's lookup fail, to prove it fails safe. */
+  lookupError?: { message: string }
+  /** Make the audit insert fail, to prove it never breaks the caller. */
+  insertError?: { message: string }
+  /** Make the audit insert reject outright, same reason. */
+  insertThrows?: boolean
+}) {
+  const existing = opts.existingInvites ?? []
+  const inserted: Record<string, unknown>[] = []
+  const profileUpdates: Record<string, unknown>[] = []
+
+  const client = {
+    from: (table: string) => {
+      if (table === 'admin_invites') {
+        return {
+          select: () => {
+            const filters: Record<string, unknown> = {}
+            let inColumn = ''
+            let inValues: unknown[] = []
+            const chain = {
+              eq(col: string, val: unknown) {
+                filters[col] = val
+                return chain
+              },
+              in(col: string, vals: unknown[]) {
+                inColumn = col
+                inValues = vals
+                return chain
+              },
+              limit(n: number) {
+                if (opts.lookupError) {
+                  return Promise.resolve({ data: null, error: opts.lookupError })
+                }
+                const rows = existing
+                  .filter(
+                    (r) =>
+                      Object.entries(filters).every(([c, v]) => r[c] === v) &&
+                      (inColumn === '' || inValues.includes(r[inColumn])),
+                  )
+                  .slice(0, n)
+                return Promise.resolve({ data: rows, error: null })
+              },
+            }
+            return chain
+          },
+          insert: async (row: Record<string, unknown>) => {
+            if (opts.insertError) return { error: opts.insertError }
+            if (opts.insertThrows) throw new Error('connection lost')
+            inserted.push(row)
+            return { error: null }
+          },
+        }
+      }
+
+      return {
+        select: () => ({
+          eq: () => ({
+            maybeSingle: async () => ({ data: opts.profile ?? null, error: null }),
+          }),
+        }),
+        update: (patch: Record<string, unknown>) => {
+          profileUpdates.push(patch)
+          return { eq: async () => ({ error: null }) }
+        },
+      }
+    },
+    _inserted: inserted,
+    _profileUpdates: profileUpdates,
+  }
+
+  return client as unknown as Parameters<typeof scheduleComplimentaryPremium>[0] & {
+    _inserted: Record<string, unknown>[]
+    _profileUpdates: Record<string, unknown>[]
+  }
+}
+
+describe('scheduleComplimentaryPremium', () => {
+  it('defers the grant to first sign-in for someone who has never signed in', async () => {
+    const supabase = makeFakeSupabaseForSchedule({
+      profile: { stripe_customer_id: null, stripe_subscription_id: null, full_name: null },
+    })
+
+    const result = await scheduleComplimentaryPremium(supabase, {
+      userId: 'user-new',
+      email: 'invited@example.com',
+      inviteKind: 'access_override',
+      hasSignedIn: false,
+    })
+
+    expect(result.status).toBe('pending_activation')
+    expect(result.activatedNow).toBe(false)
+    expect(result.months).toBe(COMPLIMENTARY_PREMIUM_MONTHS)
+
+    // No Stripe object may exist for an invite nobody has accepted yet.
+    expect(stripeMock.subscriptions.create).not.toHaveBeenCalled()
+    expect(stripeMock.customers.create).not.toHaveBeenCalled()
+
+    expect(supabase._inserted[0]).toMatchObject({
+      email: 'invited@example.com',
+      user_id: 'user-new',
+      invite_kind: 'access_override',
+      complimentary_status: 'pending_activation',
+      complimentary_months: COMPLIMENTARY_PREMIUM_MONTHS,
+      activated_at: null,
+    })
+  })
+
+  it('grants immediately for an account that has already signed in', async () => {
+    // Deferring here would leave a live user behind the paywall until they
+    // happened to sign out and back in again.
+    const supabase = makeFakeSupabaseForSchedule({
+      profile: { stripe_customer_id: null, stripe_subscription_id: null, full_name: null },
+    })
+    stripeMock.customers.create.mockResolvedValue({ id: 'cus_live' })
+    stripeMock.subscriptions.create.mockResolvedValue({ id: 'sub_live', status: 'trialing' })
+
+    const result = await scheduleComplimentaryPremium(supabase, {
+      userId: 'user-live',
+      email: 'live@example.com',
+      inviteKind: 'access_override',
+      alreadyRegistered: true,
+      hasSignedIn: true,
+    })
+
+    expect(result.status).toBe('granted')
+    expect(result.activatedNow).toBe(true)
+    expect(result.expiresAt).not.toBeNull()
+
+    const trialEnd = stripeMock.subscriptions.create.mock.calls[0][0].trial_end * 1000
+    const expected = addMonths(new Date(), COMPLIMENTARY_PREMIUM_MONTHS).getTime()
+    expect(Math.abs(trialEnd - expected)).toBeLessThan(60_000)
+
+    expect(supabase._profileUpdates).toContainEqual(
+      expect.objectContaining({ subscription_tier: 'premium' }),
+    )
+    expect(supabase._inserted[0]).toMatchObject({
+      complimentary_status: 'granted',
+      already_registered: true,
+      stripe_subscription_id: 'sub_live',
+    })
+    expect(supabase._inserted[0].activated_at).toBeTruthy()
+  })
+
+  it('never creates a second pending row for a user already awaiting activation', async () => {
+    // activatePendingComplimentaryPremium looks its pending row up with
+    // .maybeSingle(), which errors when two rows match — so a duplicate would
+    // not double-grant, it would stop the person being granted anything.
+    const supabase = makeFakeSupabaseForSchedule({
+      profile: { stripe_customer_id: null, stripe_subscription_id: null, full_name: null },
+      existingInvites: [
+        { id: 'invite-earlier', user_id: 'user-waiting', complimentary_status: 'pending_activation' },
+      ],
+    })
+
+    const result = await scheduleComplimentaryPremium(supabase, {
+      userId: 'user-waiting',
+      email: 'waiting@example.com',
+      inviteKind: 'access_override',
+      hasSignedIn: false,
+    })
+
+    expect(result.status).toBe('not_attempted')
+    expect(result.error).toContain('already scheduled')
+    expect(stripeMock.subscriptions.create).not.toHaveBeenCalled()
+
+    // The invite is still logged — the audit trail has to stay complete.
+    expect(supabase._inserted).toHaveLength(1)
+    expect(supabase._inserted[0].complimentary_status).toBe('not_attempted')
+  })
+
+  it('ignores an unrelated user\'s pending invite', async () => {
+    const supabase = makeFakeSupabaseForSchedule({
+      profile: { stripe_customer_id: null, stripe_subscription_id: null, full_name: null },
+      existingInvites: [
+        { id: 'someone-else', user_id: 'other-user', complimentary_status: 'pending_activation' },
+      ],
+    })
+
+    const result = await scheduleComplimentaryPremium(supabase, {
+      userId: 'user-fresh',
+      email: 'fresh@example.com',
+      inviteKind: 'waitlist',
+      hasSignedIn: false,
+    })
+
+    expect(result.status).toBe('pending_activation')
+  })
+
+  it('does not block on an invite whose grant already ran', async () => {
+    // A 'granted' row is not awaiting activation, so it must not suppress a
+    // fresh grant — grantComplimentaryPremium is what decides whether the
+    // person already has live premium.
+    const supabase = makeFakeSupabaseForSchedule({
+      profile: { stripe_customer_id: null, stripe_subscription_id: null, full_name: null },
+      existingInvites: [
+        { id: 'invite-done', user_id: 'user-done', complimentary_status: 'granted' },
+      ],
+    })
+
+    const result = await scheduleComplimentaryPremium(supabase, {
+      userId: 'user-done',
+      email: 'done@example.com',
+      inviteKind: 'access_override',
+      hasSignedIn: false,
+    })
+
+    expect(result.status).toBe('pending_activation')
+  })
+
+  it('records a failure instead of throwing when the grant fails', async () => {
+    const supabase = makeFakeSupabaseForSchedule({
+      profile: { stripe_customer_id: 'cus_z', stripe_subscription_id: null, full_name: null },
+    })
+    stripeMock.customers.retrieve.mockResolvedValue({ id: 'cus_z' })
+    stripeMock.subscriptions.create.mockRejectedValue(new Error('Stripe is down'))
+
+    const result = await scheduleComplimentaryPremium(supabase, {
+      userId: 'user-unlucky',
+      email: 'unlucky@example.com',
+      inviteKind: 'access_override',
+      hasSignedIn: true,
+    })
+
+    // The invite email is already gone — this has to be recorded, not thrown.
+    expect(result.status).toBe('failed')
+    expect(result.error).toContain('Stripe is down')
+    expect(supabase._inserted[0]).toMatchObject({ complimentary_status: 'failed' })
+  })
+
+  it('fails safe when the duplicate-guard lookup errors', async () => {
+    // Treating a lookup failure as "no pending row" would create the duplicate
+    // the guard exists to prevent.
+    const supabase = makeFakeSupabaseForSchedule({
+      profile: { stripe_customer_id: null, stripe_subscription_id: null, full_name: null },
+      lookupError: { message: 'connection reset' },
+    })
+
+    const result = await scheduleComplimentaryPremium(supabase, {
+      userId: 'user-x',
+      email: 'x@example.com',
+      inviteKind: 'access_override',
+      hasSignedIn: false,
+    })
+
+    expect(result.status).toBe('failed')
+    expect(result.error).toContain('connection reset')
+    expect(stripeMock.subscriptions.create).not.toHaveBeenCalled()
+  })
+
+  it('still returns the outcome when the audit row cannot be written', async () => {
+    const supabase = makeFakeSupabaseForSchedule({
+      profile: { stripe_customer_id: null, stripe_subscription_id: null, full_name: null },
+      insertError: { message: 'insert failed' },
+    })
+
+    const result = await scheduleComplimentaryPremium(supabase, {
+      userId: 'user-log',
+      email: 'log@example.com',
+      inviteKind: 'access_override',
+      hasSignedIn: false,
+    })
+
+    expect(result.status).toBe('pending_activation')
+  })
+
+  it('does not throw when the audit write rejects outright', async () => {
+    // The caller has already sent an invite email it cannot recall, so this
+    // must always resolve to something reportable.
+    const supabase = makeFakeSupabaseForSchedule({
+      profile: { stripe_customer_id: null, stripe_subscription_id: null, full_name: null },
+      insertThrows: true,
+    })
+    stripeMock.customers.create.mockResolvedValue({ id: 'cus_log' })
+    stripeMock.subscriptions.create.mockResolvedValue({ id: 'sub_log', status: 'trialing' })
+
+    const result = await scheduleComplimentaryPremium(supabase, {
+      userId: 'user-log-throws',
+      email: 'throws@example.com',
+      inviteKind: 'access_override',
+      hasSignedIn: true,
+    })
+
+    // The grant itself succeeded — only the bookkeeping failed, and that must
+    // not be reported as a failed grant.
+    expect(result.status).toBe('granted')
+    expect(result.stripeSubscriptionId).toBe('sub_log')
   })
 })

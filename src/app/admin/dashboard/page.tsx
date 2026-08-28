@@ -9,13 +9,17 @@
  *   3. Invite log   — everyone invited from the admin panel + their
  *                     complimentary premium status
  *   4. Geo control  — set each country Off / Info Only / Live
- *   5. Overrides    — grant specific users full access regardless of country
+ *   5. Overrides    — invite a specific person and give them full access
+ *                     regardless of country, plus complimentary premium
  *
  * Admin-only: the /admin layout already gates on profiles.is_admin, and every
  * API this page calls re-checks it server-side via requireAdmin().
  */
 
 import { useCallback, useEffect, useState } from 'react'
+import { COMPLIMENTARY_PREMIUM_MONTHS } from '@/lib/complimentary-premium-config'
+import type { ComplimentaryStatus } from '@/lib/complimentary-premium-config'
+import { overrideGrantNotice, type InviteNotice } from '@/lib/invite-notice'
 
 type GeoMode = 'disabled' | 'info_only' | 'full'
 
@@ -64,20 +68,27 @@ interface GeoOverride {
   created_at: string
 }
 
-type ComplimentaryStatus =
-  | 'pending_activation'
-  | 'activating'
-  | 'granted'
-  | 'already_subscribed'
-  | 'failed'
-  | 'not_attempted'
+/** POST /api/admin/geo-restrictions/overrides — success response. */
+interface OverrideGrantResponse {
+  ok: true
+  override: { id: string; user_id: string; email: string } | null
+  /** True when an invite email was sent because they had no account yet. */
+  invited: boolean
+  alreadyRegistered: boolean
+  complimentary: {
+    status: ComplimentaryStatus
+    months: number
+    expiresAt: string | null
+    error: string | null
+  }
+}
 
 interface AdminInvite {
   id: string
   email: string
   first_name: string | null
   user_id: string | null
-  invite_kind: 'waitlist' | 'author'
+  invite_kind: 'waitlist' | 'author' | 'access_override'
   already_registered: boolean
   complimentary_status: ComplimentaryStatus
   complimentary_months: number | null
@@ -120,7 +131,11 @@ function modeBadgeClass(mode: GeoMode | 'unconfigured'): string {
     : 'bg-gray-100 text-gray-400'
 }
 
-function compLabel(status: ComplimentaryStatus): string {
+function kindLabel(kind: AdminInvite['invite_kind']): string {
+  return kind === 'author' ? 'Author' : kind === 'access_override' ? 'Override' : 'Waitlist'
+}
+
+function compLabel(status: ComplimentaryStatus, kind: AdminInvite['invite_kind']): string {
   return status === 'granted'
     ? 'Premium active'
     : status === 'pending_activation'
@@ -131,7 +146,12 @@ function compLabel(status: ComplimentaryStatus): string {
     ? 'Already subscribed'
     : status === 'failed'
     ? 'NOT granted'
-    : 'Admin access'
+    : // 'not_attempted' means two different things: an author gets access via
+      // is_admin and needs no grant, while anyone else already had months
+      // scheduled by an earlier invite.
+    kind === 'author'
+    ? 'Admin access'
+    : 'Already scheduled'
 }
 
 function compBadgeClass(status: ComplimentaryStatus): string {
@@ -192,6 +212,7 @@ export default function AdminDashboard() {
   const [overrideReason, setOverrideReason] = useState('')
   const [granting, setGranting] = useState(false)
   const [overrideError, setOverrideError] = useState<string | null>(null)
+  const [overrideNotice, setOverrideNotice] = useState<InviteNotice | null>(null)
 
   const load = useCallback(async () => {
     setLoading(true)
@@ -264,19 +285,32 @@ export default function AdminDashboard() {
   }
 
   const grantOverride = async () => {
-    if (!overrideEmail.trim()) return
+    const email = overrideEmail.trim()
+    if (!email) return
     setGranting(true)
     setOverrideError(null)
+    setOverrideNotice(null)
     try {
       const res = await fetch('/api/admin/geo-restrictions/overrides', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: overrideEmail.trim(), reason: overrideReason.trim() || null }),
+        body: JSON.stringify({ email, reason: overrideReason.trim() || null }),
       })
-      const body = await res.json()
+      const body = (await res.json()) as OverrideGrantResponse & { error?: string }
       if (!res.ok) {
         setOverrideError(body.error ?? 'Failed to grant access')
       } else {
+        // The override and the complimentary premium can succeed
+        // independently, so report what actually happened rather than a flat
+        // "done" — a failed grant means someone will hit the paywall.
+        setOverrideNotice(
+          overrideGrantNotice({
+            email: body.override?.email ?? email,
+            invited: body.invited,
+            alreadyRegistered: body.alreadyRegistered,
+            complimentary: body.complimentary,
+          }),
+        )
         setOverrideEmail('')
         setOverrideReason('')
         await load()
@@ -460,7 +494,7 @@ export default function AdminDashboard() {
                   </td>
                   <td className="px-4 py-3 text-gray-600 break-all">{inv.email}</td>
                   <td className="px-4 py-3 text-gray-500">
-                    {inv.invite_kind === 'author' ? 'Author' : 'Waitlist'}
+                    {kindLabel(inv.invite_kind)}
                     {inv.already_registered && (
                       <span
                         title="Already had an account — no new invite email was sent"
@@ -475,11 +509,12 @@ export default function AdminDashboard() {
                   </td>
                   <td className="px-4 py-3">
                     <span
+                      title={inv.error ?? undefined}
                       className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded-full whitespace-nowrap ${compBadgeClass(
                         inv.complimentary_status,
                       )}`}
                     >
-                      {compLabel(inv.complimentary_status)}
+                      {compLabel(inv.complimentary_status, inv.invite_kind)}
                     </span>
                     {inv.complimentary_status === 'failed' && inv.error && (
                       <p className="text-[11px] text-red-500 mt-1 max-w-xs">{inv.error}</p>
@@ -601,7 +636,11 @@ export default function AdminDashboard() {
       <section className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
         <h2 className="font-semibold text-brand-900">User access overrides</h2>
         <p className="text-xs text-gray-400 mt-0.5 mb-4">
-          Grant a specific user full access regardless of their country — for testers and beta pilots.
+          Grant a specific person full access regardless of their country — for testers and beta
+          pilots. They do not need an account yet: if they have none, an invite email is sent.
+          Either way they also get {COMPLIMENTARY_PREMIUM_MONTHS} months of complimentary premium —
+          starting straight away if they already use the app, otherwise at their first sign-in, so
+          none of it is spent before they can use it.
         </p>
 
         <div className="flex flex-col md:flex-row gap-2 mb-3">
@@ -624,10 +663,19 @@ export default function AdminDashboard() {
             disabled={granting || !overrideEmail.trim()}
             className="px-4 py-2 rounded-lg bg-brand-900 hover:bg-brand-800 disabled:opacity-40 text-sm font-medium text-white transition-colors whitespace-nowrap"
           >
-            {granting ? 'Granting…' : 'Grant Access'}
+            {granting ? 'Inviting…' : 'Invite & Grant'}
           </button>
         </div>
         {overrideError && <p className="text-xs text-red-500 mb-3">{overrideError}</p>}
+        {overrideNotice && (
+          <p
+            className={`text-xs mb-3 ${
+              overrideNotice.tone === 'warn' ? 'text-red-600 font-medium' : 'text-green-700'
+            }`}
+          >
+            {overrideNotice.text}
+          </p>
+        )}
 
         {overrides.length === 0 ? (
           <p className="text-xs text-gray-400">No overrides granted yet.</p>
