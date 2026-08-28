@@ -3,10 +3,10 @@ import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { requireAdmin } from '@/lib/admin-auth'
 import { rateLimit } from '@/lib/rate-limit'
-import { findUserIdByEmail } from '@/lib/find-user'
+import { findUserByEmail } from '@/lib/find-user'
 import {
   COMPLIMENTARY_PREMIUM_MONTHS,
-  PENDING_ACTIVATION,
+  scheduleComplimentaryPremium,
 } from '@/lib/complimentary-premium'
 
 /**
@@ -17,12 +17,11 @@ import {
  * makes, so it is applied automatically rather than being a per-invite choice
  * someone can forget to tick.
  *
- * The grant itself is deliberately NOT made here. It is recorded as
- * 'pending_activation' and runs the first time the user signs in (see
- * activatePendingComplimentaryPremium, called from the auth callback), so the
- * 12 months always mean twelve months of usable access rather than starting
- * while the invite sits unread in an inbox. It also means no Stripe customer
- * or subscription is created for an invite nobody ever accepts.
+ * When the grant happens is decided by scheduleComplimentaryPremium: it is
+ * deferred to first sign-in for anyone who has not signed in yet, so the 12
+ * months always mean twelve months of usable access rather than starting while
+ * the invite sits unread in an inbox — and no Stripe customer or subscription
+ * is created for an invite nobody ever accepts.
  *
  * Ordering matters and is deliberate: the Supabase invite email goes first and
  * cannot be recalled once sent. The admin_invites row is written after it, so
@@ -61,29 +60,24 @@ export async function POST(request: NextRequest) {
 
     let userId = invited?.user?.id ?? null
     let alreadyRegistered = false
+    let hasSignedIn = false
 
     if (inviteError) {
       // "User already registered" is not a failure — they just signed up
       // themselves. Resolve their id so they still get their complimentary
-      // months.
+      // months, and note whether they have ever actually signed in: that is
+      // what decides between granting now and deferring to first sign-in.
       if (inviteError.message.toLowerCase().includes('already registered')) {
         alreadyRegistered = true
-        userId = await findUserIdByEmail(admin, normalisedEmail)
+        const existing = await findUserByEmail(admin, normalisedEmail)
+        userId = existing?.id ?? null
+        hasSignedIn = Boolean(existing?.lastSignInAt)
       } else {
         throw inviteError
       }
     }
 
-    // 2. Record the complimentary premium as pending. It is granted on their
-    //    first sign-in so the 12 months start when they can actually use them.
-    //    Without a user id there is nothing to attach the pending grant to, so
-    //    that case is recorded as a failure needing follow-up.
-    const complimentaryStatus = userId ? PENDING_ACTIVATION : 'failed'
-    const complimentaryError = userId
-      ? null
-      : 'Invite sent, but the invited user could not be located, so no complimentary premium was scheduled.'
-
-    // 3. Mark as converted on the waitlist.
+    // 2. Mark as converted on the waitlist.
     const { error: updateError } = await admin
       .from('waitlist_signups')
       .update({
@@ -94,32 +88,58 @@ export async function POST(request: NextRequest) {
 
     if (updateError) throw updateError
 
-    // 4. Record the invite. Written last so it reflects the real outcome, and
-    //    never allowed to fail the request — the invite genuinely was sent.
-    const { error: logError } = await admin.from('admin_invites').insert({
-      email: normalisedEmail,
-      first_name: firstName,
-      waitlist_id: waitlistId,
-      user_id: userId,
-      invited_by: auth.id,
-      invite_kind: 'waitlist',
-      already_registered: alreadyRegistered,
-      complimentary_status: complimentaryStatus,
-      complimentary_months: COMPLIMENTARY_PREMIUM_MONTHS,
-      error: complimentaryError,
-    })
+    // 3. Attach the complimentary premium and log the invite. Without a user
+    //    id there is nothing to attach it to, so that case is recorded as a
+    //    failure needing follow-up — the email has already gone out.
+    if (!userId) {
+      const complimentaryError =
+        'Invite sent, but the invited user could not be located, so no complimentary premium was scheduled.'
 
-    if (logError) {
-      console.error('Admin invite: failed to write admin_invites log row', logError)
+      const { error: logError } = await admin.from('admin_invites').insert({
+        email: normalisedEmail,
+        first_name: firstName,
+        waitlist_id: waitlistId,
+        invited_by: auth.id,
+        invite_kind: 'waitlist',
+        already_registered: alreadyRegistered,
+        complimentary_status: 'failed',
+        complimentary_months: COMPLIMENTARY_PREMIUM_MONTHS,
+        error: complimentaryError,
+      })
+      if (logError) {
+        console.error('Admin invite: failed to write admin_invites log row', logError)
+      }
+
+      return NextResponse.json({
+        success: true,
+        alreadyRegistered,
+        complimentary: {
+          status: 'failed',
+          months: COMPLIMENTARY_PREMIUM_MONTHS,
+          error: complimentaryError,
+        },
+      })
     }
+
+    const complimentary = await scheduleComplimentaryPremium(admin, {
+      userId,
+      email: normalisedEmail,
+      firstName,
+      invitedBy: auth.id,
+      inviteKind: 'waitlist',
+      waitlistId,
+      alreadyRegistered,
+      hasSignedIn,
+    })
 
     return NextResponse.json({
       success: true,
       alreadyRegistered,
       complimentary: {
-        status: complimentaryStatus,
-        months: COMPLIMENTARY_PREMIUM_MONTHS,
-        error: complimentaryError,
+        status: complimentary.status,
+        months: complimentary.months,
+        expiresAt: complimentary.expiresAt,
+        error: complimentary.error,
       },
     })
   } catch (err) {

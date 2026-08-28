@@ -4,7 +4,8 @@ import { createAdminClient } from '@/lib/supabase/admin'
 import { requireAdmin } from '@/lib/admin-auth'
 import { rateLimit } from '@/lib/rate-limit'
 import { sanitizeError } from '@/lib/sanitize-error'
-import { findUserIdByEmail } from '@/lib/find-user'
+import { findUserByEmail } from '@/lib/find-user'
+import { scheduleComplimentaryPremium } from '@/lib/complimentary-premium'
 
 export const dynamic = 'force-dynamic'
 
@@ -15,7 +16,11 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
  * POST /api/admin/geo-restrictions/overrides — grant one by email.
  *        body: { email: string, reason?: string|null, expires_at?: string|null }
  *
- * An override gives that user full access regardless of their country.
+ * An override gives that user full access regardless of their country. The
+ * person is invited by email if they do not have an account yet, and carries
+ * the same complimentary premium (COMPLIMENTARY_PREMIUM_MONTHS, currently 12
+ * months) as a waitlist invite — geographic access on its own would only carry
+ * a tester as far as the paywall.
  */
 export async function GET(request: NextRequest) {
   const { success } = await rateLimit(request, { limit: 60, windowMs: 60_000 })
@@ -74,18 +79,72 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Enter a valid email address' }, { status: 400 })
   }
 
+  // Validated here rather than left to Postgres: everything below this point
+  // has irreversible side effects (an invite email, a Stripe subscription), so
+  // a malformed expiry must be rejected before any of them run.
+  if (expires_at !== null && (typeof expires_at !== 'string' || Number.isNaN(Date.parse(expires_at)))) {
+    return NextResponse.json(
+      { error: 'expires_at must be an ISO date string, or null for no expiry' },
+      { status: 400 },
+    )
+  }
+
   try {
     const admin = createAdminClient()
 
-    const userId = await findUserIdByEmail(admin, email)
+    // 1. Resolve the account, inviting them if there is not one yet.
+    //
+    //    An override is how a tester or beta pilot is stood up, and requiring
+    //    them to have signed up first made that impossible for anyone who has
+    //    never used the app. The Supabase invite email creates the auth user
+    //    (and, via the on_auth_user_created trigger, their profile), which is
+    //    what the override row and the complimentary grant both hang off.
+    //
+    //    Ordering is deliberate and unavoidable: the invite email cannot be
+    //    recalled once sent, and nothing below can run without the user id it
+    //    produces. Everything after it therefore records its own outcome
+    //    rather than being allowed to fail silently.
+    const existing = await findUserByEmail(admin, email)
+
+    let userId = existing?.id ?? null
+    let alreadyRegistered = Boolean(existing)
+    let hasSignedIn = Boolean(existing?.lastSignInAt)
+    let invited = false
+
+    if (!userId) {
+      const { data: created, error: inviteError } = await admin.auth.admin.inviteUserByEmail(
+        email,
+        { redirectTo: `${process.env.NEXT_PUBLIC_APP_URL}/auth/callback?next=/onboarding` },
+      )
+
+      if (inviteError) {
+        // They registered between the lookup above and this call — not a
+        // failure, just a race. Fall back to the existing account.
+        if (inviteError.message.toLowerCase().includes('already registered')) {
+          const raced = await findUserByEmail(admin, email)
+          userId = raced?.id ?? null
+          alreadyRegistered = true
+          hasSignedIn = Boolean(raced?.lastSignInAt)
+        } else {
+          throw inviteError
+        }
+      } else {
+        userId = created?.user?.id ?? null
+        invited = true
+      }
+    }
 
     if (!userId) {
       return NextResponse.json(
-        { error: 'No user found with that email. They must have signed up first.' },
-        { status: 404 },
+        {
+          error:
+            'The invite was sent, but the invited account could not be located, so no override or complimentary premium was applied. Try again in a moment.',
+        },
+        { status: 502 },
       )
     }
 
+    // 2. Grant the geographic override itself.
     const { data: override, error } = await admin
       .from('geo_access_overrides')
       .upsert(
@@ -97,7 +156,30 @@ export async function POST(request: NextRequest) {
 
     if (error) throw error
 
-    return NextResponse.json({ ok: true, override: { ...override, email } })
+    // 3. Attach the complimentary premium and log the invite. Never throws:
+    //    the override is already granted and the email already sent, so a
+    //    billing failure has to be reported, not lost.
+    const complimentary = await scheduleComplimentaryPremium(admin, {
+      userId,
+      email,
+      invitedBy: auth.id,
+      inviteKind: 'access_override',
+      alreadyRegistered,
+      hasSignedIn,
+    })
+
+    return NextResponse.json({
+      ok: true,
+      override: { ...override, email },
+      invited,
+      alreadyRegistered,
+      complimentary: {
+        status: complimentary.status,
+        months: complimentary.months,
+        expiresAt: complimentary.expiresAt,
+        error: complimentary.error,
+      },
+    })
   } catch (err) {
     return NextResponse.json({ error: sanitizeError(err) }, { status: 500 })
   }
