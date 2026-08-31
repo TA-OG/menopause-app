@@ -103,6 +103,72 @@ is required before launch.
 Verify by triggering a magic-link sign-in and confirming the message shows in the
 Resend dashboard's email log.
 
+### Admin invites
+
+`inviteUserByEmail` only works for an address with **no** Supabase account. For one
+that already exists it returns *"User already registered"* and sends nothing at all
+— including on a re-invite, since the first invite created the account whether or
+not the person ever used the link.
+
+`src/lib/invite-email.ts` handles both cases: a new account gets the ordinary
+Supabase invite; an existing one gets a magic link minted with
+`auth.admin.generateLink()` and delivered over the Resend SDK. Every invite route
+goes through it, and the outcome is recorded on `admin_invites.email_status`
+(migration 034) and shown in the **Email** column of the admin dashboard's invite
+log. Anything reading `NOT SENT` means nobody was emailed — re-invite once the
+cause is fixed.
+
+### DNS — verified state, and one gap
+
+Checked 2026-08-31 against live DNS:
+
+| Record | Value | Status |
+|---|---|---|
+| `resend._domainkey.auntymel.app` | DKIM public key | present |
+| `send.auntymel.app` TXT | `v=spf1 include:amazonses.com ~all` | present |
+| `send.auntymel.app` MX | `feedback-smtp.eu-west-1.amazonses.com` | present |
+| `auntymel.app` TXT | `v=spf1 include:spf.efwd.registrar-servers.com include:spf.protection.outlook.com ~all` | present (inbound/Outlook; Resend aligns via DKIM, so this is correct as-is) |
+| `_dmarc.auntymel.app` | — | **missing** |
+
+The missing DMARC record is a live deliverability risk, not a formality: Gmail,
+Yahoo and Outlook have all tightened on unauthenticated bulk mail, and a domain
+with no DMARC policy is more likely to be junked or silently dropped. Auth email
+*is* the product for a passwordless app — a woman who cannot receive her link
+cannot use it at all.
+
+Add at the registrar, starting in monitor-only mode so nothing is rejected while
+alignment is confirmed:
+
+```
+_dmarc.auntymel.app   TXT   "v=DMARC1; p=none; rua=mailto:dmarc@auntymel.app; fo=1"
+```
+
+Review the aggregate reports, then tighten to `p=quarantine` and eventually
+`p=reject`.
+
+### When someone says they never received an email
+
+Work through it in this order — each step distinguishes a different leg:
+
+1. **Admin dashboard → Invited users → Email column.** `NOT SENT` means the app
+   knows nothing left; the reason is in the cell. This is the fastest answer and
+   needs no dashboard access.
+2. **Resend → Emails log.** Present with a `bounced`/`complained` status means the
+   send worked and the receiving side rejected it. Absent means it never reached
+   Resend — look at Supabase next.
+3. **Supabase → Authentication → Logs**, filtered for the address. A 500 on
+   `/otp` or `/invite` is an SMTP failure; `over_email_send_rate_limit` is the
+   hourly cap (default 30 with custom SMTP, ~2 without).
+4. **Supabase → Authentication → Emails → SMTP Settings.** If custom SMTP has been
+   turned off, Supabase falls back to its built-in sender, which is rate-limited to
+   a couple of messages an hour and intended for testing only.
+5. **Supabase → Authentication → URL Configuration.** `NEXT_PUBLIC_APP_URL` must be
+   the Site URL, and the redirect allow-list must cover
+   `https://auntymel.app/auth/callback` *including query strings* (a
+   `https://auntymel.app/**` pattern is the safe form) — invites append
+   `?next=/onboarding`. A rejected redirect does not stop the email, but it does
+   break the link once it arrives.
+
 ## Compliance
 
 - All user-facing content includes wellness disclaimer (see `src/lib/disclaimer.ts`)

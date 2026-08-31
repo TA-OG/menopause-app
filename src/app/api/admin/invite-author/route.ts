@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { findUserIdByEmail } from '@/lib/find-user'
+import { sendInviteEmail } from '@/lib/invite-email'
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -51,23 +52,24 @@ export async function POST(request: NextRequest) {
   const redirectTo = `${process.env.NEXT_PUBLIC_APP_URL}/auth/callback?next=/admin/intake`
 
   try {
-    // 3. Send the invite (creates the auth user + profile via trigger)
-    const { data: invited, error: inviteError } = await admin.auth.admin.inviteUserByEmail(email, {
+    // 3. Send them their link (creates the auth user + profile via trigger for
+    //    a new account; a fresh magic link for one that already exists —
+    //    promoting an existing user used to send them nothing at all).
+    const delivery = await sendInviteEmail(admin, {
+      email,
       data: fullName ? { full_name: fullName } : undefined,
       redirectTo,
     })
 
-    let authorId = invited?.user?.id ?? null
-    let alreadyRegistered = false
+    const alreadyRegistered = delivery.alreadyRegistered
+    let authorId = delivery.userId
 
-    if (inviteError) {
-      // Already-registered isn't a failure — just promote the existing user.
-      if (inviteError.message.toLowerCase().includes('already')) {
-        alreadyRegistered = true
-        authorId = await findUserIdByEmail(admin, email)
-      } else {
-        throw inviteError
-      }
+    if (!authorId && alreadyRegistered) {
+      authorId = await findUserIdByEmail(admin, email)
+    }
+
+    if (delivery.failed && !authorId) {
+      return NextResponse.json({ error: delivery.error ?? 'Invite failed' }, { status: 502 })
     }
 
     if (!authorId) {
@@ -101,6 +103,8 @@ export async function POST(request: NextRequest) {
       invited_by: user.id,
       invite_kind: 'author',
       already_registered: alreadyRegistered,
+      email_status: delivery.status,
+      email_error: delivery.error,
       complimentary_status: 'not_attempted',
     })
 
@@ -108,7 +112,16 @@ export async function POST(request: NextRequest) {
       console.error('Invite author: failed to write admin_invites log row', logError)
     }
 
-    return NextResponse.json({ success: true, email, alreadyRegistered })
+    return NextResponse.json({
+      success: true,
+      email,
+      alreadyRegistered,
+      emailDelivery: {
+        status: delivery.status,
+        failed: delivery.failed,
+        error: delivery.error,
+      },
+    })
   } catch (err) {
     console.error('Invite author error:', err)
     return NextResponse.json(

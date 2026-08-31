@@ -45,6 +45,14 @@ export default function SignInPage() {
    * Send a passwordless magic link to the user's email via Supabase Auth.
    * The redirect URL points to our /auth/callback route which exchanges
    * the code for a session.
+   *
+   * shouldCreateUser is false because this is the *sign-in* page. Left at its
+   * default of true, a mistyped address silently created a brand-new empty
+   * account and sent a "Confirm your signup" email rather than a magic link —
+   * so someone who had used the app for months would be told to confirm a
+   * signup, find none of her plan when she arrived, and reasonably conclude
+   * her sign-in link had never come. Sign-up is a deliberate act on its own
+   * page, with the consent checkboxes that page collects.
    */
   async function handleMagicLink(e: React.FormEvent) {
     e.preventDefault()
@@ -55,12 +63,22 @@ export default function SignInPage() {
     const { error: authError } = await supabase.auth.signInWithOtp({
       email,
       options: {
+        shouldCreateUser: false,
         emailRedirectTo: `${window.location.origin}/auth/callback`,
       },
     })
 
     if (authError) {
-      setError(authError.message)
+      // Supabase reports "no account here" as a signups-disabled error, whose
+      // wording explains nothing to the person reading it.
+      const noAccount =
+        /signups? not allowed|signup_disabled|user not found/i.test(authError.message)
+
+      setError(
+        noAccount
+          ? 'We could not find an account for that email. Check the spelling, or sign up below — it takes a moment.'
+          : authError.message,
+      )
       setLoading(false)
     } else {
       setSent(true)

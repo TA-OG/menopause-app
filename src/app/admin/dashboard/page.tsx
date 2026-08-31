@@ -18,7 +18,10 @@
 
 import { useCallback, useEffect, useState } from 'react'
 import { COMPLIMENTARY_PREMIUM_MONTHS } from '@/lib/complimentary-premium-config'
-import type { ComplimentaryStatus } from '@/lib/complimentary-premium-config'
+import type {
+  ComplimentaryStatus,
+  InviteEmailRecordStatus,
+} from '@/lib/complimentary-premium-config'
 import { overrideGrantNotice, type InviteNotice } from '@/lib/invite-notice'
 
 type GeoMode = 'disabled' | 'info_only' | 'full'
@@ -72,9 +75,14 @@ interface GeoOverride {
 interface OverrideGrantResponse {
   ok: true
   override: { id: string; user_id: string; email: string } | null
-  /** True when an invite email was sent because they had no account yet. */
+  /** True when a Supabase invite email was sent because they had no account yet. */
   invited: boolean
   alreadyRegistered: boolean
+  emailDelivery?: {
+    status: 'invite_sent' | 'magic_link_sent' | 'not_sent'
+    failed: boolean
+    error: string | null
+  }
   complimentary: {
     status: ComplimentaryStatus
     months: number
@@ -90,6 +98,8 @@ interface AdminInvite {
   user_id: string | null
   invite_kind: 'waitlist' | 'author' | 'access_override'
   already_registered: boolean
+  email_status: InviteEmailRecordStatus
+  email_error: string | null
   complimentary_status: ComplimentaryStatus
   complimentary_months: number | null
   complimentary_expires_at: string | null
@@ -106,6 +116,7 @@ interface InviteLog {
     awaitingSignIn: number
     alreadySubscribed: number
     failed: number
+    noEmail: number
   }
 }
 
@@ -133,6 +144,26 @@ function modeBadgeClass(mode: GeoMode | 'unconfigured'): string {
 
 function kindLabel(kind: AdminInvite['invite_kind']): string {
   return kind === 'author' ? 'Author' : kind === 'access_override' ? 'Override' : 'Waitlist'
+}
+
+function emailLabel(status: InviteEmailRecordStatus): string {
+  return status === 'invite_sent'
+    ? 'Invite sent'
+    : status === 'magic_link_sent'
+    ? 'Link sent'
+    : status === 'not_sent'
+    ? 'NOT SENT'
+    : // Rows written before delivery was tracked (migration 034). Shown as
+      // unknown rather than assumed sent — assuming is how this went unnoticed.
+      'Unknown'
+}
+
+function emailBadgeClass(status: InviteEmailRecordStatus): string {
+  return status === 'invite_sent' || status === 'magic_link_sent'
+    ? 'bg-green-100 text-green-700'
+    : status === 'not_sent'
+    ? 'bg-red-100 text-red-700'
+    : 'bg-gray-100 text-gray-500'
 }
 
 function compLabel(status: ComplimentaryStatus, kind: AdminInvite['invite_kind']): string {
@@ -308,6 +339,7 @@ export default function AdminDashboard() {
             email: body.override?.email ?? email,
             invited: body.invited,
             alreadyRegistered: body.alreadyRegistered,
+            emailDelivery: body.emailDelivery,
             complimentary: body.complimentary,
           }),
         )
@@ -454,6 +486,11 @@ export default function AdminDashboard() {
                   {inviteLog.summary.total} invited · {inviteLog.summary.granted} active ·{' '}
                   {inviteLog.summary.awaitingSignIn} awaiting sign-in
                 </p>
+                {inviteLog.summary.noEmail > 0 && (
+                  <p className="text-xs font-semibold text-red-600 mt-0.5">
+                    {inviteLog.summary.noEmail} never emailed
+                  </p>
+                )}
                 {inviteLog.summary.failed > 0 && (
                   <p className="text-xs font-semibold text-red-600 mt-0.5">
                     {inviteLog.summary.failed} without premium
@@ -463,6 +500,21 @@ export default function AdminDashboard() {
             )}
           </div>
         </div>
+
+        {/* Nothing reached these people at all — they do not know they were
+            invited. Ranked above the premium banner because it is the more
+            complete failure: no email means no way into the app. */}
+        {(inviteLog?.summary.noEmail ?? 0) > 0 && (
+          <div className="mx-6 mt-4 rounded-xl border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-800">
+            <span className="font-semibold">
+              {inviteLog!.summary.noEmail}{' '}
+              {inviteLog!.summary.noEmail === 1 ? 'person was' : 'people were'} never emailed.
+            </span>{' '}
+            They have no link into the app and do not know they were invited. Press Invite again
+            on the waitlist to send them one — a repeat invite now sends a fresh sign-in link
+            instead of silently doing nothing.
+          </div>
+        )}
 
         {/* A failed grant means someone was invited but never got the premium
             they were promised — surface it loudly, not as a table cell. */}
@@ -482,6 +534,7 @@ export default function AdminDashboard() {
                 <th className="px-4 py-3">Email</th>
                 <th className="px-4 py-3">Type</th>
                 <th className="px-4 py-3">Invited</th>
+                <th className="px-4 py-3">Email</th>
                 <th className="px-4 py-3">Premium</th>
                 <th className="px-4 py-3">Until</th>
               </tr>
@@ -497,7 +550,7 @@ export default function AdminDashboard() {
                     {kindLabel(inv.invite_kind)}
                     {inv.already_registered && (
                       <span
-                        title="Already had an account — no new invite email was sent"
+                        title="Already had an account — sent a fresh sign-in link rather than a new invite"
                         className="ml-1 text-[9px] font-bold uppercase px-1.5 py-0.5 rounded-full bg-gray-100 text-gray-500"
                       >
                         existing
@@ -506,6 +559,19 @@ export default function AdminDashboard() {
                   </td>
                   <td className="px-4 py-3 text-gray-400 whitespace-nowrap">
                     {shortDate(inv.created_at)}
+                  </td>
+                  <td className="px-4 py-3">
+                    <span
+                      title={inv.email_error ?? undefined}
+                      className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded-full whitespace-nowrap ${emailBadgeClass(
+                        inv.email_status,
+                      )}`}
+                    >
+                      {emailLabel(inv.email_status)}
+                    </span>
+                    {inv.email_status === 'not_sent' && inv.email_error && (
+                      <p className="text-[11px] text-red-500 mt-1 max-w-xs">{inv.email_error}</p>
+                    )}
                   </td>
                   <td className="px-4 py-3">
                     <span
@@ -537,7 +603,7 @@ export default function AdminDashboard() {
               ))}
               {!loading && (inviteLog?.invites.length ?? 0) === 0 && (
                 <tr>
-                  <td colSpan={6} className="px-6 py-12 text-center text-gray-400 text-sm">
+                  <td colSpan={7} className="px-6 py-12 text-center text-gray-400 text-sm">
                     Nobody invited yet. Invites are sent from the{' '}
                     <a href="/admin" className="text-brand-600 hover:underline">
                       waitlist

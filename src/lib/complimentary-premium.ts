@@ -8,6 +8,7 @@ import {
 import type {
   ComplimentaryGrantStatus,
   ComplimentaryRecordStatus,
+  InviteEmailRecordStatus,
   InviteKind,
 } from '@/lib/complimentary-premium-config'
 
@@ -28,6 +29,7 @@ export type {
   ComplimentaryGrantStatus,
   ComplimentaryRecordStatus,
   ComplimentaryStatus,
+  InviteEmailRecordStatus,
   InviteKind,
 } from '@/lib/complimentary-premium-config'
 
@@ -468,10 +470,18 @@ export async function scheduleComplimentaryPremium(
     invitedBy?: string | null
     inviteKind: InviteKind
     waitlistId?: string | null
-    /** True when the account already existed, so no invite email was sent. */
+    /** True when the account already existed before this invite. */
     alreadyRegistered?: boolean
     /** True when that account has signed in at least once. */
     hasSignedIn?: boolean
+    /**
+     * What actually reached the invitee's inbox, from sendInviteEmail(). The
+     * grant and the email fail independently — someone can have her twelve
+     * months scheduled perfectly and still never have been told the app
+     * exists — so the outcome is recorded alongside, not inferred from it.
+     */
+    emailStatus?: InviteEmailRecordStatus
+    emailError?: string | null
     months?: number
   },
 ): Promise<ScheduleComplimentaryResult> {
@@ -553,6 +563,8 @@ export async function scheduleComplimentaryPremium(
       invited_by: params.invitedBy ?? null,
       invite_kind: params.inviteKind,
       already_registered: params.alreadyRegistered ?? false,
+      email_status: params.emailStatus ?? 'unknown',
+      email_error: params.emailError ?? null,
       complimentary_status: result.status,
       complimentary_months: result.months,
       complimentary_expires_at: result.expiresAt,

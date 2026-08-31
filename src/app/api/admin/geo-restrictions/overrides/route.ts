@@ -5,6 +5,7 @@ import { requireAdmin } from '@/lib/admin-auth'
 import { rateLimit } from '@/lib/rate-limit'
 import { sanitizeError } from '@/lib/sanitize-error'
 import { findUserByEmail } from '@/lib/find-user'
+import { sendInviteEmail } from '@/lib/invite-email'
 import { scheduleComplimentaryPremium } from '@/lib/complimentary-premium'
 
 export const dynamic = 'force-dynamic'
@@ -104,41 +105,34 @@ export async function POST(request: NextRequest) {
     //    recalled once sent, and nothing below can run without the user id it
     //    produces. Everything after it therefore records its own outcome
     //    rather than being allowed to fail silently.
-    const existing = await findUserByEmail(admin, email)
+    //
+    //    The email goes out whether or not the account already exists. An
+    //    override is only useful once the person actually opens the app, and
+    //    someone who signed up months ago and forgot has no more idea she has
+    //    been granted access than someone who never had an account at all —
+    //    previously she was told nothing.
+    const delivery = await sendInviteEmail(admin, {
+      email,
+      redirectTo: `${process.env.NEXT_PUBLIC_APP_URL}/auth/callback?next=/onboarding`,
+    })
 
-    let userId = existing?.id ?? null
-    let alreadyRegistered = Boolean(existing)
-    let hasSignedIn = Boolean(existing?.lastSignInAt)
-    let invited = false
+    let userId = delivery.userId
+    const alreadyRegistered = delivery.alreadyRegistered
+    let hasSignedIn = Boolean(delivery.lastSignInAt)
+    const invited = delivery.status === 'invite_sent'
 
     if (!userId) {
-      const { data: created, error: inviteError } = await admin.auth.admin.inviteUserByEmail(
-        email,
-        { redirectTo: `${process.env.NEXT_PUBLIC_APP_URL}/auth/callback?next=/onboarding` },
-      )
-
-      if (inviteError) {
-        // They registered between the lookup above and this call — not a
-        // failure, just a race. Fall back to the existing account.
-        if (inviteError.message.toLowerCase().includes('already registered')) {
-          const raced = await findUserByEmail(admin, email)
-          userId = raced?.id ?? null
-          alreadyRegistered = true
-          hasSignedIn = Boolean(raced?.lastSignInAt)
-        } else {
-          throw inviteError
-        }
-      } else {
-        userId = created?.user?.id ?? null
-        invited = true
-      }
+      const existing = await findUserByEmail(admin, email)
+      userId = existing?.id ?? null
+      hasSignedIn = Boolean(existing?.lastSignInAt)
     }
 
     if (!userId) {
       return NextResponse.json(
         {
           error:
-            'The invite was sent, but the invited account could not be located, so no override or complimentary premium was applied. Try again in a moment.',
+            delivery.error ??
+            'The invited account could not be located, so no override or complimentary premium was applied. Try again in a moment.',
         },
         { status: 502 },
       )
@@ -166,6 +160,8 @@ export async function POST(request: NextRequest) {
       inviteKind: 'access_override',
       alreadyRegistered,
       hasSignedIn,
+      emailStatus: delivery.status,
+      emailError: delivery.error,
     })
 
     return NextResponse.json({
@@ -173,6 +169,7 @@ export async function POST(request: NextRequest) {
       override: { ...override, email },
       invited,
       alreadyRegistered,
+      emailDelivery: { status: delivery.status, failed: delivery.failed, error: delivery.error },
       complimentary: {
         status: complimentary.status,
         months: complimentary.months,

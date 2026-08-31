@@ -14,10 +14,21 @@ export interface InviteNotice {
 
 export interface OverrideGrantOutcome {
   email: string
-  /** True when an invite email was sent because they had no account. */
+  /** True when a Supabase invite email was sent because they had no account. */
   invited: boolean
-  /** True when the account already existed, so no invite email was sent. */
+  /** True when the account already existed before this grant. */
   alreadyRegistered: boolean
+  /**
+   * What actually reached their inbox, from sendInviteEmail(). Optional so an
+   * older response shape still renders, but when it says nothing was sent that
+   * outranks everything else below — access they are never told about is
+   * access they do not have.
+   */
+  emailDelivery?: {
+    status: 'invite_sent' | 'magic_link_sent' | 'not_sent'
+    failed: boolean
+    error: string | null
+  }
   complimentary: {
     status: ComplimentaryStatus
     months: number
@@ -45,13 +56,27 @@ function formatDate(iso: string): string {
  * paywall she was promised she would not see.
  */
 export function overrideGrantNotice(outcome: OverrideGrantOutcome): InviteNotice {
-  const { email, invited, complimentary } = outcome
+  const { email, invited, complimentary, emailDelivery } = outcome
   const months = complimentary.months
+
+  // Reported before anything else, and it short-circuits: an override and 12
+  // months of premium are worth nothing to someone who was never told the app
+  // exists, so that failure must not be buried under a cheerful summary of the
+  // two things that did work.
+  if (emailDelivery?.failed) {
+    return {
+      tone: 'warn',
+      text:
+        `Access granted for ${email}, but NO email reached them — they do not know. ` +
+        `${emailDelivery.error ?? 'No reason was recorded.'} ` +
+        `Fix the cause and grant again to send their link.`,
+    }
+  }
 
   // How they got here — used as the opening clause of every message.
   const opening = invited
     ? `Invite emailed to ${email}. They have full access`
-    : `${email} already had an account, so no new invite was sent. They have full access`
+    : `${email} already had an account, so a fresh sign-in link was emailed instead. They have full access`
 
   switch (complimentary.status) {
     case 'granted':
