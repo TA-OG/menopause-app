@@ -4,6 +4,7 @@ import { createAdminClient } from '@/lib/supabase/admin'
 import { requireAdmin } from '@/lib/admin-auth'
 import { rateLimit } from '@/lib/rate-limit'
 import { findUserByEmail } from '@/lib/find-user'
+import { sendInviteEmail } from '@/lib/invite-email'
 import {
   COMPLIMENTARY_PREMIUM_MONTHS,
   scheduleComplimentaryPremium,
@@ -23,9 +24,14 @@ import {
  * the invite sits unread in an inbox — and no Stripe customer or subscription
  * is created for an invite nobody ever accepts.
  *
- * Ordering matters and is deliberate: the Supabase invite email goes first and
- * cannot be recalled once sent. The admin_invites row is written after it, so
- * the log always reflects what actually happened.
+ * Ordering matters and is deliberate: the invite email goes first and cannot be
+ * recalled once sent. The admin_invites row is written after it, so the log
+ * always reflects what actually happened.
+ *
+ * Delivery is handled by sendInviteEmail(), which covers the case this route
+ * used to get wrong: Supabase refuses inviteUserByEmail for an account that
+ * already exists, so a re-invite — the very thing an admin does when someone
+ * says "I never got it" — sent nothing while this route reported success.
  */
 export async function POST(request: NextRequest) {
   // Creating Stripe subscriptions is a real side effect — bound how fast it
@@ -49,32 +55,33 @@ export async function POST(request: NextRequest) {
   const normalisedEmail = String(email).trim().toLowerCase()
 
   try {
-    // 1. Send the Supabase invite email — generates a magic-link sign-up.
-    const { data: invited, error: inviteError } = await admin.auth.admin.inviteUserByEmail(
-      normalisedEmail,
-      {
-        data: { first_name: firstName },
-        redirectTo: `${process.env.NEXT_PUBLIC_APP_URL}/auth/callback?next=/onboarding`,
-      },
-    )
+    // 1. Get them a link into the app — a Supabase invite for a new account,
+    //    or a freshly generated magic link for one that already exists.
+    const delivery = await sendInviteEmail(admin, {
+      email: normalisedEmail,
+      firstName,
+      redirectTo: `${process.env.NEXT_PUBLIC_APP_URL}/auth/callback?next=/onboarding`,
+    })
 
-    let userId = invited?.user?.id ?? null
-    let alreadyRegistered = false
-    let hasSignedIn = false
+    let userId = delivery.userId
+    const alreadyRegistered = delivery.alreadyRegistered
+    let hasSignedIn = Boolean(delivery.lastSignInAt)
 
-    if (inviteError) {
-      // "User already registered" is not a failure — they just signed up
-      // themselves. Resolve their id so they still get their complimentary
-      // months, and note whether they have ever actually signed in: that is
-      // what decides between granting now and deferring to first sign-in.
-      if (inviteError.message.toLowerCase().includes('already registered')) {
-        alreadyRegistered = true
-        const existing = await findUserByEmail(admin, normalisedEmail)
-        userId = existing?.id ?? null
-        hasSignedIn = Boolean(existing?.lastSignInAt)
-      } else {
-        throw inviteError
-      }
+    // sendInviteEmail resolves the user from the call it already made, so the
+    // listUsers page-walk below is only needed when it could not — a genuine
+    // send failure against an account that may still exist.
+    if (!userId && alreadyRegistered) {
+      const existing = await findUserByEmail(admin, normalisedEmail)
+      userId = existing?.id ?? null
+      hasSignedIn = Boolean(existing?.lastSignInAt)
+    }
+
+    // Nothing was sent and there is no account to attach anything to, so the
+    // invite simply did not happen. Fail loudly rather than marking the person
+    // converted on the waitlist and reporting success — that combination is
+    // what let four women be told they had been invited when they had not.
+    if (delivery.failed && !userId) {
+      return NextResponse.json({ error: delivery.error ?? 'Invite failed' }, { status: 502 })
     }
 
     // 2. Mark as converted on the waitlist.
@@ -102,6 +109,8 @@ export async function POST(request: NextRequest) {
         invited_by: auth.id,
         invite_kind: 'waitlist',
         already_registered: alreadyRegistered,
+        email_status: delivery.status,
+        email_error: delivery.error,
         complimentary_status: 'failed',
         complimentary_months: COMPLIMENTARY_PREMIUM_MONTHS,
         error: complimentaryError,
@@ -113,6 +122,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({
         success: true,
         alreadyRegistered,
+        emailDelivery: { status: delivery.status, failed: delivery.failed, error: delivery.error },
         complimentary: {
           status: 'failed',
           months: COMPLIMENTARY_PREMIUM_MONTHS,
@@ -130,11 +140,14 @@ export async function POST(request: NextRequest) {
       waitlistId,
       alreadyRegistered,
       hasSignedIn,
+      emailStatus: delivery.status,
+      emailError: delivery.error,
     })
 
     return NextResponse.json({
       success: true,
       alreadyRegistered,
+      emailDelivery: { status: delivery.status, failed: delivery.failed, error: delivery.error },
       complimentary: {
         status: complimentary.status,
         months: complimentary.months,

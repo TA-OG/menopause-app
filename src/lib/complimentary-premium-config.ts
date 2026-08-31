@@ -34,3 +34,18 @@ export type ComplimentaryStatus = ComplimentaryRecordStatus | 'activating'
 
 /** The kinds of invite recorded in admin_invites (migrations 031 and 033). */
 export type InviteKind = 'waitlist' | 'author' | 'access_override'
+
+/**
+ * Every value admin_invites.email_status can hold (migration 034) — whether an
+ * email actually reached the invitee. 'unknown' exists only on rows written
+ * before delivery was tracked; nothing writes it now.
+ *
+ * The authoritative producer of the first three is sendInviteEmail() in
+ * invite-email.ts, which is server-only; this restatement is what lets the
+ * admin UI read the column without pulling that module into the browser.
+ */
+export type InviteEmailRecordStatus =
+  | 'invite_sent'
+  | 'magic_link_sent'
+  | 'not_sent'
+  | 'unknown'

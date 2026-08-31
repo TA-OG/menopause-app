@@ -147,14 +147,22 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Send welcome email with referral link
+    // Send welcome email with referral link.
+    //
+    // Deliberately not allowed to fail the request. She is already on the
+    // waitlist by this point — that row is the thing she asked for. Letting a
+    // Resend outage throw here returned a 500 over a signup that had actually
+    // succeeded, so she would try again, be told she was "already registered",
+    // and be left with no idea which of the two was true.
     await sendWelcomeEmail(
       email,
       first_name,
       buildReferralUrl(newCode),
       newCode,
       hasPriorityAccess
-    )
+    ).catch((err) => {
+      console.error(`Waitlist: welcome email to ${email} failed to send`, err)
+    })
 
     // Sync to Brevo
     syncToBrevo(email, first_name, newCode, hasPriorityAccess, primary_symptom).catch(
@@ -188,7 +196,10 @@ async function sendWelcomeEmail(
   const { Resend } = await import('resend')
   const resend = new Resend(process.env.RESEND_API_KEY!)
 
-  await resend.emails.send({
+  // The Resend SDK reports a rejected send on the response rather than by
+  // throwing, so an unchecked call cannot tell a delivered email from one that
+  // never left. Surfaced as a throw so the caller's logging sees it.
+  const { error } = await resend.emails.send({
     from: process.env.RESEND_FROM_EMAIL!,
     to: email,
     subject: isPriority
@@ -225,6 +236,10 @@ async function sendWelcomeEmail(
       </div>
     `,
   })
+
+  if (error) {
+    throw new Error(`Resend rejected the waitlist welcome email: ${error.message}`)
+  }
 }
 
 async function notifyReferrer(

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import type { ComplimentaryStatus } from '@/lib/complimentary-premium-config'
 
 interface Props {
   waitlistId: string
@@ -9,13 +10,21 @@ interface Props {
 }
 
 interface ComplimentaryResult {
-  status: 'pending_activation' | 'failed'
+  status: ComplimentaryStatus
   months: number
   error: string | null
 }
 
+interface EmailDelivery {
+  status: 'invite_sent' | 'magic_link_sent' | 'not_sent'
+  failed: boolean
+  error: string | null
+}
+
 export default function InviteButton({ waitlistId, email, firstName }: Props) {
-  const [state, setState] = useState<'idle' | 'loading' | 'done' | 'warning' | 'error'>('idle')
+  const [state, setState] = useState<
+    'idle' | 'loading' | 'done' | 'warning' | 'no_email' | 'error'
+  >('idle')
   const [message, setMessage] = useState('')
 
   async function invite() {
@@ -44,20 +53,44 @@ export default function InviteButton({ waitlistId, email, firstName }: Props) {
         return
       }
 
-      // The invite email has been sent either way. What varies is whether the
-      // complimentary premium was successfully scheduled — a silent failure
-      // would leave her hitting a paywall she was told she would not see, so
-      // it is surfaced right where the invite was sent, not just in the log.
-      // The grant itself runs on her first sign-in.
+      // Two things can go wrong independently, and the email is the one that
+      // matters most: an admin tells someone by hand that their invite is on
+      // the way, so "Invited ✓" over an email that never left is worse than no
+      // feedback at all. It is reported first and never inferred — this button
+      // previously claimed the email "has been sent either way", which was
+      // untrue for anyone who already had an account.
+      const delivery = json.emailDelivery as EmailDelivery | undefined
       const comp = json.complimentary as ComplimentaryResult | undefined
 
-      if (comp?.status === 'pending_activation') {
-        setState('done')
-        setMessage(`Invited ✓ · ${comp.months}m on sign-in`)
-      } else {
-        setState('warning')
-        setMessage(comp?.error ?? 'Complimentary premium was not scheduled')
+      if (delivery?.failed) {
+        setState('no_email')
+        setMessage(delivery.error ?? 'No email was sent')
+        return
       }
+
+      // 'failed' is the only outcome that leaves someone facing a paywall.
+      // The rest all mean she is covered, by four different routes, and
+      // treating them as warnings would make a re-invite — now the normal way
+      // to resend a link — look like it had gone wrong every time.
+      if (comp?.status === 'failed') {
+        setState('warning')
+        setMessage(comp.error ?? 'Complimentary premium was not scheduled')
+        return
+      }
+
+      setState('done')
+      setMessage(
+        comp?.status === 'pending_activation'
+          ? `Invited ✓ · ${comp.months}m on sign-in`
+          : comp?.status === 'granted'
+          ? `Invited ✓ · ${comp.months}m premium active`
+          : comp?.status === 'already_subscribed'
+          ? 'Invited ✓ · already subscribed'
+          : comp?.status === 'activating'
+          ? `Invited ✓ · ${comp.months}m starting now`
+          : // 'not_attempted' — an earlier invite already scheduled her months.
+            'Invited ✓ · premium already scheduled',
+      )
     } catch {
       setState('error')
       setMessage('Network error')
@@ -72,6 +105,14 @@ export default function InviteButton({ waitlistId, email, firstName }: Props) {
     return (
       <span className="text-xs text-amber-600 font-medium" title={message}>
         Invited, no premium ⚠
+      </span>
+    )
+  }
+
+  if (state === 'no_email') {
+    return (
+      <span className="text-xs text-red-600 font-medium" title={message}>
+        No email sent ✗
       </span>
     )
   }
