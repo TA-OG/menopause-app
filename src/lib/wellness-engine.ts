@@ -185,7 +185,8 @@ export function formatMaxDailyNote(substance: SubstanceEntry): string | null {
  */
 function deduplicateRecommendations(
   recs: WellnessRecommendation[],
-  substanceIndex: Map<string, SubstanceEntry> = new Map()
+  substanceIndex: Map<string, SubstanceEntry> = new Map(),
+  primarySymptom?: string
 ): WellnessRecommendation[] {
   const seenIds = new Set<string>()
   const groups = new Map<string, WellnessRecommendation[]>()
@@ -210,25 +211,114 @@ function deduplicateRecommendations(
     const group = groups.get(groupKey)!
     if (group.length === 1) return group[0]
 
-    // Several frameworks contributed a card for one substance. Keep the
-    // highest-priority card as the base; first occurrence wins a tie.
-    const [base, ...collapsed] = [...group].sort(
-      (a, b) => PRIORITY_ORDER[a.priority] - PRIORITY_ORDER[b.priority]
-    )
+    // Several frameworks contributed a card for one substance. The lead card
+    // supplies the title and the body shown first.
+    //
+    // LEAD SELECTION IS NOT COSMETIC. Sorting by priority alone leaves ties
+    // broken by array order, which is framework array order, which is
+    // readdir() order — alphabetical by YAML filename. Every one of the five
+    // magnesium cards is authored `high`, so `foundations` won every time and a
+    // woman whose primary symptom is insomnia led with the generic "the form
+    // matters" explainer instead of the one written about sleep. Preferring a
+    // card that targets her primary symptom fixes that.
+    //
+    // It cannot affect the dose-stacking guarantee: which card leads is chosen
+    // strictly WITHIN an already-formed substance group, so the number of cards
+    // per substance is still exactly one either way.
+    const [lead, ...collapsed] = [...group].sort((a, b) => {
+      const byPriority = PRIORITY_ORDER[a.priority] - PRIORITY_ORDER[b.priority]
+      if (byPriority !== 0) return byPriority
+      if (!primarySymptom) return 0
+      const aTargets = a.targets_symptoms?.includes(primarySymptom) ? 0 : 1
+      const bTargets = b.targets_symptoms?.includes(primarySymptom) ? 0 : 1
+      return aTargets - bTargets
+    })
 
     const mergedSymptoms = Array.from(
       new Set(group.flatMap((rec) => rec.targets_symptoms ?? []))
     )
 
     return {
-      ...base,
+      ...lead,
       targets_symptoms: mergedSymptoms.length > 0 ? mergedSymptoms : undefined,
-      // Record what was collapsed so the symptom-specific framing isn't simply
-      // lost. Polished per-symptom copy is a separate content task; this keeps
-      // a faithful record in the meantime.
-      also_for: collapsed.map((rec) => rec.title),
+      // Every collapsed card's AUTHORED BODY, verbatim — not just its title.
+      //
+      // Titles alone were a real content loss: collapsing the five magnesium
+      // cards threw away the sleep card's "200–400mg, 30–60 minutes before bed"
+      // and the perimenopause card's luteal-phase explanation, leaving the
+      // reader a bare heading behind a "read more". One card per substance is
+      // the right shape; one card per substance that keeps only a fifth of what
+      // was written about it is not.
+      //
+      // Copied verbatim on purpose. Rewriting five bodies into one would be
+      // generating health claims that no source was checked against — see the
+      // prime directive in CLAUDE.md.
+      also_for: collapsed.map((rec) => ({
+        id: rec.id,
+        title: rec.title,
+        body: rec.body,
+        targets_symptoms: rec.targets_symptoms,
+      })),
+      additional_disclaimers: collectAdditionalDisclaimers(lead, collapsed),
     }
   })
+}
+
+/**
+ * Every distinct disclaimer carried by the collapsed cards that the lead card's
+ * own disclaimer does not already say.
+ *
+ * SAFETY-CRITICAL. Before this, the merge kept `{...base}` and so kept exactly
+ * one disclaimer — the winning framework's. The other frameworks' cautions were
+ * discarded silently. Two real cases in the current content:
+ *
+ *   magnesium — `foundations` wins the merge, so the perimenopause card's
+ *               "start at 200mg and increase slowly... kidney disease" was lost
+ *   omega-3   — `foundations` wins, so the "above 3g EPA+DHA" threshold that
+ *               three sibling cards state was lost
+ *
+ * Matching is exact after whitespace/case normalisation, never fuzzy: two
+ * cautions that differ by a word may differ by a clinically meaningful word, so
+ * anything short of identity is kept and shown. The one reduction applied is
+ * containment — a disclaimer whose entire normalised text appears inside
+ * another is, word for word, already being shown, so dropping it removes no
+ * information at all.
+ */
+function collectAdditionalDisclaimers(
+  lead: WellnessRecommendation,
+  collapsed: WellnessRecommendation[]
+): string[] | undefined {
+  const leadText = normaliseDisclaimer(lead.disclaimer)
+  const kept: { normalised: string; text: string }[] = []
+
+  for (const rec of collapsed) {
+    const text = rec.disclaimer?.trim()
+    if (!text) continue
+    const normalised = normaliseDisclaimer(text)
+    if (!normalised || normalised === leadText) continue
+    if (kept.some((k) => k.normalised === normalised)) continue
+    kept.push({ normalised, text })
+  }
+
+  // Drop any that the lead's disclaimer, or a longer sibling, already contains
+  // in full. Containment is checked against the whole kept set, so the order
+  // cards happen to arrive in cannot change what survives.
+  const survivors = kept.filter(
+    (candidate) =>
+      !leadText.includes(candidate.normalised) &&
+      !kept.some(
+        (other) =>
+          other.normalised !== candidate.normalised &&
+          other.normalised.includes(candidate.normalised)
+      )
+  )
+
+  return survivors.length > 0 ? survivors.map((s) => s.text) : undefined
+}
+
+/** Lower-cased, whitespace-collapsed, for comparison only — never for display. */
+function normaliseDisclaimer(text: string | undefined): string {
+  return (text ?? '').replace(/\s+/g, ' ').trim().toLowerCase()
 }
 
 /**
@@ -704,7 +794,8 @@ export function buildPlan(
           // ever chooses between cards she can actually use.
           deduplicateRecommendations(
             applyPreferenceFilters(recs, preferences),
-            substanceIndex
+            substanceIndex,
+            primarySymptom
           ),
           primarySymptom
         ),

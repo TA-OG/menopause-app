@@ -153,6 +153,26 @@ export interface WellnessPlan {
   created_at: string
 }
 
+/**
+ * One framework's take on a substance, kept intact when several frameworks each
+ * contributed a card for it and they were collapsed into a single card.
+ *
+ * Engine-populated, never authored in YAML. The `body` is the collapsed card's
+ * authored text VERBATIM — the engine never rewrites, summarises or merges
+ * health copy, because doing so would produce a claim no source was ever
+ * checked against.
+ */
+export interface MergedBenefit {
+  /** The collapsed recommendation's id, e.g. `ss_magnesium_sleep`. Provenance. */
+  id: string
+  /** Its authored title, e.g. "Magnesium glycinate — for sleep quality". */
+  title: string
+  /** Its authored body, verbatim. May be empty for a legacy stored plan. */
+  body: string
+  /** The symptoms that card targeted, so the merged card can show them. */
+  targets_symptoms?: string[]
+}
+
 export interface WellnessRecommendation {
   id: string
   title: string
@@ -178,8 +198,31 @@ export interface WellnessRecommendation {
    * each contributed a card for the same substance. Carries the symptom-specific
    * framing from the cards that were collapsed away, so personalisation survives
    * deduplication.
+   *
+   * THE `string` MEMBER IS A STORED-DATA COMPATIBILITY SHIM, NOT A CHOICE.
+   * Until this carried full benefits, the engine wrote `collapsed.map(r => r.title)`
+   * — bare titles. Those plans are sitting in the `wellness_plans` JSONB column
+   * right now and are read back on every page view, so the render path must keep
+   * accepting them. `planCardContent()` normalises a legacy string to a
+   * `MergedBenefit` with an empty body; nothing else in the app should branch on
+   * the shape. New plans only ever write `MergedBenefit`.
    */
-  also_for?: string[]
+  also_for?: Array<string | MergedBenefit>
+  /**
+   * Every OTHER distinct disclaimer from the cards collapsed into this one.
+   * Engine-populated, never authored.
+   *
+   * SAFETY-CRITICAL, AND THE REASON THIS FIELD EXISTS. Merging used to keep
+   * `{...base}` — so the surviving card kept only the winning framework's
+   * disclaimer and every sibling's was discarded. The perimenopause magnesium
+   * card's disclaimer ("High doses can cause loose stools — start at 200mg and
+   * increase slowly... kidney disease") is strictly more protective than the
+   * foundations one that wins the merge, and was being dropped outright.
+   *
+   * Rendered as always-visible GP-check lines alongside `disclaimer`, never
+   * behind the "read more" — see plan-card-content.ts.
+   */
+  additional_disclaimers?: string[]
   /**
    * Populated by the engine (not authored in YAML) from the substance registry.
    * A single, explicit cumulative ceiling for this substance, shown once so a

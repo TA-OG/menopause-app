@@ -55,6 +55,13 @@ export default function PlanCard({ rec }: { rec: WellnessRecommendation }) {
   const bodyId = useId()
   const content = planCardContent(rec)
 
+  // Preserves first-appearance order of kinds: personal → ceiling → gp_check.
+  // Source order is what a screen reader follows, and PlanCard.render.test.ts
+  // asserts it, so this must never become a sort.
+  const safetyGroups = (['personal', 'ceiling', 'gp_check'] as const)
+    .map((kind) => [kind, content.safetyLines.filter((l) => l.kind === kind)] as const)
+    .filter(([, lines]) => lines.length > 0)
+
   return (
     <article className="rounded-2xl border border-gray-200 bg-white p-4">
       <div className="mb-2 flex items-start justify-between gap-3">
@@ -73,23 +80,51 @@ export default function PlanCard({ rec }: { rec: WellnessRecommendation }) {
         </span>
       </div>
 
+      {/* Which of her symptoms this one card covers. Always visible, and on a
+          merged card this is the whole point: one magnesium card carrying
+          "Sleep problems · Anxiety · Mood changes" replaces five cards she
+          would otherwise have had to read to find out the same thing. */}
+      {content.helpsWith.length > 0 && (
+        <ul className="mb-3 flex flex-wrap gap-1.5" aria-label="Helps with">
+          {content.helpsWith.map((symptom) => (
+            <li
+              key={symptom.value}
+              className="rounded-full bg-brand-50 px-2.5 py-1 text-xs font-medium text-brand-800"
+            >
+              {symptom.label}
+            </li>
+          ))}
+        </ul>
+      )}
+
       {/* ── ALWAYS VISIBLE ────────────────────────────────────────────────
           Above the fold, unconditionally, whether the card is open or shut.
           A caution she has to tap to discover is a caution that doesn't
-          exist. */}
-      {content.safetyLines.length > 0 && (
+          exist.
+
+          Grouped by kind rather than one box per line. A merged card can carry
+          several distinct GP-checks (the frameworks that were collapsed into it
+          wrote their own), and three stacked amber boxes saying nearly the same
+          thing reads as noise to scroll past — which is how a caution stops
+          working. Same words, one block. Nothing is dropped here; what can be
+          dropped is decided by dedupeDisclaimers(), where it is tested. */}
+      {safetyGroups.length > 0 && (
         <div className="mb-3 flex flex-col gap-2">
-          {content.safetyLines.map((line) => {
-            const style = SAFETY_STYLE[line.kind]
+          {safetyGroups.map(([kind, lines]) => {
+            const style = SAFETY_STYLE[kind]
             return (
-              <p
-                key={line.kind}
+              <div
+                key={kind}
                 className={`rounded-xl border px-3 py-2 text-sm font-medium leading-relaxed ${style.className}`}
               >
                 <span aria-hidden="true">{style.icon} </span>
                 <span className="sr-only">{style.label}: </span>
-                {line.text}
-              </p>
+                {lines.map((line, i) => (
+                  <p key={i} className={i > 0 ? 'mt-1.5' : 'inline'}>
+                    {line.text}
+                  </p>
+                ))}
+              </div>
             )
           })}
         </div>
@@ -111,12 +146,27 @@ export default function PlanCard({ rec }: { rec: WellnessRecommendation }) {
         </p>
       )}
 
+      {/* What the other frameworks said about this substance.
+          Each keeps its own authored body — previously only the titles
+          survived the merge, so a reader who expanded a magnesium card found
+          four headings and none of the guidance written under them. */}
       {expanded && content.alsoFor.length > 0 && (
-        <div className="mt-3 text-sm text-gray-600">
-          <p className="font-medium">Also suggested for:</p>
-          <ul className="mt-1 list-inside list-disc space-y-0.5">
-            {content.alsoFor.map((reason, i) => (
-              <li key={i}>{reason}</li>
+        <div className="mt-4 border-t border-gray-100 pt-3">
+          <h4 className="text-sm font-semibold text-gray-900">
+            Also suggested for
+          </h4>
+          <ul className="mt-2 space-y-3">
+            {content.alsoFor.map((benefit, i) => (
+              <li key={benefit.id || i}>
+                <p className="text-sm font-medium text-gray-800">
+                  {benefit.title}
+                </p>
+                {benefit.body && (
+                  <p className="mt-0.5 whitespace-pre-line text-sm leading-relaxed text-gray-600">
+                    {benefit.body}
+                  </p>
+                )}
+              </li>
             ))}
           </ul>
         </div>
