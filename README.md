@@ -118,9 +118,12 @@ goes through it, and the outcome is recorded on `admin_invites.email_status`
 log. Anything reading `NOT SENT` means nobody was emailed — re-invite once the
 cause is fixed.
 
-### DNS — verified state, and one gap
+### DNS — verified state
 
-Checked 2026-08-31 against live DNS:
+Checked 2026-09-04 against `auntymel.app`'s authoritative nameservers
+(`hugh`/`isla.ns.cloudflare.com`) directly, not a recursive cache. DNS is managed
+in **Cloudflare**, not at the registrar — a record added at Namecheap will not be
+published.
 
 | Record | Value | Status |
 |---|---|---|
@@ -128,23 +131,46 @@ Checked 2026-08-31 against live DNS:
 | `send.auntymel.app` TXT | `v=spf1 include:amazonses.com ~all` | present |
 | `send.auntymel.app` MX | `feedback-smtp.eu-west-1.amazonses.com` | present |
 | `auntymel.app` TXT | `v=spf1 include:spf.efwd.registrar-servers.com include:spf.protection.outlook.com ~all` | present (inbound/Outlook; Resend aligns via DKIM, so this is correct as-is) |
-| `_dmarc.auntymel.app` | — | **missing** |
+| `_dmarc.auntymel.app` | `v=DMARC1; p=quarantine; rua=mailto:allanokello@googlemail.com; pct=100; adkim=r; aspf=r` | present |
 
-The missing DMARC record is a live deliverability risk, not a formality: Gmail,
-Yahoo and Outlook have all tightened on unauthenticated bulk mail, and a domain
-with no DMARC policy is more likely to be junked or silently dropped. Auth email
-*is* the product for a passwordless app — a woman who cannot receive her link
-cannot use it at all.
+Resend signs with `d=auntymel.app`, which is DKIM-aligned under `adkim=r`, so the
+app's own auth and waitlist email passes DMARC as configured. Two gaps remain, and
+neither is cosmetic.
 
-Add at the registrar, starting in monitor-only mode so nothing is rejected while
-alignment is confirmed:
+**1. The aggregate reports are almost certainly not being delivered.**
+`rua=` points at `googlemail.com`, a domain other than `auntymel.app`. RFC 7489 §7.1
+requires the receiving domain to authorise that with a TXT record at
+`auntymel.app._report._dmarc.googlemail.com`. Google does not publish per-domain
+records of that kind, and it is confirmed absent — so conforming reporters
+(Google, Microsoft, Yahoo) are entitled to refuse, and generally do.
+
+The practical effect: the domain is enforcing `p=quarantine` with no visibility
+into what is being quarantined. Point `rua` at an address on the domain itself,
+which needs no authorisation record:
 
 ```
-_dmarc.auntymel.app   TXT   "v=DMARC1; p=none; rua=mailto:dmarc@auntymel.app; fo=1"
+_dmarc   TXT   "v=DMARC1; p=quarantine; rua=mailto:dmarc@auntymel.app; pct=100; adkim=r; aspf=r; fo=1"
 ```
 
-Review the aggregate reports, then tighten to `p=quarantine` and eventually
-`p=reject`.
+`dmarc@auntymel.app` has to be a real mailbox — the MX is Microsoft 365, so create
+it there (a shared mailbox is fine).
+
+**2. Microsoft 365 has no DKIM published on this domain.**
+`selector1._domainkey` and `selector2._domainkey` are both absent, and the root SPF
+includes `spf.protection.outlook.com` — so mail sent by a person from an
+`@auntymel.app` address via Outlook is authenticating on SPF alone. That holds for
+a direct send and breaks the moment a recipient forwards it, with no DKIM to fall
+back on. Under `p=quarantine` the failure mode is the message going to spam.
+
+Enable DKIM in the Microsoft 365 Defender portal for `auntymel.app`, then publish
+the two CNAMEs it issues. This does not affect Resend or app email — only mail
+sent by hand.
+
+**On the policy itself.** `p=quarantine; pct=100` was set without a monitor-only
+period. That is defensible here because the sender that matters is Resend and its
+alignment is verified above, but it is the reason gap 1 is worth closing promptly:
+enforcement without reporting means a misaligned sender is discovered by someone
+complaining, not by a report.
 
 ### When someone says they never received an email
 
