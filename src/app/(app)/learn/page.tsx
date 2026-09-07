@@ -13,6 +13,9 @@ export default async function LearnPage() {
   let query = supabase
     .from('content_modules')
     .select('id, slug, title, category, tags, tier, estimated_read_minutes, published_at')
+    // Only articles a reviewer has signed off. Enforced in RLS
+    // (035_content_review.sql); stated here so the query reads truthfully.
+    .eq('review_status', 'approved')
     .not('published_at', 'is', null)
     .order('published_at', { ascending: false })
 

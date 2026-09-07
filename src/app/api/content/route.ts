@@ -25,6 +25,9 @@ async function getHandler(request: NextRequest) {
     let query = supabase
       .from('content_modules')
       .select('id, slug, title, body_md, tier, category, tags, estimated_read_minutes, published_at')
+      // Approved-only. RLS (035_content_review.sql) is what actually enforces
+      // this — repeating it here keeps the query honest about what it returns.
+      .eq('review_status', 'approved')
       .not('published_at', 'is', null)
       .lte('published_at', new Date().toISOString())
       .order('published_at', { ascending: false })

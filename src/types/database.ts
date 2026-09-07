@@ -388,6 +388,16 @@ export interface JournalEntry {
   updated_at: string
 }
 
+/**
+ * Sign-off state for an article (migration 035_content_review.sql).
+ * Only 'approved' articles are readable by users — enforced in RLS.
+ */
+export type ContentReviewStatus =
+  | 'draft'
+  | 'in_review'
+  | 'changes_requested'
+  | 'approved'
+
 export interface ContentModule {
   id: string
   slug: string
@@ -398,8 +408,29 @@ export interface ContentModule {
   tags: string[]
   estimated_read_minutes: number | null
   published_at: string | null
+  // ─── Review & approval ───
+  review_status: ContentReviewStatus
+  reviewed_by: string | null
+  reviewed_at: string | null
+  /** The reviewer's note from the most recent decision. */
+  review_note: string | null
   created_at: string
   updated_at: string
+}
+
+/** One immutable entry in an article's sign-off history. */
+export interface ContentReviewEvent {
+  id: string
+  module_id: string
+  slug: string
+  from_status: ContentReviewStatus | null
+  to_status: ContentReviewStatus
+  note: string | null
+  /** { title, body_md } exactly as they stood when the decision was made. */
+  content_snapshot: { title: string; body_md: string } | null
+  actor_id: string | null
+  actor_email: string | null
+  created_at: string
 }
 
 export interface PushSubscription {

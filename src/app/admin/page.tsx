@@ -87,6 +87,22 @@ export default async function AdminPage() {
         </div>
         <div className="flex items-center justify-between gap-4 border-t border-gray-100 pt-3">
           <div className="flex-1">
+            <p className="text-sm font-medium text-gray-800">Articles</p>
+            <p className="text-xs text-gray-500 mt-0.5">
+              Read every Learn article before it goes out, and approve it or send it back
+              with a note. Nothing reaches a woman using the app until it is approved here,
+              and an approval comes off by itself if the wording is changed afterwards.
+            </p>
+          </div>
+          <a
+            href="/admin/articles"
+            className="text-xs bg-brand-900 text-white px-3 py-1.5 rounded-lg hover:bg-brand-800 transition-colors whitespace-nowrap"
+          >
+            Review articles →
+          </a>
+        </div>
+        <div className="flex items-center justify-between gap-4 border-t border-gray-100 pt-3">
+          <div className="flex-1">
             <p className="text-sm font-medium text-gray-800">Safe daily limits</p>
             <p className="text-xs text-gray-500 mt-0.5">
               The most a woman should take of each supplement in a day. The app can already

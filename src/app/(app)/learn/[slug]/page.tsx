@@ -19,6 +19,9 @@ export default async function ArticlePage({
     .from('content_modules')
     .select('slug, title, body_md, tier, category, tags, estimated_read_minutes, published_at')
     .eq('slug', params.slug)
+    // An article awaiting review, or sent back, is a 404 here — the reviewer
+    // reads it in /admin/articles instead. Enforced in RLS (035).
+    .eq('review_status', 'approved')
     .not('published_at', 'is', null)
     .lte('published_at', new Date().toISOString())
     .single()

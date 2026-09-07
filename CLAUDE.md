@@ -83,6 +83,19 @@ Because one user can match many frameworks at once, the same substance can legit
 appear in several frameworks — dedupe must therefore work at the **substance** level, not
 just the ID level, or users see the same supplement several times with conflicting doses.
 
+**Article review & approval** — `src/lib/article-review.ts`, `/admin/articles`,
+`src/app/api/admin/articles/[id]/review/`, migration 035.
+Learn articles are written as YAML (`content/modules/{free,premium}/*.yaml`) and loaded by
+`npm run import-content`. **The import cannot publish anything.** An article is readable only
+when `review_status = 'approved'`, enforced in the RLS policy on `content_modules` — not in
+app code (see 026 for why that distinction matters here). Approval is granted by a named admin
+in `/admin/articles` and nowhere else; a file declaring `review_status: approved` is a
+validation error. Editing the `title` or `body_md` of an approved article withdraws the
+approval automatically via the `content_modules_revoke_approval` trigger, so the article hides
+itself until it is read again. Every decision is appended to `content_review_events` with a
+snapshot of the wording it was given for. `src/lib/article-review.ts` holds the same rules as
+pure functions for the API and UI; the database is the enforcement point.
+
 **Notifications** — `src/app/api/cron/notifications/`, `src/app/api/push/subscribe/`,
 `push_subscriptions` table (migration 009), `web-push`, VAPID env vars.
 
@@ -94,6 +107,9 @@ just the ID level, or users see the same supplement several times with conflicti
   genuinely different substances. Never merge them via fuzzy title matching.
 - Migrations are sequentially numbered in `supabase/migrations/` — always add a new file,
   never edit an applied one.
+- Never relax the article review gate to "unblock" a content release. Approval covers one exact
+  wording, and the revoke-on-edit trigger is the reason it means anything. Content that needs to
+  go out goes through `/admin/articles`.
 
 ---
 
