@@ -5,11 +5,28 @@
  *   content/modules/free/*.yaml      → tier = free
  *   content/modules/premium/*.yaml   → tier = premium
  *
- * Upserts each article by `slug` (unique). Tier is taken from the folder,
- * never from the file. Run after Pamela's articles change:
+ * Tier is taken from the folder, never from the file.
  *
- *   npm run import-content            # publish to the database
+ *   npm run import-content                # seed new articles into the database
  *   npm run import-content -- --dry-run   # validate only, no DB writes
+ *
+ * ─── This script is a seeding tool, not the source of truth ────────────────
+ *
+ * Since 035_article_authoring.sql, Pamela writes and edits articles in
+ * /admin/articles and the database holds the live copy. A YAML file can no
+ * longer speak for an article she has touched, so this import:
+ *
+ *   • inserts articles whose slug does not exist yet;
+ *   • updates an article ONLY while it is untouched in the app — that is,
+ *     while both created_by and updated_by are still NULL;
+ *   • never changes published_at on an existing article. Publishing and
+ *     unpublishing happen in /admin/articles, where the decision is recorded
+ *     against a named person in content_module_revisions.
+ *
+ * It previously ran a blind `upsert` on slug, which would silently overwrite
+ * her wording — including the wording of a live article — with whatever a file
+ * happened to say. Anything it now declines to touch is reported rather than
+ * skipped quietly.
  *
  * Requires NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY
  * (loaded from .env.local or .env).
@@ -151,16 +168,85 @@ async function main() {
     auth: { autoRefreshToken: false, persistSession: false },
   })
 
-  const { error } = await supabase
+  // Look up what already exists, and who has touched it. An article with a
+  // created_by or updated_by has been through /admin/articles, so the app —
+  // not this file — holds its current wording.
+  const { data: existingRows, error: readError } = await supabase
     .from('content_modules')
-    .upsert(articles, { onConflict: 'slug' })
+    .select('slug, created_by, updated_by')
+    .in('slug', articles.map((a) => a.slug))
 
-  if (error) {
-    console.error(`\n❌ Database error: ${error.message}\n`)
+  if (readError) {
+    console.error(`\n❌ Could not read existing articles: ${readError.message}\n`)
     process.exit(1)
   }
 
-  console.log(`\n✅ Imported ${articles.length} article(s).\n`)
+  const existing = new Map(
+    (existingRows ?? []).map((row) => [
+      row.slug as string,
+      { authored: row.created_by !== null || row.updated_by !== null },
+    ]),
+  )
+
+  let created = 0
+  let updated = 0
+  const skipped: string[] = []
+
+  // One statement per article: the columns differ between an insert and an
+  // update (published_at is set on the first and never on the second), and it
+  // keeps each article's outcome reportable on its own line.
+  for (const article of articles) {
+    const current = existing.get(article.slug)
+
+    if (!current) {
+      const { error } = await supabase.from('content_modules').insert(article)
+      if (error) {
+        console.error(`\n❌ Could not create ${article.slug}: ${error.message}\n`)
+        process.exit(1)
+      }
+      created++
+      continue
+    }
+
+    if (current.authored) {
+      skipped.push(article.slug)
+      continue
+    }
+
+    // Untouched in the app: safe to refresh from the file. published_at is
+    // deliberately not in this update — an article's visibility is only ever
+    // changed from /admin/articles.
+    const { error } = await supabase
+      .from('content_modules')
+      .update({
+        title: article.title,
+        category: article.category,
+        body_md: article.body_md,
+        tags: article.tags,
+        estimated_read_minutes: article.estimated_read_minutes,
+        tier: article.tier,
+      })
+      .eq('slug', article.slug)
+
+    if (error) {
+      console.error(`\n❌ Could not update ${article.slug}: ${error.message}\n`)
+      process.exit(1)
+    }
+    updated++
+  }
+
+  console.log(`\n✅ Created ${created}, updated ${updated}.`)
+
+  if (skipped.length > 0) {
+    console.log(
+      `\n⚠️  Left alone (${skipped.length}) — these have been edited in /admin/articles,\n` +
+      '   so the app holds the current wording and this file no longer speaks for them:\n' +
+      skipped.map((s) => `   • ${s}`).join('\n') +
+      '\n\n   To change one of these, edit it in /admin/articles.\n',
+    )
+  } else {
+    console.log('')
+  }
 }
 
 main().catch((e) => {

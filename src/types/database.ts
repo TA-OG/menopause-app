@@ -400,6 +400,38 @@ export interface ContentModule {
   published_at: string | null
   created_at: string
   updated_at: string
+  /** Admin who created the article in /admin/articles. NULL for YAML imports. */
+  created_by: string | null
+  /** Admin who last saved it. Full history lives in content_module_revisions. */
+  updated_by: string | null
+}
+
+/** What happened to an article. Mirrors the `content_revision_action` enum. */
+export type ContentRevisionAction =
+  | 'created'
+  | 'edited'
+  | 'published'
+  | 'unpublished'
+  | 'deleted'
+
+/**
+ * One entry in an article's history (035_article_authoring.sql). The content
+ * fields are the article as it stood immediately AFTER the action, so a
+ * 'published' row holds the exact wording that went live.
+ */
+export interface ContentModuleRevision {
+  id: string
+  module_id: string
+  slug: string
+  action: ContentRevisionAction
+  title: string
+  body_md: string
+  tier: ContentTier
+  category: string
+  published_at: string | null
+  actor_id: string | null
+  actor_email: string | null
+  created_at: string
 }
 
 export interface PushSubscription {
