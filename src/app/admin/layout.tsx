@@ -39,6 +39,7 @@ export default async function AdminLayout({
         <div className="max-w-6xl mx-auto flex gap-1 overflow-x-auto">
           {[
             { href: '/admin',            label: 'Overview' },
+            { href: '/admin/articles',   label: 'Articles' },
             { href: '/admin/dashboard',  label: 'Performance' },
             { href: '/admin/billing',    label: 'Billing' },
             { href: '/admin/monitoring', label: 'Monitoring' },

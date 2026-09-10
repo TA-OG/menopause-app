@@ -7,7 +7,13 @@
 # The folder you place it in sets the tier — do NOT add a `tier:` field.
 #
 # Rename the file to match the slug (e.g. understanding-hot-flashes.yaml).
-# Run `npm run import-content` to publish changes to the live library.
+#
+# NOTE: since migration 035, articles are normally written in the app at
+# /admin/articles, and the database — not this file — holds the live copy.
+# `npm run import-content` is a seeding tool: it creates articles that do not
+# exist yet, and leaves alone any article that has been edited in the app.
+# It never publishes or unpublishes an existing article; that happens in
+# /admin/articles only.
 # ─────────────────────────────────────────────────────────────────────────────
 
 slug: understanding-hot-flashes        # kebab-case, globally unique, used in the URL
@@ -18,8 +24,10 @@ tags:                                   # Optional, for future search/filtering
   - vasomotor
 estimated_read_minutes: 4               # Optional; shown next to the title
 
-# Set to publish. Leave blank / remove to keep the article as an unpublished draft
-# (drafts are imported but hidden from users until this date is set and in the past).
+# Only applied when this article is first created by the import. Leave blank to
+# seed it as a draft and publish it from /admin/articles. Changing this later has
+# no effect — publication is changed in the app, where it is recorded against a
+# named person in content_module_revisions.
 published_at: 2026-06-03
 
 # The article body, in Markdown. Headings, lists, bold, links and tables are supported.

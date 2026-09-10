@@ -83,6 +83,26 @@ Because one user can match many frameworks at once, the same substance can legit
 appear in several frameworks — dedupe must therefore work at the **substance** level, not
 just the ID level, or users see the same supplement several times with conflicting doses.
 
+**Learn articles are authored in the app, not in files** — `/admin/articles`,
+`src/lib/article-authoring.ts`, `src/app/api/admin/articles/`, migration 035.
+Pamela writes, edits and publishes articles herself in `/admin/articles` (rich-text
+toolbar, saves Markdown). **The database is the source of truth for articles.** She is
+the author *and* the clinical authority, so publishing is the sign-off — there is no
+separate approval step and no approver to wait for. An article is visible exactly when
+`published_at` is non-null and in the past and the reader is entitled to its tier — the
+RLS policy from 026, unchanged. Do not add a further gate to that policy: an article that
+has been published is meant to be readable, and a new condition on `content_modules`
+takes the whole Learn library down.
+`scripts/import-content.ts` is now a **seeding tool only** — it inserts new slugs, updates
+an article only while `created_by` and `updated_by` are both NULL (i.e. untouched in the
+app), never changes `published_at`, and reports anything it declines to overwrite. It used
+to blind-`upsert` on slug, which would silently overwrite live wording from a file.
+Every save/publish/unpublish/delete appends to `content_module_revisions`, which is
+append-only **at the database level** (triggers raise on UPDATE and DELETE, so the
+service role cannot rewrite it either). Neither `module_id` nor `actor_id` is a foreign
+key, deliberately: a cascade or `SET NULL` would be a write to an append-only table and
+would make articles undeletable and user accounts un-erasable.
+
 **Notifications** — `src/app/api/cron/notifications/`, `src/app/api/push/subscribe/`,
 `push_subscriptions` table (migration 009), `web-push`, VAPID env vars.
 

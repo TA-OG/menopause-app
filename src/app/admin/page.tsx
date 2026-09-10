@@ -29,6 +29,26 @@ export default async function AdminPage() {
   return (
     <div className="space-y-8">
 
+      {/* Articles */}
+      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4">
+        <div className="flex items-center justify-between gap-4">
+          <div className="flex-1">
+            <p className="text-sm font-medium text-gray-800">Articles</p>
+            <p className="text-xs text-gray-500 mt-0.5">
+              Write, edit and publish the Learn articles in the app. Formatting
+              works like a normal document — no code. Drafts stay private until
+              you press Publish, and Unpublish takes an article straight back down.
+            </p>
+          </div>
+          <a
+            href="/admin/articles"
+            className="text-xs bg-brand-900 text-white px-3 py-1.5 rounded-lg hover:bg-brand-800 transition-colors whitespace-nowrap"
+          >
+            Open articles →
+          </a>
+        </div>
+      </div>
+
       {/* Performance dashboard */}
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4">
         <div className="flex items-center justify-between gap-4">
