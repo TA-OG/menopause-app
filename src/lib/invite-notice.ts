@@ -121,3 +121,87 @@ export function overrideGrantNotice(outcome: OverrideGrantOutcome): InviteNotice
       }
   }
 }
+
+export interface ResendOutcome {
+  email: string
+  emailDelivery: {
+    status: 'invite_sent' | 'magic_link_sent' | 'not_sent'
+    failed: boolean
+    error: string | null
+  }
+  complimentary: {
+    status: ComplimentaryStatus
+    months: number
+    error: string | null
+  }
+}
+
+/**
+ * Describe what pressing "Send again" on the invite log actually did.
+ *
+ * The delivery is the whole point of a resend, so it leads — and a failure
+ * short-circuits for the same reason it does above: the admin is about to tell
+ * a tester by hand that her link is on its way, and "Sent ✓" over an email
+ * that never left is what this entire flow exists to stop.
+ *
+ * The premium clause is reported second and never inferred from the send: a
+ * resend re-runs the grant, so it can genuinely repair a grant that failed
+ * first time, and it must be able to say so.
+ */
+export function resendNotice(outcome: ResendOutcome): InviteNotice {
+  const { email, emailDelivery, complimentary } = outcome
+
+  if (emailDelivery.failed) {
+    return {
+      tone: 'warn',
+      text:
+        `Still nothing reached ${email}. ` +
+        `${emailDelivery.error ?? 'No reason was recorded.'}`,
+    }
+  }
+
+  const opening =
+    emailDelivery.status === 'invite_sent'
+      ? `Invite emailed to ${email}`
+      : `A fresh sign-in link was emailed to ${email}`
+
+  switch (complimentary.status) {
+    case 'granted':
+      return {
+        tone: 'ok',
+        text: `${opening}, and their ${complimentary.months} months of complimentary premium are now active.`,
+      }
+
+    case 'pending_activation':
+      return {
+        tone: 'ok',
+        text: `${opening}. Their ${complimentary.months} months of complimentary premium start the first time they sign in.`,
+      }
+
+    case 'activating':
+      return {
+        tone: 'ok',
+        text: `${opening}. Their complimentary premium is being set up now — reload the invite log in a moment.`,
+      }
+
+    case 'already_subscribed':
+      return {
+        tone: 'ok',
+        text: `${opening}. They already have a live subscription, so it was left untouched.`,
+      }
+
+    case 'not_attempted':
+      // Either an author (who has full access via is_admin and needs no
+      // subscription) or someone whose months were already scheduled. Both are
+      // fine, and neither is a reason to alarm an admin.
+      return { tone: 'ok', text: `${opening}. Their existing access was left unchanged.` }
+
+    case 'failed':
+      return {
+        tone: 'warn',
+        text:
+          `${opening}, but their complimentary premium did NOT apply — they will hit the paywall. ` +
+          `${complimentary.error ?? 'No reason was recorded.'}`,
+      }
+  }
+}

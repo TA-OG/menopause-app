@@ -23,6 +23,7 @@ import type {
   InviteEmailRecordStatus,
 } from '@/lib/complimentary-premium-config'
 import { overrideGrantNotice, type InviteNotice } from '@/lib/invite-notice'
+import ResendInviteButton from './ResendInviteButton'
 
 type GeoMode = 'disabled' | 'info_only' | 'full'
 
@@ -510,9 +511,9 @@ export default function AdminDashboard() {
               {inviteLog!.summary.noEmail}{' '}
               {inviteLog!.summary.noEmail === 1 ? 'person was' : 'people were'} never emailed.
             </span>{' '}
-            They have no link into the app and do not know they were invited. Press Invite again
-            on the waitlist to send them one — a repeat invite now sends a fresh sign-in link
-            instead of silently doing nothing.
+            They have no link into the app and do not know they were invited. Press{' '}
+            <span className="font-semibold">Send again</span> on their row below — it emails them a
+            fresh sign-in link and leaves any premium they already have untouched.
           </div>
         )}
 
@@ -522,7 +523,9 @@ export default function AdminDashboard() {
           <div className="mx-6 mt-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
             {inviteLog!.summary.failed} invited{' '}
             {inviteLog!.summary.failed === 1 ? 'person' : 'people'} did not receive complimentary
-            premium. They will hit the paywall — check the reason below and re-invite once fixed.
+            premium. They will hit the paywall — check the reason below, then press{' '}
+            <span className="font-semibold">Send again</span> on their row once it is fixed to retry
+            the grant.
           </div>
         )}
 
@@ -537,6 +540,7 @@ export default function AdminDashboard() {
                 <th className="px-4 py-3">Email</th>
                 <th className="px-4 py-3">Premium</th>
                 <th className="px-4 py-3">Until</th>
+                <th className="px-4 py-3"></th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-50">
@@ -599,11 +603,20 @@ export default function AdminDashboard() {
                       '—'
                     )}
                   </td>
+                  <td className="px-4 py-3">
+                    <ResendInviteButton
+                      inviteId={inv.id}
+                      email={inv.email}
+                      firstName={inv.first_name}
+                      emailStatus={inv.email_status}
+                      onDone={load}
+                    />
+                  </td>
                 </tr>
               ))}
               {!loading && (inviteLog?.invites.length ?? 0) === 0 && (
                 <tr>
-                  <td colSpan={7} className="px-6 py-12 text-center text-gray-400 text-sm">
+                  <td colSpan={8} className="px-6 py-12 text-center text-gray-400 text-sm">
                     Nobody invited yet. Invites are sent from the{' '}
                     <a href="/admin" className="text-brand-600 hover:underline">
                       waitlist

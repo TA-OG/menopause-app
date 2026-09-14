@@ -4,6 +4,7 @@ import { createAdminClient } from '@/lib/supabase/admin'
 import { requireAdmin } from '@/lib/admin-auth'
 import { rateLimit } from '@/lib/rate-limit'
 import { sanitizeError } from '@/lib/sanitize-error'
+import { summariseInvites } from '@/lib/invite-log'
 
 export const dynamic = 'force-dynamic'
 
@@ -43,26 +44,15 @@ export async function GET(request: NextRequest) {
 
     const rows = invites ?? []
 
+    // The table lists every attempt, but the summary counts PEOPLE: one woman
+    // can have several rows, and resending her link adds another. Counting
+    // rows would mean a resend that worked left her permanently counted as
+    // "never emailed" alongside the row that fixed it — a red banner that can
+    // never go green. summariseInvites() collapses her to one current state
+    // first; see src/lib/invite-log.ts for the rules.
     return NextResponse.json({
       invites: rows,
-      summary: {
-        total: rows.length,
-        granted: rows.filter((i) => i.complimentary_status === 'granted').length,
-        // 'activating' is a transient state during a sign-in; counted with
-        // pending so a mid-flight row never looks like it went missing.
-        awaitingSignIn: rows.filter(
-          (i) =>
-            i.complimentary_status === 'pending_activation' ||
-            i.complimentary_status === 'activating',
-        ).length,
-        alreadySubscribed: rows.filter((i) => i.complimentary_status === 'already_subscribed').length,
-        failed: rows.filter((i) => i.complimentary_status === 'failed').length,
-        // Counted separately from the grant failures above, and deliberately
-        // so: someone whose twelve months are scheduled perfectly but who was
-        // never emailed has no way into the app at all. That is the more
-        // urgent of the two, and it used to be invisible here.
-        noEmail: rows.filter((i) => i.email_status === 'not_sent').length,
-      },
+      summary: summariseInvites(rows),
     })
   } catch (err) {
     return NextResponse.json({ error: sanitizeError(err) }, { status: 500 })

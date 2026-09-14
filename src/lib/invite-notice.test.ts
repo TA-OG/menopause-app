@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
-import { overrideGrantNotice } from './invite-notice'
-import type { OverrideGrantOutcome } from './invite-notice'
+import { overrideGrantNotice, resendNotice } from './invite-notice'
+import type { OverrideGrantOutcome, ResendOutcome } from './invite-notice'
 
 const base: OverrideGrantOutcome = {
   email: 'tester@example.com',
@@ -149,5 +149,93 @@ describe('overrideGrantNotice', () => {
 
     expect(notice.tone).toBe('ok')
     expect(notice.text).toContain('being set up')
+  })
+})
+
+const resendBase: ResendOutcome = {
+  email: 'tester@example.com',
+  emailDelivery: { status: 'magic_link_sent', failed: false, error: null },
+  complimentary: { status: 'not_attempted', months: 12, error: null },
+}
+
+describe('resendNotice', () => {
+  it('reports a delivery failure first and does not mention premium', () => {
+    const notice = resendNotice({
+      ...resendBase,
+      emailDelivery: { status: 'not_sent', failed: true, error: 'RESEND_API_KEY is not set' },
+      complimentary: { status: 'granted', months: 12, error: null },
+    })
+
+    expect(notice.tone).toBe('warn')
+    expect(notice.text).toContain('Still nothing reached tester@example.com')
+    expect(notice.text).toContain('RESEND_API_KEY is not set')
+    expect(notice.text).not.toContain('premium are now active')
+  })
+
+  it('still names a failure with no recorded reason', () => {
+    const notice = resendNotice({
+      ...resendBase,
+      emailDelivery: { status: 'not_sent', failed: true, error: null },
+    })
+
+    expect(notice.tone).toBe('warn')
+    expect(notice.text).toContain('No reason was recorded.')
+  })
+
+  it('distinguishes a fresh sign-in link from a first invite', () => {
+    expect(resendNotice(resendBase).text).toContain('A fresh sign-in link was emailed')
+    expect(
+      resendNotice({
+        ...resendBase,
+        emailDelivery: { status: 'invite_sent', failed: false, error: null },
+      }).text,
+    ).toContain('Invite emailed to tester@example.com')
+  })
+
+  it('does not alarm an admin when an existing grant was left alone', () => {
+    const notice = resendNotice(resendBase)
+    expect(notice.tone).toBe('ok')
+    expect(notice.text).toContain('existing access was left unchanged')
+  })
+
+  it('says when the resend repaired a grant that had failed', () => {
+    const notice = resendNotice({
+      ...resendBase,
+      complimentary: { status: 'granted', months: 12, error: null },
+    })
+
+    expect(notice.tone).toBe('ok')
+    expect(notice.text).toContain('12 months of complimentary premium are now active')
+  })
+
+  it('warns when the email arrived but the premium did not apply', () => {
+    const notice = resendNotice({
+      ...resendBase,
+      complimentary: { status: 'failed', months: 12, error: 'Stripe is not configured' },
+    })
+
+    expect(notice.tone).toBe('warn')
+    expect(notice.text).toContain('did NOT apply')
+    expect(notice.text).toContain('Stripe is not configured')
+  })
+
+  it('says when the months start at first sign-in', () => {
+    const notice = resendNotice({
+      ...resendBase,
+      complimentary: { status: 'pending_activation', months: 12, error: null },
+    })
+
+    expect(notice.tone).toBe('ok')
+    expect(notice.text).toContain('start the first time they sign in')
+  })
+
+  it('leaves a live subscription alone and says so', () => {
+    const notice = resendNotice({
+      ...resendBase,
+      complimentary: { status: 'already_subscribed', months: 12, error: null },
+    })
+
+    expect(notice.tone).toBe('ok')
+    expect(notice.text).toContain('left untouched')
   })
 })
