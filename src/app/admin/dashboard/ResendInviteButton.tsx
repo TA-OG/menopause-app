@@ -22,9 +22,16 @@ interface Props {
  * every invited person by definition. Anyone whose email never arrived was
  * therefore unreachable from the admin panel entirely.
  *
- * Styled by outcome rather than uniformly — a row that reached nobody gets a
- * solid red button, because that is the one an admin is looking for; the rest
- * get a quiet link, so a resend to someone who is fine stays a deliberate act.
+ * Styled by outcome, but always a button. A row that reached nobody gets a
+ * solid red one, because that is the one an admin is hunting for; the rest get
+ * a bordered secondary button, so a resend to someone who is fine still reads
+ * as a deliberate act rather than the obvious next step.
+ *
+ * It used to render as bare underlined text whenever delivery had succeeded,
+ * which in practice meant *always*: every row in the live log is 'invite_sent',
+ * so no actual button appeared anywhere on the page and admins reported there
+ * was no way to resend at all. A control that performs an irreversible action
+ * has to look like a control in every state it can be in.
  */
 export default function ResendInviteButton({
   inviteId,
@@ -93,8 +100,8 @@ export default function ResendInviteButton({
         disabled={sending}
         className={
           neverArrived
-            ? 'text-xs bg-red-600 text-white px-3 py-1.5 rounded-lg hover:bg-red-700 transition-colors disabled:opacity-50 whitespace-nowrap'
-            : 'text-xs text-brand-600 hover:text-brand-800 hover:underline transition-colors disabled:opacity-50 whitespace-nowrap'
+            ? 'text-xs font-medium bg-red-600 text-white px-3 py-1.5 rounded-lg border border-red-600 hover:bg-red-700 transition-colors disabled:opacity-50 whitespace-nowrap'
+            : 'text-xs font-medium text-brand-700 bg-white px-3 py-1.5 rounded-lg border border-gray-300 hover:bg-gray-50 hover:border-gray-400 transition-colors disabled:opacity-50 whitespace-nowrap'
         }
       >
         {sending ? 'Sending…' : 'Send again'}

@@ -24,6 +24,7 @@ import type {
 } from '@/lib/complimentary-premium-config'
 import { overrideGrantNotice, type InviteNotice } from '@/lib/invite-notice'
 import ResendInviteButton from './ResendInviteButton'
+import BulkResendPanel from './BulkResendPanel'
 
 type GeoMode = 'disabled' | 'info_only' | 'full'
 
@@ -468,6 +469,13 @@ export default function AdminDashboard() {
           </table>
         </div>
       </section>
+
+      {/* Resending access links — people, not attempts. Placed above the log
+          because it is the thing an admin comes here to DO; the log below is
+          the record of what has already happened. */}
+      {(inviteLog?.invites.length ?? 0) > 0 && (
+        <BulkResendPanel rows={inviteLog!.invites} onDone={load} />
+      )}
 
       {/* Invite log */}
       <section className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
