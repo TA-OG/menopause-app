@@ -35,6 +35,8 @@ interface AdminStub {
 function makeAdmin(overrides?: {
   invite?: ReturnType<typeof vi.fn>
   generate?: ReturnType<typeof vi.fn>
+  /** Addresses that already have an auth account, as findUserByEmail would see them. */
+  existingUsers?: Array<{ id: string; email: string; last_sign_in_at: string | null }>
 }): AdminStub {
   const invite =
     overrides?.invite ??
@@ -53,11 +55,15 @@ function makeAdmin(overrides?: {
       error: null,
     })
 
+  const listUsers = vi
+    .fn()
+    .mockResolvedValue({ data: { users: overrides?.existingUsers ?? [] }, error: null })
+
   return {
     invite,
     generate,
     client: {
-      auth: { admin: { inviteUserByEmail: invite, generateLink: generate } },
+      auth: { admin: { inviteUserByEmail: invite, generateLink: generate, listUsers } },
     } as unknown as SupabaseClient,
   }
 }
@@ -265,5 +271,119 @@ describe('sendInviteEmail — nothing was sent', () => {
 
     expect(result).toMatchObject({ status: 'not_sent', failed: true })
     expect(result.error).toContain('fetch failed')
+  })
+})
+
+
+/**
+ * The second half of the silent-invite bug.
+ *
+ * inviteUserByEmail() only refuses a *confirmed* account. An account that
+ * exists but was never confirmed — every invitee who has not yet signed in —
+ * is accepted, and Supabase re-sends its own invite email instead of the
+ * Resend magic link. Keying the fallback off the refusal therefore starved the
+ * people who most needed a working link: 11 of 14 live testers, all existing
+ * unconfirmed accounts, re-invited for a month without one of them getting in.
+ *
+ * So these tests assert on the *route taken*, not just on "an email was sent".
+ */
+describe('sendInviteEmail — existing but unconfirmed account', () => {
+  const UNCONFIRMED = [
+    { id: 'unconfirmed-user', email: 'tester@example.com', last_sign_in_at: null },
+  ]
+
+  it('sends the Resend magic link, not another Supabase invite', async () => {
+    const admin = makeAdmin({ existingUsers: UNCONFIRMED })
+
+    const result = await sendInviteEmail(admin.client, {
+      email: 'tester@example.com',
+      firstName: 'Jo',
+      redirectTo: 'https://auntymel.app/auth/callback?next=/onboarding',
+    })
+
+    // The whole point: Supabase's invite email is never asked for.
+    expect(admin.invite).not.toHaveBeenCalled()
+    expect(admin.generate).toHaveBeenCalledTimes(1)
+    expect(RESEND_SEND).toHaveBeenCalledTimes(1)
+    expect(result).toMatchObject({
+      status: 'magic_link_sent',
+      failed: false,
+      alreadyRegistered: true,
+    })
+  })
+
+  it('reports alreadyRegistered, so the log stops recording a fresh invite', async () => {
+    const admin = makeAdmin({ existingUsers: UNCONFIRMED })
+
+    const result = await sendInviteEmail(admin.client, {
+      email: 'tester@example.com',
+      firstName: null,
+      redirectTo: 'https://auntymel.app/auth/callback?next=/onboarding',
+    })
+
+    expect(result.alreadyRegistered).toBe(true)
+  })
+
+  it('matches the account case-insensitively', async () => {
+    const admin = makeAdmin({ existingUsers: UNCONFIRMED })
+
+    await sendInviteEmail(admin.client, {
+      email: 'Tester@Example.COM',
+      firstName: null,
+      redirectTo: 'https://auntymel.app/auth/callback?next=/onboarding',
+    })
+
+    expect(admin.invite).not.toHaveBeenCalled()
+    expect(RESEND_SEND).toHaveBeenCalledTimes(1)
+  })
+
+  it('keeps lastSignInAt null, so the twelve months still wait for first sign-in', async () => {
+    // generateLink answering without a user object must not lose what the
+    // lookup established — scheduleComplimentaryPremium defers on this value.
+    const generate = vi.fn().mockResolvedValue({
+      data: { properties: { action_link: 'https://supabase.example/verify?t=1' } },
+      error: null,
+    })
+    const admin = makeAdmin({ existingUsers: UNCONFIRMED, generate })
+
+    const result = await sendInviteEmail(admin.client, {
+      email: 'tester@example.com',
+      firstName: null,
+      redirectTo: 'https://auntymel.app/auth/callback?next=/onboarding',
+    })
+
+    expect(result.userId).toBe('unconfirmed-user')
+    expect(result.lastSignInAt).toBeNull()
+  })
+
+  it('still invites an address that genuinely has no account', async () => {
+    const admin = makeAdmin({ existingUsers: [] })
+
+    const result = await sendInviteEmail(admin.client, {
+      email: 'brand.new@example.com',
+      firstName: null,
+      redirectTo: 'https://auntymel.app/auth/callback?next=/onboarding',
+    })
+
+    expect(admin.invite).toHaveBeenCalledTimes(1)
+    expect(result.status).toBe('invite_sent')
+  })
+
+  it('falls through to the invite path when the lookup itself fails', async () => {
+    // A broken auth API must not mean nobody can be invited; Supabase refusing
+    // the invite is still a backstop behind this.
+    const admin = makeAdmin({ existingUsers: [] })
+    ;(
+      admin.client.auth.admin as unknown as { listUsers: ReturnType<typeof vi.fn> }
+    ).listUsers.mockRejectedValue(new Error('auth API down'))
+
+    const result = await sendInviteEmail(admin.client, {
+      email: 'someone@example.com',
+      firstName: null,
+      redirectTo: 'https://auntymel.app/auth/callback?next=/onboarding',
+    })
+
+    expect(admin.invite).toHaveBeenCalledTimes(1)
+    expect(result.status).toBe('invite_sent')
   })
 })
