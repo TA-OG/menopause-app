@@ -1,5 +1,6 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
 import { DISCLAIMER } from '@/lib/disclaimer'
+import { findUserByEmail, type FoundUser } from '@/lib/find-user'
 
 /**
  * Sending the "here is your link into the app" email for an admin invite.
@@ -38,6 +39,26 @@ import { DISCLAIMER } from '@/lib/disclaimer'
  * was. Nothing here throws: an invite has irreversible side effects downstream
  * (a Stripe subscription, a geo override), so the outcome has to be reportable
  * rather than raised.
+ *
+ * ── The second half of the same bug ──────────────────────────────────────────
+ *
+ * The fix above keyed the fallback off Supabase *refusing* the invite, and that
+ * refusal only happens for a **confirmed** account. For an account that exists
+ * but has never been confirmed — which is every invitee who has not yet signed
+ * in — `inviteUserByEmail()` does not refuse. It succeeds, re-sending
+ * Supabase's own invite email and bumping `invited_at` / `confirmation_sent_at`.
+ *
+ * So the reliable Resend path was never reached for the people who needed it
+ * most, and the log recorded `email_status = 'invite_sent'`,
+ * `already_registered = false` for them — reporting a brand-new invite each
+ * time. Observed live: 11 of 14 invited testers, every one of them an existing
+ * unconfirmed account, repeatedly re-invited over a month and none of them ever
+ * confirmed or signed in.
+ *
+ * The existence of the account is therefore established *first*, by lookup,
+ * rather than inferred from an error message. Anyone who already has an account
+ * gets the Resend magic link whether or not they ever confirmed; Supabase's
+ * invite email is used only for an address with no account at all.
  */
 
 /** What actually happened to the invitee's email. */
@@ -111,6 +132,17 @@ export async function sendInviteEmail(
   const metadata: Record<string, unknown> = { ...(params.data ?? {}) }
   if (params.firstName) metadata.first_name = params.firstName
 
+  // ── 0. Does an account already exist? ─────────────────────────────────────
+  //
+  // Asked before inviting, not inferred from the invite's error afterwards.
+  // inviteUserByEmail() only objects to a *confirmed* account, so an existing
+  // unconfirmed one would otherwise be sent Supabase's invite email again and
+  // never reach the Resend path below. See the note at the top of this file.
+  const existing = await findExistingUserQuietly(admin, email)
+  if (existing) {
+    return sendMagicLinkToExistingUser(admin, email, params, existing)
+  }
+
   // ── 1. New account: Supabase's own invite email ───────────────────────────
   try {
     const { data, error } = await admin.auth.admin.inviteUserByEmail(email, {
@@ -154,19 +186,50 @@ export async function sendInviteEmail(
 
   // ── 2. Existing account: mint a magic link and send it ourselves ──────────
   //
-  // This is the path that used to send nothing at all.
-  return sendMagicLinkToExistingUser(admin, email, params)
+  // Still reachable, and deliberately: the lookup above can miss an account
+  // created between that call and this one, and it is skipped entirely when
+  // the lookup itself fails. Supabase refusing the invite is then the only
+  // remaining signal that the address is taken.
+  return sendMagicLinkToExistingUser(admin, email, params, null)
+}
+
+/**
+ * Resolve an existing account without letting the lookup break the send.
+ *
+ * A failing lookup must not block an invite: it would turn a transient auth-API
+ * error into "nobody can be invited". Returning null falls through to the
+ * invite path, which still has Supabase's refusal as a backstop.
+ */
+async function findExistingUserQuietly(
+  admin: SupabaseClient,
+  email: string,
+): Promise<FoundUser | null> {
+  try {
+    return await findUserByEmail(admin, email)
+  } catch (err) {
+    console.error(
+      `sendInviteEmail: could not check whether ${email} already has an account; falling back to the invite path:`,
+      describe(err),
+    )
+    return null
+  }
 }
 
 async function sendMagicLinkToExistingUser(
   admin: SupabaseClient,
   email: string,
   params: SendInviteEmailParams,
+  known: FoundUser | null,
 ): Promise<InviteEmailResult> {
   const base = {
     alreadyRegistered: true,
-    userId: null as string | null,
-    lastSignInAt: null as string | null,
+    // Seeded from the lookup so the caller still learns who this is, and
+    // whether they have ever signed in, even if generateLink() answers without
+    // a user object. scheduleComplimentaryPremium() defers the twelve months to
+    // first sign-in on exactly that signal, so losing it would spend a tester's
+    // months while her link sat unread.
+    userId: known?.id ?? null,
+    lastSignInAt: known?.lastSignInAt ?? null,
   }
 
   let actionLink: string
@@ -188,8 +251,8 @@ async function sendMagicLinkToExistingUser(
     }
 
     actionLink = data.properties.action_link
-    base.userId = data.user?.id ?? null
-    base.lastSignInAt = data.user?.last_sign_in_at ?? null
+    base.userId = data.user?.id ?? base.userId
+    base.lastSignInAt = data.user?.last_sign_in_at ?? base.lastSignInAt
   } catch (err) {
     return {
       ...base,

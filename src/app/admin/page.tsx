@@ -49,6 +49,34 @@ export default async function AdminPage() {
         </div>
       </div>
 
+      {/* Invited users & access links.
+          Given its own card rather than left as a line inside the dashboard's
+          description. Everyone currently using the app was stood up through an
+          access override, never through the waitlist below, so this — not the
+          waitlist — is where an admin goes to get someone back into the app.
+          It was previously reachable only by opening a card described as
+          per-country access control, and admins reported, correctly, that
+          there was no visible way to resend an invite. */}
+      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4">
+        <div className="flex items-center justify-between gap-4">
+          <div className="flex-1">
+            <p className="text-sm font-medium text-gray-800">Invited users &amp; access links</p>
+            <p className="text-xs text-gray-500 mt-0.5">
+              Everyone invited from the admin panel, including testers and beta pilots
+              given an access override. Resend someone their sign-in link, or send a
+              fresh link to a whole group at once — one email each, and complimentary
+              premium already granted is left untouched.
+            </p>
+          </div>
+          <a
+            href="/admin/dashboard#invited-users"
+            className="text-xs bg-brand-900 text-white px-3 py-1.5 rounded-lg hover:bg-brand-800 transition-colors whitespace-nowrap"
+          >
+            Resend access →
+          </a>
+        </div>
+      </div>
+
       {/* Performance dashboard */}
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4">
         <div className="flex items-center justify-between gap-4">
@@ -57,6 +85,7 @@ export default async function AdminPage() {
             <p className="text-xs text-gray-500 mt-0.5">
               App performance by jurisdiction, and per-country access control —
               turn each market Off, Info Only (no personalised plan), or Live.
+              Also holds the invite log and access-link resending.
             </p>
           </div>
           <a
@@ -184,9 +213,10 @@ export default async function AdminPage() {
         <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
           <h2 className="font-semibold text-brand-900">Waitlist</h2>
           <p className="text-xs text-gray-400">
-            Invite sends a magic-link sign-up email and grants 12 months complimentary premium.{' '}
-            <a href="/admin/dashboard" className="text-brand-600 hover:underline">
-              See invite log →
+            Invite sends a magic-link sign-up email and grants 12 months complimentary premium.
+            Already invited someone?{' '}
+            <a href="/admin/dashboard#invited-users" className="text-brand-600 hover:underline">
+              Resend their access link →
             </a>
           </p>
         </div>

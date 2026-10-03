@@ -25,6 +25,7 @@
 import type {
   ComplimentaryStatus,
   InviteEmailRecordStatus,
+  InviteKind,
 } from '@/lib/complimentary-premium-config'
 
 /** The columns of an `admin_invites` row this module actually reads. */
@@ -161,4 +162,104 @@ export function summariseInvites(rows: readonly InviteLogRow[]): InviteSummary {
     // two, and it used to be invisible here.
     noEmail: people.filter((p) => p.emailStatus === 'not_sent').length,
   }
+}
+
+/**
+ * ── Choosing who to resend to, when an admin asks for a whole cohort ─────────
+ *
+ * `admin_invites` holds one row per invite *attempt*, and the same person
+ * routinely has several: invited from the waitlist, given an access override,
+ * then sent her link again. At the time of writing this log holds 21 rows for
+ * 11 people.
+ *
+ * So "resend to everyone with an access override" cannot iterate rows. Doing
+ * that would email nine of those eleven people once and two of them twice —
+ * from their side, two sign-in links arriving together from a health app they
+ * are still deciding whether to trust. It would also run the complimentary
+ * grant twice for the same person in the same second, which is exactly the
+ * concurrent case `scheduleComplimentaryPremium`'s duplicate guard reads the
+ * database to avoid.
+ *
+ * One resend per *person*, therefore, and it is the newest row that is chosen:
+ * the newest row carries her current name and invite kind, so the link lands
+ * her where the most recent invite intended.
+ */
+
+/** The `admin_invites` columns a resend needs, beyond those `InviteLogRow` reads. */
+export interface ResendCandidateRow extends InviteLogRow {
+  id: string
+  first_name: string | null
+  invite_kind: InviteKind
+}
+
+/** One person, and the invite row a resend to them should be driven from. */
+export interface ResendTarget {
+  /** The `admin_invites.id` to POST to the resend route. */
+  inviteId: string
+  email: string
+  firstName: string | null
+  inviteKind: InviteKind
+  /** Delivery outcome of that newest attempt — drives how the row is labelled. */
+  emailStatus: InviteEmailRecordStatus
+}
+
+/**
+ * Collapse invite rows to one resend target per person, newest attempt winning.
+ *
+ * Deterministic regardless of the order rows arrive in. `created_at` decides,
+ * and an exact tie — two attempts inside the same timestamp, which a bulk
+ * resend can itself produce — is broken on the id rather than on position, so
+ * the same input always selects the same row. `collapseInvitesByPerson` above
+ * takes the looser `>=` approach because it only reports a *status*; here the
+ * choice names a specific row to act on, and acting on a different row each
+ * time the list is re-read is not acceptable.
+ *
+ * Returned in the order each person is first seen, so a caller that passes
+ * newest-first rows gets a newest-first list back.
+ */
+export function latestInvitePerPerson(
+  rows: readonly ResendCandidateRow[],
+): ResendTarget[] {
+  const byPerson = new Map<string, ResendTarget & { latestAt: number }>()
+
+  for (const row of rows) {
+    const key = personKey(row.email)
+
+    // Same guard as collapseInvitesByPerson: an unparseable timestamp must not
+    // become NaN, which loses every comparison silently and would let an
+    // arbitrary row win.
+    const at = Date.parse(row.created_at)
+    const when = Number.isNaN(at) ? -Infinity : at
+
+    const existing = byPerson.get(key)
+
+    if (!existing) {
+      byPerson.set(key, {
+        inviteId: row.id,
+        email: row.email,
+        firstName: row.first_name,
+        inviteKind: row.invite_kind,
+        emailStatus: row.email_status,
+        latestAt: when,
+      })
+      continue
+    }
+
+    const newer =
+      when > existing.latestAt ||
+      (when === existing.latestAt && row.id > existing.inviteId)
+
+    if (newer) {
+      existing.latestAt = when
+      existing.inviteId = row.id
+      existing.email = row.email
+      existing.firstName = row.first_name
+      existing.inviteKind = row.invite_kind
+      existing.emailStatus = row.email_status
+    }
+  }
+
+  // Array.from rather than spreading the iterator, for the same ES5 target
+  // reason as collapseInvitesByPerson.
+  return Array.from(byPerson.values()).map(({ latestAt: _latestAt, ...target }) => target)
 }
