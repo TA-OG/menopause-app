@@ -137,3 +137,17 @@ claims:
       Attributed to the NHS in the copy, so this one is asserting an authority
       in user-facing text and should be verified or reworded. Cross-check with
       the vitamin_d entry in substances.yaml, which is also pending review.
+
+  - id: nice_no_blood_test_over_45
+    rec_id: mr_this_is_real
+    asserts: women over 45 with symptoms can usually be diagnosed without a blood test
+    verified: false
+    note: >-
+      Attributed to NICE in the copy. NICE NG23 (Menopause: identification and
+      management) advises against using an FSH test to diagnose menopause or
+      perimenopause in women aged over 45, because FSH fluctuates considerably
+      in the years before menopause; diagnosis in that group is clinical, from
+      symptoms and periods. Confirmed in October 2026 only through search
+      summaries of nice.org.uk/guidance/ng23 — this session's network blocked
+      the page itself. Open the recommendations chapter and confirm the wording
+      before marking verified.
