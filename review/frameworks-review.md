@@ -1,7 +1,7 @@
 # Wellness plan — plain-English review
 
 _This is what the app will tell users, generated from the current content._
-_Reviewed: 27 August 2026_
+_Reviewed: 7 October 2026_
 
 ---
 ## Bone & Heart Health
@@ -121,9 +121,9 @@ Shown to **every user**, regardless of their answers.
 - **Talk to your GP about your options — including HRT**  _(high priority)_
   Hormone Replacement Therapy (HRT) is the most effective treatment for vasomotor symptoms, and can have protective effects for bone density and cardiovascular health for many women when started within 10 years of menopause. Modern body-identical HRT generally has a more favourable safety profile than older formulations. Whether it's appropriate for you depends on your own symptoms, age, medical history and personal risk factors — it isn't suitable for everyone, and that's a conversation for your GP, not something to self-assess. This app supports your lifestyle — it does not replace medical care. Please book an appointment if your symptoms are significantly affecting your quality of life. Separately from HRT specifically: the lifestyle suggestions in this app — diet, movement, sleep, mindset — are intended as a general framework suitable for most women, with nothing in them inherently unsuitable the way a prescription medicine can be. That said, always check with your GP or medical provider first if you're taking any medication (to rule out interactions, particularly with supplements), under the care of a specialist for any condition, or awaiting medical treatment, investigation or a diagnosis. This isn't about gatekeeping the advice — it's about making sure it's layered on top of the right medical oversight, not instead of it.
 - **Your symptoms are real — and widely underestimated**  _(medium priority)_
-  Menopause affects virtually every system in the body. Women report an average of 7–10 symptoms simultaneously at peak perimenopause. Yet most women are not asked about menopause by healthcare providers until they raise it themselves. Your experience is real, it has biological causes, and it is not a sign of weakness or ageing 'badly'. It is a transition — with a beginning, a middle, and an end.
+  Menopause affects virtually every system in the body. Women report an average of 7–10 symptoms simultaneously at peak perimenopause. Yet most women are not asked about menopause by healthcare providers until they raise it themselves. Your experience is real, it has biological causes, and it is not a sign of weakness or ageing 'badly'. It is a transition — with a beginning, a middle, and an end. A normal blood test doesn't mean nothing is going on. Hormone levels fluctuate a lot in perimenopause, so a single reading can look fine while what you're feeling tells a different story — which is why NICE guidance is that women over 45 with symptoms can usually be diagnosed without a blood test. If you've been told your bloods are 'normal' but you don't feel it, that's worth going back to your GP about, not a dead end.
 - **This is your window**  _(high priority)_
-  Perimenopause isn't happening to you — it's calling you to act. This is your window of opportunity, not a slow decline, but the moment to take action and change the trajectory of the next 40 years. Menopause isn't the end of your window — it's a new one. Who do you want to feel like, be like, 5, 10, 15 years from now? Start practising her now.
+  Perimenopause isn't happening to you — it's calling you to act. This is your window of opportunity, not a slow decline, but the moment to take action and change the trajectory of the next 40 years. Menopause isn't the end of your window — it's a new one. The years around and just after your final period are when some changes move fastest — bone loss, for example, is quickest then — so what you build in this stretch carries into the decades after it. Who do you want to feel like, be like, 5, 10, 15 years from now? Start practising her now.
 - **Your plan should flex around how you're doing — not just your stage**  _(medium priority)_
   Sleep, stress, activity levels, diet and genetics all interact, and the right starting point depends on where you actually are, not just what stage you're in. Two women in postmenopause might need completely different advice if one is sleeping well and active, and the other is exhausted, wired, and barely sleeping. Your stage tells us where to start looking; how you're doing in sleep, stress, energy and mood tells us what you actually need. This is also a good moment to look at boundaries — what you're carrying for everyone else, and whether there's room to put yourself back on the list.
 - **Other hormonal imbalances worth ruling out**  _(medium priority)_
@@ -563,7 +563,7 @@ Shown when their **symptoms** is any of: "sleep problems", "fatigue".
 ### Food & diet
 
 - **Eat tryptophan-rich foods in the evening**  _(high priority)_
-  Tryptophan is a precursor to serotonin and melatonin — the hormones that regulate sleep. Foods high in tryptophan include turkey, chicken, eggs, pumpkin seeds, oats, and dairy. A small protein-and-carb snack 90 minutes before bed (e.g. a small bowl of oat porridge or a banana with a few walnuts) can support melatonin production.
+  Tryptophan is a precursor to serotonin and melatonin — the hormones that regulate sleep. Foods high in tryptophan include turkey, chicken, eggs, pumpkin seeds, oats, and dairy. A small protein-and-carb snack 90 minutes before bed (e.g. a small bowl of oat porridge or a banana with a few walnuts) can support melatonin production. Your evening meal can help too. Some women find it useful to build dinner around oily fish, turkey or chicken, or chickpeas and lentils, with a complex carb like sweet potato, quinoa or brown rice. Some also find that a large, carb-heavy meal late in the evening is followed by a 2–3am wake-up — eating your main carbs earlier, and keeping a late meal lighter and balanced with protein, is a simple thing to try. These are gentle things to try, not a prescription.
   _Raised up her plan when: sleep quality is poor or very poor_
 - **Set a hard caffeine cutoff at 1pm**  _(high priority)_
   Caffeine has a half-life of 5–6 hours — a 3pm coffee still has half its caffeine in your system at 8pm. Shifting your cutoff to 1pm is the single most impactful dietary change most women can make for sleep quality. Switch to herbal tea, rooibos, or decaf after lunch.
@@ -584,7 +584,7 @@ Shown when their **symptoms** is any of: "sleep problems", "fatigue".
   Counterintuitively, rest makes fatigue worse in most cases. Gentle, consistent movement — a 20-minute walk, yoga, swimming — activates energy systems and improves mitochondrial efficiency. Aim for movement every day even if it's just 15 minutes. Save high-intensity for when you have more energy in reserve.
   _Raised up her plan when: exercise level is not active or lightly active_
 - **A 30-minute wind-down routine every night**  _(medium priority)_
-  Your nervous system needs a transition signal between "daytime mode" and sleep. Build a consistent 30-minute routine: dim lights, no screens, something low-stimulus (reading, gentle stretching, a bath or shower). Doing the same sequence every night trains your body to associate it with sleep onset.
+  Your nervous system needs a transition signal between "daytime mode" and sleep. Build a consistent 30-minute routine: dim lights, no screens, something low-stimulus (reading, gentle stretching, a bath or shower). Doing the same sequence every night trains your body to associate it with sleep onset. If a run of bad nights has built up, some women find a deliberate "sleepcation" resets things: put an evening in the diary, switch off your devices, make the room calm and comfortable, and wear your favourite pyjamas.
   _Raised up her plan when: sleep quality is poor or very poor_
 
 ### Mindset & emotional
@@ -593,7 +593,7 @@ Shown when their **symptoms** is any of: "sleep problems", "fatigue".
   The harder you try to sleep, the more alert you become. Cognitive therapy for insomnia (CBT-I) teaches "stimulus control" and "paradoxical intention" — if you're awake after 20 minutes, get up, do something calm in dim light, and only return to bed when sleepy. This breaks the anxiety loop around sleep. Ask your GP for a referral to a CBT-I programme or look for the Sleepio app via the NHS.
   _Raised up her plan when: sleep quality is poor or very poor_
 - **Rest without guilt**  _(medium priority)_
-  Many women push through fatigue because they feel they "should" be managing. Fatigue in perimenopause is physiological — it is your body adjusting to hormonal shifts, not a character flaw. Scheduling one deliberate rest period daily (even 20 minutes of lying down) and treating it as maintenance rather than weakness changes the emotional experience of fatigue significantly.
+  Many women push through fatigue because they feel they "should" be managing. Fatigue in perimenopause is physiological — it is your body adjusting to hormonal shifts, not a character flaw. Oestrogen is involved in how your cells produce energy, so changing levels are part of the physical picture. The answer usually isn't pushing harder; it's supporting your body and resting without guilt. Scheduling one deliberate rest period daily (even 20 minutes of lying down) and treating it as maintenance rather than weakness changes the emotional experience of fatigue significantly.
 
 ### Supplements
 
