@@ -1,6 +1,20 @@
 # Focus programme — one change a week, checked in daily
 
-Status: **Phase 1 built** (schema + selection logic). Phases 2–4 not started.
+Status: **Phases 1–2 built** (schema, selection logic, API routes). Phases 3–4 not started.
+
+### API (Phase 2)
+
+| Route | Does |
+|---|---|
+| `GET /api/focus?today=&focus=` | State: options, week-1 preview, current/kept weeks (cards from her current plan), next choice, today's check-in, open week's focus ratings |
+| `POST /api/focus` | Start: focus symptoms checked against intake; refused if nothing matches; opens week 1 |
+| `POST /api/focus/week` | Open next week: app's pick or an offered alternative only; never dated before the previous week |
+| `POST /api/focus/review` | kept/stopped from day 7, swapped any time; keep refused past 3 changes unless she releases one |
+| `POST /api/focus/checkin` | Daily answers via `record_focus_checkin()` (merge, never replace) |
+| `DELETE /api/focus` | End programme; weeks kept as history. Not gated, so she can always end it |
+
+Every `today` is checked to be within ±1 day of UTC. Start is two inserts: if week 1
+fails, she is left in the normal "choose next change" state, recoverable from the UI.
 
 ## Why
 
@@ -92,6 +106,6 @@ above decides whether that tag stands.
 |---|---|---|
 | 0 | Symptom-tag audit; build check that eligible cards are tagged | Waiting on Pamela |
 | 1 | Migration + selection logic + tests | **Done** — 33 unit tests (`src/lib/focus-programme.test.ts`); 36 database checks (`scripts/sql-tests/run.sh`, needs a local Postgres) |
-| 2 | API routes (start, read, daily check-in, weekly review), premium + geo gating | Not started |
+| 2 | API routes (start, read, daily check-in, weekly review), premium + geo gating | **Built, not live** — `src/app/api/focus/**`; decisions unit-tested (`src/lib/focus-api.test.ts`). Needs migration 036 in production before any route works |
 | 3 | UI: focus picker, this week, daily check-in, weekly review, supplements tab; add the 5 symptoms missing from the check-in page | Not started |
 | 4 | Dashboard "This week"; daily push shows this week's change | Not started |
