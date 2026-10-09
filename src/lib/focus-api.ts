@@ -13,6 +13,7 @@ import type {
   FocusProgramme,
   FocusWeek,
   SymptomKey,
+  UserSignals,
   WellnessRecommendation,
 } from '@/types/database'
 import { SYMPTOM_KEYS } from './checkin-schema'
@@ -20,9 +21,12 @@ import {
   canKeepAnother,
   changesOnCheckin,
   daysBetween,
+  focusSymptomOptions,
   isReviewDue,
   keptChanges,
   openWeek,
+  selectWeeklyChange,
+  usedRecommendationIds,
   type WeeklyChangeCandidate,
   type WeeklyChangeSelection,
 } from './focus-programme'
@@ -201,6 +205,41 @@ export function decideFocusCheckin(
   return { ok: true }
 }
 
+/**
+ * A new week may not start before the last one did. isPlausibleLocalToday()
+ * already bounds `today` to ±1 day of UTC; this closes the remaining gap, where
+ * a client sends "yesterday" to open a week dated before the one it follows.
+ */
+export function decideWeekStart(weeks: WeekRow[], today: string): Decision<object> {
+  const latest = weeks.reduce<string | null>(
+    (max, w) => (max === null || w.starts_on > max ? w.starts_on : max),
+    null
+  )
+  if (latest !== null) {
+    const diff = daysBetween(latest, today)
+    if (diff === null || diff < 0) {
+      return refuse(400, 'A new week cannot start before the previous one')
+    }
+  }
+  return { ok: true }
+}
+
+// ─── Query string ─────────────────────────────────────────────────────────────
+
+/**
+ * `?focus=hot_flashes,anxiety` → ['hot_flashes', 'anxiety']. Only splits;
+ * whether each one is hers is normaliseFocusSymptoms()'s job. Capped so a
+ * long query string cannot become a long loop.
+ */
+export function parseFocusParam(value: string | null): string[] {
+  if (!value) return []
+  return value
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean)
+    .slice(0, 10)
+}
+
 // ─── What the client is shown about a change ──────────────────────────────────
 
 export interface WeekView {
@@ -227,5 +266,117 @@ export function weekView(
     current: planById.get(week.recommendation_id) ?? null,
     dayIndex: daysBetween(week.starts_on, today),
     reviewDue: week.outcome === null && isReviewDue(week.starts_on, today),
+  }
+}
+
+// ─── GET /api/focus ───────────────────────────────────────────────────────────
+
+/** The columns of symptom_checkins the programme reads. */
+export interface CheckinRow {
+  checkin_date: string
+  symptoms: Record<string, unknown> | null
+  tried_today: string[] | null
+}
+
+export type FocusRatings = Partial<Record<SymptomKey, number>>
+
+/**
+ * Her ratings for her focus symptoms only. The row also holds everything else
+ * she logged on the full check-in form; the programme has no business
+ * returning that, so it is dropped here rather than passed through.
+ */
+export function focusRatings(
+  symptoms: Record<string, unknown> | null,
+  focus: readonly SymptomKey[]
+): FocusRatings {
+  const out: FocusRatings = {}
+  for (const key of focus) {
+    const value = symptoms?.[key]
+    if (typeof value === 'number') out[key] = value
+  }
+  return out
+}
+
+export type FocusState =
+  | {
+      state: 'none'
+      /** Symptoms she may focus on: those she declared at intake. */
+      options: SymptomKey[]
+      /** What week 1 would be for `?focus=`, so she sees it before starting. */
+      preview: WeeklyChangeSelection | null
+    }
+  | {
+      state: 'active'
+      options: SymptomKey[]
+      programme: FocusProgramme
+      current: WeekView | null
+      kept: WeekView[]
+      /** Next week's choice — only when no week is open. */
+      next: WeeklyChangeSelection | null
+      /** Whether the open week can be kept without dropping another first. */
+      canKeepWithoutRelease: boolean
+      /** Today's answers, for her focus symptoms and check-in changes only. */
+      todayCheckin: { ratings: FocusRatings; done: string[] } | null
+      /** Day-by-day focus ratings since the open week started, oldest first. */
+      weekRatings: { date: string; ratings: FocusRatings }[]
+    }
+
+export interface FocusStateInput {
+  signals: UserSignals
+  plan: Parameters<typeof selectWeeklyChange>[0]
+  planById: ReadonlyMap<string, WellnessRecommendation>
+  programme: FocusProgramme | null
+  weeks: FocusWeek[]
+  today: string
+  /** Validated (normaliseFocusSymptoms) preview symptoms, or null. */
+  previewFocus: SymptomKey[] | null
+  /** Her check-in rows from the open week's start to today. */
+  checkins: CheckinRow[]
+}
+
+export function buildFocusState(input: FocusStateInput): FocusState {
+  const { signals, plan, planById, programme, weeks, today } = input
+  const options = focusSymptomOptions(signals)
+
+  if (!programme) {
+    return {
+      state: 'none',
+      options,
+      preview: input.previewFocus ? selectWeeklyChange(plan, input.previewFocus, signals) : null,
+    }
+  }
+
+  const focus = programme.focus_symptoms
+  const current = openWeek(weeks)
+  const onCheckin = new Set(changesOnCheckin(weeks).map((w) => w.recommendation_id))
+
+  const todayRow = input.checkins.find((c) => c.checkin_date === today)
+  const weekRatings = current
+    ? input.checkins
+        .filter((c) => {
+          const d = daysBetween(current.starts_on, c.checkin_date)
+          return d !== null && d >= 0 && c.checkin_date <= today
+        })
+        .sort((a, b) => (a.checkin_date < b.checkin_date ? -1 : 1))
+        .map((c) => ({ date: c.checkin_date, ratings: focusRatings(c.symptoms, focus) }))
+    : []
+
+  return {
+    state: 'active',
+    options,
+    programme,
+    current: current ? weekView(current, planById, today) : null,
+    kept: keptChanges(weeks).map((w) => weekView(w, planById, today)),
+    next: current
+      ? null
+      : selectWeeklyChange(plan, focus, signals, usedRecommendationIds(weeks)),
+    canKeepWithoutRelease: canKeepAnother(weeks),
+    todayCheckin: todayRow
+      ? {
+          ratings: focusRatings(todayRow.symptoms, focus),
+          done: (todayRow.tried_today ?? []).filter((id) => onCheckin.has(id)),
+        }
+      : null,
+    weekRatings,
   }
 }
