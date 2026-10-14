@@ -1,0 +1,22 @@
+{
+ "output": "aunty-mel-the-3am-wake-up",
+ "segments": [
+  {
+   "src": "ssa",
+   "take": 6,
+   "in": 36.48,
+   "out": 57.44,
+   "text": "In the ten years plus I've been delivering menopause support. The 3am wake up isn't insomnia. It's temperature regulation system breakdown. Connected to what you eat, how you move and how you wind down before bed. You're not broken. You just need to optimise your system.",
+   "lower_third": {
+    "title": "Pamela",
+    "subtitle": "Founder, Aunty Mel",
+    "from": 0.8,
+    "to": 5.5
+   }
+  }
+ ],
+ "end_card": {
+  "line": "Better nights start here"
+ },
+ "feeling": "cant_sleep"
+}

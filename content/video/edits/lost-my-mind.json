@@ -1,0 +1,22 @@
+{
+ "output": "aunty-mel-lost-my-mind",
+ "segments": [
+  {
+   "src": "ssa",
+   "take": 6,
+   "in": 1.24,
+   "out": 24.7,
+   "text": "For ten years women have told me the same thing. They feel like they're losing their mind. The switch in the brain went Eastern drops. This isn't symptom management. It's system optimisation. Nutrition, movement and mindset are the three levers. You're not broken. You just need to optimise your system.",
+   "lower_third": {
+    "title": "Pamela",
+    "subtitle": "Founder, Aunty Mel",
+    "from": 0.8,
+    "to": 5.5
+   }
+  }
+ ],
+ "end_card": {
+  "line": "You're not alone"
+ },
+ "feeling": "foggy"
+}

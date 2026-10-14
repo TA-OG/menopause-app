@@ -1,0 +1,22 @@
+{
+ "output": "aunty-mel-told-its-stress",
+ "segments": [
+  {
+   "src": "ssa",
+   "take": 6,
+   "in": 149.2,
+   "out": 176.26,
+   "text": "In the ten years of supporting women I've heard hundreds of women told it's stress, you're depressed or you're too young. The medical system will interpretate your symptoms as menopause but rarely inform you about nutrition, lifestyle and mindset as foundation underneath. You're not broken. You just need your system optimising.",
+   "lower_third": {
+    "title": "Pamela",
+    "subtitle": "Founder, Aunty Mel",
+    "from": 0.8,
+    "to": 5.5
+   }
+  }
+ ],
+ "end_card": {
+  "line": "Your symptoms are real"
+ },
+ "feeling": "low"
+}
