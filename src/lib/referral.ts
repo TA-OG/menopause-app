@@ -1,9 +1,3 @@
-import Stripe from 'stripe'
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2024-04-10',
-})
-
 /**
  * Generate a unique, human-readable referral code.
  * Format: 3 letters + 4 numbers e.g. PAM4821
@@ -44,6 +38,15 @@ export async function createOrUpdateReferralCoupon(
   existingCouponId?: string | null,
   firstName?: string
 ): Promise<string> {
+  if (!process.env.STRIPE_SECRET_KEY) {
+    throw new Error('STRIPE_SECRET_KEY is not set')
+  }
+
+  const { default: Stripe } = await import('stripe')
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+    apiVersion: '2024-04-10',
+  })
+
   const discountPence = Math.min(referralCount * 99, 799) // Cap at £7.99
 
   if (existingCouponId) {

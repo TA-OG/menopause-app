@@ -1,0 +1,95 @@
+{
+  "NavBar": {
+    "inviteAria": "Freundinnen einladen und Gratismonate erhalten",
+    "profileAria": "Profil- und Kontoeinstellungen",
+    "home": "Start",
+    "myPlan": "Mein Plan",
+    "checkIn": "Check-in",
+    "journal": "Tagebuch",
+    "learn": "Wissen"
+  },
+  "LanguageSwitcher": {
+    "label": "Sprache"
+  },
+  "AutoLocaleNotice": {
+    "message": "Wir haben deine Sprache basierend auf deinem Standort auf {language} eingestellt.",
+    "keep": "Beibehalten",
+    "switchToEnglish": "Zu Englisch wechseln"
+  },
+  "SignIn": {
+    "subtitle": "Melde dich bei deinem Wellness-Plan an.",
+    "continueWithGoogle": "Weiter mit Google",
+    "connecting": "Verbindung wird hergestellt...",
+    "orUseEmail": "oder per E-Mail",
+    "emailPlaceholder": "deine@email.com",
+    "sendMagicLink": "Magischen Link senden",
+    "sending": "Wird gesendet...",
+    "noAccount": "Kein Konto?",
+    "signUpFree": "Kostenlos registrieren",
+    "checkEmail": "Überprüfe deine E-Mails",
+    "magicLinkSent": "Magischer Link gesendet an <strong>{email}</strong>.",
+    "tryAgain": "Erneut versuchen"
+  },
+  "SignUp": {
+    "subtitle": "Dein persönlicher Wellness-Plan wartet auf dich.",
+    "referralBanner": "Du wurdest eingeladen — ihr bekommt beide einen Gratismonat",
+    "beforeYouContinue": "Bevor du fortfährst",
+    "agreeToTerms": "Ich stimme den {terms} und der {privacy} zu.",
+    "termsOfService": "Nutzungsbedingungen",
+    "privacyPolicy": "Datenschutzerklärung",
+    "dataConsent": "Ich stimme zu, dass meine Wellness-Daten verarbeitet werden, um mein Erlebnis zu personalisieren.",
+    "marketingConsent": "Schick mir Wellness-Tipps per E-Mail. (Optional)",
+    "continueWithGoogle": "Weiter mit Google",
+    "connecting": "Verbindung wird hergestellt...",
+    "orUseEmail": "oder per E-Mail",
+    "namePlaceholder": "Dein Vorname",
+    "emailPlaceholder": "deine@email.com",
+    "continueWithEmail": "Weiter mit E-Mail",
+    "sendingLink": "Link wird gesendet...",
+    "alreadyHaveAccount": "Du hast bereits ein Konto?",
+    "signIn": "Anmelden",
+    "checkEmail": "Überprüfe deine E-Mails",
+    "magicLinkSentClick": "Magischer Link gesendet an <strong>{email}</strong>. Klicke darauf, um fortzufahren.",
+    "tryAgain": "Erneut versuchen",
+    "consentRequired": "Bitte akzeptiere die erforderlichen Bedingungen, bevor du fortfährst."
+  },
+  "Dashboard": {
+    "logSymptoms": "Heutige Symptome erfassen",
+    "logSymptomsSubtitle": "Verfolge, wie es dir geht, und sieh deinen Fortschritt über die Zeit",
+    "yourPlan": "Dein Wellness-Plan",
+    "viewAll": "Alle ansehen →",
+    "planReadyPremium": "Dein persönlicher Plan ist bereit.",
+    "planReadyFree": "Schließe deine Aufnahme ab, um deinen persönlichen Plan zu sehen.",
+    "journal": "Tagebuch",
+    "open": "Öffnen →",
+    "journalSubtitle": "Verfolge, was du ausprobierst und wie es für dich funktioniert.",
+    "inviteTitle": "🎁 Lade eine Freundin ein, erhalte einen Gratismonat",
+    "inviteSubtitle": "Ihr bekommt beide einen Gratismonat — bis zu 6 Empfehlungen kombinierbar.",
+    "unlockPlan": "Schalte deinen vollständigen Plan frei",
+    "unlockPlanSubtitle": "Erhalte Zugang zu allen Empfehlungen, Inhalten und deinem vollständigen Tagebuchverlauf.",
+    "upgrade": "Upgrade — 7,99 £/Monat"
+  },
+  "Learn": {
+    "title": "Wissen",
+    "subtitle": "Echte Antworten auf die Fragen, die du um 3 Uhr morgens gegoogelt hast — direkt von Pamela, ohne Geschwafel und Fachjargon.",
+    "freeArticles": "Kostenlose Artikel",
+    "premiumArticles": "Premium-Artikel",
+    "minRead": "{minutes} Min.",
+    "unlockLibrary": "Schalte die gesamte Bibliothek frei",
+    "unlockLibrarySubtitle": "Premium-Mitglieder erhalten Zugang zu allen ausführlichen Ratgebern von Pamela zu Ernährung, Schlaf, sexueller Gesundheit, mentalem Wohlbefinden und mehr.",
+    "upgrade": "Upgrade — 7,99 £/Monat",
+    "comingSoon": "Weitere Artikel folgen bald.",
+    "backToLearn": "← Zurück zu Wissen",
+    "minReadFull": "{minutes} Min. Lesezeit",
+    "premiumArticleTitle": "Dies ist ein Premium-Artikel",
+    "premiumArticleBody": "Führe ein Upgrade durch, um diesen Artikel und die gesamte Bibliothek von Pamelas ausführlichen Ratgebern zu lesen.",
+    "upgradeCta": "Upgrade — 7,99 £/Monat"
+  },
+  "Disclaimer": {
+    "full": "Diese App bietet ausschließlich allgemeine Wellness-Informationen und Lebensstil-Empfehlungen. Es handelt sich nicht um medizinischen Rat und ersetzt keine professionelle medizinische Versorgung. Die Inhalte sollen dir helfen, deinen Körper besser zu verstehen und informiertere Gespräche mit deiner Ärztin oder deinem Arzt zu führen. Wende dich bei medizinischen Anliegen, Diagnosen oder Behandlungsentscheidungen immer an deine Hausärztin, deinen Hausarzt oder eine qualifizierte medizinische Fachkraft.",
+    "short": "Nur allgemeine Wellness-Hinweise — kein medizinischer Rat. Wende dich bei medizinischen Anliegen an deine Hausärztin oder deinen Hausarzt.",
+    "supplement": "Sprich immer mit deiner Hausärztin oder deinem Hausarzt, bevor du ein neues Nahrungsergänzungsmittel einnimmst, besonders wenn du verschreibungspflichtige Medikamente einnimmst oder gesundheitliche Vorerkrankungen hast.",
+    "videoIntro": "Wir sind hier, um dir echte Informationen darüber zu geben, was während der Perimenopause und Menopause in deinem Körper vor sich geht. Wie immer gilt: Das ist kein medizinischer Rat und ersetzt nicht deine Ärztin oder deinen Arzt — es soll dir helfen, deinen eigenen Körper besser zu verstehen, bessere Fragen zu stellen und mit den Veränderungen, die du vornimmst, echte Ergebnisse zu erzielen.",
+    "gpSignpost": "Dies sind allgemeine Wellness-Vorschläge. Für medizinische Behandlungsoptionen — einschließlich HRT, verschreibungspflichtiger Medikamente oder Facharztüberweisungen — sprich bitte mit deiner Hausärztin oder deinem Hausarzt."
+  }
+}

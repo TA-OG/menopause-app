@@ -1,15 +1,22 @@
 import Link from 'next/link'
+import { getLocale, getTranslations } from 'next-intl/server'
 import Logo from '@/components/ui/Logo'
+import LanguageSwitcher from './LanguageSwitcher'
+import { isSupportedLocale, type Locale } from '@/lib/locale-geo-map'
 
-const NAV_ITEMS = [
-  { href: '/dashboard', label: 'Home', icon: '🏠' },
-  { href: '/my-plan', label: 'My Plan', icon: '✨' },
-  { href: '/symptom-checkin', label: 'Check in', icon: '📊' },
-  { href: '/journal', label: 'Journal', icon: '📓' },
-  { href: '/learn', label: 'Learn', icon: '📚' },
-]
+export default async function NavBar() {
+  const t = await getTranslations('NavBar')
+  const rawLocale = await getLocale()
+  const locale: Locale = isSupportedLocale(rawLocale) ? rawLocale : 'en'
 
-export default function NavBar() {
+  const NAV_ITEMS = [
+    { href: '/dashboard', label: t('home'), icon: '🏠' },
+    { href: '/my-plan', label: t('myPlan'), icon: '✨' },
+    { href: '/symptom-checkin', label: t('checkIn'), icon: '📊' },
+    { href: '/journal', label: t('journal'), icon: '📓' },
+    { href: '/learn', label: t('learn'), icon: '📚' },
+  ]
+
   return (
     <>
       {/* Top bar with logo + profile/account access (incl. sign out) */}
@@ -17,19 +24,22 @@ export default function NavBar() {
         <div className="grid grid-cols-[1fr_auto_1fr] items-center max-w-lg mx-auto px-4 py-2">
           <Link
             href="/refer"
-            aria-label="Invite friends and earn free months"
+            aria-label={t('inviteAria')}
             className="justify-self-start text-xl leading-none p-1.5 rounded-full hover:bg-brand-50 transition-colors"
           >
             🎁
           </Link>
           <Logo size="sm" />
-          <Link
-            href="/profile"
-            aria-label="Profile and account settings"
-            className="justify-self-end text-xl leading-none p-1.5 rounded-full hover:bg-brand-50 transition-colors"
-          >
-            👤
-          </Link>
+          <div className="justify-self-end flex items-center gap-1">
+            <LanguageSwitcher currentLocale={locale} />
+            <Link
+              href="/profile"
+              aria-label={t('profileAria')}
+              className="text-xl leading-none p-1.5 rounded-full hover:bg-brand-50 transition-colors"
+            >
+              👤
+            </Link>
+          </div>
         </div>
       </header>
 

@@ -10,6 +10,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { createClient } from '@/lib/supabase/client'
 import Logo from '@/components/ui/Logo'
 
@@ -35,6 +36,7 @@ function GoogleIcon() {
 // ─── Main component ──────────────────────────────────────────────────────────
 
 export default function SignInPage() {
+  const t = useTranslations('SignIn')
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
   const [googleLoading, setGoogleLoading] = useState(false)
@@ -117,16 +119,16 @@ export default function SignInPage() {
         <div className="text-center max-w-sm">
           <div className="text-5xl mb-4">📧</div>
           <h1 className="text-2xl font-bold text-brand-900 mb-2">
-            Check your email
+            {t('checkEmail')}
           </h1>
           <p className="text-gray-600 text-sm">
-            Magic link sent to <strong>{email}</strong>.
+            {t.rich('magicLinkSent', { email, strong: (chunks) => <strong>{chunks}</strong> })}
           </p>
           <button
             onClick={() => setSent(false)}
             className="text-sm text-brand-700 underline mt-4"
           >
-            Try again
+            {t('tryAgain')}
           </button>
         </div>
       </div>
@@ -145,7 +147,7 @@ export default function SignInPage() {
             <Logo size="lg" />
           </div>
           <p className="text-gray-500 text-sm">
-            Sign in to your wellness plan.
+            {t('subtitle')}
           </p>
         </div>
 
@@ -156,13 +158,13 @@ export default function SignInPage() {
           className="w-full flex items-center justify-center gap-3 border border-gray-200 bg-white text-gray-700 font-medium py-3 rounded-2xl hover:bg-gray-50 transition-colors disabled:opacity-50 mb-4"
         >
           <GoogleIcon />
-          {googleLoading ? 'Connecting...' : 'Continue with Google'}
+          {googleLoading ? t('connecting') : t('continueWithGoogle')}
         </button>
 
         {/* Divider */}
         <div className="flex items-center gap-3 mb-4">
           <div className="flex-1 h-px bg-gray-200" />
-          <span className="text-xs text-gray-400">or use email</span>
+          <span className="text-xs text-gray-400">{t('orUseEmail')}</span>
           <div className="flex-1 h-px bg-gray-200" />
         </div>
 
@@ -173,7 +175,7 @@ export default function SignInPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            placeholder="your@email.com"
+            placeholder={t('emailPlaceholder')}
             className="w-full border border-gray-200 rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-300"
           />
 
@@ -188,15 +190,15 @@ export default function SignInPage() {
             disabled={loading}
             className="w-full bg-brand-900 text-white font-semibold py-3 rounded-2xl hover:bg-brand-800 transition-colors disabled:opacity-50"
           >
-            {loading ? 'Sending...' : 'Send magic link'}
+            {loading ? t('sending') : t('sendMagicLink')}
           </button>
         </form>
 
         {/* Sign-up link */}
         <p className="text-center text-sm text-gray-500 mt-6">
-          No account?{' '}
+          {t('noAccount')}{' '}
           <Link href="/auth/sign-up" className="text-brand-700 font-medium">
-            Sign up free
+            {t('signUpFree')}
           </Link>
         </p>
       </div>
