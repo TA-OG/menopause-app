@@ -13,6 +13,8 @@
 // eval-source-map devtool, for fast rebuilds) — that's blocked by a strict
 // script-src and has nothing to do with production behaviour, so 'unsafe-eval'
 // is scoped to development only. The production CSP stays strict.
+const withNextIntl = require('next-intl/plugin')('./src/i18n/request.ts')
+
 const isDev = process.env.NODE_ENV !== 'production'
 
 const CSP = [
@@ -66,4 +68,4 @@ const nextConfig = {
   },
 }
 
-module.exports = nextConfig
+module.exports = withNextIntl(nextConfig)

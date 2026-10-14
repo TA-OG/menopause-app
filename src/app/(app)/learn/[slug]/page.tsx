@@ -1,8 +1,11 @@
 import { createClient } from '@/lib/supabase/server'
 import { getUserAccess } from '@/lib/access'
+import { getLocale, getTranslations } from 'next-intl/server'
 import { redirect, notFound } from 'next/navigation'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+
+const ARTICLE_COLUMNS = 'slug, title, body_md, tier, category, tags, estimated_read_minutes, published_at'
 
 export default async function ArticlePage({
   params,
@@ -14,14 +17,23 @@ export default async function ArticlePage({
   if (!user) redirect('/auth/sign-in')
 
   const { isPremium } = await getUserAccess(supabase, user.id)
+  const locale = await getLocale()
+  const t = await getTranslations('Learn')
 
-  const { data: article } = await supabase
-    .from('content_modules')
-    .select('slug, title, body_md, tier, category, tags, estimated_read_minutes, published_at')
-    .eq('slug', params.slug)
-    .not('published_at', 'is', null)
-    .lte('published_at', new Date().toISOString())
-    .single()
+  const baseQuery = () =>
+    supabase
+      .from('content_modules')
+      .select(ARTICLE_COLUMNS)
+      .eq('slug', params.slug)
+      .not('published_at', 'is', null)
+      .lte('published_at', new Date().toISOString())
+
+  // Try the requested locale first; an untranslated article falls back to
+  // its English row rather than 404ing.
+  let { data: article } = await baseQuery().eq('locale', locale).maybeSingle()
+  if (!article && locale !== 'en') {
+    ;({ data: article } = await baseQuery().eq('locale', 'en').maybeSingle())
+  }
 
   if (!article) notFound()
 
@@ -30,7 +42,7 @@ export default async function ArticlePage({
   return (
     <article className="space-y-5 py-4">
       <a href="/learn" className="text-sm text-brand-600 font-medium">
-        ← Back to Learn
+        {t('backToLearn')}
       </a>
 
       <header>
@@ -42,22 +54,22 @@ export default async function ArticlePage({
         </h1>
         {article.estimated_read_minutes && (
           <p className="text-xs text-gray-400 mt-1">
-            {article.estimated_read_minutes} min read
+            {t('minReadFull', { minutes: article.estimated_read_minutes })}
           </p>
         )}
       </header>
 
       {locked ? (
         <div className="bg-brand-50 border border-brand-200 rounded-2xl p-5">
-          <p className="font-semibold text-brand-900">This is a premium article</p>
+          <p className="font-semibold text-brand-900">{t('premiumArticleTitle')}</p>
           <p className="text-brand-700 text-sm mt-1 mb-3">
-            Upgrade to read this and the full library of Pamela&apos;s in-depth guides.
+            {t('premiumArticleBody')}
           </p>
           <a
             href="/pay"
             className="inline-block bg-brand-900 text-white text-sm font-semibold px-4 py-2 rounded-xl"
           >
-            Upgrade — £7.99/month
+            {t('upgradeCta')}
           </a>
         </div>
       ) : (

@@ -4,6 +4,8 @@ import { getUserAccess } from '@/lib/access'
 import { sanitizeError } from '@/lib/sanitize-error'
 import { rateLimit } from '@/lib/rate-limit'
 import { withMonitoring, recordEvent } from '@/lib/monitoring'
+import { getLocale } from 'next-intl/server'
+import { pickLocalizedModules } from '@/lib/content-locale'
 
 export const dynamic = 'force-dynamic'
 
@@ -20,30 +22,51 @@ async function getHandler(request: NextRequest) {
   const slug = searchParams.get('slug')
 
   const { isPremium } = await getUserAccess(supabase, user.id)
+  const locale = await getLocale()
 
-  try {
+  const COLUMNS = 'id, slug, title, body_md, tier, category, tags, locale, estimated_read_minutes, published_at'
+
+  function baseQuery() {
     let query = supabase
       .from('content_modules')
-      .select('id, slug, title, body_md, tier, category, tags, estimated_read_minutes, published_at')
+      .select(COLUMNS)
       .not('published_at', 'is', null)
       .lte('published_at', new Date().toISOString())
       .order('published_at', { ascending: false })
 
+    if (slug) query = query.eq('slug', slug)
+    if (category) query = query.eq('category', category)
+    if (!isPremium) query = query.eq('tier', 'free')
+    return query
+  }
+
+  try {
+    let data: unknown
+
     if (slug) {
-      query = query.eq('slug', slug)
+      // Single-article lookup: try the requested locale, then fall back to
+      // English rather than 404ing on an untranslated article.
+      const { data: localized, error } = await baseQuery().eq('locale', locale).maybeSingle()
+      if (error) throw error
+      if (localized) {
+        data = localized
+      } else if (locale !== 'en') {
+        const { data: fallback, error: fallbackError } = await baseQuery().eq('locale', 'en').maybeSingle()
+        if (fallbackError) throw fallbackError
+        data = fallback
+      } else {
+        data = null
+      }
+    } else {
+      // List lookup: fetch both the requested locale and English, then dedupe
+      // per slug (preferring the requested locale) so untranslated articles
+      // still appear via their English row instead of vanishing.
+      const { data: rawData, error } = await baseQuery()
+        .in('locale', Array.from(new Set([locale, 'en'])))
+        .limit(100)
+      if (error) throw error
+      data = pickLocalizedModules((rawData ?? []) as { slug: string; locale: string }[], locale).slice(0, 50)
     }
-    if (category) {
-      query = query.eq('category', category)
-    }
-    if (!isPremium) {
-      query = query.eq('tier', 'free')
-    }
-
-    const { data, error } = slug
-      ? await query.single()
-      : await query.limit(50)
-
-    if (error) throw error
 
     return NextResponse.json({ data, is_premium: isPremium })
   } catch (err) {

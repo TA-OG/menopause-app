@@ -397,7 +397,7 @@ export const STEPS: OnboardingStep[] = [
 // step needs no change here unless it must feed one of those columns.
 
 /** Keys copied onto the `profiles` row. */
-export const PROFILE_KEYS = ['full_name', 'menopause_stage'] as const
+export const PROFILE_KEYS = ['full_name', 'menopause_stage', 'locale'] as const
 
 /** Keys copied onto the `user_preferences` row (read by the wellness engine). */
 export const PREFERENCE_KEYS = [

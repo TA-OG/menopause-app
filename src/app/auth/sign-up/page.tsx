@@ -14,8 +14,8 @@
 import { Suspense, useState } from 'react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { createClient } from '@/lib/supabase/client'
-import { DISCLAIMER } from '@/lib/disclaimer'
 import Logo from '@/components/ui/Logo'
 
 // ─── Google logo SVG paths (brand-compliant colours) ─────────────────────────
@@ -40,6 +40,8 @@ function GoogleIcon() {
 // ─── Main component ──────────────────────────────────────────────────────────
 
 function SignUpForm() {
+  const t = useTranslations('SignUp')
+  const tDisclaimer = useTranslations('Disclaimer')
   const searchParams = useSearchParams()
   const refCode = searchParams.get('ref')
 
@@ -62,7 +64,7 @@ function SignUpForm() {
    */
   async function handleGoogle() {
     if (!consentReady) {
-      setError('Please accept the required terms before continuing.')
+      setError(t('consentRequired'))
       return
     }
 
@@ -96,7 +98,7 @@ function SignUpForm() {
     e.preventDefault()
 
     if (!consentReady) {
-      setError('Please accept the required terms to continue.')
+      setError(t('consentRequired'))
       return
     }
 
@@ -134,16 +136,16 @@ function SignUpForm() {
         <div className="text-center max-w-sm">
           <div className="text-5xl mb-4">📧</div>
           <h1 className="text-2xl font-bold text-brand-900 mb-2">
-            Check your email
+            {t('checkEmail')}
           </h1>
           <p className="text-gray-600 text-sm">
-            Magic link sent to <strong>{email}</strong>. Click it to continue.
+            {t.rich('magicLinkSentClick', { email, strong: (chunks) => <strong>{chunks}</strong> })}
           </p>
           <button
             onClick={() => setSent(false)}
             className="text-sm text-brand-700 underline mt-4"
           >
-            Try again
+            {t('tryAgain')}
           </button>
         </div>
       </div>
@@ -162,7 +164,7 @@ function SignUpForm() {
             <Logo size="lg" />
           </div>
           <p className="text-gray-500 text-sm">
-            Your personalised wellness plan is waiting.
+            {t('subtitle')}
           </p>
         </div>
 
@@ -170,7 +172,7 @@ function SignUpForm() {
         {refCode && (
           <div className="text-center mb-6">
             <div className="inline-block bg-brand-900 text-white text-xs font-semibold px-4 py-1.5 rounded-full">
-              🎁 You&apos;ve been invited — you&apos;ll both get a free month
+              🎁 {t('referralBanner')}
             </div>
           </div>
         )}
@@ -178,7 +180,7 @@ function SignUpForm() {
         {/* ── Consent checkboxes — shown before any auth action ─────────── */}
         <div className="bg-white rounded-2xl p-4 border border-gray-100 space-y-3 mb-5">
           <p className="text-xs text-gray-500 font-semibold uppercase tracking-wide">
-            Before you continue
+            {t('beforeYouContinue')}
           </p>
 
           {/* Required: Terms of Service */}
@@ -190,10 +192,10 @@ function SignUpForm() {
               className="mt-0.5 accent-brand-700"
             />
             <span className="text-sm text-gray-700">
-              I agree to the{' '}
-              <Link href="/terms" className="text-brand-700 underline">Terms of Service</Link>
-              {' '}and{' '}
-              <Link href="/privacy" className="text-brand-700 underline">Privacy Policy</Link>.
+              {t.rich('agreeToTerms', {
+                terms: (chunks) => <Link href="/terms" className="text-brand-700 underline">{chunks}</Link>,
+                privacy: (chunks) => <Link href="/privacy" className="text-brand-700 underline">{chunks}</Link>,
+              })}
               {' '}<span className="text-red-500">*</span>
             </span>
           </label>
@@ -207,7 +209,7 @@ function SignUpForm() {
               className="mt-0.5 accent-brand-700"
             />
             <span className="text-sm text-gray-700">
-              I consent to my wellness data being processed to personalise my experience.
+              {t('dataConsent')}
               {' '}<span className="text-red-500">*</span>
             </span>
           </label>
@@ -221,7 +223,7 @@ function SignUpForm() {
               className="mt-0.5 accent-brand-700"
             />
             <span className="text-sm text-gray-700">
-              Send me wellness tips by email. (Optional)
+              {t('marketingConsent')}
             </span>
           </label>
         </div>
@@ -233,13 +235,13 @@ function SignUpForm() {
           className="w-full flex items-center justify-center gap-3 border border-gray-200 bg-white text-gray-700 font-medium py-3 rounded-2xl hover:bg-gray-50 transition-colors disabled:opacity-40 mb-4"
         >
           <GoogleIcon />
-          {googleLoading ? 'Connecting...' : 'Continue with Google'}
+          {googleLoading ? t('connecting') : t('continueWithGoogle')}
         </button>
 
         {/* Divider */}
         <div className="flex items-center gap-3 mb-4">
           <div className="flex-1 h-px bg-gray-200" />
-          <span className="text-xs text-gray-400">or use email</span>
+          <span className="text-xs text-gray-400">{t('orUseEmail')}</span>
           <div className="flex-1 h-px bg-gray-200" />
         </div>
 
@@ -249,7 +251,7 @@ function SignUpForm() {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Your first name"
+            placeholder={t('namePlaceholder')}
             required
             className="w-full border border-gray-200 rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-300"
           />
@@ -257,7 +259,7 @@ function SignUpForm() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="your@email.com"
+            placeholder={t('emailPlaceholder')}
             required
             className="w-full border border-gray-200 rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-300"
           />
@@ -270,7 +272,7 @@ function SignUpForm() {
 
           {/* Medical disclaimer — required for health-related apps */}
           <p className="text-xs text-gray-400 leading-relaxed">
-            {DISCLAIMER.short}
+            {tDisclaimer('short')}
           </p>
 
           <button
@@ -278,15 +280,15 @@ function SignUpForm() {
             disabled={loading || !consentReady}
             className="w-full bg-brand-900 text-white font-semibold py-3 rounded-2xl hover:bg-brand-800 transition-colors disabled:opacity-40"
           >
-            {loading ? 'Sending link...' : 'Continue with email'}
+            {loading ? t('sendingLink') : t('continueWithEmail')}
           </button>
         </form>
 
         {/* Sign-in link */}
         <p className="text-center text-sm text-gray-500 mt-6">
-          Already have an account?{' '}
+          {t('alreadyHaveAccount')}{' '}
           <Link href="/auth/sign-in" className="text-brand-700 font-medium">
-            Sign in
+            {t('signIn')}
           </Link>
         </p>
       </div>

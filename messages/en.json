@@ -1,0 +1,95 @@
+{
+  "NavBar": {
+    "inviteAria": "Invite friends and earn free months",
+    "profileAria": "Profile and account settings",
+    "home": "Home",
+    "myPlan": "My Plan",
+    "checkIn": "Check in",
+    "journal": "Journal",
+    "learn": "Learn"
+  },
+  "LanguageSwitcher": {
+    "label": "Language"
+  },
+  "AutoLocaleNotice": {
+    "message": "We've set your language to {language} based on your location.",
+    "keep": "Keep",
+    "switchToEnglish": "Switch to English"
+  },
+  "SignIn": {
+    "subtitle": "Sign in to your wellness plan.",
+    "continueWithGoogle": "Continue with Google",
+    "connecting": "Connecting...",
+    "orUseEmail": "or use email",
+    "emailPlaceholder": "your@email.com",
+    "sendMagicLink": "Send magic link",
+    "sending": "Sending...",
+    "noAccount": "No account?",
+    "signUpFree": "Sign up free",
+    "checkEmail": "Check your email",
+    "magicLinkSent": "Magic link sent to <strong>{email}</strong>.",
+    "tryAgain": "Try again"
+  },
+  "SignUp": {
+    "subtitle": "Your personalised wellness plan is waiting.",
+    "referralBanner": "You've been invited — you'll both get a free month",
+    "beforeYouContinue": "Before you continue",
+    "agreeToTerms": "I agree to the {terms} and {privacy}.",
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy",
+    "dataConsent": "I consent to my wellness data being processed to personalise my experience.",
+    "marketingConsent": "Send me wellness tips by email. (Optional)",
+    "continueWithGoogle": "Continue with Google",
+    "connecting": "Connecting...",
+    "orUseEmail": "or use email",
+    "namePlaceholder": "Your first name",
+    "emailPlaceholder": "your@email.com",
+    "continueWithEmail": "Continue with email",
+    "sendingLink": "Sending link...",
+    "alreadyHaveAccount": "Already have an account?",
+    "signIn": "Sign in",
+    "checkEmail": "Check your email",
+    "magicLinkSentClick": "Magic link sent to <strong>{email}</strong>. Click it to continue.",
+    "tryAgain": "Try again",
+    "consentRequired": "Please accept the required terms before continuing."
+  },
+  "Dashboard": {
+    "logSymptoms": "Log today's symptoms",
+    "logSymptomsSubtitle": "Track how you're doing and see your progress over time",
+    "yourPlan": "Your wellness plan",
+    "viewAll": "View all →",
+    "planReadyPremium": "Your personalised plan is ready.",
+    "planReadyFree": "Complete your intake to see your personalised plan.",
+    "journal": "Journal",
+    "open": "Open →",
+    "journalSubtitle": "Track what you're trying and how it's working for you.",
+    "inviteTitle": "🎁 Invite a friend, get a free month",
+    "inviteSubtitle": "You both get one month free — stack up to 6 referrals.",
+    "unlockPlan": "Unlock your full plan",
+    "unlockPlanSubtitle": "Get access to all recommendations, content, and your complete journal history.",
+    "upgrade": "Upgrade — £7.99/month"
+  },
+  "Learn": {
+    "title": "Learn",
+    "subtitle": "Real answers for the questions you've been Googling at 3am — straight from Pamela, no fluff, no jargon",
+    "freeArticles": "Free articles",
+    "premiumArticles": "Premium articles",
+    "minRead": "{minutes} min",
+    "unlockLibrary": "Unlock the full library",
+    "unlockLibrarySubtitle": "Premium members get access to all of Pamela's in-depth guides on nutrition, sleep, sexual health, mental wellbeing, and more.",
+    "upgrade": "Upgrade — £7.99/month",
+    "comingSoon": "Articles coming soon.",
+    "backToLearn": "← Back to Learn",
+    "minReadFull": "{minutes} min read",
+    "premiumArticleTitle": "This is a premium article",
+    "premiumArticleBody": "Upgrade to read this and the full library of Pamela's in-depth guides.",
+    "upgradeCta": "Upgrade — £7.99/month"
+  },
+  "Disclaimer": {
+    "full": "This app provides general wellness information and lifestyle guidance only. It is not medical advice and is not a replacement for professional medical care. The content is here to empower you to understand your body and have more informed conversations with your doctor. Always consult your GP or a qualified healthcare professional for medical concerns, diagnosis, or treatment decisions.",
+    "short": "General wellness guidance only — not medical advice. Consult your GP for medical concerns.",
+    "supplement": "Always check with your GP before starting any new supplement, especially if you take prescription medications or have any underlying health conditions.",
+    "videoIntro": "We're here to give you the real information about what's happening in your body during menopause and perimenopause. As always, this is not medical advice and it's not a replacement for your doctor — it's here to empower you to understand your own body, ask better questions, and get real results from the changes you're making.",
+    "gpSignpost": "These are general wellness suggestions. For medical treatment options — including HRT, prescription medications, or specialist referrals — please speak with your GP."
+  }
+}
