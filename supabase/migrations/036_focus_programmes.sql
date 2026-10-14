@@ -13,7 +13,8 @@
 --   1. focus_programmes — her focus symptoms and the programme's lifecycle.
 --      At most one active programme per user, enforced by the database.
 --
---   2. focus_weeks — one row per weekly change, with a snapshot of the wording
+--   2. focus_weeks — one row per week: a change to try, or a rest week
+--      ("rest this week": keep what she has, add nothing). A change week has a snapshot of the wording
 --      she was shown. The snapshot is for the record only ("what were you
 --      asked to try in week 2?") and survives her plan being regenerated.
 --      Cautions are NEVER read from it: they are re-derived from her current
@@ -28,10 +29,16 @@
 
 CREATE TYPE focus_programme_status AS ENUM ('active', 'ended');
 
+-- change — a week with one new change to try
+-- rest   — "rest this week": she keeps the changes she already has and adds
+--          nothing new. It still takes the week's slot, so nothing else opens.
+CREATE TYPE focus_week_kind AS ENUM ('change', 'rest');
+
 -- kept    — she carries on with it; it stays on her daily check-in
 -- stopped — she reviewed it and is not carrying on
 -- swapped — she chose a different change before reviewing this one
-CREATE TYPE focus_week_outcome AS ENUM ('kept', 'stopped', 'swapped');
+-- rested  — a rest week, finished. The only outcome a rest week can have.
+CREATE TYPE focus_week_outcome AS ENUM ('kept', 'stopped', 'swapped', 'rested');
 
 -- CHECK constraints cannot contain subqueries, so "no duplicates" lives in an
 -- IMMUTABLE helper. Pure function of its argument, so IMMUTABLE is truthful.
@@ -106,10 +113,12 @@ CREATE TABLE focus_weeks (
   -- 1, 2, 3 … in the order the changes were started. A swap takes the next
   -- number, so the sequence is a complete history, not a week count.
   sequence                 SMALLINT NOT NULL CHECK (sequence >= 1),
+  kind                     focus_week_kind NOT NULL DEFAULT 'change',
 
-  recommendation_id        TEXT NOT NULL,
+  -- Both NULL exactly when kind = 'rest' (see focus_week_kind_consistent).
+  recommendation_id        TEXT,
   -- What she was shown: { title, body, category, targets_symptoms }.
-  recommendation_snapshot  JSONB NOT NULL,
+  recommendation_snapshot  JSONB,
   -- Which of her focus symptoms this change was chosen for.
   covers_symptoms          symptom_key[] NOT NULL DEFAULT '{}',
 
@@ -123,8 +132,22 @@ CREATE TABLE focus_weeks (
   updated_at               TIMESTAMPTZ NOT NULL DEFAULT NOW(),
 
   UNIQUE (programme_id, sequence),
+  -- A change week names its change; a rest week names none and covers nothing.
+  CONSTRAINT focus_week_kind_consistent CHECK (
+    CASE kind
+      WHEN 'change' THEN recommendation_id IS NOT NULL
+                     AND recommendation_snapshot IS NOT NULL
+      ELSE recommendation_id IS NULL
+       AND recommendation_snapshot IS NULL
+       AND cardinality(covers_symptoms) = 0
+    END
+  ),
+  -- 'rested' belongs to rest weeks and only to them.
+  CONSTRAINT focus_week_outcome_fits_kind CHECK (
+    outcome IS NULL OR (kind = 'rest') = (outcome = 'rested')
+  ),
   CONSTRAINT focus_week_snapshot_is_object CHECK (
-    jsonb_typeof(recommendation_snapshot) = 'object'
+    recommendation_snapshot IS NULL OR jsonb_typeof(recommendation_snapshot) = 'object'
   ),
   CONSTRAINT focus_week_reviewed_consistent CHECK (
     (outcome IS NULL) = (reviewed_at IS NULL)

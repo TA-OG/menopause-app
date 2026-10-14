@@ -42,6 +42,24 @@ UPDATE focus_weeks SET outcome='kept', reviewed_at=now() WHERE sequence=1;
 INSERT INTO focus_weeks (programme_id,user_id,sequence,recommendation_id,recommendation_snapshot,starts_on) VALUES ('11111111-0000-0000-0000-000000000001',auth.uid(),2,'df_hydration_protocol','{}','2026-10-15');
 SELECT 'PASS: week 2 opens after week 1 reviewed';
 
+-- rest weeks
+SELECT expect_fail('change week without a change', $$INSERT INTO focus_weeks (programme_id,user_id,sequence,starts_on,outcome,reviewed_at) VALUES ('11111111-0000-0000-0000-000000000001',auth.uid(),20,'2026-10-15','stopped',now())$$);
+SELECT expect_fail('rest week naming a change', $$INSERT INTO focus_weeks (programme_id,user_id,sequence,kind,recommendation_id,starts_on,outcome,reviewed_at) VALUES ('11111111-0000-0000-0000-000000000001',auth.uid(),20,'rest','x','2026-10-15','rested',now())$$);
+SELECT expect_fail('rest week with a snapshot', $$INSERT INTO focus_weeks (programme_id,user_id,sequence,kind,recommendation_snapshot,starts_on,outcome,reviewed_at) VALUES ('11111111-0000-0000-0000-000000000001',auth.uid(),20,'rest','{}','2026-10-15','rested',now())$$);
+SELECT expect_fail('rest week covering symptoms', $$INSERT INTO focus_weeks (programme_id,user_id,sequence,kind,covers_symptoms,starts_on,outcome,reviewed_at) VALUES ('11111111-0000-0000-0000-000000000001',auth.uid(),20,'rest','{anxiety}','2026-10-15','rested',now())$$);
+SELECT expect_fail('rest week opens while a change week is open', $$INSERT INTO focus_weeks (programme_id,user_id,sequence,kind,starts_on) VALUES ('11111111-0000-0000-0000-000000000001',auth.uid(),3,'rest','2026-10-22')$$);
+SELECT expect_fail('change week closed as rested', $$UPDATE focus_weeks SET outcome='rested', reviewed_at=now() WHERE sequence=2$$);
+UPDATE focus_weeks SET outcome='stopped', reviewed_at=now() WHERE sequence=2;
+INSERT INTO focus_weeks (programme_id,user_id,sequence,kind,starts_on) VALUES ('11111111-0000-0000-0000-000000000001',auth.uid(),3,'rest','2026-10-22');
+SELECT 'PASS: rest week opens after week 2 reviewed';
+SELECT expect_fail('change week opens during a rest week', $$INSERT INTO focus_weeks (programme_id,user_id,sequence,recommendation_id,recommendation_snapshot,starts_on) VALUES ('11111111-0000-0000-0000-000000000001',auth.uid(),4,'x','{}','2026-10-22')$$);
+SELECT expect_fail('rest week kept', $$UPDATE focus_weeks SET outcome='kept', reviewed_at=now() WHERE sequence=3$$);
+SELECT expect_fail('rest week released', $$UPDATE focus_weeks SET outcome='rested', reviewed_at=now(), released_on='2026-10-29' WHERE sequence=3$$);
+UPDATE focus_weeks SET outcome='rested', reviewed_at=now() WHERE sequence=3;
+SELECT 'PASS: rest week closes as rested';
+INSERT INTO focus_weeks (programme_id,user_id,sequence,recommendation_id,recommendation_snapshot,starts_on) VALUES ('11111111-0000-0000-0000-000000000001',auth.uid(),4,'mn_breathing','{}','2026-10-29');
+SELECT 'PASS: change week opens after a rest week';
+
 -- daily check-in merge
 INSERT INTO symptom_checkins (user_id,checkin_date,symptoms,mood_score,notes) VALUES (auth.uid(),'2026-10-08','{"hot_flashes":4,"anxiety":2}',3,'full form');
 SELECT symptoms, tried_today FROM record_focus_checkin('2026-10-08','{"hot_flashes":3}','{lf_circadian_light}');
