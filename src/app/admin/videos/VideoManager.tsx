@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Film, RefreshCw, Upload } from 'lucide-react'
+import { Film, RefreshCw, ShieldCheck, Upload } from 'lucide-react'
 import {
   DIRECT_UPLOAD_MAX_BYTES,
   VIDEO_ACCESS_LABELS,
@@ -70,6 +70,24 @@ export default function VideoManager({ initialVideos }: { initialVideos: VideoRo
     const res = await fetch(`/api/admin/videos/${id}`, { method: 'POST' })
     if (res.ok) upsert((await res.json()).video)
     else setMessage({ tone: 'error', text: await readError(res) })
+  }
+
+  async function verify(id: string) {
+    setMessage(null)
+    const res = await fetch(`/api/admin/videos/${id}/verify`, { method: 'POST' })
+    if (!res.ok) return setMessage({ tone: 'error', text: await readError(res) })
+    const r = (await res.json()) as { unsignedStatus: number; signedStatus: number; ok: boolean }
+    setMessage(
+      r.ok
+        ? { tone: 'ok', text: `Playback security verified: refused without a token (HTTP ${r.unsignedStatus}), plays with one (HTTP ${r.signedStatus}).` }
+        : {
+            tone: 'error',
+            text:
+              r.unsignedStatus < 400
+                ? `NOT SAFE: this video plays without a token (HTTP ${r.unsignedStatus}). Do not put it on a page.`
+                : `Signed playback failed (HTTP ${r.signedStatus}). The signing key or customer code in Vercel is wrong.`,
+          },
+    )
   }
 
   async function update(id: string, patch: Partial<Pick<VideoRow, 'access' | 'title' | 'slug'>>) {
@@ -267,6 +285,15 @@ export default function VideoManager({ initialVideos }: { initialVideos: VideoRo
                   className="inline-flex items-center gap-1 text-xs text-brand-700 hover:underline"
                 >
                   <RefreshCw className="h-3 w-3" aria-hidden="true" /> Check status
+                </button>
+              )}
+              {v.status === 'ready' && (
+                <button
+                  type="button"
+                  onClick={() => verify(v.id)}
+                  className="inline-flex items-center gap-1 text-xs text-brand-700 hover:underline"
+                >
+                  <ShieldCheck className="h-3 w-3" aria-hidden="true" /> Test playback security
                 </button>
               )}
             </li>

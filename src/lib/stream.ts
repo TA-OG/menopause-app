@@ -202,9 +202,18 @@ async function streamApi<T>(path: string, init: RequestInit = {}): Promise<T> {
   }
   if (!res.ok || !body?.success) {
     const detail = body?.errors?.map((e) => e.message).filter(Boolean).join('; ')
-    throw new Error(`Cloudflare Stream API ${res.status}${detail ? `: ${detail}` : ''}`)
+    throw new StreamApiError(res.status, `Cloudflare Stream API ${res.status}${detail ? `: ${detail}` : ''}`)
   }
   return body.result
+}
+
+export class StreamApiError extends Error {
+  readonly status: number
+  constructor(status: number, message: string) {
+    super(message)
+    this.name = 'StreamApiError'
+    this.status = status
+  }
 }
 
 /**
@@ -251,6 +260,62 @@ export async function linkExistingVideo(uid: string): Promise<StreamVideo> {
     body: JSON.stringify({ requireSignedURLs: true }),
   })
   return streamVideoSchema.parse(result)
+}
+
+// ─── One-time setup (the "Set up video hosting" button in /admin/videos) ──
+
+/** Videos on the account. Doubles as "is Stream on, and can this token use it?". */
+export async function listStreamVideos(): Promise<{ uid: string; thumbnail?: string; preview?: string }[]> {
+  return streamApi<{ uid: string; thumbnail?: string; preview?: string }[]>('')
+}
+
+/**
+ * Create a signing key. Cloudflare returns the private key in this response
+ * only — it cannot be fetched again — so the caller must hand it straight to
+ * whoever is putting it into Vercel. It is checked here against the parser
+ * the playback route uses, so a format surprise fails now, not in production.
+ */
+export async function createSigningKey(): Promise<{ id: string; pem: string }> {
+  const result = await streamApi<Record<string, unknown>>('/keys', { method: 'POST' })
+  const id = typeof result.id === 'string' ? result.id : null
+  const pem = typeof result.pem === 'string' ? result.pem : null
+  if (!id || !pem) {
+    // Field names only — never values.
+    throw new Error(`Unexpected signing key response (fields: ${Object.keys(result).join(', ')})`)
+  }
+  parseSigningKey(pem)
+  return { id, pem }
+}
+
+/**
+ * Point Stream's "video ready" webhook at the app. One per account: this
+ * replaces any existing registration, and the previous secret stops working.
+ */
+export async function registerWebhook(notificationUrl: string): Promise<{ notificationUrl: string; secret: string }> {
+  return streamApi<{ notificationUrl: string; secret: string }>('/webhook', {
+    method: 'PUT',
+    body: JSON.stringify({ notificationUrl }),
+  })
+}
+
+/**
+ * The end-to-end proof that playback is protected, run against the real
+ * account: a video's thumbnail must be refused WITHOUT a token and served
+ * WITH one this app signed.
+ */
+export async function verifyPlaybackSecurity(uid: string): Promise<{
+  unsignedStatus: number
+  signedStatus: number
+  ok: boolean
+}> {
+  if (!STREAM_UID_PATTERN.test(uid)) throw new Error('Invalid Stream video id.')
+  const unsigned = `https://customer-${customerCode()}.cloudflarestream.com/${uid}/thumbnails/thumbnail.jpg`
+  const { thumbnailUrl } = playbackUrls(uid)
+  const [open, signed] = await Promise.all([
+    fetch(unsigned, { cache: 'no-store' }),
+    fetch(thumbnailUrl, { cache: 'no-store' }),
+  ])
+  return { unsignedStatus: open.status, signedStatus: signed.status, ok: !open.ok && signed.ok }
 }
 
 // ─── Signed playback tokens ────────────────────────────────────────────────

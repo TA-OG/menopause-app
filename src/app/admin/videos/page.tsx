@@ -1,6 +1,7 @@
 import { createAdminClient } from '@/lib/supabase/admin'
 import { VIDEO_COLUMNS, type VideoRow } from '@/lib/stream'
 import VideoManager from './VideoManager'
+import StreamSetupPanel from './StreamSetupPanel'
 
 /**
  * Video library — every video the app can show, wherever it appears.
@@ -50,10 +51,10 @@ export default async function VideosPage() {
       </div>
 
       {missingEnv.length > 0 && (
-        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-amber-800 text-sm">
-          <p className="font-medium">Cloudflare Stream is not fully set up yet.</p>
-          <p className="mt-1">Missing: {missingEnv.join(', ')}. See docs/video-hosting.md.</p>
-        </div>
+        <StreamSetupPanel
+          missing={missingEnv}
+          canRun={!!process.env.CLOUDFLARE_ACCOUNT_ID && !!process.env.CLOUDFLARE_STREAM_API_TOKEN}
+        />
       )}
 
       <VideoManager initialVideos={(data ?? []) as VideoRow[]} />
