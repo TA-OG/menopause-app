@@ -13,25 +13,35 @@ Videos are hosted on Cloudflare Stream. The app decides who may watch each one.
 
 ## One-time setup
 
-1. **Turn on Stream.** In the Cloudflare dashboard, go to **Stream**, subscribe, and pick a storage plan.
-2. **Account ID → `CLOUDFLARE_ACCOUNT_ID`.** It's shown on the account overview page.
-3. **Customer code → `CLOUDFLARE_STREAM_CUSTOMER_CODE`.** Open Stream → any video → embed code. Copy the part between `customer-` and `.cloudflarestream.com`.
-4. **API token → `CLOUDFLARE_STREAM_API_TOKEN`.** Go to My Profile → API Tokens → Create Token → Custom. Grant the **Account › Stream › Edit** permission, scoped to this account only.
-5. Put those four values in `.env.local`, then run:
-   ```sh
-   npm run stream-setup -- signing-key
-   npm run stream-setup -- webhook https://auntymel.app/api/stream/webhook
-   ```
-   These print `CLOUDFLARE_STREAM_SIGNING_KEY_ID`, `CLOUDFLARE_STREAM_SIGNING_KEY_PEM` and `CLOUDFLARE_STREAM_WEBHOOK_SECRET`.
-6. Add all six variables in Vercel (Production and Preview), then redeploy.
-7. Apply migration `036_videos.sql`.
-8. **Verify end to end.** Upload a short test video in /admin/videos and wait for **Ready**. Then run:
-   ```sh
-   npm run stream-setup -- check <stream-video-id>
-   ```
-   It must report that the video is refused **without** a token and loads **with** one. Don't put a video on a page until this passes.
+Two things need a person in the Cloudflare dashboard:
 
-/admin → Env diagnostics lists any variable that is missing.
+1. **Subscribe to Stream** (dashboard → Stream). This is billing, so it can't be scripted.
+2. **Create an API token.** Go to My Profile → API Tokens → Create Token → Custom. Grant **Account › Stream › Edit**, scoped to this account only.
+
+Everything else is one command, run from the repo root with a short test clip of 200 MB or less:
+
+```sh
+npm run stream-setup -- all --app-url https://auntymel.app --test-video ./clip.mp4
+```
+
+It asks for the token if `CLOUDFLARE_STREAM_API_TOKEN` isn't set, then:
+
+- finds the account
+- checks that Stream is enabled
+- creates the signing key
+- registers the webhook
+- writes all six variables to `.env.local`
+- checks that migration 036 is applied
+- uploads the clip, proves it's **refused without** a token and **plays with** one, then deletes it
+- pushes the variables to Vercel (Production and Preview)
+
+You can re-run it safely: anything already configured is checked and kept, not recreated. Add `--dry-run` to see what it would do without changing anything.
+
+- **Vercel push:** set `VERCEL_TOKEN` (vercel.com/account/tokens) and run `vercel link` once first. Without them, the script tells you to add the values by hand.
+- **Migration:** the script checks it but doesn't apply it. Apply `036_videos.sql` the same way as earlier migrations.
+- **After the variables are in:** redeploy.
+
+Don't put a video on a page until the end-to-end check passes. /admin → Env diagnostics lists any variable that is missing.
 
 ## Before the first video goes live
 
