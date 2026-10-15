@@ -127,6 +127,44 @@ const ENV_GROUPS: Record<string, EnvCheck[]> = {
       description: 'Brevo API key (optional — for marketing list sync)',
     },
   ],
+  VideoHosting: [
+    {
+      key: 'CLOUDFLARE_ACCOUNT_ID',
+      required: false,
+      description: 'Cloudflare account ID — video hosting (Stream)',
+      display: 'public',
+      validate: (v) => /^[a-f0-9]{32}$/.test(v) ? null : 'Should be 32 hex characters',
+    },
+    {
+      key: 'CLOUDFLARE_STREAM_API_TOKEN',
+      required: false,
+      description: 'Cloudflare API token with Stream: Edit — creates uploads, reads status',
+    },
+    {
+      key: 'CLOUDFLARE_STREAM_CUSTOMER_CODE',
+      required: false,
+      description: 'The code in customer-<code>.cloudflarestream.com',
+      display: 'public',
+      validate: (v) => /^[a-z0-9]+$/.test(v) ? null : 'Just the code, not the full hostname',
+    },
+    {
+      key: 'CLOUDFLARE_STREAM_SIGNING_KEY_ID',
+      required: false,
+      description: 'Stream signing key ID — signs playback tokens',
+    },
+    {
+      key: 'CLOUDFLARE_STREAM_SIGNING_KEY_PEM',
+      required: false,
+      description: 'Stream signing key (PEM, raw or base64) — signs playback tokens',
+      display: 'presence',
+    },
+    {
+      key: 'CLOUDFLARE_STREAM_WEBHOOK_SECRET',
+      required: false,
+      description: 'Secret Cloudflare signs "video ready" webhooks with',
+      display: 'presence',
+    },
+  ],
   PushNotifications: [
     {
       key: 'VAPID_SUBJECT',

@@ -103,6 +103,13 @@ service role cannot rewrite it either). Neither `module_id` nor `actor_id` is a 
 key, deliberately: a cascade or `SET NULL` would be a write to an append-only table and
 would make articles undeletable and user accounts un-erasable.
 
+**Video** — Cloudflare Stream; `src/lib/stream.ts`, `videos` table (migration 036),
+`/admin/videos`, `<StreamVideo slug="…" />`. Setup and verification: `docs/video-hosting.md`.
+Every Stream video requires signed URLs; `GET /api/videos/[slug]/playback` is the only place
+a token is signed, after `canWatch()`. Never create a Stream video without
+`requireSignedURLs`, and never sign tokens anywhere else. `src/lib/stream-shared.ts` holds the
+browser-safe parts, so keep `crypto` and secrets out of it.
+
 **Notifications** — `src/app/api/cron/notifications/`, `src/app/api/push/subscribe/`,
 `push_subscriptions` table (migration 009), `web-push`, VAPID env vars.
 
