@@ -40,6 +40,7 @@ export default async function AdminLayout({
           {[
             { href: '/admin',            label: 'Overview' },
             { href: '/admin/articles',   label: 'Articles' },
+            { href: '/admin/videos',     label: 'Videos' },
             { href: '/admin/dashboard',  label: 'Performance' },
             { href: '/admin/billing',    label: 'Billing' },
             { href: '/admin/monitoring', label: 'Monitoring' },
