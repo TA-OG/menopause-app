@@ -1,0 +1,36 @@
+{
+ "output": "aunty-mel-signs-to-notice",
+ "segments": [
+  {
+   "src": "origin",
+   "take": 3,
+   "in": 21.52,
+   "out": 64.78,
+   "text": "I want to know what's happening to you, like what are you struggling with? What are the maybe five top things that you're struggling with? For example, is it waking up at two or three o 'clock in the morning? Is it really not having any energy around 11 o 'clock or three o 'clock in the afternoon? Or, you know, do you struggle with brain fog throughout the day or at a specific time of the day that you have brain fog? Or do you get bloated and struggle with constipation or certain times of your cycle you have migraines?",
+   "lower_third": {
+    "title": "Pamela",
+    "subtitle": "Founder, Aunty Mel",
+    "from": 0.8,
+    "to": 5.5
+   }
+  },
+  {
+   "src": "origin",
+   "take": 3,
+   "in": 78.24,
+   "out": 83.4,
+   "text": "Is your libido non -existent, you know, for several months?"
+  },
+  {
+   "src": "origin",
+   "take": 3,
+   "in": 83.36,
+   "out": 125.32,
+   "text": "There are little tell -tale signs of what's happening and then how do you feel as you're approaching your period? Do you feel really tearful, more than normal? Do you have more headaches, migraines? Do you feel more depressed? Is your period getting longer, shorter? You know, these are all the signs that something's changing and also what's your energy like as well around your period. Your period is often a window into how you're going to transition into that menopause. So we want to pay attention to what are the things that have changed during your perimenopausal years."
+  }
+ ],
+ "end_card": {
+  "line": "Start noticing, and check in daily"
+ },
+ "learn": "check-in"
+}

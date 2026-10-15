@@ -1,0 +1,27 @@
+{
+ "source": "E:\\StreamToday -  AUNTYMEL - Pamela origin\\StreamToday -  Pamela origin 01.mp4",
+ "duration": 6.6986875,
+ "model": "medium.en",
+ "segments": [
+  {
+   "start": 0.0,
+   "end": 2.0,
+   "text": "Can't if I kind of?"
+  },
+  {
+   "start": 2.0,
+   "end": 4.0,
+   "text": "Yeah."
+  },
+  {
+   "start": 4.0,
+   "end": 6.0,
+   "text": "Okay."
+  },
+  {
+   "start": 6.0,
+   "end": 8.0,
+   "text": "Okay."
+  }
+ ]
+}

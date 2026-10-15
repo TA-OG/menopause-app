@@ -1,0 +1,63 @@
+{
+ "output": "aunty-mel-tests-to-ask-your-gp-for",
+ "segments": [
+  {
+   "src": "origin",
+   "take": 3,
+   "in": 373.37,
+   "out": 428.07,
+   "text": "So once we've gathered all that information the next thing we want to know is like what truly is happening outside of your ovaries and I would advise every woman to visit your GP and ask for specific tests just to rule out if there's something else that might be happening alongside your transition into menopause. Thyroid can often be challenged during this time so having a thyroid test would be really helpful for you if you are struggling with anxiety for example or brain fog or even energy and hair loss as well. Then we'd want to check out your folate and b12 because again they're similar to anxiety and depression so we want to rule out that that's not causing a problem.",
+   "lower_third": {
+    "title": "Pamela",
+    "subtitle": "Founder, Aunty Mel",
+    "from": 0.8,
+    "to": 5.5
+   }
+  },
+  {
+   "src": "origin",
+   "take": 3,
+   "in": 442.79,
+   "out": 460.21,
+   "text": "we want to have a look at your diabetes markers making sure that you are nowhere near prediabetic because being prediabetic can impact your energy levels and cause anxiety so we want to have a look at that."
+  },
+  {
+   "src": "origin",
+   "take": 3,
+   "in": 460.63,
+   "out": 479.35,
+   "text": "And also inflammation marker which often isn't tested at GPs unless women ask for and an inflammation can be a sign of you know heart disease or chronic pain in the body so we want to have a look at that too."
+  },
+  {
+   "src": "origin",
+   "take": 3,
+   "in": 483.69,
+   "out": 535.23,
+   "text": "another test that I really think that women should ask is something called sex hormone binding gobbulin, it's a bit of a mouthful but this test is really essential because what it means is that if your sex hormones is bound up in the liver which is where sex hormone binding gobbulin is means that you can't access your hormones so even though your ovaries are making the hormones if your sex hormone binding gobbulins is out of optimal range it can mean that you don't have access to them, so your body's making them but you don't have access to them so measuring sex hormone binding gobbulin I think was really important for women in that perimenopause to postmenopause journey.",
+   "lower_third": {
+    "title": "SHBG",
+    "subtitle": "Sex hormone binding globulin",
+    "from": 4.5,
+    "to": 11
+   }
+  },
+  {
+   "src": "origin",
+   "take": 3,
+   "in": 538.27,
+   "out": 576.17,
+   "text": "And then I guess iron, we all need to be iron, iron we need to know where iron levels are iron and ferritin and I think it's really important to have like full cholesterol panel including you know triglycerides as well and then maybe you want to have a full red blood count and a white blood count as well so I think going to the GP to make sure that all those blood markers are in what we call optimal range,"
+  },
+  {
+   "src": "origin",
+   "take": 3,
+   "in": 582.37,
+   "out": 604.29,
+   "text": "they should be standard in my opinion and like I said women above the age of 45 GPs are unlikely to measure your sex hormones as in your oestrogen and progesterone but in extreme circumstances they will do but it is a snapshot of a day of your hormones"
+  }
+ ],
+ "end_card": {
+  "line": "Take this list to your GP"
+ },
+ "learn": "normal-bloodwork-doesnt-mean-youre-fine"
+}
