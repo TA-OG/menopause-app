@@ -9,6 +9,10 @@
 // tightly: only Supabase (API + storage) and same-origin are ever reachable,
 // so even if a dependency were compromised, exfiltration and remote script
 // loading are still blocked.
+// Cloudflare Stream (video) is the one deliberate exception: its player is an
+// iframe on customer-<code>.cloudflarestream.com (frame-src), thumbnails load
+// from the same host (img-src), and /admin/videos uploads files straight to
+// Cloudflare (connect-src). No Cloudflare script runs in our own pages.
 // Next.js dev mode's webpack HMR runtime evaluates code via eval() (its
 // eval-source-map devtool, for fast rebuilds) — that's blocked by a strict
 // script-src and has nothing to do with production behaviour, so 'unsafe-eval'
@@ -21,9 +25,10 @@ const CSP = [
   "default-src 'self'",
   `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''}`,
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: https://*.supabase.co",
+  "img-src 'self' data: https://*.supabase.co https://*.cloudflarestream.com",
   "font-src 'self' data:",
-  "connect-src 'self' https://*.supabase.co wss://*.supabase.co",
+  "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://upload.videodelivery.net https://*.cloudflarestream.com",
+  "frame-src https://*.cloudflarestream.com",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",

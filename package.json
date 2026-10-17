@@ -12,7 +12,8 @@
     "test:run": "vitest run",
     "validate-content": "tsx scripts/validate-content.ts",
     "import-content": "tsx scripts/import-content.ts",
-    "review-frameworks": "tsx scripts/review-frameworks.ts"
+    "review-frameworks": "tsx scripts/review-frameworks.ts",
+    "stream-setup": "tsx scripts/stream-setup.ts"
   },
   "dependencies": {
     "@stripe/stripe-js": "^4.0.0",
