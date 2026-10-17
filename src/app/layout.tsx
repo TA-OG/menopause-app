@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
+import { NextIntlClientProvider } from 'next-intl'
+import { getLocale, getMessages } from 'next-intl/server'
 import './globals.css'
+import AutoLocaleNotice from '@/components/layout/AutoLocaleNotice'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -40,13 +43,16 @@ export const viewport: Viewport = {
   userScalable: false,
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const locale = await getLocale()
+  const messages = await getMessages()
+
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang={locale} className={inter.variable}>
       <head>
         <link rel="icon" href="/icons/icon-192x192.png" type="image/png" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
@@ -54,7 +60,10 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
       </head>
       <body className="min-h-screen bg-white">
-        {children}
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          {children}
+          <AutoLocaleNotice />
+        </NextIntlClientProvider>
         <script
           dangerouslySetInnerHTML={{
             __html: `

@@ -211,6 +211,9 @@ const NOT_PLAN_SHAPING: Record<string, string> = {
     'Feeds the cultural engine. UK GDPR special-category data — see ' +
     'src/app/privacy/page.tsx.',
   country: 'Feeds the cultural engine and the geo/jurisdiction gate.',
+  locale:
+    'Written to profiles.locale to choose the interface and article language. ' +
+    'Never a plan input.',
 }
 
 /**
@@ -234,8 +237,9 @@ const PENDING_CLINICAL_REVIEW: Record<string, string> = {
 describe('every collected question shapes the plan', () => {
   it('classifies every collected question, with no gaps and no stale entries', () => {
     const collected = collectedKeys()
-    // The three bespoke steps collect answers without a `key` on the step.
-    const custom = ['continent', 'heritage', 'country']
+    // The bespoke steps collect answers without a `key` on the step. The
+    // location step collects both country and locale.
+    const custom = ['continent', 'heritage', 'country', 'locale']
     const all = [...collected, ...custom]
 
     const classified = new Set([

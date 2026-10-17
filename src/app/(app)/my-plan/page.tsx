@@ -5,7 +5,7 @@ import { getGeoAccess } from '@/lib/geo'
 import { redirect } from 'next/navigation'
 import { applyTierGating, attachPersonalNotes } from '@/lib/wellness-engine'
 import { deriveUserSignals } from '@/lib/user-signals'
-import { DISCLAIMER } from '@/lib/disclaimer'
+import { getTranslations } from 'next-intl/server'
 import PlanTabs from '@/components/plan/PlanTabs'
 import type { WellnessPlan } from '@/types/database'
 
@@ -27,6 +27,7 @@ export default async function MyPlanPage({
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/auth/sign-in')
 
+  const tDisclaimer = await getTranslations('Disclaimer')
   const { tier, isPremium } = await getUserAccess(supabase, user.id)
 
   // Jurisdiction gate — in 'info_only' regions the personalised plan is
@@ -223,7 +224,7 @@ export default async function MyPlanPage({
 
       {/* GP signpost — always shown */}
       <div className="rounded-2xl border border-gray-200 bg-gray-50 p-4">
-        <p className="text-sm leading-relaxed text-gray-600">{DISCLAIMER.gpSignpost}</p>
+        <p className="text-sm leading-relaxed text-gray-600">{tDisclaimer('gpSignpost')}</p>
       </div>
 
       <div className="pb-4 text-center">

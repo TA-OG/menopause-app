@@ -1,0 +1,95 @@
+{
+  "NavBar": {
+    "inviteAria": "Invita a tus amigas y gana meses gratis",
+    "profileAria": "Perfil y configuración de la cuenta",
+    "home": "Inicio",
+    "myPlan": "Mi plan",
+    "checkIn": "Registro",
+    "journal": "Diario",
+    "learn": "Aprender"
+  },
+  "LanguageSwitcher": {
+    "label": "Idioma"
+  },
+  "AutoLocaleNotice": {
+    "message": "Hemos configurado tu idioma en {language} según tu ubicación.",
+    "keep": "Mantener",
+    "switchToEnglish": "Cambiar a inglés"
+  },
+  "SignIn": {
+    "subtitle": "Inicia sesión en tu plan de bienestar.",
+    "continueWithGoogle": "Continuar con Google",
+    "connecting": "Conectando...",
+    "orUseEmail": "o usa tu correo electrónico",
+    "emailPlaceholder": "tu@email.com",
+    "sendMagicLink": "Enviar enlace mágico",
+    "sending": "Enviando...",
+    "noAccount": "¿No tienes cuenta?",
+    "signUpFree": "Regístrate gratis",
+    "checkEmail": "Revisa tu correo",
+    "magicLinkSent": "Enlace mágico enviado a <strong>{email}</strong>.",
+    "tryAgain": "Intentar de nuevo"
+  },
+  "SignUp": {
+    "subtitle": "Tu plan de bienestar personalizado te está esperando.",
+    "referralBanner": "Te han invitado — ambas recibiréis un mes gratis",
+    "beforeYouContinue": "Antes de continuar",
+    "agreeToTerms": "Acepto los {terms} y la {privacy}.",
+    "termsOfService": "Términos de Servicio",
+    "privacyPolicy": "Política de Privacidad",
+    "dataConsent": "Doy mi consentimiento para que mis datos de bienestar sean procesados para personalizar mi experiencia.",
+    "marketingConsent": "Envíame consejos de bienestar por correo electrónico. (Opcional)",
+    "continueWithGoogle": "Continuar con Google",
+    "connecting": "Conectando...",
+    "orUseEmail": "o usa tu correo electrónico",
+    "namePlaceholder": "Tu nombre",
+    "emailPlaceholder": "tu@email.com",
+    "continueWithEmail": "Continuar con correo electrónico",
+    "sendingLink": "Enviando enlace...",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+    "signIn": "Iniciar sesión",
+    "checkEmail": "Revisa tu correo",
+    "magicLinkSentClick": "Enlace mágico enviado a <strong>{email}</strong>. Haz clic para continuar.",
+    "tryAgain": "Intentar de nuevo",
+    "consentRequired": "Por favor acepta los términos requeridos antes de continuar."
+  },
+  "Dashboard": {
+    "logSymptoms": "Registra los síntomas de hoy",
+    "logSymptomsSubtitle": "Haz seguimiento de cómo te sientes y observa tu progreso con el tiempo",
+    "yourPlan": "Tu plan de bienestar",
+    "viewAll": "Ver todo →",
+    "planReadyPremium": "Tu plan personalizado está listo.",
+    "planReadyFree": "Completa tu evaluación para ver tu plan personalizado.",
+    "journal": "Diario",
+    "open": "Abrir →",
+    "journalSubtitle": "Registra lo que estás probando y cómo te está funcionando.",
+    "inviteTitle": "🎁 Invita a una amiga y consigue un mes gratis",
+    "inviteSubtitle": "Ambas recibiréis un mes gratis — acumulable hasta 6 referidos.",
+    "unlockPlan": "Desbloquea tu plan completo",
+    "unlockPlanSubtitle": "Accede a todas las recomendaciones, contenido y tu historial completo del diario.",
+    "upgrade": "Mejorar — 7,99 £/mes"
+  },
+  "Learn": {
+    "title": "Aprender",
+    "subtitle": "Respuestas reales a las preguntas que has buscado en Google a las 3 de la madrugada — directamente de Pamela, sin rodeos ni jerga.",
+    "freeArticles": "Artículos gratuitos",
+    "premiumArticles": "Artículos premium",
+    "minRead": "{minutes} min",
+    "unlockLibrary": "Desbloquea la biblioteca completa",
+    "unlockLibrarySubtitle": "Las socias premium tienen acceso a todas las guías detalladas de Pamela sobre nutrición, sueño, salud sexual, bienestar mental y más.",
+    "upgrade": "Mejorar — 7,99 £/mes",
+    "comingSoon": "Próximamente más artículos.",
+    "backToLearn": "← Volver a Aprender",
+    "minReadFull": "{minutes} min de lectura",
+    "premiumArticleTitle": "Este es un artículo premium",
+    "premiumArticleBody": "Mejora tu plan para leer este artículo y toda la biblioteca de guías detalladas de Pamela.",
+    "upgradeCta": "Mejorar — 7,99 £/mes"
+  },
+  "Disclaimer": {
+    "full": "Esta aplicación ofrece únicamente información general de bienestar y orientación sobre el estilo de vida. No es un consejo médico ni sustituye la atención médica profesional. Este contenido está aquí para ayudarte a comprender mejor tu cuerpo y tener conversaciones más informadas con tu médico. Consulta siempre a tu médico de cabecera o a un profesional de la salud cualificado ante cualquier duda médica, diagnóstico o decisión de tratamiento.",
+    "short": "Orientación general de bienestar únicamente — no es un consejo médico. Consulta a tu médico de cabecera ante cualquier duda médica.",
+    "supplement": "Consulta siempre con tu médico de cabecera antes de empezar a tomar cualquier suplemento nuevo, especialmente si tomas medicamentos con receta o tienes alguna condición de salud subyacente.",
+    "videoIntro": "Estamos aquí para darte información real sobre lo que le está pasando a tu cuerpo durante la perimenopausia y la menopausia. Como siempre, esto no es un consejo médico ni sustituye a tu médico — está aquí para ayudarte a entender mejor tu propio cuerpo, hacer mejores preguntas y obtener resultados reales con los cambios que estás haciendo.",
+    "gpSignpost": "Estas son sugerencias generales de bienestar. Para opciones de tratamiento médico — incluyendo la THS, medicamentos con receta o derivaciones a especialistas — por favor habla con tu médico de cabecera."
+  }
+}

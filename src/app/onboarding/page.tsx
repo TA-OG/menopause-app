@@ -15,9 +15,10 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import { useLocale, useTranslations } from 'next-intl'
 import { createClient } from '@/lib/supabase/client'
-import { DISCLAIMER } from '@/lib/disclaimer'
 import Logo from '@/components/ui/Logo'
+import { SUPPORTED_LOCALES, LOCALE_LABELS } from '@/lib/locale-geo-map'
 import {
   STEPS,
   PROFILE_KEYS,
@@ -390,6 +391,7 @@ function MultiStep({
 // ─── Bespoke steps ────────────────────────────────────────────────────────────
 
 function DisclaimerStep({ next }: { next: () => void }) {
+  const tDisclaimer = useTranslations('Disclaimer')
   return (
     <div className="space-y-6">
       <div className="text-center">
@@ -399,7 +401,7 @@ function DisclaimerStep({ next }: { next: () => void }) {
         <p className="text-gray-500 mt-2">Let&apos;s build your personalised wellness plan.</p>
       </div>
       <div className="bg-white rounded-2xl p-5 border border-brand-100">
-        <p className="text-sm text-gray-600 leading-relaxed">{DISCLAIMER.full}</p>
+        <p className="text-sm text-gray-600 leading-relaxed">{tDisclaimer('full')}</p>
       </div>
       <PrimaryButton label="I understand — let's start" onClick={next} />
     </div>
@@ -533,12 +535,47 @@ function LocationStep({
   setAnswers: React.Dispatch<React.SetStateAction<AnswerMap>>
   next: () => void
 }) {
+  // Pre-fill from whatever locale is already active for this visitor (geo
+  // guess or an earlier explicit choice) rather than defaulting blank —
+  // onboarding shouldn't ask them to re-pick what we already resolved.
+  const activeLocale = useLocale()
+  const router = useRouter()
+
+  // Changing language here should take effect immediately (rest of the
+  // wizard renders in-language too), not just get saved for later — so this
+  // writes the cookie right away, same as the NavBar switcher. Wizard state
+  // survives the refresh via the sessionStorage mirror (see file header).
+  async function handleLocaleChange(locale: string) {
+    setAnswers((a) => ({ ...a, locale }))
+    await fetch('/api/locale', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ locale }),
+    })
+    router.refresh()
+  }
+
   return (
     <div className="space-y-5">
       <StepHeader
         title="Where do you live?"
         subtitle="Your heritage shapes your culture, but your location shapes your day. We use this to contextualise timing and local food availability."
       />
+
+      <div>
+        <label className="text-sm font-medium text-gray-700 block mb-1.5">Language</label>
+        <select
+          value={(answers.locale as string) ?? activeLocale}
+          onChange={(e) => handleLocaleChange(e.target.value)}
+          className="w-full border border-gray-200 rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-300 bg-white"
+        >
+          {SUPPORTED_LOCALES.map((locale) => (
+            <option key={locale} value={locale}>
+              {LOCALE_LABELS[locale]}
+            </option>
+          ))}
+        </select>
+      </div>
 
       <div>
         <label className="text-sm font-medium text-gray-700 block mb-1.5">City or town</label>
