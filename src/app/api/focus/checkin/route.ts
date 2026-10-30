@@ -20,7 +20,7 @@ const ROUTE = '/api/focus/checkin'
  *
  * The 10-second daily check-in. Written through record_focus_checkin(), which
  * MERGES into the day's symptom_checkins row — a plain upsert here would wipe
- * whatever she logged on the full check-in form that day (migration 036).
+ * whatever she logged on the full check-in form that day (migration 039).
  */
 async function postHandler(request: NextRequest) {
   const auth = await authenticate(request, 20)

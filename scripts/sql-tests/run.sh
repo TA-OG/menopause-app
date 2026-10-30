@@ -12,5 +12,5 @@ psql -d postgres -q -c "DROP DATABASE IF EXISTS $DB" -c "CREATE DATABASE $DB"
 trap 'psql -d postgres -q -c "DROP DATABASE IF EXISTS $DB"' EXIT
 run() { psql -d "$DB" -q -v ON_ERROR_STOP=1 "$@"; }
 run -f scripts/sql-tests/supabase-stubs.sql
-run -f supabase/migrations/036_focus_programmes.sql
-run -At -f scripts/sql-tests/036_focus_programmes.test.sql | grep -E 'PASS|FAIL'
+run -f supabase/migrations/039_focus_programmes.sql
+run -At -f scripts/sql-tests/039_focus_programmes.test.sql | grep -E 'PASS|FAIL'

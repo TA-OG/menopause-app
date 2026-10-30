@@ -135,10 +135,13 @@ export interface SymptomCheckin {
   updated_at: string
 }
 
-// ─── Focus programme (036_focus_programmes.sql, docs/focus-programme.md) ─────
+// ─── Focus programme (039_focus_programmes.sql, docs/focus-programme.md) ─────
 
 export type FocusProgrammeStatus = 'active' | 'ended'
-export type FocusWeekOutcome = 'kept' | 'stopped' | 'swapped'
+/** 'rest' = "rest this week": she keeps what she has and adds nothing new. */
+export type FocusWeekKind = 'change' | 'rest'
+/** 'rested' belongs to rest weeks, and is the only outcome a rest week can have. */
+export type FocusWeekOutcome = 'kept' | 'stopped' | 'swapped' | 'rested'
 
 export interface FocusProgramme {
   id: string
@@ -167,9 +170,11 @@ export interface FocusWeek {
   user_id: string
   /** 1, 2, 3 … in the order changes were started; a swap takes the next one. */
   sequence: number
-  recommendation_id: string
-  recommendation_snapshot: FocusWeekSnapshot
-  /** Which of her focus symptoms this change was chosen for. */
+  kind: FocusWeekKind
+  /** null exactly when kind = 'rest' (focus_week_kind_consistent). */
+  recommendation_id: string | null
+  recommendation_snapshot: FocusWeekSnapshot | null
+  /** Which of her focus symptoms this change was chosen for. Empty for a rest week. */
   covers_symptoms: SymptomKey[]
   /** Her local calendar date, YYYY-MM-DD. */
   starts_on: string

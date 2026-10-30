@@ -4,6 +4,7 @@ import { getUserAccess } from '@/lib/access'
 import { getGeoAccess } from '@/lib/geo'
 import { applyTierGating, attachPersonalNotes } from '@/lib/wellness-engine'
 import { deriveUserSignals } from '@/lib/user-signals'
+import { reviewSafetyAnswers, type SafetyReview } from '@/lib/safety-review'
 import type {
   FocusProgramme,
   FocusWeek,
@@ -42,6 +43,11 @@ export interface FocusContext {
   programme: FocusProgramme | null
   /** All weeks of the active programme, in sequence order. */
   weeks: FocusWeek[]
+  /**
+   * Whether her safety answers are current. Not a gate on reading: she can
+   * always see where she is. It gates choosing a change (see safetyRefusal).
+   */
+  safety: SafetyReview
 }
 
 export type FocusContextResult =
@@ -82,6 +88,7 @@ export async function loadFocusContext(
   if (programmeRes.error) throw programmeRes.error
 
   const signals = deriveUserSignals(answersRes.data ?? [], prefsRes.data ?? {})
+  const safety = reviewSafetyAnswers(answersRes.data ?? [])
   const gated = applyTierGating(planRow as unknown as WellnessPlan, tier)
   const withNotes = (recs: WellnessRecommendation[]) => attachPersonalNotes(recs, signals)
   const plan: PlanCategories = {
@@ -111,7 +118,7 @@ export async function loadFocusContext(
     weeks = (data ?? []) as FocusWeek[]
   }
 
-  return { ok: true, context: { signals, plan, planById, programme, weeks } }
+  return { ok: true, context: { signals, plan, planById, programme, weeks, safety } }
 }
 
 /** The HTTP response for a closed gate. 403 for both access gates. */

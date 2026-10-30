@@ -1,4 +1,4 @@
--- Behaviour tests for 036_focus_programmes.sql: constraints, RLS, and the
+-- Behaviour tests for 039_focus_programmes.sql: constraints, RLS, and the
 -- merge-not-replace daily check-in. Every line prints PASS, or the run stops.
 -- Run with scripts/sql-tests/run.sh.
 \set ON_ERROR_STOP 1

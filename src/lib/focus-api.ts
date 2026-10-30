@@ -12,11 +12,13 @@ import { z } from 'zod'
 import type {
   FocusProgramme,
   FocusWeek,
+  FocusWeekOutcome,
   SymptomKey,
   UserSignals,
   WellnessRecommendation,
 } from '@/types/database'
 import { SYMPTOM_KEYS } from './checkin-schema'
+import type { SafetyReview } from './safety-review'
 import {
   canKeepAnother,
   changesOnCheckin,
@@ -63,15 +65,22 @@ export const StartProgrammeSchema = z.object({
   today: LocalDate,
 })
 
-export const OpenWeekSchema = z.object({
-  today: LocalDate,
-  /** Omitted = the app's pick. Otherwise must be the pick or an alternative. */
-  recommendation_id: z.string().min(1).max(200).optional(),
-})
+export const OpenWeekSchema = z
+  .object({
+    today: LocalDate,
+    /** Omitted = the app's pick. Otherwise must be the pick or an alternative. */
+    recommendation_id: z.string().min(1).max(200).optional(),
+    /** "Rest this week": add nothing new. Names no change. */
+    rest: z.boolean().default(false),
+  })
+  .refine((b) => !(b.rest && b.recommendation_id), {
+    path: ['rest'],
+    message: 'A rest week has no change',
+  })
 
 export const ReviewWeekSchema = z.object({
   today: LocalDate,
-  outcome: z.enum(['kept', 'stopped', 'swapped']),
+  outcome: z.enum(['kept', 'stopped', 'swapped', 'rested']),
   /** Kept changes she chooses to drop, to make room for keeping this one. */
   release_week_ids: z.array(z.string().uuid()).max(10).default([]),
 })
@@ -104,6 +113,8 @@ export interface Refusal {
   ok: false
   status: 400 | 403 | 404 | 409
   error: string
+  /** Set when the client should show a specific step, e.g. the safety questions. */
+  gate?: 'safety'
 }
 
 export type Decision<T> = ({ ok: true } & T) | Refusal
@@ -116,7 +127,7 @@ const refuse = (status: Refusal['status'], error: string): Refusal => ({
 
 type WeekRow = Pick<
   FocusWeek,
-  'id' | 'sequence' | 'recommendation_id' | 'starts_on' | 'outcome' | 'released_on'
+  'id' | 'sequence' | 'kind' | 'recommendation_id' | 'starts_on' | 'outcome' | 'released_on'
 >
 
 /**
@@ -147,13 +158,26 @@ export function chooseWeekChange(
  *                    judging this one
  *   kept           — only if her daily check-in would stay within the limit,
  *                    after any releases she asked for
+ *   rested         — a rest week, and only a rest week, from day 7. A rest
+ *                    week cannot be kept, stopped or swapped: there is no
+ *                    change in it to judge.
  */
 export function decideReview(
   weeks: WeekRow[],
-  input: { today: string; outcome: 'kept' | 'stopped' | 'swapped'; release_week_ids: string[] }
+  input: { today: string; outcome: FocusWeekOutcome; release_week_ids: string[] }
 ): Decision<{ week: WeekRow; releaseIds: string[] }> {
   const week = openWeek(weeks)
   if (!week) return refuse(409, 'There is no week in progress to review')
+
+  if ((week.kind === 'rest') !== (input.outcome === 'rested')) {
+    return refuse(
+      400,
+      week.kind === 'rest' ? 'A rest week can only be finished' : 'Only a rest week can be finished as rested'
+    )
+  }
+  if (week.kind === 'rest' && input.release_week_ids.length > 0) {
+    return refuse(400, 'Nothing needs dropping to finish a rest week')
+  }
 
   if (input.outcome !== 'swapped' && !isReviewDue(week.starts_on, input.today)) {
     return refuse(409, 'This week can be reviewed from day 7')
@@ -206,6 +230,21 @@ export function decideFocusCheckin(
 }
 
 /**
+ * No change is chosen for her until her safety answers are current: every
+ * caution that could rule a change out comes from them (safety-review.ts).
+ * A rest week chooses nothing, so it is not gated.
+ */
+export function safetyRefusal(safety: SafetyReview): Refusal | null {
+  if (!safety.required) return null
+  return {
+    ok: false,
+    status: 409,
+    gate: 'safety',
+    error: 'A few questions to keep you safe first',
+  }
+}
+
+/**
  * A new week may not start before the last one did. isPlausibleLocalToday()
  * already bounds `today` to ±1 day of UTC; this closes the remaining gap, where
  * a client sends "yesterday" to open a week dated before the one it follows.
@@ -248,7 +287,8 @@ export interface WeekView {
    * The card as it is in her plan NOW, with personal notes re-derived from her
    * current answers — this is where cautions come from. null when the card is
    * no longer in her plan (e.g. she redid intake); the UI then shows the
-   * snapshot and says so, and must not present it as current advice.
+   * snapshot and says so, and must not present it as current advice. Always
+   * null for a rest week, which has no card.
    */
   current: WellnessRecommendation | null
   /** Whole days since the week started (0 on day one). */
@@ -263,7 +303,7 @@ export function weekView(
 ): WeekView {
   return {
     week,
-    current: planById.get(week.recommendation_id) ?? null,
+    current: week.recommendation_id === null ? null : planById.get(week.recommendation_id) ?? null,
     dayIndex: daysBetween(week.starts_on, today),
     reviewDue: week.outcome === null && isReviewDue(week.starts_on, today),
   }
@@ -304,6 +344,7 @@ export type FocusState =
       options: SymptomKey[]
       /** What week 1 would be for `?focus=`, so she sees it before starting. */
       preview: WeeklyChangeSelection | null
+      gates: FocusGates
     }
   | {
       state: 'active'
@@ -319,7 +360,14 @@ export type FocusState =
       todayCheckin: { ratings: FocusRatings; done: string[] } | null
       /** Day-by-day focus ratings since the open week started, oldest first. */
       weekRatings: { date: string; ratings: FocusRatings }[]
+      gates: FocusGates
     }
+
+/** What she must do before a change can be chosen. Reading is never gated. */
+export interface FocusGates {
+  safety_required: boolean
+  safety_missing: SafetyReview['missing']
+}
 
 export interface FocusStateInput {
   signals: UserSignals
@@ -332,17 +380,23 @@ export interface FocusStateInput {
   previewFocus: SymptomKey[] | null
   /** Her check-in rows from the open week's start to today. */
   checkins: CheckinRow[]
+  safety: SafetyReview
 }
 
 export function buildFocusState(input: FocusStateInput): FocusState {
   const { signals, plan, planById, programme, weeks, today } = input
   const options = focusSymptomOptions(signals)
+  const gates: FocusGates = {
+    safety_required: input.safety.required,
+    safety_missing: input.safety.missing,
+  }
 
   if (!programme) {
     return {
       state: 'none',
       options,
       preview: input.previewFocus ? selectWeeklyChange(plan, input.previewFocus, signals) : null,
+      gates,
     }
   }
 
@@ -378,5 +432,6 @@ export function buildFocusState(input: FocusStateInput): FocusState {
         }
       : null,
     weekRatings,
+    gates,
   }
 }

@@ -1,6 +1,6 @@
 # Focus programme — one change a week, checked in daily
 
-Status: **Phases 1–2 built** (schema, selection logic, API routes). Phases 3–4 not started.
+Status: **Phases 1–2 built** (schema, selection logic, API routes), with **rest weeks** and the **safety gate**. Phases 3–4 are the journey UI (`docs/pamela-decisions-2026-10.md`).
 
 ### API (Phase 2)
 
@@ -8,8 +8,9 @@ Status: **Phases 1–2 built** (schema, selection logic, API routes). Phases 3�
 |---|---|
 | `GET /api/focus?today=&focus=` | State: options, week-1 preview, current/kept weeks (cards from her current plan), next choice, today's check-in, open week's focus ratings |
 | `POST /api/focus` | Start: focus symptoms checked against intake; refused if nothing matches; opens week 1 |
-| `POST /api/focus/week` | Open next week: app's pick or an offered alternative only; never dated before the previous week |
-| `POST /api/focus/review` | kept/stopped from day 7, swapped any time; keep refused past 3 changes unless she releases one |
+| `POST /api/focus/week` | Open next week: app's pick or an offered alternative only; never dated before the previous week. `{rest: true}` opens a rest week instead |
+| `POST /api/focus/review` | kept/stopped from day 7, swapped any time; keep refused past 3 changes unless she releases one. A rest week only finishes as `rested`, from day 7 |
+| `PUT /api/onboarding/answers` | Replace one intake answer (the safety questions, the journey's short sessions) |
 | `POST /api/focus/checkin` | Daily answers via `record_focus_checkin()` (merge, never replace) |
 | `DELETE /api/focus` | End programme; weeks kept as history. Not gated, so she can always end it |
 
@@ -51,6 +52,27 @@ disclaimer, dose ceiling and personal note. A disclaimer cannot exclude
 liability for personal injury caused by negligence (Unfair Contract Terms Act
 1977 s.2(1); Consumer Rights Act 2015 s.65), so final wording needs legal sign-off.
 
+### Rest this week
+
+A week can be a rest week: she keeps the changes she has and adds nothing.
+It takes the week's slot like any other (one open week, never dated before
+the last), ends from day 7 as `rested`, and can follow another rest week
+with no limit. It names no change, so it is never "used", never kept, and
+puts nothing new on her check-in. Enforced by `focus_week_kind_consistent`
+and `focus_week_outcome_fits_kind` in the migration, and by `decideReview()`.
+
+### Safety gate
+
+No change is chosen for her (programme start, or a new change week) until
+her answers to `medical_flags` and `diet_restrictions` are current
+(`src/lib/safety-review.ts`): an explicit answer, "none" included, given on
+or after `SAFETY_QUESTIONS_REVISED_AT`. Refused as 409 `{gate: 'safety'}`;
+`GET /api/focus` reports `gates.safety_required` and which questions are
+missing. Reading her programme and taking a rest week are never gated. Both
+questions are now required at intake (`minSelect: 1`, "none" exclusive), so
+an empty answer can no longer pass for "none". Bump the date whenever either
+list gains an option.
+
 ## Blocking before any of this is shown to users (Phase 3)
 
 - **Symptom-tag audit (Pamela).** Selection runs entirely on `targets_symptoms`.
@@ -77,7 +99,7 @@ Ranked by: how many of her focus symptoms it covers → `scoreRecommendation()`
 alternatives she can choose instead, whether it is a closest match, and which
 focus symptoms nothing covers.
 
-### Data — migration `036_focus_programmes.sql`
+### Data — migration `039_focus_programmes.sql`
 
 - `focus_programmes` — her focus symptoms (1–3, `symptom_key[]`), status,
   start date. One active programme per user (partial unique index).
@@ -105,7 +127,7 @@ above decides whether that tag stands.
 | Phase | Scope | Status |
 |---|---|---|
 | 0 | Symptom-tag audit; build check that eligible cards are tagged | Waiting on Pamela |
-| 1 | Migration + selection logic + tests | **Done** — 33 unit tests (`src/lib/focus-programme.test.ts`); 36 database checks (`scripts/sql-tests/run.sh`, needs a local Postgres) |
-| 2 | API routes (start, read, daily check-in, weekly review), premium + geo gating | **Built, not live** — `src/app/api/focus/**`; decisions unit-tested (`src/lib/focus-api.test.ts`). Needs migration 036 in production before any route works |
+| 1 | Migration + selection logic + tests | **Done**. Unit tests in `src/lib/focus-programme.test.ts`; 48 database checks (`scripts/sql-tests/run.sh`, needs a local Postgres), all passing on Postgres 16 on 30 Oct 2026 (production is 17) |
+| 2 | API routes (start, read, daily check-in, weekly review), premium + geo gating | **Built, not live** — `src/app/api/focus/**`; decisions unit-tested (`src/lib/focus-api.test.ts`). Needs migration 039 in production before any route works |
 | 3 | UI: focus picker, this week, daily check-in, weekly review, supplements tab; add the 5 symptoms missing from the check-in page | Not started |
 | 4 | Dashboard "This week"; daily push shows this week's change | Not started |

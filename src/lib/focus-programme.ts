@@ -31,7 +31,7 @@ import { SYMPTOM_KEYS, parseLocalCalendarDate } from './checkin-schema'
 import { SYMPTOM_CHOICES } from './onboarding-config'
 
 // ─── Agreed limits ────────────────────────────────────────────────────────────
-// Mirrored by CHECK constraints in 036_focus_programmes.sql. A test asserts the
+// Mirrored by CHECK constraints in 039_focus_programmes.sql. A test asserts the
 // numbers here, so changing one without the other is a deliberate act.
 
 export const FOCUS_SYMPTOMS_MIN = 1
@@ -217,7 +217,7 @@ export function weekSnapshot(rec: WellnessRecommendation): FocusWeekSnapshot {
 
 type WeekState = Pick<
   FocusWeek,
-  'sequence' | 'recommendation_id' | 'starts_on' | 'outcome' | 'released_on'
+  'sequence' | 'kind' | 'recommendation_id' | 'starts_on' | 'outcome' | 'released_on'
 >
 
 /**
@@ -259,10 +259,13 @@ export function keptChanges<W extends WeekState>(weeks: W[]): W[] {
  * kept. Never more than MAX_CHANGES_ON_CHECKIN — and that holds by
  * construction, because canKeepAnother() refuses a keep that would exceed it.
  * Nothing is ever silently dropped from her list.
+ *
+ * A rest week adds nothing: she is asked only about the changes she kept.
  */
 export function changesOnCheckin<W extends WeekState>(weeks: W[]): W[] {
   const current = openWeek(weeks)
-  return [...(current ? [current] : []), ...keptChanges(weeks)]
+  const thisWeek = current && current.kind === 'change' ? [current] : []
+  return [...thisWeek, ...keptChanges(weeks)]
 }
 
 /**
@@ -279,7 +282,7 @@ export function canKeepAnother<W extends WeekState>(weeks: W[]): boolean {
 
 /** Every recommendation started in this programme, so none is offered twice. */
 export function usedRecommendationIds<W extends WeekState>(weeks: W[]): string[] {
-  return weeks.map((w) => w.recommendation_id)
+  return weeks.flatMap((w) => (w.recommendation_id === null ? [] : [w.recommendation_id]))
 }
 
 /** The next sequence number for a new week (1 for the first). */

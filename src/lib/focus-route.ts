@@ -88,7 +88,8 @@ export function implausibleToday(today: string): NextResponse | null {
 }
 
 export function refusalResponse(refusal: Refusal): NextResponse {
-  return NextResponse.json({ error: refusal.error }, { status: refusal.status })
+  const body = refusal.gate ? { error: refusal.error, gate: refusal.gate } : { error: refusal.error }
+  return NextResponse.json(body, { status: refusal.status })
 }
 
 export async function serverError(

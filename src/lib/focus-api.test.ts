@@ -13,6 +13,7 @@ import {
   focusRatings,
   isPlausibleLocalToday,
   parseFocusParam,
+  safetyRefusal,
   utcCalendarDate,
   weekView,
   type FocusStateInput,
@@ -61,6 +62,7 @@ function week(sequence: number, overrides: Partial<FocusWeek> = {}): FocusWeek {
     programme_id: 'p1',
     user_id: 'u1',
     sequence,
+    kind: 'change',
     recommendation_id: `r${sequence}`,
     recommendation_snapshot: { title: 't', body: 'b', category: 'diet', targets_symptoms: [] },
     covers_symptoms: [],
@@ -145,6 +147,14 @@ describe('request schemas', () => {
   it('OpenWeekSchema makes recommendation_id optional', () => {
     expect(OpenWeekSchema.safeParse({ today: '2026-10-09' }).success).toBe(true)
     expect(OpenWeekSchema.safeParse({ today: '2026-10-09', recommendation_id: '' }).success).toBe(false)
+  })
+
+  it('OpenWeekSchema: rest defaults to false and never names a change', () => {
+    const plain = OpenWeekSchema.safeParse({ today: '2026-10-09' })
+    expect(plain.success && plain.data.rest).toBe(false)
+    expect(OpenWeekSchema.safeParse({ today: '2026-10-09', rest: true }).success).toBe(true)
+    expect(OpenWeekSchema.safeParse({ today: '2026-10-09', rest: true, recommendation_id: 'r1' }).success).toBe(false)
+    expect(OpenWeekSchema.safeParse({ today: '2026-10-09', rest: 'yes' }).success).toBe(false)
   })
 
   it('ReviewWeekSchema defaults release_week_ids and requires uuids', () => {
@@ -267,10 +277,67 @@ describe('decideReview', () => {
     }
   })
 
+  describe('rest weeks', () => {
+    const rest = (seq: number, o: Partial<FocusWeek> = {}) =>
+      week(seq, {
+        kind: 'rest',
+        recommendation_id: null,
+        recommendation_snapshot: null,
+        starts_on: '2026-10-01',
+        ...o,
+      })
+
+    it('finishes as rested, from day 7 only', () => {
+      const weeks = [rest(1)]
+      expect(decideReview(weeks, input({ outcome: 'rested', today: '2026-10-07' }))).toMatchObject({ ok: false, status: 409 })
+      expect(decideReview(weeks, input({ outcome: 'rested', today: '2026-10-08' }))).toMatchObject({ ok: true })
+    })
+
+    it('cannot be kept, stopped or swapped', () => {
+      for (const outcome of ['kept', 'stopped', 'swapped'] as const) {
+        expect(decideReview([rest(1)], input({ outcome }))).toMatchObject({ ok: false, status: 400 })
+      }
+    })
+
+    it('rested is refused for a change week', () => {
+      expect(decideReview([week(1)], input({ outcome: 'rested' }))).toMatchObject({ ok: false, status: 400 })
+    })
+
+    it('needs nothing dropped to finish', () => {
+      const weeks = [kept(1), rest(2)]
+      expect(
+        decideReview(weeks, input({ outcome: 'rested', release_week_ids: [weeks[0].id] }))
+      ).toMatchObject({ ok: false, status: 400 })
+    })
+
+    it('leaves kept changes on her check-in, and adds nothing', () => {
+      const weeks = [kept(1), rest(2)]
+      expect(decideFocusCheckin(programme, weeks, { ratings: {}, done: ['r1'], not_done: [] })).toMatchObject({ ok: true })
+      expect(decideFocusCheckin(programme, weeks, { ratings: {}, done: ['r2'], not_done: [] })).toMatchObject({ ok: false })
+    })
+
+    it('shows no card', () => {
+      const view = weekView(rest(1), new Map(), '2026-10-03')
+      expect(view.current).toBeNull()
+      expect(view.dayIndex).toBe(2)
+    })
+  })
+
   it('collapses duplicate release ids', () => {
     const weeks = [kept(1), week(2)]
     const d = decideReview(weeks, input({ release_week_ids: [weeks[0].id, weeks[0].id] }))
     expect(d.ok && d.releaseIds).toEqual([weeks[0].id])
+  })
+})
+
+describe('safetyRefusal', () => {
+  it('refuses with the safety gate until her answers are current', () => {
+    expect(safetyRefusal({ required: true, missing: ['diet_restrictions'] })).toMatchObject({
+      ok: false,
+      status: 409,
+      gate: 'safety',
+    })
+    expect(safetyRefusal({ required: false, missing: [] })).toBeNull()
   })
 })
 
@@ -347,7 +414,19 @@ describe('buildFocusState', () => {
     today: '2026-10-09',
     previewFocus: null,
     checkins: [],
+    safety: { required: false, missing: [] },
     ...o,
+  })
+
+  it('reports the safety gate in both states, without hiding anything', () => {
+    const safety = { required: true, missing: ['medical_flags' as const] }
+    expect(buildFocusState(base({ safety })).gates).toEqual({
+      safety_required: true,
+      safety_missing: ['medical_flags'],
+    })
+    const active = buildFocusState(base({ safety, programme, weeks: [week(1)] }))
+    expect(active).toMatchObject({ state: 'active', gates: { safety_required: true } })
+    expect(active.state === 'active' && active.current?.week.sequence).toBe(1)
   })
 
   it('without a programme: options from intake, primary first; no preview unless asked', () => {

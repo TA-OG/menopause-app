@@ -71,11 +71,15 @@ function plan(recs: WellnessRecommendation[]) {
   }
 }
 
-type W = Pick<FocusWeek, 'sequence' | 'recommendation_id' | 'starts_on' | 'outcome' | 'released_on'>
+type W = Pick<
+  FocusWeek,
+  'sequence' | 'kind' | 'recommendation_id' | 'starts_on' | 'outcome' | 'released_on'
+>
 
 function week(sequence: number, overrides: Partial<W> = {}): W {
   return {
     sequence,
+    kind: 'change',
     recommendation_id: `r${sequence}`,
     starts_on: '2026-10-01',
     outcome: null,
@@ -87,7 +91,7 @@ function week(sequence: number, overrides: Partial<W> = {}): W {
 // ─── Limits ───────────────────────────────────────────────────────────────────
 
 describe('agreed limits', () => {
-  // These mirror CHECK constraints in 036_focus_programmes.sql and the decisions
+  // These mirror CHECK constraints in 039_focus_programmes.sql and the decisions
   // in docs/focus-programme.md. Changing one here means changing it there too.
   it('match the agreed decisions and the migration', () => {
     expect(FOCUS_SYMPTOMS_MIN).toBe(1)
@@ -340,6 +344,35 @@ describe('week helpers', () => {
     expect(usedRecommendationIds(weeks)).toEqual(['r1', 'r2', 'r3', 'r4', 'r5', 'r6'])
     expect(nextSequence(weeks)).toBe(7)
     expect(nextSequence([])).toBe(1)
+  })
+})
+
+describe('rest weeks', () => {
+  const rest = (sequence: number, overrides: Partial<W> = {}): W =>
+    week(sequence, { kind: 'rest', recommendation_id: null, ...overrides })
+
+  it('asks only about kept changes during a rest week', () => {
+    const weeks = [week(1, { outcome: 'kept' }), rest(2)]
+    expect(openWeek(weeks)?.sequence).toBe(2)
+    expect(changesOnCheckin(weeks).map((w) => w.sequence)).toEqual([1])
+  })
+
+  it('never counts as a used change, so nothing is skipped after it', () => {
+    const weeks = [week(1, { outcome: 'stopped' }), rest(2, { outcome: 'rested' }), week(3)]
+    expect(usedRecommendationIds(weeks)).toEqual(['r1', 'r3'])
+    expect(nextSequence(weeks)).toBe(4)
+  })
+
+  it('is never a kept change, and takes no room on the check-in', () => {
+    const weeks = [week(1, { outcome: 'kept' }), rest(2, { outcome: 'rested' }), rest(3)]
+    expect(keptChanges(weeks).map((w) => w.sequence)).toEqual([1])
+    expect(canKeepAnother([week(1, { outcome: 'kept' }), rest(2, { outcome: 'rested' }), week(3)])).toBe(true)
+  })
+
+  it('can follow another rest week (no limit in a row)', () => {
+    const weeks = [rest(1, { outcome: 'rested' }), rest(2, { outcome: 'rested' }), rest(3)]
+    expect(openWeek(weeks)?.sequence).toBe(3)
+    expect(changesOnCheckin(weeks)).toEqual([])
   })
 })
 

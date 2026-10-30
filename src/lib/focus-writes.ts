@@ -1,5 +1,5 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
-import type { FocusProgramme, FocusWeek, SymptomKey } from '@/types/database'
+import type { FocusProgramme, FocusWeek, FocusWeekOutcome, SymptomKey } from '@/types/database'
 import type { FocusContext } from './focus-context'
 import {
   nextSequence,
@@ -8,7 +8,7 @@ import {
   usedRecommendationIds,
   weekSnapshot,
 } from './focus-programme'
-import { chooseWeekChange, decideWeekStart, type Decision } from './focus-api'
+import { chooseWeekChange, decideWeekStart, safetyRefusal, type Decision } from './focus-api'
 
 /** Postgres unique-violation: another request got there first. */
 export const UNIQUE_VIOLATION = '23505'
@@ -20,13 +20,19 @@ export const UNIQUE_VIOLATION = '23505'
  * the partial unique index rejects the second with 23505, reported as 409.
  * Re-selecting here (rather than trusting an id the client remembered) means
  * the choice is always made against her plan and answers as they are now.
+ *
+ * `{ rest: true }` opens a rest week instead: nothing new is chosen, and she
+ * carries on with the changes she kept. A rest week is still a week, so the
+ * same "one open week" and "not before the previous week" rules apply. It
+ * does not need a matching change, so it can be taken even when her plan has
+ * nothing left to offer.
  */
 export async function openNextWeek(
   supabase: SupabaseClient,
   userId: string,
   context: FocusContext,
   today: string,
-  recommendationId?: string
+  choice: { recommendationId?: string; rest?: boolean } = {}
 ): Promise<Decision<{ week: FocusWeek }>> {
   const { programme, weeks, plan, signals } = context
   if (!programme) return { ok: false, status: 409, error: 'No active programme' }
@@ -35,15 +41,33 @@ export async function openNextWeek(
   }
   const startable = decideWeekStart(weeks, today)
   if (!startable.ok) return startable
+  if (!choice.rest) {
+    const unsafe = safetyRefusal(context.safety)
+    if (unsafe) return unsafe
+  }
 
-  const selection = selectWeeklyChange(
-    plan,
-    programme.focus_symptoms,
-    signals,
-    usedRecommendationIds(weeks)
-  )
-  const chosen = chooseWeekChange(selection, recommendationId)
-  if (!chosen.ok) return chosen
+  let row: Pick<
+    FocusWeek,
+    'kind' | 'recommendation_id' | 'recommendation_snapshot' | 'covers_symptoms'
+  >
+  if (choice.rest) {
+    row = { kind: 'rest', recommendation_id: null, recommendation_snapshot: null, covers_symptoms: [] }
+  } else {
+    const selection = selectWeeklyChange(
+      plan,
+      programme.focus_symptoms,
+      signals,
+      usedRecommendationIds(weeks)
+    )
+    const chosen = chooseWeekChange(selection, choice.recommendationId)
+    if (!chosen.ok) return chosen
+    row = {
+      kind: 'change',
+      recommendation_id: chosen.choice.rec.id,
+      recommendation_snapshot: weekSnapshot(chosen.choice.rec),
+      covers_symptoms: chosen.choice.covers,
+    }
+  }
 
   const { data, error } = await supabase
     .from('focus_weeks')
@@ -51,9 +75,7 @@ export async function openNextWeek(
       programme_id: programme.id,
       user_id: userId,
       sequence: nextSequence(weeks),
-      recommendation_id: chosen.choice.rec.id,
-      recommendation_snapshot: weekSnapshot(chosen.choice.rec),
-      covers_symptoms: chosen.choice.covers,
+      ...row,
       starts_on: today,
     })
     .select()
@@ -127,7 +149,7 @@ export async function applyReview(
   supabase: SupabaseClient,
   programmeId: string,
   weekId: string,
-  outcome: 'kept' | 'stopped' | 'swapped',
+  outcome: FocusWeekOutcome,
   releaseIds: string[],
   today: string
 ): Promise<Decision<{ week: FocusWeek }>> {

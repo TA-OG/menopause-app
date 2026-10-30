@@ -5,6 +5,7 @@ import {
   buildFocusState,
   chooseWeekChange,
   parseFocusParam,
+  safetyRefusal,
   type CheckinRow,
 } from '@/lib/focus-api'
 import { normaliseFocusSymptoms, openWeek, selectWeeklyChange } from '@/lib/focus-programme'
@@ -86,7 +87,8 @@ async function getHandler(request: NextRequest) {
  * POST /api/focus  { focus_symptoms, today }
  *
  * Start a programme and open week 1. Refused (409) when nothing in her plan
- * matches the symptoms she chose, so a programme is never created empty.
+ * matches the symptoms she chose, so a programme is never created empty, and
+ * (409, gate 'safety') until her safety answers are current.
  */
 async function postHandler(request: NextRequest) {
   const auth = await authenticate(request, 10)
@@ -111,6 +113,11 @@ async function postHandler(request: NextRequest) {
 
     const focus = normaliseFocusSymptoms(focus_symptoms, context.signals)
     if (!focus.ok) return NextResponse.json({ error: focus.error }, { status: 400 })
+
+    // Checked here as well as in openNextWeek(), so a programme is never
+    // created that cannot open its first week.
+    const unsafe = safetyRefusal(context.safety)
+    if (unsafe) return refusalResponse(unsafe)
 
     const firstWeek = chooseWeekChange(
       selectWeeklyChange(context.plan, focus.symptoms, context.signals)
