@@ -51,6 +51,12 @@ describe('validateAnswerUpdate', () => {
     })
   })
 
+  it("accepts the journey's new questions, with their own choices only", () => {
+    expect(validateAnswerUpdate('how_are_you', ['really_struggling'])).toMatchObject({ ok: true })
+    expect(validateAnswerUpdate('how_are_you', ['fine'])).toMatchObject({ ok: false })
+    expect(validateAnswerUpdate('self_image', ['rather_not_say'])).toMatchObject({ ok: true })
+  })
+
   it('caps size', () => {
     expect(validateAnswerUpdate('full_name', ['x'.repeat(501)])).toMatchObject({ ok: false })
   })

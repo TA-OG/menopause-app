@@ -20,6 +20,7 @@ import {
   type Choice,
   type OnboardingStep,
 } from './onboarding-config'
+import { JOURNEY_NEW_STEPS } from './journey-intake'
 
 /**
  * Keys written by the bespoke steps (continent, heritage, location) rather
@@ -52,8 +53,12 @@ export type AnswerUpdate =
 
 type KeyedStep = Extract<OnboardingStep, { key: string }>
 
+/** The wizard's questions, then the journey's new ones (journey-intake.ts). */
 function stepFor(key: string): KeyedStep | undefined {
-  return STEPS.find((s): s is KeyedStep => 'key' in s && s.key === key)
+  return (
+    STEPS.find((s): s is KeyedStep => 'key' in s && s.key === key) ??
+    JOURNEY_NEW_STEPS.find((s) => s.key === key)
+  )
 }
 
 const refuse = (error: string): AnswerUpdate => ({ ok: false, error })
