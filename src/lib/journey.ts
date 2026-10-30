@@ -216,6 +216,11 @@ export function morningReply(feeling: MorningFeeling): CopyLine {
 /** Answers to "How are you, really?" that should be met with the safety line at once. */
 const STRUGGLING = new Set(['really_struggling', 'dont_know'])
 
+/** She told us she is really struggling, or doesn't know any more. */
+export function saidStruggling(howAreYou: string | undefined): boolean {
+  return !!howAreYou && STRUGGLING.has(howAreYou)
+}
+
 /**
  * Should Mel add the safety line today?
  *
@@ -233,7 +238,7 @@ export function showSafetySignpost(
   today: string,
   howAreYou?: string
 ): boolean {
-  if (howAreYou && STRUGGLING.has(howAreYou)) return true
+  if (saidStruggling(howAreYou)) return true
   let run = 0
   let expected = today
   for (const f of recentFeelings) {
@@ -261,6 +266,21 @@ export function journeyLaunchBlockers(): CopyLine[] {
   )
 }
 
+/**
+ * Launch blockers that are not a line of copy. Each is a check someone must
+ * do and record before women see the journey. Remove an entry only in the
+ * same commit as the record of it being done.
+ */
+export const JOURNEY_LAUNCH_CHECKLIST: string[] = [
+  // docs/focus-programme.md, "Blocking before any of this is shown to users"
+  'Symptom-tag audit by Pamela: Foundations chooses weekly changes from card tags, and each tag is a claim',
+  'GP-signpost thresholds for worsening focus symptoms, set by Pamela (focus programme decision 9)',
+  'Migrations 039 and 040 applied to production',
+]
+
 export function journeyVisibleTo(viewer: { isAdmin: boolean }): boolean {
-  return viewer.isAdmin || (JOURNEY_LAUNCHED && journeyLaunchBlockers().length === 0)
+  return (
+    viewer.isAdmin ||
+    (JOURNEY_LAUNCHED && journeyLaunchBlockers().length === 0 && JOURNEY_LAUNCH_CHECKLIST.length === 0)
+  )
 }

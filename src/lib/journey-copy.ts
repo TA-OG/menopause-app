@@ -149,6 +149,24 @@ export const PATH = {
     'unchallenged',
     'Care Journey, "Free week"'
   ),
+  // Lines the screens need that the Care Journey document does not have.
+  // Written by us in Mel's voice, so they wait for Pamela like any redraft.
+  welcomeBack: line(
+    'Welcome back, {name}. Shall we carry on where we left off?',
+    'redrafted',
+    'Not in the document: shown when she returns part-way through her questions'
+  ),
+  safetyFirst: line(
+    "A few questions to keep you safe first, so nothing I suggest clashes with your health.",
+    'redrafted',
+    'Not in the document: the safety gate before her first weekly change (decision of 13–14 Oct 2026)'
+  ),
+  restWeek: line('Rest this week', 'approved', 'Decision of 13–14 Oct 2026 ("Rest this week")'),
+  restWeekBody: line(
+    'Nothing new this week. Just keep going with what you have.',
+    'redrafted',
+    'Not in the document: what a rest week says'
+  ),
   supportOpener: line(
     "These sit on top of what you're already doing, never instead of it. Some women report benefits; evidence varies and they're not right for everyone. Please check with your GP or pharmacist before taking anything.",
     'pending',

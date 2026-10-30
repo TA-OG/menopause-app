@@ -134,6 +134,29 @@ support", "absorption" and lubricants have no cards today, and none will be inve
 7. Clip 4 (rage): approve or not.
 8. Re-cut or re-record clips 1 and 3.
 9. Content for "Feeling less alone".
+10. The choices we made while building it (§7). Each one is hers to change.
+
+## 7. What we decided while building, for Pamela to check
+
+The journey is built and **switched off for women**. Admins can walk through it at
+`/path`, which is how Pamela can review every screen in the real app. It opens to women only
+when every line it shows is approved or unchallenged and `JOURNEY_LAUNCHED` is set
+(`src/lib/journey.ts`; a test makes the switch impossible while anything is pending).
+
+| What | What we did | Why |
+|---|---|---|
+| Three questions the draft left out (how severe her main symptom is, her goal, what she has tried) | **Kept.** Severity in "How you're feeling", goal and what she has tried in "Your day-to-day" | Each shapes her plan. Dropping them would quietly make plans worse |
+| When the three Feel Safe invitations open | Days 1, 3 and 5 | "Max 3 in one week. So they can build on it." Every other day keeps space between them. Her call |
+| "How are you, really?" answered *I'm really struggling* or *I don't know any more* | Mel shows the safety line (GP, Samaritans 116 123) straight after that session, and on her path | Asking that and not answering it would be unsafe. Part of decision 5 |
+| *Hard* mornings in a row before the safety line | 3 (draft) | The document says "several". Part of decision 5 |
+| "love" | Removed where she asked (the morning greeting, day 7). Kept elsewhere: "Hello love", "You're doing so well, love", "No judgement, love" | She objected twice, not everywhere. **Does she want it gone everywhere?** |
+| "How full does your plate feel?" | Uses the existing stress answers: Manageable = low, Busy but OK = moderate, Too full = high, Overflowing = very high | The document reuses the existing question with warmer wording |
+| Support opens | After 8 reviewed weeks of Foundations (a kept or stopped change; a rest week or a swap doesn't count), **and** only once the opener is approved | Decision 6 and decision 8 |
+| Feeling like myself again, Feeling less alone | Not offered | No content yet (decision 7) |
+| "Start with feeling safe" rule | Not applied. Mel suggests the area holding the symptom that weighs most | Decision 3 is unanswered |
+| New lines the screens needed | "Welcome back, [name]. Shall we carry on where we left off?" · "A few questions to keep you safe first, so nothing I suggest clashes with your health." · "Nothing new this week. Just keep going with what you have." · "Three small invitations this week, two minutes at most, whenever you're ready." | Marked *redrafted*, so they block launch until she approves |
+| Pause-and-rate, the breathing video | Not built yet | Waiting for her wording and the video she offered |
+| Clip 10, "Your story matters" | On day 1 of her path, labelled "From Pamela" | Approved; she called it "part of the feeling safe" |
 
 ## 6. Not part of the journey: Learn articles (doc 03) and the wellness review (doc 04)
 

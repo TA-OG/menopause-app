@@ -5,6 +5,7 @@ import {
   FOCUS_AREAS,
   HARD_DAYS_BEFORE_SIGNPOST,
   JOURNEY_LAUNCHED,
+  JOURNEY_LAUNCH_CHECKLIST,
   SUPPORT_AFTER_REVIEWED_WEEKS,
   heardPhrases,
   journeyLaunchBlockers,
@@ -207,7 +208,10 @@ describe('launch gate', () => {
   })
 
   it('cannot be switched on while a blocker remains', () => {
-    if (JOURNEY_LAUNCHED) expect(journeyLaunchBlockers()).toEqual([])
+    if (JOURNEY_LAUNCHED) {
+      expect(journeyLaunchBlockers()).toEqual([])
+      expect(JOURNEY_LAUNCH_CHECKLIST).toEqual([])
+    }
   })
 
   it('blocks on the Feel Safe redraft and the safety line', () => {
