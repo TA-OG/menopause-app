@@ -13,6 +13,7 @@ import { getTranslations } from 'next-intl/server'
 import { redirect } from 'next/navigation'
 import Greeting from '@/components/ui/Greeting'
 import RefreshSubscriptionButton from '@/components/ui/RefreshSubscriptionButton'
+import PushOptInBanner from '@/components/PushOptInBanner'
 import type { WellnessPlan } from '@/types/database'
 
 /**
@@ -121,6 +122,8 @@ export default async function DashboardPage({
     <div className="space-y-5 py-4">
       {/* Greeting — client component so it uses the user's local device time */}
       <Greeting firstName={firstName} />
+
+      <PushOptInBanner />
 
       {/* ── Start here ──────────────────────────────────────────────────── */}
       {focus.length > 0 && (

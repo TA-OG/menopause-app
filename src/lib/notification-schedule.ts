@@ -45,6 +45,31 @@ export function localHourAndDate(timezone: string | null | undefined): LocalMome
   }
 }
 
+/**
+ * Local hour (0-23) the daily check-in prompt goes out. Evening rather than
+ * the user's notification_hour: "how are you feeling today?" only makes sense
+ * once most of the day has happened, and it keeps the prompt from landing in
+ * the same minute as the morning plan drip for most users.
+ */
+export const CHECKIN_NUDGE_HOUR = 19
+
+/**
+ * Whether the check-in prompt is due for this user on this tick: it's
+ * CHECKIN_NUDGE_HOUR where they are, and they haven't already logged a
+ * check-in for their local date. The once-per-day claim in notification_log
+ * is enforced separately by the database (migration 040).
+ */
+export function isCheckinNudgeDue(local: LocalMoment | null, checkedInToday: boolean): boolean {
+  if (!local) return false
+  return local.hour === CHECKIN_NUDGE_HOUR && !checkedInToday
+}
+
+export const CHECKIN_NUDGE_MESSAGE = {
+  title: 'Aunty Mel',
+  body: 'How are you feeling today? Take a minute to check in.',
+  url: '/symptom-checkin',
+} as const
+
 const MAX_BODY_LENGTH = 160
 
 export function truncate(text: string, max: number = MAX_BODY_LENGTH): string {

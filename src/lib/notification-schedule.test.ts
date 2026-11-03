@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { localHourAndDate, truncate, flattenPlan, pickNext } from './notification-schedule'
+import { localHourAndDate, truncate, flattenPlan, pickNext, isCheckinNudgeDue, CHECKIN_NUDGE_HOUR } from './notification-schedule'
 import type { WellnessRecommendation } from '@/types/database'
 
 function rec(id: string, priority: WellnessRecommendation['priority'] = 'medium'): WellnessRecommendation {
@@ -115,5 +115,28 @@ describe('pickNext', () => {
     }
 
     expect(new Set(order).size).toBe(recs.length)
+  })
+})
+
+describe('isCheckinNudgeDue', () => {
+  const at = (hour: number) => ({ hour, date: '2026-11-03' })
+
+  it('is due at the check-in hour when the user has not checked in today', () => {
+    expect(isCheckinNudgeDue(at(CHECKIN_NUDGE_HOUR), false)).toBe(true)
+  })
+
+  it('is not due once the user has already checked in today', () => {
+    expect(isCheckinNudgeDue(at(CHECKIN_NUDGE_HOUR), true)).toBe(false)
+  })
+
+  it('is not due at any other hour', () => {
+    for (let h = 0; h < 24; h++) {
+      if (h === CHECKIN_NUDGE_HOUR) continue
+      expect(isCheckinNudgeDue(at(h), false)).toBe(false)
+    }
+  })
+
+  it('is never due when the timezone could not be resolved', () => {
+    expect(isCheckinNudgeDue(null, false)).toBe(false)
   })
 })

@@ -18,6 +18,7 @@ import { useRouter } from 'next/navigation'
 import { useLocale, useTranslations } from 'next-intl'
 import { createClient } from '@/lib/supabase/client'
 import Logo from '@/components/ui/Logo'
+import { usePushSubscription, snoozePushPrompt } from '@/lib/use-push-subscription'
 import { SUPPORTED_LOCALES, LOCALE_LABELS } from '@/lib/locale-geo-map'
 import {
   STEPS,
@@ -332,6 +333,9 @@ export default function OnboardingPage() {
         {step.kind === 'custom' && step.component === 'location' && (
           <LocationStep answers={answers} setAnswers={setAnswers} next={next} />
         )}
+        {step.kind === 'custom' && step.component === 'reminders' && (
+          <RemindersStep next={next} />
+        )}
         {step.kind === 'custom' && step.component === 'complete' && (
           <CompleteStep answers={answers} saving={saving} error={error} onComplete={completeOnboarding} />
         )}
@@ -627,6 +631,70 @@ function LocationStep({
       <PrimaryButton label="Continue" onClick={next} />
       <button type="button" onClick={next} className="w-full text-sm text-gray-400 py-1">
         Skip this question
+      </button>
+    </div>
+  )
+}
+
+function RemindersStep({ next }: { next: () => void }) {
+  const { status, error, permission, subscribe } = usePushSubscription()
+
+  function notNow() {
+    snoozePushPrompt()
+    next()
+  }
+
+  async function turnOn() {
+    if (await subscribe()) next()
+  }
+
+  const header = (
+    <StepHeader
+      title="Would you like a gentle daily nudge?"
+      subtitle="One tip from your plan each day, and an evening reminder to check in on how you're feeling. You can change this any time in your profile."
+    />
+  )
+
+  if (status === 'checking') return header
+
+  // Nothing this device can do right now — explain, and let her carry on.
+  if (status === 'unsupported' || status === 'ios-needs-home-screen' || permission === 'denied') {
+    return (
+      <div className="space-y-4">
+        {header}
+        <p className="text-sm text-gray-600 bg-white border border-gray-200 rounded-2xl px-4 py-3 leading-relaxed">
+          {status === 'ios-needs-home-screen'
+            ? 'On iPhone or iPad, reminders work once Aunty Mel is added to your Home Screen (Share → Add to Home Screen). You can turn them on from your profile after that.'
+            : status === 'unsupported'
+              ? "This browser doesn't support reminders. You can still check in any time from the app."
+              : 'Notifications are blocked for this site in your browser settings. If you allow them there, you can turn reminders on from your profile.'}
+        </p>
+        <PrimaryButton label="Continue" onClick={next} />
+      </div>
+    )
+  }
+
+  if (status === 'subscribed') {
+    return (
+      <div className="space-y-4">
+        {header}
+        <p className="text-sm text-gray-600">Reminders are on for this device.</p>
+        <PrimaryButton label="Continue" onClick={next} />
+      </div>
+    )
+  }
+
+  return (
+    <div className="space-y-3">
+      {header}
+      {error && <p className="text-red-600 text-sm bg-red-50 rounded-xl px-4 py-2">{error}</p>}
+      <PrimaryButton
+        label={status === 'subscribing' ? 'Turning on…' : 'Turn on reminders'}
+        onClick={turnOn}
+        disabled={status === 'subscribing'}
+      />
+      <button type="button" onClick={notNow} className="w-full text-sm text-gray-500 py-2">
+        Not now
       </button>
     </div>
   )
