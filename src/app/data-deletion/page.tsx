@@ -69,7 +69,7 @@ export default function DataDeletionPage() {
           <div className="space-y-4">
             <div>
               <p className="font-semibold text-sm text-gray-900 mb-1">
-                Option 1 — Email us (fastest)
+                Option 1 — Email us
               </p>
               <p className="text-sm text-gray-700 mb-2">
                 Send an email from the address associated with your account:
@@ -87,13 +87,14 @@ export default function DataDeletionPage() {
 
             <div className="border-t border-brand-100 pt-4">
               <p className="font-semibold text-sm text-gray-900 mb-1">
-                Option 2 — From your account
+                Option 2 — From your account (immediate)
               </p>
               <p className="text-sm text-gray-700">
-                Sign in to Aunty Mel, go to{' '}
-                <strong>Profile → Account Settings → Delete Account</strong>.
-                This will immediately deactivate your account and schedule full data
-                deletion within 30 days.
+                Sign in to Aunty Mel, go to <strong>Profile</strong> and tap{' '}
+                <strong>Delete my account</strong> at the bottom of the page. Your account
+                and data are deleted from the app straight away, and any subscription is
+                cancelled so you won&apos;t be charged again. Any remaining copies, for
+                example in backups, are gone within 30 days.
               </p>
             </div>
           </div>
@@ -101,7 +102,7 @@ export default function DataDeletionPage() {
 
         {/* Timeline */}
         <div className="bg-white rounded-2xl p-6 border border-gray-100 mb-6">
-          <h2 className="font-bold text-brand-900 mb-3">What happens next</h2>
+          <h2 className="font-bold text-brand-900 mb-3">If you email us: what happens next</h2>
           <ol className="space-y-3">
             {[
               ['Within 48 hours', 'We confirm receipt of your request by email'],

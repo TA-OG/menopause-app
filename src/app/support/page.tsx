@@ -24,7 +24,7 @@ const FAQ = [
   },
   {
     q: 'How do I cancel my subscription?',
-    a: 'Go to your account settings and tap "Manage subscription". You can cancel at any time. You\'ll keep access until the end of your current billing period and we won\'t charge you again.',
+    a: 'Go to your Profile and tap "Manage billing". You can cancel at any time. You\'ll keep access until the end of your current billing period and we won\'t charge you again.',
   },
   {
     q: 'Can I get a refund?',
@@ -32,7 +32,7 @@ const FAQ = [
   },
   {
     q: 'How do I update my wellness plan?',
-    a: 'Your plan is generated from your onboarding answers. If your symptoms or situation have changed, contact us at hello@auntymel.app and we can reset your onboarding so you can complete it fresh.',
+    a: 'Your plan is generated from your onboarding answers. If your symptoms or situation have changed, go to your Profile and tap "Redo intake" to answer the questions again, and we\'ll rebuild your plan.',
   },
   {
     q: 'Is my health data safe?',
@@ -40,7 +40,7 @@ const FAQ = [
   },
   {
     q: 'How do I delete my account and data?',
-    a: 'You can request full account and data deletion by visiting our data deletion page or emailing privacy@auntymel.app. We\'ll delete everything within 30 days.',
+    a: 'Go to your Profile and tap "Delete my account" at the bottom. Your account and data are deleted straight away and any subscription is cancelled. You can also email privacy@auntymel.app and we\'ll delete everything within 30 days. Our data deletion page has the details.',
   },
   {
     q: 'What devices does Aunty Mel work on?',

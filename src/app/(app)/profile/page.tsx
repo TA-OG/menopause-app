@@ -2,6 +2,7 @@ import { createClient } from '@/lib/supabase/server'
 import { getUserAccess } from '@/lib/access'
 import { redirect } from 'next/navigation'
 import NotificationSettings from '@/components/NotificationSettings'
+import DeleteAccount from '@/components/DeleteAccount'
 
 export default async function ProfilePage() {
   const supabase = createClient()
@@ -130,6 +131,9 @@ export default async function ProfilePage() {
           Sign out
         </button>
       </form>
+
+      {/* Delete account — the data-deletion page sends people here */}
+      <DeleteAccount hasSubscription={isPaidPremium} />
     </div>
   )
 }
