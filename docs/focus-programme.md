@@ -101,6 +101,14 @@ focus symptoms nothing covers.
 
 ### Data — migration `039_focus_programmes.sql`
 
+> **Production already has this schema. Do not run 039 there.** It was applied
+> earlier from PR #32's `036_focus_programmes.sql` (the version with rest weeks),
+> before the file was renumbered. On 3 Nov 2026 Allan checked production against
+> 039: the same 3 types, the 14 `focus_weeks` columns with the same nullability,
+> all 16 constraints, 6 indexes, 2 policies with RLS on, 4 triggers, and the same
+> function grants, with both tables empty. Its SQL is identical to 039 apart from
+> the header comment. 039 is for new environments only.
+
 - `focus_programmes` — her focus symptoms (1–3, `symptom_key[]`), status,
   start date. One active programme per user (partial unique index).
 - `focus_weeks` — one row per weekly change: the recommendation id, a snapshot
