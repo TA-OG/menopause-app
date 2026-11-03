@@ -133,7 +133,7 @@ const DIET_CHOICES: Choice[] = [
 ]
 
 const DIET_RESTRICTION_CHOICES: Choice[] = [
-  { value: 'none', label: 'No restrictions' },
+  { value: 'none', label: 'No restrictions', exclusive: true },
   { value: 'vegetarian', label: 'Vegetarian' },
   { value: 'vegan', label: 'Vegan' },
   { value: 'dairy_free', label: 'Dairy-free / lactose intolerant' },
@@ -298,6 +298,9 @@ export const STEPS: OnboardingStep[] = [
     title: 'Any dietary needs or allergies we should respect?',
     subtitle: "Select all that apply — we won't suggest foods that don't fit.",
     choices: DIET_RESTRICTION_CHOICES,
+    // Required: an empty answer would look like "no restrictions" but means
+    // unknown, and the weekly programme's safety gate refuses unknown.
+    minSelect: 1,
   },
 
   // ── Lifestyle ──────────────────────────────────────────────────────────────
@@ -354,6 +357,8 @@ export const STEPS: OnboardingStep[] = [
     subtitle:
       'This keeps your plan safe — we use it to flag supplements or advice to check with your GP first. Select all that apply.',
     choices: MEDICAL_FLAG_CHOICES,
+    // Required, as diet_restrictions: "None of these" is how she says none.
+    minSelect: 1,
   },
 
   // ── Heritage & location (bespoke steps) ─────────────────────────────────────

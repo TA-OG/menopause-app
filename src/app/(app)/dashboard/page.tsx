@@ -10,6 +10,8 @@ import {
 } from '@/lib/wellness-engine'
 import { deriveUserSignals } from '@/lib/user-signals'
 import { redirect } from 'next/navigation'
+import Link from 'next/link'
+import { JOURNEY_LAUNCHED } from '@/lib/journey'
 import Greeting from '@/components/ui/Greeting'
 import RefreshSubscriptionButton from '@/components/ui/RefreshSubscriptionButton'
 import type { WellnessPlan } from '@/types/database'
@@ -63,7 +65,7 @@ export default async function DashboardPage({
     }
   }
 
-  const { tier, isPremium } = await getUserAccess(supabase, user.id)
+  const { tier, isPremium, isAdmin } = await getUserAccess(supabase, user.id)
 
   // Same jurisdiction gate the plan page enforces — in 'info_only' regions no
   // personalised recommendation may be surfaced, including here.
@@ -119,6 +121,19 @@ export default async function DashboardPage({
     <div className="space-y-5 py-4">
       {/* Greeting — client component so it uses the user's local device time */}
       <Greeting firstName={firstName} />
+
+      {/* Admin-only until launch: the new journey, for review in the real app. */}
+      {isAdmin && !JOURNEY_LAUNCHED && (
+        <Link
+          href="/path"
+          className="block rounded-2xl border border-dashed border-brand-300 bg-white p-4 text-sm text-brand-900"
+        >
+          <span className="font-semibold">Preview: Your path back to you</span>
+          <span className="block text-xs text-gray-500">
+            Only admins see this. Women see it once Pamela has approved its wording.
+          </span>
+        </Link>
+      )}
 
       {/* ── Start here ──────────────────────────────────────────────────── */}
       {focus.length > 0 && (
