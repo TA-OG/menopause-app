@@ -13,6 +13,7 @@ import {
   type LocalMoment,
 } from '@/lib/notification-schedule'
 import type { PushSubscription, WellnessPlan } from '@/types/database'
+import { recordEvent } from '@/lib/monitoring'
 import webpush from 'web-push'
 
 /**
@@ -91,6 +92,7 @@ export async function GET(request: NextRequest) {
     let sent = 0
     let failed = 0
     let skipped = 0
+    let errors = 0
 
     for (const pref of prefs) {
       const local = localHourAndDate(pref.timezone)
@@ -120,24 +122,42 @@ export async function GET(request: NextRequest) {
         continue
       }
 
+      // Each send is isolated: an error in one user's plan drip or check-in
+      // prompt (a DB hiccup, a missing migration) must not abort the tick and
+      // silently drop every other user still to be processed — including the
+      // other kind for this same user. Failures are recorded to app_events
+      // and counted in the response, never swallowed.
       if (planDripHour) {
-        const outcome = await sendPlanDrip(admin, pref.user_id, local.date, subscriptions)
-        subscriptions = outcome.live
-        failed += outcome.failed
-        if (outcome.delivered) sent++
-        else if (outcome.failed === 0) skipped++
+        try {
+          const outcome = await sendPlanDrip(admin, pref.user_id, local.date, subscriptions)
+          subscriptions = outcome.live
+          failed += outcome.failed
+          if (outcome.delivered) sent++
+          else if (outcome.failed === 0) skipped++
+        } catch (err) {
+          errors++
+          await recordSendError('plan_drip', pref.user_id, err)
+        }
       }
 
       if (checkinHour && subscriptions.length > 0) {
-        const outcome = await sendCheckinNudge(admin, pref.user_id, local, subscriptions)
-        subscriptions = outcome.live
-        failed += outcome.failed
-        if (outcome.delivered) sent++
-        else if (outcome.failed === 0) skipped++
+        try {
+          const outcome = await sendCheckinNudge(admin, pref.user_id, local, subscriptions)
+          subscriptions = outcome.live
+          failed += outcome.failed
+          if (outcome.delivered) sent++
+          else if (outcome.failed === 0) skipped++
+        } catch (err) {
+          errors++
+          await recordSendError('checkin_nudge', pref.user_id, err)
+        }
       }
     }
 
-    return NextResponse.json({ sent, failed, skipped })
+    // Everyone has been processed by now; a 500 still tells the scheduler (and
+    // whoever reads its logs) that this tick wasn't clean, instead of one
+    // user's error looking like a fully successful run.
+    return NextResponse.json({ sent, failed, skipped, errors }, { status: errors > 0 ? 500 : 200 })
   } catch (err) {
     console.error('Cron notification error:', err)
     return NextResponse.json({ error: 'Internal error' }, { status: 500 })
@@ -154,6 +174,19 @@ interface SendOutcome {
   failed: number
   /** Subscriptions still valid after this send (410-gone ones removed). */
   live: PushSubscription[]
+}
+
+async function recordSendError(kind: ReminderKind, userId: string, err: unknown): Promise<void> {
+  console.error(`Cron ${kind} failed for user ${userId}:`, err)
+  await recordEvent({
+    type: 'error',
+    route: '/api/cron/notifications',
+    method: 'GET',
+    message: `${kind} send failed: ${err instanceof Error ? err.message : JSON.stringify(err)}`,
+    stack: err instanceof Error ? err.stack ?? null : null,
+    userId,
+    meta: { kind },
+  })
 }
 
 const NOT_SENT = (live: PushSubscription[]): SendOutcome => ({ delivered: false, failed: 0, live })
