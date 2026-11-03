@@ -72,7 +72,7 @@ export default function NotificationSettings({ initialEnabled, initialHour }: Pr
         <div>
           <p className="font-medium text-gray-900 text-sm">Push notifications</p>
           <p className="text-xs text-gray-500 mt-0.5">
-            A daily tip from your plan, and an evening check-in prompt
+            A daily reminder to check in on how you&apos;re feeling
           </p>
         </div>
         <button
@@ -94,7 +94,7 @@ export default function NotificationSettings({ initialEnabled, initialHour }: Pr
       {error && <p className="text-xs text-red-600 mt-2">{error}</p>}
       {!initialEnabled && !isSubscribed && status === 'idle' && (
         <p className="text-xs text-gray-400 mt-2">
-          Off on this device — turn on to get reminders from your plan.
+          Off on this device — turn on to get a daily check-in reminder.
         </p>
       )}
       {isSubscribed && (

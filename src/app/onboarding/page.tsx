@@ -651,7 +651,7 @@ function RemindersStep({ next }: { next: () => void }) {
   const header = (
     <StepHeader
       title="Would you like a gentle daily nudge?"
-      subtitle="One tip from your plan each day, and an evening reminder to check in on how you're feeling. You can change this any time in your profile."
+      subtitle="A short reminder each morning to check in on how you're feeling. You can change the time, or turn it off, in your profile."
     />
   )
 

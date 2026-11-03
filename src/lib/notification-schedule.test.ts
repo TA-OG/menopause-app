@@ -1,10 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { localHourAndDate, truncate, flattenPlan, pickNext, isCheckinNudgeDue, CHECKIN_NUDGE_HOUR } from './notification-schedule'
-import type { WellnessRecommendation } from '@/types/database'
-
-function rec(id: string, priority: WellnessRecommendation['priority'] = 'medium'): WellnessRecommendation {
-  return { id, title: `Title ${id}`, body: `Body ${id}`, priority, category: 'diet' }
-}
+import { localHourAndDate, isCheckinNudgeDue } from './notification-schedule'
 
 describe('localHourAndDate', () => {
   it('returns null for a missing timezone', () => {
@@ -38,105 +33,35 @@ describe('localHourAndDate', () => {
   })
 })
 
-describe('truncate', () => {
-  it('leaves short text untouched', () => {
-    expect(truncate('short text')).toBe('short text')
-  })
-
-  it('truncates long text and adds an ellipsis', () => {
-    const long = 'a'.repeat(200)
-    const result = truncate(long, 50)
-    expect(result.length).toBe(50)
-    expect(result.endsWith('…')).toBe(true)
-  })
-
-  it('trims whitespace before measuring length', () => {
-    expect(truncate('  padded  ', 20)).toBe('padded')
-  })
-})
-
-describe('flattenPlan', () => {
-  it('combines all four categories into one list, preserving order', () => {
-    const plan = {
-      diet_adjustments: [rec('d1')],
-      lifestyle_adjustments: [rec('l1')],
-      mindset_recommendations: [rec('m1')],
-      supplement_suggestions: [rec('s1')],
-    }
-    const result = flattenPlan(plan)
-    expect(result.map((r) => r.id)).toEqual(['d1', 'l1', 'm1', 's1'])
-  })
-
-  it('returns an empty array for an entirely empty plan', () => {
-    const plan = {
-      diet_adjustments: [],
-      lifestyle_adjustments: [],
-      mindset_recommendations: [],
-      supplement_suggestions: [],
-    }
-    expect(flattenPlan(plan)).toEqual([])
-  })
-})
-
-describe('pickNext', () => {
-  it('returns null for an empty candidate list', () => {
-    expect(pickNext([], new Map())).toBeNull()
-  })
-
-  it('picks a never-sent item over one sent recently', () => {
-    const recs = [rec('a'), rec('b')]
-    const lastSentAt = new Map([['a', '2026-08-12T10:00:00.000Z']])
-    // 'b' has no entry — never sent — so it must win over 'a'.
-    expect(pickNext(recs, lastSentAt)?.id).toBe('b')
-  })
-
-  it('picks the least-recently-sent item when everything has history', () => {
-    const recs = [rec('a'), rec('b'), rec('c')]
-    const lastSentAt = new Map([
-      ['a', '2026-08-12T10:00:00.000Z'],
-      ['b', '2026-08-10T10:00:00.000Z'], // oldest — should win
-      ['c', '2026-08-11T10:00:00.000Z'],
-    ])
-    expect(pickNext(recs, lastSentAt)?.id).toBe('b')
-  })
-
-  it('cycles through the whole plan before repeating — property check over many rounds', () => {
-    // Simulates the rotation the cron performs day over day: after N picks
-    // (N = plan size), every id must have appeared before any repeats.
-    const recs = [rec('a'), rec('b'), rec('c'), rec('d')]
-    const lastSentAt = new Map<string, string>()
-    const order: string[] = []
-
-    for (let day = 0; day < recs.length; day++) {
-      const next = pickNext(recs, lastSentAt)
-      expect(next).not.toBeNull()
-      order.push(next!.id)
-      lastSentAt.set(next!.id, new Date(2026, 0, day + 1).toISOString())
-    }
-
-    expect(new Set(order).size).toBe(recs.length)
-  })
-})
-
 describe('isCheckinNudgeDue', () => {
   const at = (hour: number) => ({ hour, date: '2026-11-03' })
 
-  it('is due at the check-in hour when the user has not checked in today', () => {
-    expect(isCheckinNudgeDue(at(CHECKIN_NUDGE_HOUR), false)).toBe(true)
+  it('is due at her reminder hour when she has not checked in today', () => {
+    expect(isCheckinNudgeDue(at(9), 9, false)).toBe(true)
   })
 
-  it('is not due once the user has already checked in today', () => {
-    expect(isCheckinNudgeDue(at(CHECKIN_NUDGE_HOUR), true)).toBe(false)
+  it('follows the hour she picked, not a fixed one', () => {
+    expect(isCheckinNudgeDue(at(7), 7, false)).toBe(true)
+    expect(isCheckinNudgeDue(at(9), 7, false)).toBe(false)
+  })
+
+  it('is not due once she has already checked in today', () => {
+    expect(isCheckinNudgeDue(at(9), 9, true)).toBe(false)
   })
 
   it('is not due at any other hour', () => {
     for (let h = 0; h < 24; h++) {
-      if (h === CHECKIN_NUDGE_HOUR) continue
-      expect(isCheckinNudgeDue(at(h), false)).toBe(false)
+      if (h === 9) continue
+      expect(isCheckinNudgeDue(at(h), 9, false)).toBe(false)
     }
   })
 
+  it('is never due when no reminder hour has been set', () => {
+    expect(isCheckinNudgeDue(at(0), null, false)).toBe(false)
+    expect(isCheckinNudgeDue(at(9), null, false)).toBe(false)
+  })
+
   it('is never due when the timezone could not be resolved', () => {
-    expect(isCheckinNudgeDue(null, false)).toBe(false)
+    expect(isCheckinNudgeDue(null, 9, false)).toBe(false)
   })
 })

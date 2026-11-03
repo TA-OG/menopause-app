@@ -65,7 +65,7 @@ export default function PushOptInBanner() {
     <div className="bg-white border border-gray-200 rounded-2xl p-4">
       <p className="text-sm font-semibold text-gray-900">Would you like a gentle daily nudge?</p>
       <p className="text-xs text-gray-500 mt-1 leading-relaxed">
-        One tip from your plan each day, and an evening reminder to check in on how you&apos;re feeling.
+        A short reminder each morning to check in on how you&apos;re feeling.
       </p>
       {error && <p className="text-xs text-red-600 mt-2">{error}</p>}
       <div className="flex items-center gap-2 mt-3">
