@@ -275,8 +275,9 @@ export const JOURNEY_LAUNCH_CHECKLIST: string[] = [
   // docs/focus-programme.md, "Blocking before any of this is shown to users"
   'Symptom-tag audit by Pamela: Foundations chooses weekly changes from card tags, and each tag is a claim',
   'GP-signpost thresholds for worsening focus symptoms, set by Pamela (focus programme decision 9)',
-  'Migrations 039 and 040 applied to production',
 ]
+// Done: migrations 039 and 040 are in production (039's schema from PR #32's
+// 036, checked to match; 040 applied 3 Nov 2026). See docs/focus-programme.md.
 
 export function journeyVisibleTo(viewer: { isAdmin: boolean }): boolean {
   return (

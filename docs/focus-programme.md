@@ -108,6 +108,10 @@ focus symptoms nothing covers.
 > all 16 constraints, 6 indexes, 2 policies with RLS on, 4 triggers, and the same
 > function grants, with both tables empty. Its SQL is identical to 039 apart from
 > the header comment. 039 is for new environments only.
+>
+> **040_journey.sql was applied to production on 3 Nov 2026.** Checked afterwards:
+> RLS on with one policy on `journeys` and `journey_days`, the week policy checks
+> the programme's owner, and `record_focus_checkin` merges rather than replaces.
 
 - `focus_programmes` — her focus symptoms (1–3, `symptom_key[]`), status,
   start date. One active programme per user (partial unique index).
