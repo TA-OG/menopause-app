@@ -8,6 +8,15 @@ tags:
 estimated_read_minutes: 3
 
 # DRAFT — awaiting Pamela's review and sign-off. Do not set published_at until approved.
+#
+# Pamela's review (27 Oct 2026, 03/C1): add HbA1c, B12, folate, ferritin. Sources checked 3 Nov 2026:
+#  - Ferritin and TSH are in the NICE CKS first-line tiredness/fatigue tests: Handjiev, Nobes & Murphy,
+#    Ann Clin Biochem 2025;62(5):416-419, doi:10.1177/00045632251329175 (audit against CKS).
+#  - B12/folate deficiency causes "extreme tiredness"; diagnosed by blood test:
+#    https://www.nhs.uk/conditions/vitamin-b12-or-folate-deficiency-anaemia/
+#  - Blood tests for anaemia, diabetes or thyroid in tiredness: https://www.nhs.uk/conditions/tiredness-and-fatigue/
+#  - HbA1c as a diagnostic diabetes test: Handjiev et al 2025 (above). Vitamin D was in the
+#    original draft and is not covered by these sources.
 
 body_md: |
   Being told your bloods are "normal" while you feel anything but fine is one of the most
@@ -40,8 +49,9 @@ body_md: |
   - **Ask specifically about perimenopause** when you go back — it's still under-discussed
     proactively by many services, so naming it yourself often opens the conversation.
   - **Ask what a fuller picture could look like** — beyond a single hormone panel, this might
-    include thyroid function, iron, vitamin D, and blood sugar markers, which can produce very
-    similar symptoms and are worth ruling in or out.
+    include thyroid function, iron stores (ferritin), vitamin B12 and folate, vitamin D, and
+    HbA1c (a blood sugar test used to check for diabetes). Problems with any of these can
+    produce very similar symptoms, so they're worth ruling in or out.
   - **Consider a second opinion or a specialist referral** if symptoms are significantly
     affecting your life and the first conversation didn't go anywhere.
 
