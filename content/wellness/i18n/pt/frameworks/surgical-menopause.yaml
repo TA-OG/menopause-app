@@ -1,0 +1,37 @@
+# Tradução de frameworks/surgical-menopause.yaml — prevalece a versão em inglês.
+df_surgical_anti_inflammatory:
+  title: A alimentação anti-inflamatória é especialmente importante depois de uma ooforectomia
+  body: >-
+    A menopausa cirúrgica elimina de forma súbita, e não gradual, a produção protetora de estrogénios pelos ovários. As consequências inflamatórias — dores articulares, alterações vasculares, alterações cognitivas — podem ser mais acentuadas do que na menopausa natural. Um padrão alimentar anti-inflamatório (mediterrânico, com azeite, peixe gordo, legumes coloridos e pouco consumo de ultraprocessados) ajuda a atenuar esta alteração inflamatória geral.
+df_surgical_calcium_urgency:
+  title: Proteger os ossos através da alimentação é urgente — a perda é mais rápida depois de uma menopausa cirúrgica
+  body: >-
+    As mulheres submetidas a uma ooforectomia bilateral antes da menopausa natural perdem densidade óssea mais depressa do que as que passam por uma menopausa natural. Quanto mais cedo a cirurgia, maior o risco de fratura a longo prazo. O cálcio dos alimentos (700–1200 mg por dia) e a vitamina D são indispensáveis. Se ainda não falou com o seu médico sobre uma densitometria óssea para conhecer a sua densidade de partida, faça disso uma prioridade.
+lf_surgical_hrt_conversation:
+  title: A THS depois de uma menopausa cirúrgica — a conversa que o seu médico tem de ter consigo
+  body: >-
+    Para as mulheres que têm uma menopausa cirúrgica antes dos 51 anos (a idade média da menopausa natural), a maioria dos especialistas em menopausa recomenda a terapêutica hormonal de substituição (THS) pelo menos até essa idade. O risco de NÃO fazer THS — risco cardiovascular aumentado, perda óssea, alterações cognitivas — está bem documentado e é significativo. Se não lhe propuseram nem falaram consigo sobre a THS, marque uma consulta especificamente para isso. O site da British Menopause Society tem um localizador de especialistas em menopausa (no Reino Unido), caso o seu médico não tenha formação em menopausa.
+lf_surgical_bone_exercise:
+  title: Comece o exercício com impacto assim que tiver autorização depois da cirurgia
+  body: >-
+    O exercício com impacto (caminhar, treino de força) é a medida de estilo de vida mais importante para proteger a densidade óssea depois de uma menopausa cirúrgica. Pergunte ao seu cirurgião quando pode começar — para a maioria das mulheres, as caminhadas suaves começam poucas semanas após a cirurgia, com fortalecimento progressivo a partir das 6–8 semanas. Criar este hábito cedo na recuperação protege diretamente o seu risco de fratura a longo prazo.
+mr_surgical_grief_acute:
+  title: O luto da menopausa cirúrgica é real — e muitas vezes não é reconhecido
+  body: >-
+    As mulheres que entram na menopausa através de uma cirurgia — por tratamento de cancro, endometriose ou outras causas — descrevem muitas vezes um luto profundo e pouco reconhecido. A brusquidão da mudança hormonal soma-se ao impacto emocional da própria cirurgia. Se a sua cirurgia esteve relacionada com cancro ou com perda de fertilidade, pode estar a atravessar várias perdas importantes ao mesmo tempo. Isto merece apoio psicológico a sério — não apenas a gestão dos sintomas. Peça à sua equipa cirúrgica ou ao seu médico que a encaminhe para um psicólogo com experiência em saúde da mulher.
+mr_surgical_pace:
+  title: O seu corpo está a adaptar-se a uma enorme mudança hormonal — dê-lhe tempo
+  body: >-
+    Os primeiros 3–6 meses após uma ooforectomia bilateral são muitas vezes os mais intensos em termos de sintomas. Afrontamentos, perturbações do sono, alterações de humor e nevoeiro mental são frequentes e muitas vezes fortes nesta fase aguda. Não é um estado permanente. Os sintomas costumam acalmar ao longo de meses à medida que o corpo se adapta e, com o tratamento adequado (THS, mudanças de estilo de vida), a maioria das mulheres atinge uma qualidade de vida comparável à que tinha antes da cirurgia. O que está a viver agora não é o seu novo normal.
+ss_surgical_vitamin_d:
+  title: Vitamina D — ainda mais prioritária depois de uma menopausa cirúrgica
+  body: >-
+    A vitamina D é especialmente importante depois de uma menopausa cirúrgica, dada a perda óssea acelerada. Peça ao seu médico uma análise ao sangue para conhecer o seu nível de 25(OH)D. Muitos especialistas em menopausa recomendam 1000–2000 UI por dia às mulheres submetidas a ooforectomia. Combine-a sempre com cálcio dos alimentos (não com suplementos em doses elevadas). Tome vitamina D3 (colecalciferol) em vez de D2, e com uma refeição que contenha gordura, para melhor absorção.
+  disclaimer: >-
+    A suplementação de vitamina D acima de 2000 UI/dia deve ser orientada por uma análise ao sangue. Doses muito elevadas (acima de 4000 UI/dia) podem ser tóxicas. Consulte o seu médico de família antes de tomar doses elevadas, sobretudo se tiver doença renal ou antecedentes de cálculos renais.
+ss_omega3_surgical:
+  title: Ómega-3 (EPA+DHA) — apoio anti-inflamatório depois de uma ooforectomia
+  body: >-
+    Os ácidos gordos ómega-3 (2000–3000 mg de EPA+DHA por dia, de óleo de peixe ou de algas) reduzem a resposta inflamatória, que pode ser mais acentuada depois de uma menopausa cirúrgica. Há também evidência emergente de benefícios neuroprotetores, relevantes para as alterações cognitivas que algumas mulheres sentem depois de uma ooforectomia. Tome com comida.
+  disclaimer: >-
+    O ómega-3 em doses elevadas (acima de 3 g de EPA+DHA) pode tornar o sangue mais fluido. Se toma anticoagulantes ou aguarda outra cirurgia, consulte o seu médico de família ou farmacêutico antes de o tomar. O ómega-3 de algas é o equivalente vegetal do óleo de peixe.

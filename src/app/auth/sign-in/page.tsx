@@ -8,11 +8,40 @@
  * unavailable during the build phase on Vercel.
  */
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { createClient } from '@/lib/supabase/client'
+import { AUTH_NEXT_COOKIE, AUTH_NEXT_MAX_AGE_SECONDS, safeNext } from '@/lib/safe-redirect'
 import Logo from '@/components/ui/Logo'
+
+/**
+ * Remember where she was going before she leaves for Google or her inbox.
+ *
+ * The middleware sends a signed-out visitor here with `?redirectTo=` — a
+ * check-in reminder opening /symptom-checkin, say. That has to survive a
+ * round trip through Supabase, and it travels in a short-lived cookie rather
+ * than on the callback URL: Supabase checks the callback URL, query string
+ * included, against its Redirect URLs allow-list, so `?next=` there could stop
+ * sign-in working in any environment whose entry is an exact path.
+ * /auth/callback reads the cookie and clears it.
+ *
+ * With no redirectTo the cookie is cleared, so an abandoned attempt can never
+ * steer a later sign-in somewhere she did not ask to go.
+ */
+function rememberDestination() {
+  const requested = new URLSearchParams(window.location.search).get('redirectTo')
+  const secure = window.location.protocol === 'https:' ? '; Secure' : ''
+
+  if (!requested) {
+    document.cookie = `${AUTH_NEXT_COOKIE}=; Path=/; Max-Age=0; SameSite=Lax${secure}`
+    return
+  }
+
+  const target = encodeURIComponent(safeNext(requested))
+  document.cookie =
+    `${AUTH_NEXT_COOKIE}=${target}; Path=/; Max-Age=${AUTH_NEXT_MAX_AGE_SECONDS}; SameSite=Lax${secure}`
+}
 
 // ─── Google logo SVG paths (brand-compliant colours) ─────────────────────────
 
@@ -43,6 +72,16 @@ export default function SignInPage() {
   const [sent, setSent] = useState(false)
   const [error, setError] = useState('')
 
+  // /auth/callback and /auth/complete send a failed sign-in back here with
+  // ?error=. It was never read, so an expired or already-used magic link
+  // returned her to a blank form with no idea why. The message is ours, not
+  // the query value: anything in the URL can be written by someone else.
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).has('error')) {
+      setError(t('linkFailed'))
+    }
+  }, [t])
+
   /**
    * Send a passwordless magic link to the user's email via Supabase Auth.
    * The redirect URL points to our /auth/callback route which exchanges
@@ -60,6 +99,7 @@ export default function SignInPage() {
     e.preventDefault()
     setLoading(true)
     setError('')
+    rememberDestination()
 
     const supabase = createClient()
     const { error: authError } = await supabase.auth.signInWithOtp({
@@ -95,6 +135,7 @@ export default function SignInPage() {
   async function handleGoogle() {
     setGoogleLoading(true)
     setError('')
+    rememberDestination()
 
     const supabase = createClient()
     const { error: authError } = await supabase.auth.signInWithOAuth({
@@ -180,7 +221,7 @@ export default function SignInPage() {
           />
 
           {error && (
-            <p className="text-red-600 text-sm bg-red-50 rounded-xl px-4 py-2">
+            <p role="alert" className="text-red-600 text-sm bg-red-50 rounded-xl px-4 py-2">
               {error}
             </p>
           )}

@@ -1,0 +1,47 @@
+# Traduction de cultural/east-asian.yaml — la version anglaise fait foi.
+items:
+  soy-tofu-miso-phytoestrogens:
+    body: |-
+      Le tofu, le miso, l’edamame, le tempeh et le natto font partie des sources alimentaires les plus riches en isoflavones — des œstrogènes végétaux qui se fixent aux récepteurs des œstrogènes et peuvent aider à modérer les symptômes vasomoteurs. Les preuves sont les plus solides pour les aliments à base de soja entier (pas les protéines de soja transformées) consommés régulièrement.
+
+      Si le tofu fait déjà partie de votre cuisine, gardez-le. Une soupe miso chaque jour est un ajout simple et bénéfique. Le soja fermenté (miso, natto, tempeh) semble avoir des bienfaits plus marqués que les formes non fermentées.
+  green-tea-antioxidants:
+    body: |-
+      Le thé vert est riche en antioxydants et a des propriétés anti-inflammatoires qui soutiennent la santé générale pendant la ménopause. Il contient moins de caféine que le café, mais pas zéro — si les bouffées de chaleur ou les troubles du sommeil sont importants, pensez à remplacer les tasses de l’après-midi par du houjicha (thé vert torréfié, moins caféiné) ou du thé d’orge, sans caféine et très consommé en Asie de l’Est.
+  fish-omega3-brain:
+    body: |-
+      Les alimentations traditionnelles d’Asie de l’Est sont généralement riches en poissons gras — saumon, maquereau, sardines et thon. Les acides gras oméga-3 font partie des soutiens alimentaires les mieux étayés pour la santé du cerveau, l’humeur et l’inflammation pendant la ménopause. Si vous mangez moins de poisson qu’avant, en remettre au menu est un changement à fort impact.
+  fermented-foods-gut:
+    body: |-
+      Le kimchi, le miso, le natto et d’autres aliments fermentés soutiennent la santé du microbiote intestinal. Des recherches émergentes suggèrent que le microbiote joue un rôle dans la façon dont le corps transforme et recycle les œstrogènes — les femmes dont le microbiote est diversifié pourraient métaboliser plus efficacement les phyto-œstrogènes. Manger des aliments fermentés chaque jour est soutenu à la fois par la sagesse traditionnelle et par la science émergente.
+  white-rice-blood-sugar:
+    body: |-
+      Le riz blanc est un aliment de base qui peut faire monter nettement la glycémie s’il est mangé en grande quantité sans assez de protéines et de légumes à côté. Cela compte pendant la ménopause, car l’instabilité de la glycémie aggrave les bouffées de chaleur et les sautes d’humeur.
+
+      Manger le riz avec de bonnes portions de légumes, de tofu, de poisson ou d’œufs modère la réponse glycémique. Refroidir puis réchauffer le riz transforme aussi une partie de l’amidon en amidon résistant, dont l’impact glycémique est plus faible.
+  joint-pain-tai-chi:
+    body: |-
+      Les douleurs articulaires et musculaires sont le symptôme de la ménopause le plus souvent rapporté chez les femmes d’origine est- et sud-est-asiatique. Le tai-chi et le qi gong — tous deux enracinés dans la médecine traditionnelle chinoise — disposent de vraies données pour réduire les douleurs articulaires, améliorer l’équilibre et soutenir la santé mentale. Ce ne sont pas seulement des pratiques culturelles ; ce sont des interventions étayées par les données pour la ménopause.
+  natural-framing:
+    body: |-
+      Dans beaucoup de cultures d’Asie de l’Est, la ménopause est vue comme une transition naturelle de la vie — pas comme une maladie ou un échec. Ce regard a une vraie valeur. Les recherches suggèrent que les femmes qui voient la ménopause de façon plus positive ressentent moins le poids des symptômes.
+
+      Si vous avez adopté un cadre occidental plus médicalisé autour de la ménopause, il peut être sage de renouer avec une perspective culturelle qui la considère comme un passage plutôt que comme un problème.
+  not-complaining:
+    body: |-
+      Dans certaines cultures d’Asie de l’Est, exprimer un inconfort physique — en particulier autour de la santé des femmes — n’est pas encouragé. « Faire avec » peut sembler la bonne chose à faire. Mais souffrir en silence signifie que les symptômes ne sont pas pris en charge et s’aggravent avec le temps.
+
+      Vous pouvez garder vos valeurs culturelles autour de la retenue tout en prenant vos symptômes au sérieux. Les suivre ici, pour vous-même, ce n’est pas se plaindre — c’est rassembler des informations qui vous aideront à vous sentir mieux.
+  bone-density-monitoring:
+    body: |-
+      Les études montrent des différences de densité osseuse entre groupes ethniques. Les femmes japonaises et chinoises ont en général une densité osseuse de départ plus faible que les femmes noires, ce qui peut signifier un risque relatif de fracture plus élevé avec la baisse des œstrogènes à la ménopause.
+
+      Les exercices en charge, un apport suffisant en calcium et en vitamine D et — si c’est approprié — parler d’une ostéodensitométrie avec votre médecin méritent tous d’être envisagés, en particulier si la ménopause arrive plus tôt que prévu.
+      MISE EN GARDE : parlez du dépistage de la densité osseuse avec votre médecin, surtout si vous avez des antécédents familiaux d’ostéoporose.
+byTitle:
+  Your diet may already be working in your favour:
+    title: Votre alimentation joue peut-être déjà en votre faveur
+    body: |-
+      Les femmes qui suivent une alimentation traditionnelle d’Asie de l’Est — riche en aliments à base de soja comme le tofu, le miso, l’edamame et le tempeh — consomment 50–200 mg d’isoflavones par jour. Les femmes occidentales en consomment généralement 3–5 mg. C’est peut-être l’une des raisons importantes pour lesquelles les bouffées de chaleur sont moins souvent rapportées au Japon et en Chine.
+
+      Si votre alimentation est devenue plus occidentale, il peut valoir la peine de réintroduire des aliments traditionnels à base de soja. Si elle reste surtout traditionnelle, c’est un vrai atout nutritionnel à préserver.

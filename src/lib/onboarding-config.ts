@@ -50,6 +50,12 @@ export type OnboardingStep =
       choices?: Choice[]
       /** Derive choices from earlier answers (e.g. primary symptom from symptoms). */
       choicesFrom?: (answers: AnswerMap) => Choice[]
+      /**
+       * Step key whose translated choice labels these choices reuse
+       * (messages: Onboarding.choices.<key>). Defaults to this step's own key —
+       * only needed when choicesFrom re-offers another step's choices.
+       */
+      choiceLabelsFrom?: string
       skippable?: boolean
     })
   /** Multi-select; user taps Continue when done. */
@@ -71,7 +77,7 @@ export type OnboardingStep =
   /** Bespoke step rendered by a dedicated component in the wizard. */
   | (BaseStep & {
       kind: 'custom'
-      component: 'disclaimer' | 'continent' | 'heritage' | 'location' | 'complete'
+      component: 'language' | 'disclaimer' | 'continent' | 'heritage' | 'location' | 'complete'
     })
 
 /** Answers are a flat map; array values are multi-selects. */
@@ -217,6 +223,9 @@ const TRIED_CHOICES: Choice[] = [
 // medical & safety) are interleaved into the relevant part of the flow.
 
 export const STEPS: OnboardingStep[] = [
+  // Asked first, before any other text, so the whole quiz — the safety
+  // disclaimer included — is read in the language the user chose.
+  { id: 'language', kind: 'custom', component: 'language', title: '' },
   { id: 'disclaimer', kind: 'custom', component: 'disclaimer', title: '' },
 
   {
@@ -265,6 +274,7 @@ export const STEPS: OnboardingStep[] = [
       const selected = (a.symptoms as string[] | undefined) ?? []
       return SYMPTOM_CHOICES.filter((c) => selected.includes(c.value))
     },
+    choiceLabelsFrom: 'symptoms',
   },
   {
     id: 'symptom_severity',

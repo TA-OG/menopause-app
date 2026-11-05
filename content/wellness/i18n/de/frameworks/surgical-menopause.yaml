@@ -1,0 +1,37 @@
+# Übersetzung von frameworks/surgical-menopause.yaml — maßgeblich ist die englische Fassung.
+df_surgical_anti_inflammatory:
+  title: Entzündungshemmende Ernährung ist nach einer Ovarektomie besonders wichtig
+  body: >-
+    Eine operativ bedingte Menopause beendet die schützende Östrogenproduktion der Eierstöcke schlagartig statt allmählich. Die entzündlichen Folgen — Gelenkschmerzen, Gefäßveränderungen, kognitive Veränderungen — können ausgeprägter sein als bei einer natürlichen Menopause. Eine entzündungshemmende Ernährung (mediterran, mit Olivenöl, fettem Fisch, buntem Gemüse und wenig hochverarbeiteten Lebensmitteln) hilft, diese allgemeine Verschiebung hin zu mehr Entzündung abzumildern.
+df_surgical_calcium_urgency:
+  title: Knochenschutz über die Ernährung ist dringend — der Abbau ist nach einer operativ bedingten Menopause schneller
+  body: >-
+    Frauen, denen vor der natürlichen Menopause beide Eierstöcke entfernt werden, verlieren schneller Knochendichte als Frauen in der natürlichen Menopause. Je früher die Operation, desto höher das langfristige Bruchrisiko. Kalzium aus der Nahrung (700–1200 mg täglich) und Vitamin D sind unverzichtbar. Wenn du noch nicht mit deiner Ärztin oder deinem Arzt über eine Knochendichtemessung zur Bestimmung deines Ausgangswerts gesprochen hast, mach das zur Priorität.
+lf_surgical_hrt_conversation:
+  title: HRT nach einer operativ bedingten Menopause — das Gespräch, das deine Ärztin oder dein Arzt mit dir führen muss
+  body: >-
+    Frauen, die vor dem 51. Lebensjahr (dem Durchschnittsalter der natürlichen Menopause) eine operativ bedingte Menopause haben, empfehlen die meisten Menopause-Fachleute eine Hormonersatztherapie (HRT) mindestens bis zu diesem Alter. Das Risiko, KEINE HRT zu nehmen — erhöhtes Herz-Kreislauf-Risiko, Knochenabbau, kognitive Veränderungen — ist gut belegt und erheblich. Wenn dir keine HRT angeboten wurde oder ihr nicht darüber gesprochen habt, vereinbare eigens dafür einen Termin. Die Website der British Menopause Society hat eine Suche nach Menopause-Fachleuten (im Vereinigten Königreich), falls deine Hausarztpraxis nicht auf die Menopause spezialisiert ist.
+lf_surgical_bone_exercise:
+  title: Beginne mit belastender Bewegung, sobald du nach der Operation grünes Licht hast
+  body: >-
+    Belastende Bewegung (Gehen, Krafttraining) ist die wichtigste Lebensstilmaßnahme zum Schutz der Knochendichte nach einer operativ bedingten Menopause. Kläre mit deiner Chirurgin oder deinem Chirurgen, wann du beginnen kannst — bei den meisten Frauen beginnt sanftes Gehen wenige Wochen nach der Operation, mit schrittweisem Kräftigen ab 6–8 Wochen. Wenn du diese Gewohnheit früh in deiner Genesung aufbaust, schützt du direkt dein langfristiges Bruchrisiko.
+mr_surgical_grief_acute:
+  title: Die Trauer nach einer operativ bedingten Menopause ist real — und wird oft übersehen
+  body: >-
+    Frauen, die durch eine Operation in die Menopause kommen — ob wegen einer Krebsbehandlung, Endometriose oder aus anderen Gründen — beschreiben häufig eine tiefe, wenig anerkannte Trauer. Die Plötzlichkeit der hormonellen Umstellung verstärkt die emotionale Wirkung der Operation selbst. Wenn deine Operation mit Krebs oder dem Verlust der Fruchtbarkeit zusammenhing, verarbeitest du womöglich mehrere große Verluste gleichzeitig. Das verdient echte psychologische Unterstützung — nicht nur Symptombehandlung. Bitte dein OP-Team oder deine Hausarztpraxis um eine Überweisung zu einer Beraterin oder Therapeutin mit Erfahrung in Frauengesundheit.
+mr_surgical_pace:
+  title: Dein Körper passt sich an eine gewaltige hormonelle Umstellung an — gib ihm Zeit
+  body: >-
+    Die ersten 3–6 Monate nach einer beidseitigen Ovarektomie sind oft die intensivsten, was die Symptome angeht. Hitzewallungen, Schlafstörungen, Stimmungsschwankungen und Gehirnnebel sind in dieser akuten Phase häufig und oft stark. Das ist kein Dauerzustand. Die Symptome legen sich meist über Monate, während sich der Körper anpasst, und mit passender Behandlung (HRT, Veränderungen im Lebensstil) erreichen die meisten Frauen eine Lebensqualität, die mit der vor der Operation vergleichbar ist. Was du jetzt erlebst, ist nicht dein neuer Normalzustand.
+ss_surgical_vitamin_d:
+  title: Vitamin D — nach einer operativ bedingten Menopause noch wichtiger
+  body: >-
+    Vitamin D ist nach einer operativ bedingten Menopause wegen des beschleunigten Knochenabbaus besonders wichtig. Bitte deine Ärztin oder deinen Arzt um eine Blutuntersuchung deines 25(OH)D-Spiegels. Viele Menopause-Fachleute empfehlen Frauen nach einer Ovarektomie 1000–2000 IE täglich. Kombiniere es immer mit Kalzium aus der Nahrung (nicht mit hoch dosierten Präparaten). Nimm Vitamin D3 (Cholecalciferol) statt D2, und zu einer fetthaltigen Mahlzeit, damit es besser aufgenommen wird.
+  disclaimer: >-
+    Eine Vitamin-D-Ergänzung über 2000 IE/Tag sollte sich nach einem Blutwert richten. Sehr hohe Dosen (über 4000 IE/Tag) können toxisch wirken. Sprich vor einer hoch dosierten Einnahme mit deiner Hausärztin oder deinem Hausarzt, besonders wenn du eine Nierenerkrankung hast oder schon einmal Nierensteine hattest.
+ss_omega3_surgical:
+  title: Omega-3 (EPA+DHA) — entzündungshemmende Unterstützung nach einer Ovarektomie
+  body: >-
+    Omega-3-Fettsäuren (2000–3000 mg EPA+DHA täglich aus Fischöl oder Algenöl) dämpfen die Entzündungsreaktion, die nach einer operativ bedingten Menopause ausgeprägter sein kann. Es gibt auch erste Hinweise auf nervenschützende Effekte, die für die kognitiven Veränderungen relevant sind, die manche Frauen nach einer Ovarektomie erleben. Zu einer Mahlzeit einnehmen.
+  disclaimer: >-
+    Hoch dosiertes Omega-3 (über 3 g EPA+DHA) kann blutverdünnend wirken. Wenn du Blutverdünner nimmst oder eine weitere Operation ansteht, sprich vor der Einnahme mit deiner Hausärztin, deinem Hausarzt oder in der Apotheke. Omega-3 aus Algen ist die pflanzliche Alternative zu Fischöl.

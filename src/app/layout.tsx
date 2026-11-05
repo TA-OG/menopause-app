@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
-import { getLocale, getMessages } from 'next-intl/server'
+import { getLocale, getMessages, getTranslations } from 'next-intl/server'
 import './globals.css'
 import AutoLocaleNotice from '@/components/layout/AutoLocaleNotice'
 
@@ -11,28 +11,34 @@ const inter = Inter({
   display: 'swap',
 })
 
-export const metadata: Metadata = {
-  title: {
-    default: 'Aunty Mel',
-    template: '%s | Aunty Mel',
-  },
-  description:
-    'Every body needs an Aunty Mel. Personalised wellness guidance for perimenopause and menopause — built on real specialist expertise to help you understand your body, manage your symptoms, and have a more powerful conversation with your doctor.',
-  keywords: ['menopause', 'perimenopause', 'wellness', 'womens health', 'symptoms'],
-  manifest: '/manifest.json',
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: 'default',
-    title: 'Aunty Mel',
-  },
-  formatDetection: {
-    telephone: false,
-  },
-  openGraph: {
-    type: 'website',
-    locale: 'en_GB',
-    siteName: 'Aunty Mel',
-  },
+// og:locale per app language; the description comes from messages (Meta).
+const OG_LOCALE: Record<string, string> = { en: 'en_GB', fr: 'fr_FR', es: 'es_ES', de: 'de_DE', pt: 'pt_PT' }
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('Meta')
+  const locale = await getLocale()
+  return {
+    title: {
+      default: 'Aunty Mel',
+      template: '%s | Aunty Mel',
+    },
+    description: t('description'),
+    keywords: ['menopause', 'perimenopause', 'wellness', 'womens health', 'symptoms'],
+    manifest: '/manifest.json',
+    appleWebApp: {
+      capable: true,
+      statusBarStyle: 'default',
+      title: 'Aunty Mel',
+    },
+    formatDetection: {
+      telephone: false,
+    },
+    openGraph: {
+      type: 'website',
+      locale: OG_LOCALE[locale] ?? 'en_GB',
+      siteName: 'Aunty Mel',
+    },
+  }
 }
 
 export const viewport: Viewport = {

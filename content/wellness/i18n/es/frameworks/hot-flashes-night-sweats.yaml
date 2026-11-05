@@ -1,0 +1,79 @@
+# Traducción de frameworks/hot-flashes-night-sweats.yaml — prevalece la versión en inglés.
+df_cool_foods:
+  title: Prioriza los alimentos «refrescantes»
+  body: >-
+    Los alimentos ricos en fitoestrógenos — semillas de lino molidas, edamame, tofu, tempeh — pueden ayudar a amortiguar las fluctuaciones de estrógenos que provocan los sofocos. Intenta tomar 1–2 cucharadas de semillas de lino molidas al día, añadidas a las gachas, al yogur o a los batidos.
+df_reduce_triggers:
+  title: Reduce los desencadenantes habituales de los sofocos
+  body: >-
+    La cafeína, el alcohol, la comida picante y las bebidas muy calientes son los desencadenantes alimentarios de sofocos que más se mencionan. Prueba a eliminar uno cada vez durante dos semanas y apunta si la frecuencia o la intensidad de los sofocos disminuye. Muchas mujeres descubren que el café de la mañana es el principal culpable.
+df_blood_sugar:
+  title: Estabiliza el azúcar en sangre como base general
+  body: >-
+    Algunas mujeres notan que los picos y bajones de azúcar parecen provocar o empeorar un sofoco, aunque no es un desencadenante demostrado de los síntomas vasomotores de la menopausia en general; merece la pena observarlo en ti en lugar de darlo por hecho. Comer proteína y grasas saludables en cada comida (p. ej., huevos, frutos secos, pescado azul, aguacate) frena de todos modos la absorción de glucosa y es una base razonable en cualquier caso. Evita los hidratos refinados y los tentempiés azucarados con el estómago vacío.
+df_hf_hydration:
+  title: Mantente bien hidratada de forma constante
+  body: >-
+    La deshidratación sube la temperatura corporal y hace los sofocos más intensos. Unos 2 litros al día es la referencia habitual, repartidos a lo largo del día, y algo más si sudas por la noche; pero es una orientación, no un objetivo, y lo que necesitas de verdad depende de tu tamaño, del tiempo que haga y de lo activa que seas. Si un médico te ha dicho que limites los líquidos — por ejemplo, por insuficiencia cardiaca o renal — sigue su límite, no este. Empieza el día con un vaso grande de agua fría y ten uno junto a la cama.
+lf_layers_bedding:
+  title: Ropa de cama por capas — la solución más práctica para los sudores nocturnos
+  body: >-
+    Cambia a ropa de cama transpirable que absorba la humedad (bambú o percal de algodón). Duerme con capas que puedas apartar: una sábana, una manta ligera, un edredón, en lugar de un solo edredón grueso. Un pequeño ventilador orientado hacia otro lado (para que enfríe la habitación sin soplarte) puede reducir la intensidad de los sudores nocturnos manteniendo la temperatura ambiente por debajo de 18 °C.
+lf_paced_breathing:
+  title: Respiración pausada para frenar un sofoco
+  body: >-
+    La investigación muestra que la respiración lenta y pausada (4–5 respiraciones por minuto) puede reducir la intensidad de un sofoco si se empieza a la primera señal. Prueba: inspira contando 4, retén 2, espira contando 6. Practícala a diario para que se vuelva automática. Hacen falta unas 2 semanas de práctica para que funcione de forma fiable en el momento.
+lf_exercise_timing:
+  title: El momento del ejercicio importa
+  body: >-
+    El ejercicio moderado y regular reduce la frecuencia general de los síntomas vasomotores, pero hacer ejercicio con calor o a alta intensidad puede provocar sofocos de forma temporal. En mujeres con sudores nocturnos importantes, el ejercicio por la mañana, con el aire fresco, suele funcionar mejor que por la tarde-noche.
+lf_clothing:
+  title: Vístete por capas con fibras naturales
+  body: >-
+    Los tejidos sintéticos retienen el calor. Las fibras naturales — algodón, lino, bambú, merino — dejan que la humedad se evapore. En el trabajo, una chaqueta de punto o una americana que puedas quitarte rápido te da más control que una sola prenda gruesa. Si puedes, ten un pequeño ventilador en tu mesa.
+mr_flush_not_just_supplements:
+  title: Los sofocos no son solo cuestión de suplementos
+  body: >-
+    La salud intestinal y la estabilidad del azúcar en sangre también pueden influir. Algunas mujeres notan que las oscilaciones de azúcar provocan o empeoran un sofoco, posiblemente por la adrenalina que se libera para corregir una bajada, pero no es un desencadenante demostrado de los sofocos de la menopausia en general, solo un patrón que cuentan algunas mujeres y que merece la pena observar en ti. Estabilizar el azúcar a lo largo del día es una base razonable de todos modos. Puede que también leas que una mala eliminación de los estrógenos (un problema intestinal o hepático) provoca los sofocos: es una teoría que usan algunos profesionales, no algo que las guías habituales sobre la menopausia consideren una causa demostrada, así que conviene tomarla con prudencia. En cualquier caso, trabajar las bases — sueño, estrés, azúcar en sangre, movimiento — suele hacer más por la frecuencia y la intensidad de los sofocos que cualquier suplemento por sí solo.
+mr_flush_normalise:
+  title: Cambia tu forma de ver el sofoco — la ansiedad los empeora
+  body: >-
+    La ansiedad ante un sofoco que se acerca es en sí misma un desencadenante: activa el sistema nervioso simpático, que sube la temperatura corporal. Las mujeres que aprenden a observar un sofoco sin dramatizar («esto pasará en 90 segundos») refieren con el tiempo una intensidad bastante menor. En el Reino Unido, el NICE reconoce la terapia cognitivo-conductual (TCC) para los síntomas de la menopausia como una opción para los síntomas vasomotores, junto con la THS o en su lugar. En Inglaterra puedes solicitar tú misma NHS Talking Therapies si cumples los requisitos, aunque ese servicio está orientado a la ansiedad y la depresión y la TCC específica para la menopausia no se ofrece en todas partes, así que merece la pena preguntar también a tu médico por una TCC específica para la menopausia o una derivación a una unidad de menopausia. Women’s Health Concern (la rama para pacientes de la British Menopause Society) publica una ficha gratuita (en inglés) sobre la TCC para los síntomas de la menopausia.
+mr_sleep_hygiene:
+  title: Protege tu sueño pese a los sudores nocturnos
+  body: >-
+    Los sudores nocturnos suelen provocar una ansiedad añadida con el sueño («me da miedo irme a la cama»). Mantén una rutina antes de dormir constante y tranquila. Una ducha fresca antes de acostarte baja la temperatura corporal durante 60–90 minutos, el intervalo en el que más ayuda. Evita las pantallas en los 30 minutos previos. Si te despierta un sudor, ten el agua y el ventilador preparados y evita mirar el móvil.
+mr_track_patterns:
+  title: Registra los desencadenantes durante dos semanas
+  body: >-
+    Usa tu registro diario para apuntar la frecuencia de los sofocos, la hora del día y lo que comiste o bebiste en las 2 horas anteriores. La mayoría de las mujeres encuentran 2–3 patrones claros en dos semanas. Conocer tus desencadenantes te da capacidad de actuar, algo que en sí mismo se asocia a sentir menos carga de síntomas.
+ss_magnesium_glycinate:
+  title: Glicinato de magnesio — apoyo para el sueño y los sofocos
+  body: >-
+    El glicinato de magnesio (200–400 mg antes de acostarte) se tolera bien y tiene evidencia inicial de que reduce la frecuencia de los sudores nocturnos y mejora la calidad del sueño en la perimenopausia. También calma el sistema nervioso. La forma glicinato es más suave para el sistema digestivo que el óxido de magnesio.
+  disclaimer: >-
+    Los suplementos no son medicamentos regulados. Consúltalo siempre con tu médico de cabecera o farmacéutico antes de empezar, sobre todo si tomas algún medicamento con receta o tienes problemas de riñón o de corazón.
+ss_sage_extract:
+  title: Salvia — para los sofocos y los sudores nocturnos
+  body: >-
+    El extracto estandarizado de salvia (Salvia officinalis) cuenta con un pequeño conjunto de evidencia clínica que muestra una reducción modesta de la frecuencia de los sofocos; los estudios solían usar 300–600 mg al día de un extracto estandarizado, que no es lo mismo que una taza de infusión de salvia, que no se ha estudiado a una dosis conocida y no tiene la misma evidencia. La infusión de salvia antes de dormir es un remedio tradicional para el exceso de sudor al que algunas mujeres siguen recurriendo; solo conviene saber que no tiene la misma base que la investigación sobre el extracto. Los efectos del extracto estandarizado tardan 4–8 semanas en notarse. No sustituye a la THS si los sofocos son intensos.
+  disclaimer: >-
+    Los suplementos de salvia pueden interactuar con algunos medicamentos, como los anticonvulsivos y los fármacos para la diabetes. No son adecuados durante el embarazo. Consulta con tu médico de cabecera antes de usarlos, sobre todo si tienes algún problema de salud en curso.
+ss_omega3_vasomotor:
+  title: Omega-3 (EPA/DHA) — para los sofocos y los sudores nocturnos
+  body: >-
+    Hay cierta evidencia de que reduce la frecuencia y la intensidad de los síntomas vasomotores — sofocos y sudores nocturnos —, además de sus otros beneficios generales para la salud.
+  disclaimer: >-
+    El omega-3 en dosis altas puede hacer la sangre más fluida. Si tomas anticoagulantes (warfarina, aspirina, apixabán) o tienes una operación pendiente, consulta con tu médico de cabecera o farmacéutico antes de tomarlo.
+ss_vitamin_e_vasomotor:
+  title: Vitamina E — para los síntomas vasomotores
+  body: >-
+    Algunas mujeres prueban la vitamina E, normalmente en torno a 400 UI/día, para reducir la frecuencia y la intensidad de los síntomas vasomotores, incluidos los sudores nocturnos; la evidencia de este efecto concreto es modesta. 400 UI es una dosis de suplemento alta, muy por encima de lo que aporta la alimentación.
+  disclaimer: >-
+    La vitamina E en dosis altas puede aumentar el riesgo de sangrado, sobre todo junto con anticoagulantes o antiagregantes (warfarina, aspirina) o antes de una operación. Consúltalo siempre con tu médico de cabecera o farmacéutico antes de empezar, sobre todo si tomas algún medicamento con receta.
+ss_maca_hot_flushes:
+  title: Maca — para el equilibrio hormonal, la energía, el ánimo y la libido
+  body: >-
+    La maca (p. ej., las fórmulas de la Dra. Anna Cabeca, o polvo o cápsulas de raíz de maca estándar) favorece el equilibrio hormonal, la energía, el ánimo y la libido en muchas mujeres.
+  disclaimer: >-
+    Precaución si tienes una enfermedad autoinmune: la maca puede estimular el sistema inmunitario y empeorar los brotes. Si es tu caso, conviene consultarlo antes con tu médico o un especialista.

@@ -1,33 +1,24 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import { useLocale, useTranslations } from 'next-intl'
 import type { JournalEntry, SymptomKey } from '@/types/database'
 
-const SYMPTOM_LABELS: Record<SymptomKey, string> = {
-  hot_flashes: 'Hot flushes',
-  night_sweats: 'Night sweats',
-  sleep_problems: 'Sleep problems',
-  mood_changes: 'Mood changes',
-  anxiety: 'Anxiety',
-  brain_fog: 'Brain fog',
-  weight_changes: 'Weight changes',
-  joint_pain: 'Joint pain',
-  low_libido: 'Low libido',
-  fatigue: 'Fatigue',
-  vaginal_dryness: 'Vaginal dryness',
-  skin_changes: 'Skin changes',
-  hair_changes: 'Hair changes',
-  other: 'Other',
-}
+// Symptom labels come from the shared Symptoms messages; effect labels from
+// Journal.effects. Keys are the stored values — never translate those.
+const SYMPTOM_KEYS: SymptomKey[] = [
+  'hot_flashes', 'night_sweats', 'sleep_problems', 'mood_changes', 'anxiety',
+  'brain_fog', 'weight_changes', 'joint_pain', 'low_libido', 'fatigue',
+  'vaginal_dryness', 'skin_changes', 'hair_changes', 'other',
+]
 
-const EFFECT_LABELS = {
-  much_better: '✅ Much better',
-  better: '👍 Better',
-  no_change: '➡️ No change',
-  worse: '👎 Worse',
-}
+const EFFECT_KEYS = ['much_better', 'better', 'no_change', 'worse'] as const
+type EffectKey = (typeof EFFECT_KEYS)[number]
 
 export default function JournalPage() {
+  const t = useTranslations('Journal')
+  const symptomLabel = useTranslations('Symptoms')
+  const locale = useLocale()
   const [entries, setEntries] = useState<JournalEntry[]>([])
   const [isLimited, setIsLimited] = useState(false)
   const [loading, setLoading] = useState(true)
@@ -81,8 +72,10 @@ export default function JournalPage() {
       })
 
       if (!res.ok) {
-        const { error } = await res.json()
-        setSaveError(error ?? 'Could not save entry. Please try again.')
+        // The API's message is English: log it, show hers.
+        const { error } = await res.json().catch(() => ({ error: undefined }))
+        console.error('journal save failed:', res.status, error)
+        setSaveError(t('errorSave'))
         return
       }
 
@@ -95,7 +88,7 @@ export default function JournalPage() {
       setShowNew(false)
       loadEntries()
     } catch {
-      setSaveError('Could not save entry. Please check your connection.')
+      setSaveError(t('errorNetwork'))
     } finally {
       setSaving(false)
     }
@@ -104,33 +97,33 @@ export default function JournalPage() {
   return (
     <div className="space-y-6 py-4">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-brand-900">Journal</h1>
+        <h1 className="text-2xl font-bold text-brand-900">{t('title')}</h1>
         <button
           onClick={() => setShowNew(!showNew)}
           className="bg-brand-900 text-white text-sm font-semibold px-4 py-2 rounded-xl"
         >
-          + New entry
+          {t('newEntry')}
         </button>
       </div>
 
       {/* New entry form */}
       {showNew && (
         <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 space-y-4">
-          <h2 className="font-semibold text-gray-900">New journal entry</h2>
+          <h2 className="font-semibold text-gray-900">{t('newEntryTitle')}</h2>
 
           {/* Symptom focus */}
           <div>
             <label className="text-sm font-medium text-gray-700 block mb-1">
-              Which symptom are you tracking? (optional)
+              {t('symptomLabel')}
             </label>
             <select
               value={symptomFocus}
               onChange={(e) => setSymptomFocus(e.target.value as SymptomKey)}
               className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm"
             >
-              <option value="">No specific symptom</option>
-              {Object.entries(SYMPTOM_LABELS).map(([key, label]) => (
-                <option key={key} value={key}>{label}</option>
+              <option value="">{t('noSymptom')}</option>
+              {SYMPTOM_KEYS.map((key) => (
+                <option key={key} value={key}>{symptomLabel(key)}</option>
               ))}
             </select>
           </div>
@@ -138,13 +131,13 @@ export default function JournalPage() {
           {/* Plan item being tracked */}
           <div>
             <label className="text-sm font-medium text-gray-700 block mb-1">
-              Which adjustment are you trialling? (optional)
+              {t('planItemLabel')}
             </label>
             <input
               type="text"
               value={planItemTitle}
               onChange={(e) => setPlanItemTitle(e.target.value)}
-              placeholder="e.g. Reducing caffeine, Daily paced breathing..."
+              placeholder={t('planItemPlaceholder')}
               className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm"
             />
           </div>
@@ -153,7 +146,7 @@ export default function JournalPage() {
           {planItemTitle && (
             <div>
               <label className="text-sm font-medium text-gray-700 block mb-1">
-                How many days have you been trying this?
+                {t('daysLabel')}
               </label>
               <input
                 type="number"
@@ -169,10 +162,10 @@ export default function JournalPage() {
           {planItemTitle && (
             <div>
               <label className="text-sm font-medium text-gray-700 block mb-2">
-                How has it been going?
+                {t('effectLabel')}
               </label>
               <div className="grid grid-cols-2 gap-2">
-                {Object.entries(EFFECT_LABELS).map(([key, label]) => (
+                {EFFECT_KEYS.map((key) => (
                   <button
                     key={key}
                     onClick={() => setPerceivedEffect(key)}
@@ -182,7 +175,7 @@ export default function JournalPage() {
                         : 'bg-white text-gray-700 border-gray-200 hover:border-brand-300'
                     }`}
                   >
-                    {label}
+                    {t(`effects.${key}`)}
                   </button>
                 ))}
               </div>
@@ -193,12 +186,12 @@ export default function JournalPage() {
           {perceivedEffect && (
             <div>
               <label className="text-sm font-medium text-gray-700 block mb-2">
-                Would you continue with this?
+                {t('continueLabel')}
               </label>
               <div className="flex gap-2">
                 {[
-                  { value: true, label: 'Yes' },
-                  { value: false, label: 'No' },
+                  { value: true, label: t('yes') },
+                  { value: false, label: t('no') },
                 ].map(({ value, label }) => (
                   <button
                     key={label}
@@ -219,12 +212,12 @@ export default function JournalPage() {
           {/* Free text notes */}
           <div>
             <label className="text-sm font-medium text-gray-700 block mb-1">
-              Your notes
+              {t('notesLabel')}
             </label>
             <textarea
               value={content}
               onChange={(e) => setContent(e.target.value)}
-              placeholder="How are you feeling? What have you noticed? What worked, what didn't?"
+              placeholder={t('notesPlaceholder')}
               rows={4}
               className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm resize-none"
             />
@@ -240,13 +233,13 @@ export default function JournalPage() {
               disabled={!content.trim() || saving}
               className="flex-1 bg-brand-900 text-white font-semibold py-2 rounded-xl disabled:opacity-50"
             >
-              {saving ? 'Saving...' : 'Save entry'}
+              {saving ? t('saving') : t('save')}
             </button>
             <button
               onClick={() => setShowNew(false)}
               className="px-4 py-2 border border-gray-200 rounded-xl text-sm text-gray-600"
             >
-              Cancel
+              {t('cancel')}
             </button>
           </div>
         </div>
@@ -255,27 +248,27 @@ export default function JournalPage() {
       {/* Free-tier restriction notice */}
       {isLimited && (
         <div className="bg-brand-50 border border-brand-200 rounded-2xl p-4">
-          <p className="text-sm font-semibold text-brand-900">Showing your last 7 days</p>
+          <p className="text-sm font-semibold text-brand-900">{t('limitedTitle')}</p>
           <p className="text-sm text-brand-700 mt-1 mb-3">
-            Upgrade to Premium to access your full journal history.
+            {t('limitedBody')}
           </p>
           <a
             href="/pay"
             className="inline-block bg-brand-900 text-white text-sm font-semibold px-4 py-2 rounded-xl"
           >
-            Upgrade — £7.99/month
+            {t('upgradeCta')}
           </a>
         </div>
       )}
 
       {/* Entry list */}
       {loading ? (
-        <p className="text-gray-400 text-sm text-center py-8">Loading...</p>
+        <p className="text-gray-400 text-sm text-center py-8">{t('loading')}</p>
       ) : entries.length === 0 ? (
         <div className="text-center py-12">
-          <p className="text-gray-400 text-sm">No journal entries yet.</p>
+          <p className="text-gray-400 text-sm">{t('emptyTitle')}</p>
           <p className="text-gray-400 text-sm mt-1">
-            Use the journal to track what you&apos;re trying and how it&apos;s going.
+            {t('emptyBody')}
           </p>
         </div>
       ) : (
@@ -287,13 +280,13 @@ export default function JournalPage() {
             >
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs text-gray-400">
-                  {new Date(entry.created_at).toLocaleDateString('en-GB', {
+                  {new Date(entry.created_at).toLocaleDateString(locale, {
                     day: 'numeric', month: 'short', year: 'numeric'
                   })}
                 </span>
                 {entry.symptom_focus && (
                   <span className="text-xs bg-brand-100 text-brand-700 px-2 py-0.5 rounded-full">
-                    {SYMPTOM_LABELS[entry.symptom_focus]}
+                    {symptomLabel(entry.symptom_focus)}
                   </span>
                 )}
               </div>
@@ -303,7 +296,7 @@ export default function JournalPage() {
                   🎯 {entry.plan_item_title}
                   {entry.days_tried && (
                     <span className="text-gray-400 font-normal">
-                      {' '}· Day {entry.days_tried}
+                      {' '}· {t('day', { count: entry.days_tried })}
                     </span>
                   )}
                 </p>
@@ -311,10 +304,12 @@ export default function JournalPage() {
 
               {entry.perceived_effect && (
                 <p className="text-sm text-gray-600 mb-1">
-                  {EFFECT_LABELS[entry.perceived_effect as keyof typeof EFFECT_LABELS]}
+                  {EFFECT_KEYS.includes(entry.perceived_effect as EffectKey)
+                    ? t(`effects.${entry.perceived_effect as EffectKey}`)
+                    : entry.perceived_effect}
                   {entry.would_continue !== null && (
                     <span className="ml-2 text-gray-400">
-                      · {entry.would_continue ? 'Would continue' : 'Would not continue'}
+                      · {entry.would_continue ? t('wouldContinue') : t('wouldNotContinue')}
                     </span>
                   )}
                 </p>

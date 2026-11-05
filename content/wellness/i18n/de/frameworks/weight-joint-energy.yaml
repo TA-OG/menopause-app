@@ -1,0 +1,97 @@
+# Übersetzung von frameworks/weight-joint-energy.yaml — maßgeblich ist die englische Fassung.
+df_protein_muscle:
+  title: Eiweiß zuerst — Muskeln sind dein Stoffwechselmotor
+  body: >-
+    Der Östrogenrückgang beschleunigt den Muskelabbau (Sarkopenie), was den Stoffwechsel verlangsamt und das Gewichtsmanagement erschwert. Ziel sind täglich 1,2–1,6 g Eiweiß pro kg Körpergewicht. Verteil es auf die Mahlzeiten: 25–30 g pro Mahlzeit sind für den Muskelaufbau wirksamer als der Großteil am Abend. Quellen: Eier, Hähnchen, Fisch, griechischer Joghurt, Hülsenfrüchte, Hüttenkäse, Tofu.
+df_anti_inflammatory:
+  title: Entzündungshemmende Ernährung bei Gelenkschmerzen
+  body: >-
+    Gelenkschmerzen in der Perimenopause entstehen teils durch Entzündung, weil die entzündungshemmende Wirkung des Östrogens nachlässt. Lebensmittel, die entzündungshemmend wirken: Olivenöl, fetter Fisch, Beeren, Kurkuma, Ingwer, dunkles Blattgemüse, buntes Gemüse. Lebensmittel, die Entzündungen fördern: hochverarbeitete Lebensmittel, raffinierter Zucker, Samenöle (Sonnenblumenöl, Pflanzenöl), zu viel Alkohol.
+df_reduce_refined_carbs:
+  title: Weniger raffinierte Kohlenhydrate — nicht alle Kohlenhydrate
+  body: >-
+    Die hormonellen Veränderungen der Perimenopause erhöhen die Insulinresistenz — raffinierte Kohlenhydrate (Weißbrot, Gebäck, zuckerhaltige Getränke, weißer Reis) treiben den Blutzucker stärker in die Höhe als früher. Das fördert die Fetteinlagerung, besonders am Bauch. Setz auf komplexe Kohlenhydrate: Hafer, Süßkartoffeln, Hülsenfrüchte, Vollkornbrot. Du musst Kohlenhydrate nicht streichen — wähl einfach solche mit Ballaststoffen.
+df_collagen_joints:
+  title: Unterstütze deine Gelenke mit Lebensmitteln, die die Kollagenbildung fördern
+  body: >-
+    Vitamin C ist für die Kollagenbildung in Knorpel und Bindegewebe unverzichtbar. Iss täglich Zitrusfrüchte, Kiwi, rote Paprika, Brokkoli und Erdbeeren. Knochenbrühe enthält Vorstufen von Kollagen. Siliziumreiche Lebensmittel (Hafer, Lauch, grüne Bohnen) unterstützen ebenfalls die Reparatur des Bindegewebes.
+lf_strength_training:
+  title: Krafttraining — das wichtigste Training in den Wechseljahren
+  body: >-
+    Krafttraining (Gewichte, Widerstandsbänder, Übungen mit dem eigenen Körpergewicht) ist die am besten belegte Maßnahme für Gewichtsmanagement in der Perimenopause, Knochendichte, Gelenkstabilität und Stoffwechsel. Gemeint ist kein schweres Powerlifting — schon 2–3 Einheiten à 30 Minuten pro Woche mit Kniebeugen, Ausfallschritten, Liegestützen und Rudern bringen einen messbaren Stoffwechselnutzen. Fang leicht an und achte auf die Technik. Wenn du kostenlos einsteigen möchtest: Der britische NHS bietet den Plan Strength and Flex an — eine fünfwöchige Reihe von Übungen ohne Geräte — sowie Trainingsvideos im Fitness Studio (auf Englisch).
+lf_low_impact_joints:
+  title: Schone die Gelenke mit gelenkschonender Bewegung
+  body: >-
+    Bei Gelenkschmerzen setz auf Bewegung, die die Gelenke ohne Stöße belastet: Schwimmen, Radfahren, Yoga, Pilates, Gehen auf ebenem Boden. Meide stoßintensives Laufen oder HIIT auf hartem Untergrund, bis die Schmerzen im Griff sind. Aufwärmen und Abkühlen sind jetzt wichtiger als mit 30 — plane 5–10 Minuten am Anfang und Ende jeder Einheit ein.
+lf_movement_consistency:
+  title: Regelmäßigkeit schlägt Intensität für die Stoffwechselgesundheit
+  body: >-
+    Kurze, hochintensive Einheiten mit anschließenden Ruhetagen sind für das Gewichtsmanagement in den Wechseljahren weniger wirksam als regelmäßige, moderate Bewegung jeden Tag. Ein 30-minütiger Spaziergang täglich bringt mehr Stoffwechselnutzen als zwei intensive 90-minütige Einheiten pro Woche. Ziel ist, langes Sitzen zu vermeiden — unterbrich es alle 60–90 Minuten, und sei es nur mit einem 5-minütigen Spaziergang.
+mr_weight_compassion:
+  title: Gewichtsveränderungen in den Wechseljahren sind hormonell — nicht deine Schuld
+  body: >-
+    Im Durchschnitt nimmt eine Frau während des Übergangs in die Menopause 2–5 kg zu, ohne etwas an Ernährung oder Aktivität zu ändern. Ursache ist das sinkende Östrogen, das die Fettverteilung verändert, nicht zu viel Essen. Die Verlagerung der Fetteinlagerung von Hüften und Oberschenkeln zum Bauch ist eine hormonelle Reaktion. Scham und Diäten verschlechtern das Stoffwechselbild. Ziel ist Stoffwechselgesundheit — Kraft, Energie, Blutwerte — nicht die Zahl auf der Waage.
+mr_joint_pain_movement_anxiety:
+  title: Gelenkschmerzen erzeugen Angst vor Bewegung — und das macht sie schlimmer
+  body: >-
+    Schmerzen führen zu schützendem Vermeiden von Bewegung, das schwächt die Muskeln rund um die Gelenke, und das führt zu mehr Schmerzen. Man nennt das Kinesiophobie (Bewegungsangst), und sie ist sehr verbreitet. Sanfte, regelmäßige Bewegung mit wenig Schmerz — auch wenn die Gelenke wehtun — wirkt heilsam. Wenn Bewegung deine Schmerzen zuverlässig für mehr als einen Tag verstärkt, sprich mit deiner Hausärztin oder deinem Hausarzt über Physiotherapie.
+ss_omega3_joints:
+  title: Omega-3 (EPA+DHA) — entzündungshemmend für Gelenke und Stoffwechsel
+  body: >-
+    Hoch dosiertes Omega-3 (2000–3000 mg EPA+DHA täglich aus Fischöl oder Algenöl) hat klinische Belege für weniger Gelenksteifigkeit und niedrigere Entzündungswerte. Der Nutzen für den Stoffwechsel (bessere Insulinempfindlichkeit, niedrigere Triglyceride) ist auch für das Gewichtsmanagement in den Wechseljahren relevant. Zu einer fetthaltigen Mahlzeit einnehmen. Omega-3 aus Algen ist die pflanzliche Alternative.
+  disclaimer: >-
+    Hoch dosiertes Omega-3 (über 3 g EPA+DHA) kann blutverdünnend wirken. Wenn du Blutverdünner nimmst (Warfarin, Aspirin, Apixaban) oder eine Operation ansteht, sprich vor der Einnahme mit deiner Hausärztin, deinem Hausarzt oder in der Apotheke.
+ss_collagen_type2_joints:
+  title: Kollagen Typ II — speziell für den Gelenkknorpel
+  body: >-
+    Hier gibt es zwei recht unterschiedliche Produkte in sehr unterschiedlichen Dosen — es lohnt sich zu wissen, welches welches ist. Hydrolysiertes Kollagen (in kleinere Peptide zerlegt) wird üblicherweise mit etwa 10 g/Tag eingenommen. Nicht denaturiertes Kollagen Typ II (oft als UC-II verkauft) ist ein anderes, konzentrierteres Präparat, das in einer viel niedrigeren Dosis untersucht wurde, meist etwa 40 mg/Tag — davon 10 g zu nehmen, wäre weit mehr als vorgesehen. In beiden Fällen ist Typ II die Form, die speziell mit dem Gelenkknorpel verbunden ist, anders als Kollagen Typ I für Haare, Haut und Nägel.
+  disclaimer: >-
+    Kollagenpräparate sind für die meisten Erwachsenen in der Regel sicher. Wenn du eine Fisch- oder Schalentierallergie hast, prüfe die Herkunft des Kollagens. Sprich vor der Einnahme mit deiner Hausärztin oder deinem Hausarzt, wenn du eine bestehende Erkrankung hast.
+ss_curcumin_joints:
+  title: Curcumin — bei Gelenkschmerzen und Steifigkeit
+  body: >-
+    Manche Frauen probieren Curcumin, üblicherweise etwa 500 mg 2–4-mal/Tag, oft kombiniert mit Piperin (Extrakt aus schwarzem Pfeffer) für eine bessere Aufnahme. Es ist ein recht gut untersuchter Entzündungshemmer, der oft speziell bei Gelenkschmerzen und Steifigkeit eingesetzt wird.
+  disclaimer: >-
+    Curcuminprodukte mit verbesserter Aufnahme (in Kombination mit Piperin) wurden mit seltenen Fällen von Leberschäden in Verbindung gebracht und können in höheren Dosen Sodbrennen verursachen. Curcumin kann außerdem mit blutverdünnenden Medikamenten wechselwirken. Sprich vor dem Beginn immer mit deiner Hausärztin, deinem Hausarzt oder in der Apotheke, besonders wenn du verschreibungspflichtige Medikamente nimmst oder Leberprobleme hast.
+ss_glucosamine_chondroitin:
+  title: Glucosamin und Chondroitin
+  body: >-
+    Manche Frauen nehmen Glucosamin und Chondroitin zusammen, üblicherweise etwa 1500 mg Glucosamin plus 1200 mg Chondroitin pro Tag — eine traditionelle Kombination für die Gelenke, mit einigen Belegen für die Unterstützung des Knorpels und weniger Gelenkbeschwerden, besonders bei Arthrose.
+  disclaimer: >-
+    Kann zusammen mit Warfarin das Blutungsrisiko erhöhen und den Blutzucker beeinflussen — wichtig, wenn du Diabetes hast oder Blutverdünner nimmst. Vorsicht auch bei einer Schalentierallergie, da Glucosamin oft aus Schalentieren gewonnen wird. Sprich vor der Einnahme mit deiner Hausärztin oder deinem Hausarzt.
+ss_msm_joints:
+  title: MSM (Methylsulfonylmethan)
+  body: >-
+    Üblich sind 1–3 g/Tag. Einige Belege für weniger Gelenkschmerzen und Entzündung.
+  disclaimer: >-
+    Sprich vor dem Beginn immer mit deiner Hausärztin, deinem Hausarzt oder in der Apotheke, besonders wenn du verschreibungspflichtige Medikamente nimmst.
+ss_wobenzym_joints:
+  title: Systemische Enzymmischungen — bei Gelenkschmerzen und zur Regeneration
+  body: >-
+    Systemische Enzymmischungen (Proteasen wie Bromelain, Trypsin und Chymotrypsin — Wobenzym ist die am besten untersuchte Marke) werden meist auf nüchternen Magen eingenommen, zwischen den Mahlzeiten statt dazu, nach den Dosierungsangaben des Produkts. Die Belege für Gelenkschmerzen und Regeneration sind begrenzt und uneinheitlich und unterscheiden sich je nach Produkt und Studie — das ist keine Gruppe mit starker, gesicherter Evidenz, also eher ein Gesprächsthema als eine etablierte Option. Formulierungen und Enzymstärken unterscheiden sich stark zwischen den Produkten, die Dosis hängt also ganz von deinem Produkt ab — folge seinem Etikett statt einer allgemeinen Regel; in der Apotheke hilft man dir beim Vergleichen.
+  disclaimer: >-
+    Kann mit blutverdünnenden Medikamenten wechselwirken — vorher ärztlich abklären, besonders wenn du Blutverdünner oder Aspirin nimmst.
+ss_berberine_weight:
+  title: Berberin — für Blutzucker und Stoffwechselgesundheit
+  body: >-
+    Üblich sind 500 mg, 2–3-mal/Tag vor den Mahlzeiten. Unterstützt die Blutzuckerregulation und die Stoffwechselgesundheit.
+  disclaimer: >-
+    Nicht geeignet in Schwangerschaft und Stillzeit. Kann mit Blutzucker- und Blutdruckmedikamenten wechselwirken, außerdem mit mehreren anderen Arzneimitteln über ihren Abbau in der Leber — gerade hier ist eine ärztliche Abklärung vorab nötig, und nenn dabei alle Medikamente, die du nimmst.
+ss_myo_inositol_weight:
+  title: Myo-Inositol — für Insulinempfindlichkeit und Blutzuckerbalance
+  body: >-
+    Üblich sind 2–4 g/Tag. Unterstützt die Insulinempfindlichkeit und einen ausgeglichenen Blutzucker. Auch beim PCOS gut untersucht, wo Insulinresistenz oft ein zentraler Treiber ist.
+  disclaimer: >-
+    Sprich vor dem Beginn immer mit deiner Hausärztin, deinem Hausarzt oder in der Apotheke, besonders wenn du verschreibungspflichtige Medikamente nimmst.
+ss_protein_fibre_weight:
+  title: Proteinpulver und Ballaststoffpräparate
+  body: >-
+    Proteinpulver (Molke, Erbse oder Kollagen) ist an sich kein Mittel zum Abnehmen, unterstützt aber Sättigung, Muskelerhalt und einen stabilen Blutzucker, wenn du deinen Eiweißbedarf allein über die Nahrung schwer erreichst. Ein Ballaststoffpräparat (z. B. PHGG, Flohsamenschalen) unterstützt ebenfalls Sättigung und stabilen Blutzucker — besonders nützlich, wenn du deine Ballaststoffziele über die Nahrung noch nicht regelmäßig erreichst.
+  disclaimer: >-
+    Sprich vor dem Beginn immer mit deiner Hausärztin, deinem Hausarzt oder in der Apotheke, besonders wenn du verschreibungspflichtige Medikamente nimmst oder eine diagnostizierte Verdauungserkrankung hast.
+ss_green_tea_ala_weight:
+  title: Grüntee-Extrakt und Alpha-Liponsäure — zur Unterstützung des Stoffwechsels
+  body: >-
+    Grüntee-Extrakt (EGCG), üblicherweise 250–500 mg/Tag, hat bescheidene Belege für eine Unterstützung des Stoffwechsels. Alpha-Liponsäure (ALA), üblicherweise 300–600 mg/Tag, unterstützt die Blutzuckerregulation und die Insulinempfindlichkeit und wirkt als Antioxidans, das die Energiegewinnung der Zellen unterstützt.
+  disclaimer: >-
+    Bei Grüntee-Extrakt ist Vorsicht geboten, wenn du Lebererkrankungen hast oder empfindlich auf Koffein reagierst. ALA kann mit Blutzucker- und Schilddrüsenmedikamenten wechselwirken — gerade hier ist vorher eine ärztliche Abklärung nötig, wenn du eines davon nimmst.

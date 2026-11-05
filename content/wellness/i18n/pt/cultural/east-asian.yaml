@@ -1,0 +1,47 @@
+# Tradução de cultural/east-asian.yaml — prevalece a versão em inglês.
+items:
+  soy-tofu-miso-phytoestrogens:
+    body: |-
+      O tofu, o miso, o edamame, o tempeh e o natto estão entre as fontes alimentares mais ricas em isoflavonas — estrogénios vegetais que se ligam aos recetores de estrogénios e podem ajudar a moderar os sintomas vasomotores. A evidência é mais forte para os alimentos de soja inteira (não proteína de soja processada) consumidos com regularidade.
+
+      Se o tofu já faz parte da sua cozinha, mantenha-o. Uma sopa de miso por dia é uma adição simples e benéfica. A soja fermentada (miso, natto, tempeh) parece ter benefícios mais fortes do que as formas não fermentadas.
+  green-tea-antioxidants:
+    body: |-
+      O chá verde é rico em antioxidantes e tem propriedades anti-inflamatórias que apoiam a saúde geral durante a menopausa. Tem menos cafeína do que o café, mas não zero — se os afrontamentos ou as perturbações do sono forem significativos, pense em trocar as chávenas da tarde por houjicha (chá verde torrado, com menos cafeína) ou chá de cevada, que não tem cafeína e é muito bebido na Ásia Oriental.
+  fish-omega3-brain:
+    body: |-
+      As alimentações tradicionais da Ásia Oriental são normalmente ricas em peixe gordo — salmão, cavala, sardinha e atum. Os ácidos gordos ómega-3 estão entre os apoios alimentares com mais evidência para a saúde do cérebro, o humor e a inflamação durante a menopausa. Se tem comido menos peixe, voltar a incluí-lo é uma mudança de grande impacto.
+  fermented-foods-gut:
+    body: |-
+      O kimchi, o miso, o natto e outros alimentos fermentados apoiam a saúde do microbioma intestinal. A investigação emergente sugere que o microbioma intestinal tem um papel na forma como o corpo processa e recicla os estrogénios — as mulheres com um microbioma diversificado podem metabolizar os fitoestrogénios de forma mais eficaz. Incluir alimentos fermentados todos os dias tem apoio tanto na sabedoria tradicional como na ciência emergente.
+  white-rice-blood-sugar:
+    body: |-
+      O arroz branco é um alimento base que pode fazer subir muito o açúcar no sangue quando é comido em grandes quantidades sem proteína e legumes suficientes ao lado. Isto importa na menopausa, porque a instabilidade do açúcar no sangue agrava os afrontamentos e as alterações de humor.
+
+      Comer o arroz com porções generosas de legumes, tofu, peixe ou ovo modera a resposta glicémica. Arrefecer e reaquecer o arroz também transforma parte do amido em amido resistente, que tem um impacto glicémico menor.
+  joint-pain-tai-chi:
+    body: |-
+      As dores articulares e musculares são o sintoma da menopausa mais referido pelas mulheres de origem da Ásia Oriental e do Sudeste Asiático. O tai chi e o qigong — ambos com raízes na medicina tradicional chinesa — têm evidência real de que reduzem as dores articulares, melhoram o equilíbrio e apoiam a saúde mental. Não são só práticas culturais; são intervenções para a menopausa com apoio na evidência.
+  natural-framing:
+    body: |-
+      Em muitos contextos culturais da Ásia Oriental, a menopausa é vista como uma transição natural da vida — não como uma doença ou um fracasso. Esta perspetiva tem valor real. A investigação sugere que as mulheres que veem a menopausa de forma mais positiva sentem menos peso dos sintomas.
+
+      Se adotou uma visão ocidental mais medicalizada da menopausa, pode haver sabedoria em voltar a ligar-se a uma perspetiva cultural que a vê como uma passagem e não como um problema.
+  not-complaining:
+    body: |-
+      Em alguns contextos culturais da Ásia Oriental, exprimir desconforto físico — sobretudo em relação à saúde da mulher — não é incentivado. «Aguentar e seguir em frente» pode parecer o certo. Mas sofrer em silêncio significa que os sintomas não são tratados e pioram com o tempo.
+
+      Pode manter os seus valores culturais de contenção e, ainda assim, levar os seus sintomas a sério. Registá-los aqui, para si, não é queixar-se — é reunir informação que a vai ajudar a sentir-se melhor.
+  bone-density-monitoring:
+    body: |-
+      Os estudos mostram diferenças na densidade óssea entre grupos étnicos. As mulheres japonesas e chinesas têm geralmente uma densidade óssea de partida mais baixa do que as mulheres negras, o que pode significar um risco relativo de fratura mais elevado com a descida dos estrogénios na menopausa.
+
+      O exercício com impacto, cálcio e vitamina D suficientes e — se for adequado — falar com o seu médico sobre uma densitometria óssea merecem ser considerados, sobretudo se a menopausa chegar mais cedo do que o esperado.
+      AVISO: fale com o seu médico sobre o rastreio da densidade óssea, sobretudo se tiver antecedentes familiares de osteoporose.
+byTitle:
+  Your diet may already be working in your favour:
+    title: A sua alimentação pode já estar a jogar a seu favor
+    body: |-
+      As mulheres que seguem alimentações tradicionais da Ásia Oriental — ricas em alimentos de soja como tofu, miso, edamame e tempeh — consomem 50–200 mg de isoflavonas por dia. As mulheres ocidentais consomem normalmente 3–5 mg. Isto pode ser uma razão importante para que os afrontamentos sejam referidos com menos frequência no Japão e na China.
+
+      Se a sua alimentação se ocidentalizou, pode valer a pena voltar a incluir alimentos tradicionais de soja. Se continua sobretudo tradicional, é uma verdadeira vantagem nutricional a manter.

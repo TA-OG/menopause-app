@@ -1,0 +1,57 @@
+# Übersetzung von frameworks/skin-hair.yaml — maßgeblich ist die englische Fassung.
+df_collagen_nutrition:
+  title: Iss für die Kollagenbildung — die Haut verliert in den ersten 5 Jahren 30 %
+  body: >-
+    Das Kollagen der Haut nimmt in den ersten fünf Jahren nach der Menopause um etwa 30 % ab, danach um rund 2 % pro Jahr. Ursache ist der Östrogenverlust, nicht das Alter an sich. So unterstützt du die Kollagenbildung: Iss täglich Vitamin-C-reiche Lebensmittel (Zitrusfrüchte, rote Paprika, Kiwi, Brokkoli); nimm zu jeder Mahlzeit Eiweiß zu dir (Kollagen wird aus Aminosäuren gebildet); und schränke Zucker und hochverarbeitete Lebensmittel ein, die die Glykation fördern — ein Vorgang, der Kollagen vernetzt und schädigt.
+df_biotin_zinc_hair:
+  title: Eiweiß, Zink und Eisen — das Nährstoff-Trio bei Haarausfall
+  body: >-
+    Haarausfall in den Wechseljahren ist teils hormonell bedingt (androgenetische Alopezie, weil sich das Verhältnis von Östrogenen zu Androgenen verschiebt), Nährstoffmängel beschleunigen ihn aber deutlich. Die häufigsten Mängel bei Frauen in der Perimenopause betreffen Eisen (vor allem Ferritin — lass Ferritin bestimmen, nicht nur Hämoglobin) und Eiweiß. Zinkreiche Lebensmittel (Kürbiskerne, Austern, Rindfleisch, Linsen) und biotinhaltige Lebensmittel (Eier, Nüsse, Süßkartoffeln) unterstützen ebenfalls die Gesundheit der Haarfollikel.
+df_omega3_skin_barrier:
+  title: Omega-3-Fette stellen die Feuchtigkeitsbarriere der Haut wieder her
+  body: >-
+    Die Lipidbarriere der Haut wird schwächer, wenn das Östrogen sinkt — das führt zu Trockenheit, Empfindlichkeit und schlechterer Heilung. Omega-3-Fettsäuren (fetter Fisch, Leinsamen, Walnüsse, Algenöl) werden direkt in die Zellmembranen der Haut eingebaut und stärken die Feuchtigkeitsbarriere. Wer 12 Wochen lang mehr fetten Fisch isst (3-mal pro Woche), erzielt messbare Verbesserungen bei Feuchtigkeit und Struktur der Haut.
+lf_sun_protection:
+  title: Jeden Tag Sonnenschutz — dünner werdende Haut verbrennt und altert viel schneller
+  body: >-
+    Haut nach der Menopause ist dünner, bildet weniger Melanin und heilt langsamer. UV-Strahlung ist der Hauptgrund für sichtbare Hautalterung — wirksamer als jeder andere Umweltfaktor. Trag jeden Morgen, auch im Winter, einen Breitbandschutz mit LSF 30–50 auf Gesicht, Hals und Dekolleté auf. Das ist die am besten belegte äußerliche Maßnahme für die Hautgesundheit.
+lf_scalp_care:
+  title: Kopfhautmassage und schonender Umgang — weniger Haarbruch, besseres Wachstum
+  body: >-
+    Eine tägliche 4-minütige Kopfhautmassage (nur mit den Fingerkuppen, ohne Nägel) steigert die Durchblutung der Haarfollikel; eine Pilotstudie zeigt nach 24 Wochen dickeres Haar. Benutze bei nassem Haar (das elastisch ist und leicht bricht) einen grobzinkigen Kamm, nutze seltener Hitzegeräte und meide straffe Frisuren, die zu Zug-Alopezie führen. Ein sulfatfreies Shampoo verringert Reizungen der Kopfhaut.
+lf_retinol_skincare:
+  title: Retinol — der am besten belegte äußerliche Wirkstoff gegen Hautalterung
+  body: >-
+    Retinol (Vitamin A) ist der einzige Wirkstoff in der Hautpflege mit solider klinischer Evidenz dafür, dass er die Kollagenbildung anregt und die Zellerneuerung der Haut beschleunigt. Beginne mit einer niedrig konzentrierten Formel von 0,1–0,25 % zweimal pro Woche am Abend und steigere langsam. Bis zu sichtbaren Ergebnissen dauert es 12 Wochen. Anfangs verursacht es Trockenheit und Schuppung — das ist normal. Trag morgens Sonnenschutz auf, wenn du Retinol verwendest. Stärkeres, verschreibungspflichtiges Tretinoin bekommst du für deutlichere Ergebnisse über deine Ärztin oder deinen Arzt.
+mr_hair_loss_emotional:
+  title: Haarausfall trifft tief — es ist keine Eitelkeit, darunter zu leiden
+  body: >-
+    Haarausfall ist für Frauen eine erhebliche psychische Belastung. Studien zeigen, dass Frauen mit dünner werdendem Haar in den Wechseljahren häufiger von sozialer Angst, Unsicherheit und geringerer Lebensqualität berichten als Männer mit vergleichbarem Haarverlust. Diese Gefühle sind normal und angemessen. Eine genaue Diagnose ist wichtig (lass beim Arzttermin Ferritin, Schilddrüse und Androgene bestimmen) — vieles an Haarausfall in dieser Phase lässt sich behandeln, wenn man früh dran ist.
+mr_skin_changing_body_image:
+  title: Deine Haut verändert sich — das heißt nicht, dass sie dich im Stich lässt
+  body: >-
+    Hautveränderungen in den Wechseljahren gehören für viele Frauen zu den sichtbar am schwersten zu verkraftenden Seiten dieser Übergangszeit. Die westliche Kultur knüpft den Wert von Frauen an ein jugendliches Aussehen, und das macht es schwerer, als es sein müsste. Deine Haut passt sich an ein neues hormonelles Umfeld an. Sie regelmäßig zu pflegen (Ernährung, Sonnenschutz, Feuchtigkeit, Schlaf) ist die sinnvollste Antwort — nicht drastische Eingriffe oder der Rückzug aus dem sozialen Leben.
+ss_collagen_skin:
+  title: Hydrolysiertes Kollagen — erste Belege für Haut, Haare und Nägel
+  body: >-
+    Üblich sind 10 g/Tag. Achte auf hydrolysiertes Rinderkollagen Typ I — „hydrolysiert“ bedeutet, dass es in kleinere Peptide zerlegt wurde, die dein Körper tatsächlich aufnehmen und verwerten kann, und Typ I ist die häufigste Kollagenart, die Haut, Haare, Nägel, Gelenke, Knochen und Darmschleimhaut stützt. Die körpereigene Kollagenbildung nimmt mit dem Alter ab, eine Ergänzung unterstützt also die laufende Reparatur und Erneuerung im Körper.
+  disclaimer: >-
+    Kollagenpeptide werden in der Regel gut vertragen. Wenn du eine Fisch- oder Schalentierallergie hast, prüfe die Herkunft genau (es gibt marine, tierische vom Rind und pflanzliche Varianten). Sprich vor der Einnahme mit deiner Hausärztin oder deinem Hausarzt, wenn du eine bestehende Erkrankung hast.
+ss_zinc_hair:
+  title: Zink — für Haarwachstum und Reparatur
+  body: >-
+    Üblich sind 10–30 mg/Tag. Unterstützt Haarwachstum und Reparatur. Nicht über lange Zeit hoch dosiert ohne Kontrolle einnehmen, da zu viel Zink Kupfer verdrängen kann.
+  disclaimer: >-
+    Sprich vor dem Beginn immer mit deiner Hausärztin, deinem Hausarzt oder in der Apotheke, besonders wenn du verschreibungspflichtige Medikamente nimmst.
+ss_iron_hair:
+  title: Eisen — nur wenn Blutwerte einen Mangel bestätigen
+  body: >-
+    Eisenmangel ist in dieser Lebensphase eine häufige, oft übersehene Ursache für dünner werdendes Haar und Haarausfall — eine Ergänzung lohnt sich aber nur, wenn Blutwerte den Mangel bestätigen, nicht auf Verdacht. Lass gezielt Ferritin bestimmen, nicht nur Hämoglobin.
+  disclaimer: >-
+    Lass deine Werte immer von deiner Ärztin oder deinem Arzt prüfen, bevor du Eisen einnimmst — unnötige Eisenergänzung kann eigene Probleme verursachen.
+ss_biotin_hair:
+  title: Biotin — wirkt nur bei einem echten Mangel
+  body: >-
+    Biotin (Vitamin B7) wird stark für Haare und Nägel beworben. Es wirkt, wenn du einen Mangel hast — Biotinmangel ist aber eigentlich selten. Wenn du Eier, Nüsse und Vollkorn isst, hast du wahrscheinlich keinen Mangel. Hoch dosiertes Biotin (10 mg und mehr) verfälscht Schilddrüsen- und Troponin-Bluttests — ein wichtiger Sicherheitsaspekt. Eisen- und Ferritinmangel sind bei Frauen in der Perimenopause weit häufigere Ursachen für Haarausfall — lass dich testen, bevor du Biotin nimmst.
+  disclaimer: >-
+    Hoch dosiertes Biotin (>5 mg/Tag) kann bei Schilddrüsentests, Troponintests und anderen Immunoassay-Bluttests zu falschen Ergebnissen führen. Sag deiner Ärztin oder deinem Arzt vor jeder Blutuntersuchung, dass du Biotin nimmst. Sprich vor der Einnahme mit deiner Hausärztin oder deinem Hausarzt.

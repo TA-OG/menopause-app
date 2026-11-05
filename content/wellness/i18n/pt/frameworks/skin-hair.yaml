@@ -1,0 +1,57 @@
+# Tradução de frameworks/skin-hair.yaml — prevalece a versão em inglês.
+df_collagen_nutrition:
+  title: Coma para produzir colagénio — a pele perde 30% nos primeiros 5 anos
+  body: >-
+    O colagénio da pele diminui cerca de 30% nos primeiros cinco anos após a menopausa e, depois disso, cerca de 2% por ano. A causa é a perda de estrogénios, não a idade em si. Para apoiar a síntese de colagénio: coma todos os dias alimentos ricos em vitamina C (citrinos, pimento vermelho, kiwi, brócolos); inclua proteína em todas as refeições (o colagénio é feito a partir de aminoácidos); e limite o açúcar e os ultraprocessados, que favorecem a glicação — um processo que endurece e danifica o colagénio.
+df_biotin_zinc_hair:
+  title: Proteína, zinco e ferro — o trio de nutrientes contra a queda de cabelo
+  body: >-
+    A queda de cabelo na menopausa é em parte hormonal (alopecia androgenética, com a mudança da proporção entre estrogénios e androgénios), mas as carências nutricionais aceleram-na muito. As carências mais comuns nas mulheres na perimenopausa são de ferro (sobretudo ferritina — peça uma análise à ferritina, não só à hemoglobina) e de proteína. Os alimentos ricos em zinco (sementes de abóbora, ostras, carne de vaca, lentilhas) e os que contêm biotina (ovos, frutos secos, batata-doce) também apoiam a saúde do folículo capilar.
+df_omega3_skin_barrier:
+  title: As gorduras ómega-3 restauram a barreira de hidratação da pele
+  body: >-
+    A barreira lipídica da pele enfraquece com a descida dos estrogénios, provocando secura, sensibilidade e pior cicatrização. Os ácidos gordos ómega-3 (peixe gordo, sementes de linhaça, nozes, óleo de algas) integram-se diretamente nas membranas das células da pele e reforçam a barreira de hidratação. Aumentar durante 12 semanas o consumo de peixe gordo (3 vezes por semana) traz melhorias mensuráveis na hidratação e na textura da pele.
+lf_sun_protection:
+  title: Protetor solar todos os dias — a pele mais fina queima e envelhece muito mais depressa
+  body: >-
+    Depois da menopausa, a pele é mais fina, produz menos melanina e cicatriza mais devagar. A exposição aos raios UV é a principal causa do envelhecimento visível da pele — mais do que qualquer outro fator ambiental. Aplique todas as manhãs, também no inverno, um protetor de largo espetro FPS 30–50 no rosto, pescoço e decote. É a medida tópica com mais evidência para a saúde da pele.
+lf_scalp_care:
+  title: Massagem do couro cabeludo e cuidados suaves — menos quebra, melhor crescimento
+  body: >-
+    Uma massagem do couro cabeludo de 4 minutos por dia (só com as pontas dos dedos, sem unhas) aumenta o fluxo sanguíneo para os folículos e, segundo um estudo-piloto, melhora a espessura do cabelo ao fim de 24 semanas. Use um pente de dentes largos com o cabelo molhado (que é elástico e parte com facilidade), reduza os aparelhos de calor e evite penteados apertados que provocam alopecia de tração. Mudar para um champô sem sulfatos reduz a irritação do couro cabeludo.
+lf_retinol_skincare:
+  title: Retinol — o ativo tópico com mais evidência contra o envelhecimento da pele
+  body: >-
+    O retinol (vitamina A) é o único ingrediente de cuidado tópico com evidência clínica sólida de que estimula a produção de colagénio e acelera a renovação das células da pele. Comece com uma fórmula de baixa concentração, 0,1–0,25%, duas vezes por semana à noite, e aumente devagar. Os resultados demoram 12 semanas. No início provoca secura e descamação — é normal. Use protetor solar de manhã quando usar retinol. A tretinoína, mais forte e sujeita a receita, está disponível através do seu médico para resultados mais evidentes.
+mr_hair_loss_emotional:
+  title: A queda de cabelo afeta muito — não é vaidade sofrer com ela
+  body: >-
+    A queda de cabelo nas mulheres tem um peso psicológico significativo. Os estudos mostram que as mulheres com perda de densidade capilar na menopausa referem mais ansiedade social, mais insegurança e pior qualidade de vida do que os homens com uma queda comparável. Estes sentimentos são normais e proporcionais. Obter um diagnóstico rigoroso (peça na consulta análises à ferritina, à tiroide e aos androgénios) é importante — grande parte da queda de cabelo nesta fase tem solução se for detetada cedo.
+mr_skin_changing_body_image:
+  title: A sua pele está a mudar — isso não quer dizer que a esteja a falhar
+  body: >-
+    As mudanças da pele na menopausa estão, para muitas mulheres, entre os aspetos visualmente mais difíceis de enfrentar. A cultura ocidental associa o valor das mulheres a uma aparência jovem de uma forma que torna isto mais difícil do que devia ser. A sua pele está a adaptar-se a um novo ambiente hormonal. Cuidar dela com regularidade (alimentação, protetor solar, hidratação, sono) é a resposta mais útil — em vez de recorrer a intervenções drásticas ou de se afastar da vida social.
+ss_collagen_skin:
+  title: Colagénio hidrolisado — evidência emergente para a pele, o cabelo e as unhas
+  body: >-
+    Habitualmente 10 g/dia. Procure colagénio bovino tipo I hidrolisado — «hidrolisado» significa que foi decomposto em péptidos mais pequenos que o seu corpo consegue realmente absorver e usar, e o tipo I é o colagénio mais abundante, que sustenta a pele, o cabelo, as unhas, as articulações, os ossos e o revestimento intestinal. A produção natural de colagénio diminui com a idade, por isso a suplementação ajuda o corpo no seu trabalho contínuo de reparação e renovação.
+  disclaimer: >-
+    Os péptidos de colagénio costumam ser bem tolerados. Se tiver alergia a peixe ou marisco, verifique bem a origem (há opções marinhas, bovinas e vegetais). Consulte o seu médico de família antes de o usar se tiver algum problema de saúde em curso.
+ss_zinc_hair:
+  title: Zinco — para o crescimento e a reparação do cabelo
+  body: >-
+    Habitualmente 10–30 mg/dia. Apoia o crescimento e a reparação do cabelo. Não deve ser tomado durante muito tempo em doses elevadas sem vigilância, porque o excesso de zinco pode esgotar o cobre.
+  disclaimer: >-
+    Confirme sempre com o seu médico de família ou farmacêutico antes de começar, sobretudo se tomar medicamentos receitados.
+ss_iron_hair:
+  title: Ferro — só se as análises confirmarem a carência
+  body: >-
+    A falta de ferro é uma causa comum, e muitas vezes esquecida, de perda de densidade e queda de cabelo nesta fase da vida — mas só vale a pena suplementar se as análises ao sangue confirmarem a carência, não por suposição. Peça especificamente uma análise à ferritina, não só à hemoglobina.
+  disclaimer: >-
+    Peça sempre ao seu médico que verifique os seus níveis antes de tomar ferro — a suplementação desnecessária de ferro pode causar os seus próprios problemas.
+ss_biotin_hair:
+  title: Biotina — só é eficaz se tiver mesmo carência
+  body: >-
+    A biotina (vitamina B7) é muito publicitada para a saúde do cabelo e das unhas. Funciona se tiver carência, mas a carência de biotina é, na verdade, pouco comum. Se a sua alimentação inclui ovos, frutos secos e cereais integrais, provavelmente não tem carência. A biotina em doses elevadas (10 mg ou mais) interfere com as análises ao sangue da tiroide e da troponina — uma questão de segurança importante. As carências de ferro e ferritina são causas muito mais comuns de queda de cabelo nas mulheres na perimenopausa — faça análises antes de tomar biotina.
+  disclaimer: >-
+    A biotina em doses elevadas (>5 mg/dia) pode falsear os resultados das análises à função tiroideia, à troponina e de outras análises ao sangue por imunoensaio. Informe o seu médico se toma biotina antes de qualquer análise ao sangue. Consulte o seu médico de família antes de a usar.

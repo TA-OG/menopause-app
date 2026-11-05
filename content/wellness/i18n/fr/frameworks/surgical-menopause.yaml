@@ -1,0 +1,37 @@
+# Traduction de frameworks/surgical-menopause.yaml — la version anglaise fait foi.
+df_surgical_anti_inflammatory:
+  title: L’alimentation anti-inflammatoire est particulièrement importante après une ovariectomie
+  body: >-
+    La ménopause chirurgicale supprime la production protectrice d’œstrogènes par les ovaires de façon brutale plutôt que progressive. Les conséquences inflammatoires — douleurs articulaires, changements vasculaires, changements cognitifs — peuvent être plus marquées que lors d’une ménopause naturelle. Une alimentation anti-inflammatoire (de type méditerranéen, avec huile d’olive, poissons gras, légumes colorés, et peu d’aliments ultra-transformés) aide à atténuer ce basculement inflammatoire général.
+df_surgical_calcium_urgency:
+  title: Protéger vos os par l’alimentation est urgent — la perte est plus rapide après une ménopause chirurgicale
+  body: >-
+    Les femmes qui subissent une ovariectomie bilatérale avant la ménopause naturelle perdent de la densité osseuse plus vite que celles qui vivent une ménopause naturelle. Plus l’opération est précoce, plus le risque de fracture à long terme est élevé. Le calcium alimentaire (700–1200 mg par jour) et la vitamine D sont indispensables. Si vous n’avez pas encore parlé à votre médecin d’une ostéodensitométrie pour connaître votre densité osseuse de départ, faites-en une priorité.
+lf_surgical_hrt_conversation:
+  title: Le THM après une ménopause chirurgicale — la discussion que votre médecin doit avoir avec vous
+  body: >-
+    Pour les femmes qui ont une ménopause chirurgicale avant 51 ans (l’âge moyen de la ménopause naturelle), la plupart des spécialistes de la ménopause recommandent un traitement hormonal de la ménopause (THM) au moins jusqu’à cet âge. Le risque de NE PAS prendre de THM — risque cardiovasculaire accru, perte osseuse, changements cognitifs — est bien documenté et important. Si l’on ne vous a pas proposé de THM ou si vous n’en avez pas parlé, prenez rendez-vous spécialement pour cela. Le site de la British Menopause Society propose un annuaire de spécialistes de la ménopause (au Royaume-Uni) si votre médecin n’est pas formé à la ménopause.
+lf_surgical_bone_exercise:
+  title: Commencez les exercices en charge dès que votre chirurgien vous y autorise
+  body: >-
+    Les exercices en charge (marche, renforcement musculaire) sont le levier de mode de vie le plus important pour protéger la densité osseuse après une ménopause chirurgicale. Demandez à votre chirurgien quand vous pourrez commencer — pour la plupart des femmes, la marche douce reprend quelques semaines après l’opération, avec un renforcement progressif à partir de 6–8 semaines. Prendre cette habitude tôt dans votre convalescence protège directement votre risque de fracture à long terme.
+mr_surgical_grief_acute:
+  title: Le chagrin lié à la ménopause chirurgicale est réel — et souvent ignoré
+  body: >-
+    Les femmes qui entrent en ménopause par la chirurgie — à la suite d’un traitement contre le cancer, d’une endométriose ou pour d’autres raisons — décrivent souvent un chagrin profond et peu reconnu. La brutalité du changement hormonal s’ajoute à l’impact émotionnel de l’opération elle-même. Si votre opération était liée à un cancer ou à une perte de fertilité, vous traversez peut-être plusieurs pertes importantes en même temps. Cela mérite un véritable soutien psychologique — pas seulement une prise en charge des symptômes. Demandez à votre équipe chirurgicale ou à votre médecin de vous orienter vers un psychologue expérimenté en santé des femmes.
+mr_surgical_pace:
+  title: Votre corps s’adapte à un bouleversement hormonal majeur — laissez-lui du temps
+  body: >-
+    Les 3–6 premiers mois après une ovariectomie bilatérale sont souvent les plus intenses en termes de symptômes. Bouffées de chaleur, troubles du sommeil, sautes d’humeur et brouillard mental sont fréquents et souvent sévères pendant cette phase aiguë. Ce n’est pas un état définitif. Les symptômes se calment généralement en quelques mois à mesure que le corps s’adapte et, avec un traitement adapté (THM, changements de mode de vie), la plupart des femmes retrouvent une qualité de vie comparable à celle d’avant l’opération. Ce que vous vivez maintenant n’est pas votre nouvelle normalité.
+ss_surgical_vitamin_d:
+  title: Vitamine D — encore plus prioritaire après une ménopause chirurgicale
+  body: >-
+    La vitamine D est particulièrement importante après une ménopause chirurgicale, compte tenu de la perte osseuse accélérée. Demandez à votre médecin une prise de sang pour connaître votre taux de 25(OH)D. Beaucoup de spécialistes de la ménopause recommandent 1000–2000 UI par jour aux femmes qui ont eu une ovariectomie. Associez-la toujours au calcium de l’alimentation (pas à des compléments à forte dose). Prenez de la vitamine D3 (cholécalciférol) plutôt que de la D2, avec un repas contenant des graisses pour une meilleure absorption.
+  disclaimer: >-
+    Une supplémentation en vitamine D au-delà de 2000 UI/jour doit se faire selon le résultat d’une prise de sang. Les doses très élevées (au-delà de 4000 UI/jour) peuvent être toxiques. Demandez l’avis de votre médecin généraliste avant de prendre de fortes doses, surtout si vous avez une maladie rénale ou des antécédents de calculs rénaux.
+ss_omega3_surgical:
+  title: Oméga-3 (EPA+DHA) — soutien anti-inflammatoire après une ovariectomie
+  body: >-
+    Les acides gras oméga-3 (2000–3000 mg d’EPA+DHA par jour, issus d’huile de poisson ou d’huile d’algues) réduisent la réponse inflammatoire, qui peut être plus marquée après une ménopause chirurgicale. Des données émergentes suggèrent aussi des bénéfices neuroprotecteurs, utiles face aux changements cognitifs que certaines femmes connaissent après une ovariectomie. À prendre pendant un repas.
+  disclaimer: >-
+    À forte dose (au-delà de 3 g d’EPA+DHA), les oméga-3 peuvent fluidifier le sang. Si vous prenez des anticoagulants ou attendez une autre opération, demandez l’avis de votre médecin généraliste ou de votre pharmacien avant d’en prendre. Les oméga-3 d’algues sont l’équivalent végétal de l’huile de poisson.

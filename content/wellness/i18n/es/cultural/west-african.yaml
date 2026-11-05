@@ -1,0 +1,54 @@
+# Traducción de cultural/west-african.yaml — prevalece la versión en inglés.
+items:
+  egusi-pumpkin-seeds:
+    body: |-
+      El egusi (semillas de melón) es muy nutritivo: rico en grasas saludables, proteína y zinc. El zinc es esencial para la síntesis de testosterona (que influye en la energía y la libido durante la menopausia) y para el sistema inmunitario. La sopa de egusi es una comida realmente nutritiva que merece seguir en tu menú.
+  moringa-traditional-remedy:
+    body: |-
+      La moringa (Moringa oleifera) se usa desde hace generaciones en la medicina tradicional de África occidental y del resto de África. Es rica en calcio, hierro, vitamina C y antioxidantes. La investigación emergente respalda su uso para la energía, la inflamación y la regulación del azúcar en sangre. Añadir polvo de moringa a batidos o sopas es una forma práctica de incluirla.
+  hibiscus-zobo-blood-pressure:
+    body: |-
+      La bebida zobo (hibisco) se toma mucho en África occidental y tiene evidencia real de que ayuda a mantener una tensión arterial sana y aporta antioxidantes. Controlar la tensión se vuelve más importante en la menopausia, porque disminuyen los efectos protectores de los estrógenos sobre el corazón.
+
+      La preparación tradicional con mucho azúcar resta parte del beneficio. Prueba a endulzarla menos y añadir jengibre, que además tiene propiedades antiinflamatorias.
+  palm-oil-fats:
+    body: |-
+      El aceite de palma rojo es un básico cultural y tiene un perfil nutricional distinto al de los aceites vegetales procesados: contiene betacaroteno y vitamina E. Con moderación, forma parte de una dieta equilibrada. La clave en la menopausia es el equilibrio general de grasas: asegurarte de que el pescado azul, el aguacate y los frutos secos también estén presentes con regularidad para apoyar la salud del cerebro y la producción de hormonas.
+  beans-black-eyed-peas:
+    body: |-
+      Las alubias — carillas (frijoles de ojo negro), alubias pardas, alubias rojas — son el centro de la cocina de África occidental y te sientan bien de verdad durante la menopausia. Son ricas en proteína vegetal y fibra, así que los platos de alubias tomados con regularidad aportan energía sostenida y favorecen la estabilidad del azúcar, lo que importa para la energía, el ánimo y el peso.
+
+      Una advertencia sincera, porque quizá hayas leído lo contrario: la evidencia de que los fitoestrógenos alivian los sofocos procede de estudios sobre la soja en concreto, y la soja es una fuente de isoflavonas mucho más rica que otras alubias. Las alubias merecen mucho la pena por su proteína y su fibra. Pero si lo que quieres aliviar son los sofocos, eso significa alimentos de soja — edamame, tofu, tempeh — y no alubias en general.
+  spicy-food-triggers:
+    body: |-
+      La pepper soup, el suya y otros platos picantes son muy culturales y deliciosos. La comida picante puede provocar sofocos en algunas mujeres durante la menopausia, no en todas ni siempre. Fíjate si notas relación entre comer picante y un sofoco en los 30–60 minutos siguientes.
+
+      Si hay un patrón, no significa renunciar del todo al picante, solo tener en cuenta el momento y la cantidad, sobre todo por la noche.
+  stress-and-allostatic-load:
+    body: |-
+      La investigación documenta que las mujeres de origen africano soportan una carga alostática más alta: el coste fisiológico acumulado del estrés crónico. No es un fallo personal; refleja la realidad estructural de afrontar a la vez el racismo, la presión económica y las responsabilidades de cuidado.
+
+      Este estrés de fondo puede influir en cómo se viven los síntomas de la menopausia; si los empeora directamente sigue siendo una pregunta abierta en la investigación, no algo demostrado. Aun así, merece la pena reconocerlo, ante ti misma y ante tu médico. Si tus síntomas te parecen más intensos, no es porque seas más débil.
+  community-wisdom:
+    body: |-
+      En muchas culturas africanas, la menopausia ha sido durante mucho tiempo una experiencia compartida en comunidad: las mujeres mayores guardaban el conocimiento y lo transmitían a las que venían detrás. Esa transmisión de sabiduría entre generaciones es la base sobre la que se ha construido Aunty Mel. No estás atravesando esto sola, y ese conocimiento nunca se perdió: solo necesita un hogar moderno.
+  taboo-and-speaking-up:
+    body: |-
+      En algunas comunidades y hogares de África occidental no se habla de la menopausia. Puede ser tabú, considerarse algo privado o asociarse al envejecimiento de forma estigmatizada. Puede esperarse de las mujeres que lo lleven en silencio.
+
+      Tienes permiso para nombrar lo que vives. Registrar tus síntomas, entender tu cuerpo y buscar apoyo no es una traición cultural: es la forma más moderna de la sabiduría que llevaban tus abuelas.
+  vitamin-d-africa-to-uk:
+    body: |-
+      Si creciste en África occidental y te mudaste al Reino Unido, tu cuerpo pasó de la abundante luz solar ecuatorial a uno de los climas más grises de Europa. La falta de vitamina D es muy frecuente en las mujeres de África occidental que viven en el Reino Unido y empeora directamente el cansancio, la salud de los huesos, el ánimo y el dolor articular.
+
+      Es algo sencillo y de gran impacto que solucionar: un análisis de sangre a través de tu médico confirmará tu nivel. La mayoría de las guías recomiendan 1000–2000 UI al día a las mujeres con la piel más oscura que viven en el Reino Unido.
+      AVISO: consulta siempre con tu médico antes de tomar dosis superiores a la dosis estándar del NHS de 400 UI. Se recomienda hacerse antes un análisis.
+byTitle:
+  Your timeline and your symptoms may differ from what you've read:
+    title: Tus tiempos y tus síntomas pueden ser distintos de lo que has leído
+    body: |-
+      La mayor parte de la investigación sobre la menopausia se ha hecho con mujeres blancas, occidentales y de clase media. Los síntomas, los tiempos y las experiencias que describen los recursos de salud generales pueden no reflejar del todo los tuyos.
+
+      Las mujeres de origen africano llegan antes a la menopausia y tienen síntomas más intensos y durante más tiempo. Si tienes síntomas a principios o mediados de los 40, tómatelos en serio: no eres demasiado joven.
+
+      Conviene saber de dónde sale esto: los estudios en los que se basa son en gran parte estadounidenses y describen medias, no tus tiempos personales.

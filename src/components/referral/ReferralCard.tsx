@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 interface ReferralStats {
   referralCode: string
@@ -13,6 +14,7 @@ interface ReferralStats {
 }
 
 export default function ReferralCard() {
+  const t = useTranslations('ReferralCard')
   const [stats, setStats] = useState<ReferralStats | null>(null)
   const [error, setError] = useState(false)
   const [copied, setCopied] = useState(false)
@@ -46,7 +48,7 @@ export default function ReferralCard() {
   if (error) {
     return (
       <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 text-sm text-gray-500">
-        Couldn&apos;t load your referral link right now. Try refreshing.
+        {t('loadError')}
       </div>
     )
   }
@@ -60,24 +62,22 @@ export default function ReferralCard() {
     )
   }
 
-  const shareText = `I've been using Aunty Mel for menopause wellness guidance and thought you'd love it too. Use my link and we both get a free month: ${stats.referralUrl}`
+  const shareText = t('shareText', { url: stats.referralUrl })
 
   return (
     <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 space-y-4">
       <div>
-        <h2 className="font-bold text-brand-900">Invite a friend, get a free month</h2>
+        <h2 className="font-bold text-brand-900">{t('title')}</h2>
         <p className="text-sm text-gray-500 mt-1 leading-relaxed">
-          When a friend joins with your link and subscribes, you <strong>both</strong> get
-          one month free. Refer up to {stats.capMonths} friends and stack up to{' '}
-          {stats.capMonths} free months.
+          {t.rich('body', { cap: stats.capMonths, strong: (chunks) => <strong>{chunks}</strong> })}
         </p>
       </div>
 
       {/* Progress */}
       <div>
         <div className="flex items-center justify-between text-xs text-gray-500 mb-1.5">
-          <span>{stats.monthsEarned} of {stats.capMonths} months earned</span>
-          {stats.capReached && <span className="text-brand-700 font-semibold">Cap reached 🎉</span>}
+          <span>{t('progress', { earned: stats.monthsEarned, cap: stats.capMonths })}</span>
+          {stats.capReached && <span className="text-brand-700 font-semibold">{t('capReached')}</span>}
         </div>
         <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
           <div
@@ -87,15 +87,14 @@ export default function ReferralCard() {
         </div>
         {stats.monthsBanked > 0 && (
           <p className="text-xs text-gray-400 mt-2">
-            {stats.monthsBanked} free month{stats.monthsBanked === 1 ? '' : 's'} banked — will
-            apply automatically on your next subscription.
+            {t('banked', { count: stats.monthsBanked })}
           </p>
         )}
       </div>
 
       {/* Link */}
       <div className="bg-brand-50 rounded-xl p-3">
-        <p className="text-xs text-gray-500 mb-1">Your referral link</p>
+        <p className="text-xs text-gray-500 mb-1">{t('linkLabel')}</p>
         <p className="text-xs font-mono text-brand-900 break-all leading-relaxed">
           {stats.referralUrl}
         </p>
@@ -105,7 +104,7 @@ export default function ReferralCard() {
         onClick={copyLink}
         className="w-full bg-brand-900 text-white font-semibold py-3 rounded-xl text-sm transition-colors hover:bg-brand-800"
       >
-        {copied ? '✓ Copied!' : 'Copy your referral link'}
+        {copied ? t('copied') : t('copy')}
       </button>
 
       <div className="flex gap-2">
@@ -118,17 +117,15 @@ export default function ReferralCard() {
           WhatsApp
         </a>
         <a
-          href={`mailto:?subject=${encodeURIComponent('You need Aunty Mel in your life')}&body=${encodeURIComponent(shareText)}`}
+          href={`mailto:?subject=${encodeURIComponent(t('emailSubject'))}&body=${encodeURIComponent(shareText)}`}
           className="flex-1 flex items-center justify-center gap-2 bg-gray-700 text-white text-sm font-medium py-2 rounded-xl hover:bg-gray-800 transition-colors"
         >
-          Email
+          {t('email')}
         </a>
       </div>
 
       <p className="text-xs text-gray-400 leading-relaxed">
-        Free months are credited once your friend makes their first successful payment.
-        One referral bonus per person, ever. See our{' '}
-        <a href="/terms#referrals" className="underline">referral terms</a> for details.
+        {t.rich('terms', { link: (chunks) => <a href="/terms#referrals" className="underline">{chunks}</a> })}
       </p>
     </div>
   )

@@ -1,0 +1,47 @@
+# Übersetzung von cultural/east-asian.yaml — maßgeblich ist die englische Fassung.
+items:
+  soy-tofu-miso-phytoestrogens:
+    body: |-
+      Tofu, Miso, Edamame, Tempeh und Natto gehören zu den reichsten Nahrungsquellen für Isoflavone — pflanzliche Östrogene, die an Östrogenrezeptoren binden und vasomotorische Beschwerden abmildern können. Die Belege sind am stärksten für Lebensmittel aus ganzer Soja (nicht verarbeitetes Sojaprotein), die regelmäßig gegessen werden.
+
+      Wenn Tofu bei dir schon fest dazugehört, bleib dabei. Täglich eine Misosuppe ist eine einfache, sinnvolle Ergänzung. Fermentierte Soja (Miso, Natto, Tempeh) scheint stärkere Vorteile zu haben als unfermentierte Formen.
+  green-tea-antioxidants:
+    body: |-
+      Grüner Tee ist reich an Antioxidantien und wirkt entzündungshemmend, was die allgemeine Gesundheit in den Wechseljahren unterstützt. Er enthält weniger Koffein als Kaffee, aber nicht null — wenn Hitzewallungen oder Schlafstörungen ausgeprägt sind, tausch die Nachmittagstassen gegen Hojicha (gerösteter grüner Tee, weniger Koffein) oder Gerstentee, der koffeinfrei ist und in Ostasien viel getrunken wird.
+  fish-omega3-brain:
+    body: |-
+      Traditionelle ostasiatische Ernährung enthält meist viel fetten Fisch — Lachs, Makrele, Sardinen und Thunfisch. Omega-3-Fettsäuren gehören zu den am besten belegten Ernährungshilfen für Gehirn, Stimmung und Entzündungen in den Wechseljahren. Wenn du inzwischen weniger Fisch isst, ist es eine wirkungsvolle Änderung, ihn zurückzuholen.
+  fermented-foods-gut:
+    body: |-
+      Kimchi, Miso, Natto und andere fermentierte Lebensmittel unterstützen die Gesundheit des Darmmikrobioms. Neue Forschung deutet darauf hin, dass das Darmmikrobiom beeinflusst, wie der Körper Östrogen verarbeitet und wiederverwertet — Frauen mit vielfältigem Mikrobiom verstoffwechseln Phytoöstrogene möglicherweise wirksamer. Täglich Fermentiertes zu essen, wird sowohl von traditionellem Wissen als auch von der neueren Wissenschaft gestützt.
+  white-rice-blood-sugar:
+    body: |-
+      Weißer Reis ist ein Grundnahrungsmittel, das den Blutzucker deutlich steigen lassen kann, wenn er in großen Mengen ohne genug Eiweiß und Gemüse dazu gegessen wird. Das zählt in den Wechseljahren, weil ein instabiler Blutzucker Hitzewallungen und Stimmungsschwankungen verstärkt.
+
+      Reis mit reichlich Gemüse, Tofu, Fisch oder Ei zu essen, mildert die Blutzuckerreaktion. Wird Reis abgekühlt und wieder erwärmt, wandelt sich zudem ein Teil der Stärke in resistente Stärke um, die den Blutzucker weniger stark beeinflusst.
+  joint-pain-tai-chi:
+    body: |-
+      Gelenk- und Muskelschmerzen sind das am häufigsten genannte Wechseljahressymptom bei Frauen ost- und südostasiatischer Herkunft. Tai-Chi und Qigong — beide mit Wurzeln in der traditionellen chinesischen Medizin — haben echte Belege dafür, dass sie Gelenkschmerzen lindern, das Gleichgewicht verbessern und die psychische Gesundheit stärken. Das sind nicht nur kulturelle Praktiken; es sind evidenzbasierte Maßnahmen für die Wechseljahre.
+  natural-framing:
+    body: |-
+      In vielen ostasiatischen Kulturen gelten die Wechseljahre als natürlicher Lebensübergang — nicht als Krankheit oder Versagen. Diese Sicht hat echten Wert. Studien deuten darauf hin, dass Frauen, die die Wechseljahre positiver sehen, ihre Beschwerden als weniger belastend erleben.
+
+      Wenn du eine stärker medizinische westliche Sicht auf die Wechseljahre übernommen hast, kann es klug sein, dich wieder mit einer kulturellen Perspektive zu verbinden, die sie als Übergang statt als Problem versteht.
+  not-complaining:
+    body: |-
+      In manchen ostasiatischen Kulturen wird es nicht gern gesehen, körperliches Unwohlsein zu äußern — besonders, wenn es um Frauengesundheit geht. „Einfach weitermachen“ kann sich richtig anfühlen. Aber still zu leiden heißt, dass Beschwerden nicht behandelt werden und mit der Zeit schlimmer werden.
+
+      Du kannst deine kulturellen Werte der Gelassenheit beibehalten und deine Beschwerden trotzdem ernst nehmen. Sie hier für dich selbst festzuhalten, ist kein Klagen — es ist das Sammeln von Informationen, die dir helfen werden, dich besser zu fühlen.
+  bone-density-monitoring:
+    body: |-
+      Studien zeigen Unterschiede in der Knochendichte zwischen ethnischen Gruppen. Japanische und chinesische Frauen haben im Allgemeinen eine niedrigere Ausgangsknochendichte als Schwarze Frauen, was mit dem Östrogenrückgang in den Wechseljahren ein höheres relatives Bruchrisiko bedeuten kann.
+
+      Belastende Bewegung, ausreichend Kalzium und Vitamin D und — falls angebracht — ein Gespräch über eine Knochendichtemessung mit deiner Ärztin oder deinem Arzt sind alle eine Überlegung wert, besonders wenn die Menopause früher als erwartet einsetzt.
+      HINWEIS: Sprich mit deiner Ärztin oder deinem Arzt über eine Knochendichtemessung, besonders wenn es in deiner Familie Osteoporose gibt.
+byTitle:
+  Your diet may already be working in your favour:
+    title: Deine Ernährung arbeitet vielleicht schon für dich
+    body: |-
+      Frauen, die sich traditionell ostasiatisch ernähren — reich an Sojaprodukten wie Tofu, Miso, Edamame und Tempeh — nehmen täglich 50–200 mg Isoflavone zu sich. Westliche Frauen kommen meist auf 3–5 mg. Das könnte ein wichtiger Grund sein, warum in Japan und China seltener von Hitzewallungen berichtet wird.
+
+      Wenn sich deine Ernährung verwestlicht hat, kann es sich lohnen, traditionelle Sojaprodukte wieder aufzunehmen. Wenn sie noch überwiegend traditionell ist, ist das ein echter Ernährungsvorteil, den du bewahren solltest.

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 /**
  * Manual fallback for the case where a user has paid but the app still
@@ -10,6 +11,7 @@ import { useRouter } from 'next/navigation'
  * subscription status straight from Stripe via /api/stripe/sync-subscription.
  */
 export default function RefreshSubscriptionButton() {
+  const t = useTranslations('RefreshSubscription')
   const router = useRouter()
   const [state, setState] = useState<'idle' | 'checking' | 'still-free' | 'error'>('idle')
 
@@ -39,16 +41,13 @@ export default function RefreshSubscriptionButton() {
         disabled={state === 'checking'}
         className="text-blush-700 text-sm font-medium underline disabled:opacity-50"
       >
-        {state === 'checking' ? 'Checking with Stripe…' : 'Already paid? Refresh status'}
+        {state === 'checking' ? t('checking') : t('button')}
       </button>
       {state === 'still-free' && (
-        <p className="text-xs text-blush-600">
-          We couldn&apos;t find an active subscription yet. If you were just charged, this can
-          take a minute — try again shortly, or contact support if it persists.
-        </p>
+        <p className="text-xs text-blush-600">{t('stillFree')}</p>
       )}
       {state === 'error' && (
-        <p className="text-xs text-blush-600">Something went wrong. Please try again.</p>
+        <p className="text-xs text-blush-600">{t('error')}</p>
       )}
     </div>
   )

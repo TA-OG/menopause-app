@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useLocale, useTranslations } from 'next-intl'
 
 interface Props {
   initialEnabled: boolean
@@ -34,6 +35,8 @@ function urlBase64ToUint8Array(base64String: string): BufferSource {
 type Status = 'idle' | 'checking' | 'subscribing' | 'subscribed' | 'unsubscribing' | 'error' | 'unsupported' | 'ios-needs-home-screen'
 
 export default function NotificationSettings({ initialEnabled, initialHour }: Props) {
+  const t = useTranslations('Notifications')
+  const locale = useLocale()
   const [status, setStatus] = useState<Status>('idle')
   const [error, setError] = useState<string | null>(null)
   const [hour, setHour] = useState<number>(initialHour ?? 9)
@@ -84,7 +87,7 @@ export default function NotificationSettings({ initialEnabled, initialHour }: Pr
       const permission = await Notification.requestPermission()
       if (permission !== 'granted') {
         setStatus('idle')
-        setError('Notifications need to be allowed in your browser to turn this on.')
+        setError(t('errorPermission'))
         return
       }
 
@@ -92,7 +95,7 @@ export default function NotificationSettings({ initialEnabled, initialHour }: Pr
       const vapidKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY
       if (!vapidKey) {
         setStatus('error')
-        setError('Notifications are not configured yet — check back soon.')
+        setError(t('errorNotConfigured'))
         return
       }
 
@@ -129,13 +132,16 @@ export default function NotificationSettings({ initialEnabled, initialHour }: Pr
         // and shows "subscribed" even though notification_enabled was never
         // set and nothing will ever be sent to it.
         await subscription.unsubscribe().catch(() => {})
-        throw new Error(data?.error ?? 'Could not save subscription')
+        // The API's message is English: log it, show hers.
+        console.error('push subscribe failed:', res.status, data?.error)
+        throw new Error('subscribe-failed')
       }
 
       setStatus('subscribed')
     } catch (err) {
       setStatus('error')
-      setError(err instanceof Error ? err.message : 'Something went wrong turning on notifications.')
+      console.error(err)
+      setError(t('errorTurnOn'))
     }
   }
 
@@ -157,25 +163,20 @@ export default function NotificationSettings({ initialEnabled, initialHour }: Pr
       setStatus('idle')
     } catch (err) {
       setStatus('error')
-      setError(err instanceof Error ? err.message : 'Something went wrong turning off notifications.')
+      console.error(err)
+      setError(t('errorTurnOff'))
     }
   }
 
   if (status === 'unsupported') {
     return (
-      <p className="text-sm text-gray-500">
-        Push notifications aren&apos;t supported in this browser.
-      </p>
+      <p className="text-sm text-gray-500">{t('unsupported')}</p>
     )
   }
 
   if (status === 'ios-needs-home-screen') {
     return (
-      <p className="text-sm text-gray-500">
-        On iPhone or iPad, add Aunty Mel to your Home Screen first (Share →
-        Add to Home Screen) — iOS only allows notifications for apps opened
-        that way, not from a regular browser tab.
-      </p>
+      <p className="text-sm text-gray-500">{t('iosHomeScreen')}</p>
     )
   }
 
@@ -201,7 +202,7 @@ export default function NotificationSettings({ initialEnabled, initialHour }: Pr
       // revert to what's actually persisted and say so.
       setHour(lastSavedHour)
       setHourSaved(true)
-      setError('Could not save your reminder time — please try again.')
+      setError(t('errorHour'))
     }
   }
 
@@ -209,10 +210,8 @@ export default function NotificationSettings({ initialEnabled, initialHour }: Pr
     <div>
       <div className="flex items-center justify-between gap-4">
         <div>
-          <p className="font-medium text-gray-900 text-sm">Push notifications</p>
-          <p className="text-xs text-gray-500 mt-0.5">
-            Daily plan reminders and check-in nudges
-          </p>
+          <p className="font-medium text-gray-900 text-sm">{t('title')}</p>
+          <p className="text-xs text-gray-500 mt-0.5">{t('subtitle')}</p>
         </div>
         <button
           type="button"
@@ -224,19 +223,17 @@ export default function NotificationSettings({ initialEnabled, initialHour }: Pr
               : 'bg-brand-900 text-white hover:bg-brand-800'
           } disabled:opacity-50`}
         >
-          {isBusy ? 'Working…' : isSubscribed ? 'Turn off' : 'Turn on'}
+          {isBusy ? t('working') : isSubscribed ? t('turnOff') : t('turnOn')}
         </button>
       </div>
       {error && <p className="text-xs text-red-600 mt-2">{error}</p>}
       {!initialEnabled && !isSubscribed && status === 'idle' && (
-        <p className="text-xs text-gray-400 mt-2">
-          Off by default — turn on to get reminders from your plan.
-        </p>
+        <p className="text-xs text-gray-400 mt-2">{t('offByDefault')}</p>
       )}
       {isSubscribed && (
         <div className="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between gap-4">
           <label htmlFor="notification-hour" className="text-xs text-gray-600">
-            Send my daily reminder around
+            {t('hourLabel')}
           </label>
           <select
             id="notification-hour"
@@ -246,11 +243,12 @@ export default function NotificationSettings({ initialEnabled, initialHour }: Pr
           >
             {Array.from({ length: 24 }, (_, h) => (
               <option key={h} value={h}>
-                {h === 0 ? '12am' : h < 12 ? `${h}am` : h === 12 ? '12pm' : `${h - 12}pm`}
+                {/* Each locale's own clock: 9 am in English, 09:00 in French/German. */}
+                {new Date(2000, 0, 1, h).toLocaleTimeString(locale, { hour: 'numeric', minute: locale === 'en' ? undefined : '2-digit' })}
               </option>
             ))}
           </select>
-          {!hourSaved && <span className="sr-only">Saving…</span>}
+          {!hourSaved && <span className="sr-only">{t('saving')}</span>}
         </div>
       )}
     </div>

@@ -4,6 +4,7 @@ import { createAdminClient } from '@/lib/supabase/admin'
 import { getGeoAccess } from '@/lib/geo'
 import NavBar from '@/components/layout/NavBar'
 import ReferralRewardBanner from '@/components/referral/ReferralRewardBanner'
+import { getTranslations } from 'next-intl/server'
 
 export default async function AppLayout({
   children,
@@ -35,19 +36,19 @@ export default async function AppLayout({
   // themselves (my-plan page + wellness-plan API).
   const geo = await getGeoAccess(createAdminClient(), user.id)
   if (!geo.allowed) {
+    const t = await getTranslations('RegionBlocked')
     return (
       <div className="min-h-screen bg-cream flex items-center justify-center px-6">
         <div className="max-w-md text-center space-y-4">
           <div className="text-5xl">🌍</div>
           <h1 className="text-2xl font-bold text-brand-900">
-            Aunty Mel isn&apos;t available in your region yet
+            {t('title')}
           </h1>
           <p className="text-brand-700 text-sm">
-            We&apos;re working to bring Aunty Mel to your country in a way that meets
-            local health regulations. We&apos;ll let you know the moment it&apos;s ready.
+            {t('body')}
           </p>
           <p className="text-xs text-gray-400">
-            If you believe this is a mistake, contact{' '}
+            {t('mistake')}{' '}
             <a href="mailto:hello@auntymel.app" className="text-brand-600 underline">
               hello@auntymel.app
             </a>

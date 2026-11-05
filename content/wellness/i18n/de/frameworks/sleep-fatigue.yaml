@@ -1,0 +1,69 @@
+# Übersetzung von frameworks/sleep-fatigue.yaml — maßgeblich ist die englische Fassung.
+df_sleep_tryptophan:
+  title: Iss abends tryptophanreiche Lebensmittel
+  body: |-
+    Tryptophan ist eine Vorstufe von Serotonin und Melatonin — den Hormonen, die den Schlaf regulieren. Viel Tryptophan steckt in Pute, Hähnchen, Eiern, Kürbiskernen, Hafer und Milchprodukten. Ein kleiner Snack aus Eiweiß und Kohlenhydraten 90 Minuten vor dem Schlafengehen (z. B. eine kleine Schale Haferbrei oder eine Banane mit ein paar Walnüssen) kann die Melatoninbildung unterstützen.
+    Auch das Abendessen kann helfen. Manche Frauen bauen ihr Abendessen gern um fetten Fisch, Pute oder Hähnchen oder Kichererbsen und Linsen auf, dazu ein komplexes Kohlenhydrat wie Süßkartoffel, Quinoa oder Naturreis. Manche merken auch, dass auf eine große, kohlenhydratreiche Mahlzeit spät am Abend ein Aufwachen um 2–3 Uhr nachts folgt — die Hauptkohlenhydrate früher zu essen und eine späte Mahlzeit leichter und eiweißreich zu halten, ist einfach auszuprobieren. Das sind sanfte Ideen zum Ausprobieren, keine Verordnung.
+df_caffeine_cutoff:
+  title: Leg eine feste Koffein-Grenze um 13 Uhr fest
+  body: >-
+    Koffein hat eine Halbwertszeit von 5–6 Stunden — ein Kaffee um 15 Uhr ist um 20 Uhr noch zur Hälfte in deinem Körper. Deine Grenze auf 13 Uhr vorzuverlegen, ist für die meisten Frauen die wirkungsvollste einzelne Ernährungsänderung für bessere Schlafqualität. Steig nach dem Mittagessen auf Kräutertee, Rooibos oder entkoffeinierten Kaffee um.
+df_energy_blood_sugar:
+  title: Iss für stabile Energie über den ganzen Tag
+  body: >-
+    Erschöpfung wird oft durch Blutzuckerabstürze verstärkt. Lass keine Mahlzeiten aus und achte bei jeder Mahlzeit auf Eiweiß, gesunde Fette und Ballaststoffe, damit die Energie anhält. Ein kleiner Snack am Vormittag und am Nachmittag (eine Handvoll Nüsse, ein Apfel mit Nussmus) verhindert das Tief um 15 Uhr, von dem viele Frauen in der Perimenopause berichten.
+lf_sleep_consistency:
+  title: Leg deine Aufstehzeit fest — sie verankert deinen ganzen Schlafrhythmus
+  body: >-
+    Dein zirkadianer Rhythmus wird vor allem durch deine Aufstehzeit eingestellt, nicht durch deine Schlafenszeit. Jeden Tag (auch am Wochenende) auf 30 Minuten genau zur gleichen Zeit aufzustehen, ist die am besten belegte einzelne Änderung im Schlafverhalten. Nach einer schlechten Nacht fühlt sich das widersinnig an, aber Ausschlafen macht die nächste Nacht schlechter.
+lf_morning_light:
+  title: Morgenlicht — 10 Minuten draußen in der ersten Stunde nach dem Aufwachen
+  body: >-
+    Tageslicht draußen (selbst an einem bewölkten Tag) ist 10–50-mal heller als Innenbeleuchtung. Wer sich in der ersten Stunde nach dem Aufwachen hinausbegibt, unterdrückt restliches Melatonin, ist tagsüber wacher und verankert den Schlaf-Wach-Rhythmus. Ein kurzer Spaziergang oder am offenen Fenster sitzen zählt. Das ist kostenlos und dauert 10 Minuten.
+lf_restorative_movement:
+  title: Erholsame Bewegung bei Erschöpfung — keine Ruhe
+  body: >-
+    Gegen die Intuition macht Ruhe die Erschöpfung in den meisten Fällen schlimmer. Sanfte, regelmäßige Bewegung — ein 20-minütiger Spaziergang, Yoga, Schwimmen — aktiviert die Energiesysteme und verbessert die Leistung der Mitochondrien. Beweg dich jeden Tag, und sei es nur 15 Minuten. Heb dir intensives Training für Zeiten auf, in denen du mehr Energie in Reserve hast.
+lf_wind_down:
+  title: Jeden Abend eine 30-minütige Abendroutine
+  body: |-
+    Dein Nervensystem braucht ein Übergangssignal zwischen „Tagesmodus“ und Schlaf. Bau dir eine feste 30-minütige Routine auf: gedimmtes Licht, keine Bildschirme, etwas wenig Anregendes (Lesen, sanftes Dehnen, ein Bad oder eine Dusche). Jeden Abend dieselbe Abfolge bringt deinem Körper bei, sie mit dem Einschlafen zu verbinden.
+    Wenn sich eine Reihe schlechter Nächte angesammelt hat, hilft manchen Frauen eine bewusste „Sleepcation“, um alles zurückzusetzen: einen Abend im Kalender blocken, die Geräte ausschalten, das Zimmer ruhig und gemütlich machen und den Lieblingsschlafanzug anziehen.
+mr_sleep_effort:
+  title: Hör auf, schlafen zu wollen — paradoxe Intention
+  body: >-
+    Je mehr du versuchst zu schlafen, desto wacher wirst du. Die kognitive Verhaltenstherapie bei Schlaflosigkeit (KVT-I) vermittelt „Stimuluskontrolle“ und „paradoxe Intention“ — wenn du nach 20 Minuten noch wach bist, steh auf, mach bei gedimmtem Licht etwas Ruhiges und geh erst wieder ins Bett, wenn du müde bist. Das durchbricht den Angstkreislauf rund um den Schlaf. Bitte deine Hausärztin oder deinen Hausarzt um eine Überweisung zu einem KVT-I-Programm; im Vereinigten Königreich ist die App Sleepio über den NHS erhältlich.
+mr_fatigue_self_compassion:
+  title: Ruh dich aus, ohne schlechtes Gewissen
+  body: >-
+    Viele Frauen kämpfen sich durch die Erschöpfung, weil sie das Gefühl haben, es doch schaffen zu „müssen“. Erschöpfung in der Perimenopause ist körperlich bedingt — dein Körper passt sich an hormonelle Veränderungen an, das ist keine Charakterschwäche. Östrogen ist daran beteiligt, wie deine Zellen Energie gewinnen, also gehören schwankende Werte zum körperlichen Bild. Die Antwort ist meist nicht, noch härter durchzuziehen, sondern deinen Körper zu unterstützen und dich ohne schlechtes Gewissen auszuruhen. Täglich eine bewusste Ruhezeit einzuplanen (schon 20 Minuten Hinlegen) und sie als Pflege statt als Schwäche zu sehen, verändert spürbar, wie man Erschöpfung erlebt.
+ss_magnesium_sleep:
+  title: Magnesiumglycinat — für die Schlafqualität
+  body: >-
+    Magnesiumglycinat (200–400 mg, 30–60 Minuten vor dem Schlafengehen) hat gute Belege dafür, dass es das Einschlafen und Durchschlafen verbessert. Es entspannt die glatte Muskulatur, senkt das Cortisol und unterstützt GABA — den wichtigsten beruhigenden Botenstoff des Gehirns. Beginne mit 200 mg und steigere bei Bedarf.
+  disclaimer: >-
+    Nahrungsergänzungsmittel sind keine zugelassenen Arzneimittel. Sprich vor dem Beginn immer mit deiner Hausärztin, deinem Hausarzt oder in der Apotheke, besonders wenn du verschreibungspflichtige Medikamente nimmst oder eine Nieren- oder Herzerkrankung hast.
+ss_vitamin_d:
+  title: Vitamin D — für Energie, Stimmung und Immunsystem
+  body: >-
+    Die meisten Erwachsenen im Vereinigten Königreich haben im Winter zu wenig Vitamin D. Ein Mangel hängt stark mit Erschöpfung, gedrückter Stimmung und schlechtem Schlaf zusammen. Der NHS empfiehlt allen Erwachsenen von Oktober bis März täglich 10 Mikrogramm (400 IE); Frauen mit dunklerer Haut oder wenig Sonnenkontakt profitieren eventuell von einer ganzjährigen Einnahme von 1000–2000 IE. Lass vor einer höheren Dosierung deinen Spiegel per Bluttest bei deiner Ärztin oder deinem Arzt prüfen.
+  disclaimer: >-
+    Sehr hohe Vitamin-D-Dosen (über 4000 IE/Tag) können toxisch wirken. Lass deine Werte prüfen, bevor du mehr als 2000 IE einnimmst. Sprich mit deiner Hausärztin oder deinem Hausarzt, wenn du schon einmal Nierensteine oder eine Hyperkalzämie hattest.
+ss_coq10_ubiquinol_energy:
+  title: CoQ10 (oder Ubiquinol) — für die Energiegewinnung der Zellen
+  body: >-
+    CoQ10 wird üblicherweise mit 100–200 mg/Tag eingenommen und ist tatsächlich an der Energiegewinnung der Zellen beteiligt, die Belege, dass eine Ergänzung die Erschöpfung messbar verbessert, sind aber uneinheitlich statt gesichert. Ubiquinol ist die „aktive“ Form, in die dein Körper die Standardform (Ubichinon) umwandelt — diese Umwandlung kann mit dem Alter weniger effizient werden, weshalb manche Frauen Ubiquinol wählen, auch wenn nicht fest belegt ist, dass es klinisch für alle besser ist. Statine senken bekanntermaßen den CoQ10-Spiegel im Körper — der Hauptgrund, warum es oft gerade für Frauen mit Statinen oder anderen Herzmedikamenten diskutiert wird.
+  disclaimer: >-
+    Wenn du ein Statin oder ein anderes Herzmedikament nimmst, sollte das wegen der Wechselwirkung ärztlich begleitet werden.
+ss_nmn_pqq_energy:
+  title: NMN und PQQ — vielversprechend, aber nicht gesichert, zur Unterstützung der Energie
+  body: >-
+    NMN (Nicotinamid-Mononukleotid, üblich 250–500 mg/Tag) erhöht zuverlässig den NAD+-Spiegel, der mit dem Alter sinkt und am Energiestoffwechsel der Zellen beteiligt ist — Studien am Menschen haben aber noch nicht gezeigt, dass das zu einem klaren Nutzen bei Erschöpfung führt; die meisten Untersuchungen sind bislang klein und kurz. PQQ (Pyrrolochinolinchinon, üblich 10–20 mg/Tag) wird manchmal damit kombiniert und ist meist gut verträglich, mit derselben Lücke zwischen vielversprechendem Mechanismus und belegtem Ergebnis. Am besten betrachtest du beides als experimentell, nicht als verlässliche Lösung.
+  disclaimer: >-
+    Sprich vor dem Beginn immer mit deiner Hausärztin, deinem Hausarzt oder in der Apotheke, besonders wenn du verschreibungspflichtige Medikamente nimmst.
+ss_nac_glutathione_energy:
+  title: NAC und Glutathion — antioxidative Unterstützung
+  body: >-
+    NAC (N-Acetylcystein, üblich 600 mg/Tag) und/oder Glutathion unterstützen das wichtigste antioxidative System des Körpers, das bei der Energiegewinnung der Zellen und beim Abbau von oxidativem Stress eine Rolle spielt. Vielleicht liest du, dass Glutathion liposomal sein muss, um zu wirken — einige Studien zeigen, dass auch normales orales Glutathion den Spiegel im Körper erhöhen kann; das ist also keine strikte Voraussetzung, auch wenn die Formulierung die Aufnahme beeinflusst und die Forschung zur besten Form noch läuft.
+  disclaimer: >-
+    Sprich vor dem Beginn immer mit deiner Hausärztin, deinem Hausarzt oder in der Apotheke, besonders wenn du verschreibungspflichtige Medikamente nimmst.
