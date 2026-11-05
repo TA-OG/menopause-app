@@ -22,13 +22,14 @@
     "connecting": "Verbindung wird hergestellt...",
     "orUseEmail": "oder per E-Mail",
     "emailPlaceholder": "deine@email.com",
-    "sendMagicLink": "Magischen Link senden",
+    "sendMagicLink": "Anmeldelink senden",
     "sending": "Wird gesendet...",
     "noAccount": "Kein Konto?",
     "signUpFree": "Kostenlos registrieren",
     "checkEmail": "Überprüfe deine E-Mails",
-    "magicLinkSent": "Magischer Link gesendet an <strong>{email}</strong>.",
-    "tryAgain": "Erneut versuchen"
+    "magicLinkSent": "Anmeldelink gesendet an <strong>{email}</strong>.",
+    "tryAgain": "Erneut versuchen",
+    "linkFailed": "Dieser Anmeldelink hat nicht funktioniert. Möglicherweise ist er abgelaufen oder wurde bereits verwendet. Bitte melde dich unten erneut an."
   },
   "SignUp": {
     "subtitle": "Dein persönlicher Wellness-Plan wartet auf dich.",
@@ -46,20 +47,22 @@
     "emailPlaceholder": "deine@email.com",
     "continueWithEmail": "Weiter mit E-Mail",
     "sendingLink": "Link wird gesendet...",
-    "alreadyHaveAccount": "Du hast bereits ein Konto?",
+    "alreadyHaveAccount": "Hast du schon ein Konto?",
     "signIn": "Anmelden",
     "checkEmail": "Überprüfe deine E-Mails",
-    "magicLinkSentClick": "Magischer Link gesendet an <strong>{email}</strong>. Klicke darauf, um fortzufahren.",
+    "magicLinkSentClick": "Anmeldelink gesendet an <strong>{email}</strong>. Klicke darauf, um fortzufahren.",
     "tryAgain": "Erneut versuchen",
-    "consentRequired": "Bitte akzeptiere die erforderlichen Bedingungen, bevor du fortfährst."
+    "consentRequired": "Bitte akzeptiere die erforderlichen Bedingungen, bevor du fortfährst.",
+    "loading": "Wird geladen..."
   },
   "Dashboard": {
     "logSymptoms": "Heutige Symptome erfassen",
     "logSymptomsSubtitle": "Verfolge, wie es dir geht, und sieh deinen Fortschritt über die Zeit",
+    "pastCheckins": "Deine bisherigen Check-ins ansehen →",
     "yourPlan": "Dein Wellness-Plan",
     "viewAll": "Alle ansehen →",
     "planReadyPremium": "Dein persönlicher Plan ist bereit.",
-    "planReadyFree": "Schließe deine Aufnahme ab, um deinen persönlichen Plan zu sehen.",
+    "planReadyFree": "Schließe deinen Fragebogen ab, um deinen persönlichen Plan zu sehen.",
     "journal": "Tagebuch",
     "open": "Öffnen →",
     "journalSubtitle": "Verfolge, was du ausprobierst und wie es für dich funktioniert.",
@@ -67,7 +70,12 @@
     "inviteSubtitle": "Ihr bekommt beide einen Gratismonat — bis zu 6 Empfehlungen kombinierbar.",
     "unlockPlan": "Schalte deinen vollständigen Plan frei",
     "unlockPlanSubtitle": "Erhalte Zugang zu allen Empfehlungen, Inhalten und deinem vollständigen Tagebuchverlauf.",
-    "upgrade": "Upgrade — 7,99 £/Monat"
+    "upgrade": "Upgrade — 7,99 £/Monat",
+    "startHere": "Fang hier an",
+    "allCount": "Alle {count} →",
+    "readNoteFirst": "Lies hier zuerst den Hinweis, bevor du anfängst",
+    "view": "Ansehen →",
+    "regionUnavailable": "Persönliche Pläne sind in deiner Region noch nicht verfügbar — die Ratgeber schon."
   },
   "Learn": {
     "title": "Wissen",
@@ -82,7 +90,7 @@
     "backToLearn": "← Zurück zu Wissen",
     "minReadFull": "{minutes} Min. Lesezeit",
     "premiumArticleTitle": "Dies ist ein Premium-Artikel",
-    "premiumArticleBody": "Führe ein Upgrade durch, um diesen Artikel und die gesamte Bibliothek von Pamelas ausführlichen Ratgebern zu lesen.",
+    "premiumArticleBody": "Mit Premium liest du diesen Artikel und die gesamte Bibliothek von Pamelas ausführlichen Ratgebern.",
     "upgradeCta": "Upgrade — 7,99 £/Monat"
   },
   "Disclaimer": {
@@ -91,5 +99,983 @@
     "supplement": "Sprich immer mit deiner Hausärztin oder deinem Hausarzt, bevor du ein neues Nahrungsergänzungsmittel einnimmst, besonders wenn du verschreibungspflichtige Medikamente einnimmst oder gesundheitliche Vorerkrankungen hast.",
     "videoIntro": "Wir sind hier, um dir echte Informationen darüber zu geben, was während der Perimenopause und Menopause in deinem Körper vor sich geht. Wie immer gilt: Das ist kein medizinischer Rat und ersetzt nicht deine Ärztin oder deinen Arzt — es soll dir helfen, deinen eigenen Körper besser zu verstehen, bessere Fragen zu stellen und mit den Veränderungen, die du vornimmst, echte Ergebnisse zu erzielen.",
     "gpSignpost": "Dies sind allgemeine Wellness-Vorschläge. Für medizinische Behandlungsoptionen — einschließlich HRT, verschreibungspflichtiger Medikamente oder Facharztüberweisungen — sprich bitte mit deiner Hausärztin oder deinem Hausarzt."
+  },
+  "Symptoms": {
+    "hot_flashes": "Hitzewallungen",
+    "night_sweats": "Nachtschweiß",
+    "sleep_problems": "Schlafprobleme",
+    "mood_changes": "Stimmungsschwankungen",
+    "anxiety": "Angst",
+    "brain_fog": "Gehirnnebel",
+    "weight_changes": "Gewichtsveränderungen",
+    "joint_pain": "Gelenkschmerzen",
+    "low_libido": "Geringe Libido",
+    "fatigue": "Erschöpfung",
+    "vaginal_dryness": "Scheidentrockenheit",
+    "skin_changes": "Hautveränderungen",
+    "hair_changes": "Haarveränderungen",
+    "other": "Sonstiges"
+  },
+  "CheckinHistory": {
+    "title": "Deine Check-ins",
+    "subtitle": "Was du erfasst hast – und wie es sich verändert.",
+    "backToCheckin": "← Täglicher Check-in",
+    "formLink": "Deine Check-ins →",
+    "saved": "Check-in gespeichert.",
+    "todayLogged": "Du hast heute schon eingecheckt.",
+    "editToday": "Heute bearbeiten",
+    "todayMissing": "Du hast heute noch nicht eingecheckt.",
+    "logToday": "Jetzt einchecken",
+    "trendsTitle": "Letzte 30 Tage",
+    "daysLogged": "{count, plural, one {# Tag} other {# Tage}} von 30 erfasst",
+    "notEnoughYet": "Erfasse noch ein paar Tage, dann zeigen sich hier deine Muster.",
+    "mood": "Stimmung",
+    "energy": "Energie",
+    "sleep": "Schlaf",
+    "scoreAverage": "Ø {value}/5",
+    "sleepAverage": "Ø {value} Std.",
+    "noData": "Nicht erfasst",
+    "metricSummary": "{label}: Durchschnitt {value} über {count, plural, one {# Tag} other {# Tage}}.",
+    "topSymptoms": "Häufigste Symptome",
+    "symptomDays": "{count, plural, one {# Tag} other {# Tage}}",
+    "symptomSeverity": "Ø Stärke {value}/5",
+    "noSymptoms": "In den letzten 30 Tagen keine Symptome bewertet.",
+    "gpNote": "Das ist eine Übersicht über deine Einträge, keine Diagnose. Wenn dich etwas beunruhigt oder sich plötzlich verändert, sprich mit deiner Hausärztin oder deinem Hausarzt.",
+    "historyTitle": "Alle Check-ins",
+    "emptyTitle": "Noch keine Check-ins",
+    "emptyBody": "Sobald du ein paar Tage erfasst hast, zeigen sich hier deine Muster.",
+    "emptyCta": "Heutigen Check-in erfassen",
+    "loadError": "Deine Check-ins konnten nicht geladen werden. Bitte lade die Seite neu.",
+    "symptomsHeading": "Symptome",
+    "noneRated": "Keine Symptome bewertet",
+    "notesHeading": "Notizen",
+    "score": "{value}/5",
+    "hours": "{value} Std.",
+    "older": "Ältere Check-ins anzeigen",
+    "newest": "Zurück zu den neuesten"
+  },
+  "Profile": {
+    "title": "Profil",
+    "name": "Name",
+    "email": "E-Mail",
+    "plan": "Tarif",
+    "premium": "Premium ✨",
+    "free": "Kostenlos",
+    "languageTitle": "Sprache",
+    "languageBody": "Die Sprache der App, einschließlich deines Fragebogens und der Artikel unter „Wissen“.",
+    "languageSaved": "Sprache aktualisiert.",
+    "languageError": "Wir konnten die Sprache gerade nicht ändern. Bitte versuche es erneut.",
+    "subscription": "Abo",
+    "manageBilling": "Zahlungen verwalten →",
+    "upgradeTitle": "Auf Premium upgraden",
+    "upgradeBody": "Schalte deinen vollständigen Wellness-Plan, die gesamte Inhaltsbibliothek und deinen vollständigen Tagebuchverlauf frei.",
+    "upgradeCta": "Upgrade — 7,99 £/Monat",
+    "inviteTitle": "🎁 Lade Freundinnen ein und erhalte einen Gratismonat",
+    "inviteBody": "Du und deine Freundin bekommt beide einen Gratismonat. Bis zu 6 kombinierbar.",
+    "updatePlanTitle": "Deinen Wellness-Plan aktualisieren",
+    "updatePlanBody": "Mach den Fragebogen noch einmal, wenn sich deine Symptome oder dein Lebensstil verändert haben.",
+    "redoIntake": "Fragebogen wiederholen",
+    "signOut": "Abmelden"
+  },
+  "Onboarding": {
+    "ui": {
+      "back": "← Zurück",
+      "continue": "Weiter",
+      "skip": "Frage überspringen"
+    },
+    "language": {
+      "title": "In welcher Sprache möchtest du diesen Fragebogen ausfüllen?",
+      "subtitle": "Auch der Rest der App wechselt in diese Sprache. Du kannst sie jederzeit in deinem Profil ändern.",
+      "error": "Wir konnten die Sprache gerade nicht ändern. Bitte versuche es erneut."
+    },
+    "disclaimer": {
+      "intro": "Lass uns deinen persönlichen Wellness-Plan erstellen.",
+      "cta": "Verstanden — los geht's"
+    },
+    "steps": {
+      "name": {
+        "title": "Wie heißt du?",
+        "subtitle": "Damit gestalten wir dein Erlebnis persönlicher.",
+        "placeholder": "Dein Vorname"
+      },
+      "age": {
+        "title": "Wie alt bist du?"
+      },
+      "stage": {
+        "title": "Wo stehst du in deinen Wechseljahren?",
+        "subtitle": "Es ist in Ordnung, wenn du dir nicht sicher bist — wir helfen dir, es besser zu verstehen."
+      },
+      "symptoms": {
+        "title": "Welche Symptome hast du?",
+        "subtitle": "Wähle alle zutreffenden aus."
+      },
+      "primary_symptom": {
+        "title": "Welches Symptom belastet dich im Moment am meisten?",
+        "subtitle": "So können wir deinen Plan richtig priorisieren."
+      },
+      "symptom_severity": {
+        "title": "Wie stark ist dieses Hauptsymptom?",
+        "subtitle": "Wir passen die Intensität deines Plans daran an, wie sehr es dich beeinträchtigt."
+      },
+      "goal": {
+        "title": "Was ist dein wichtigstes Ziel mit dieser App?"
+      },
+      "diet": {
+        "title": "Wie würdest du deine aktuelle Ernährung beschreiben?"
+      },
+      "diet_restrictions": {
+        "title": "Gibt es Ernährungsbedürfnisse oder Allergien, die wir berücksichtigen sollen?",
+        "subtitle": "Wähle alle zutreffenden aus — wir schlagen dir keine Lebensmittel vor, die nicht passen."
+      },
+      "exercise": {
+        "title": "Wie aktiv bist du derzeit?"
+      },
+      "smoking": {
+        "title": "Rauchst du?",
+        "subtitle": "Rauchen wirkt sich auf Hitzewallungen sowie auf die Knochen- und Herzgesundheit aus."
+      },
+      "alcohol": {
+        "title": "Wie oft trinkst du Alkohol?"
+      },
+      "caffeine": {
+        "title": "Wie viel Koffein nimmst du zu dir?"
+      },
+      "sleep": {
+        "title": "Wie würdest du deine Schlafqualität im Moment bewerten?"
+      },
+      "stress": {
+        "title": "Wie hoch ist dein Stresslevel im Alltag?"
+      },
+      "medical_flags": {
+        "title": "Trifft eines davon auf dich zu?",
+        "subtitle": "Das hält deinen Plan sicher — wir kennzeichnen damit Nahrungsergänzungsmittel oder Ratschläge, die du zuerst mit deiner Hausärztin oder deinem Hausarzt besprechen solltest. Wähle alle zutreffenden aus."
+      },
+      "previously_tried": {
+        "title": "Hast du schon etwas gegen deine Symptome ausprobiert?",
+        "subtitle": "Wähle alle zutreffenden aus — wir wiederholen nichts, was nicht geholfen hat.",
+        "cta": "Meinen Plan erstellen →"
+      }
+    },
+    "choices": {
+      "age_range": {
+        "60": "60 oder älter",
+        "Under_40": "Unter 40",
+        "40_44": "40–44",
+        "45_49": "45–49",
+        "50_54": "50–54",
+        "55_59": "55–59"
+      },
+      "menopause_stage": {
+        "unsure": "Ich bin mir noch nicht sicher",
+        "perimenopause": "Ich glaube, ich bin in der Perimenopause",
+        "menopause": "Mir wurde gesagt, dass ich in der Menopause bin",
+        "postmenopause": "Ich bin in der Postmenopause",
+        "surgical": "Ich hatte eine operativ bedingte Menopause"
+      },
+      "symptoms": {
+        "hot_flashes": "Hitzewallungen",
+        "night_sweats": "Nachtschweiß",
+        "sleep_problems": "Schlafprobleme",
+        "mood_changes": "Stimmungsschwankungen / Reizbarkeit",
+        "anxiety": "Angst",
+        "brain_fog": "Gehirnnebel / Gedächtnisprobleme",
+        "weight_changes": "Gewichtsveränderungen",
+        "joint_pain": "Gelenk- oder Muskelschmerzen",
+        "fatigue": "Energiemangel / Erschöpfung",
+        "low_libido": "Geringe Libido",
+        "vaginal_dryness": "Scheidentrockenheit",
+        "skin_changes": "Hautveränderungen",
+        "hair_changes": "Haarveränderungen"
+      },
+      "symptom_severity": {
+        "mild": "Leicht — spürbar, aber gut auszuhalten",
+        "moderate": "Mittel — beeinträchtigt regelmäßig meinen Alltag",
+        "severe": "Stark — es stört mein Leben erheblich"
+      },
+      "primary_goal": {
+        "Reduce_physical_symptoms": "Körperliche Symptome lindern",
+        "Improve_sleep": "Besser schlafen",
+        "Manage_mood_and_stress": "Mit Stimmung und Stress besser umgehen",
+        "Understand_my_body_better": "Meinen Körper besser verstehen",
+        "Manage_weight": "Mein Gewicht in den Griff bekommen",
+        "Boost_energy": "Mehr Energie haben",
+        "Improve_relationships_and_intimacy": "Beziehungen und Intimität verbessern",
+        "All_of_the_above": "Alles davon"
+      },
+      "diet_type": {
+        "whole_foods": "Überwiegend frische, unverarbeitete Lebensmittel",
+        "mixed": "Gemischt — teils gesund, teils nicht",
+        "convenience": "Überwiegend Fertiggerichte / Fast Food",
+        "specific": "Ich folge einer bestimmten Ernährungsweise (vegan, vegetarisch usw.)",
+        "unaware": "Ich achte nicht besonders auf meine Ernährung"
+      },
+      "diet_restrictions": {
+        "none": "Keine Einschränkungen",
+        "vegetarian": "Vegetarisch",
+        "vegan": "Vegan",
+        "dairy_free": "Milchfrei / Laktoseintoleranz",
+        "gluten_free": "Glutenfrei / Zöliakie",
+        "nut_allergy": "Nussallergie",
+        "shellfish_allergy": "Allergie gegen Schalentiere",
+        "soy_free": "Ich meide Soja",
+        "halal": "Halal",
+        "kosher": "Koscher"
+      },
+      "exercise_level": {
+        "very_active": "Sehr aktiv (4+ Tage pro Woche)",
+        "moderately_active": "Mäßig aktiv (2–3 Tage pro Woche)",
+        "lightly_active": "Leicht aktiv (Spaziergänge, 1 Tag pro Woche)",
+        "not_active": "Nicht sehr aktiv",
+        "limited": "Ich habe eine Erkrankung, die mich einschränkt"
+      },
+      "smoking_status": {
+        "non_smoker": "Nie geraucht",
+        "ex_smoker": "Ehemalige Raucherin",
+        "occasional_smoker": "Gelegentlich",
+        "regular_smoker": "Regelmäßig"
+      },
+      "alcohol_intake": {
+        "none": "Ich trinke keinen Alkohol",
+        "occasional": "Gelegentlich (1–2 Getränke pro Woche)",
+        "regular": "Regelmäßig (3–7 Getränke pro Woche)",
+        "frequent": "An den meisten Tagen"
+      },
+      "caffeine_intake": {
+        "none": "Gar keins",
+        "low": "Wenig (1 Tasse pro Tag)",
+        "moderate": "Mäßig (2–3 pro Tag)",
+        "high": "Viel (4+ pro Tag)"
+      },
+      "sleep_quality": {
+        "good": "Gut — ich schlafe gut",
+        "fair": "Mittelmäßig — manchmal gestört",
+        "poor": "Schlecht — ich kämpfe fast jede Nacht",
+        "very_poor": "Sehr schlecht — Schlaf ist ein großes Problem"
+      },
+      "stress_level": {
+        "low": "Niedrig — ich fühle mich meistens ruhig",
+        "moderate": "Mittel — etwas Stress, aber machbar",
+        "high": "Hoch — ich fühle mich regelmäßig gestresst",
+        "very_high": "Sehr hoch — ich fühle mich überfordert"
+      },
+      "medical_flags": {
+        "none": "Nichts davon",
+        "on_hrt": "Ich mache derzeit eine Hormonersatztherapie (HRT)",
+        "oestrogen_sensitive": "Brust- oder Eierstockkrebs in der Vorgeschichte oder eine östrogenempfindliche Erkrankung",
+        "blood_thinners": "Ich nehme Blutverdünner (z. B. Warfarin)",
+        "high_blood_pressure": "Bluthochdruck",
+        "kidney_stones": "Nierensteine in der Vorgeschichte",
+        "thyroid": "Schilddrüsenerkrankung",
+        "diabetes": "Diabetes",
+        "pregnant_breastfeeding": "Schwanger oder stillend"
+      },
+      "previously_tried": {
+        "Nothing_yet": "Noch nichts",
+        "Diet_changes": "Ernährungsumstellung",
+        "Exercise": "Bewegung",
+        "HRT": "Hormonersatztherapie (HRT)",
+        "Natural_supplements": "Natürliche Nahrungsergänzungsmittel",
+        "Mindfulness_meditation": "Achtsamkeit / Meditation",
+        "Counselling_or_therapy": "Beratung oder Psychotherapie",
+        "Acupuncture": "Akupunktur",
+        "Other": "Sonstiges"
+      }
+    },
+    "continent": {
+      "title": "Woher stammen deine Wurzeln?",
+      "subtitle": "Wähle die Region, die deinen kulturellen Hintergrund am besten widerspiegelt. Danach zeigen wir dir genauere Optionen."
+    },
+    "continents": {
+      "africa": "Afrika",
+      "caribbean": "Karibik",
+      "south_asia": "Südasien",
+      "east_asia": "Ost- und Südostasien",
+      "mena": "Naher Osten und Nordafrika",
+      "latin_america": "Lateinamerika",
+      "europe": "Europa und Britische Inseln",
+      "other": "Gemischt / Andere"
+    },
+    "heritage": {
+      "title": "Mit welchen Gemeinschaften identifizierst du dich?",
+      "subtitle": "Wähle alle zutreffenden aus. Je genauer du bist, desto passender wird dein Plan.",
+      "note": "Studien zeigen, dass die Wechseljahre verschiedene Gemeinschaften unterschiedlich betreffen — beim Zeitpunkt, bei den Symptomen und dabei, welche Lebensmittel am meisten helfen. Diese Angaben bleiben privat und werden niemals weitergegeben.",
+      "selectedCount": "✓ {count} ausgewählt",
+      "continueWithCount": "Weiter ({count} ausgewählt)"
+    },
+    "communityGroups": {
+      "Nigeria": "Nigeria",
+      "Ghana": "Ghana",
+      "East_Southern_Africa": "Ost- und Südafrika",
+      "West_Africa_other": "Westafrika (weitere)",
+      "Caribbean": "Karibik",
+      "South_Asia_India": "Südasien — Indien",
+      "South_Asia_Pakistan_Bangladesh": "Südasien — Pakistan und Bangladesch",
+      "East_Asia": "Ostasien",
+      "Southeast_Asia": "Südostasien",
+      "Middle_East_North_Africa": "Naher Osten und Nordafrika",
+      "Latin_America": "Lateinamerika",
+      "White_British_European": "Britisch und europäisch (weiß)",
+      "Other": "Andere"
+    },
+    "communities": {
+      "yoruba": "Yoruba (Lagos, Oyo, Ogun, Ondo, Ekiti, Osun)",
+      "igbo": "Igbo (Anambra, Imo, Enugu, Abia, Ebonyi)",
+      "hausa_fulani": "Hausa / Hausa-Fulani (Nordnigeria)",
+      "ijaw": "Ijaw / Nigerdelta",
+      "edo": "Edo / Bini",
+      "efik": "Efik / Ibibio (Cross River, Akwa Ibom)",
+      "urhobo": "Urhobo / Delta",
+      "nigerian_other": "Andere nigerianische Herkunft",
+      "akan": "Akan / Ashanti / Fante",
+      "ewe": "Ewe",
+      "ga": "Ga / Adangbe",
+      "ghanaian": "Andere ghanaische Herkunft",
+      "kikuyu": "Kikuyu (Kenia)",
+      "luo": "Luo (Kenia/Uganda)",
+      "kenyan": "Andere kenianische Herkunft",
+      "baganda": "Baganda (Uganda)",
+      "ugandan": "Andere ugandische Herkunft",
+      "bemba": "Bemba (Sambia)",
+      "zambian": "Andere sambische Herkunft",
+      "shona": "Shona (Simbabwe)",
+      "zulu": "Zulu (Südafrika)",
+      "xhosa": "Xhosa (Südafrika)",
+      "south_african": "Andere südafrikanische Herkunft",
+      "amhara": "Amharisch / Oromo (Äthiopien)",
+      "somali": "Somalisch",
+      "wolof": "Wolof (Senegal/Gambia)",
+      "temne": "Temne / Mende (Sierra Leone)",
+      "krio": "Krio (Sierra Leone)",
+      "jamaican": "Jamaikanisch",
+      "trinidadian": "Trinidadisch / Tobagisch",
+      "barbadian": "Barbadisch (Bajan)",
+      "guyanese": "Guyanisch",
+      "haitian": "Haitianisch",
+      "grenadian": "Grenadisch",
+      "st_lucian": "St. Lucia",
+      "caribbean": "Andere karibische Herkunft",
+      "punjabi": "Panjabi (Sikh / Hindu)",
+      "gujarati": "Gujarati (einschließlich Jain)",
+      "bengali_india": "Bengalisch (Westbengalen)",
+      "tamil": "Tamilisch (Tamil Nadu / Südindien)",
+      "malayali": "Malayali (Kerala)",
+      "marathi": "Marathi (Maharashtra)",
+      "telugu": "Telugu (Andhra / Telangana)",
+      "kannada": "Kannada (Karnataka)",
+      "bihari": "Bihari / Uttar Pradesh",
+      "rajasthani": "Rajasthani",
+      "indian": "Andere indische Herkunft",
+      "punjabi_pakistan": "Panjabi (Pakistan / muslimisch)",
+      "sindhi": "Sindhi",
+      "pashtun": "Paschtunisch / Khyber Pakhtunkhwa",
+      "kashmiri": "Kaschmirisch",
+      "pakistani": "Andere pakistanische Herkunft",
+      "bangladeshi": "Bangladeschisch / bengalisch (Bangladesch)",
+      "sylheti": "Sylheti",
+      "sri_lankan": "Sri-lankisch (singhalesisch / tamilisch)",
+      "cantonese": "Kantonesisch (Guangdong / Hongkong)",
+      "mandarin": "Mandarinsprachig (Nordchina)",
+      "hakka": "Hakka",
+      "hokkien": "Hokkien / Fujian",
+      "japanese": "Japanisch",
+      "korean": "Koreanisch",
+      "taiwanese": "Taiwanisch",
+      "vietnamese": "Vietnamesisch",
+      "filipino": "Philippinisch (Tagalog / Visaya)",
+      "thai": "Thailändisch",
+      "malay": "Malaiisch / malaysisch",
+      "indonesian": "Indonesisch / javanisch",
+      "arab": "Arabisch (allgemein)",
+      "moroccan": "Marokkanisch",
+      "egyptian": "Ägyptisch",
+      "lebanese": "Libanesisch / syrisch",
+      "iranian": "Iranisch / persisch",
+      "turkish": "Türkisch / kurdisch",
+      "mexican": "Mexikanisch",
+      "colombian": "Kolumbianisch",
+      "puerto_rican": "Puerto-ricanisch",
+      "cuban": "Kubanisch",
+      "dominican": "Dominikanisch",
+      "peruvian": "Peruanisch",
+      "brazilian": "Brasilianisch",
+      "hispanic": "Andere lateinamerikanische / hispanische Herkunft",
+      "english": "Englisch",
+      "scottish": "Schottisch",
+      "welsh": "Walisisch",
+      "white_irish": "Irisch",
+      "polish": "Polnisch",
+      "eastern_european": "Andere osteuropäische Herkunft",
+      "mediterranean": "Mediterran (italienisch / griechisch / spanisch)",
+      "white_european": "Andere weiße europäische Herkunft",
+      "mixed": "Gemischte Herkunft (oben alle zutreffenden auswählen)",
+      "prefer_not_to_say": "Möchte ich nicht angeben"
+    },
+    "location": {
+      "title": "Wo lebst du?",
+      "subtitle": "Deine Herkunft prägt deine Kultur, aber dein Wohnort prägt deinen Alltag. Wir nutzen das, um Uhrzeiten und die Verfügbarkeit von Lebensmitteln vor Ort zu berücksichtigen.",
+      "city": "Stadt oder Ort",
+      "cityPlaceholder": "z. B. London, Lagos, Toronto",
+      "country": "Land",
+      "countryPlaceholder": "Wähle dein Land",
+      "timezone": "Deine Zeitzone",
+      "timezonePlaceholder": "Wähle deine Zeitzone"
+    },
+    "countries": {
+      "GB": "Vereinigtes Königreich",
+      "US": "Vereinigte Staaten",
+      "CA": "Kanada",
+      "AU": "Australien",
+      "other": "Woanders"
+    },
+    "timezoneGroups": {
+      "UK_Ireland": "Großbritannien und Irland",
+      "Europe": "Europa",
+      "Africa": "Afrika",
+      "Middle_East": "Naher Osten",
+      "South_Asia": "Südasien",
+      "East_SE_Asia": "Ost- und Südostasien",
+      "Americas": "Amerika",
+      "Pacific": "Pazifik"
+    },
+    "timezones": {
+      "Europe_London": "London / Dublin (GMT / BST)",
+      "Europe_Paris": "Paris / Berlin / Amsterdam (MEZ)",
+      "Europe_Helsinki": "Helsinki / Tallinn (OEZ)",
+      "Europe_Lisbon": "Lissabon / Kanarische Inseln (WEZ)",
+      "Africa_Lagos": "Lagos / Accra / Abidjan (WAT)",
+      "Africa_Nairobi": "Nairobi / Kampala / Daressalam (EAT)",
+      "Africa_Johannesburg": "Johannesburg / Harare / Lusaka (SAST)",
+      "Africa_Cairo": "Kairo / Khartum (OEZ)",
+      "Africa_Casablanca": "Casablanca / Rabat (WEZ)",
+      "Asia_Dubai": "Dubai / Abu Dhabi (GST)",
+      "Asia_Riyadh": "Riad / Kuwait / Bagdad (AST)",
+      "Asia_Beirut": "Beirut / Amman / Nikosia (OEZ)",
+      "Asia_Tehran": "Teheran (IRST)",
+      "Asia_Kolkata": "Indien (IST)",
+      "Asia_Karachi": "Pakistan (PKT)",
+      "Asia_Dhaka": "Bangladesch (BST)",
+      "Asia_Colombo": "Sri Lanka (SLST)",
+      "Asia_Shanghai": "China / Hongkong / Taiwan (CST)",
+      "Asia_Tokyo": "Japan / Korea (JST)",
+      "Asia_Singapore": "Singapur / Malaysia / Philippinen (SGT)",
+      "Asia_Bangkok": "Thailand / Vietnam / Indonesien (ICT)",
+      "America_New_York": "New York / Toronto / Miami (ET)",
+      "America_Chicago": "Chicago / Mexiko-Stadt (CT)",
+      "America_Denver": "Denver / Phoenix (MT)",
+      "America_Los_Angeles": "Los Angeles / Vancouver (PT)",
+      "America_Jamaica": "Jamaika / Karibik (EST)",
+      "America_Sao_Paulo": "São Paulo / Buenos Aires (BRT)",
+      "Australia_Sydney": "Sydney / Melbourne (AEST)",
+      "Pacific_Auckland": "Neuseeland (NZST)"
+    },
+    "complete": {
+      "title": "Dein Plan ist fast fertig, {name}",
+      "titleNoName": "Dein Plan ist fast fertig",
+      "body": "Wir erstellen gerade deinen persönlichen Wellness-Plan auf Basis deiner Antworten. Das dauert nur einen Moment.",
+      "cta": "Meinen Plan ansehen →",
+      "building": "Dein Plan wird erstellt...",
+      "planError": "Deine Antworten wurden gespeichert, aber wir konnten deinen Plan nicht erstellen. Bitte versuche es erneut.",
+      "genericError": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
+    },
+    "reminders": {
+      "title": "Möchtest du jeden Tag eine sanfte Erinnerung?",
+      "subtitle": "Jeden Morgen eine kurze Erinnerung, festzuhalten, wie es dir geht. Uhrzeit ändern oder ausschalten kannst du in deinem Profil.",
+      "iosHomeScreen": "Auf dem iPhone oder iPad funktionieren Erinnerungen, sobald Aunty Mel auf deinem Home-Bildschirm ist (Teilen → Zum Home-Bildschirm). Danach kannst du sie in deinem Profil einschalten.",
+      "unsupported": "Dieser Browser unterstützt keine Erinnerungen. Du kannst deinen Check-in trotzdem jederzeit in der App machen.",
+      "blocked": "Benachrichtigungen sind für diese Seite in deinen Browser-Einstellungen blockiert. Wenn du sie dort erlaubst, kannst du Erinnerungen in deinem Profil einschalten.",
+      "enabled": "Erinnerungen sind auf diesem Gerät eingeschaltet.",
+      "turnOn": "Erinnerungen einschalten",
+      "turningOn": "Wird eingeschaltet…",
+      "notNow": "Jetzt nicht"
+    }
+  },
+  "Greeting": {
+    "morning": "Guten Morgen, {name}",
+    "afternoon": "Guten Tag, {name}",
+    "evening": "Guten Abend, {name}",
+    "morningNoName": "Guten Morgen",
+    "afternoonNoName": "Guten Tag",
+    "eveningNoName": "Guten Abend",
+    "howAreYou": "Wie fühlst du dich heute?"
+  },
+  "MyPlan": {
+    "regionTitle": "Persönliche Pläne sind in deiner Region nicht verfügbar",
+    "regionBody": "Aufgrund lokaler Gesundheitsvorschriften kann Aunty Mel dir hier noch keinen individuellen Plan geben — aber unsere evidenzbasierten Ratgeber stehen dir vollständig zur Verfügung.",
+    "exploreGuides": "Ratgeber entdecken",
+    "noPlanTitle": "Noch kein Plan",
+    "noPlanBody": "Füll den Fragebogen aus, um deinen persönlichen Wellness-Plan zu erstellen.",
+    "startIntake": "Fragebogen starten",
+    "title": "Dein Plan",
+    "summary": "{count, plural, one {# Empfehlung, für dich sortiert.} other {# Empfehlungen, für dich sortiert.}} Tippe auf eine, um mehr zu lesen.",
+    "flaggedNotes": "{count, plural, one {# Empfehlung hat einen Hinweis} other {# Empfehlungen haben einen Hinweis}} – basierend auf dem, was du uns über deine Gesundheit gesagt hast.",
+    "source": "Quelle: {source}",
+    "freeTitle": "Du siehst deine 3 wichtigsten Empfehlungen",
+    "freeBody": "Mit Premium schaltest du deinen vollständigen Plan frei – mit allen Empfehlungen zu Ernährung, Lebensstil, Einstellung und Nahrungsergänzung.",
+    "freeCta": "Vollständigen Plan freischalten — 7,99 £/Monat",
+    "cultureFoods": "Lebensmittel aus deiner Kultur",
+    "cultureExperience": "Speziell für deine Erfahrung",
+    "updatedQuestion": "Haben sich dein Lebensstil oder deine Symptome geändert?",
+    "redoIntake": "Fragebogen wiederholen und Plan aktualisieren"
+  },
+  "PlanTabs": {
+    "ariaLabel": "Dein Plan, nach Kategorien",
+    "diet": "Essen",
+    "lifestyle": "Alltag",
+    "mindset": "Denken",
+    "supplements": "Ergänzungen",
+    "recommendations": "{count, plural, one {Empfehlung} other {Empfehlungen}}"
+  },
+  "PlanCard": {
+    "priority": {
+      "high": "Am wichtigsten für dich",
+      "medium": "Lohnt sich",
+      "low": "Wenn du Kapazität hast"
+    },
+    "helpsWith": "Hilft bei",
+    "safety": {
+      "personal": "Betrifft dich",
+      "ceiling": "Maximale Tagesmenge",
+      "gp_check": "Sprich mit deiner Hausärztin oder deinem Hausarzt"
+    },
+    "alsoSuggestedFor": "Auch empfohlen bei",
+    "readMore": "Weiterlesen",
+    "showLess": "Weniger anzeigen",
+    "note": {
+      "caution": "Du hast uns gesagt, dass {because}. Zu dieser Empfehlung gibt es einen Warnhinweis, der dich betrifft — lies ihn unten und sprich mit deiner Hausärztin, deinem Hausarzt oder in der Apotheke, bevor du anfängst.",
+      "adapt": "Du hast uns gesagt, dass {because}. Diese Empfehlung muss geprüft oder angepasst werden — lies den Hinweis unten, bevor du etwas kaufst."
+    },
+    "circumstances": {
+      "blood_thinners": "du Blutverdünner nimmst",
+      "thyroid": "du eine Schilddrüsenerkrankung hast",
+      "diabetes": "du Diabetes hast",
+      "pregnant_breastfeeding": "du schwanger bist oder stillst",
+      "kidney_stones": "du schon einmal Nierensteine hattest",
+      "high_blood_pressure": "du Bluthochdruck hast",
+      "oestrogen_sensitive": "du eine östrogenempfindliche Erkrankung in der Vorgeschichte hast",
+      "shellfish_allergy": "du eine Allergie gegen Schalentiere hast"
+    },
+    "maxDaily": "Maximal {amount} {unit} pro Tag insgesamt ({basis}) — das ist die Obergrenze für deinen gesamten Plan zusammen, nicht pro Empfehlung. Sprich mit deiner Hausärztin, deinem Hausarzt oder in der Apotheke, bevor du dich dieser Menge näherst."
+  },
+  "Checkin": {
+    "title": "Täglicher Check-in",
+    "alreadyLogged": "Du hast heute schon eingecheckt — damit wird dieser Eintrag aktualisiert.",
+    "symptomsTitle": "Symptome heute",
+    "symptomsHelp": "Tippe auf eine Zahl, um die Stärke zu bewerten (1 = leicht, 5 = stark). Lass weg, was heute nicht zutrifft.",
+    "severityAria": "{label}: Stärke {value} von 5",
+    "overallTitle": "Insgesamt heute",
+    "mood": "Stimmung",
+    "moodLow": "Gedrückt / schwierig",
+    "moodHigh": "Super",
+    "energy": "Energie",
+    "energyLow": "Erschöpft",
+    "energyHigh": "Voller Energie",
+    "sleepTitle": "Stunden Schlaf letzte Nacht",
+    "hours": "{value} Std.",
+    "notesTitle": "Notizen (optional)",
+    "notesPlaceholder": "Ist dir heute etwas aufgefallen? Auslöser, Muster, Dinge, die geholfen haben...",
+    "loading": "Wird geladen...",
+    "saving": "Wird gespeichert...",
+    "save": "Heutigen Check-in speichern",
+    "errorSession": "Deine Sitzung ist abgelaufen. Bitte melde dich erneut an, um deinen Check-in zu speichern.",
+    "errorRateLimit": "Gerade zu viele Versuche. Bitte warte einen Moment und versuche es erneut.",
+    "errorSave": "Dein Check-in konnte nicht gespeichert werden. Bitte versuche es erneut.",
+    "errorNetwork": "Der Server ist nicht erreichbar. Prüfe deine Verbindung und versuche es erneut."
+  },
+  "Journal": {
+    "title": "Tagebuch",
+    "newEntry": "+ Neuer Eintrag",
+    "newEntryTitle": "Neuer Tagebucheintrag",
+    "symptomLabel": "Welches Symptom beobachtest du? (optional)",
+    "noSymptom": "Kein bestimmtes Symptom",
+    "planItemLabel": "Welche Veränderung probierst du aus? (optional)",
+    "planItemPlaceholder": "z. B. Weniger Koffein, Tägliches langsames Atmen...",
+    "daysLabel": "Seit wie vielen Tagen probierst du das aus?",
+    "effectLabel": "Wie läuft es bisher?",
+    "effects": {
+      "much_better": "✅ Viel besser",
+      "better": "👍 Besser",
+      "no_change": "➡️ Keine Veränderung",
+      "worse": "👎 Schlechter"
+    },
+    "continueLabel": "Würdest du damit weitermachen?",
+    "yes": "Ja",
+    "no": "Nein",
+    "notesLabel": "Deine Notizen",
+    "notesPlaceholder": "Wie fühlst du dich? Was ist dir aufgefallen? Was hat geholfen, was nicht?",
+    "saving": "Wird gespeichert...",
+    "save": "Eintrag speichern",
+    "cancel": "Abbrechen",
+    "limitedTitle": "Deine letzten 7 Tage",
+    "limitedBody": "Mit Premium hast du Zugriff auf deinen gesamten Tagebuchverlauf.",
+    "upgradeCta": "Upgrade — 7,99 £/Monat",
+    "loading": "Wird geladen...",
+    "emptyTitle": "Noch keine Tagebucheinträge.",
+    "emptyBody": "Halte im Tagebuch fest, was du ausprobierst und wie es läuft.",
+    "day": "Tag {count}",
+    "wouldContinue": "Würde weitermachen",
+    "wouldNotContinue": "Würde nicht weitermachen",
+    "errorSave": "Eintrag konnte nicht gespeichert werden. Bitte versuche es erneut.",
+    "errorNetwork": "Eintrag konnte nicht gespeichert werden. Bitte prüfe deine Verbindung."
+  },
+  "Pay": {
+    "title": "Premium freischalten",
+    "subtitle": "Dein vollständiger persönlicher Wellness-Plan, die gesamte Inhaltsbibliothek und ein unbegrenztes Tagebuch.",
+    "monthly": "Monatlich",
+    "yearly": "Jährlich",
+    "savePercent": "{percent} % sparen",
+    "perMonth": "pro Monat",
+    "yearlySub": "{perMonth}/Monat — du sparst {saving} im Jahr",
+    "featurePlan": "Vollständiger persönlicher Wellness-Plan",
+    "featureRecommendations": "Alle Empfehlungen zu Ernährung, Lebensstil und Einstellung",
+    "featureSupplements": "Hinweise zu Nahrungsergänzungsmitteln mit Angaben zur Studienlage",
+    "featureArticles": "Artikel auf Basis seriöser Forschung",
+    "featureJournal": "Unbegrenzter Tagebuchverlauf",
+    "featureTrends": "Tägliche Einblicke in deinen Symptomverlauf",
+    "featureNudges": "Tägliche Erinnerungen per Push-Benachrichtigung",
+    "loading": "Wird geladen…",
+    "startMonthly": "Starten für {price}/Monat",
+    "startYearly": "Starten für {price}/Jahr",
+    "reassurance": "Jederzeit kündbar. Keine versteckten Kosten. Sichere Zahlung über Stripe.",
+    "errorGeneric": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+    "errorNetwork": "Keine Verbindung. Bitte prüfe deine Verbindung und versuche es erneut."
+  },
+  "Refer": {
+    "title": "Freundinnen einladen",
+    "subtitle": "Teile Aunty Mel mit jemandem, der es braucht. Ihr bekommt beide einen Gratismonat.",
+    "howItWorks": "So funktioniert’s",
+    "step1": "Teile deinen persönlichen Link mit einer Freundin.",
+    "step2": "Sie registriert sich und schließt über deinen Link ein Abo ab.",
+    "step3": "Sobald ihre erste Zahlung durch ist, bekommt ihr beide einen Gratismonat.",
+    "step4": "Lade weitere Freundinnen ein und sammle bis zu 6 Gratismonate."
+  },
+  "ReferralCard": {
+    "loadError": "Dein Einladungslink konnte gerade nicht geladen werden. Lade die Seite neu.",
+    "shareText": "Ich nutze Aunty Mel für Wellness-Tipps in den Wechseljahren und dachte, das gefällt dir bestimmt auch. Mit meinem Link bekommen wir beide einen Gratismonat: {url}",
+    "title": "Lade eine Freundin ein, erhalte einen Gratismonat",
+    "body": "Wenn eine Freundin über deinen Link beitritt und ein Abo abschließt, bekommt ihr <strong>beide</strong> einen Gratismonat. Lade bis zu {cap} Freundinnen ein und sammle bis zu {cap} Gratismonate.",
+    "progress": "{earned} von {cap} Monaten gesammelt",
+    "capReached": "Maximum erreicht 🎉",
+    "banked": "{count, plural, one {# Gratismonat gutgeschrieben} other {# Gratismonate gutgeschrieben}} — wird automatisch bei deinem nächsten Abo angerechnet.",
+    "linkLabel": "Dein Einladungslink",
+    "copied": "✓ Kopiert!",
+    "copy": "Einladungslink kopieren",
+    "emailSubject": "Du brauchst Aunty Mel in deinem Leben",
+    "email": "E-Mail",
+    "terms": "Gratismonate werden gutgeschrieben, sobald deine Freundin ihre erste erfolgreiche Zahlung geleistet hat. Nur ein Einladungsbonus pro Person. Details findest du in unseren <link>Bedingungen für Einladungen</link>."
+  },
+  "ReferralRewardBanner": {
+    "welcome": "Willkommensbonus angewendet — ein Gratismonat geht auf uns!",
+    "friendsSubscribed": "{friends, plural, one {Deine Freundin hat ein Abo abgeschlossen} other {Deine # Freundinnen haben ein Abo abgeschlossen}} — du hast gerade {months, plural, one {# Gratismonat} other {# Gratismonate}} verdient!",
+    "earned": "Du hast gerade {months, plural, one {# Gratismonat} other {# Gratismonate}} durch Einladungen verdient!",
+    "checkBilling": "Details findest du in deiner Abrechnung.",
+    "dismiss": "Schließen"
+  },
+  "RefreshSubscription": {
+    "checking": "Wird bei Stripe geprüft…",
+    "button": "Schon bezahlt? Status aktualisieren",
+    "stillFree": "Wir konnten noch kein aktives Abo finden. Wenn du gerade belastet wurdest, kann das einen Moment dauern — versuche es gleich noch einmal oder wende dich an den Support, falls es so bleibt.",
+    "error": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
+  },
+  "Offline": {
+    "title": "Du bist offline",
+    "body": "Keine Internetverbindung. Dein Tagebuch und deine Check-ins werden synchronisiert, sobald du wieder online bist."
+  },
+  "Landing": {
+    "signIn": "Anmelden",
+    "getStarted": "Kostenlos starten",
+    "manifesto1": "Manche Dinge wurden schon immer von Frau zu Frau weitergegeben — leise, behutsam, manchmal gar nicht. Die Wechseljahre gehörten zum <em>gar nicht</em>. Die Bindung zwischen Mutter und Tochter trägt so viel, aber nicht immer das. Zu viel Geschichte. Zu viel zu schützen.",
+    "manifesto2": "Es war immer die Tante, die diese Lücke geschlossen hat — die die Fragen beantwortet hat, die du deiner Mutter nicht zu stellen wagtest, und dein Erwachsenwerden wie etwas Feierwürdiges behandelt hat, nicht wie etwas, das man versteckt. <strong>Aunty Mel ist einfach der Ort, an dem diese Weisheit heute lebt.</strong>",
+    "joinWaitlist": "Auf die Warteliste →",
+    "noCard": "Keine Kreditkarte nötig. Kostenloser Tarif verfügbar.",
+    "features": {
+      "plan": {
+        "title": "Dein Plan",
+        "desc": "Persönliche Wellness-Empfehlungen, abgestimmt auf deine Symptome"
+      },
+      "journal": {
+        "title": "Dein Tagebuch",
+        "desc": "Halte fest, was hilft. Sieh deinen Fortschritt. Mach dir dein eigenes Bild."
+      },
+      "knowledge": {
+        "title": "Echtes Wissen",
+        "desc": "Evidenzbasierte Artikel von Pamela — ohne Geschwafel, ohne Angstmache"
+      }
+    },
+    "disclaimer": "Aunty Mel bietet ausschließlich allgemeine Wellness-Informationen. Kein medizinischer Rat. Wende dich bei medizinischen Anliegen immer an deine Hausärztin oder deinen Hausarzt."
+  },
+  "Notifications": {
+    "title": "Push-Benachrichtigungen",
+    "subtitle": "Eine tägliche Erinnerung, festzuhalten, wie es dir geht",
+    "working": "Wird bearbeitet…",
+    "turnOn": "Einschalten",
+    "turnOff": "Ausschalten",
+    "offByDefault": "Auf diesem Gerät aus — schalte sie ein, um eine tägliche Check-in-Erinnerung zu bekommen.",
+    "hourLabel": "Tägliche Erinnerung ungefähr um",
+    "saving": "Wird gespeichert…",
+    "unsupported": "Push-Benachrichtigungen werden von diesem Browser nicht unterstützt.",
+    "iosHomeScreen": "Füge Aunty Mel auf dem iPhone oder iPad zuerst zu deinem Home-Bildschirm hinzu (Teilen → Zum Home-Bildschirm) — iOS erlaubt Benachrichtigungen nur für so geöffnete Apps, nicht aus einem normalen Browser-Tab.",
+    "errorPermission": "Benachrichtigungen müssen in deinem Browser erlaubt sein, damit du das einschalten kannst.",
+    "errorNotConfigured": "Benachrichtigungen sind noch nicht eingerichtet — schau bald wieder vorbei.",
+    "errorTurnOn": "Beim Einschalten der Benachrichtigungen ist etwas schiefgelaufen.",
+    "errorTurnOff": "Beim Ausschalten der Benachrichtigungen ist etwas schiefgelaufen.",
+    "errorHour": "Deine Erinnerungszeit konnte nicht gespeichert werden — bitte versuche es erneut."
+  },
+  "AuthComplete": {
+    "failed": "Wir konnten deine Anmeldung nicht abschließen.",
+    "tryAgain": "Erneut versuchen",
+    "signingIn": "Du wirst angemeldet…"
+  },
+  "Legal": {
+    "back": "← Zurück zu Aunty Mel",
+    "backPlain": "Zurück zu Aunty Mel",
+    "translationNotice": "Dies ist eine Übersetzung, die dir helfen soll, dieses Dokument zu verstehen. Rechtlich verbindlich ist die englische Fassung — falls die beiden voneinander abweichen, gilt die englische Fassung.",
+    "readEnglish": "Englische Fassung lesen",
+    "englishShown": "Du liest die englische Fassung, die rechtlich verbindlich ist.",
+    "backToTranslation": "Zurück zur Übersetzung ({language})",
+    "links": {
+      "privacy": "Datenschutzerklärung",
+      "terms": "Nutzungsbedingungen",
+      "termsRefund": "Bedingungen & Erstattung",
+      "cookies": "Cookie-Richtlinie",
+      "support": "Hilfe",
+      "dataDeletion": "Meine Daten löschen"
+    },
+    "meta": {
+      "privacy": {
+        "title": "Datenschutzerklärung",
+        "description": "Wie Aunty Mel deine personenbezogenen Daten erhebt, nutzt und schützt."
+      },
+      "terms": {
+        "title": "Nutzungsbedingungen und Erstattungsrichtlinie",
+        "description": "Die Bedingungen für die Nutzung von Aunty Mel und unser Erstattungsversprechen."
+      },
+      "cookies": {
+        "title": "Cookie-Richtlinie",
+        "description": "Wie Aunty Mel Cookies und ähnliche Technologien verwendet."
+      },
+      "dataDeletion": {
+        "title": "Meine Daten löschen",
+        "description": "Beantrage die Löschung deines Aunty-Mel-Kontos und aller zugehörigen personenbezogenen Daten."
+      },
+      "accessibility": {
+        "title": "Erklärung zur Barrierefreiheit",
+        "description": "Unser Engagement, Aunty Mel für alle zugänglich zu machen."
+      }
+    }
+  },
+  "Support": {
+    "meta": {
+      "title": "Hilfe",
+      "description": "Hilfe zu Aunty Mel: häufige Fragen, Unterstützung zu deinem Konto und wie du uns erreichst."
+    },
+    "title": "Hilfe",
+    "intro": "Wir sind ein kleines Team und möchten dir wirklich helfen. Antworten findest du unten — oder schreib uns eine E-Mail, wir antworten innerhalb von 1 Werktag.",
+    "contactTitle": "Kontakt",
+    "contactBody": "Du findest deine Antwort unten nicht? Schreib uns — wir lesen jede Nachricht.",
+    "emailButton": "E-Mail an {email}",
+    "privacyRequests": "Für Anfragen zu Datenschutz oder Daten:",
+    "faqTitle": "Häufige Fragen",
+    "faq": {
+      "what": {
+        "q": "Was ist Aunty Mel?",
+        "a": "Aunty Mel ist eine persönliche Wellness-App für Frauen in der Perimenopause und Menopause. Sie gibt dir evidenzbasierte Hinweise zu Ernährung, Lebensstil und Einstellung — abgestimmt auf deine Symptome, deinen Hintergrund und deine Ziele."
+      },
+      "medical": {
+        "q": "Ist Aunty Mel medizinischer Rat?",
+        "a": "Nein. Aunty Mel bietet ausschließlich allgemeine Wellness-Informationen. Die App ersetzt keinen medizinischen Rat einer qualifizierten Fachkraft. Wende dich bei medizinischen Anliegen immer an deine Hausärztin, deinen Hausarzt oder eine Menopause-Spezialistin."
+      },
+      "login": {
+        "q": "Wie melde ich mich an?",
+        "a": "Du kannst dich mit deinem Google-Konto anmelden oder einen Anmeldelink nutzen — wir schicken dir per E-Mail einen Link, mit dem du dich mit einem Klick anmeldest. Kein Passwort nötig."
+      },
+      "magicLink": {
+        "q": "Ich habe die E-Mail mit meinem Anmeldelink nicht bekommen.",
+        "a": "Schau in deinem Spam- oder Junk-Ordner nach. Anmeldelinks laufen nach 1 Stunde ab — wenn er abgelaufen ist, geh zurück zur Anmeldeseite und fordere einen neuen an. Wenn du ihn trotzdem nicht bekommst, schreib uns an hello@auntymel.app."
+      },
+      "cancel": {
+        "q": "Wie kündige ich mein Abo?",
+        "a": "Geh in deine Kontoeinstellungen und tippe auf „Abo verwalten“. Du kannst jederzeit kündigen. Du behältst den Zugang bis zum Ende deines aktuellen Abrechnungszeitraums, und wir belasten dich nicht noch einmal."
+      },
+      "refund": {
+        "q": "Kann ich mein Geld zurückbekommen?",
+        "a": "Ja — wir bieten eine 30-Tage-Geld-zurück-Garantie ohne Fragen. Schreib an hello@auntymel.app mit dem Betreff „Refund request“, und wir kümmern uns innerhalb von 5 Werktagen darum. Wenn die 30 Tage vorbei sind und etwas schiefgelaufen ist, melde dich trotzdem — wir schauen es uns als Menschen an, nicht als Regelwerk."
+      },
+      "updatePlan": {
+        "q": "Wie aktualisiere ich meinen Wellness-Plan?",
+        "a": "Dein Plan wird aus deinen Antworten im Einstiegsfragebogen erstellt. Wenn sich deine Symptome oder deine Situation geändert haben, schreib uns an hello@auntymel.app, und wir setzen deinen Fragebogen zurück, damit du ihn neu ausfüllen kannst."
+      },
+      "dataSafe": {
+        "q": "Sind meine Gesundheitsdaten sicher?",
+        "a": "Ja. Deine Daten werden bei der Übertragung und im Ruhezustand verschlüsselt, auf sicheren Servern in der EU gespeichert (Supabase, Irland) und niemals an Dritte verkauft. Alle Details findest du in unserer Datenschutzerklärung."
+      },
+      "delete": {
+        "q": "Wie lösche ich mein Konto und meine Daten?",
+        "a": "Du kannst die vollständige Löschung deines Kontos und deiner Daten über unsere Seite zur Datenlöschung beantragen oder per E-Mail an privacy@auntymel.app. Wir löschen alles innerhalb von 30 Tagen."
+      },
+      "devices": {
+        "q": "Auf welchen Geräten funktioniert Aunty Mel?",
+        "a": "Aunty Mel ist eine Progressive Web App (PWA), die auf jedem aktuellen Smartphone, Tablet oder Computer funktioniert. Du kannst sie über deinen Browser zu deinem Home-Bildschirm hinzufügen und wie eine App nutzen. Native Apps für iOS und Android folgen bald."
+      },
+      "surgical": {
+        "q": "Kann ich Aunty Mel nutzen, wenn ich eine operativ bedingte Menopause hatte?",
+        "a": "Auf jeden Fall. Im Einstiegsfragebogen kannst du angeben, dass du eine operativ bedingte Menopause hattest, und dein Plan wird entsprechend angepasst."
+      },
+      "culture": {
+        "q": "Warum fragt ihr nach meinem kulturellen Hintergrund?",
+        "a": "Studien zeigen, dass die Wechseljahre Frauen je nach kulturellem Hintergrund unterschiedlich betreffen — bei den Symptommustern, bei Ernährungsfaktoren und dabei, welche Ansätze am besten helfen. Wir nutzen diese Angaben, damit deine Empfehlungen wirklich zu dir passen — mit Lebensmitteln und Traditionen, die du kennst. Die Angaben sind freiwillig, werden als sensibel behandelt und niemals weitergegeben."
+      }
+    }
+  },
+  "Meta": {
+    "description": "Jede Frau braucht eine Aunty Mel. Persönliche Wellness-Begleitung für Perimenopause und Menopause — auf Basis echter Fachexpertise, damit du deinen Körper verstehst, deine Symptome in den Griff bekommst und mit deiner Ärztin oder deinem Arzt gezielter sprechen kannst."
+  },
+  "RegionBlocked": {
+    "title": "Aunty Mel ist in deiner Region noch nicht verfügbar",
+    "body": "Wir arbeiten daran, Aunty Mel in dein Land zu bringen — im Einklang mit den lokalen Gesundheitsvorschriften. Wir sagen dir Bescheid, sobald es so weit ist.",
+    "mistake": "Wenn du glaubst, dass das ein Fehler ist, schreib an"
+  },
+  "Waitlist": {
+    "symptoms": {
+      "hot_flashes": "🔥 Hitzewallungen",
+      "night_sweats": "🌙 Nachtschweiß",
+      "sleep_problems": "😴 Schlafprobleme",
+      "mood_changes": "🌊 Stimmungsschwankungen",
+      "anxiety": "💭 Angst",
+      "brain_fog": "🌫️ Gehirnnebel",
+      "weight_changes": "⚖️ Gewichtsveränderungen",
+      "fatigue": "🔋 Erschöpfung",
+      "low_libido": "💔 Geringe Libido",
+      "other": "✨ Etwas anderes"
+    },
+    "errorGeneric": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+    "doneTitlePriority": "Du bist ganz vorne mit dabei",
+    "doneTitle": "Du stehst auf der Liste",
+    "priorityBadge": "✨ Bevorzugter Frühzugang",
+    "doneBody": "Wir schreiben dir, sobald wir starten, {name}. Schau in dein Postfach — dort wartet deine Willkommens-E-Mail.",
+    "rewardTitle": "99 p Rabatt pro Einladung — für immer",
+    "rewardBody": "Jede Frau, die du einlädst, bekommt bevorzugten Frühzugang. Du bekommst <strong>jeden Monat 99 p Rabatt auf dein Abo, lebenslang.</strong> Lade 8 Frauen ein, und dein Abo ist komplett kostenlos.",
+    "linkLabel": "Dein persönlicher Einladungslink",
+    "copied": "✓ Kopiert!",
+    "copy": "Einladungslink kopieren",
+    "shareVia": "Teilen über",
+    "whatsappText": "Ich habe mich gerade auf die Warteliste von Aunty Mel gesetzt — eine neue Wellness-App für die Wechseljahre. Mit meinem Link bekommst du bevorzugten Frühzugang: {url}",
+    "emailSubject": "Du brauchst Aunty Mel in deinem Leben",
+    "emailBody": "Ich habe mich gerade auf die Warteliste von Aunty Mel gesetzt — eine Wellness-App für die Wechseljahre, die wirklich versteht, worum es geht. Mit meinem Link bekommst du bevorzugten Frühzugang: {url}",
+    "email": "E-Mail",
+    "disclaimerDone": "Nur allgemeine Wellness-Hinweise — kein medizinischer Rat. Wende dich bei medizinischen Anliegen immer an deine Hausärztin oder deinen Hausarzt.",
+    "referredBadge": "✨ Du wurdest eingeladen — du bekommst bevorzugten Frühzugang",
+    "heroTitle": "Jede Frau braucht eine Aunty Mel",
+    "hero1": "Seit jeher werden die Geheimnisse der Wechseljahre von der Mutter an die Tochter, von der Tante an die Nichte, von der Großmutter an die Enkelin weitergegeben — in geteilter Erfahrung, in leisen Gesprächen, in der Weisheit von Frauen, die es schon hinter sich hatten.",
+    "hero2": "Dieses Wissen ist nie verloren gegangen. Es braucht nur ein Zuhause.",
+    "hero3": "Aunty Mel ist dieses Zuhause. Persönliche Wellness-Begleitung — auf Basis von Pamelas Fachexpertise — damit du deinen Körper verstehst, echte Ergebnisse erzielst und mit deiner Ärztin oder deinem Arzt gezielter sprechen kannst.",
+    "stats": {
+      "libido": {
+        "stat": "40–55 %",
+        "label": "der Frauen haben in den Wechseljahren eine geringe Libido"
+      },
+      "uk": {
+        "stat": "13 Mio.",
+        "label": "Frauen in der Peri- oder Postmenopause allein im Vereinigten Königreich"
+      },
+      "world": {
+        "stat": "1 Mrd.+",
+        "label": "Frauen weltweit in den Wechseljahren bis 2025"
+      }
+    },
+    "formTitle": "Auf die Warteliste",
+    "formIntro": "Erfahre als Erste, wenn wir starten.",
+    "formIntroReferred": "Du bekommst bevorzugten Frühzugang.",
+    "firstName": "Vorname",
+    "firstNamePlaceholder": "Dein Vorname",
+    "emailLabel": "E-Mail-Adresse",
+    "emailPlaceholder": "deine@email.com",
+    "symptomLabel": "Welches Symptom belastet dich im Moment am meisten?",
+    "optional": "(optional)",
+    "joining": "Wird eingetragen...",
+    "submitReferred": "Eintragen — bevorzugter Zugang →",
+    "submit": "Auf die Warteliste →",
+    "noSpam": "Kein Spam. Wir schreiben dir nur zum Start. Nur allgemeine Wellness-Hinweise — kein medizinischer Rat.",
+    "expectTitle": "Was dich erwartet",
+    "expect": {
+      "plan": "Ein persönlicher Wellness-Plan, abgestimmt auf deine Symptome",
+      "guidance": "Hinweise von Pamela zu Ernährung, Lebensstil und Einstellung",
+      "journal": "Ein Tagebuch, um festzuhalten, was hilft und was nicht",
+      "articles": "Evidenzbasierte Artikel — echte Informationen, ohne Geschwafel",
+      "gp": "Das nötige Rüstzeug für bessere Gespräche mit deiner Hausärztin oder deinem Hausarzt"
+    },
+    "referTitle": "Lade eine Freundin ein, spar für immer 99 p",
+    "referBody": "Sobald du dich eingetragen hast, bekommst du deinen eigenen Einladungslink. Jede Frau, die du einlädst, bekommt bevorzugten Frühzugang. Du bekommst für jede Einladung 99 p Rabatt auf dein Monatsabo — dauerhaft. Lade 8 Frauen ein, und dein Abo ist komplett kostenlos.",
+    "loading": "Wird geladen..."
+  },
+  "WaitlistPartner": {
+    "relationships": {
+      "partner": "💑 Partner oder Partnerin, Ehepartner",
+      "adult_child": "👨‍👩‍👧 Erwachsener Sohn oder erwachsene Tochter",
+      "friend": "👭 Enge Freundin oder enger Freund",
+      "other_family": "👨‍👩‍👦‍👦 Anderes Familienmitglied"
+    },
+    "motivations": {
+      "understand": "Ich möchte verstehen, was sie durchmacht",
+      "support": "Ich möchte wissen, wie ich sie besser unterstützen kann",
+      "relationship": "Es belastet unsere Beziehung und ich möchte helfen",
+      "her_idea": "Sie hat mir davon erzählt und ich möchte mitmachen",
+      "curious": "Ich bin neugierig und möchte mehr erfahren"
+    },
+    "errorGeneric": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+    "doneTitle": "Du stehst auf der Liste, {name}",
+    "doneBody": "Wir bauen gerade etwas für dich. Wenn wir die Unterstützung für Angehörige starten, erfährst du es als Erste:r. Dass du hier bist, bedeutet viel — und sie auch.",
+    "meantimeTitle": "In der Zwischenzeit",
+    "meantimeBody": "Das Hilfreichste, was du jetzt tun kannst: Erzähl ihr direkt von Aunty Mel. Sie kann sich auf die Hauptwarteliste setzen und bekommt Zugang, sobald wir starten.",
+    "shareWithHer": "Aunty Mel mit ihr teilen →",
+    "disclaimer": "Aunty Mel bietet ausschließlich allgemeine Wellness-Informationen. Kein medizinischer Rat. Wende dich bei medizinischen Anliegen immer an eine Ärztin oder einen Arzt.",
+    "back": "← Zurück zu Aunty Mel",
+    "heroTitle": "Sie ist dir wichtig. Das zählt.",
+    "hero1": "Du bist hier, weil ein Mensch, den du liebst, etwas durchmacht, das von außen schwer zu verstehen ist. Allein dass du hier bist, bringt dich weiter als die meisten.",
+    "hero2": "Wir entwickeln einen Weg, wie Partner und Angehörige die Wechseljahre besser verstehen können — damit du sie so unterstützen kannst, wie sie es wirklich braucht. Trag dich ein und erfahre als Erste:r, wenn es losgeht.",
+    "whyTitle": "Warum das wichtig ist",
+    "stats": {
+      "affected": {
+        "stat": "76 %",
+        "text": "der Partner sagen, dass Wechseljahresbeschwerden sie persönlich betroffen haben"
+      },
+      "relationship": {
+        "stat": "55 %",
+        "text": "sagen, dass es ihre Beziehung negativ beeinflusst hat"
+      },
+      "influential": {
+        "stat": "74 %",
+        "text": "glauben, dass sie ihre Entscheidung beeinflussen, sich Hilfe zu holen"
+      }
+    },
+    "statsSource": "Quelle: MATE-Umfrage — die umfassendste Studie zu männlichen Partnern und den Wechseljahren",
+    "formTitle": "Auf die Warteliste für Angehörige",
+    "formIntro": "Wir sagen dir Bescheid, sobald die Unterstützung für Angehörige startet.",
+    "firstName": "Dein Vorname",
+    "firstNamePlaceholder": "Dein Vorname",
+    "emailLabel": "Deine E-Mail",
+    "emailPlaceholder": "deine@email.com",
+    "relationshipLabel": "Deine Beziehung zu ihr",
+    "motivationLabel": "Was führt dich hierher? (optional)",
+    "openLabel": "Was möchtest du am meisten verstehen? (optional)",
+    "openPlaceholder": "Was ist das eine, das du gern besser verstehen würdest an dem, was sie durchmacht?",
+    "joining": "Wird eingetragen...",
+    "submit": "Auf die Warteliste für Angehörige →",
+    "noSpam": "Kein Spam. Wir schreiben dir nur zum Start der Unterstützung für Angehörige.",
+    "herTooTitle": "Soll sie auch mitmachen?",
+    "herTooBody": "Teile die Hauptwarteliste von Aunty Mel mit ihr. Sie bekommt bevorzugten Frühzugang, wenn die App startet.",
+    "loading": "Wird geladen..."
+  },
+  "PushOptIn": {
+    "title": "Möchtest du jeden Tag eine sanfte Erinnerung?",
+    "subtitle": "Jeden Morgen eine kurze Erinnerung, festzuhalten, wie es dir geht.",
+    "iosTitle": "Tägliche Erinnerungen?",
+    "iosBody": "Füge Aunty Mel auf dem iPhone oder iPad zuerst zu deinem Home-Bildschirm hinzu (Teilen → Zum Home-Bildschirm), öffne sie von dort und schalte Erinnerungen in deinem Profil ein.",
+    "enabled": "Erinnerungen sind eingeschaltet. Uhrzeit ändern oder ausschalten kannst du in deinem Profil.",
+    "turnOn": "Erinnerungen einschalten",
+    "turningOn": "Wird eingeschaltet…",
+    "notNow": "Jetzt nicht"
+  },
+  "Push": {
+    "checkinBody": "Wie geht es dir heute? Nimm dir eine Minute für deinen Check-in."
   }
 }

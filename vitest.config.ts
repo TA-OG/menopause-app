@@ -1,10 +1,14 @@
-import { defineConfig } from 'vitest/config'
+import { configDefaults, defineConfig } from 'vitest/config'
 import path from 'path'
 
 export default defineConfig({
   test: {
     environment: 'node',
     globals: true,
+    // .claude/worktrees/ holds other branches' full checkouts. Without this,
+    // their tests run against their own code and a red result on another
+    // branch fails this one's suite.
+    exclude: [...configDefaults.exclude, '.claude/**'],
   },
   // tsconfig.json sets `jsx: preserve` for Next's own compiler, which leaves
   // esbuild emitting classic React.createElement calls with React not in

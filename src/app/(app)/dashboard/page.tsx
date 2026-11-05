@@ -9,7 +9,8 @@ import {
   selectFocus,
 } from '@/lib/wellness-engine'
 import { deriveUserSignals } from '@/lib/user-signals'
-import { getTranslations } from 'next-intl/server'
+import { getLocale, getTranslations } from 'next-intl/server'
+import { loadOverlay, loadEnglishIndex, localizeRecs } from '@/lib/plan-content-i18n'
 import { redirect } from 'next/navigation'
 import Greeting from '@/components/ui/Greeting'
 import RefreshSubscriptionButton from '@/components/ui/RefreshSubscriptionButton'
@@ -50,7 +51,7 @@ export default async function DashboardPage({
     .eq('id', user.id)
     .single()
 
-  const firstName = profile?.full_name?.split(' ')[0] ?? 'there'
+  const firstName = profile?.full_name?.trim().split(/\s+/)[0] || null
   const t = await getTranslations('Dashboard')
 
   // Just returned from Stripe checkout — the webhook may not have landed
@@ -114,7 +115,14 @@ export default async function DashboardPage({
         noted.mindset_recommendations.length +
         noted.supplement_suggestions.length
 
-      focus = selectFocus(noted, signals, FOCUS_COUNT)
+      // Chosen on the English copy, then shown in her language.
+      const locale = await getLocale()
+      focus = localizeRecs(
+        selectFocus(noted, signals, FOCUS_COUNT),
+        loadOverlay(locale),
+        loadEnglishIndex(),
+        locale
+      )
     }
   }
 
@@ -130,10 +138,10 @@ export default async function DashboardPage({
         <section aria-labelledby="focus-heading" className="space-y-3">
           <div className="flex items-baseline justify-between gap-3">
             <h2 id="focus-heading" className="font-bold text-brand-900">
-              Start here
+              {t('startHere')}
             </h2>
             <a href="/my-plan" className="text-sm font-medium text-brand-700">
-              All {planTotal} →
+              {t('allCount', { count: planTotal })}
             </a>
           </div>
 
@@ -158,7 +166,7 @@ export default async function DashboardPage({
                         appears — including here, where it is only a summary. */}
                     {rec.personal_note && (
                       <span className="text-sm font-medium text-blush-800">
-                        🩺 Read the note on this one before you start
+                        🩺 {t('readNoteFirst')}
                       </span>
                     )}
                   </span>
@@ -173,15 +181,13 @@ export default async function DashboardPage({
       {focus.length === 0 && (
         <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
           <div className="mb-3 flex items-center justify-between">
-            <h2 className="font-semibold text-gray-900">Your wellness plan</h2>
+            <h2 className="font-semibold text-gray-900">{t('yourPlan')}</h2>
             <a href="/my-plan" className="text-sm font-medium text-brand-700">
-              View →
+              {t('view')}
             </a>
           </div>
           <p className="text-base text-gray-600">
-            {geo.personalisedAllowed
-              ? 'Complete your intake to see your personalised plan.'
-              : 'Personalised plans aren’t available in your region yet — the guides are.'}
+            {geo.personalisedAllowed ? t('planReadyFree') : t('regionUnavailable')}
           </p>
         </div>
       )}
@@ -195,6 +201,13 @@ export default async function DashboardPage({
         <p className="mt-1 text-base text-brand-200">
           {t('logSymptomsSubtitle')}
         </p>
+      </a>
+      {/* Separate link: the card above is itself a link, and links can't nest. */}
+      <a
+        href="/symptom-checkin/history"
+        className="-mt-3 flex min-h-11 items-center justify-end text-sm font-medium text-brand-700"
+      >
+        {t('pastCheckins')}
       </a>
 
       {/* Journal shortcut */}

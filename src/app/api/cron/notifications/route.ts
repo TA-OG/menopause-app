@@ -3,7 +3,7 @@ import { createAdminClient } from '@/lib/supabase/admin'
 import {
   localHourAndDate,
   isCheckinNudgeDue,
-  CHECKIN_NUDGE_MESSAGE,
+  checkinNudgeMessage,
   type LocalMoment,
 } from '@/lib/notification-schedule'
 import type { PushSubscription } from '@/types/database'
@@ -198,12 +198,21 @@ async function sendCheckinNudge(
     throw claimError
   }
 
+  // Her language, not the server's. A failed lookup falls back to English:
+  // a reminder in the wrong language beats a crashed send.
+  const { data: profile } = await admin
+    .from('profiles')
+    .select('locale')
+    .eq('id', userId)
+    .maybeSingle()
+  const message = checkinNudgeMessage(profile?.locale)
+
   const payload = JSON.stringify({
-    title: CHECKIN_NUDGE_MESSAGE.title,
-    body: CHECKIN_NUDGE_MESSAGE.body,
+    title: message.title,
+    body: message.body,
     icon: '/icons/icon-192x192.png',
     badge: '/icons/icon-192x192.png',
-    url: CHECKIN_NUDGE_MESSAGE.url,
+    url: message.url,
   })
 
   let delivered = false

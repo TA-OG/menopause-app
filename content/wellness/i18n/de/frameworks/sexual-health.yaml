@@ -1,0 +1,59 @@
+# Übersetzung von frameworks/sexual-health.yaml — maßgeblich ist die englische Fassung.
+df_circulation_foods:
+  title: Iss für die Durchblutung — der Blutfluss zählt für die Libido
+  body: >-
+    Sexuelle Erregung ist im Kern ein Vorgang der Blutgefäße. Lebensmittel, die eine gesunde Durchblutung unterstützen, sind etwa dunkles Blattgemüse (Nitrate), Granatapfelsaft, dunkle Schokolade (>70 % Kakao), Rote Bete und fetter Fisch (Omega-3). Meide stark gesalzene Fertigprodukte, die die Gefäßfunktion beeinträchtigen. Ausreichend zu trinken verringert auch die Trockenheit des Scheidengewebes. Diese Veränderungen summieren sich über Wochen, nicht über Tage.
+df_omega3_inflammation:
+  title: Omega-3-Fette unterstützen die Gewebegesundheit und die Hormonbildung
+  body: >-
+    Die Nebennieren bilden auch nach der Menopause aus Cholesterin kleine Mengen Östrogen — ein Vorgang, den eine gute Zufuhr gesunder Fette unterstützt. Iss 2–3-mal pro Woche fetten Fisch, außerdem Leinsamen, Walnüsse und Avocado. Omega-3 lindert auch Entzündungen in der Scheide. Ein gut versorgter Körper mit ausreichend essenziellen Fetten erhält das Scheidengewebe besser als eine fettarme Ernährung.
+lf_local_moisturiser:
+  title: Vaginale Feuchtigkeitspflege — regelmäßig anwenden, nicht nur beim Sex
+  body: >-
+    Scheidentrockenheit (GSM — urogenitales Menopausensyndrom) verschlimmert sich ohne Behandlung zunehmend. Rezeptfreie vaginale Feuchtigkeitspflege (Replens, YES VM, Hyalofemme), 2–3-mal pro Woche angewendet, gibt dem Scheidengewebe Feuchtigkeit zurück und lindert Beschwerden im Alltag und beim Sex. Das sind keine Gleitmittel — sie wirken dauerhaft. Gleitmittel verwendet man beim Sex. Wenn du sexuell aktiv bist, brauchst du beides.
+lf_pelvic_floor:
+  title: Beckenbodentraining — für Wohlbefinden, Empfinden und Kontinenz
+  body: >-
+    Die Beckenbodenmuskeln stützen Blase, Darm und Gebärmutter und sind direkt vom Östrogenrückgang betroffen. Sie zu stärken (Kegel-Übungen: 10 Sekunden anspannen, loslassen, 10-mal wiederholen, 3 Durchgänge täglich) verbessert das Empfinden beim Sex, verringert Dranginkontinenz und unterstützt die Gesundheit der Beckenorgane. Wenn Erinnerungen dir helfen dranzubleiben, führt dich die App Squeezy — entwickelt von Beckenboden-Physiotherapeutinnen des britischen NHS — durch ein aufbauendes Programm. Die eigenständige App kostet Geld, manche Beckenbodenambulanzen bieten ihren Patientinnen aber eine verbundene Version kostenlos an, also lohnt es sich nachzufragen. Du kannst dich auch von deiner Hausärztin oder deinem Hausarzt zur Beckenboden-Physiotherapie überweisen lassen — das ist der bessere Weg, wenn die Beschwerden dich im Alltag beeinträchtigen.
+lf_sexual_activity_maintenance:
+  title: Regelmäßige sexuelle Aktivität hilft, die Scheide gesund zu halten
+  body: >-
+    Regelmäßige sexuelle Aktivität (auch allein) steigert die Durchblutung des Scheidengewebes und erhält so Elastizität und Feuchtigkeit. Wenn penetrativer Sex schmerzt, beginne mit Aktivität ohne Penetration und einem guten Gleitmittel. Penetration schrittweise wieder einzuführen — mit viel Gleitmittel und Geduld — verhindert den Vermeidungskreislauf, der die Atrophie beschleunigt. Es geht nicht um Leistung — es geht um die Pflege von Gefäßen und Gewebe.
+mr_gp_vaginal_oestrogen:
+  title: Frag nach lokalem vaginalem Östrogen — es ist für die meisten Frauen sicher
+  body: >-
+    Vaginale Östrogencreme oder Vaginalzäpfchen (z. B. Vagifem, Ovestin, Estring) sind die wirksamste Behandlung bei GSM. Sie wirken lokal mit minimaler Aufnahme in den Körper und gelten selbst für Frauen als sicher, die keine systemische HRT nehmen können — darunter viele Frauen nach Brustkrebs. Diese Behandlung wird chronisch zu selten eingesetzt, weil weder Frauen noch Ärztinnen und Ärzte sie ansprechen. Du kannst gezielt danach fragen. Das ist keine kosmetische Behandlung — sie behandelt eine fortschreitende Erkrankung.
+mr_libido_whole_person:
+  title: Libido ist komplex — sie ist selten nur hormonell
+  body: >-
+    Sexuelles Verlangen hängt bei Frauen vom Kontext ab. Erschöpfung, Beziehungsdynamik, Stress, Körperbild und Stimmung beeinflussen die Libido stärker als die Hormonwerte allein. Wenn du dich von deiner Sexualität abgeschnitten fühlst, lohnt es sich, das Körperliche (zuerst Trockenheit und Beschwerden behandeln) vom Beziehungsbezogenen und Psychischen zu trennen. Eine Sexualtherapeutin kann helfen, wenn das Verlangen seit mehreren Monaten fehlt. Geringe Libido in den Wechseljahren hat selten nur eine Ursache — oft ist es eine Mischung aus hormonellen Veränderungen, Scheidentrockenheit oder Beschwerden, schlechtem Schlaf, wenig Energie, Stress und Beziehungs- oder emotionalen Faktoren. Eine geringe Libido, die dich oder deinen Partner belastet, verdient es, ernst genommen zu werden — und sie ist behandelbar.
+ss_maca_libido:
+  title: Macawurzel — für Libido und hormonelles Gleichgewicht
+  body: >-
+    Üblich sind 1,5–3 g/Tag. Eines der bekanntesten Nahrungsergänzungsmittel für Libido und hormonelles Gleichgewicht, auch in den Protokollen mancher Fachleute speziell für Frauen in den Wechseljahren.
+  disclaimer: >-
+    Vorsicht bei Autoimmunerkrankungen — Maca kann das Immunsystem anregen und Schübe verstärken. Kein Ersatz für die medizinische Behandlung von Scheidentrockenheit oder GSM.
+ss_vitamin_d_libido:
+  title: Vitamin D — für die Hormonbildung
+  body: >-
+    Vitamin D spielt bei der Hormonbildung insgesamt eine Rolle; es lohnt sich, den Wert messen zu lassen statt ihn zu vermuten — besonders, wenn sich deine Libido zusammen mit anderen Symptomen verändert hat.
+  disclaimer: >-
+    Sprich vor dem Beginn immer mit deiner Hausärztin, deinem Hausarzt oder in der Apotheke, besonders wenn du verschreibungspflichtige Medikamente nimmst.
+ss_zinc_libido:
+  title: Zink — für die Testosteronbildung
+  body: >-
+    Üblich sind 10–30 mg/Tag. Zink ist an der Testosteronbildung beteiligt, die auch bei Frauen eine Rolle für die Libido spielt, nicht nur bei Männern. Nicht über lange Zeit hoch dosiert ohne Kontrolle einnehmen, da zu viel Zink Kupfer verdrängen kann.
+  disclaimer: >-
+    Sprich vor dem Beginn immer mit deiner Hausärztin, deinem Hausarzt oder in der Apotheke, besonders wenn du verschreibungspflichtige Medikamente nimmst.
+ss_ashwagandha_libido:
+  title: Ashwagandha — für die Libido, neben dem Stressabbau
+  body: >-
+    Üblich sind 300–600 mg/Tag eines standardisierten Wurzelextrakts. Es gibt einige Hinweise, dass es neben seiner stressmindernden Wirkung auch die Libido unterstützt.
+  disclaimer: >-
+    Vorsicht bei Autoimmunerkrankungen, Schilddrüsenerkrankungen oder in der Schwangerschaft — sprich zuerst mit deiner Hausärztin oder deinem Hausarzt.
+ss_vaginal_probiotics:
+  title: Spezielle Vaginalprobiotika — für Gewebegesundheit und Wohlbefinden
+  body: >-
+    Manche Frauen probieren spezielle Vaginalprobiotika für Gewebegesundheit und Wohlbefinden, in der Annahme, dass sie bei einer körperlichen Hürde für die Libido helfen können — Trockenheit oder Beschwerden. Die Belege für genau diese Anwendung sind begrenzt, und sie ersetzen keine besser belegten Behandlungen wie vaginales Östrogen, wenn Trockenheit oder Beschwerden dich deutlich beeinträchtigen.
+  disclaimer: >-
+    Sprich vor dem Beginn immer mit deiner Hausärztin, deinem Hausarzt oder in der Apotheke.

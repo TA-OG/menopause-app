@@ -2,22 +2,21 @@
 
 import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import Logo from '@/components/ui/Logo'
 
+// Stored values; labels live in Waitlist.symptoms.<value>.
 const SYMPTOM_OPTIONS = [
-  { value: 'hot_flashes', label: '🔥 Hot flushes' },
-  { value: 'night_sweats', label: '🌙 Night sweats' },
-  { value: 'sleep_problems', label: '😴 Sleep problems' },
-  { value: 'mood_changes', label: '🌊 Mood changes' },
-  { value: 'anxiety', label: '💭 Anxiety' },
-  { value: 'brain_fog', label: '🌫️ Brain fog' },
-  { value: 'weight_changes', label: '⚖️ Weight changes' },
-  { value: 'fatigue', label: '🔋 Fatigue' },
-  { value: 'low_libido', label: '💔 Low libido' },
-  { value: 'other', label: '✨ Something else' },
-]
+  'hot_flashes', 'night_sweats', 'sleep_problems', 'mood_changes', 'anxiety',
+  'brain_fog', 'weight_changes', 'fatigue', 'low_libido', 'other',
+] as const
+
+const STAT_KEYS = ['libido', 'uk', 'world'] as const
+const EXPECT_KEYS = ['plan', 'guidance', 'journal', 'articles', 'gp'] as const
+const EXPECT_EMOJI = { plan: '✨', guidance: '🧘', journal: '📓', articles: '📚', gp: '🩺' } as const
 
 function WaitlistForm() {
+  const t = useTranslations('Waitlist')
   const searchParams = useSearchParams()
   const refCode = searchParams.get('ref')
 
@@ -56,7 +55,9 @@ function WaitlistForm() {
       const data = await res.json()
 
       if (!res.ok) {
-        setError(data.error ?? 'Something went wrong. Please try again.')
+        // The API's message is English: log it, show hers.
+        console.error('waitlist join failed:', res.status, data.error)
+        setError(t('errorGeneric'))
         setLoading(false)
         return
       }
@@ -65,7 +66,7 @@ function WaitlistForm() {
       setIsPriority(data.priority_access)
       setDone(true)
     } catch {
-      setError('Something went wrong. Please try again.')
+      setError(t('errorGeneric'))
       setLoading(false)
     }
   }
@@ -97,33 +98,30 @@ function WaitlistForm() {
           <div className="text-center">
             <div className="text-5xl mb-3">🌸</div>
             <h1 className="text-2xl font-bold text-brand-900">
-              {isPriority ? "You're first in line" : "You're on the list"}
+              {isPriority ? t('doneTitlePriority') : t('doneTitle')}
             </h1>
             {isPriority && (
               <div className="inline-block bg-brand-900 text-white text-xs font-semibold px-3 py-1 rounded-full mt-2">
-                ✨ Priority early access
+                {t('priorityBadge')}
               </div>
             )}
             <p className="text-gray-500 text-sm mt-3 leading-relaxed">
-              We'll email you the moment we launch, {firstName}.
-              Check your inbox for your welcome email.
+              {t('doneBody', { name: firstName })}
             </p>
           </div>
 
           {/* Referral reward */}
           <div className="bg-white rounded-2xl p-5 border border-brand-100 shadow-sm">
             <h2 className="font-bold text-brand-900 mb-1">
-              Earn 99p off per referral — forever
+              {t('rewardTitle')}
             </h2>
             <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-              Every woman you refer gets priority early access.
-              You get <strong>99p off your subscription every month, for life.</strong>{' '}
-              Refer 8 women and your subscription is completely free.
+              {t.rich('rewardBody', { strong: (chunks) => <strong>{chunks}</strong> })}
             </p>
 
             {/* Referral link */}
             <div className="bg-brand-50 rounded-xl p-3 mb-3">
-              <p className="text-xs text-gray-500 mb-1">Your personal referral link</p>
+              <p className="text-xs text-gray-500 mb-1">{t('linkLabel')}</p>
               <p className="text-xs font-mono text-brand-900 break-all leading-relaxed">
                 {referralUrl}
               </p>
@@ -133,16 +131,16 @@ function WaitlistForm() {
               onClick={copyLink}
               className="w-full bg-brand-900 text-white font-semibold py-3 rounded-xl text-sm transition-colors hover:bg-brand-800"
             >
-              {copied ? '✓ Copied!' : 'Copy your referral link'}
+              {copied ? t('copied') : t('copy')}
             </button>
           </div>
 
           {/* Share options */}
           <div>
-            <p className="text-xs text-center text-gray-400 mb-3">Share via</p>
+            <p className="text-xs text-center text-gray-400 mb-3">{t('shareVia')}</p>
             <div className="flex gap-2">
               <a
-                href={`https://wa.me/?text=${encodeURIComponent(`I just joined the waitlist for Aunty Mel — a new menopause wellness app. Use my link to get priority early access: ${referralUrl}`)}`}
+                href={`https://wa.me/?text=${encodeURIComponent(t('whatsappText', { url: referralUrl }))}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 flex items-center justify-center gap-2 bg-green-500 text-white text-sm font-medium py-2 rounded-xl hover:bg-green-600 transition-colors"
@@ -150,18 +148,17 @@ function WaitlistForm() {
                 WhatsApp
               </a>
               <a
-                href={`mailto:?subject=You need Aunty Mel in your life&body=I just joined the waitlist for Aunty Mel — a menopause wellness app that actually gets it. Use my link to get priority early access: ${referralUrl}`}
+                href={`mailto:?subject=${encodeURIComponent(t('emailSubject'))}&body=${encodeURIComponent(t('emailBody', { url: referralUrl }))}`}
                 className="flex-1 flex items-center justify-center gap-2 bg-gray-700 text-white text-sm font-medium py-2 rounded-xl hover:bg-gray-800 transition-colors"
               >
-                Email
+                {t('email')}
               </a>
             </div>
           </div>
 
           {/* Disclaimer */}
           <p className="text-xs text-center text-gray-400 leading-relaxed">
-            General wellness guidance only — not medical advice.
-            Always consult your GP for medical concerns.
+            {t('disclaimerDone')}
           </p>
         </div>
       </div>
@@ -177,7 +174,7 @@ function WaitlistForm() {
         {refCode && (
           <div className="text-center mb-6">
             <div className="inline-block bg-brand-900 text-white text-xs font-semibold px-4 py-1.5 rounded-full">
-              ✨ You've been referred — you'll get priority early access
+              {t('referredBadge')}
             </div>
           </div>
         )}
@@ -188,30 +185,22 @@ function WaitlistForm() {
             <Logo size="lg" />
           </div>
           <h1 className="text-3xl font-bold text-brand-900 leading-tight mb-4">
-            Every body needs an Aunty Mel
+            {t('heroTitle')}
           </h1>
           <p className="text-gray-600 leading-relaxed text-sm mb-4">
-            For eons, the secrets of menopause have been passed from mother to daughter,
-            aunty to niece, grandmother to granddaughter — carried in shared experience,
-            in quiet conversations, in the wisdom of women who had already been through it.
+            {t('hero1')}
           </p>
           <p className="text-gray-600 leading-relaxed text-sm mb-4">
-            That knowledge was never lost. It just needs a home.
+            {t('hero2')}
           </p>
           <p className="text-brand-900 font-semibold leading-relaxed text-sm">
-            Aunty Mel is that home. Personalised wellness guidance — built on
-            Pamela&apos;s specialist expertise — to help you understand your body,
-            get real results, and have a more powerful conversation with your doctor.
+            {t('hero3')}
           </p>
         </div>
 
         {/* Social proof */}
         <div className="grid grid-cols-3 gap-3 mb-8">
-          {[
-            { stat: '40–55%', label: 'of women experience low libido during menopause' },
-            { stat: '13M', label: 'peri/post-menopausal women in the UK alone' },
-            { stat: '1B+', label: 'women worldwide in menopause by 2025' },
-          ].map((item) => (
+          {STAT_KEYS.map((key) => ({ stat: t(`stats.${key}.stat`), label: t(`stats.${key}.label`) })).map((item) => (
             <div key={item.stat} className="bg-white rounded-2xl p-3 text-center border border-gray-100 shadow-sm">
               <p className="text-lg font-bold text-brand-900">{item.stat}</p>
               <p className="text-xs text-gray-500 leading-tight mt-1">{item.label}</p>
@@ -221,37 +210,37 @@ function WaitlistForm() {
 
         {/* Form */}
         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-          <h2 className="font-bold text-gray-900 mb-1">Join the waitlist</h2>
+          <h2 className="font-bold text-gray-900 mb-1">{t('formTitle')}</h2>
           <p className="text-sm text-gray-500 mb-5">
-            Be the first to know when we launch.
-            {refCode ? ' You\'ll get priority early access.' : ''}
+            {t('formIntro')}
+            {refCode ? ` ${t('formIntroReferred')}` : ''}
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="text-sm font-medium text-gray-700 block mb-1">
-                First name
+                {t('firstName')}
               </label>
               <input
                 type="text"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
                 required
-                placeholder="Your first name"
+                placeholder={t('firstNamePlaceholder')}
                 className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-300"
               />
             </div>
 
             <div>
               <label className="text-sm font-medium text-gray-700 block mb-1">
-                Email address
+                {t('emailLabel')}
               </label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                placeholder="your@email.com"
+                placeholder={t('emailPlaceholder')}
                 className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-300"
               />
             </div>
@@ -259,22 +248,22 @@ function WaitlistForm() {
             {/* Optional symptom question — research value */}
             <div>
               <label className="text-sm font-medium text-gray-700 block mb-2">
-                Which symptom bothers you most right now?{' '}
-                <span className="text-gray-400 font-normal">(optional)</span>
+                {t('symptomLabel')}{' '}
+                <span className="text-gray-400 font-normal">{t('optional')}</span>
               </label>
               <div className="grid grid-cols-2 gap-2">
                 {SYMPTOM_OPTIONS.map((opt) => (
                   <button
-                    key={opt.value}
+                    key={opt}
                     type="button"
-                    onClick={() => setSymptom(symptom === opt.value ? '' : opt.value)}
+                    onClick={() => setSymptom(symptom === opt ? '' : opt)}
                     className={`text-left text-xs px-3 py-2 rounded-xl border transition-all ${
-                      symptom === opt.value
+                      symptom === opt
                         ? 'bg-brand-900 text-white border-brand-900'
                         : 'bg-white text-gray-600 border-gray-200 hover:border-brand-300'
                     }`}
                   >
-                    {opt.label}
+                    {t(`symptoms.${opt}`)}
                   </button>
                 ))}
               </div>
@@ -291,12 +280,11 @@ function WaitlistForm() {
               disabled={loading}
               className="w-full bg-brand-900 text-white font-semibold py-3 rounded-xl hover:bg-brand-800 transition-colors disabled:opacity-50 text-sm"
             >
-              {loading ? 'Joining...' : refCode ? 'Join — get priority access →' : 'Join the waitlist →'}
+              {loading ? t('joining') : refCode ? t('submitReferred') : t('submit')}
             </button>
 
             <p className="text-xs text-center text-gray-400 leading-relaxed">
-              No spam. We&apos;ll only email you about the launch.
-              General wellness guidance only — not medical advice.
+              {t('noSpam')}
             </p>
           </form>
         </div>
@@ -304,15 +292,9 @@ function WaitlistForm() {
         {/* What to expect */}
         <div className="mt-8 space-y-3">
           <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide text-center">
-            What you&apos;ll get
+            {t('expectTitle')}
           </p>
-          {[
-            { emoji: '✨', text: 'A personalised wellness plan built around your symptoms' },
-            { emoji: '🧘', text: 'Diet, lifestyle, and mindset guidance from Pamela' },
-            { emoji: '📓', text: 'A journal to track what works and what doesn\'t' },
-            { emoji: '📚', text: 'Evidence-informed articles — real information, no fluff' },
-            { emoji: '🩺', text: 'Empowerment to have better conversations with your GP' },
-          ].map((item) => (
+          {EXPECT_KEYS.map((key) => ({ emoji: EXPECT_EMOJI[key], text: t(`expect.${key}`) })).map((item) => (
             <div key={item.text} className="flex items-start gap-3">
               <span className="text-lg flex-shrink-0">{item.emoji}</span>
               <p className="text-sm text-gray-600 leading-snug">{item.text}</p>
@@ -323,13 +305,10 @@ function WaitlistForm() {
         {/* Referral incentive reminder */}
         <div className="mt-8 bg-brand-50 rounded-2xl p-5 border border-brand-100">
           <h3 className="font-bold text-brand-900 text-sm mb-2">
-            Refer a friend, get 99p off forever
+            {t('referTitle')}
           </h3>
           <p className="text-xs text-brand-700 leading-relaxed">
-            Once you join, you&apos;ll get your own referral link.
-            Every woman you refer gets priority early access.
-            You get 99p off your monthly subscription — permanently — for every referral.
-            Refer 8 women and your subscription is completely free.
+            {t('referBody')}
           </p>
         </div>
 
@@ -338,13 +317,18 @@ function WaitlistForm() {
   )
 }
 
+function WaitlistLoading() {
+  const t = useTranslations('Waitlist')
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="text-brand-900">{t('loading')}</div>
+    </div>
+  )
+}
+
 export default function WaitlistPage() {
   return (
-    <Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-brand-900">Loading...</div>
-      </div>
-    }>
+    <Suspense fallback={<WaitlistLoading />}>
       <WaitlistForm />
     </Suspense>
   )

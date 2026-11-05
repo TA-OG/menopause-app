@@ -1,0 +1,69 @@
+# Tradução de frameworks/sleep-fatigue.yaml — prevalece a versão em inglês.
+df_sleep_tryptophan:
+  title: Coma alimentos ricos em triptofano ao fim do dia
+  body: |-
+    O triptofano é um precursor da serotonina e da melatonina — as hormonas que regulam o sono. Os alimentos ricos em triptofano incluem peru, frango, ovos, sementes de abóbora, aveia e lacticínios. Um pequeno snack de proteína e hidratos de carbono 90 minutos antes de deitar (p. ex., uma taça pequena de papas de aveia ou uma banana com umas nozes) pode apoiar a produção de melatonina.
+    O jantar também pode ajudar. Algumas mulheres acham útil construir o jantar à volta de peixe gordo, peru ou frango, ou grão-de-bico e lentilhas, com um hidrato de carbono complexo como batata-doce, quinoa ou arroz integral. Outras notam que uma refeição grande e rica em hidratos de carbono ao fim da noite é seguida de um despertar às 2–3h da manhã — comer os hidratos de carbono principais mais cedo e manter uma refeição tardia mais leve e equilibrada com proteína é algo simples de experimentar. São ideias suaves para experimentar, não uma prescrição.
+df_caffeine_cutoff:
+  title: Defina um limite rigoroso para a cafeína às 13h
+  body: >-
+    A cafeína tem uma semivida de 5–6 horas — um café às 15h ainda tem metade da cafeína no seu organismo às 20h. Antecipar o limite para as 13h é a mudança alimentar com mais impacto que a maioria das mulheres pode fazer pela qualidade do sono. Depois do almoço, mude para chás de ervas, rooibos ou descafeinado.
+df_energy_blood_sugar:
+  title: Coma para ter energia estável ao longo do dia
+  body: >-
+    O cansaço piora muitas vezes com as quebras de açúcar no sangue. Evite saltar refeições e procure incluir proteína, gorduras saudáveis e fibra em todas as refeições para manter a energia. Um pequeno snack a meio da manhã e a meio da tarde (um punhado de frutos secos, uma maçã com manteiga de frutos secos) evita a quebra das 15h que muitas mulheres na perimenopausa descrevem.
+lf_sleep_consistency:
+  title: Fixe a hora de acordar — ela ancora todo o seu ciclo de sono
+  body: >-
+    O seu ritmo circadiano é definido sobretudo pela hora a que acorda, não pela hora a que se deita. Levantar-se todos os dias à mesma hora (incluindo ao fim de semana), com uma margem de 30 minutos, é a mudança de comportamento de sono com mais evidência. Parece contraintuitivo depois de uma noite má, mas ficar na cama torna a noite seguinte pior.
+lf_morning_light:
+  title: Luz da manhã — 10 minutos ao ar livre na primeira hora depois de acordar
+  body: >-
+    A luz exterior (mesmo num dia nublado) é 10–50 vezes mais intensa do que a iluminação interior. Expor-se a ela na primeira hora depois de acordar suprime a melatonina residual, melhora o estado de alerta durante o dia e ancora o ciclo sono-vigília. Uma caminhada curta ou ficar sentada junto a uma janela aberta conta. É grátis e demora 10 minutos.
+lf_restorative_movement:
+  title: Movimento reparador para o cansaço — não descanso
+  body: >-
+    Ao contrário do que parece, o descanso piora o cansaço na maioria dos casos. O movimento suave e regular — uma caminhada de 20 minutos, ioga, natação — ativa os sistemas de energia e melhora a eficiência das mitocôndrias. Procure mexer-se todos os dias, mesmo que sejam só 15 minutos. Guarde a alta intensidade para quando tiver mais energia de reserva.
+lf_wind_down:
+  title: Uma rotina de 30 minutos para abrandar todas as noites
+  body: |-
+    O seu sistema nervoso precisa de um sinal de transição entre o «modo dia» e o sono. Crie uma rotina regular de 30 minutos: luz baixa, sem ecrãs, algo pouco estimulante (ler, alongamentos suaves, um banho de imersão ou um duche). Repetir a mesma sequência todas as noites ensina o seu corpo a associá-la ao adormecer.
+    Se se acumulou uma série de noites más, algumas mulheres acham que umas «férias de sono» propositadas ajudam a repor tudo: reserve uma noite na agenda, desligue os aparelhos, deixe o quarto calmo e confortável e vista o seu pijama preferido.
+mr_sleep_effort:
+  title: Pare de tentar dormir — a intenção paradoxal
+  body: >-
+    Quanto mais tenta dormir, mais desperta fica. A terapia cognitivo-comportamental para a insónia (TCC-I) ensina o «controlo de estímulos» e a «intenção paradoxal» — se ainda estiver acordada ao fim de 20 minutos, levante-se, faça algo calmo com luz baixa e só volte para a cama quando tiver sono. Isto quebra o ciclo de ansiedade à volta do sono. Peça ao seu médico que a encaminhe para um programa de TCC-I; no Reino Unido, a app Sleepio está disponível através do NHS.
+mr_fatigue_self_compassion:
+  title: Descanse sem culpa
+  body: >-
+    Muitas mulheres continuam apesar do cansaço porque sentem que «deviam» conseguir. O cansaço na perimenopausa é fisiológico — é o seu corpo a adaptar-se às mudanças hormonais, não um defeito de carácter. Os estrogénios participam na forma como as suas células produzem energia, por isso níveis a mudar fazem parte do quadro físico. A resposta normalmente não é esforçar-se mais; é apoiar o corpo e descansar sem culpa. Marcar todos os dias um período de descanso propositado (mesmo 20 minutos deitada) e vê-lo como manutenção e não como fraqueza muda muito a forma como se vive o cansaço.
+ss_magnesium_sleep:
+  title: Glicinato de magnésio — para a qualidade do sono
+  body: >-
+    O glicinato de magnésio (200–400 mg, 30–60 minutos antes de deitar) tem boa evidência de que melhora o adormecer e a continuidade do sono. Relaxa o músculo liso, reduz o cortisol e apoia o GABA — o principal neurotransmissor calmante do cérebro. Comece com 200 mg e aumente se for preciso.
+  disclaimer: >-
+    Os suplementos não são medicamentos regulados. Confirme sempre com o seu médico de família ou farmacêutico antes de começar, sobretudo se tomar medicamentos receitados ou tiver problemas renais ou cardíacos.
+ss_vitamin_d:
+  title: Vitamina D — energia, humor e defesas
+  body: >-
+    No Reino Unido, a maioria dos adultos tem falta de vitamina D no inverno. A carência está fortemente associada ao cansaço, ao humor em baixo e ao sono fraco. O NHS recomenda 10 microgramas (400 UI) por dia a todos os adultos de outubro a março; as mulheres com pele mais escura ou pouca exposição ao sol podem beneficiar de suplementação durante todo o ano, a 1000–2000 UI. Peça ao seu médico uma análise ao sangue para verificar o seu nível antes de tomar doses mais elevadas.
+  disclaimer: >-
+    Doses muito elevadas de vitamina D (acima de 4000 UI/dia) podem ser tóxicas. Verifique os seus níveis antes de tomar mais de 2000 UI. Consulte o seu médico de família se tiver antecedentes de cálculos renais ou hipercalcemia.
+ss_coq10_ubiquinol_energy:
+  title: CoQ10 (ou ubiquinol) — para a produção de energia das células
+  body: >-
+    A CoQ10 costuma tomar-se em doses de 100–200 mg/dia e participa realmente na produção de energia das células, embora a evidência de que suplementá-la melhore o cansaço de forma mensurável seja contraditória e não definitiva. O ubiquinol é a forma «ativa» em que o seu corpo converte a forma padrão (ubiquinona) — essa conversão pode tornar-se menos eficiente com a idade, e por isso algumas mulheres escolhem o ubiquinol, embora não esteja firmemente demonstrado que seja clinicamente melhor para toda a gente. As estatinas são conhecidas por baixar os níveis de CoQ10 no corpo, que é a principal razão por que se fala dela sobretudo para mulheres que tomam estatinas ou outra medicação cardíaca.
+  disclaimer: >-
+    Se toma uma estatina ou outra medicação cardíaca, isto deve ser orientado pelo seu médico, devido à interação.
+ss_nmn_pqq_energy:
+  title: NMN e PQQ — emergentes, não estabelecidos, para apoiar a energia
+  body: >-
+    O NMN (mononucleótido de nicotinamida, habitualmente 250–500 mg/dia) aumenta de forma fiável os níveis de NAD+, que descem com a idade e participam no metabolismo energético das células — mas os ensaios em humanos ainda não mostraram que isto se traduz num benefício claro no cansaço; a maior parte da investigação até agora é pequena e de curta duração. A PQQ (pirroloquinolina quinona, habitualmente 10–20 mg/dia) é por vezes combinada com ele e costuma ser bem tolerada, com a mesma distância entre um mecanismo promissor e um resultado comprovado. Vale a pena vê-los como experimentais e não como uma solução fiável.
+  disclaimer: >-
+    Confirme sempre com o seu médico de família ou farmacêutico antes de começar, sobretudo se tomar medicamentos receitados.
+ss_nac_glutathione_energy:
+  title: NAC e glutationa — apoio antioxidante
+  body: >-
+    A NAC (N-acetilcisteína, habitualmente 600 mg/dia) e/ou a glutationa apoiam o principal sistema antioxidante do corpo, que tem um papel na produção de energia das células e na redução do stress oxidativo. Pode ler que a glutationa tem de ser lipossómica para funcionar — alguns estudos mostram que a glutationa oral normal também pode aumentar os níveis no corpo, por isso não é um requisito rigoroso, embora a formulação influencie a absorção e a investigação sobre a melhor forma ainda esteja a evoluir.
+  disclaimer: >-
+    Confirme sempre com o seu médico de família ou farmacêutico antes de começar, sobretudo se tomar medicamentos receitados.

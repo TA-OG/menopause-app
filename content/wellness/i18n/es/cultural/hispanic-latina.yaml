@@ -1,0 +1,39 @@
+# Traducción de cultural/hispanic-latina.yaml — prevalece la versión en inglés.
+items:
+  beans-legumes-central:
+    body: |-
+      Frijoles negros, frijoles pintos, alubias: las legumbres son el centro de la cocina latinoamericana y están entre los mejores alimentos para la menopausia. Son ricas en proteína vegetal, fibra y fitoestrógenos. Si los frijoles ya son algo diario en tu mesa, es una ventaja nutricional importante.
+  avocado-healthy-fats:
+    body: |-
+      El aguacate es un básico latinoamericano y es excelente de verdad para la menopausia: rico en grasas monoinsaturadas que favorecen la producción de hormonas, vitamina E para la salud de la piel (especialmente relevante dados los cambios en la piel habituales en las mujeres latinas durante la menopausia) y potasio para controlar la tensión. Tomar aguacate a diario está respaldado por la evidencia, no es solo una moda.
+  chilli-triggers:
+    body: |-
+      El chile y la comida picante son fundamentales en muchas cocinas latinoamericanas y tienen un gran significado cultural. Como en otras tradiciones con comida picante, fíjate si hay relación entre las comidas picantes y los sofocos. Si ves un patrón, piensa en el momento más que en eliminarlo: tomar picante más temprano en el día puede reducir el efecto por la noche.
+  corn-tortilla-vs-flour:
+    body: |-
+      Las tortillas de maíz tienen un índice glucémico más bajo que las de harina de trigo y son naturalmente sin gluten. En la menopausia, cuando la estabilidad del azúcar influye directamente en la frecuencia de los sofocos y en el ánimo, es un cambio sencillo que merece la pena allí donde las tortillas de maíz forman parte de la cultura.
+  hibiscus-jamaica:
+    body: |-
+      El agua de jamaica (agua de flor de hibisco) se toma muchísimo en México y Centroamérica. Tiene evidencia real como apoyo para la tensión y propiedades antioxidantes. Reducir el azúcar añadido al prepararla maximiza el beneficio: un dulzor suave con mucha jamaica y limón es igual de rico.
+  skin-and-hair-changes:
+    body: |-
+      Los cambios en la piel y el pelo son más marcados en las mujeres hispanas y latinas durante la menopausia: se documentan con más frecuencia cambios de textura, sequedad, cambios de pigmentación y pérdida de densidad del pelo. No es vanidad: estos cambios afectan a la identidad y al bienestar.
+
+      La hidratación (con agua y con las grasas saludables de la dieta), la vitamina E y un buen cuidado de la piel adaptado a una piel más seca y cambiante merecen prioridad. Un dermatólogo con experiencia en los cambios de piel de la menopausia puede ser de ayuda si los cambios son importantes.
+  cultural-positivity:
+    body: |-
+      La investigación con mujeres latinas y de origen mexicano muestra que muchas tienen una actitud más positiva hacia la menopausia que las mujeres blancas occidentales: la ven como una transición natural más que como una enfermedad. Esta mirada cultural tiene un valor real y, en los estudios, se asocia a menos malestar por los síntomas.
+
+      Puedes mantener esta mirada cultural positiva y aun así tomarte en serio tus síntomas. Las dos cosas son ciertas. La transición es natural y también puede ser dura, y mereces apoyo en las partes difíciles.
+  familismo-and-stress:
+    body: |-
+      El valor cultural del familismo — una conexión y una responsabilidad familiar muy profundas — hace que muchas mujeres latinas sean el centro de la vida emocional y práctica de su familia extensa durante los años de la menopausia. Es un regalo y también una fuente importante de estrés.
+
+      Encontrar aunque sean pequeños ratos solo para ti — un paseo, un momento de tranquilidad — no es rechazar a tu familia. Es lo que te permite seguir estando ahí para ellos.
+byTitle:
+  Mood changes and skin changes are especially common for Latina women:
+    title: Los cambios de ánimo y de piel son especialmente frecuentes en las mujeres latinas
+    body: |-
+      La investigación muestra de forma constante que las mujeres hispanas y latinas refieren cambios de ánimo y altibajos emocionales con más frecuencia que otros grupos durante la menopausia: un 55 % frente al 49 % de las mujeres blancas. Los cambios en la piel y el pelo también son más marcados.
+
+      No son imaginados ni exagerados: reflejan patrones hormonales reales. Nombrarlos con claridad cuando hables con tu médico te ayuda a conseguir el apoyo que necesitas, en lugar de que se minimicen tus síntomas de ánimo o se diagnostiquen erróneamente solo como ansiedad o depresión.

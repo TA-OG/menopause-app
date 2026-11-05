@@ -8,6 +8,17 @@ tags:
 estimated_read_minutes: 4
 
 # DRAFT — awaiting Pamela's review and sign-off. Do not set published_at until approved.
+#
+# Pamela's review (27 Oct 2026, 03/C2-C3): sarcopenia sign "scales the same, body softer, clothes
+# fit differently"; strength training before walking and dancing. Sources checked 3 Nov 2026:
+#  - Greendale et al, "Changes in body composition and weight during the menopause transition",
+#    JCI Insight 2019;4(5):e124865, doi:10.1172/jci.insight.124865 — "At the start of the MT, rate
+#    of fat gain doubled, and lean mass declined"; weight shows no acceleration at the MT.
+#  - Royal Osteoporosis Society, Exercise for bones (reviewed 1 Jun 2026):
+#    https://theros.org.uk/information-and-support/bone-health/exercise-for-bones/ — "do both
+#    impact and strength exercises"; walking, stair climbing, jogging, dancing listed as impact;
+#    see a doctor/physio first with many broken bones, spinal fractures, or recovering from a break.
+#    Note: ROS does not rank strength above impact — "first" is Pamela's emphasis, not ROS's.
 
 body_md: |
   Osteoporosis is sometimes called a "silent" condition — it's common, it's under-diagnosed, and
@@ -30,6 +41,9 @@ body_md: |
   - Arms or legs feeling weaker than they used to
   - Tiring faster than before, or losing stamina
   - Walking more slowly than you used to
+  - The scales staying much the same while your body looks softer or your clothes fit
+    differently — during the menopause transition, fat gain speeds up and muscle mass starts to
+    fall, without a matching jump in the number on the scales
 
   None of these are cause for alarm on their own — but together, they're a useful early signal,
   and worth mentioning to your GP.
@@ -44,9 +58,13 @@ body_md: |
 
   ## What tends to help
 
-  - **Weight-bearing and resistance exercise** — walking, dancing, and strength training
-    directly stimulate new bone formation; swimming and cycling are excellent for the heart but
-    don't load the skeleton in the same way.
+  - **Strength training first, then impact exercise** — strength training means moving your
+    muscles against resistance (weights, bands or your own body weight) to make them stronger.
+    Impact exercise includes walking, stair climbing, jogging and dancing. The Royal Osteoporosis
+    Society advises doing both for bone strength. Swimming and cycling are excellent for the heart
+    but don't load the skeleton in the same way. If you've had several broken bones or a spinal
+    fracture, or are recovering from a break, talk to your doctor or a physiotherapist before
+    starting.
   - **Calcium from food first** — dairy, fortified plant milks, tinned fish eaten with the
     bones, leafy greens, and almonds.
   - **Vitamin D** — oily fish, eggs, and sunlight-exposed mushrooms are useful food sources,

@@ -1,0 +1,45 @@
+# Übersetzung von frameworks/bone-cardiovascular.yaml — maßgeblich ist die englische Fassung.
+df_calcium_bone:
+  title: 700–1200 mg Kalzium täglich — zuerst aus der Nahrung
+  body: >-
+    Östrogen reguliert direkt den Knochenabbau. Sein Rückgang beschleunigt den Knochenverlust in den ersten 5–7 Jahren nach der Menopause um bis zu 20 %. Die Kalziumzufuhr ist grundlegend. Ziel sind 700–1200 mg täglich aus der Nahrung: Milchprodukte (Milch, Käse, Joghurt), angereicherte Pflanzendrinks, Sardinen und Lachs aus der Dose (mit Gräten), Brokkoli, Grünkohl, Mandeln und mit Calciumsulfat hergestellter Tofu. Kalzium aus Lebensmitteln wird besser aufgenommen als aus Präparaten. Mehr als 1000 mg täglich allein aus Tabletten zu ergänzen, ist schwach belegt und könnte das Herz-Kreislauf-Risiko erhöhen.
+df_heart_healthy_fats:
+  title: Ungesättigte statt gesättigte Fette — zum Schutz von Herz und Gefäßen
+  body: >-
+    Vor der Menopause schützt Östrogen das Herz — es erhöht HDL („gutes“ Cholesterin) und senkt LDL („schlechtes“ Cholesterin). Nach der Menopause fällt dieser Schutz weg, und LDL steigt typischerweise um 10–15 %. Ersetze gesättigte Fette (Butter, rotes Fleisch, Vollfett-Milchprodukte) durch ungesättigte Quellen: Olivenöl, Avocado, Nüsse, Samen und fetten Fisch. Die mediterrane Ernährungsweise ist in dieser Altersgruppe der wirksamste Schutz für Herz und Gefäße.
+df_reduce_sodium:
+  title: Weniger Salz — der Blutdruck steigt nach der Menopause
+  body: >-
+    Der Blutdruck steigt in den Jahren nach der Menopause oft an, weil sich mit dem sinkenden Östrogen die Gefäße verändern. Erwachsene im Vereinigten Königreich essen im Schnitt 8–9 g Salz täglich — empfohlen sind höchstens 6 g. Die Hauptquellen für verstecktes Salz: Brot, Wurstwaren, Käse, Fertiggerichte, Soßen. Mit Kräutern und Zitronensaft zu würzen, macht einen echten Unterschied. Bei der Nährwert-Ampel auf der Packungsvorderseite gelten 0,3 g Salz pro 100 g oder weniger als grüner Bereich „niedrig“, mehr als 1,5 g pro 100 g als roter Bereich „hoch“ — zwei Produkte allein anhand dieser Zahl zu vergleichen, ist also ein leichter Gewinn. (Für Getränke gelten dieselben Grenzen von 0,3 g / 1,5 g, nur pro 100 ml.)
+lf_weight_bearing_bones:
+  title: Belastungstraining ist Medizin für die Knochen
+  body: >-
+    Das Skelett reagiert auf mechanische Belastung, indem es neuen Knochen aufbaut. Belastende Bewegung (Gehen, Joggen, Tanzen, Gewichtheben, Tennis) regt die Knochenbildung direkt an. Schwimmen und Radfahren sind zwar hervorragend für Herz und Kreislauf, belasten das Skelett aber nicht und haben kaum Einfluss auf die Knochendichte. Ziel sind mindestens 3 Einheiten belastender Bewegung pro Woche. Krafttraining baut zusätzlich die Muskeln auf, die die Gelenke vor bruchauslösenden Kräften schützen.
+lf_cardio_heart:
+  title: 150 Minuten moderates Ausdauertraining pro Woche — für die Herzgesundheit
+  body: >-
+    150 Minuten moderate Ausdauerbewegung pro Woche (zügiges Gehen, Radfahren, Schwimmen, Tanzen) senken das Herz-Kreislauf-Risiko und den Blutdruck und verbessern die Cholesterinwerte. Sie senken auch das Risiko für Typ-2-Diabetes, das nach der Menopause steigt. Teile das auf 5 x 30 Minuten oder 6 x 25 Minuten auf — Regelmäßigkeit über die Woche zählt mehr als einzelne lange Einheiten.
+lf_smoking_cessation:
+  title: Mit dem Rauchen aufhören — der größte Einzelschritt für Herz und Gefäße
+  body: >-
+    Rauchen verdoppelt das Herzinfarktrisiko und ist bei Frauen nach der Menopause der wichtigste beeinflussbare Risikofaktor für Herz-Kreislauf-Erkrankungen. Es beschleunigt außerdem den Knochenabbau (Raucherinnen haben eine um 10–15 % geringere Knochendichte als Nichtraucherinnen) und verstärkt Hitzewallungen. Rauchstopp-Angebote (im Vereinigten Königreich die NHS Stop Smoking Services), Vareniclin (Champix) und kombinierte Nikotinersatztherapie wirken alle besser als Willenskraft allein. Sprich mit deiner Hausärztin oder deinem Hausarzt.
+mr_bone_density_check:
+  title: Frag nach einer Knochendichtemessung — kenne deinen Ausgangswert
+  body: >-
+    Eine DXA-Messung bestimmt die Knochenmineraldichte und dauert 10–15 Minuten. Im Vereinigten Königreich empfiehlt das NICE sie für Frauen mit früher Menopause (vor 45), operativ bedingter Menopause oder anderen Risikofaktoren (längere Kortisoneinnahme, niedriger BMI, Hüftfrakturen in der Familie). Auch ohne diese Faktoren gibt dir dein Ausgangswert zur Menopause einen Maßstab, an dem du spätere Maßnahmen messen kannst. Frag deine Hausärztin oder deinen Hausarzt, ob die Messung in deinem Gesundheitssystem übernommen wird.
+mr_heart_risk_awareness:
+  title: Herz-Kreislauf-Erkrankungen sind die häufigste Todesursache bei Frauen — nicht Brustkrebs
+  body: >-
+    Nach der Menopause übersteigt das Herz-Kreislauf-Risiko von Frauen das gleichaltriger Männer. Trotzdem wird es bei Frauen seltener untersucht, sie erkennen ihre eigenen Symptome seltener und erhalten seltener eine vorbeugende Behandlung. Bitte bei deinem nächsten Termin um eine Einschätzung deines Herz-Kreislauf-Risikos (Cholesterin, Blutdruck, Blutzucker). Im Vereinigten Königreich bieten die meisten Hausarztpraxen Erwachsenen von 40–74 Jahren den NHS Health Check an. Vorbeugen ist deutlich wirksamer als Behandeln.
+ss_calcium_supplement:
+  title: Kalziumpräparate — nur wenn die Ernährung nicht reicht
+  body: >-
+    Eine Kalziumergänzung (500 mg täglich, nicht mehr) ist nur sinnvoll, wenn deine Kalziumzufuhr über die Nahrung dauerhaft unter 700 mg liegt. Die meisten Frauen, die Milchprodukte oder angereicherte Pflanzendrinks zu sich nehmen, erreichen das über die Ernährung. Calciumcarbonat nimmt man am besten zu einer Mahlzeit; Calciumcitrat kann auch ohne Essen eingenommen werden. Überschreite nicht 1000 mg täglich aus Nahrung und Präparaten zusammen, ohne ärztlichen Rat.
+  disclaimer: >-
+    Kalziumpräparate über 1000 mg/Tag könnten laut einigen Studien das Herz-Kreislauf-Risiko erhöhen. Nimm keine Präparate, ohne zuerst deine Zufuhr über die Ernährung zu prüfen. Sprich mit deiner Hausärztin oder deinem Hausarzt, wenn du schon einmal Nierensteine, eine Hyperkalzämie oder eine Herz-Kreislauf-Erkrankung hattest.
+ss_vitamin_k2:
+  title: Vitamin K2 (MK-7) — lenkt Kalzium in die Knochen, nicht in die Arterien
+  body: >-
+    Vitamin K2 (Menachinon-7, 100–200 µg täglich) aktiviert Proteine, die Kalzium in Knochen und Zähne statt in die Arterienwände lenken. Es wirkt zusammen mit Vitamin D3 — nimm beide zusammen ein. Natürliche Quellen sind begrenzt (Natto, Hartkäse, Eigelb). Die Belege für die Vorbeugung von Knochenbrüchen sind noch im Entstehen, der Mechanismus ist aber gut belegt.
+  disclaimer: >-
+    Vitamin K2 hat Wechselwirkungen mit Warfarin und anderen Blutverdünnern und kann deren Wirkung abschwächen. Nimm es nicht ein, wenn du Blutverdünner nimmst, es sei denn, deine Ärztin oder dein Arzt hat es ausdrücklich erlaubt.

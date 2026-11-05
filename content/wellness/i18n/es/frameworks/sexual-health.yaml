@@ -1,0 +1,59 @@
+# Traducción de frameworks/sexual-health.yaml — prevalece la versión en inglés.
+df_circulation_foods:
+  title: Come para la circulación — el flujo sanguíneo importa para la libido
+  body: >-
+    La excitación sexual es, en esencia, un proceso vascular. Entre los alimentos que favorecen una buena circulación están las verduras de hoja verde oscuro (nitratos), el zumo de granada, el chocolate negro (>70 % de cacao), la remolacha y el pescado azul (omega-3). Evita los procesados con mucha sal, que perjudican la función vascular. Hidratarte bien también reduce la sequedad de los tejidos vaginales. Estos cambios suman a lo largo de semanas, no de días.
+df_omega3_inflammation:
+  title: Las grasas omega-3 favorecen la salud de los tejidos y la producción de hormonas
+  body: >-
+    Después de la menopausia, las glándulas suprarrenales siguen produciendo pequeñas cantidades de estrógenos a partir del colesterol, un proceso que se ve favorecido por un buen aporte de grasas saludables. Incluye pescado azul 2–3 veces por semana, semillas de lino, nueces y aguacate. El omega-3 también reduce la inflamación vaginal. Un cuerpo bien nutrido, con suficientes grasas esenciales, mantiene mejor los tejidos vaginales que una dieta baja en grasa.
+lf_local_moisturiser:
+  title: Hidratantes vaginales — úsalos con regularidad, no solo en las relaciones
+  body: >-
+    La sequedad vaginal (SGM, síndrome genitourinario de la menopausia) empeora progresivamente sin tratamiento. Los hidratantes vaginales sin receta (Replens, YES VM, Hyalofemme), usados 2–3 veces por semana, devuelven la hidratación al tejido vaginal y reducen las molestias en el día a día y en las relaciones. No son lubricantes: actúan de forma continua. Los lubricantes se usan en el momento de la relación sexual. Si tienes vida sexual, necesitas los dos.
+lf_pelvic_floor:
+  title: Ejercicios de suelo pélvico — para el bienestar, la sensibilidad y la continencia
+  body: >-
+    Los músculos del suelo pélvico sostienen la vejiga, el intestino y el útero, y se ven afectados directamente por el descenso de los estrógenos. Fortalecerlos (ejercicios de Kegel: contrae durante 10 segundos, suelta, repite 10 veces, 3 series al día) mejora la sensibilidad en las relaciones, reduce la incontinencia de urgencia y favorece la salud de los órganos pélvicos. Si los recordatorios te ayudan a mantenerlo, la app Squeezy — creada por fisioterapeutas de suelo pélvico del NHS británico — te guía con un programa progresivo. La app por sí sola es de pago, pero algunas consultas de suelo pélvico ofrecen gratis una versión conectada a sus pacientes, así que merece la pena preguntar. También puedes pedir a tu médico que te derive a una fisioterapeuta de suelo pélvico, que es la mejor opción si los síntomas te afectan en el día a día.
+lf_sexual_activity_maintenance:
+  title: La actividad sexual regular ayuda a mantener la salud vaginal
+  body: >-
+    La actividad sexual regular (también en solitario) aumenta el flujo sanguíneo al tejido vaginal, lo que mantiene su elasticidad e hidratación. Si la penetración duele, empieza con actividad sin penetración y un buen lubricante. Retomar poco a poco la penetración, con mucho lubricante y paciencia, evita el círculo de evitación que acelera la atrofia. No se trata de rendimiento, sino de mantener los vasos y los tejidos.
+mr_gp_vaginal_oestrogen:
+  title: Pregunta a tu médico por los estrógenos vaginales locales — son seguros para la mayoría de las mujeres
+  body: >-
+    La crema u óvulo de estrógeno vaginal (p. ej., Vagifem, Ovestin, Estring) es el tratamiento más eficaz del SGM. Actúa a nivel local con una absorción general mínima y se considera seguro incluso para mujeres que no pueden tomar THS por vía general, incluidas muchas supervivientes de cáncer de mama. Está muy infratratado porque ni las mujeres ni los médicos lo sacan. Puedes pedirlo expresamente. No es un tratamiento estético: trata una afección que avanza con el tiempo.
+mr_libido_whole_person:
+  title: La libido es compleja — rara vez es solo hormonal
+  body: >-
+    El deseo sexual de las mujeres depende del contexto. El cansancio, la dinámica de pareja, el estrés, la imagen corporal y el ánimo influyen más en la libido que los niveles hormonales por sí solos. Si te sientes desconectada de tu sexualidad, conviene separar lo físico (trata primero la sequedad y las molestias) de lo relacional y lo psicológico. Una terapeuta sexual puede ayudarte si el deseo lleva varios meses ausente. La libido baja en la menopausia rara vez se debe a una sola cosa: suele ser una combinación de cambios hormonales, sequedad o molestias vaginales, dormir mal, poca energía, estrés y factores de pareja o emocionales. Una libido baja que te angustia a ti o a tu pareja merece tomarse en serio, y tiene tratamiento.
+ss_maca_libido:
+  title: Raíz de maca — para la libido y el equilibrio hormonal
+  body: >-
+    Normalmente 1,5–3 g/día. Uno de los suplementos más conocidos para la libido y el equilibrio hormonal, incluso en los protocolos de algunos profesionales pensados específicamente para mujeres en la menopausia.
+  disclaimer: >-
+    Precaución si tienes una enfermedad autoinmune: la maca puede estimular el sistema inmunitario y empeorar los brotes. No sustituye al tratamiento médico de la sequedad vaginal ni del SGM.
+ss_vitamin_d_libido:
+  title: Vitamina D — para la producción de hormonas
+  body: >-
+    La vitamina D interviene en la producción de hormonas en general, y conviene medirla en lugar de suponerla, sobre todo si tu libido ha cambiado junto con otros síntomas.
+  disclaimer: >-
+    Consúltalo siempre con tu médico de cabecera o farmacéutico antes de empezar, sobre todo si tomas algún medicamento con receta.
+ss_zinc_libido:
+  title: Zinc — para la producción de testosterona
+  body: >-
+    Normalmente 10–30 mg/día. Interviene en la producción de testosterona, que también influye en la libido de las mujeres, no solo de los hombres. No debe tomarse en dosis altas durante mucho tiempo sin control, porque el exceso de zinc puede agotar el cobre.
+  disclaimer: >-
+    Consúltalo siempre con tu médico de cabecera o farmacéutico antes de empezar, sobre todo si tomas algún medicamento con receta.
+ss_ashwagandha_libido:
+  title: Ashwagandha — para la libido, además de reducir el estrés
+  body: >-
+    Normalmente 300–600 mg/día de extracto de raíz estandarizado. Hay cierta evidencia de que favorece la libido, además de sus efectos para reducir el estrés.
+  disclaimer: >-
+    Precaución si tienes una enfermedad autoinmune o de tiroides, o si estás embarazada: consúltalo antes con tu médico de cabecera.
+ss_vaginal_probiotics:
+  title: Probióticos específicos vaginales — para la salud de los tejidos y el bienestar
+  body: >-
+    Algunas mujeres prueban probióticos específicos vaginales para la salud de los tejidos y el bienestar, con la idea de que pueden ayudar ante una barrera física para la libido: la sequedad o las molestias. La evidencia para este uso concreto es limitada, y no sustituyen a tratamientos con más respaldo, como los estrógenos vaginales, si la sequedad o las molestias te afectan mucho.
+  disclaimer: >-
+    Consúltalo siempre con tu médico de cabecera o farmacéutico antes de empezar.

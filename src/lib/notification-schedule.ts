@@ -1,3 +1,10 @@
+import { DEFAULT_LOCALE, isSupportedLocale, type Locale } from '@/lib/locale-geo-map'
+import en from '../../messages/en.json'
+import fr from '../../messages/fr.json'
+import es from '../../messages/es.json'
+import de from '../../messages/de.json'
+import pt from '../../messages/pt.json'
+
 /**
  * Pure helpers for the daily check-in reminder cron
  * (src/app/api/cron/notifications/route.ts). Extracted so the local-time
@@ -59,8 +66,25 @@ export function isCheckinNudgeDue(
   return local.hour === notificationHour && !checkedInToday
 }
 
-export const CHECKIN_NUDGE_MESSAGE = {
-  title: 'Aunty Mel',
-  body: 'How are you feeling today? Take a minute to check in.',
-  url: '/symptom-checkin',
-} as const
+/**
+ * The check-in reminder in the user's own language (profiles.locale). The
+ * body lives in messages/*.json (Push.checkinBody) with the rest of the
+ * app's copy; the title is the brand name and stays as it is. Anything not a
+ * supported locale falls back to English rather than sending nothing.
+ */
+const PUSH_MESSAGES: Record<Locale, { checkinBody: string }> = {
+  en: en.Push,
+  fr: fr.Push,
+  es: es.Push,
+  de: de.Push,
+  pt: pt.Push,
+}
+
+export function checkinNudgeMessage(locale: string | null | undefined) {
+  const lang = isSupportedLocale(locale) ? locale : DEFAULT_LOCALE
+  return {
+    title: 'Aunty Mel',
+    body: PUSH_MESSAGES[lang].checkinBody,
+    url: '/symptom-checkin',
+  }
+}

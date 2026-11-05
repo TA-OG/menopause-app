@@ -1,0 +1,69 @@
+# Traducción de frameworks/sleep-fatigue.yaml — prevalece la versión en inglés.
+df_sleep_tryptophan:
+  title: Come alimentos ricos en triptófano por la noche
+  body: |-
+    El triptófano es un precursor de la serotonina y la melatonina, las hormonas que regulan el sueño. Entre los alimentos ricos en triptófano están el pavo, el pollo, los huevos, las pipas de calabaza, la avena y los lácteos. Un pequeño tentempié con proteína e hidratos 90 minutos antes de acostarte (p. ej., un cuenco pequeño de gachas de avena o un plátano con unas nueces) puede favorecer la producción de melatonina.
+    La cena también puede ayudar. A algunas mujeres les sirve organizar la cena en torno a pescado azul, pavo o pollo, o garbanzos y lentejas, con un hidrato complejo como el boniato, la quinoa o el arroz integral. Otras notan que una cena abundante y cargada de hidratos a última hora va seguida de un despertar a las 2–3 de la madrugada; tomar los hidratos principales antes y que la cena tardía sea más ligera y equilibrada con proteína es algo sencillo de probar. Son ideas suaves para probar, no una prescripción.
+df_caffeine_cutoff:
+  title: Fija un límite estricto para la cafeína a las 13:00
+  body: >-
+    La cafeína tiene una vida media de 5–6 horas: un café a las 15:00 todavía tiene la mitad de su cafeína en tu cuerpo a las 20:00. Adelantar tu límite a las 13:00 es el cambio en la alimentación con más impacto que la mayoría de las mujeres pueden hacer por la calidad de su sueño. Pásate a las infusiones, el rooibos o el descafeinado después de comer.
+df_energy_blood_sugar:
+  title: Come para tener una energía estable durante todo el día
+  body: >-
+    El cansancio suele empeorar con los bajones de azúcar. Evita saltarte comidas e intenta incluir proteína, grasas saludables y fibra en cada comida para mantener la energía. Un pequeño tentempié a media mañana y a media tarde (un puñado de frutos secos, una manzana con crema de frutos secos) evita el bajón de las 15:00 que describen muchas mujeres en la perimenopausia.
+lf_sleep_consistency:
+  title: Fija tu hora de levantarte — ancla todo tu ciclo de sueño
+  body: >-
+    Tu ritmo circadiano lo marca sobre todo la hora a la que te levantas, no la hora a la que te acuestas. Levantarte cada día a la misma hora (también los fines de semana), con un margen de 30 minutos, es el cambio de hábito de sueño con más evidencia. Parece ilógico después de una mala noche, pero quedarte en la cama hace que la noche siguiente sea peor.
+lf_morning_light:
+  title: Luz por la mañana — 10 minutos al aire libre en la primera hora tras despertarte
+  body: >-
+    La luz exterior (incluso en un día nublado) es 10–50 veces más intensa que la luz de interior. Exponerte a ella en la primera hora tras despertarte suprime la melatonina residual, mejora el estado de alerta durante el día y ancla tu ciclo de sueño y vigilia. Un paseo corto o sentarte junto a una ventana abierta cuenta. Es gratis y lleva 10 minutos.
+lf_restorative_movement:
+  title: Movimiento reparador contra el cansancio — no reposo
+  body: >-
+    Aunque parezca lo contrario, el reposo empeora el cansancio en la mayoría de los casos. El movimiento suave y constante — un paseo de 20 minutos, yoga, natación — activa los sistemas de energía y mejora la eficiencia de las mitocondrias. Intenta moverte cada día, aunque sean solo 15 minutos. Deja la alta intensidad para cuando tengas más energía de reserva.
+lf_wind_down:
+  title: Una rutina de 30 minutos para desconectar cada noche
+  body: |-
+    Tu sistema nervioso necesita una señal de transición entre el «modo día» y el sueño. Crea una rutina constante de 30 minutos: luz tenue, sin pantallas, algo poco estimulante (leer, estiramientos suaves, un baño o una ducha). Repetir la misma secuencia cada noche enseña a tu cuerpo a asociarla con el momento de dormirse.
+    Si se han acumulado varias malas noches, a algunas mujeres les sirve hacerse unas «vacaciones de sueño» a propósito: reserva una noche en la agenda, apaga los dispositivos, deja la habitación tranquila y cómoda, y ponte tu pijama favorito.
+mr_sleep_effort:
+  title: Deja de intentar dormir — la intención paradójica
+  body: >-
+    Cuanto más intentas dormir, más despierta estás. La terapia cognitivo-conductual para el insomnio (TCC-I) enseña el «control de estímulos» y la «intención paradójica»: si sigues despierta al cabo de 20 minutos, levántate, haz algo tranquilo con luz tenue y vuelve a la cama solo cuando tengas sueño. Así se rompe el círculo de ansiedad en torno al sueño. Pide a tu médico que te derive a un programa de TCC-I; en el Reino Unido, la app Sleepio está disponible a través del NHS.
+mr_fatigue_self_compassion:
+  title: Descansa sin culpa
+  body: >-
+    Muchas mujeres siguen adelante a pesar del cansancio porque sienten que «deberían» poder con todo. El cansancio en la perimenopausia es fisiológico: es tu cuerpo adaptándose a los cambios hormonales, no un defecto de carácter. Los estrógenos intervienen en cómo producen energía tus células, así que unos niveles cambiantes forman parte del cuadro físico. La respuesta no suele ser apretar más, sino apoyar a tu cuerpo y descansar sin culpa. Reservar cada día un rato de descanso a propósito (aunque sean 20 minutos tumbada) y verlo como mantenimiento y no como debilidad cambia mucho la forma de vivir el cansancio.
+ss_magnesium_sleep:
+  title: Glicinato de magnesio — para la calidad del sueño
+  body: >-
+    El glicinato de magnesio (200–400 mg, 30–60 minutos antes de acostarte) tiene buena evidencia para mejorar la conciliación y la continuidad del sueño. Relaja la musculatura lisa, reduce el cortisol y favorece el GABA, el principal neurotransmisor calmante del cerebro. Empieza con 200 mg y aumenta si lo necesitas.
+  disclaimer: >-
+    Los suplementos no son medicamentos regulados. Consúltalo siempre con tu médico de cabecera o farmacéutico antes de empezar, sobre todo si tomas algún medicamento con receta o tienes problemas de riñón o de corazón.
+ss_vitamin_d:
+  title: Vitamina D — energía, ánimo y defensas
+  body: >-
+    En el Reino Unido, la mayoría de los adultos tienen falta de vitamina D en invierno. La carencia se asocia mucho al cansancio, al ánimo bajo y a dormir mal. El NHS recomienda 10 microgramos (400 UI) al día a todos los adultos de octubre a marzo; las mujeres con la piel más oscura o poca exposición al sol pueden beneficiarse de tomarla todo el año, a 1000–2000 UI. Pide a tu médico un análisis de sangre para comprobar tu nivel antes de tomar dosis más altas.
+  disclaimer: >-
+    Las dosis muy altas de vitamina D (más de 4000 UI/día) pueden ser tóxicas. Revisa tus niveles antes de tomar más de 2000 UI. Consulta con tu médico de cabecera si tienes antecedentes de cálculos renales o hipercalcemia.
+ss_coq10_ubiquinol_energy:
+  title: CoQ10 (o ubiquinol) — para la producción de energía de las células
+  body: >-
+    La CoQ10 suele tomarse en dosis de 100–200 mg/día y participa de verdad en la producción de energía de las células, aunque la evidencia de que suplementarla mejore el cansancio de forma medible es dispar, no concluyente. El ubiquinol es la forma «activa» en la que tu cuerpo convierte la forma estándar (ubiquinona); esa conversión puede volverse menos eficiente con la edad, por eso algunas mujeres eligen el ubiquinol, aunque no está firmemente demostrado que sea clínicamente mejor para todo el mundo. Se sabe que las estatinas bajan los niveles de CoQ10 en el cuerpo, que es la razón principal por la que se habla de ella sobre todo para mujeres que toman estatinas u otra medicación para el corazón.
+  disclaimer: >-
+    Si tomas una estatina u otra medicación para el corazón, esto debe hacerse con indicación de tu médico por la interacción.
+ss_nmn_pqq_energy:
+  title: NMN y PQQ — emergentes, no consolidados, para apoyar la energía
+  body: >-
+    El NMN (mononucleótido de nicotinamida, normalmente 250–500 mg/día) sube de forma fiable los niveles de NAD+, que bajan con la edad e intervienen en el metabolismo energético de las células, pero los ensayos en humanos aún no han demostrado que esto se traduzca en un beneficio claro sobre el cansancio; la mayoría de la investigación hasta ahora es pequeña y a corto plazo. La PQQ (pirroloquinolina quinona, normalmente 10–20 mg/día) a veces se combina con él; suele tolerarse bien, con la misma distancia entre un mecanismo prometedor y un resultado demostrado. Conviene verlos como experimentales, no como una solución fiable.
+  disclaimer: >-
+    Consúltalo siempre con tu médico de cabecera o farmacéutico antes de empezar, sobre todo si tomas algún medicamento con receta.
+ss_nac_glutathione_energy:
+  title: NAC y glutatión — apoyo antioxidante
+  body: >-
+    La NAC (N-acetilcisteína, normalmente 600 mg/día) y/o el glutatión apoyan el principal sistema antioxidante del cuerpo, que interviene en la producción de energía de las células y en la reducción del estrés oxidativo. Puede que leas que el glutatión tiene que ser liposomal para funcionar; algunos estudios muestran que el glutatión oral estándar también puede subir sus niveles en el cuerpo, así que no es un requisito estricto, aunque la formulación sí influye en la absorción y la investigación sobre la mejor forma aún está en desarrollo.
+  disclaimer: >-
+    Consúltalo siempre con tu médico de cabecera o farmacéutico antes de empezar, sobre todo si tomas algún medicamento con receta.

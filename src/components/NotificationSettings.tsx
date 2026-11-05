@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { usePushSubscription } from '@/lib/use-push-subscription'
+import { useLocale, useTranslations } from 'next-intl'
+import { usePushSubscription, PUSH_ERROR_MESSAGE_KEY } from '@/lib/use-push-subscription'
 
 interface Props {
   initialEnabled: boolean
@@ -15,28 +16,24 @@ interface Props {
  * shared with the onboarding reminders step and the dashboard opt-in banner.
  */
 export default function NotificationSettings({ initialEnabled, initialHour }: Props) {
+  const t = useTranslations('Notifications')
+  const locale = useLocale()
   const { status, error: pushError, subscribe, unsubscribe } = usePushSubscription()
   const [hourError, setHourError] = useState<string | null>(null)
-  const error = hourError ?? pushError
+  const error = hourError ?? (pushError ? t(PUSH_ERROR_MESSAGE_KEY[pushError]) : null)
   const [hour, setHour] = useState<number>(initialHour ?? 9)
   const [lastSavedHour, setLastSavedHour] = useState<number>(initialHour ?? 9)
   const [hourSaved, setHourSaved] = useState(true)
 
   if (status === 'unsupported') {
     return (
-      <p className="text-sm text-gray-500">
-        Push notifications aren&apos;t supported in this browser.
-      </p>
+      <p className="text-sm text-gray-500">{t('unsupported')}</p>
     )
   }
 
   if (status === 'ios-needs-home-screen') {
     return (
-      <p className="text-sm text-gray-500">
-        On iPhone or iPad, add Aunty Mel to your Home Screen first (Share →
-        Add to Home Screen) — iOS only allows notifications for apps opened
-        that way, not from a regular browser tab.
-      </p>
+      <p className="text-sm text-gray-500">{t('iosHomeScreen')}</p>
     )
   }
 
@@ -62,7 +59,7 @@ export default function NotificationSettings({ initialEnabled, initialHour }: Pr
       // revert to what's actually persisted and say so.
       setHour(lastSavedHour)
       setHourSaved(true)
-      setHourError('Could not save your reminder time — please try again.')
+      setHourError(t('errorHour'))
     }
   }
 
@@ -70,10 +67,8 @@ export default function NotificationSettings({ initialEnabled, initialHour }: Pr
     <div>
       <div className="flex items-center justify-between gap-4">
         <div>
-          <p className="font-medium text-gray-900 text-sm">Push notifications</p>
-          <p className="text-xs text-gray-500 mt-0.5">
-            A daily reminder to check in on how you&apos;re feeling
-          </p>
+          <p className="font-medium text-gray-900 text-sm">{t('title')}</p>
+          <p className="text-xs text-gray-500 mt-0.5">{t('subtitle')}</p>
         </div>
         <button
           type="button"
@@ -88,19 +83,17 @@ export default function NotificationSettings({ initialEnabled, initialHour }: Pr
               : 'bg-brand-900 text-white hover:bg-brand-800'
           } disabled:opacity-50`}
         >
-          {isBusy ? 'Working…' : isSubscribed ? 'Turn off' : 'Turn on'}
+          {isBusy ? t('working') : isSubscribed ? t('turnOff') : t('turnOn')}
         </button>
       </div>
       {error && <p className="text-xs text-red-600 mt-2">{error}</p>}
       {!initialEnabled && !isSubscribed && status === 'idle' && (
-        <p className="text-xs text-gray-400 mt-2">
-          Off on this device — turn on to get a daily check-in reminder.
-        </p>
+        <p className="text-xs text-gray-400 mt-2">{t('offByDefault')}</p>
       )}
       {isSubscribed && (
         <div className="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between gap-4">
           <label htmlFor="notification-hour" className="text-xs text-gray-600">
-            Send my daily reminder around
+            {t('hourLabel')}
           </label>
           <select
             id="notification-hour"
@@ -110,11 +103,12 @@ export default function NotificationSettings({ initialEnabled, initialHour }: Pr
           >
             {Array.from({ length: 24 }, (_, h) => (
               <option key={h} value={h}>
-                {h === 0 ? '12am' : h < 12 ? `${h}am` : h === 12 ? '12pm' : `${h - 12}pm`}
+                {/* Each locale's own clock: 9 am in English, 09:00 in French/German. */}
+                {new Date(2000, 0, 1, h).toLocaleTimeString(locale, { hour: 'numeric', minute: locale === 'en' ? undefined : '2-digit' })}
               </option>
             ))}
           </select>
-          {!hourSaved && <span className="sr-only">Saving…</span>}
+          {!hourSaved && <span className="sr-only">{t('saving')}</span>}
         </div>
       )}
     </div>

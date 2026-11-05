@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server'
 import { updateSession } from '@/lib/supabase/middleware'
+import { safeNext } from '@/lib/safe-redirect'
 import {
   DEFAULT_LOCALE,
   isSupportedLocale,
@@ -75,21 +76,22 @@ export async function middleware(request: NextRequest) {
   const isAuthRoute = AUTH_ROUTES.some((route) => pathname.startsWith(route))
 
   if (isProtected && !user) {
-    const url = request.nextUrl.clone()
-    url.pathname = '/auth/sign-in'
-    url.searchParams.set('redirectTo', pathname)
+    // A fresh URL, not a clone: the original query belongs inside redirectTo
+    // (so /my-plan?tab=diet comes back with its tab), not on the sign-in page.
+    const url = new URL('/auth/sign-in', request.url)
+    url.searchParams.set('redirectTo', `${pathname}${request.nextUrl.search}`)
     return applyLocaleCookies(NextResponse.redirect(url), localeResolution)
   }
 
   if (isAuthRoute && user) {
-    const url = request.nextUrl.clone()
-    url.pathname = '/dashboard'
-    return applyLocaleCookies(NextResponse.redirect(url), localeResolution)
+    // Already signed in — honour where she was heading, not just /dashboard.
+    const target = safeNext(request.nextUrl.searchParams.get('redirectTo'))
+    return applyLocaleCookies(NextResponse.redirect(new URL(target, request.url)), localeResolution)
   }
 
   return applyLocaleCookies(supabaseResponse, localeResolution)
 }
 
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico|icons|manifest.json|sw.js|api/auth|api/stripe/webhook|api/cron).*)'],
+  matcher: ['/((?!_next/static|_next/image|favicon.ico|icons|manifest.json|sw.js|api/auth|api/stripe/webhook|api/stream/webhook|api/cron).*)'],
 }

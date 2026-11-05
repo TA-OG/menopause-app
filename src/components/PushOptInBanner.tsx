@@ -1,7 +1,13 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { usePushSubscription, isPushPromptSnoozed, snoozePushPrompt } from '@/lib/use-push-subscription'
+import { useTranslations } from 'next-intl'
+import {
+  usePushSubscription,
+  isPushPromptSnoozed,
+  snoozePushPrompt,
+  PUSH_ERROR_MESSAGE_KEY,
+} from '@/lib/use-push-subscription'
 
 /**
  * Dashboard prompt to turn on reminders, for anyone not subscribed on this
@@ -13,6 +19,8 @@ import { usePushSubscription, isPushPromptSnoozed, snoozePushPrompt } from '@/li
  * a button would do nothing). "Not now" snoozes it on this device.
  */
 export default function PushOptInBanner() {
+  const t = useTranslations('PushOptIn')
+  const tNotifications = useTranslations('Notifications')
   const { status, error, permission, subscribe } = usePushSubscription()
   // Read after mount: localStorage doesn't exist during server render.
   const [snoozed, setSnoozed] = useState(true)
@@ -34,7 +42,7 @@ export default function PushOptInBanner() {
   if (justEnabled) {
     return (
       <div role="status" className="bg-white border border-gray-200 rounded-2xl p-4 text-sm text-gray-700">
-        Reminders are on. You can change the time or turn them off in your profile.
+        {t('enabled')}
       </div>
     )
   }
@@ -45,14 +53,11 @@ export default function PushOptInBanner() {
     return (
       <div className="bg-white border border-gray-200 rounded-2xl p-4 flex items-start gap-3">
         <div className="flex-1">
-          <p className="text-sm font-semibold text-gray-900">Want daily reminders?</p>
-          <p className="text-xs text-gray-500 mt-1 leading-relaxed">
-            On iPhone or iPad, add Aunty Mel to your Home Screen first (Share → Add to Home Screen),
-            then open it from there and turn reminders on in your profile.
-          </p>
+          <p className="text-sm font-semibold text-gray-900">{t('iosTitle')}</p>
+          <p className="text-xs text-gray-500 mt-1 leading-relaxed">{t('iosBody')}</p>
         </div>
         <button type="button" onClick={notNow} className="text-xs text-gray-500 font-medium px-2 py-1">
-          Not now
+          {t('notNow')}
         </button>
       </div>
     )
@@ -63,11 +68,9 @@ export default function PushOptInBanner() {
 
   return (
     <div className="bg-white border border-gray-200 rounded-2xl p-4">
-      <p className="text-sm font-semibold text-gray-900">Would you like a gentle daily nudge?</p>
-      <p className="text-xs text-gray-500 mt-1 leading-relaxed">
-        A short reminder each morning to check in on how you&apos;re feeling.
-      </p>
-      {error && <p className="text-xs text-red-600 mt-2">{error}</p>}
+      <p className="text-sm font-semibold text-gray-900">{t('title')}</p>
+      <p className="text-xs text-gray-500 mt-1 leading-relaxed">{t('subtitle')}</p>
+      {error && <p className="text-xs text-red-600 mt-2">{tNotifications(PUSH_ERROR_MESSAGE_KEY[error])}</p>}
       <div className="flex items-center gap-2 mt-3">
         <button
           type="button"
@@ -75,10 +78,10 @@ export default function PushOptInBanner() {
           disabled={status === 'subscribing'}
           className="text-xs font-medium px-3 py-2 rounded-lg bg-brand-900 text-white hover:bg-brand-800 disabled:opacity-50"
         >
-          {status === 'subscribing' ? 'Turning on…' : 'Turn on reminders'}
+          {status === 'subscribing' ? t('turningOn') : t('turnOn')}
         </button>
         <button type="button" onClick={notNow} className="text-xs font-medium px-3 py-2 text-gray-500">
-          Not now
+          {t('notNow')}
         </button>
       </div>
     </div>

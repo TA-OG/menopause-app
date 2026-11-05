@@ -24,6 +24,21 @@ export type PushStatus =
   | 'unsupported'
   | 'ios-needs-home-screen'
 
+/**
+ * What went wrong, as a code rather than a sentence: the app is translated,
+ * so each screen turns this into its own locale's message (the
+ * Notifications.error* keys in messages/*.json).
+ */
+export type PushErrorCode = 'permission' | 'not-configured' | 'turn-on' | 'turn-off'
+
+/** The Notifications.* message key for each error code. */
+export const PUSH_ERROR_MESSAGE_KEY: Record<PushErrorCode, string> = {
+  permission: 'errorPermission',
+  'not-configured': 'errorNotConfigured',
+  'turn-on': 'errorTurnOn',
+  'turn-off': 'errorTurnOff',
+}
+
 function urlBase64ToUint8Array(base64String: string): BufferSource {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4)
   const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/')
@@ -39,7 +54,7 @@ export function usePushSubscription() {
   // Starts at 'checking', not 'idle', so the opt-in prompts don't flash up
   // for a user who is already subscribed while the check below runs.
   const [status, setStatus] = useState<PushStatus>('checking')
-  const [error, setError] = useState<string | null>(null)
+  const [error, setError] = useState<PushErrorCode | null>(null)
   // 'denied' means the browser will never show the prompt again — the user
   // has to change it in browser settings, so nudging them is pointless.
   const [permission, setPermission] = useState<NotificationPermission | null>(null)
@@ -87,7 +102,7 @@ export function usePushSubscription() {
       setPermission(result)
       if (result !== 'granted') {
         setStatus('idle')
-        setError('Notifications need to be allowed in your browser to turn this on.')
+        setError('permission')
         return false
       }
 
@@ -95,7 +110,7 @@ export function usePushSubscription() {
       const vapidKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY
       if (!vapidKey) {
         setStatus('error')
-        setError('Notifications are not configured yet — check back soon.')
+        setError('not-configured')
         return false
       }
 
@@ -132,14 +147,17 @@ export function usePushSubscription() {
         // and shows "subscribed" even though notification_enabled was never
         // set and nothing will ever be sent to it.
         await subscription.unsubscribe().catch(() => {})
-        throw new Error(data?.error ?? 'Could not save subscription')
+        // The API's message is English: log it, show hers.
+        console.error('push subscribe failed:', res.status, data?.error)
+        throw new Error('subscribe-failed')
       }
 
       setStatus('subscribed')
       return true
     } catch (err) {
       setStatus('error')
-      setError(err instanceof Error ? err.message : 'Something went wrong turning on notifications.')
+      console.error(err)
+      setError('turn-on')
       return false
     }
   }, [])
@@ -162,7 +180,8 @@ export function usePushSubscription() {
       setStatus('idle')
     } catch (err) {
       setStatus('error')
-      setError(err instanceof Error ? err.message : 'Something went wrong turning off notifications.')
+      console.error(err)
+      setError('turn-off')
     }
   }, [])
 

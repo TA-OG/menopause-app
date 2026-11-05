@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useLocale, useTranslations } from 'next-intl'
 import type { SymptomCheckin, SymptomKey } from '@/types/database'
 import {
   buildCheckinPayload,
@@ -9,15 +9,16 @@ import {
   parseLocalCalendarDate,
 } from '@/lib/checkin-schema'
 
-const SYMPTOMS: { key: SymptomKey; label: string }[] = [
-  { key: 'hot_flashes', label: 'Hot flushes' },
-  { key: 'night_sweats', label: 'Night sweats' },
-  { key: 'sleep_problems', label: 'Sleep problems' },
-  { key: 'mood_changes', label: 'Mood changes' },
-  { key: 'anxiety', label: 'Anxiety' },
-  { key: 'brain_fog', label: 'Brain fog' },
-  { key: 'fatigue', label: 'Fatigue' },
-  { key: 'low_libido', label: 'Low libido' },
+/** The symptoms the form offers. Labels come from the Symptoms messages. */
+const SYMPTOMS: SymptomKey[] = [
+  'hot_flashes',
+  'night_sweats',
+  'sleep_problems',
+  'mood_changes',
+  'anxiety',
+  'brain_fog',
+  'fatigue',
+  'low_libido',
 ]
 
 const DEFAULT_MOOD = 3
@@ -63,6 +64,7 @@ function SymptomRow({
   severity: number | null
   onChange: (_v: number | null) => void
 }) {
+  const t = useTranslations('Checkin')
   return (
     <div className="flex items-center justify-between py-2">
       <span className="text-sm text-gray-700 flex-1">{label}</span>
@@ -73,7 +75,7 @@ function SymptomRow({
             type="button"
             onClick={() => onChange(severity === v ? null : v)}
             aria-pressed={severity === v}
-            aria-label={`${label}: severity ${v} of 5`}
+            aria-label={t('severityAria', { label, value: v })}
             className={`w-8 h-8 rounded-full text-xs font-bold transition-all ${
               severity === v
                 ? 'bg-brand-900 text-white'
@@ -89,7 +91,10 @@ function SymptomRow({
 }
 
 export default function SymptomCheckinPage() {
-  const router = useRouter()
+  const symptomLabel = useTranslations('Symptoms')
+  const historyText = useTranslations('CheckinHistory')
+  const t = useTranslations('Checkin')
+  const locale = useLocale()
 
   // Captured once, from the user's LOCAL calendar — not the UTC date. Held in
   // state so the header, the entry we load, and the row we upsert can never
@@ -178,55 +183,67 @@ export default function SymptomCheckinPage() {
         // Tell the user what actually happened. A session that expired needs a
         // sign-in, not a retry, and "try again" is actively wrong for a 429.
         if (res.status === 401) {
-          setError('Your session has expired. Please sign in again to save your check-in.')
+          setError(t('errorSession'))
         } else if (res.status === 429) {
-          setError('Too many attempts just now. Please wait a moment and try again.')
+          setError(t('errorRateLimit'))
         } else {
+          // The API's message is English and technical: log it, show hers.
           const message = await res.json()
             .then((body: { error?: string }) => body?.error)
             .catch(() => undefined)
-          setError(message ?? 'Could not save your check-in. Please try again.')
+          console.error('check-in save failed:', res.status, message)
+          setError(t('errorSave'))
         }
         setSaving(false)
         return
       }
 
-      router.push('/dashboard')
+      // Straight to her history, so saving shows her where it went and how
+      // it fits with the days before. A full navigation, not router.push:
+      // Next 14's client router cache can serve a history page visited in the
+      // last 30s, which would be missing the check-in she just saved.
+      window.location.assign('/symptom-checkin/history?saved=1')
     } catch {
-      setError('Could not reach the server. Check your connection and try again.')
+      setError(t('errorNetwork'))
       setSaving(false)
     }
-  }, [today, symptoms, moodScore, energyLevel, sleepHours, notes, router])
+  }, [today, symptoms, moodScore, energyLevel, sleepHours, notes, t])
 
   const headerDate = parseLocalCalendarDate(today) ?? new Date()
 
   return (
     <div className="space-y-6 py-4">
       <div>
-        <h1 className="text-2xl font-bold text-brand-900">Daily check-in</h1>
+        <div className="flex items-baseline justify-between gap-3">
+          <h1 className="text-2xl font-bold text-brand-900">{t('title')}</h1>
+          <a
+            href="/symptom-checkin/history"
+            className="inline-flex min-h-11 items-center text-sm font-medium text-brand-700"
+          >
+            {historyText('formLink')}
+          </a>
+        </div>
         <p className="text-gray-500 text-sm mt-1">
-          {headerDate.toLocaleDateString('en-GB', {
+          {headerDate.toLocaleDateString(locale, {
             weekday: 'long', day: 'numeric', month: 'long',
           })}
         </p>
         {alreadyLogged && (
           <p className="text-brand-700 text-sm mt-2">
-            You already logged today — this will update that entry.
+            {t('alreadyLogged')}
           </p>
         )}
       </div>
 
       {/* Symptom severity */}
       <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
-        <h2 className="font-semibold text-gray-900 mb-1">Symptoms today</h2>
-        <p className="text-xs text-gray-400 mb-4">
-          Tap a number to rate severity (1 = mild, 5 = severe). Skip any that don&apos;t apply today.
-        </p>
+        <h2 className="font-semibold text-gray-900 mb-1">{t('symptomsTitle')}</h2>
+        <p className="text-xs text-gray-400 mb-4">{t('symptomsHelp')}</p>
         <div className="divide-y divide-gray-50">
-          {SYMPTOMS.map(({ key, label }) => (
+          {SYMPTOMS.map((key) => (
             <SymptomRow
               key={key}
-              label={label}
+              label={symptomLabel(key)}
               severity={symptoms[key] ?? null}
               onChange={(v) => setSymptom(key, v)}
             />
@@ -236,27 +253,27 @@ export default function SymptomCheckinPage() {
 
       {/* Mood, energy, sleep */}
       <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 space-y-5">
-        <h2 className="font-semibold text-gray-900">Overall today</h2>
+        <h2 className="font-semibold text-gray-900">{t('overallTitle')}</h2>
 
         <ScaleInput
-          label="Mood"
+          label={t('mood')}
           value={moodScore}
           onChange={setMoodScore}
-          low="Low / difficult"
-          high="Great"
+          low={t('moodLow')}
+          high={t('moodHigh')}
         />
         <ScaleInput
-          label="Energy"
+          label={t('energy')}
           value={energyLevel}
           onChange={setEnergyLevel}
-          low="Exhausted"
-          high="Full of energy"
+          low={t('energyLow')}
+          high={t('energyHigh')}
         />
 
         <div>
           <div className="flex justify-between items-center mb-2">
-            <span className="text-sm font-medium text-gray-700">Hours of sleep last night</span>
-            <span className="text-sm font-bold text-brand-900">{sleepHours}h</span>
+            <span className="text-sm font-medium text-gray-700">{t('sleepTitle')}</span>
+            <span className="text-sm font-bold text-brand-900">{t('hours', { value: sleepHours })}</span>
           </div>
           <input
             type="range"
@@ -268,19 +285,19 @@ export default function SymptomCheckinPage() {
             className="w-full accent-brand-700"
           />
           <div className="flex justify-between text-xs text-gray-400 mt-1">
-            <span>0h</span>
-            <span>12h</span>
+            <span>{t('hours', { value: 0 })}</span>
+            <span>{t('hours', { value: 12 })}</span>
           </div>
         </div>
       </div>
 
       {/* Notes */}
       <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
-        <h2 className="font-semibold text-gray-900 mb-3">Notes (optional)</h2>
+        <h2 className="font-semibold text-gray-900 mb-3">{t('notesTitle')}</h2>
         <textarea
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
-          placeholder="Anything you noticed today? Triggers, patterns, things that helped..."
+          placeholder={t('notesPlaceholder')}
           rows={3}
           maxLength={2000}
           className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-brand-300"
@@ -297,7 +314,7 @@ export default function SymptomCheckinPage() {
         disabled={saving || loading}
         className="w-full bg-brand-900 text-white font-semibold py-3 rounded-2xl hover:bg-brand-800 transition-colors disabled:opacity-50"
       >
-        {loading ? 'Loading...' : saving ? 'Saving...' : 'Save today\'s check-in'}
+        {loading ? t('loading') : saving ? t('saving') : t('save')}
       </button>
     </div>
   )

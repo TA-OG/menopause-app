@@ -1,0 +1,59 @@
+# Traduction de frameworks/sexual-health.yaml — la version anglaise fait foi.
+df_circulation_foods:
+  title: Mangez pour la circulation — le flux sanguin compte pour la libido
+  body: >-
+    L’excitation sexuelle est avant tout un phénomène vasculaire. Les aliments qui favorisent une bonne circulation sont notamment les légumes à feuilles vert foncé (nitrates), le jus de grenade, le chocolat noir (>70 % de cacao), la betterave et les poissons gras (oméga-3). Évitez les aliments transformés très salés, qui altèrent la fonction vasculaire. Bien s’hydrater réduit aussi la sécheresse des tissus vaginaux. Ces changements s’additionnent sur des semaines, pas en quelques jours.
+df_omega3_inflammation:
+  title: Les oméga-3 soutiennent la santé des tissus et la production d’hormones
+  body: >-
+    Après la ménopause, les glandes surrénales continuent de produire de petites quantités d’œstrogènes à partir du cholestérol — un processus favorisé par un bon apport en graisses de qualité. Mangez du poisson gras 2–3 fois par semaine, des graines de lin, des noix et de l’avocat. Les oméga-3 réduisent aussi l’inflammation vaginale. Un corps bien nourri, avec suffisamment d’acides gras essentiels, entretient mieux les tissus vaginaux qu’une alimentation pauvre en graisses.
+lf_local_moisturiser:
+  title: Hydratants vaginaux — à utiliser régulièrement, pas seulement pendant les rapports
+  body: >-
+    La sécheresse vaginale (SGUM — syndrome génito-urinaire de la ménopause) s’aggrave progressivement sans traitement. Les hydratants vaginaux sans ordonnance (Replens, YES VM, Hyalofemme), utilisés 2–3 fois par semaine, réhydratent les tissus vaginaux et réduisent l’inconfort au quotidien comme pendant les rapports. Ce ne sont pas des lubrifiants — ils agissent en continu. Les lubrifiants s’utilisent au moment des rapports. Si vous avez une vie sexuelle, il vous faut les deux.
+lf_pelvic_floor:
+  title: Exercices du périnée — pour le confort, les sensations et la continence
+  body: >-
+    Les muscles du plancher pelvien soutiennent la vessie, l’intestin et l’utérus, et sont directement touchés par la baisse des œstrogènes. Les renforcer (exercices de Kegel : contractez pendant 10 secondes, relâchez, répétez 10 fois, 3 séries par jour) améliore les sensations pendant les rapports, réduit les fuites urinaires par urgence et soutient la santé des organes pelviens. Si des rappels vous aident à tenir, l’appli Squeezy — conçue par des kinésithérapeutes spécialisés du NHS britannique — vous guide dans un programme progressif. L’appli seule est payante, mais certaines consultations de rééducation périnéale en proposent gratuitement une version connectée à leurs patientes, donc renseignez-vous. Vous pouvez aussi demander à votre médecin de vous orienter vers un kinésithérapeute spécialisé en rééducation périnéale, ce qui est la meilleure option si les symptômes vous gênent au quotidien.
+lf_sexual_activity_maintenance:
+  title: Une activité sexuelle régulière aide à entretenir la santé vaginale
+  body: >-
+    Une activité sexuelle régulière (y compris en solo) augmente le flux sanguin vers les tissus vaginaux, ce qui entretient leur élasticité et leur hydratation. Si la pénétration est douloureuse, commencez par des pratiques sans pénétration et un bon lubrifiant. Réintroduire progressivement la pénétration, avec beaucoup de lubrifiant et de patience, évite le cercle de l’évitement qui accélère l’atrophie. Il ne s’agit pas de performance — il s’agit d’entretenir les vaisseaux et les tissus.
+mr_gp_vaginal_oestrogen:
+  title: Parlez à votre médecin des œstrogènes vaginaux locaux — ils sont sûrs pour la plupart des femmes
+  body: >-
+    La crème ou l’ovule d’œstrogène vaginal (par ex. Vagifem, Ovestin, Estring) est le traitement le plus efficace du SGUM. Il agit localement avec une absorption générale minime et est considéré comme sûr même pour les femmes qui ne peuvent pas prendre de THM par voie générale, y compris de nombreuses femmes ayant eu un cancer du sein. Il est très souvent sous-prescrit, parce que ni les femmes ni les médecins n’en parlent. Vous pouvez le demander explicitement. Ce n’est pas un traitement esthétique — il traite une affection qui s’aggrave avec le temps.
+mr_libido_whole_person:
+  title: La libido est complexe — elle est rarement seulement hormonale
+  body: >-
+    Le désir sexuel des femmes dépend du contexte. La fatigue, la dynamique du couple, le stress, l’image du corps et l’humeur influencent davantage la libido que les seuls niveaux hormonaux. Si vous vous sentez déconnectée de votre sexualité, il est utile de séparer le physique (traitez d’abord la sécheresse et l’inconfort) du relationnel et du psychologique. Un sexothérapeute peut vous aider si le désir est absent depuis plusieurs mois. À la ménopause, une baisse de libido tient rarement à une seule chose — c’est souvent une combinaison de changements hormonaux, de sécheresse ou d’inconfort vaginal, de mauvais sommeil, de manque d’énergie, de stress et de facteurs relationnels ou émotionnels. Une baisse de libido qui vous pèse, à vous ou à votre partenaire, mérite d’être prise au sérieux — et elle se traite.
+ss_maca_libido:
+  title: Racine de maca — pour la libido et l’équilibre hormonal
+  body: >-
+    Couramment 1,5–3 g/jour. L’un des compléments les plus connus pour la libido et l’équilibre hormonal, y compris dans les protocoles de certains praticiens destinés spécifiquement aux femmes ménopausées.
+  disclaimer: >-
+    Prudence si vous avez une maladie auto-immune — la maca peut stimuler le système immunitaire et aggraver les poussées. Elle ne remplace pas un traitement médical de la sécheresse vaginale ou du SGUM.
+ss_vitamin_d_libido:
+  title: Vitamine D — pour la production d’hormones
+  body: >-
+    La vitamine D joue un rôle dans la production d’hormones en général, et il vaut mieux la doser que la supposer, surtout si votre libido a changé en même temps que d’autres symptômes.
+  disclaimer: >-
+    Demandez toujours l’avis de votre médecin généraliste ou de votre pharmacien avant de commencer, surtout si vous prenez des médicaments sur ordonnance.
+ss_zinc_libido:
+  title: Zinc — pour la production de testostérone
+  body: >-
+    Couramment 10–30 mg/jour. Intervient dans la production de testostérone, qui joue un rôle dans la libido des femmes aussi, pas seulement des hommes. À ne pas prendre longtemps à forte dose sans surveillance, car un excès de zinc peut épuiser le cuivre.
+  disclaimer: >-
+    Demandez toujours l’avis de votre médecin généraliste ou de votre pharmacien avant de commencer, surtout si vous prenez des médicaments sur ordonnance.
+ss_ashwagandha_libido:
+  title: Ashwagandha — pour la libido, en plus de la réduction du stress
+  body: >-
+    Couramment 300–600 mg/jour d’extrait de racine standardisé. Quelques données en faveur d’un effet sur la libido, en plus de son action contre le stress.
+  disclaimer: >-
+    Prudence si vous avez une maladie auto-immune, un problème de thyroïde ou si vous êtes enceinte — demandez d’abord l’avis de votre médecin généraliste.
+ss_vaginal_probiotics:
+  title: Probiotiques vaginaux spécifiques — pour la santé des tissus et le confort
+  body: >-
+    Certaines femmes essaient des probiotiques spécifiquement vaginaux pour la santé des tissus et le confort, en partant de l’idée qu’ils pourraient aider face à un frein physique à la libido — la sécheresse ou l’inconfort. Les preuves pour cet usage précis sont limitées, et ils ne remplacent pas des traitements mieux étayés, comme les œstrogènes vaginaux, si la sécheresse ou l’inconfort vous gênent nettement.
+  disclaimer: >-
+    Demandez toujours l’avis de votre médecin généraliste ou de votre pharmacien avant de commencer.

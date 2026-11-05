@@ -1,0 +1,144 @@
+# Traducción de frameworks/foundations.yaml — prevalece la versión en inglés.
+df_meal_timing_by_stage:
+  title: Horario y frecuencia de las comidas — según la etapa y según cómo estés
+  body: |-
+    Aquí no hay una regla universal respaldada por evidencia sólida, pero hay un patrón que a algunas mujeres y profesionales les funciona: en la perimenopausia, desayunar en la primera hora tras despertarse, con 3 comidas al día (4–5 más pequeñas si cuesta tener energía). En la menopausia y la posmenopausia, a algunas les sienta mejor romper el ayuno un poco más tarde — en torno a las 10–11 h — con 2–3 comidas al día. Tómalo como un punto de partida para experimentar, no como una pauta fija.
+    Pero esto se ajusta: si tienes problemas de sueño, ansiedad, niebla mental o poca energía, es mejor evitar el ayuno por completo en cualquier etapa: tu cuerpo necesita combustible constante, no menos. En ese caso, las comidas más frecuentes y pequeñas (4–5) suelen sentarte mejor que 2–3 grandes, y la cafeína y el alcohol suelen ser lo primero que conviene reducir, porque ambos empeoran directamente estos mismos síntomas.
+df_carb_and_eating_order:
+  title: El momento de los hidratos y el orden en el plato
+  body: |-
+    La mayoría de las mujeres posmenopáusicas no toleran bien los hidratos en el desayuno: suelen sentarles mejor por la tarde y es mejor evitarlos o reducirlos por la noche. Esto importa menos si tu control general del azúcar ya es bueno (p. ej., comes sobre todo alimentos frescos y pocos procesados).
+    Una palanca sencilla y gratuita sea cual sea la etapa: come la proteína y las verduras antes que los hidratos en cada comida, en lugar de empezar por los hidratos. Así se suaviza el pico de azúcar posterior sin cambiar lo que comes, solo el orden.
+df_evening_eating_window:
+  title: Deja de comer 3–5 horas antes de acostarte
+  body: >-
+    Intenta dejar de comer 3–5 horas antes de acostarte. En verano, con más horas de luz, cenar algo más tarde puede funcionar, pero conviene evitarlo en los meses de invierno, sobre todo en latitudes como las del Reino Unido.
+df_whole_foods_protein_fibre:
+  title: El plato básico — proteína, fibra y color, en cualquier etapa
+  body: >-
+    Prioriza los alimentos frescos frente a los procesados, sea cual sea la etapa. Qué aumentar: proteína en cada comida; fibra de las verduras, sobre todo las crucíferas (brócoli, coliflor, kale, col); alimentos ricos en polifenoles; alimentos prebióticos, y probióticos para algunas mujeres; omega-3, semillas de lino y de chía; y alimentos que dan calor, como el jengibre, la canela, la cúrcuma y la cebolla morada.
+df_hydration_protocol:
+  title: Hidratación constante — unos 2 litros, repartidos a lo largo del día
+  body: >-
+    Intenta hidratarte de forma constante a lo largo del día en lugar de beber mucho de golpe: unos 2 litros como base general, más si eres activa o tienes sudores nocturnos o sofocos, que aumentan la pérdida de líquidos. Empieza el día con un vaso grande de agua al despertarte: un hábito sencillo y que centra, que rehidrata tras el ayuno de la noche y pone en marcha la digestión antes de comer. Intenta dejar de beber 1–2 horas antes de acostarte, para evitar despertarte para ir al baño y que eso altere tu sueño.
+df_reduce_sugar_processed_xenoestrogens:
+  title: Qué reducir — azúcar refinado, envases y (para algunas) lácteos
+  body: >-
+    El azúcar refinado y los ultraprocesados provocan oscilaciones de azúcar, inflamación y bajones de energía, que alimentan el círculo entre ánimo, sueño y energía. Siempre que puedas, elige productos frescos frente a muy envasados o en lata, y ten cuidado con el contacto de los alimentos con el plástico para reducir la exposición a xenoestrógenos. A algunas mujeres también les conviene limitar el exceso de lácteos, sobre todo si hay un patrón de picor/migrañas que puede apuntar a sensibilidad a la histamina.
+df_thyroid_iron_support_foods:
+  title: Tiroides y hierro — las dos carencias nutricionales que más se pasan por alto
+  body: >-
+    La función tiroidea aparece a menudo junto a los síntomas de la menopausia; las fuentes alimentarias clave son el yodo (algas, pescado, huevos) y el selenio (nueces de Brasil — con 1–2 al día cubres tus necesidades — y pescado). La falta de hierro es una causa frecuente, y a menudo pasada por alto, de cansancio y pérdida de densidad del pelo; se encuentra en la carne roja, las verduras de hoja verde oscuro, las lentejas y otras legumbres. Combinar alimentos vegetales ricos en hierro con vitamina C (p. ej., lentejas con pimiento o un chorrito de limón) mejora la absorción.
+df_histamine_food_awareness:
+  title: Si notas picor o migrañas — quizá merezca la pena fijarse en la histamina
+  body: >-
+    Si tienes picor o migrañas junto con otros síntomas como hinchazón o enrojecimiento, la intolerancia a la histamina es algo que algunos profesionales tienen en cuenta; no se puede autodiagnosticar solo con la dieta, así que conviene comentarlo con tu médico o un profesional en lugar de fiarse de una prueba casera. Si quieres experimentar, algunas mujeres prueban a reducir los fermentados, el queso y el alcohol durante un par de semanas para ver si cambian los síntomas. Los fermentados (chucrut, kéfir, kimchi, kombucha) favorecen de verdad una microbiota sana en muchas mujeres, pero también tienen mucha histamina, así que para algunas es un equilibrio real, no una contradicción oculta con los consejos de salud intestinal de otras partes.
+lf_weekly_movement_mix:
+  title: Una mezcla semanal — caminar en pendiente, fuerza, yoga, pilates
+  body: >-
+    Caminar cuesta arriba o en pendiente es estupendo para el corazón y para perder peso, más suave para las articulaciones que correr y aun así desarrolla una forma cardiovascular real. El entrenamiento con pesas protege la masa muscular y la densidad ósea, que disminuyen más rápido cuando bajan los estrógenos, y además favorece la regulación del azúcar. El yoga o el trabajo de equilibrio favorecen la flexibilidad, la regulación del sistema nervioso y el equilibrio, cada vez más importantes para prevenir caídas con la edad. El pilates fortalece el abdomen y la estabilidad, y favorece la postura y la salud del suelo pélvico.
+lf_stair_sprints:
+  title: 90 segundos de escaleras al día
+  body: >-
+    Los esfuerzos cortos, como subir escaleras caminando o corriendo — aunque sean solo 90 segundos al día —, son una forma estupenda de mejorar la forma cardiovascular sin necesidad de una sesión larga.
+  disclaimer: >-
+    Conviene consultarlo antes rápidamente con tu médico si tienes problemas articulares, tensión alta o hace tiempo que no haces ejercicio intenso.
+lf_circadian_light:
+  title: Luz por la mañana, penumbra por la noche — los dos extremos de tu reloj biológico
+  body: >-
+    Exponerte a luz intensa por la mañana — idealmente al aire libre, en la primera hora tras despertarte — ayuda a ajustar el reloj biológico, lo que favorece tanto la calidad del sueño como el ánimo y la energía durante el día. Por la noche, reduce la luz azul: las pantallas y la iluminación LED del techo frenan la producción de melatonina, lo que dificulta dormirse y mantener el sueño. Baja las luces y deja las pantallas (o usa gafas que bloquean la luz azul o el modo noche) durante la hora o las dos horas antes de acostarte; las velas funcionan bien en los meses de invierno.
+lf_cold_exposure:
+  title: Exposición al agua fría
+  body: >-
+    Duchas frías, echarte agua fría en la cara, ponerte agua fría en las muñecas o simplemente terminar la ducha con agua fría: hay cada vez más evidencia de que este tipo de exposición al frío favorece el ánimo, la energía y la resistencia al estrés. Si te atrae el baño en aguas abiertas, ve poco a poco en lugar de meterte directamente en agua fría, y no nades nunca sola.
+  disclaimer: >-
+    Meterse de golpe en agua fría puede subir mucho la frecuencia cardiaca y la tensión y provocar una inspiración involuntaria, lo que supone un riesgo real para cualquier persona con enfermedad cardiovascular o tensión alta: consúltalo antes con tu médico si es tu caso. Ve poco a poco (empieza con duchas más frescas antes del agua abierta) y no nades nunca sola.
+lf_postmeal_walk_and_chewing:
+  title: Un paseo corto después de comer, y masticar bien
+  body: >-
+    Caminar después de las comidas — aunque sean solo 10 minutos — suaviza de forma notable los picos de azúcar, lo que conecta con el círculo de ánimo y energía. Parece poca cosa, pero comer más despacio y masticar bien en lugar de ir con prisa también merece la pena: muchas mujeres notan que les ayuda a estar más tranquilas al comer y más cómodas después.
+lf_rebounding_box_jumping:
+  title: Minitrampolín y saltos al cajón — para la densidad ósea
+  body: >-
+    10 minutos de minitrampolín al día son una forma de bajo impacto de favorecer el drenaje linfático, la densidad ósea y la forma cardiovascular, y es suave para las articulaciones comparado con correr: es la más suave de las dos opciones. Los saltos al cajón — unos 10 minutos, 3 veces por semana — cargan más el esqueleto y desarrollan la densidad ósea de forma más directa, pero son de alto impacto de verdad: no son el punto de partida adecuado si ya te duelen las articulaciones, y en ese caso el minitrampolín o las pesas te irán mejor.
+  disclaimer: >-
+    Consulta con tu médico antes de empezar un entrenamiento con saltos si tienes problemas articulares, una densidad ósea baja conocida o sospechada, tensión alta, cualquier síntoma de suelo pélvico, o si hace tiempo que no haces ejercicio de impacto. Ve aumentando poco a poco en lugar de empezar con la cantidad completa.
+lf_vagal_breathwork_and_sauna:
+  title: Respiración para el nervio vago, y sauna o exposición al calor
+  body: >-
+    Técnicas de respiración sencillas — la respiración en caja (inspira en 4, retén 4, espira en 4, retén 4), el suspiro fisiológico (dos inspiraciones cortas por la nariz y una espiración larga por la boca) o tararear — activan el nervio vago y sacan al cuerpo del modo «lucha o huida» para llevarlo al de «descanso y digestión». Solo lleva un par de minutos y se puede hacer en cualquier sitio. La sauna o la exposición al calor también tienen cada vez más evidencia para la salud cardiovascular, y a algunas mujeres les ayudan con el dolor articular y el ánimo.
+  disclaimer: >-
+    Si tienes tendencia a los sofocos o ya te cuesta tolerar el calor, la sauna puede requerir cuidado: sesiones más cortas, o evitarla por completo si te provoca síntomas en lugar de ayudarte. Consúltalo antes con tu médico si tienes una enfermedad cardiovascular, la tensión mal controlada o una afección que afecte a la hidratación, o si tomas medicación que influya en la tensión o en el equilibrio de líquidos: el calor sube la frecuencia cardiaca y puede afectar a la tensión rápidamente.
+lf_nature_and_connection:
+  title: Tiempo en la naturaleza, y mantener los lazos sociales
+  body: >-
+    El tiempo en la naturaleza — caminar descalza por la hierba o la arena, o una actividad tipo huerto — no es solo ejercicio: es el efecto de conexión con el momento presente de estar al aire libre y hacer algo con las manos. Unos lazos sociales fuertes se asocian a mejor ánimo, más longevidad y más resiliencia durante las transiciones hormonales: uno de los hábitos más sencillos y con más evidencia que existen. Ya sea un paseo habitual con una amiga, una clase o una comunidad, es un hábito diario o semanal real que merece nombrarse, no solo un «extra».
+mr_gp_signpost:
+  title: Habla con tu médico sobre tus opciones — incluida la THS
+  body: |-
+    La terapia hormonal sustitutiva (THS) es el tratamiento más eficaz para los síntomas vasomotores, y en muchas mujeres puede tener efectos protectores sobre la densidad ósea y la salud cardiovascular si se empieza en los 10 años posteriores a la menopausia. La THS moderna con hormonas idénticas a las del cuerpo suele tener un perfil de seguridad más favorable que las formulaciones antiguas. Que sea adecuada para ti depende de tus síntomas, tu edad, tu historial médico y tus factores de riesgo personales: no es adecuada para todo el mundo, y es una conversación para tener con tu médico, no algo que evaluar por tu cuenta. Esta app apoya tu estilo de vida; no sustituye la atención médica. Pide cita si tus síntomas afectan mucho a tu calidad de vida.
+    Aparte de la THS: las sugerencias de estilo de vida de esta app — alimentación, movimiento, sueño, mentalidad — son un marco general adecuado para la mayoría de las mujeres, sin nada que sea inadecuado en sí mismo como puede serlo un medicamento con receta. Aun así, consulta siempre antes con tu médico si tomas cualquier medicación (para descartar interacciones, sobre todo con suplementos), si te sigue un especialista por alguna enfermedad o si estás pendiente de un tratamiento, una prueba o un diagnóstico. No se trata de poner trabas a los consejos, sino de asegurarse de que se suman a un buen seguimiento médico, no de que lo sustituyen.
+mr_this_is_real:
+  title: Tus síntomas son reales — y se subestiman mucho
+  body: |-
+    La menopausia afecta prácticamente a todos los sistemas del cuerpo. En el pico de la perimenopausia, las mujeres refieren de media 7–10 síntomas a la vez. Aun así, a la mayoría de las mujeres los profesionales sanitarios no les preguntan por la menopausia hasta que ellas mismas lo sacan. Lo que vives es real, tiene causas biológicas y no es señal de debilidad ni de envejecer «mal». Es una transición, con un principio, un medio y un final.
+    Un análisis de sangre normal no significa que no pase nada. Los niveles hormonales fluctúan mucho en la perimenopausia, así que un solo resultado puede parecer normal mientras lo que sientes cuenta otra historia; por eso, en el Reino Unido, las guías del NICE indican que a las mujeres de más de 45 años con síntomas normalmente se les puede diagnosticar sin análisis. Si te han dicho que tus análisis son «normales» pero no te sientes bien, merece la pena volver a tu médico: no es un callejón sin salida.
+mr_your_window_headline:
+  title: Esta es tu ventana
+  body: |-
+    La perimenopausia no es algo que simplemente te pasa: es una llamada a actuar. Es tu ventana de oportunidad, no un lento declive, sino el momento de actuar y cambiar la trayectoria de los próximos 40 años.
+    La menopausia no es el final de tu ventana: es una nueva. Los años alrededor y justo después de la última regla son cuando algunos cambios van más rápido — la pérdida ósea, por ejemplo, es más rápida entonces —, así que lo que construyas en esta etapa se prolonga en las décadas siguientes. ¿Cómo quieres sentirte, cómo quieres ser dentro de 5, 10, 15 años? Empieza a practicar ser esa mujer desde ahora.
+mr_advice_flexes_to_you:
+  title: Tu plan debe ajustarse a cómo estás — no solo a tu etapa
+  body: >-
+    El sueño, el estrés, el nivel de actividad, la alimentación y la genética interactúan, y el punto de partida adecuado depende de dónde estás de verdad, no solo de la etapa en la que estés. Dos mujeres en la posmenopausia pueden necesitar consejos completamente distintos si una duerme bien y es activa, y la otra está agotada, acelerada y apenas duerme. Tu etapa nos dice dónde empezar a mirar; cómo estás de sueño, estrés, energía y ánimo nos dice lo que de verdad necesitas. También es un buen momento para pensar en los límites: en lo que cargas por todos los demás y en si hay espacio para volver a ponerte en la lista.
+mr_hormonal_conditions_awareness:
+  title: Otros desequilibrios hormonales que conviene descartar
+  body: >-
+    Si tienes otros desequilibrios hormonales, también pueden influir en lo que necesitas. Las enfermedades de la tiroides (hipotiroidismo, Hashimoto, hipertiroidismo) interactúan estrechamente con los estrógenos y la progesterona, así que los síntomas suelen solaparse y potenciarse; la TSH es la primera prueba estándar, y se añaden otras (como la FT4) si sale alterada o si los síntomas apuntan claramente a la tiroides pese a un resultado normal. El SOP, aunque suele diagnosticarse antes en la vida, a menudo arrastra la resistencia a la insulina hasta la perimenopausia y la menopausia, lo que exige prestar aún más atención a la estabilidad del azúcar. Puede que también leas sobre la «fatiga adrenal» o sobre el estrés crónico que «agota» tus hormonas: conviene saber que no es un diagnóstico médico reconocido, aunque la insuficiencia suprarrenal real sí es una enfermedad que se diagnostica por separado y que tu médico puede estudiar si te preocupa. La resistencia a la insulina o la prediabetes merecen nombrarse directamente como un desequilibrio hormonal en sí mismo, no solo como un «problema de azúcar». Los antecedentes familiares también importan: si tu madre o tus hermanas tuvieron una perimenopausia especialmente difícil, una menopausia precoz o enfermedades como la osteoporosis o una enfermedad cardiovascular, es información útil para hacerse pruebas de forma preventiva.
+mr_chronic_illness_pacing:
+  title: Si además vives con covid persistente, SFC o fibromialgia
+  body: >-
+    Las tres se solapan mucho con los síntomas de la perimenopausia y la menopausia — cansancio, niebla mental, sueño de mala calidad, cambios de ánimo, intolerancia al ejercicio —, así que los síntomas pueden atribuirse fácilmente solo a las hormonas, lo que retrasa un estudio adecuado. Dosificar la energía importa más aquí: puede que tengas que reducir el ejercicio intenso, incluidos los intervalos cortos, si tienes brotes de síntomas tras el esfuerzo (un empeoramiento de los síntomas después de la actividad, a veces con uno o dos días de retraso). «Aguantar y seguir» es el instinto equivocado en este caso: con síntomas tras el esfuerzo, más actividad puede retrasar la recuperación en lugar de crear resiliencia. Es importante trabajar con tu médico o un especialista, ya que los consejos de estilo de vida habituales pueden necesitar cambios reales.
+ss_vitamin_d3_k2:
+  title: Vitamina D3 (+K2) — idealmente guiada por un análisis de sangre
+  body: >-
+    La falta de vitamina D es muy frecuente en el Reino Unido, y en la menopausia importa más porque el descenso de los estrógenos ya afecta a la densidad ósea. Muchas mujeres toman un suplemento de entre 1000–4000 UI al día, idealmente según un análisis de sangre y no a ojo: hacer primero el análisis te dice si lo necesitas y en qué cantidad. Algunas mujeres eligen un producto que combina D3 (colecalciferol) y K2, ya que la K2 favorece el uso que el cuerpo hace del calcio. Es una sugerencia que ayuda a muchas mujeres, no un consejo médico, así que consúltalo antes con tu médico de cabecera o farmacéutico.
+  disclaimer: >-
+    La vitamina D puede ser tóxica en dosis muy altas (más de 4000 UI/día durante mucho tiempo). La K2 puede interactuar con la warfarina y otros anticoagulantes: no tomes esta combinación si estás en tratamiento anticoagulante sin la aprobación expresa de tu médico. Hazte siempre un análisis antes de tomar más de 2000 UI y consulta con tu médico de cabecera si tienes enfermedad renal, hipercalcemia o sarcoidosis.
+ss_magnesium_form_guide:
+  title: Magnesio — la forma importa
+  body: >-
+    Si pruebas el magnesio, la forma marca más diferencia de lo que la mayoría cree. Las mujeres que lo toman suelen usar en torno a 200–400 mg al día, empezando por la parte baja. El glicinato es más suave para el intestino y es menos probable que ablande las heces: suele ser la mejor opción si buscas apoyo para el sueño, la calma o el sistema nervioso sin efecto laxante. El citrato tiene un efecto laxante natural, así que es mejor opción si además tienes estreñimiento o quieres apoyo para el tránsito, aunque puede ablandar las heces si la dosis es demasiado alta. Ambos se absorben mejor que el óxido de magnesio, que es más barato pero se absorbe mal y se usa sobre todo por su efecto laxante, no para subir los niveles de magnesio.
+  disclaimer: >-
+    Los suplementos no son medicamentos regulados. Consúltalo siempre con tu médico de cabecera o farmacéutico antes de empezar, sobre todo si tomas algún medicamento con receta o tienes problemas de riñón o de corazón.
+ss_omega3_foundational:
+  title: Omega-3 (EPA/DHA)
+  body: >-
+    Muchas mujeres toman un suplemento combinado de EPA/DHA, normalmente de entre 1000–2000 mg al día. Si vas a elegir uno, merece la pena mirar el contenido real de EPA/DHA por cápsula y no solo el peso total de aceite de pescado, y buscar una pureza comprobada por un laboratorio independiente.
+  disclaimer: >-
+    El omega-3 en dosis altas puede hacer la sangre más fluida. Si tomas anticoagulantes (warfarina, aspirina, apixabán) o tienes una operación pendiente, consulta con tu médico de cabecera o farmacéutico antes de tomarlo.
+ss_b_complex_methylated:
+  title: Complejo B — conviene conocer las formas metiladas
+  body: >-
+    Si estás pensando en un complejo B, conviene conocer las formas: el metilfolato como alternativa al ácido fólico sintético y la metilcobalamina como alternativa a la cianocobalamina sintética. Ninguna forma es universalmente «mejor»: tener una variante común del gen MTHFR no es por sí solo una razón para preferir las formas metiladas, leas lo que leas por ahí; si conoces tu estado MTHFR y quieres que influya en tu elección, coméntalo con tu médico en lugar de decidir a partir de información general como esta. Dado lo frecuentes que son las carencias de B12 y folato en esta etapa de la vida, merece la pena saber que existen estas opciones en lugar de dar por hecho que una sola forma sirve para todo el mundo.
+  disclaimer: >-
+    Consúltalo siempre con tu médico de cabecera o farmacéutico antes de empezar, sobre todo si tomas algún medicamento con receta o tienes problemas de riñón.
+ss_gut_repair_probiotic_prebiotic:
+  title: Probióticos y fibra prebiótica — para reparar la salud intestinal
+  body: >-
+    A algunas mujeres les ayuda un probiótico multicepa para la salud intestinal durante esta transición; la dosis varía según el producto y el número de UFC, así que conviene buscar cepas con respaldo clínico en lugar de fijarse solo en el número de UFC más alto. La fibra prebiótica (p. ej., inulina, PHGG) es otra opción que muchas prueban: empezar con poco y aumentar despacio ayuda a evitar la hinchazón, sobre todo si la salud intestinal ya está comprometida.
+  disclaimer: >-
+    Consúltalo siempre con tu médico de cabecera o farmacéutico antes de empezar, sobre todo si tomas algún medicamento con receta o tienes una enfermedad digestiva diagnosticada.
+ss_digestive_enzymes_hcl:
+  title: Enzimas digestivas y HCL — para la hinchazón, el reflujo y la absorción
+  body: >-
+    A algunas mujeres les ayudan las enzimas digestivas tomadas con las comidas si la hinchazón o las molestias después de comer son habituales. Algunos profesionales creen que una acidez gástrica reducida puede influir en esto en algunas mujeres; es una idea discutida, no consolidada, así que conviene tratarla como una teoría para comentar con un médico o profesional, no como algo seguro. El clorhidrato de betaína (HCL) es una opción que algunas mujeres prueban con supervisión, junto con comidas que contengan proteína. Aquí no vamos a explicar cómo ajustar la dosis por tu cuenta según cómo te sientas: es justo el tipo de cosa que un profesional debe explicarte en persona, dado lo inadecuado que es para algunas personas.
+  disclaimer: >-
+    El HCL no es adecuado para todo el mundo — sobre todo para quien tenga úlceras activas, gastritis o tome antiinflamatorios —, así que necesita la revisión de un médico o profesional antes de empezar, también para la dosis.
+ss_calcium_d_glucarate:
+  title: D-glucarato de calcio — para apoyar la eliminación de los estrógenos
+  body: >-
+    Algunas mujeres se interesan por el D-glucarato de calcio, que a menudo se cita en torno a 500 mg–1 g/día en las dosis que la gente dice usar, con la idea de que ayuda al hígado a eliminar los estrógenos en lugar de que se reabsorban por el intestino. Esta idea surge sobre todo en mujeres con antecedentes de afecciones sensibles a los estrógenos, como la endometriosis, la adenomiosis o los miomas. Conviene ser sinceras: la evidencia en humanos de este efecto concreto es limitada, y la mayor parte de lo que se sabe procede de investigación en laboratorio y en animales, no de ensayos clínicos en mujeres. Si quieres explorarlo, el apoyo más amplio a la eliminación de los estrógenos — función hepática, fibra, verduras crucíferas, reducir el alcohol y la exposición a xenoestrógenos — tiene una base de evidencia más firme y merece ser la prioridad en cualquier caso.
+  disclaimer: >-
+    Consúltalo siempre con tu médico de cabecera o farmacéutico antes de empezar, sobre todo si tomas algún medicamento con receta o tienes antecedentes personales o familiares de afecciones sensibles a las hormonas. El D-glucarato de calcio puede afectar a cómo procesa el hígado algunos medicamentos, así que esta consulta importa aún más si tomas medicación habitual.

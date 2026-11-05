@@ -296,13 +296,18 @@ function SignUpForm() {
   )
 }
 
+function SignUpLoading() {
+  const t = useTranslations('SignUp')
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="text-brand-900">{t('loading')}</div>
+    </div>
+  )
+}
+
 export default function SignUpPage() {
   return (
-    <Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-brand-900">Loading...</div>
-      </div>
-    }>
+    <Suspense fallback={<SignUpLoading />}>
       <SignUpForm />
     </Suspense>
   )

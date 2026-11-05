@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest'
-import { localHourAndDate, isCheckinNudgeDue } from './notification-schedule'
+import { localHourAndDate, isCheckinNudgeDue, checkinNudgeMessage } from './notification-schedule'
+import { SUPPORTED_LOCALES } from '@/lib/locale-geo-map'
 
 describe('localHourAndDate', () => {
   it('returns null for a missing timezone', () => {
@@ -63,5 +64,28 @@ describe('isCheckinNudgeDue', () => {
 
   it('is never due when the timezone could not be resolved', () => {
     expect(isCheckinNudgeDue(null, 9, false)).toBe(false)
+  })
+})
+
+describe('checkinNudgeMessage', () => {
+  it('has a non-empty, distinct reminder for every supported locale', () => {
+    const bodies = SUPPORTED_LOCALES.map((l) => checkinNudgeMessage(l).body)
+    for (const body of bodies) expect(body.trim().length).toBeGreaterThan(0)
+    // A copy-pasted English string in another locale would collapse this set.
+    expect(new Set(bodies).size).toBe(SUPPORTED_LOCALES.length)
+  })
+
+  it('always links to the check-in page and keeps the brand title', () => {
+    for (const l of SUPPORTED_LOCALES) {
+      expect(checkinNudgeMessage(l).url).toBe('/symptom-checkin')
+      expect(checkinNudgeMessage(l).title).toBe('Aunty Mel')
+    }
+  })
+
+  it('falls back to English for a missing or unknown locale instead of sending nothing', () => {
+    const english = checkinNudgeMessage('en').body
+    expect(checkinNudgeMessage(null).body).toBe(english)
+    expect(checkinNudgeMessage(undefined).body).toBe(english)
+    expect(checkinNudgeMessage('xx').body).toBe(english)
   })
 })

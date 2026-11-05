@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 interface UnseenReward {
   id: string
@@ -10,6 +11,7 @@ interface UnseenReward {
 }
 
 export default function ReferralRewardBanner() {
+  const t = useTranslations('ReferralRewardBanner')
   const [rewards, setRewards] = useState<UnseenReward[]>([])
   const [dismissing, setDismissing] = useState(false)
 
@@ -28,11 +30,11 @@ export default function ReferralRewardBanner() {
 
   let message: string
   if (hasWelcomeBonus && referredCount === 0) {
-    message = "Welcome bonus applied — you've got a free month on us!"
+    message = t('welcome')
   } else if (referredCount > 0 && !hasWelcomeBonus) {
-    message = `Your ${referredCount === 1 ? 'friend' : `${referredCount} friends`} subscribed — you just earned ${totalMonths} free month${totalMonths === 1 ? '' : 's'}!`
+    message = t('friendsSubscribed', { friends: referredCount, months: totalMonths })
   } else {
-    message = `You just earned ${totalMonths} free month${totalMonths === 1 ? '' : 's'} from referrals!`
+    message = t('earned', { months: totalMonths })
   }
 
   async function dismiss() {
@@ -53,12 +55,12 @@ export default function ReferralRewardBanner() {
       <span className="text-2xl leading-none">🎉</span>
       <div className="flex-1">
         <p className="text-sm font-semibold">{message}</p>
-        <p className="text-brand-200 text-xs mt-0.5">Check your billing for the details.</p>
+        <p className="text-brand-200 text-xs mt-0.5">{t('checkBilling')}</p>
       </div>
       <button
         onClick={dismiss}
         disabled={dismissing}
-        aria-label="Dismiss"
+        aria-label={t('dismiss')}
         className="text-brand-200 hover:text-white text-lg leading-none px-1 disabled:opacity-50"
       >
         ×

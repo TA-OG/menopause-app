@@ -13,13 +13,22 @@
  *   Next.js static prerendering doesn't crash when env vars are absent at build.
  */
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
-import { useLocale, useTranslations } from 'next-intl'
+import { useLocale, useMessages, useTranslations } from 'next-intl'
 import { createClient } from '@/lib/supabase/client'
 import Logo from '@/components/ui/Logo'
-import { usePushSubscription, snoozePushPrompt } from '@/lib/use-push-subscription'
+import { usePushSubscription, snoozePushPrompt, PUSH_ERROR_MESSAGE_KEY } from '@/lib/use-push-subscription'
 import { SUPPORTED_LOCALES, LOCALE_LABELS } from '@/lib/locale-geo-map'
+import { setLocale } from '@/lib/set-locale'
+import {
+  onboardingMessages,
+  localizeChoices,
+  localizeStep,
+  choiceSection,
+  messageKey,
+  text,
+} from '@/lib/onboarding-i18n'
 import {
   STEPS,
   PROFILE_KEYS,
@@ -45,17 +54,21 @@ function OptionButton({
   selected,
   onClick,
   disabled = false,
+  noTranslate = false,
 }: {
   label: string
   selected: boolean
   onClick: () => void
   disabled?: boolean
+  /** Stop browser auto-translate rewriting the label (native language names). */
+  noTranslate?: boolean
 }) {
   return (
     <button
       type="button"
       onClick={onClick}
       disabled={disabled}
+      translate={noTranslate ? 'no' : undefined}
       className={`w-full text-left px-4 py-3 rounded-2xl border text-sm font-medium transition-all ${
         selected
           ? 'bg-brand-900 text-white border-brand-900'
@@ -103,6 +116,8 @@ function StepHeader({ title, subtitle }: { title: string; subtitle?: string }) {
 
 export default function OnboardingPage() {
   const router = useRouter()
+  const t = useTranslations('Onboarding')
+  const om = onboardingMessages(useMessages())
   const [stepIndex, setStepIndex] = useState(0)
   const [answers, setAnswers] = useState<AnswerMap>({})
   const [saving, setSaving] = useState(false)
@@ -133,7 +148,7 @@ export default function OnboardingPage() {
     } catch {}
   }, [stepIndex])
 
-  const step: OnboardingStep = STEPS[stepIndex]
+  const step: OnboardingStep = localizeStep(om, STEPS[stepIndex])
   const progress = Math.round((stepIndex / (STEPS.length - 1)) * 100)
 
   function next() {
@@ -233,10 +248,13 @@ export default function OnboardingPage() {
       // plan behind it and no idea anything went wrong.
       const planRes = await fetch('/api/wellness-plan', { method: 'POST' })
       if (!planRes.ok) {
+        // The API's error text is English; log it, show the user a message
+        // in the language they chose.
         const body = await planRes.json().catch(() => ({}))
-        throw new Error(
-          body.error ?? 'Your answers were saved, but we couldn\'t build your plan. Please try again.'
-        )
+        console.error('wellness-plan failed:', planRes.status, body.error)
+        setError(t('complete.planError'))
+        setSaving(false)
+        return
       }
 
       try {
@@ -246,15 +264,17 @@ export default function OnboardingPage() {
 
       router.push('/dashboard')
     } catch (err) {
-      const msg = (err as { message?: string })?.message ?? 'Something went wrong. Please try again.'
-      setError(msg)
+      // Raw Supabase/network messages are English and technical; log them,
+      // show the user a message in their own language.
+      console.error('onboarding save failed:', err)
+      setError(t('complete.genericError'))
       setSaving(false)
     }
   }
 
   const showProgress = !(
     step.kind === 'custom' &&
-    (step.component === 'disclaimer' || step.component === 'complete')
+    (step.component === 'language' || step.component === 'disclaimer' || step.component === 'complete')
   )
 
   return (
@@ -264,7 +284,7 @@ export default function OnboardingPage() {
           <div className="mb-8">
             <div className="flex items-center justify-between mb-2">
               <button onClick={back} className="text-sm text-gray-400 hover:text-gray-600 font-medium">
-                ← Back
+                {t('ui.back')}
               </button>
               <span className="text-xs text-gray-400">{progress}%</span>
             </div>
@@ -289,7 +309,7 @@ export default function OnboardingPage() {
               autoFocus
             />
             <PrimaryButton
-              label="Continue"
+              label={t('ui.continue')}
               onClick={next}
               disabled={step.required ? !((answers[step.key] as string) ?? '').trim() : false}
             />
@@ -300,7 +320,11 @@ export default function OnboardingPage() {
           <div className="space-y-4">
             <StepHeader title={step.title} subtitle={step.subtitle} />
             <div className="space-y-2">
-              {(step.choicesFrom ? step.choicesFrom(answers) : step.choices ?? []).map((choice) => (
+              {localizeChoices(
+                om,
+                choiceSection(step),
+                step.choicesFrom ? step.choicesFrom(answers) : step.choices ?? []
+              ).map((choice) => (
                 <OptionButton
                   key={choice.value}
                   label={choice.label}
@@ -311,7 +335,7 @@ export default function OnboardingPage() {
             </div>
             {step.skippable && (
               <button type="button" onClick={next} className="w-full text-sm text-gray-400 py-1">
-                Skip this question
+                {t('ui.skip')}
               </button>
             )}
           </div>
@@ -321,6 +345,9 @@ export default function OnboardingPage() {
           <MultiStep step={step} answers={answers} toggleMulti={toggleMulti} next={next} />
         )}
 
+        {step.kind === 'custom' && step.component === 'language' && (
+          <LanguageStep answers={answers} setAnswers={setAnswers} next={next} />
+        )}
         {step.kind === 'custom' && step.component === 'disclaimer' && (
           <DisclaimerStep next={next} />
         )}
@@ -357,6 +384,9 @@ function MultiStep({
   toggleMulti: (key: string, value: string, choices?: Choice[]) => void
   next: () => void
 }) {
+  const t = useTranslations('Onboarding')
+  const om = onboardingMessages(useMessages())
+  const choices = localizeChoices(om, choiceSection(step), step.choices)
   const selected = (answers[step.key] as string[] | undefined) ?? []
   const meetsMin = selected.length >= (step.minSelect ?? 0)
   // Once an exclusive choice ("None of these") is selected, every other choice is
@@ -367,7 +397,7 @@ function MultiStep({
     <div className="space-y-4">
       <StepHeader title={step.title} subtitle={step.subtitle} />
       <div className="space-y-2">
-        {step.choices.map((choice) => {
+        {choices.map((choice) => {
           const isSelected = selected.includes(choice.value)
           const isDisabled =
             !isSelected && ((choice.exclusive && regularSelected) || (!choice.exclusive && exclusiveSelected))
@@ -382,10 +412,10 @@ function MultiStep({
           )
         })}
       </div>
-      <PrimaryButton label={step.ctaLabel ?? 'Continue'} onClick={next} disabled={!meetsMin} />
+      <PrimaryButton label={step.ctaLabel ?? t('ui.continue')} onClick={next} disabled={!meetsMin} />
       {step.skippable && (
         <button type="button" onClick={next} className="w-full text-sm text-gray-400 py-1">
-          Skip this question
+          {t('ui.skip')}
         </button>
       )}
     </div>
@@ -394,20 +424,100 @@ function MultiStep({
 
 // ─── Bespoke steps ────────────────────────────────────────────────────────────
 
+function LanguageStep({
+  answers,
+  setAnswers,
+  next,
+}: {
+  answers: AnswerMap
+  setAnswers: React.Dispatch<React.SetStateAction<AnswerMap>>
+  next: () => void
+}) {
+  const t = useTranslations('Onboarding.language')
+  // Pre-select whatever is already active (geo guess or an earlier choice),
+  // so most people just confirm with one tap.
+  const activeLocale = useLocale()
+  const router = useRouter()
+  const [saving, setSaving] = useState<string | null>(null)
+  const [error, setError] = useState(false)
+  const [refreshing, startTransition] = useTransition()
+  const [advanceWhenReady, setAdvanceWhenReady] = useState(false)
+
+  // Advance only once the refresh has landed, so the next step (the safety
+  // disclaimer) is rendered in the chosen language from its first paint
+  // rather than flashing the old language first.
+  useEffect(() => {
+    if (advanceWhenReady && !refreshing) {
+      setAdvanceWhenReady(false)
+      next()
+    }
+  }, [advanceWhenReady, refreshing, next])
+
+  async function choose(locale: string) {
+    setSaving(locale)
+    setError(false)
+    try {
+      // Cookie first: the whole app (not just this quiz) switches language.
+      // Wizard state survives the refresh via the sessionStorage mirror.
+      await setLocale(locale)
+      setAnswers((a) => ({ ...a, locale }))
+      setAdvanceWhenReady(true)
+      startTransition(() => router.refresh())
+    } catch (err) {
+      console.error(err)
+      setError(true)
+    } finally {
+      setSaving(null)
+    }
+  }
+
+  const selected = (answers.locale as string | undefined) ?? activeLocale
+  const busy = saving !== null || refreshing || advanceWhenReady
+
+  return (
+    <div className="space-y-6">
+      <div className="flex justify-center">
+        <Logo size="lg" />
+      </div>
+      <StepHeader title={t('title')} subtitle={t('subtitle')} />
+      <div className="space-y-2">
+        {SUPPORTED_LOCALES.map((locale) => (
+          <OptionButton
+            key={locale}
+            // Native names, never translated: someone who can't read the
+            // current language must still be able to find their own.
+            label={LOCALE_LABELS[locale]}
+            selected={selected === locale}
+            disabled={busy}
+            noTranslate
+            onClick={() => choose(locale)}
+          />
+        ))}
+      </div>
+      {error && (
+        <p role="alert" className="text-red-600 text-sm bg-red-50 rounded-xl px-4 py-2">
+          {t('error')}
+        </p>
+      )}
+    </div>
+  )
+}
+
 function DisclaimerStep({ next }: { next: () => void }) {
   const tDisclaimer = useTranslations('Disclaimer')
+  const t = useTranslations('Onboarding.disclaimer')
   return (
     <div className="space-y-6">
       <div className="text-center">
         <div className="flex justify-center mb-5">
           <Logo size="lg" />
         </div>
-        <p className="text-gray-500 mt-2">Let&apos;s build your personalised wellness plan.</p>
+        <p className="text-gray-500 mt-2">{t('intro')}</p>
       </div>
       <div className="bg-white rounded-2xl p-5 border border-brand-100">
         <p className="text-sm text-gray-600 leading-relaxed">{tDisclaimer('full')}</p>
       </div>
-      <PrimaryButton label="I understand — let's start" onClick={next} />
+      <PrimaryButton label={t('cta')} onClick={next} />
     </div>
   )
 }
@@ -421,14 +531,13 @@ function ContinentStep({
   setAnswers: React.Dispatch<React.SetStateAction<AnswerMap>>
   next: () => void
 }) {
+  const t = useTranslations('Onboarding')
+  const om = onboardingMessages(useMessages())
   return (
     <div className="space-y-4">
-      <StepHeader
-        title="Where is your heritage from?"
-        subtitle="Pick the region that best represents your cultural background. We'll then show you more specific options."
-      />
+      <StepHeader title={t('continent.title')} subtitle={t('continent.subtitle')} />
       <div className="grid grid-cols-2 gap-3">
-        {CONTINENT_OPTIONS.map((opt) => (
+        {localizeChoices(om, ['continents'], CONTINENT_OPTIONS).map((opt) => (
           <button
             key={opt.value}
             type="button"
@@ -448,7 +557,7 @@ function ContinentStep({
         ))}
       </div>
       <button type="button" onClick={next} className="w-full text-sm text-gray-400 py-1">
-        Skip this question
+        {t('ui.skip')}
       </button>
     </div>
   )
@@ -463,34 +572,31 @@ function HeritageStep({
   toggleMulti: (key: string, value: string) => void
   next: () => void
 }) {
+  const t = useTranslations('Onboarding')
+  const om = onboardingMessages(useMessages())
   const heritage = (answers.heritage as string[] | undefined) ?? []
   const continent = answers.continent as string | undefined
   return (
     <div className="space-y-4">
-      <StepHeader
-        title="Which communities do you identify with?"
-        subtitle="Select all that apply. The more specific you are, the more relevant your plan."
-      />
+      <StepHeader title={t('heritage.title')} subtitle={t('heritage.subtitle')} />
 
       <div className="bg-brand-50 rounded-xl p-3 border border-brand-100">
-        <p className="text-xs text-brand-700 leading-relaxed">
-          Research shows menopause affects different communities differently — in timing, symptoms,
-          and which foods help most. This stays private and is never shared.
-        </p>
+        <p className="text-xs text-brand-700 leading-relaxed">{t('heritage.note')}</p>
       </div>
 
       <div className="space-y-4 max-h-[28rem] overflow-y-auto pr-1">
         {COMMUNITY_OPTIONS.filter((group) => {
+          // Filtering stays on the canonical English group name.
           if (!continent) return true
           const allowed = CONTINENT_TO_GROUPS[continent] ?? []
           return allowed.includes(group.group)
         }).map((group) => (
           <div key={group.group}>
             <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2 sticky top-0 bg-white py-1">
-              {group.group}
+              {text(om, ['communityGroups', messageKey(group.group)], group.group)}
             </p>
             <div className="space-y-1.5">
-              {group.options.map((opt) => (
+              {localizeChoices(om, ['communities'], group.options).map((opt) => (
                 <button
                   key={opt.value}
                   type="button"
@@ -511,20 +617,20 @@ function HeritageStep({
 
       {heritage.length > 0 && (
         <div className="bg-brand-50 rounded-xl p-2 text-xs text-brand-700">
-          ✓ {heritage.length} selected
+          {t('heritage.selectedCount', { count: heritage.length })}
         </div>
       )}
 
       <PrimaryButton
         label={
           heritage.length > 0
-            ? `Continue with ${heritage.length} selection${heritage.length > 1 ? 's' : ''}`
-            : 'Continue'
+            ? t('heritage.continueWithCount', { count: heritage.length })
+            : t('ui.continue')
         }
         onClick={next}
       />
       <button type="button" onClick={next} className="w-full text-sm text-gray-400 py-1">
-        Skip this question
+        {t('ui.skip')}
       </button>
     </div>
   )
@@ -539,68 +645,35 @@ function LocationStep({
   setAnswers: React.Dispatch<React.SetStateAction<AnswerMap>>
   next: () => void
 }) {
-  // Pre-fill from whatever locale is already active for this visitor (geo
-  // guess or an earlier explicit choice) rather than defaulting blank —
-  // onboarding shouldn't ask them to re-pick what we already resolved.
-  const activeLocale = useLocale()
-  const router = useRouter()
-
-  // Changing language here should take effect immediately (rest of the
-  // wizard renders in-language too), not just get saved for later — so this
-  // writes the cookie right away, same as the NavBar switcher. Wizard state
-  // survives the refresh via the sessionStorage mirror (see file header).
-  async function handleLocaleChange(locale: string) {
-    setAnswers((a) => ({ ...a, locale }))
-    await fetch('/api/locale', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ locale }),
-    })
-    router.refresh()
-  }
+  // Language is no longer asked here: it is the quiz's first step
+  // (LanguageStep), and can be changed later from the profile page.
+  const t = useTranslations('Onboarding')
+  const om = onboardingMessages(useMessages())
 
   return (
     <div className="space-y-5">
-      <StepHeader
-        title="Where do you live?"
-        subtitle="Your heritage shapes your culture, but your location shapes your day. We use this to contextualise timing and local food availability."
-      />
+      <StepHeader title={t('location.title')} subtitle={t('location.subtitle')} />
 
       <div>
-        <label className="text-sm font-medium text-gray-700 block mb-1.5">Language</label>
-        <select
-          value={(answers.locale as string) ?? activeLocale}
-          onChange={(e) => handleLocaleChange(e.target.value)}
-          className="w-full border border-gray-200 rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-300 bg-white"
-        >
-          {SUPPORTED_LOCALES.map((locale) => (
-            <option key={locale} value={locale}>
-              {LOCALE_LABELS[locale]}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div>
-        <label className="text-sm font-medium text-gray-700 block mb-1.5">City or town</label>
+        <label className="text-sm font-medium text-gray-700 block mb-1.5">{t('location.city')}</label>
         <input
           type="text"
           value={(answers.city as string) ?? ''}
           onChange={(e) => setAnswers((a) => ({ ...a, city: e.target.value }))}
-          placeholder="e.g. London, Lagos, Toronto"
+          placeholder={t('location.cityPlaceholder')}
           className="w-full border border-gray-200 rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-300"
         />
       </div>
 
       <div>
-        <label className="text-sm font-medium text-gray-700 block mb-1.5">Country</label>
+        <label className="text-sm font-medium text-gray-700 block mb-1.5">{t('location.country')}</label>
         <select
           value={(answers.country as string) ?? ''}
           onChange={(e) => setAnswers((a) => ({ ...a, country: e.target.value }))}
           className="w-full border border-gray-200 rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-300 bg-white"
         >
-          <option value="">Select your country</option>
-          {COUNTRY_OPTIONS.map((c) => (
+          <option value="">{t('location.countryPlaceholder')}</option>
+          {localizeChoices(om, ['countries'], COUNTRY_OPTIONS).map((c) => (
             <option key={c.value} value={c.value}>
               {c.label}
             </option>
@@ -609,16 +682,19 @@ function LocationStep({
       </div>
 
       <div>
-        <label className="text-sm font-medium text-gray-700 block mb-1.5">Your timezone</label>
+        <label className="text-sm font-medium text-gray-700 block mb-1.5">{t('location.timezone')}</label>
         <select
           value={(answers.timezone as string) ?? ''}
           onChange={(e) => setAnswers((a) => ({ ...a, timezone: e.target.value }))}
           className="w-full border border-gray-200 rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-300 bg-white"
         >
-          <option value="">Select your timezone</option>
+          <option value="">{t('location.timezonePlaceholder')}</option>
           {TIMEZONE_OPTIONS.map((group) => (
-            <optgroup key={group.group} label={group.group}>
-              {group.options.map((tz) => (
+            <optgroup
+              key={group.group}
+              label={text(om, ['timezoneGroups', messageKey(group.group)], group.group)}
+            >
+              {localizeChoices(om, ['timezones'], group.options).map((tz) => (
                 <option key={tz.value} value={tz.value}>
                   {tz.label}
                 </option>
@@ -628,15 +704,17 @@ function LocationStep({
         </select>
       </div>
 
-      <PrimaryButton label="Continue" onClick={next} />
+      <PrimaryButton label={t('ui.continue')} onClick={next} />
       <button type="button" onClick={next} className="w-full text-sm text-gray-400 py-1">
-        Skip this question
+        {t('ui.skip')}
       </button>
     </div>
   )
 }
 
 function RemindersStep({ next }: { next: () => void }) {
+  const t = useTranslations('Onboarding')
+  const tNotifications = useTranslations('Notifications')
   const { status, error, permission, subscribe } = usePushSubscription()
 
   function notNow() {
@@ -649,10 +727,7 @@ function RemindersStep({ next }: { next: () => void }) {
   }
 
   const header = (
-    <StepHeader
-      title="Would you like a gentle daily nudge?"
-      subtitle="A short reminder each morning to check in on how you're feeling. You can change the time, or turn it off, in your profile."
-    />
+    <StepHeader title={t('reminders.title')} subtitle={t('reminders.subtitle')} />
   )
 
   if (status === 'checking') return header
@@ -664,12 +739,12 @@ function RemindersStep({ next }: { next: () => void }) {
         {header}
         <p className="text-sm text-gray-600 bg-white border border-gray-200 rounded-2xl px-4 py-3 leading-relaxed">
           {status === 'ios-needs-home-screen'
-            ? 'On iPhone or iPad, reminders work once Aunty Mel is added to your Home Screen (Share → Add to Home Screen). You can turn them on from your profile after that.'
+            ? t('reminders.iosHomeScreen')
             : status === 'unsupported'
-              ? "This browser doesn't support reminders. You can still check in any time from the app."
-              : 'Notifications are blocked for this site in your browser settings. If you allow them there, you can turn reminders on from your profile.'}
+              ? t('reminders.unsupported')
+              : t('reminders.blocked')}
         </p>
-        <PrimaryButton label="Continue" onClick={next} />
+        <PrimaryButton label={t('ui.continue')} onClick={next} />
       </div>
     )
   }
@@ -678,8 +753,8 @@ function RemindersStep({ next }: { next: () => void }) {
     return (
       <div className="space-y-4">
         {header}
-        <p className="text-sm text-gray-600">Reminders are on for this device.</p>
-        <PrimaryButton label="Continue" onClick={next} />
+        <p className="text-sm text-gray-600">{t('reminders.enabled')}</p>
+        <PrimaryButton label={t('ui.continue')} onClick={next} />
       </div>
     )
   }
@@ -687,14 +762,18 @@ function RemindersStep({ next }: { next: () => void }) {
   return (
     <div className="space-y-3">
       {header}
-      {error && <p className="text-red-600 text-sm bg-red-50 rounded-xl px-4 py-2">{error}</p>}
+      {error && (
+        <p className="text-red-600 text-sm bg-red-50 rounded-xl px-4 py-2">
+          {tNotifications(PUSH_ERROR_MESSAGE_KEY[error])}
+        </p>
+      )}
       <PrimaryButton
-        label={status === 'subscribing' ? 'Turning on…' : 'Turn on reminders'}
+        label={status === 'subscribing' ? t('reminders.turningOn') : t('reminders.turnOn')}
         onClick={turnOn}
         disabled={status === 'subscribing'}
       />
       <button type="button" onClick={notNow} className="w-full text-sm text-gray-500 py-2">
-        Not now
+        {t('reminders.notNow')}
       </button>
     </div>
   )
@@ -711,22 +790,22 @@ function CompleteStep({
   error: string
   onComplete: () => void
 }) {
-  const firstName = (answers.full_name as string | undefined)?.split(' ')[0] ?? 'there'
+  const t = useTranslations('Onboarding.complete')
+  const firstName = (answers.full_name as string | undefined)?.trim().split(/\s+/)[0]
   return (
     <div className="space-y-6 text-center">
       <div className="text-6xl">✨</div>
       <div>
-        <h2 className="text-2xl font-bold text-brand-900">Your plan is almost ready, {firstName}</h2>
-        <p className="text-gray-500 mt-2 text-sm leading-relaxed">
-          We&apos;re building your personalised wellness plan based on your answers. It takes just a
-          moment.
-        </p>
+        <h2 className="text-2xl font-bold text-brand-900">
+          {firstName ? t('title', { name: firstName }) : t('titleNoName')}
+        </h2>
+        <p className="text-gray-500 mt-2 text-sm leading-relaxed">{t('body')}</p>
       </div>
 
       {error && <p className="text-red-600 text-sm bg-red-50 rounded-xl px-4 py-2">{error}</p>}
 
       <PrimaryButton
-        label={saving ? 'Building your plan...' : 'See my plan →'}
+        label={saving ? t('building') : t('cta')}
         onClick={onComplete}
         disabled={saving}
       />

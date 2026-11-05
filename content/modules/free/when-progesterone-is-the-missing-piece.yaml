@@ -8,8 +8,11 @@ tags:
 estimated_read_minutes: 4
 
 # DRAFT — awaiting Pamela's review and sign-off. Do not set published_at until approved.
-# REGULATORY FLAG: mentions bioidentical progesterone, a prescription-only medicine in the UK.
-# Confirm with Pamela before publishing whether this needs the info_only jurisdiction gate.
+# Pamela's review (27 Oct 2026, 03/C6): bioidentical progesterone cream bullet removed at her
+# recommendation, along with the closing note about it. That clears the earlier regulatory flag
+# (prescription-only medicine in the UK) for this English version only.
+# OPEN — not covered by her comments, needs a source before publishing: the "progesterone and
+# cortisol compete for the same receptor pathways" claim in "The stress-hormone connection".
 
 body_md: |
   If you've been feeling wired but exhausted, anxious for no obvious reason, waking around 3am
@@ -51,10 +54,6 @@ body_md: |
   - **Reducing xenoestrogens** — plastics in food contact, some beauty products, and synthetic
     fragrances all contain compounds that can worsen the oestrogen-progesterone balance.
     Swapping these out is low-effort and low-risk.
-  - **Bioidentical progesterone cream** — some women, working with their doctor, find this
-    genuinely helpful, typically used in the second half of the cycle. **Important: in the UK,
-    bioidentical progesterone is a prescription-only medicine.** It isn't something to source or
-    use without your doctor's involvement, and dosing needs to be individually guided by them.
 
   ## The bottom line
 
@@ -70,5 +69,4 @@ body_md: |
   at smarterchange.co.uk.*
 
   *This is general information, not medical advice. Anything mentioned here that affects
-  hormones should be discussed with your GP or pharmacist before you try it — this is especially
-  true for bioidentical progesterone, which requires a prescription in the UK.*
+  hormones should be discussed with your GP or pharmacist before you try it.*
