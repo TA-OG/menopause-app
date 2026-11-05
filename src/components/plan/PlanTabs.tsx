@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useState } from 'react'
+import { useTranslations } from 'next-intl'
 import PlanCard from './PlanCard'
 import type { WellnessRecommendation } from '@/types/database'
 
@@ -32,11 +33,12 @@ export interface PlanTabsProps {
 
 type TabKey = 'diet' | 'lifestyle' | 'mindset' | 'supplements'
 
-const TAB_META: { key: TabKey; label: string; emoji: string }[] = [
-  { key: 'diet', label: 'Food', emoji: '🥗' },
-  { key: 'lifestyle', label: 'Doing', emoji: '🌿' },
-  { key: 'mindset', label: 'Thinking', emoji: '🧘' },
-  { key: 'supplements', label: 'Supplements', emoji: '💊' },
+// Labels come from messages (PlanTabs.<key>).
+const TAB_META: { key: TabKey; emoji: string }[] = [
+  { key: 'diet', emoji: '🥗' },
+  { key: 'lifestyle', emoji: '🌿' },
+  { key: 'mindset', emoji: '🧘' },
+  { key: 'supplements', emoji: '💊' },
 ]
 
 export default function PlanTabs({
@@ -46,6 +48,7 @@ export default function PlanTabs({
   supplements,
   initialTab,
 }: PlanTabsProps) {
+  const t = useTranslations('PlanTabs')
   const groups: Record<TabKey, WellnessRecommendation[]> = {
     diet,
     lifestyle,
@@ -89,7 +92,7 @@ export default function PlanTabs({
           scrolling back to the top of a long list. */}
       <div
         role="tablist"
-        aria-label="Your plan, by category"
+        aria-label={t('ariaLabel')}
         className="sticky top-16 z-30 -mx-4 flex gap-1 bg-cream px-4 pb-2 pt-1"
       >
         {tabs.map((tab, i) => {
@@ -116,7 +119,7 @@ export default function PlanTabs({
             >
               <span className="flex items-center gap-1">
                 <span aria-hidden="true">{tab.emoji}</span>
-                {tab.label}
+                {t(tab.key)}
               </span>
               <span
                 className={`text-[11px] font-medium ${
@@ -124,7 +127,7 @@ export default function PlanTabs({
                 }`}
               >
                 {groups[tab.key].length}
-                <span className="sr-only"> recommendations</span>
+                <span className="sr-only"> {t('recommendations', { count: groups[tab.key].length })}</span>
               </span>
             </button>
           )

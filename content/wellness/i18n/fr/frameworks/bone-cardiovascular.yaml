@@ -1,0 +1,45 @@
+# Traduction de frameworks/bone-cardiovascular.yaml — la version anglaise fait foi.
+df_calcium_bone:
+  title: 700–1200 mg de calcium par jour — d’abord par l’alimentation
+  body: >-
+    Les œstrogènes régulent directement la résorption osseuse. Leur baisse accélère la perte osseuse jusqu’à 20 % au cours des 5–7 premières années après la ménopause. L’apport en calcium est fondamental. Visez 700–1200 mg par jour par l’alimentation : produits laitiers (lait, fromage, yaourt), boissons végétales enrichies, sardines et saumon en conserve (avec les arêtes), brocoli, chou kale, amandes et tofu préparé au sulfate de calcium. Le calcium alimentaire est mieux absorbé que celui des compléments. Prendre plus de 1000 mg par jour uniquement en comprimés repose sur des preuves faibles et pourrait augmenter le risque cardiovasculaire.
+df_heart_healthy_fats:
+  title: Les graisses insaturées plutôt que saturées — pour protéger le cœur
+  body: >-
+    Avant la ménopause, les œstrogènes protègent le cœur — ils augmentent le HDL (le « bon » cholestérol) et diminuent le LDL (le « mauvais » cholestérol). Après la ménopause, cette protection disparaît et le LDL augmente généralement de 10–15 %. Remplacez les graisses saturées (beurre, viande rouge, produits laitiers entiers) par des sources insaturées : huile d’olive, avocat, noix, graines et poissons gras. Le modèle méditerranéen est l’approche alimentaire la plus protectrice pour le cœur à cet âge.
+df_reduce_sodium:
+  title: Réduisez le sel — la tension artérielle augmente après la ménopause
+  body: >-
+    La tension artérielle augmente souvent dans les années qui suivent la ménopause, en raison des changements vasculaires liés à la baisse des œstrogènes. Les adultes britanniques consomment en moyenne 8–9 g de sel par jour — le maximum recommandé est de 6 g. Principales sources de sel caché : pain, charcuterie, fromage, plats préparés, sauces. Assaisonner avec des herbes et du jus de citron fait une vraie différence. Sur les étiquettes nutritionnelles en face avant, 0,3 g de sel pour 100 g ou moins correspond à la bande verte « faible », et plus de 1,5 g pour 100 g à la bande rouge « élevé » — comparer deux produits sur ce seul chiffre est donc un gain facile. (Les boissons utilisent les mêmes seuils de 0,3 g / 1,5 g, mais pour 100 ml.)
+lf_weight_bearing_bones:
+  title: Les exercices en charge sont un remède pour les os
+  body: >-
+    Le squelette réagit aux contraintes mécaniques en fabriquant de l’os neuf. Les exercices en charge (marche, footing, danse, musculation, tennis) stimulent directement la formation osseuse. La natation et le vélo, excellents pour le cœur, ne sollicitent pas le squelette et ont un effet minime sur la densité osseuse. Visez au moins 3 séances d’activité en charge par semaine. Le renforcement musculaire construit en plus le muscle qui protège les articulations contre les forces responsables de fractures.
+lf_cardio_heart:
+  title: 150 minutes de cardio modéré par semaine — pour la santé du cœur
+  body: >-
+    150 minutes d’activité aérobie d’intensité modérée par semaine (marche rapide, vélo, natation, danse) réduisent le risque cardiovasculaire, font baisser la tension et améliorent le profil de cholestérol. Elles réduisent aussi le risque de diabète de type 2, qui augmente après la ménopause. Répartissez-les en 5 x 30 minutes ou 6 x 25 minutes — la régularité sur la semaine compte plus que de longues séances isolées.
+lf_smoking_cessation:
+  title: Arrêter de fumer — l’intervention la plus efficace pour le cœur
+  body: >-
+    Le tabac double le risque d’infarctus et constitue le principal facteur de risque modifiable de maladie cardiovasculaire chez les femmes ménopausées. Il accélère aussi la perte osseuse (les fumeuses ont une densité osseuse inférieure de 10–15 % à celle des non-fumeuses) et aggrave les bouffées de chaleur. Les services d’aide au sevrage (au Royaume-Uni, les NHS Stop Smoking Services), la varénicline (Champix) et les substituts nicotiniques combinés sont tous plus efficaces que la seule volonté. Parlez-en à votre médecin généraliste.
+mr_bone_density_check:
+  title: Demandez une ostéodensitométrie à votre médecin — connaissez votre point de départ
+  body: >-
+    L’ostéodensitométrie (DEXA) mesure la densité minérale osseuse et dure 10–15 minutes. Au Royaume-Uni, le NICE la recommande aux femmes ayant une ménopause précoce (avant 45 ans), une ménopause chirurgicale ou d’autres facteurs de risque (corticothérapie prolongée, IMC bas, antécédents familiaux de fracture de la hanche). Même sans ces facteurs, connaître votre densité osseuse de départ à la ménopause vous donne un repère pour mesurer l’effet de vos actions futures. Demandez à votre médecin généraliste si vous pouvez en bénéficier dans le cadre de votre système de santé.
+mr_heart_risk_awareness:
+  title: Les maladies cardiovasculaires sont la première cause de décès chez les femmes — pas le cancer du sein
+  body: >-
+    Après la ménopause, le risque cardiovasculaire des femmes dépasse celui des hommes du même âge. Pourtant, les femmes sont moins souvent évaluées pour ce risque, reconnaissent moins bien leurs propres symptômes et reçoivent moins souvent un traitement préventif. Demandez une évaluation du risque cardiovasculaire (cholestérol, tension, glycémie) lors de votre prochain rendez-vous chez le médecin. Au Royaume-Uni, la plupart des cabinets proposent le NHS Health Check aux adultes de 40–74 ans. La prévention est bien plus efficace que le traitement.
+ss_calcium_supplement:
+  title: Compléments de calcium — seulement si l’alimentation ne suffit pas
+  body: >-
+    Une supplémentation en calcium (500 mg par jour, pas plus) n’est appropriée que si votre apport alimentaire reste régulièrement inférieur à 700 mg. La plupart des femmes qui consomment des produits laitiers ou des boissons végétales enrichies atteignent ce niveau par l’alimentation. Le carbonate de calcium se prend de préférence pendant un repas ; le citrate de calcium peut se prendre sans manger. Ne dépassez pas 1000 mg par jour au total, alimentation et compléments confondus, sans l’avis de votre médecin.
+  disclaimer: >-
+    Selon certaines études, des compléments de calcium au-delà de 1000 mg/jour pourraient augmenter le risque cardiovasculaire. Ne prenez pas de complément sans avoir évalué d’abord vos apports alimentaires. Demandez l’avis de votre médecin généraliste si vous avez des antécédents de calculs rénaux, d’hypercalcémie ou de maladie cardiovasculaire.
+ss_vitamin_k2:
+  title: Vitamine K2 (MK-7) — dirige le calcium vers les os, pas vers les artères
+  body: >-
+    La vitamine K2 (ménaquinone-7, 100–200 µg par jour) active des protéines qui orientent le calcium vers les os et les dents plutôt que vers la paroi des artères. Elle agit en synergie avec la vitamine D3 — prenez-les ensemble. Les sources alimentaires sont limitées (natto, fromages à pâte dure, jaune d’œuf). Les preuves pour la prévention des fractures sont encore émergentes, mais le mécanisme est bien établi.
+  disclaimer: >-
+    La vitamine K2 interagit avec la warfarine et d’autres anticoagulants et peut réduire leur efficacité. N’en prenez pas si vous suivez un traitement anticoagulant sans l’accord explicite de votre médecin.

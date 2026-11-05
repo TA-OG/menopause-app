@@ -1,0 +1,45 @@
+# Traducción de frameworks/bone-cardiovascular.yaml — prevalece la versión en inglés.
+df_calcium_bone:
+  title: 700–1200 mg de calcio al día — primero con la alimentación
+  body: >-
+    Los estrógenos regulan directamente la resorción ósea. Su descenso acelera la pérdida ósea hasta un 20 % en los primeros 5–7 años tras la menopausia. La ingesta de calcio es fundamental. Intenta tomar 700–1200 mg al día con la alimentación: lácteos (leche, queso, yogur), bebidas vegetales enriquecidas, sardinas y salmón en conserva (con las espinas), brócoli, kale, almendras y tofu elaborado con sulfato de calcio. El calcio de los alimentos se absorbe mejor que el de los suplementos. Tomar más de 1000 mg al día solo en comprimidos tiene poca evidencia y podría aumentar el riesgo cardiovascular.
+df_heart_healthy_fats:
+  title: Grasas insaturadas en lugar de saturadas — para proteger el corazón
+  body: >-
+    Antes de la menopausia, los estrógenos protegen el corazón: suben el HDL (colesterol «bueno») y bajan el LDL (colesterol «malo»). Tras la menopausia se pierde esta protección y el LDL suele subir un 10–15 %. Sustituye las grasas saturadas (mantequilla, carne roja, lácteos enteros) por fuentes insaturadas: aceite de oliva, aguacate, frutos secos, semillas y pescado azul. La dieta mediterránea es el patrón alimentario que más protege el corazón a esta edad.
+df_reduce_sodium:
+  title: Reduce la sal — la tensión arterial sube tras la menopausia
+  body: >-
+    La tensión arterial suele subir en los años posteriores a la menopausia por los cambios vasculares que acompañan al descenso de los estrógenos. Los adultos del Reino Unido toman de media 8–9 g de sal al día — el máximo recomendado es 6 g. Principales fuentes de sal oculta: pan, embutidos, queso, platos preparados y salsas. Dar sabor con hierbas y zumo de limón marca una diferencia real. En el etiquetado frontal de los alimentos, 0,3 g de sal por 100 g o menos es la franja verde «bajo», y más de 1,5 g por 100 g es roja «alto», así que comparar dos productos solo con esa cifra es una mejora fácil. (Las bebidas usan las mismas franjas de 0,3 g / 1,5 g, pero por 100 ml.)
+lf_weight_bearing_bones:
+  title: El ejercicio con impacto es medicina para los huesos
+  body: >-
+    El esqueleto responde a la carga mecánica fabricando hueso nuevo. El ejercicio con impacto (caminar, correr, bailar, levantar pesas, tenis) estimula directamente la formación de hueso. La natación y la bicicleta, aunque excelentes para el corazón, no cargan el esqueleto y apenas influyen en la densidad ósea. Intenta hacer al menos 3 sesiones semanales de actividad con impacto. El entrenamiento de fuerza, además, desarrolla el músculo que protege las articulaciones frente a las fuerzas que causan fracturas.
+lf_cardio_heart:
+  title: 150 minutos de cardio moderado a la semana — para la salud del corazón
+  body: >-
+    150 minutos semanales de actividad aeróbica de intensidad moderada (caminar a paso ligero, bicicleta, natación, baile) reducen el riesgo cardiovascular, bajan la tensión y mejoran el perfil de colesterol. También reducen el riesgo de diabetes tipo 2, que aumenta tras la menopausia. Divídelos en 5 x 30 minutos o 6 x 25 minutos — la constancia a lo largo de la semana importa más que una sola sesión larga.
+lf_smoking_cessation:
+  title: Dejar de fumar — la medida más importante para el corazón
+  body: >-
+    Fumar duplica el riesgo de infarto y es el principal factor de riesgo modificable de enfermedad cardiovascular en las mujeres posmenopáusicas. También acelera la pérdida ósea (las fumadoras tienen una densidad ósea un 10–15 % menor que las no fumadoras) y empeora los sofocos. Los servicios de ayuda para dejar de fumar (en el Reino Unido, los NHS Stop Smoking Services), la vareniclina (Champix) y la terapia combinada de sustitución de nicotina son más eficaces que la fuerza de voluntad por sí sola. Habla con tu médico de cabecera.
+mr_bone_density_check:
+  title: Pregunta a tu médico por una densitometría — conoce tu punto de partida
+  body: >-
+    La densitometría (DEXA) mide la densidad mineral ósea y dura 10–15 minutos. En el Reino Unido, el NICE la recomienda para mujeres con menopausia precoz (antes de los 45), menopausia quirúrgica u otros factores de riesgo (uso prolongado de corticoides, IMC bajo, antecedentes familiares de fractura de cadera). Aunque no tengas ninguno, conocer tu densidad ósea de partida en la menopausia te da una referencia para medir el efecto de lo que hagas después. Pregunta a tu médico de cabecera si puedes hacértela en tu sistema público de salud.
+mr_heart_risk_awareness:
+  title: La enfermedad cardiovascular es la primera causa de muerte en las mujeres — no el cáncer de mama
+  body: >-
+    Tras la menopausia, el riesgo cardiovascular de las mujeres supera al de los hombres de su edad. Aun así, a las mujeres se les evalúa menos este riesgo, reconocen peor sus propios síntomas y reciben menos tratamiento preventivo. En tu próxima cita, pide a tu médico una valoración del riesgo cardiovascular (colesterol, tensión, glucosa). En el Reino Unido, la mayoría de los centros de salud ofrecen el NHS Health Check a adultos de 40–74 años. Prevenir es muchísimo más eficaz que tratar.
+ss_calcium_supplement:
+  title: Suplementos de calcio — solo si la alimentación no basta
+  body: >-
+    Tomar un suplemento de calcio (500 mg al día, no más) solo es adecuado si tu ingesta de calcio con la dieta está de forma constante por debajo de 700 mg. La mayoría de las mujeres que toman lácteos o bebidas vegetales enriquecidas llegan a esa cantidad con la comida. El carbonato de calcio se toma mejor con comida; el citrato de calcio puede tomarse sin comer. No superes los 1000 mg diarios en total entre alimentación y suplementos sin indicación de tu médico.
+  disclaimer: >-
+    Según algunos estudios, los suplementos de calcio por encima de 1000 mg/día podrían aumentar el riesgo cardiovascular. No tomes suplementos sin evaluar antes tu ingesta con la dieta. Consulta con tu médico de cabecera si tienes antecedentes de cálculos renales, hipercalcemia o enfermedad cardiovascular.
+ss_vitamin_k2:
+  title: Vitamina K2 (MK-7) — lleva el calcio a los huesos, no a las arterias
+  body: >-
+    La vitamina K2 (menaquinona-7, 100–200 µg al día) activa proteínas que dirigen el calcio a los huesos y los dientes en lugar de a la pared de las arterias. Actúa en sinergia con la vitamina D3 — tómalas juntas. Las fuentes alimentarias son limitadas (natto, quesos curados, yema de huevo). La evidencia sobre la prevención de fracturas es todavía incipiente, pero el mecanismo está bien establecido.
+  disclaimer: >-
+    La vitamina K2 interactúa con la warfarina y otros anticoagulantes y puede reducir su eficacia. No la tomes si estás en tratamiento anticoagulante sin la aprobación expresa de tu médico.

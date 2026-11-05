@@ -1,0 +1,54 @@
+# Tradução de cultural/west-african.yaml — prevalece a versão em inglês.
+items:
+  egusi-pumpkin-seeds:
+    body: |-
+      O egusi (sementes de melão) é muito nutritivo — rico em gorduras saudáveis, proteína e zinco. O zinco é essencial para a síntese de testosterona (que afeta a energia e a libido durante a menopausa) e para o sistema imunitário. A sopa de egusi é uma refeição verdadeiramente nutritiva que vale a pena manter na rotina.
+  moringa-traditional-remedy:
+    body: |-
+      A moringa (Moringa oleifera) é usada há gerações na medicina tradicional da África Ocidental e de outras partes de África. É rica em cálcio, ferro, vitamina C e antioxidantes. A investigação emergente apoia o seu uso para a energia, a inflamação e a regulação do açúcar no sangue. Juntar moringa em pó a batidos ou sopas é uma forma prática de a incluir.
+  hibiscus-zobo-blood-pressure:
+    body: |-
+      A bebida zobo (hibisco) é muito consumida na África Ocidental e tem evidência real de apoio a uma tensão arterial saudável e de fornecer antioxidantes. Controlar a tensão arterial torna-se mais importante na menopausa, à medida que diminuem os efeitos protetores dos estrogénios no coração.
+
+      A preparação tradicional com muito açúcar reduz parte do benefício. Experimente adoçar menos e juntar gengibre, que tem ainda propriedades anti-inflamatórias.
+  palm-oil-fats:
+    body: |-
+      O óleo de palma vermelho é um básico cultural e tem um perfil nutricional diferente dos óleos vegetais processados — contém betacaroteno e vitamina E. Com moderação, faz parte de uma alimentação equilibrada. O essencial na menopausa é o equilíbrio geral das gorduras — garantir que o peixe gordo, o abacate e os frutos secos também aparecem com regularidade para apoiar a saúde do cérebro e a produção de hormonas.
+  beans-black-eyed-peas:
+    body: |-
+      O feijão — feijão-frade, feijão-castanho, feijão-vermelho — está no centro da cozinha da África Ocidental e faz-lhe mesmo bem durante a menopausa. É rico em proteína vegetal e fibra, por isso os pratos de feijão comidos com regularidade dão energia duradoura e apoiam a estabilidade do açúcar no sangue, o que conta para a energia, o humor e o peso.
+
+      Uma ressalva honesta, porque pode ter lido o contrário: a evidência de que os fitoestrogénios aliviam os afrontamentos vem de estudos sobre a soja em particular, e a soja é uma fonte de isoflavonas muito mais rica do que outros feijões. O feijão vale muito a pena pela proteína e pela fibra. Mas, se o que quer tratar são os afrontamentos, isso significa alimentos de soja — edamame, tofu, tempeh — e não feijão em geral.
+  spicy-food-triggers:
+    body: |-
+      A pepper soup, o suya e outros pratos picantes são profundamente culturais e deliciosos. A comida picante pode provocar afrontamentos em algumas mulheres durante a menopausa — não em todas, e nem sempre. Repare se nota uma ligação entre comer picante e um afrontamento nos 30–60 minutos seguintes.
+
+      Se houver um padrão, isso não significa abdicar totalmente do picante — só ter atenção ao momento e à quantidade, sobretudo à noite.
+  stress-and-allostatic-load:
+    body: |-
+      A investigação documenta que as mulheres de origem africana carregam uma carga alostática mais elevada — o custo fisiológico acumulado do stress crónico. Não é uma falha pessoal; reflete a realidade estrutural de enfrentar ao mesmo tempo o racismo, a pressão económica e as responsabilidades de cuidado.
+
+      Este stress de fundo pode contribuir para a forma como os sintomas da menopausa são vividos — se os agrava diretamente ainda é uma questão em aberto na investigação, e não algo estabelecido. Reconhecê-lo — para si própria e junto do seu médico — continua a valer a pena. Se os seus sintomas parecem mais fortes, não é por ser mais fraca.
+  community-wisdom:
+    body: |-
+      Em muitas culturas africanas, a menopausa foi durante muito tempo uma experiência vivida em comunidade — as mulheres mais velhas guardavam o conhecimento e passavam-no a quem vinha a seguir. É nessa transmissão de sabedoria entre gerações que a Aunty Mel se baseia. Não está a atravessar isto sozinha, e esse conhecimento nunca se perdeu — só precisa de uma casa moderna.
+  taboo-and-speaking-up:
+    body: |-
+      Em algumas comunidades e famílias da África Ocidental, não se fala da menopausa. Pode ser tabu, ser considerada um assunto privado ou estar associada ao envelhecimento de forma estigmatizante. Pode esperar-se que as mulheres lidem com ela em silêncio.
+
+      Tem permissão para dar nome ao que está a viver. Registar os seus sintomas, compreender o seu corpo e procurar apoio não é uma traição cultural — é a forma mais moderna da sabedoria que as suas avós carregavam.
+  vitamin-d-africa-to-uk:
+    body: |-
+      Se cresceu na África Ocidental e se mudou para o Reino Unido, o seu corpo passou de uma luz solar equatorial abundante para um dos climas mais cinzentos da Europa. A falta de vitamina D é extremamente comum nas mulheres da África Ocidental que vivem no Reino Unido e agrava diretamente o cansaço, a saúde dos ossos, o humor e as dores articulares.
+
+      É algo simples e de grande impacto para resolver — uma análise ao sangue através do seu médico confirma o seu nível. A maioria das orientações recomenda 1000–2000 UI por dia a mulheres de pele mais escura no Reino Unido.
+      AVISO: confirme sempre com o seu médico antes de tomar doses acima da dose padrão do NHS de 400 UI. Recomenda-se fazer primeiro uma análise.
+byTitle:
+  Your timeline and your symptoms may differ from what you've read:
+    title: O seu calendário e os seus sintomas podem ser diferentes do que leu
+    body: |-
+      A maior parte da investigação sobre a menopausa foi feita com mulheres brancas, ocidentais e de classe média. Os sintomas, os calendários e as experiências descritos nos recursos de saúde gerais podem não refletir totalmente os seus.
+
+      As mulheres de origem africana chegam mais cedo à menopausa e têm sintomas mais intensos e durante mais tempo. Se tem sintomas no início ou a meio dos 40, leve-os a sério — não é demasiado nova.
+
+      Vale a pena saber de onde isto vem: os estudos em que se baseia são sobretudo norte-americanos e descrevem médias, não o seu calendário pessoal.

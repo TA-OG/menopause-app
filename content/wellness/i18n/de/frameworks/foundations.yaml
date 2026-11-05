@@ -1,0 +1,144 @@
+# Übersetzung von frameworks/foundations.yaml — maßgeblich ist die englische Fassung.
+df_meal_timing_by_stage:
+  title: Zeitpunkt und Häufigkeit der Mahlzeiten — je nach Phase und je nachdem, wie es dir geht
+  body: |-
+    Es gibt hier keine allgemeingültige, gut belegte Regel, aber ein Muster, das manchen Frauen und Fachleuten hilft: In der Perimenopause innerhalb einer Stunde nach dem Aufwachen frühstücken, mit 3 Mahlzeiten am Tag (4–5 kleineren, wenn die Energie knapp ist). In der Menopause und Postmenopause tut es manchen gut, das Fasten etwas später zu brechen — gegen 10–11 Uhr — mit 2–3 Mahlzeiten am Tag. Sieh das als Ausgangspunkt zum Ausprobieren, nicht als feste Vorgabe.
+    Aber das passt sich an: Wenn du mit Schlaf, Angst, Gehirnnebel oder wenig Energie zu kämpfen hast, solltest du in jeder Phase ganz auf Fasten verzichten — dein Körper braucht gleichmäßigen Treibstoff, nicht weniger. Häufigere, kleinere Mahlzeiten (4–5) tun dir dann meist besser als 2–3 große, und Koffein und Alkohol sind in der Regel das Erste, was man reduzieren sollte, weil beide genau diese Beschwerden direkt verschlechtern.
+df_carb_and_eating_order:
+  title: Zeitpunkt der Kohlenhydrate und Reihenfolge beim Essen
+  body: |-
+    Die meisten Frauen nach der Menopause vertragen Kohlenhydrate zum Frühstück schlecht — am Nachmittag werden sie meist besser vertragen, am Abend meidet oder reduziert man sie am besten. Das spielt eine kleinere Rolle, wenn deine Blutzuckerkontrolle insgesamt schon gut ist (z. B. wenn du überwiegend frische, wenig verarbeitete Lebensmittel isst).
+    Ein einfacher, kostenloser Hebel in jeder Phase: Iss bei einer Mahlzeit Eiweiß und Gemüse vor den Kohlenhydraten, statt mit den Kohlenhydraten zu beginnen. Das dämpft den anschließenden Blutzuckeranstieg, ohne dass du änderst, was du isst — nur die Reihenfolge.
+df_evening_eating_window:
+  title: Hör 3–5 Stunden vor dem Schlafengehen auf zu essen
+  body: >-
+    Versuch, 3–5 Stunden vor dem Schlafengehen nichts mehr zu essen. Im Sommer, wenn es länger hell ist, kann etwas späteres Essen funktionieren — in den Wintermonaten sollte man das aber meiden, besonders in Breitengraden wie dem Vereinigten Königreich.
+df_whole_foods_protein_fibre:
+  title: Der Grundteller — Eiweiß, Ballaststoffe und Farbe, in jeder Phase
+  body: >-
+    Bevorzuge frische Lebensmittel gegenüber verarbeiteten, egal in welcher Phase. Mehr davon: Eiweiß zu jeder Mahlzeit; Ballaststoffe aus Gemüse, besonders Kreuzblütlern (Brokkoli, Blumenkohl, Grünkohl, Kohl); polyphenolreiche Lebensmittel; präbiotische Lebensmittel, und für manche Frauen probiotische; Omega-3, Lein- und Chiasamen; und wärmende Lebensmittel wie Ingwer, Zimt, Kurkuma und rote Zwiebeln.
+df_hydration_protocol:
+  title: Gleichmäßig trinken — etwa 2 Liter, über den Tag verteilt
+  body: >-
+    Trink gleichmäßig über den Tag verteilt statt große Mengen auf einmal — etwa 2 Liter als allgemeine Grundlage, mehr, wenn du aktiv bist oder Nachtschweiß oder Hitzewallungen hast, die den Flüssigkeitsverlust erhöhen. Beginne den Tag mit einem großen Glas Wasser nach dem Aufwachen — eine einfache, erdende Gewohnheit, die nach dem nächtlichen Fasten Flüssigkeit zurückgibt und die Verdauung vor dem Essen in Gang bringt. Versuch, 1–2 Stunden vor dem Schlafengehen nichts mehr zu trinken, damit nächtliche Toilettengänge deinen Schlaf nicht stören.
+df_reduce_sugar_processed_xenoestrogens:
+  title: Was du reduzieren solltest — raffinierten Zucker, Verpackungen und (für manche) Milchprodukte
+  body: >-
+    Raffinierter Zucker und hochverarbeitete Lebensmittel sorgen für Blutzuckerschwankungen, Entzündungen und Energietiefs, die alle in den Kreislauf aus Stimmung, Schlaf und Energie zurückwirken. Wähle, wo möglich, Frisches statt stark verpackter oder Dosenware und achte auf den Kontakt von Lebensmitteln mit Plastik, um die Belastung mit Xenoöstrogenen zu senken. Für manche Frauen lohnt es sich auch, zu viele Milchprodukte einzuschränken — besonders bei einem Muster aus Juckreiz und Migräne, das auf eine Histaminempfindlichkeit hindeuten kann.
+df_thyroid_iron_support_foods:
+  title: Schilddrüse und Eisen — die zwei am häufigsten übersehenen Nährstofflücken
+  body: >-
+    Die Schilddrüsenfunktion ist oft zusammen mit Wechseljahresbeschwerden ein Thema — wichtige Nahrungsquellen sind Jod (Algen, Fisch, Eier) und Selen (Paranüsse — schon 1–2 pro Tag decken deinen Bedarf — und Fisch). Eisenmangel ist eine häufige, oft übersehene Ursache für Erschöpfung und dünner werdendes Haar — Eisen steckt in rotem Fleisch, dunklem Blattgemüse, Linsen und anderen Hülsenfrüchten. Eisenreiche pflanzliche Lebensmittel mit Vitamin C zu kombinieren (z. B. Linsen mit Paprika oder einem Spritzer Zitrone), verbessert die Aufnahme.
+df_histamine_food_awareness:
+  title: Wenn dir Juckreiz oder Migräne auffallen — ein Blick auf Histamin kann sich lohnen
+  body: >-
+    Wenn du Juckreiz oder Migräne zusammen mit anderen Beschwerden wie Blähungen oder Hautrötung hast, ist eine Histaminintoleranz etwas, das manche Fachleute in Betracht ziehen — selbst diagnostizieren kann man sie über die Ernährung allein nicht, also sprich es lieber bei deiner Ärztin, deinem Arzt oder einer Fachperson an, statt dich auf einen Test zu Hause zu verlassen. Wenn du ausprobieren möchtest: Manche Frauen reduzieren ein paar Wochen lang fermentierte Lebensmittel, Käse und Alkohol und schauen, ob sich die Beschwerden verändern. Fermentierte Lebensmittel (Sauerkraut, Kefir, Kimchi, Kombucha) unterstützen bei vielen Frauen tatsächlich ein gesundes Mikrobiom, sind aber auch histaminreich — für manche ist das also eine echte Abwägung, kein versteckter Widerspruch zu den Darmgesundheitstipps an anderer Stelle.
+lf_weekly_movement_mix:
+  title: Eine Wochenmischung — Bergaufgehen, Kraft, Yoga, Pilates
+  body: >-
+    Bergauf oder auf einer Steigung zu gehen, ist hervorragend für Herz und Abnehmen, schonender für die Gelenke als Laufen und baut trotzdem echte Ausdauer auf. Krafttraining schützt Muskelmasse und Knochendichte, die beide schneller abnehmen, wenn das Östrogen sinkt, und unterstützt zudem die Blutzuckerregulation. Yoga oder Gleichgewichtstraining unterstützen Beweglichkeit, die Regulation des Nervensystems und das Gleichgewicht — mit zunehmendem Alter immer wichtiger zur Sturzvorbeugung. Pilates stärkt die Körpermitte und die Stabilität und unterstützt Haltung und Beckenboden.
+lf_stair_sprints:
+  title: 90 Sekunden Treppen am Tag
+  body: >-
+    Kurze Belastungen wie Treppensteigen oder Treppenlaufen — schon 90 Sekunden am Tag — sind eine großartige Möglichkeit, die Ausdauer zu verbessern, ohne lange zu trainieren.
+  disclaimer: >-
+    Lass es kurz ärztlich abklären, wenn du Gelenkprobleme oder Bluthochdruck hast oder länger kein intensives Training gemacht hast.
+lf_circadian_light:
+  title: Licht am Morgen, gedämpftes Licht am Abend — die beiden Enden deiner inneren Uhr
+  body: >-
+    Helles Licht am Morgen — idealerweise draußen, in der ersten Stunde nach dem Aufwachen — hilft, die innere Uhr zu stellen, was sowohl die Schlafqualität als auch Stimmung und Energie am Tag unterstützt. Reduziere am Abend blaues Licht: Bildschirme und LED-Deckenlicht bremsen die Melatoninbildung und erschweren das Ein- und Durchschlafen. Dimm das Licht und leg die Bildschirme weg (oder nutze eine Blaulichtfilterbrille oder den Nachtmodus) in der Stunde oder den zwei Stunden vor dem Schlafengehen — in den Wintermonaten eignen sich Kerzen gut.
+lf_cold_exposure:
+  title: Kaltwasser-Anwendungen
+  body: >-
+    Kalt duschen, das Gesicht mit kaltem Wasser benetzen, kaltes Wasser über die Handgelenke laufen lassen oder einfach die Dusche kalt beenden — es gibt zunehmend Hinweise, dass diese Art von Kältereiz Stimmung, Energie und Stressresistenz zugutekommt. Wenn dich Baden im offenen Gewässer reizt, steigere dich langsam, statt direkt in kaltes Wasser zu springen, und schwimm nie allein.
+  disclaimer: >-
+    Plötzliches Eintauchen in kaltes Wasser kann Herzfrequenz und Blutdruck stark ansteigen lassen und einen unwillkürlichen Schnappatmungsreflex auslösen — ein echtes Risiko für alle mit Herz-Kreislauf-Erkrankungen oder Bluthochdruck. Sprich zuerst mit deiner Ärztin oder deinem Arzt, wenn eins davon auf dich zutrifft. Steigere dich langsam (beginne mit kühleren Duschen, bevor du ins offene Gewässer gehst) und schwimm nie allein.
+lf_postmeal_walk_and_chewing:
+  title: Ein kurzer Spaziergang nach dem Essen, und gründlich kauen
+  body: >-
+    Nach den Mahlzeiten zu gehen — schon 10 Minuten — dämpft Blutzuckerspitzen deutlich, was wieder in den Kreislauf aus Stimmung und Energie hineinwirkt. Es klingt nach wenig, aber langsamer zu essen und gründlich zu kauen, statt zu hetzen, lohnt sich ebenfalls — viele Frauen merken, dass sie dadurch beim Essen ruhiger sind und sich danach wohler fühlen.
+lf_rebounding_box_jumping:
+  title: Trampolin und Box Jumps — für die Knochendichte
+  body: >-
+    10 Minuten Minitrampolin am Tag sind eine gelenkschonende Möglichkeit, Lymphfluss, Knochendichte und Ausdauer zu unterstützen, und im Vergleich zum Laufen sanft zu den Gelenken — die sanftere der beiden Optionen hier. Box Jumps — etwa 10 Minuten, 3-mal pro Woche — belasten das Skelett stärker und bauen Knochendichte daher direkter auf, sind aber wirklich stoßintensiv: kein geeigneter Einstieg, wenn deine Gelenke schon schmerzen; dann sind Trampolin oder Krafttraining die bessere Wahl.
+  disclaimer: >-
+    Sprich vor Beginn eines Sprungtrainings mit deiner Ärztin oder deinem Arzt, wenn du Gelenkprobleme, eine bekannte oder vermutete geringe Knochendichte, Bluthochdruck oder Beckenbodenbeschwerden hast oder länger kein stoßbelastendes Training gemacht hast. Steigere dich langsam, statt gleich mit der vollen Menge zu beginnen.
+lf_vagal_breathwork_and_sauna:
+  title: Atemübungen für den Vagusnerv, und Sauna oder Wärme
+  body: >-
+    Einfache Atemtechniken — Box-Atmung (4 Zählzeiten ein, 4 halten, 4 aus, 4 halten), der physiologische Seufzer (zweimal kurz durch die Nase einatmen, einmal lang durch den Mund ausatmen) oder Summen — aktivieren den Vagusnerv und bringen den Körper vom „Kampf-oder-Flucht“-Modus in den Modus „Ruhe und Verdauung“. Das dauert nur ein paar Minuten und geht überall. Auch für Sauna oder Wärmeanwendungen gibt es zunehmend Belege für die Herz-Kreislauf-Gesundheit, und manchen Frauen helfen sie bei Gelenkschmerzen und für die Stimmung.
+  disclaimer: >-
+    Wenn du zu Hitzewallungen neigst oder Wärme ohnehin schlecht verträgst, ist bei der Sauna Vorsicht geboten — kürzere Gänge, oder ganz verzichten, wenn sie Beschwerden auslöst statt zu helfen. Sprich zuerst mit deiner Ärztin oder deinem Arzt, wenn du eine Herz-Kreislauf-Erkrankung, schlecht eingestellten Blutdruck oder eine Erkrankung hast, die den Flüssigkeitshaushalt betrifft, oder wenn du Medikamente nimmst, die Blutdruck oder Flüssigkeitshaushalt beeinflussen — Wärme erhöht die Herzfrequenz und kann den Blutdruck schnell verändern.
+lf_nature_and_connection:
+  title: Zeit in der Natur, und in Verbindung mit anderen bleiben
+  body: >-
+    Zeit in der Natur — barfuß über Gras oder Sand gehen oder eine Art Gartenarbeit — ist nicht nur Bewegung, sondern die erdende Wirkung, draußen im Moment zu sein und etwas mit den Händen zu tun. Starke soziale Verbindungen hängen mit besserer Stimmung, längerem Leben und mehr Widerstandskraft in hormonellen Übergangsphasen zusammen — eine der einfachsten und am besten belegten Gewohnheiten überhaupt. Ob ein regelmäßiger Spaziergang mit einer Freundin, ein Kurs oder eine Gemeinschaft: Das ist eine echte tägliche oder wöchentliche Gewohnheit, die man benennen sollte, nicht nur ein „Nice-to-have“.
+mr_gp_signpost:
+  title: Sprich mit deiner Ärztin oder deinem Arzt über deine Möglichkeiten — einschließlich HRT
+  body: |-
+    Die Hormonersatztherapie (HRT) ist die wirksamste Behandlung vasomotorischer Beschwerden und kann bei vielen Frauen schützend auf Knochendichte und Herz-Kreislauf-Gesundheit wirken, wenn sie innerhalb von 10 Jahren nach der Menopause begonnen wird. Moderne körperidentische HRT hat in der Regel ein günstigeres Sicherheitsprofil als ältere Präparate. Ob sie für dich geeignet ist, hängt von deinen Beschwerden, deinem Alter, deiner Krankengeschichte und deinen persönlichen Risikofaktoren ab — sie ist nicht für alle geeignet, und das gehört in ein Gespräch mit deiner Ärztin oder deinem Arzt, nicht in eine Selbsteinschätzung. Diese App unterstützt deinen Lebensstil — sie ersetzt keine medizinische Versorgung. Bitte vereinbare einen Termin, wenn deine Beschwerden deine Lebensqualität deutlich beeinträchtigen.
+    Unabhängig von der HRT: Die Lebensstil-Empfehlungen in dieser App — Ernährung, Bewegung, Schlaf, Einstellung — sind als allgemeiner Rahmen gedacht, der für die meisten Frauen passt, ohne etwas, das an sich ungeeignet wäre, wie es bei einem verschreibungspflichtigen Medikament sein kann. Sprich trotzdem immer zuerst mit deiner Ärztin oder deinem Arzt, wenn du Medikamente nimmst (um Wechselwirkungen auszuschließen, besonders mit Nahrungsergänzungsmitteln), wegen einer Erkrankung fachärztlich betreut wirst oder auf eine Behandlung, Untersuchung oder Diagnose wartest. Es geht nicht darum, die Empfehlungen abzuschirmen — sondern sicherzustellen, dass sie auf der richtigen ärztlichen Begleitung aufbauen, nicht an ihrer Stelle stehen.
+mr_this_is_real:
+  title: Deine Beschwerden sind echt — und werden stark unterschätzt
+  body: |-
+    Die Wechseljahre betreffen nahezu jedes System im Körper. Auf dem Höhepunkt der Perimenopause berichten Frauen im Schnitt von 7–10 Beschwerden gleichzeitig. Trotzdem werden die meisten Frauen von medizinischem Personal erst nach den Wechseljahren gefragt, wenn sie das Thema selbst ansprechen. Was du erlebst, ist echt, hat biologische Ursachen und ist kein Zeichen von Schwäche oder davon, „schlecht“ zu altern. Es ist ein Übergang — mit einem Anfang, einer Mitte und einem Ende.
+    Ein normaler Bluttest heißt nicht, dass nichts los ist. Die Hormonwerte schwanken in der Perimenopause stark, ein einzelner Wert kann also unauffällig aussehen, während das, was du spürst, etwas anderes erzählt — deshalb sagt die NICE-Leitlinie im Vereinigten Königreich, dass Frauen über 45 mit Beschwerden meist ohne Bluttest diagnostiziert werden können. Wenn man dir gesagt hat, deine Blutwerte seien „normal“, du dich aber nicht so fühlst, lohnt es sich, noch einmal zu deiner Ärztin oder deinem Arzt zu gehen — das ist keine Sackgasse.
+mr_your_window_headline:
+  title: Das ist dein Zeitfenster
+  body: |-
+    Die Perimenopause passiert dir nicht einfach — sie ruft dich zum Handeln auf. Das ist dein Zeitfenster, kein langsamer Abstieg, sondern der Moment, aktiv zu werden und die Richtung der nächsten 40 Jahre zu ändern.
+    Die Menopause ist nicht das Ende deines Zeitfensters — sie ist ein neues. Die Jahre rund um und kurz nach der letzten Periode sind die Zeit, in der sich manches am schnellsten verändert — der Knochenabbau zum Beispiel ist dann am schnellsten — was du in dieser Zeit aufbaust, trägt also in die Jahrzehnte danach. Wie möchtest du dich fühlen, wer möchtest du in 5, 10, 15 Jahren sein? Fang jetzt an, diese Frau zu üben.
+mr_advice_flexes_to_you:
+  title: Dein Plan sollte sich danach richten, wie es dir geht — nicht nur nach deiner Phase
+  body: >-
+    Schlaf, Stress, Aktivität, Ernährung und Gene wirken alle zusammen, und der richtige Ausgangspunkt hängt davon ab, wo du tatsächlich stehst, nicht nur davon, in welcher Phase du bist. Zwei Frauen in der Postmenopause brauchen womöglich völlig unterschiedliche Empfehlungen, wenn die eine gut schläft und aktiv ist und die andere erschöpft, aufgedreht und kaum schläft. Deine Phase sagt uns, wo wir anfangen zu schauen; wie es dir mit Schlaf, Stress, Energie und Stimmung geht, sagt uns, was du wirklich brauchst. Das ist auch ein guter Moment, auf deine Grenzen zu schauen — was du für alle anderen trägst und ob Platz ist, dich selbst wieder auf die Liste zu setzen.
+mr_hormonal_conditions_awareness:
+  title: Andere hormonelle Ungleichgewichte, die man ausschließen sollte
+  body: >-
+    Wenn du andere hormonelle Ungleichgewichte hast, können auch sie beeinflussen, was du hier brauchst. Schilddrüsenerkrankungen (Unterfunktion, Hashimoto, Überfunktion) wirken eng mit Östrogen und Progesteron zusammen, sodass sich die Beschwerden oft überlappen und verstärken — TSH ist der übliche erste Test, ergänzt durch weitere (wie FT4), wenn er auffällig ist oder die Beschwerden trotz normalen Ergebnisses stark auf die Schilddrüse hindeuten. Ein PCOS, auch wenn es meist früher im Leben diagnostiziert wird, bringt oft eine Insulinresistenz bis in Perimenopause und Menopause mit, sodass ein stabiler Blutzucker noch mehr Aufmerksamkeit braucht. Vielleicht liest du auch von „Nebennierenschwäche“ oder davon, dass chronischer Stress deine Hormone „aufbraucht“ — wichtig zu wissen: Das ist keine anerkannte medizinische Diagnose, eine echte Nebenniereninsuffizienz ist aber eine reale, eigens diagnostizierte Erkrankung, auf die deine Ärztin oder dein Arzt testen kann, wenn du dir Sorgen machst. Insulinresistenz oder Prädiabetes sollte man direkt als eigenständiges hormonelles Ungleichgewicht benennen, nicht nur als „Blutzuckerproblem“. Auch die Familiengeschichte zählt — wenn deine Mutter oder Schwestern eine besonders schwere Perimenopause, eine frühe Menopause oder Erkrankungen wie Osteoporose oder Herz-Kreislauf-Erkrankungen hatten, ist das eine nützliche Information für vorausschauende Tests.
+mr_chronic_illness_pacing:
+  title: Wenn du zusätzlich mit Long Covid, CFS oder Fibromyalgie lebst
+  body: >-
+    Alle drei überschneiden sich stark mit Beschwerden der Perimenopause und Menopause — Erschöpfung, Gehirnnebel, schlechter Schlaf, Stimmungsschwankungen, Belastungsintoleranz — sodass Beschwerden leicht allein den Hormonen zugeschrieben werden und eine gründliche Abklärung sich verzögert. Energie einzuteilen (Pacing) ist hier wichtiger — intensives Training, auch kurze Intervalle, muss eventuell reduziert werden, wenn du nach Belastung Verschlechterungen erlebst (eine Zunahme der Beschwerden nach Aktivität, manchmal mit ein bis zwei Tagen Verzögerung). „Durchbeißen“ ist hier der falsche Impuls — bei Beschwerden nach Belastung kann mehr Aktivität die Erholung zurückwerfen statt Widerstandskraft aufzubauen. Es ist wichtig, mit deiner Hausärztin, deinem Hausarzt oder Fachleuten zusammenzuarbeiten, da übliche Lebensstil-Empfehlungen womöglich deutlich angepasst werden müssen.
+ss_vitamin_d3_k2:
+  title: Vitamin D3 (+K2) — idealerweise nach einem Bluttest
+  body: >-
+    Vitamin-D-Mangel ist im Vereinigten Königreich sehr verbreitet und in den Wechseljahren besonders bedeutsam, weil das sinkende Östrogen ohnehin schon die Knochendichte beeinträchtigt. Viele Frauen nehmen eine Ergänzung im Bereich von 1000–4000 IE pro Tag, idealerweise nach einem Bluttest statt nach Gefühl — ein Test zeigt dir zuerst, ob du überhaupt etwas brauchst und wie viel. Manche Frauen wählen ein Kombipräparat aus D3 (Cholecalciferol) und K2, weil K2 unterstützt, wie der Körper Kalzium verwertet. Das ist eine Anregung, die vielen Frauen hilft, kein medizinischer Rat — bitte sprich vorher mit deiner Hausärztin, deinem Hausarzt oder in der Apotheke.
+  disclaimer: >-
+    In sehr hohen Dosen (dauerhaft über 4000 IE/Tag) kann Vitamin D toxisch wirken. Der K2-Anteil kann mit Warfarin und anderen Blutverdünnern wechselwirken — nimm diese Kombination nicht, wenn du Blutverdünner nimmst, es sei denn, deine Ärztin oder dein Arzt hat es ausdrücklich erlaubt. Lass immer einen Test machen, bevor du mehr als 2000 IE einnimmst, und sprich mit deiner Hausärztin oder deinem Hausarzt, wenn du eine Nierenerkrankung, eine Hyperkalzämie oder eine Sarkoidose hast.
+ss_magnesium_form_guide:
+  title: Magnesium — die Form macht den Unterschied
+  body: >-
+    Wenn du Magnesium ausprobierst, macht die Form mehr aus, als die meisten denken. Frauen, die es nehmen, verwenden üblicherweise etwa 200–400 mg pro Tag und beginnen am unteren Ende. Glycinat ist schonender für den Darm und führt seltener zu weichem Stuhl — meist die bessere Wahl, wenn du Unterstützung für Schlaf, Ruhe oder das Nervensystem ohne abführende Wirkung suchst. Citrat wirkt von Natur aus abführend und ist daher die bessere Wahl, wenn du zusätzlich mit Verstopfung zu tun hast oder die Verdauung unterstützen möchtest — bei zu hoher Dosis kann es allerdings zu weichem Stuhl führen. Beide werden besser aufgenommen als Magnesiumoxid, das günstiger ist, aber schlecht aufgenommen und vor allem wegen seiner abführenden Wirkung eingesetzt wird, nicht um den Magnesiumspiegel zu heben.
+  disclaimer: >-
+    Nahrungsergänzungsmittel sind keine zugelassenen Arzneimittel. Sprich vor dem Beginn immer mit deiner Hausärztin, deinem Hausarzt oder in der Apotheke, besonders wenn du verschreibungspflichtige Medikamente nimmst oder eine Nieren- oder Herzerkrankung hast.
+ss_omega3_foundational:
+  title: Omega-3 (EPA/DHA)
+  body: >-
+    Viele Frauen nehmen ein kombiniertes EPA/DHA-Präparat, üblicherweise im Bereich von 1000–2000 mg pro Tag. Wenn du eins auswählst, achte auf den tatsächlichen EPA/DHA-Gehalt pro Kapsel statt nur auf das Gesamtgewicht des Fischöls, und auf eine von unabhängiger Stelle geprüfte Reinheit.
+  disclaimer: >-
+    Hoch dosiertes Omega-3 kann blutverdünnend wirken. Wenn du Blutverdünner nimmst (Warfarin, Aspirin, Apixaban) oder eine Operation ansteht, sprich vor der Einnahme mit deiner Hausärztin, deinem Hausarzt oder in der Apotheke.
+ss_b_complex_methylated:
+  title: B-Komplex — methylierte Formen sollte man kennen
+  body: >-
+    Wenn du über einen B-Komplex nachdenkst, lohnt es sich, die Formen zu kennen — Methylfolat als Alternative zu synthetischer Folsäure, Methylcobalamin als Alternative zu synthetischem Cyanocobalamin. Keine der Formen ist grundsätzlich „besser“ — eine häufige MTHFR-Genvariante ist für sich genommen kein Grund, methylierte Formen zu bevorzugen, egal was du anderswo liest; wenn du deinen MTHFR-Status kennst und er deine Wahl beeinflussen soll, besprich das mit deiner Ärztin oder deinem Arzt, statt dich nach allgemeinen Informationen wie diesen zu richten. Weil B12- und Folatmangel in dieser Lebensphase so häufig sind, lohnt es sich zu wissen, dass es diese Optionen gibt, statt anzunehmen, dass eine Form für alle passt.
+  disclaimer: >-
+    Sprich vor dem Beginn immer mit deiner Hausärztin, deinem Hausarzt oder in der Apotheke, besonders wenn du verschreibungspflichtige Medikamente nimmst oder eine Nierenerkrankung hast.
+ss_gut_repair_probiotic_prebiotic:
+  title: Probiotika und präbiotische Ballaststoffe — für die Darmregeneration
+  body: >-
+    Manche Frauen finden, dass ein Probiotikum mit mehreren Stämmen ihre Darmgesundheit in dieser Übergangszeit unterstützt — die Dosis hängt vom Produkt und der KBE-Zahl ab, achte also eher auf klinisch belegte Stämme als nur auf die höchste KBE-Zahl. Präbiotische Ballaststoffe (z. B. Inulin, PHGG) sind eine weitere Option, die viele ausprobieren — niedrig beginnen und langsam steigern hilft, Blähungen zu vermeiden, besonders wenn die Darmgesundheit schon angeschlagen ist.
+  disclaimer: >-
+    Sprich vor dem Beginn immer mit deiner Hausärztin, deinem Hausarzt oder in der Apotheke, besonders wenn du verschreibungspflichtige Medikamente nimmst oder eine diagnostizierte Verdauungserkrankung hast.
+ss_digestive_enzymes_hcl:
+  title: Verdauungsenzyme und HCL — bei Blähungen, Reflux und für die Aufnahme
+  body: >-
+    Manche Frauen finden Verdauungsenzyme zu den Mahlzeiten hilfreich, wenn Blähungen oder Beschwerden nach dem Essen regelmäßig vorkommen. Manche Fachleute meinen, dass zu wenig Magensäure bei manchen Frauen eine Rolle spielt — das ist eine umstrittene, keine gesicherte Annahme, also besser als Theorie zum Besprechen mit Ärztin, Arzt oder Fachperson zu sehen. Betainhydrochlorid (HCL) ist eine Option, die manche Frauen unter Anleitung zu eiweißhaltigen Mahlzeiten ausprobieren. Wie man die Dosis nach Gefühl selbst anpasst, erklären wir hier bewusst nicht — genau so etwas sollte eine Fachperson persönlich mit dir durchgehen, weil es für manche Menschen ungeeignet ist.
+  disclaimer: >-
+    HCL ist nicht für alle geeignet — besonders nicht bei aktiven Geschwüren, Gastritis oder der Einnahme entzündungshemmender Medikamente — deshalb vorher ärztlich oder fachlich abklären, auch zur Dosierung.
+ss_calcium_d_glucarate:
+  title: Calcium-D-Glucarat — zur Unterstützung des Östrogenabbaus
+  body: >-
+    Manche Frauen interessieren sich für Calcium-D-Glucarat, oft mit etwa 500 mg–1 g/Tag als Dosis genannt, die Menschen berichten — mit der Vorstellung, dass es die Leber beim Abbau von Östrogen unterstützt, statt dass es über den Darm wieder aufgenommen wird. Diese Idee taucht besonders bei Frauen mit östrogenempfindlichen Erkrankungen wie Endometriose, Adenomyose oder Myomen in der Vorgeschichte auf. Ehrlicherweise sind die Belege am Menschen für genau diese Wirkung begrenzt — das meiste Wissen stammt aus Labor- und Tierforschung statt aus klinischen Studien an Frauen. Wenn du das erkunden möchtest: Eine breitere Unterstützung des Östrogenabbaus — Leberfunktion, Ballaststoffe, Kreuzblütlergemüse, weniger Alkohol und Xenoöstrogene — ist besser belegt und sollte in jedem Fall Vorrang haben.
+  disclaimer: >-
+    Sprich vor dem Beginn immer mit deiner Hausärztin, deinem Hausarzt oder in der Apotheke, besonders wenn du verschreibungspflichtige Medikamente nimmst oder hormonempfindliche Erkrankungen bei dir oder in der Familie vorkommen. Calcium-D-Glucarat kann beeinflussen, wie die Leber manche Medikamente verarbeitet — diese Abklärung ist also noch wichtiger, wenn du regelmäßig Medikamente nimmst.

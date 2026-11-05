@@ -1,0 +1,1057 @@
+{
+  "NavBar": {
+    "inviteAria": "Convide amigas e ganhe meses grátis",
+    "profileAria": "Perfil e definições da conta",
+    "home": "Início",
+    "myPlan": "O meu plano",
+    "checkIn": "Registo",
+    "journal": "Diário",
+    "learn": "Aprender"
+  },
+  "LanguageSwitcher": {
+    "label": "Idioma"
+  },
+  "AutoLocaleNotice": {
+    "message": "Definimos o seu idioma para {language} com base na sua localização.",
+    "keep": "Manter",
+    "switchToEnglish": "Mudar para inglês"
+  },
+  "SignIn": {
+    "subtitle": "Inicie sessão no seu plano de bem-estar.",
+    "continueWithGoogle": "Continuar com o Google",
+    "connecting": "A ligar...",
+    "orUseEmail": "ou use o seu e-mail",
+    "emailPlaceholder": "o.seu@email.com",
+    "sendMagicLink": "Enviar link mágico",
+    "sending": "A enviar...",
+    "noAccount": "Não tem conta?",
+    "signUpFree": "Registe-se gratuitamente",
+    "checkEmail": "Verifique o seu e-mail",
+    "magicLinkSent": "Link mágico enviado para <strong>{email}</strong>.",
+    "tryAgain": "Tentar novamente",
+    "linkFailed": "Esse link de início de sessão não funcionou. Pode ter expirado ou já ter sido utilizado. Inicie sessão novamente abaixo."
+  },
+  "SignUp": {
+    "subtitle": "O seu plano de bem-estar personalizado está à sua espera.",
+    "referralBanner": "Foi convidada — ambas recebem um mês grátis",
+    "beforeYouContinue": "Antes de continuar",
+    "agreeToTerms": "Concordo com os {terms} e a {privacy}.",
+    "termsOfService": "Termos de Serviço",
+    "privacyPolicy": "Política de Privacidade",
+    "dataConsent": "Consinto que os meus dados de bem-estar sejam processados para personalizar a minha experiência.",
+    "marketingConsent": "Enviem-me dicas de bem-estar por e-mail. (Opcional)",
+    "continueWithGoogle": "Continuar com o Google",
+    "connecting": "A ligar...",
+    "orUseEmail": "ou use o seu e-mail",
+    "namePlaceholder": "O seu primeiro nome",
+    "emailPlaceholder": "o.seu@email.com",
+    "continueWithEmail": "Continuar com e-mail",
+    "sendingLink": "A enviar o link...",
+    "alreadyHaveAccount": "Já tem conta?",
+    "signIn": "Iniciar sessão",
+    "checkEmail": "Verifique o seu e-mail",
+    "magicLinkSentClick": "Link mágico enviado para <strong>{email}</strong>. Clique nele para continuar.",
+    "tryAgain": "Tentar novamente",
+    "consentRequired": "Aceite os termos obrigatórios antes de continuar.",
+    "loading": "A carregar..."
+  },
+  "Dashboard": {
+    "logSymptoms": "Registe os sintomas de hoje",
+    "logSymptomsSubtitle": "Acompanhe como se sente e veja o seu progresso ao longo do tempo",
+    "pastCheckins": "Ver os seus registos anteriores →",
+    "yourPlan": "O seu plano de bem-estar",
+    "viewAll": "Ver tudo →",
+    "planReadyPremium": "O seu plano personalizado está pronto.",
+    "planReadyFree": "Complete a sua avaliação para ver o seu plano personalizado.",
+    "journal": "Diário",
+    "open": "Abrir →",
+    "journalSubtitle": "Acompanhe o que está a experimentar e como está a funcionar para si.",
+    "inviteTitle": "🎁 Convide uma amiga, ganhe um mês grátis",
+    "inviteSubtitle": "Ambas recebem um mês grátis — acumulável até 6 recomendações.",
+    "unlockPlan": "Desbloqueie o seu plano completo",
+    "unlockPlanSubtitle": "Aceda a todas as recomendações, conteúdos e ao histórico completo do seu diário.",
+    "upgrade": "Passar a Premium — 7,99 £/mês",
+    "startHere": "Comece aqui",
+    "allCount": "Todas as {count} →",
+    "readNoteFirst": "Leia a nota desta antes de começar",
+    "view": "Ver →",
+    "regionUnavailable": "Os planos personalizados ainda não estão disponíveis na sua região — os guias estão."
+  },
+  "Learn": {
+    "title": "Aprender",
+    "subtitle": "Respostas reais às perguntas que já pesquisou no Google às 3 da manhã — diretamente da Pamela, sem rodeios nem jargão.",
+    "freeArticles": "Artigos gratuitos",
+    "premiumArticles": "Artigos premium",
+    "minRead": "{minutes} min",
+    "unlockLibrary": "Desbloqueie a biblioteca completa",
+    "unlockLibrarySubtitle": "As subscritoras Premium têm acesso a todos os guias aprofundados da Pamela sobre nutrição, sono, saúde sexual, bem-estar mental e muito mais.",
+    "upgrade": "Passar a Premium — 7,99 £/mês",
+    "comingSoon": "Artigos em breve.",
+    "backToLearn": "← Voltar a Aprender",
+    "minReadFull": "{minutes} min de leitura",
+    "premiumArticleTitle": "Este é um artigo premium",
+    "premiumArticleBody": "Passe a Premium para ler este artigo e toda a biblioteca de guias aprofundados da Pamela.",
+    "upgradeCta": "Passar a Premium — 7,99 £/mês"
+  },
+  "Disclaimer": {
+    "full": "Esta aplicação fornece apenas informação geral sobre bem-estar e orientação de estilo de vida. Não constitui aconselhamento médico nem substitui cuidados médicos profissionais. Este conteúdo existe para a ajudar a compreender melhor o seu corpo e a ter conversas mais informadas com o seu médico. Consulte sempre o seu médico de família ou um profissional de saúde qualificado para questões médicas, diagnóstico ou decisões de tratamento.",
+    "short": "Apenas orientação geral de bem-estar — não é aconselhamento médico. Consulte o seu médico de família para questões médicas.",
+    "supplement": "Verifique sempre com o seu médico de família antes de começar a tomar qualquer novo suplemento, especialmente se tomar medicamentos sujeitos a receita médica ou tiver alguma condição de saúde subjacente.",
+    "videoIntro": "Estamos aqui para lhe dar informação real sobre o que está a acontecer no seu corpo durante a perimenopausa e a menopausa. Como sempre, isto não é aconselhamento médico nem substitui o seu médico — existe para a ajudar a compreender melhor o seu próprio corpo, fazer melhores perguntas e obter resultados reais com as mudanças que está a fazer.",
+    "gpSignpost": "Estas são sugestões gerais de bem-estar. Para opções de tratamento médico — incluindo a terapêutica hormonal de substituição, medicamentos sujeitos a receita médica ou referenciação a especialistas — fale com o seu médico de família."
+  },
+  "Symptoms": {
+    "hot_flashes": "Afrontamentos",
+    "night_sweats": "Suores noturnos",
+    "sleep_problems": "Problemas de sono",
+    "mood_changes": "Alterações de humor",
+    "anxiety": "Ansiedade",
+    "brain_fog": "Nevoeiro mental",
+    "weight_changes": "Alterações de peso",
+    "joint_pain": "Dores articulares",
+    "low_libido": "Libido baixa",
+    "fatigue": "Cansaço",
+    "vaginal_dryness": "Secura vaginal",
+    "skin_changes": "Alterações na pele",
+    "hair_changes": "Alterações no cabelo",
+    "other": "Outro"
+  },
+  "CheckinHistory": {
+    "title": "Os seus registos",
+    "subtitle": "O que registou e como está a mudar.",
+    "backToCheckin": "← Registo diário",
+    "formLink": "Os seus registos →",
+    "saved": "Registo guardado.",
+    "todayLogged": "Já fez o registo de hoje.",
+    "editToday": "Editar hoje",
+    "todayMissing": "Ainda não fez o registo de hoje.",
+    "logToday": "Registar agora",
+    "trendsTitle": "Últimos 30 dias",
+    "daysLogged": "{count, plural, one {# dia registado} other {# dias registados}} em 30",
+    "notEnoughYet": "Registe mais alguns dias e os seus padrões começarão a aparecer aqui.",
+    "mood": "Humor",
+    "energy": "Energia",
+    "sleep": "Sono",
+    "scoreAverage": "{value}/5 de média",
+    "sleepAverage": "{value} h de média",
+    "noData": "Sem registo",
+    "metricSummary": "{label}: média de {value} em {count, plural, one {# dia} other {# dias}}.",
+    "topSymptoms": "Sintomas mais frequentes",
+    "symptomDays": "{count, plural, one {# dia} other {# dias}}",
+    "symptomSeverity": "intensidade média {value}/5",
+    "noSymptoms": "Nenhum sintoma avaliado nos últimos 30 dias.",
+    "gpNote": "Isto é um registo do que anotou, não um diagnóstico. Se alguma coisa a preocupar ou mudar de repente, fale com o seu médico de família.",
+    "historyTitle": "Todos os registos",
+    "emptyTitle": "Ainda não há registos",
+    "emptyBody": "Depois de registar alguns dias, os seus padrões aparecerão aqui.",
+    "emptyCta": "Fazer o registo de hoje",
+    "loadError": "Não foi possível carregar os seus registos. Atualize a página para tentar novamente.",
+    "symptomsHeading": "Sintomas",
+    "noneRated": "Nenhum sintoma avaliado",
+    "notesHeading": "Notas",
+    "score": "{value}/5",
+    "hours": "{value} h",
+    "older": "Ver registos anteriores",
+    "newest": "Voltar aos mais recentes"
+  },
+  "Profile": {
+    "title": "Perfil",
+    "name": "Nome",
+    "email": "E-mail",
+    "plan": "Plano",
+    "premium": "Premium ✨",
+    "free": "Gratuito",
+    "languageTitle": "Idioma",
+    "languageBody": "O idioma em que a app é apresentada, incluindo o seu questionário e os artigos da secção Aprender.",
+    "languageSaved": "Idioma atualizado.",
+    "languageError": "Não foi possível mudar o idioma neste momento. Tente novamente.",
+    "subscription": "Subscrição",
+    "manageBilling": "Gerir faturação →",
+    "upgradeTitle": "Passar a Premium",
+    "upgradeBody": "Desbloqueie o seu plano de bem-estar completo, toda a biblioteca de conteúdos e o histórico completo do seu diário.",
+    "upgradeCta": "Passar a Premium — 7,99 £/mês",
+    "inviteTitle": "🎁 Convide amigas e ganhe um mês grátis",
+    "inviteBody": "Você e a sua amiga recebem ambas um mês grátis. Acumule até 6.",
+    "updatePlanTitle": "Atualizar o seu plano de bem-estar",
+    "updatePlanBody": "Refaça o questionário se os seus sintomas ou estilo de vida mudaram.",
+    "redoIntake": "Refazer o questionário",
+    "signOut": "Terminar sessão"
+  },
+  "Onboarding": {
+    "ui": {
+      "back": "← Voltar",
+      "continue": "Continuar",
+      "skip": "Saltar esta pergunta"
+    },
+    "language": {
+      "title": "Em que idioma gostaria de responder a este questionário?",
+      "subtitle": "O resto da app também passará para este idioma. Pode alterá-lo a qualquer momento no seu perfil.",
+      "error": "Não foi possível mudar o idioma neste momento. Tente novamente."
+    },
+    "disclaimer": {
+      "intro": "Vamos criar o seu plano de bem-estar personalizado.",
+      "cta": "Compreendo — vamos começar"
+    },
+    "steps": {
+      "name": {
+        "title": "Como se chama?",
+        "subtitle": "Vamos usá-lo para personalizar a sua experiência.",
+        "placeholder": "O seu primeiro nome"
+      },
+      "age": {
+        "title": "Que idade tem?"
+      },
+      "stage": {
+        "title": "Em que fase da menopausa se encontra?",
+        "subtitle": "Não faz mal se não tiver a certeza — vamos ajudá-la a perceber."
+      },
+      "symptoms": {
+        "title": "Que sintomas está a sentir?",
+        "subtitle": "Selecione todas as opções que se aplicam."
+      },
+      "primary_symptom": {
+        "title": "Que sintoma a incomoda mais neste momento?",
+        "subtitle": "Isto ajuda-nos a definir as prioridades do seu plano."
+      },
+      "symptom_severity": {
+        "title": "Qual é a intensidade desse sintoma principal?",
+        "subtitle": "Adaptamos a intensidade do seu plano ao quanto ele a afeta."
+      },
+      "goal": {
+        "title": "Qual é o seu principal objetivo com esta app?"
+      },
+      "diet": {
+        "title": "Como descreveria a sua alimentação atual?"
+      },
+      "diet_restrictions": {
+        "title": "Tem necessidades alimentares ou alergias que devamos respeitar?",
+        "subtitle": "Selecione todas as que se aplicam — não vamos sugerir alimentos que não lhe sirvam."
+      },
+      "exercise": {
+        "title": "Qual é o seu nível de atividade física atual?"
+      },
+      "smoking": {
+        "title": "Fuma?",
+        "subtitle": "Fumar afeta os afrontamentos e a saúde dos ossos e do coração."
+      },
+      "alcohol": {
+        "title": "Com que frequência bebe álcool?"
+      },
+      "caffeine": {
+        "title": "Quanta cafeína consome?"
+      },
+      "sleep": {
+        "title": "Como avaliaria a qualidade do seu sono neste momento?"
+      },
+      "stress": {
+        "title": "Como é o seu nível de stress no dia a dia?"
+      },
+      "medical_flags": {
+        "title": "Alguma destas situações se aplica a si?",
+        "subtitle": "Isto mantém o seu plano seguro — usamos esta informação para assinalar suplementos ou conselhos que deve confirmar primeiro com o seu médico de família. Selecione todas as que se aplicam."
+      },
+      "previously_tried": {
+        "title": "Já experimentou alguma coisa para controlar os seus sintomas?",
+        "subtitle": "Selecione todas as opções que se aplicam — não vamos repetir o que não resultou.",
+        "cta": "Criar o meu plano →"
+      }
+    },
+    "choices": {
+      "age_range": {
+        "60": "60 anos ou mais",
+        "Under_40": "Menos de 40 anos",
+        "40_44": "40–44 anos",
+        "45_49": "45–49 anos",
+        "50_54": "50–54 anos",
+        "55_59": "55–59 anos"
+      },
+      "menopause_stage": {
+        "unsure": "Ainda não tenho a certeza",
+        "perimenopause": "Acho que estou na perimenopausa",
+        "menopause": "Disseram-me que estou na menopausa",
+        "postmenopause": "Estou na pós-menopausa",
+        "surgical": "Tive uma menopausa cirúrgica"
+      },
+      "symptoms": {
+        "hot_flashes": "Afrontamentos",
+        "night_sweats": "Suores noturnos",
+        "sleep_problems": "Problemas de sono",
+        "mood_changes": "Alterações de humor / irritabilidade",
+        "anxiety": "Ansiedade",
+        "brain_fog": "Nevoeiro mental / problemas de memória",
+        "weight_changes": "Alterações de peso",
+        "joint_pain": "Dores articulares ou musculares",
+        "fatigue": "Falta de energia / cansaço",
+        "low_libido": "Libido baixa",
+        "vaginal_dryness": "Secura vaginal",
+        "skin_changes": "Alterações na pele",
+        "hair_changes": "Alterações no cabelo"
+      },
+      "symptom_severity": {
+        "mild": "Ligeiro — nota-se, mas é gerível",
+        "moderate": "Moderado — afeta o meu dia com frequência",
+        "severe": "Grave — perturba a minha vida"
+      },
+      "primary_goal": {
+        "Reduce_physical_symptoms": "Reduzir os sintomas físicos",
+        "Improve_sleep": "Dormir melhor",
+        "Manage_mood_and_stress": "Gerir o humor e o stress",
+        "Understand_my_body_better": "Compreender melhor o meu corpo",
+        "Manage_weight": "Controlar o peso",
+        "Boost_energy": "Ter mais energia",
+        "Improve_relationships_and_intimacy": "Melhorar as relações e a intimidade",
+        "All_of_the_above": "Todas as anteriores"
+      },
+      "diet_type": {
+        "whole_foods": "Sobretudo alimentos frescos e pouco processados",
+        "mixed": "Mista — umas vezes saudável, outras não",
+        "convenience": "Sobretudo refeições pré-feitas / fast food",
+        "specific": "Sigo uma dieta específica (vegana, vegetariana, etc.)",
+        "unaware": "Não presto muita atenção à alimentação"
+      },
+      "diet_restrictions": {
+        "none": "Sem restrições",
+        "vegetarian": "Vegetariana",
+        "vegan": "Vegana",
+        "dairy_free": "Sem lacticínios / intolerância à lactose",
+        "gluten_free": "Sem glúten / doença celíaca",
+        "nut_allergy": "Alergia a frutos de casca rija",
+        "shellfish_allergy": "Alergia a marisco",
+        "soy_free": "Evito a soja",
+        "halal": "Halal",
+        "kosher": "Kosher"
+      },
+      "exercise_level": {
+        "very_active": "Muito ativa (4 ou mais dias por semana)",
+        "moderately_active": "Moderadamente ativa (2–3 dias por semana)",
+        "lightly_active": "Pouco ativa (caminhadas, 1 dia por semana)",
+        "not_active": "Não muito ativa",
+        "limited": "Tenho uma condição de saúde que me limita"
+      },
+      "smoking_status": {
+        "non_smoker": "Nunca fumei",
+        "ex_smoker": "Ex-fumadora",
+        "occasional_smoker": "Ocasionalmente",
+        "regular_smoker": "Regularmente"
+      },
+      "alcohol_intake": {
+        "none": "Não bebo",
+        "occasional": "Ocasionalmente (1–2 bebidas por semana)",
+        "regular": "Regularmente (3–7 bebidas por semana)",
+        "frequent": "Quase todos os dias"
+      },
+      "caffeine_intake": {
+        "none": "Nenhuma",
+        "low": "Pouca (1 chávena por dia)",
+        "moderate": "Moderada (2–3 por dia)",
+        "high": "Muita (4 ou mais por dia)"
+      },
+      "sleep_quality": {
+        "good": "Boa — durmo bem",
+        "fair": "Razoável — algumas interrupções",
+        "poor": "Má — tenho dificuldades na maioria das noites",
+        "very_poor": "Muito má — o sono é um grande problema"
+      },
+      "stress_level": {
+        "low": "Baixo — sinto-me calma a maior parte do tempo",
+        "moderate": "Moderado — algum stress, mas gerível",
+        "high": "Alto — sinto-me stressada com frequência",
+        "very_high": "Muito alto — sinto-me sobrecarregada"
+      },
+      "medical_flags": {
+        "none": "Nenhuma destas",
+        "on_hrt": "Estou atualmente a fazer terapêutica hormonal de substituição (THS)",
+        "oestrogen_sensitive": "Antecedentes de cancro da mama ou do ovário, ou de uma doença sensível aos estrogénios",
+        "blood_thinners": "Tomo anticoagulantes (p. ex., varfarina)",
+        "high_blood_pressure": "Tensão arterial alta",
+        "kidney_stones": "Antecedentes de cálculos renais (pedras nos rins)",
+        "thyroid": "Doença da tiroide",
+        "diabetes": "Diabetes",
+        "pregnant_breastfeeding": "Grávida ou a amamentar"
+      },
+      "previously_tried": {
+        "Nothing_yet": "Nada ainda",
+        "Diet_changes": "Alterações na alimentação",
+        "Exercise": "Exercício",
+        "HRT": "Terapêutica hormonal de substituição (THS)",
+        "Natural_supplements": "Suplementos naturais",
+        "Mindfulness_meditation": "Mindfulness / meditação",
+        "Counselling_or_therapy": "Aconselhamento psicológico ou terapia",
+        "Acupuncture": "Acupuntura",
+        "Other": "Outro"
+      }
+    },
+    "continent": {
+      "title": "De onde são as suas raízes?",
+      "subtitle": "Escolha a região que melhor representa a sua origem cultural. Depois mostramos-lhe opções mais específicas."
+    },
+    "continents": {
+      "africa": "África",
+      "caribbean": "Caraíbas",
+      "south_asia": "Ásia do Sul",
+      "east_asia": "Ásia Oriental e do Sudeste",
+      "mena": "Médio Oriente e Norte de África",
+      "latin_america": "América Latina",
+      "europe": "Europa e Ilhas Britânicas",
+      "other": "Mista / Outra"
+    },
+    "heritage": {
+      "title": "Com que comunidades se identifica?",
+      "subtitle": "Selecione todas as que se aplicam. Quanto mais específica for, mais relevante será o seu plano.",
+      "note": "A investigação mostra que a menopausa afeta comunidades diferentes de formas diferentes — no momento em que surge, nos sintomas e nos alimentos que mais ajudam. Esta informação é privada e nunca é partilhada.",
+      "selectedCount": "✓ {count, plural, one {# selecionada} other {# selecionadas}}",
+      "continueWithCount": "{count, plural, one {Continuar com # seleção} other {Continuar com # seleções}}"
+    },
+    "communityGroups": {
+      "Nigeria": "Nigéria",
+      "Ghana": "Gana",
+      "East_Southern_Africa": "África Oriental e Austral",
+      "West_Africa_other": "África Ocidental (outras)",
+      "Caribbean": "Caraíbas",
+      "South_Asia_India": "Ásia do Sul — Índia",
+      "South_Asia_Pakistan_Bangladesh": "Ásia do Sul — Paquistão e Bangladesh",
+      "East_Asia": "Ásia Oriental",
+      "Southeast_Asia": "Sudeste Asiático",
+      "Middle_East_North_Africa": "Médio Oriente e Norte de África",
+      "Latin_America": "América Latina",
+      "White_British_European": "Britânica e europeia (branca)",
+      "Other": "Outra"
+    },
+    "communities": {
+      "yoruba": "Iorubá (Lagos, Oyo, Ogun, Ondo, Ekiti, Osun)",
+      "igbo": "Igbo (Anambra, Imo, Enugu, Abia, Ebonyi)",
+      "hausa_fulani": "Hauçá / Hauçá-Fula (Norte da Nigéria)",
+      "ijaw": "Ijaw / Delta do Níger",
+      "edo": "Edo / Bini",
+      "efik": "Efik / Ibibio (Cross River, Akwa Ibom)",
+      "urhobo": "Urhobo / Delta",
+      "nigerian_other": "Outra origem nigeriana",
+      "akan": "Akan / Ashanti / Fante",
+      "ewe": "Ewe",
+      "ga": "Ga / Adangbe",
+      "ghanaian": "Outra origem ganesa",
+      "kikuyu": "Kikuyu (Quénia)",
+      "luo": "Luo (Quénia/Uganda)",
+      "kenyan": "Outra origem queniana",
+      "baganda": "Baganda (Uganda)",
+      "ugandan": "Outra origem ugandesa",
+      "bemba": "Bemba (Zâmbia)",
+      "zambian": "Outra origem zambiana",
+      "shona": "Shona (Zimbabué)",
+      "zulu": "Zulu (África do Sul)",
+      "xhosa": "Xhosa (África do Sul)",
+      "south_african": "Outra origem sul-africana",
+      "amhara": "Amhara / Oromo (Etiópia)",
+      "somali": "Somali",
+      "wolof": "Wolof (Senegal/Gâmbia)",
+      "temne": "Temne / Mende (Serra Leoa)",
+      "krio": "Krio (Serra Leoa)",
+      "jamaican": "Jamaicana",
+      "trinidadian": "De Trindade e Tobago",
+      "barbadian": "Barbadense (bajan)",
+      "guyanese": "Guianense",
+      "haitian": "Haitiana",
+      "grenadian": "Granadina",
+      "st_lucian": "De Santa Lúcia",
+      "caribbean": "Outra origem caribenha",
+      "punjabi": "Punjabi (sikh / hindu)",
+      "gujarati": "Guzerate (incluindo jainista)",
+      "bengali_india": "Bengali (Bengala Ocidental)",
+      "tamil": "Tâmil (Tamil Nadu / Sul da Índia)",
+      "malayali": "Malaiala (Kerala)",
+      "marathi": "Marata (Maharashtra)",
+      "telugu": "Telugo (Andhra / Telangana)",
+      "kannada": "Canaresa (Karnataka)",
+      "bihari": "Bihari / Uttar Pradesh",
+      "rajasthani": "Rajastani",
+      "indian": "Outra origem indiana",
+      "punjabi_pakistan": "Punjabi (Paquistão / muçulmana)",
+      "sindhi": "Sindi",
+      "pashtun": "Pastune / Khyber Pakhtunkhwa",
+      "kashmiri": "De Caxemira",
+      "pakistani": "Outra origem paquistanesa",
+      "bangladeshi": "Do Bangladesh / bengali (Bangladesh)",
+      "sylheti": "Sylheti",
+      "sri_lankan": "Do Sri Lanka (cingalesa / tâmil)",
+      "cantonese": "Cantonesa (Guangdong / Hong Kong)",
+      "mandarin": "Falante de mandarim (Norte da China)",
+      "hakka": "Hakka",
+      "hokkien": "Hokkien / Fujian",
+      "japanese": "Japonesa",
+      "korean": "Coreana",
+      "taiwanese": "Taiwanesa",
+      "vietnamese": "Vietnamita",
+      "filipino": "Filipina (tagalo / visaia)",
+      "thai": "Tailandesa",
+      "malay": "Malaia / da Malásia",
+      "indonesian": "Indonésia / javanesa",
+      "arab": "Árabe (geral)",
+      "moroccan": "Marroquina",
+      "egyptian": "Egípcia",
+      "lebanese": "Libanesa / síria",
+      "iranian": "Iraniana / persa",
+      "turkish": "Turca / curda",
+      "mexican": "Mexicana",
+      "colombian": "Colombiana",
+      "puerto_rican": "Porto-riquenha",
+      "cuban": "Cubana",
+      "dominican": "Dominicana",
+      "peruvian": "Peruana",
+      "brazilian": "Brasileira",
+      "hispanic": "Outra origem latino-americana / hispânica",
+      "english": "Inglesa",
+      "scottish": "Escocesa",
+      "welsh": "Galesa",
+      "white_irish": "Irlandesa",
+      "polish": "Polaca",
+      "eastern_european": "Outra origem da Europa de Leste",
+      "mediterranean": "Mediterrânica (italiana / grega / espanhola)",
+      "white_european": "Outra origem europeia branca",
+      "mixed": "Origem mista (selecione acima todas as que se aplicam)",
+      "prefer_not_to_say": "Prefiro não dizer"
+    },
+    "location": {
+      "title": "Onde vive?",
+      "subtitle": "As suas raízes moldam a sua cultura, mas o sítio onde vive molda o seu dia a dia. Usamos esta informação para adaptar horários e a disponibilidade de alimentos perto de si.",
+      "city": "Cidade ou localidade",
+      "cityPlaceholder": "p. ex., Londres, Lagos, Toronto",
+      "country": "País",
+      "countryPlaceholder": "Selecione o seu país",
+      "timezone": "O seu fuso horário",
+      "timezonePlaceholder": "Selecione o seu fuso horário"
+    },
+    "countries": {
+      "GB": "Reino Unido",
+      "US": "Estados Unidos",
+      "CA": "Canadá",
+      "AU": "Austrália",
+      "other": "Noutro sítio"
+    },
+    "timezoneGroups": {
+      "UK_Ireland": "Reino Unido e Irlanda",
+      "Europe": "Europa",
+      "Africa": "África",
+      "Middle_East": "Médio Oriente",
+      "South_Asia": "Ásia do Sul",
+      "East_SE_Asia": "Ásia Oriental e do Sudeste",
+      "Americas": "Américas",
+      "Pacific": "Pacífico"
+    },
+    "timezones": {
+      "Europe_London": "Londres / Dublin (GMT / BST)",
+      "Europe_Paris": "Paris / Berlim / Amesterdão (CET)",
+      "Europe_Helsinki": "Helsínquia / Talin (EET)",
+      "Europe_Lisbon": "Lisboa / Ilhas Canárias (WET)",
+      "Africa_Lagos": "Lagos / Acra / Abidjan (WAT)",
+      "Africa_Nairobi": "Nairobi / Kampala / Dar es Salaam (EAT)",
+      "Africa_Johannesburg": "Joanesburgo / Harare / Lusaca (SAST)",
+      "Africa_Cairo": "Cairo / Cartum (EET)",
+      "Africa_Casablanca": "Casablanca / Rabat (WET)",
+      "Asia_Dubai": "Dubai / Abu Dhabi (GST)",
+      "Asia_Riyadh": "Riade / Kuwait / Bagdade (AST)",
+      "Asia_Beirut": "Beirute / Amã / Nicósia (EET)",
+      "Asia_Tehran": "Teerão (IRST)",
+      "Asia_Kolkata": "Índia (IST)",
+      "Asia_Karachi": "Paquistão (PKT)",
+      "Asia_Dhaka": "Bangladesh (BST)",
+      "Asia_Colombo": "Sri Lanka (SLST)",
+      "Asia_Shanghai": "China / Hong Kong / Taiwan (CST)",
+      "Asia_Tokyo": "Japão / Coreia (JST)",
+      "Asia_Singapore": "Singapura / Malásia / Filipinas (SGT)",
+      "Asia_Bangkok": "Tailândia / Vietname / Indonésia (ICT)",
+      "America_New_York": "Nova Iorque / Toronto / Miami (ET)",
+      "America_Chicago": "Chicago / Cidade do México (CT)",
+      "America_Denver": "Denver / Phoenix (MT)",
+      "America_Los_Angeles": "Los Angeles / Vancouver (PT)",
+      "America_Jamaica": "Jamaica / Caraíbas (EST)",
+      "America_Sao_Paulo": "São Paulo / Buenos Aires (BRT)",
+      "Australia_Sydney": "Sydney / Melbourne (AEST)",
+      "Pacific_Auckland": "Nova Zelândia (NZST)"
+    },
+    "complete": {
+      "title": "O seu plano está quase pronto, {name}",
+      "titleNoName": "O seu plano está quase pronto",
+      "body": "Estamos a criar o seu plano de bem-estar personalizado com base nas suas respostas. Demora apenas um momento.",
+      "cta": "Ver o meu plano →",
+      "building": "A criar o seu plano...",
+      "planError": "As suas respostas foram guardadas, mas não foi possível criar o seu plano. Tente novamente.",
+      "genericError": "Algo correu mal. Tente novamente."
+    }
+  },
+  "Greeting": {
+    "morning": "Bom dia, {name}",
+    "afternoon": "Boa tarde, {name}",
+    "evening": "Boa noite, {name}",
+    "morningNoName": "Bom dia",
+    "afternoonNoName": "Boa tarde",
+    "eveningNoName": "Boa noite",
+    "howAreYou": "Como se sente hoje?"
+  },
+  "MyPlan": {
+    "regionTitle": "Os planos personalizados não estão disponíveis na sua região",
+    "regionBody": "Devido à regulamentação de saúde local, a Aunty Mel ainda não lhe pode dar um plano individualizado aqui — mas os nossos guias baseados em evidência estão totalmente disponíveis para si.",
+    "exploreGuides": "Explorar os guias",
+    "noPlanTitle": "Ainda não tem plano",
+    "noPlanBody": "Complete o questionário para gerar o seu plano de bem-estar personalizado.",
+    "startIntake": "Começar o questionário",
+    "title": "O seu plano",
+    "summary": "{count, plural, one {# sugestão, ordenada para si.} other {# sugestões, ordenadas para si.}} Toque em qualquer uma para ler mais.",
+    "flaggedNotes": "{count, plural, one {# sugestão tem uma nota} other {# sugestões têm uma nota}} com base no que nos disse sobre a sua saúde.",
+    "source": "Fonte: {source}",
+    "freeTitle": "Está a ver as suas 3 principais recomendações",
+    "freeBody": "Passe a Premium para desbloquear o seu plano completo, com todas as recomendações de alimentação, estilo de vida, mentalidade e suplementos.",
+    "freeCta": "Desbloquear o plano completo — 7,99 £/mês",
+    "cultureFoods": "Alimentos da sua cultura",
+    "cultureExperience": "Para a sua experiência em particular",
+    "updatedQuestion": "O seu estilo de vida ou os seus sintomas mudaram?",
+    "redoIntake": "Refazer o questionário para atualizar o meu plano"
+  },
+  "PlanTabs": {
+    "ariaLabel": "O seu plano, por categoria",
+    "diet": "Alimentação",
+    "lifestyle": "Hábitos",
+    "mindset": "Mente",
+    "supplements": "Suplementos",
+    "recommendations": "{count, plural, one {recomendação} other {recomendações}}"
+  },
+  "PlanCard": {
+    "priority": {
+      "high": "O mais importante para si",
+      "medium": "Vale a pena",
+      "low": "Quando tiver disponibilidade"
+    },
+    "helpsWith": "Ajuda com",
+    "safety": {
+      "personal": "Aplica-se a si",
+      "ceiling": "Quantidade máxima diária",
+      "gp_check": "Confirme com o seu médico de família"
+    },
+    "alsoSuggestedFor": "Também sugerido para",
+    "readMore": "Ler mais",
+    "showLess": "Ver menos",
+    "note": {
+      "caution": "Disse-nos que {because}. Esta sugestão tem um aviso que se aplica a si — leia-o abaixo e confirme com o seu médico de família ou farmacêutico antes de começar.",
+      "adapt": "Disse-nos que {because}. Esta sugestão precisa de ser verificada ou adaptada — leia a nota abaixo antes de comprar alguma coisa."
+    },
+    "circumstances": {
+      "blood_thinners": "toma anticoagulantes",
+      "thyroid": "tem uma doença da tiroide",
+      "diabetes": "tem diabetes",
+      "pregnant_breastfeeding": "está grávida ou a amamentar",
+      "kidney_stones": "tem antecedentes de cálculos renais",
+      "high_blood_pressure": "tem tensão arterial alta",
+      "oestrogen_sensitive": "tem antecedentes de uma doença sensível aos estrogénios",
+      "shellfish_allergy": "tem alergia a marisco"
+    },
+    "maxDaily": "Máximo de {amount} {unit} por dia no total ({basis}) — este é o limite combinado de todo o seu plano, não por sugestão. Confirme com o seu médico de família ou farmacêutico antes de se aproximar desse valor."
+  },
+  "Checkin": {
+    "title": "Registo diário",
+    "alreadyLogged": "Já fez o registo de hoje — isto vai atualizar essa entrada.",
+    "symptomsTitle": "Sintomas de hoje",
+    "symptomsHelp": "Toque num número para avaliar a intensidade (1 = ligeira, 5 = grave). Salte os que não se aplicam hoje.",
+    "severityAria": "{label}: intensidade {value} de 5",
+    "overallTitle": "No geral, hoje",
+    "mood": "Humor",
+    "moodLow": "Em baixo / difícil",
+    "moodHigh": "Ótimo",
+    "energy": "Energia",
+    "energyLow": "Exausta",
+    "energyHigh": "Cheia de energia",
+    "sleepTitle": "Horas de sono na última noite",
+    "hours": "{value} h",
+    "notesTitle": "Notas (opcional)",
+    "notesPlaceholder": "Notou alguma coisa hoje? Fatores desencadeantes, padrões, coisas que ajudaram...",
+    "loading": "A carregar...",
+    "saving": "A guardar...",
+    "save": "Guardar o registo de hoje",
+    "errorSession": "A sua sessão expirou. Inicie sessão novamente para guardar o seu registo.",
+    "errorRateLimit": "Demasiadas tentativas neste momento. Aguarde um pouco e tente novamente.",
+    "errorSave": "Não foi possível guardar o seu registo. Tente novamente.",
+    "errorNetwork": "Não foi possível contactar o servidor. Verifique a sua ligação e tente novamente."
+  },
+  "Journal": {
+    "title": "Diário",
+    "newEntry": "+ Nova entrada",
+    "newEntryTitle": "Nova entrada no diário",
+    "symptomLabel": "Que sintoma está a acompanhar? (opcional)",
+    "noSymptom": "Nenhum sintoma em particular",
+    "planItemLabel": "Que mudança está a experimentar? (opcional)",
+    "planItemPlaceholder": "p. ex., Reduzir a cafeína, Respiração pausada diária...",
+    "daysLabel": "Há quantos dias está a experimentar isto?",
+    "effectLabel": "Como tem corrido?",
+    "effects": {
+      "much_better": "✅ Muito melhor",
+      "better": "👍 Melhor",
+      "no_change": "➡️ Sem alterações",
+      "worse": "👎 Pior"
+    },
+    "continueLabel": "Continuaria com isto?",
+    "yes": "Sim",
+    "no": "Não",
+    "notesLabel": "As suas notas",
+    "notesPlaceholder": "Como se sente? O que notou? O que resultou e o que não resultou?",
+    "saving": "A guardar...",
+    "save": "Guardar entrada",
+    "cancel": "Cancelar",
+    "limitedTitle": "A mostrar os seus últimos 7 dias",
+    "limitedBody": "Passe a Premium para aceder a todo o histórico do seu diário.",
+    "upgradeCta": "Passar a Premium — 7,99 £/mês",
+    "loading": "A carregar...",
+    "emptyTitle": "Ainda não há entradas no diário.",
+    "emptyBody": "Use o diário para acompanhar o que está a experimentar e como está a correr.",
+    "day": "Dia {count}",
+    "wouldContinue": "Continuaria",
+    "wouldNotContinue": "Não continuaria",
+    "errorSave": "Não foi possível guardar a entrada. Tente novamente.",
+    "errorNetwork": "Não foi possível guardar a entrada. Verifique a sua ligação."
+  },
+  "Pay": {
+    "title": "Desbloquear Premium",
+    "subtitle": "O seu plano de bem-estar completo e personalizado, toda a biblioteca de conteúdos e um diário ilimitado.",
+    "monthly": "Mensal",
+    "yearly": "Anual",
+    "savePercent": "Poupe {percent}%",
+    "perMonth": "por mês",
+    "yearlySub": "{perMonth}/mês — poupa {saving} por ano",
+    "featurePlan": "Plano de bem-estar completo e personalizado",
+    "featureRecommendations": "Todas as recomendações de alimentação, estilo de vida e mentalidade",
+    "featureSupplements": "Orientação sobre suplementos com notas sobre a evidência",
+    "featureArticles": "Artigos baseados em investigação fiável",
+    "featureJournal": "Histórico do diário ilimitado",
+    "featureTrends": "Evolução diária dos seus sintomas",
+    "featureNudges": "Lembretes diários por notificação",
+    "loading": "A carregar…",
+    "startMonthly": "Começar por {price}/mês",
+    "startYearly": "Começar por {price}/ano",
+    "reassurance": "Cancele quando quiser. Sem custos escondidos. Pagamento seguro através da Stripe.",
+    "errorGeneric": "Algo correu mal. Tente novamente.",
+    "errorNetwork": "Não foi possível ligar. Verifique a sua ligação e tente novamente."
+  },
+  "Refer": {
+    "title": "Convidar amigas",
+    "subtitle": "Partilhe a Aunty Mel com alguém que precise. Ambas recebem um mês grátis.",
+    "howItWorks": "Como funciona",
+    "step1": "Partilhe o seu link pessoal com uma amiga.",
+    "step2": "Ela regista-se e subscreve através do seu link.",
+    "step3": "Assim que o primeiro pagamento dela for concluído, ambas recebem um mês grátis.",
+    "step4": "Convide mais amigas para acumular até 6 meses grátis."
+  },
+  "ReferralCard": {
+    "loadError": "Não foi possível carregar o seu link de convite neste momento. Experimente atualizar a página.",
+    "shareText": "Tenho usado a Aunty Mel para orientação de bem-estar na menopausa e achei que ias adorar. Usa o meu link e ganhamos as duas um mês grátis: {url}",
+    "title": "Convide uma amiga, ganhe um mês grátis",
+    "body": "Quando uma amiga se junta com o seu link e subscreve, recebem <strong>ambas</strong> um mês grátis. Convide até {cap} amigas e acumule até {cap} meses grátis.",
+    "progress": "{earned} de {cap} meses ganhos",
+    "capReached": "Limite atingido 🎉",
+    "banked": "{count, plural, one {# mês grátis acumulado} other {# meses grátis acumulados}} — será aplicado automaticamente na sua próxima subscrição.",
+    "linkLabel": "O seu link de convite",
+    "copied": "✓ Copiado!",
+    "copy": "Copiar o seu link de convite",
+    "emailSubject": "Precisas da Aunty Mel na tua vida",
+    "email": "E-mail",
+    "terms": "Os meses grátis são creditados assim que a sua amiga fizer o primeiro pagamento com sucesso. Um único bónus de convite por pessoa. Consulte os <link>termos do programa de convites</link> para mais detalhes."
+  },
+  "ReferralRewardBanner": {
+    "welcome": "Bónus de boas-vindas aplicado — oferecemos-lhe um mês grátis!",
+    "friendsSubscribed": "{friends, plural, one {A sua amiga subscreveu} other {As suas # amigas subscreveram}} — acabou de ganhar {months, plural, one {# mês grátis} other {# meses grátis}}!",
+    "earned": "Acabou de ganhar {months, plural, one {# mês grátis} other {# meses grátis}} com convites!",
+    "checkBilling": "Consulte a sua faturação para ver os detalhes.",
+    "dismiss": "Fechar"
+  },
+  "RefreshSubscription": {
+    "checking": "A verificar com a Stripe…",
+    "button": "Já pagou? Atualizar estado",
+    "stillFree": "Ainda não encontrámos uma subscrição ativa. Se acabou de ser cobrada, pode demorar um minuto — tente novamente daqui a pouco ou contacte o apoio se o problema continuar.",
+    "error": "Algo correu mal. Tente novamente."
+  },
+  "Offline": {
+    "title": "Está offline",
+    "body": "Sem ligação à internet. O seu diário e os seus registos serão sincronizados quando voltar a estar online."
+  },
+  "Landing": {
+    "signIn": "Iniciar sessão",
+    "getStarted": "Começar grátis",
+    "manifesto1": "Há coisas que sempre passaram de mulher para mulher — em voz baixa, com cuidado, por vezes nada. A menopausa era uma das do <em>nada</em>. O laço entre mãe e filha carrega tanto, mas nem sempre isto. Demasiada história. Demasiado a proteger.",
+    "manifesto2": "Foi sempre a tia quem fez essa ponte — quem respondeu às perguntas que tinha medo de fazer à sua mãe, e tratou a sua transformação como algo digno de celebrar, não de esconder. <strong>A Aunty Mel é simplesmente o sítio onde essa sabedoria vive agora.</strong>",
+    "joinWaitlist": "Juntar-me à lista de espera →",
+    "noCard": "Não é preciso cartão de crédito. Plano gratuito disponível.",
+    "features": {
+      "plan": {
+        "title": "O seu plano",
+        "desc": "Recomendações de bem-estar personalizadas, criadas à volta dos seus sintomas"
+      },
+      "journal": {
+        "title": "O seu diário",
+        "desc": "Acompanhe o que resulta. Veja o seu progresso. Construa a sua própria visão."
+      },
+      "knowledge": {
+        "title": "Conhecimento real",
+        "desc": "Artigos da Pamela baseados em evidência — sem rodeios, sem medo"
+      }
+    },
+    "disclaimer": "A Aunty Mel fornece apenas informação geral de bem-estar. Não é aconselhamento médico. Consulte sempre o seu médico de família para questões médicas."
+  },
+  "Notifications": {
+    "title": "Notificações push",
+    "subtitle": "Lembretes diários do seu plano e do seu registo",
+    "working": "A processar…",
+    "turnOn": "Ativar",
+    "turnOff": "Desativar",
+    "offByDefault": "Desativadas por predefinição — ative-as para receber lembretes do seu plano.",
+    "hourLabel": "Enviar o meu lembrete diário por volta das",
+    "saving": "A guardar…",
+    "unsupported": "Este navegador não suporta notificações push.",
+    "iosHomeScreen": "No iPhone ou iPad, adicione primeiro a Aunty Mel ao ecrã principal (Partilhar → Adicionar ao ecrã principal) — o iOS só permite notificações em apps abertas dessa forma, não num separador normal do navegador.",
+    "errorPermission": "Tem de permitir as notificações no seu navegador para ativar esta opção.",
+    "errorNotConfigured": "As notificações ainda não estão configuradas — volte em breve.",
+    "errorTurnOn": "Algo correu mal ao ativar as notificações.",
+    "errorTurnOff": "Algo correu mal ao desativar as notificações.",
+    "errorHour": "Não foi possível guardar a hora do seu lembrete — tente novamente."
+  },
+  "AuthComplete": {
+    "failed": "Não foi possível concluir o início de sessão.",
+    "tryAgain": "Tentar novamente",
+    "signingIn": "A iniciar sessão…"
+  },
+  "Legal": {
+    "back": "← Voltar à Aunty Mel",
+    "backPlain": "Voltar à Aunty Mel",
+    "translationNotice": "Esta é uma tradução, disponibilizada para a ajudar a compreender este documento. A versão em inglês é a juridicamente vinculativa — se alguma vez divergirem, aplica-se a versão em inglês.",
+    "readEnglish": "Ler a versão em inglês",
+    "englishShown": "Está a ler a versão em inglês, que é a juridicamente vinculativa.",
+    "backToTranslation": "Voltar à tradução em {language}",
+    "links": {
+      "privacy": "Política de Privacidade",
+      "terms": "Termos de Serviço",
+      "termsRefund": "Termos e Reembolsos",
+      "cookies": "Política de Cookies",
+      "support": "Apoio",
+      "dataDeletion": "Apagar os meus dados"
+    },
+    "meta": {
+      "privacy": {
+        "title": "Política de Privacidade",
+        "description": "Como a Aunty Mel recolhe, usa e protege os seus dados pessoais."
+      },
+      "terms": {
+        "title": "Termos de Serviço e Política de Reembolso",
+        "description": "Os termos de utilização da Aunty Mel e a nossa promessa de reembolso."
+      },
+      "cookies": {
+        "title": "Política de Cookies",
+        "description": "Como a Aunty Mel usa cookies e tecnologias semelhantes."
+      },
+      "dataDeletion": {
+        "title": "Apagar os meus dados",
+        "description": "Peça o apagamento da sua conta Aunty Mel e de todos os dados pessoais associados."
+      },
+      "accessibility": {
+        "title": "Declaração de Acessibilidade",
+        "description": "O nosso compromisso de tornar a Aunty Mel acessível a todas as pessoas."
+      }
+    }
+  },
+  "Support": {
+    "meta": {
+      "title": "Apoio",
+      "description": "Obtenha ajuda com a Aunty Mel: perguntas frequentes, apoio à conta e como nos contactar."
+    },
+    "title": "Apoio",
+    "intro": "Somos uma equipa pequena e queremos mesmo ajudar. Encontre respostas abaixo ou envie-nos um e-mail — respondemos no prazo de 1 dia útil.",
+    "contactTitle": "Contacte-nos",
+    "contactBody": "Não encontra a resposta abaixo? Envie-nos um e-mail — lemos todas as mensagens.",
+    "emailButton": "Escrever para {email}",
+    "privacyRequests": "Para pedidos de privacidade ou sobre dados:",
+    "faqTitle": "Perguntas frequentes",
+    "faq": {
+      "what": {
+        "q": "O que é a Aunty Mel?",
+        "a": "A Aunty Mel é uma app de bem-estar personalizada para mulheres que atravessam a perimenopausa e a menopausa. Dá-lhe orientação baseada em evidência sobre alimentação, estilo de vida e mentalidade — adaptada aos seus sintomas, à sua origem e aos seus objetivos."
+      },
+      "medical": {
+        "q": "A Aunty Mel dá aconselhamento médico?",
+        "a": "Não. A Aunty Mel fornece apenas informação geral de bem-estar. Não substitui o aconselhamento médico de um profissional de saúde qualificado. Consulte sempre o seu médico de família ou um especialista em menopausa para questões médicas."
+      },
+      "login": {
+        "q": "Como inicio sessão?",
+        "a": "Pode iniciar sessão com a sua conta Google ou usar um link mágico — enviamos-lhe por e-mail um link para entrar com um clique. Não precisa de palavra-passe."
+      },
+      "magicLink": {
+        "q": "Não recebi o e-mail com o meu link mágico.",
+        "a": "Verifique a pasta de spam ou de lixo eletrónico. Os links mágicos expiram ao fim de 1 hora — se tiver expirado, volte à página de início de sessão e peça um novo. Se continuar sem o receber, contacte-nos através de hello@auntymel.app."
+      },
+      "cancel": {
+        "q": "Como cancelo a minha subscrição?",
+        "a": "Vá às definições da sua conta e toque em «Gerir subscrição». Pode cancelar a qualquer momento. Mantém o acesso até ao fim do período de faturação atual e não voltamos a cobrar."
+      },
+      "refund": {
+        "q": "Posso pedir um reembolso?",
+        "a": "Sim — oferecemos uma garantia de reembolso de 30 dias, sem perguntas. Envie um e-mail para hello@auntymel.app com o assunto «Refund request» e tratamos do assunto em 5 dias úteis. Se já passou o prazo de 30 dias e algo correu mal, fale connosco na mesma — vamos olhar para a situação como pessoas, não como uma regra."
+      },
+      "updatePlan": {
+        "q": "Como atualizo o meu plano de bem-estar?",
+        "a": "O seu plano é gerado a partir das suas respostas ao questionário inicial. Se os seus sintomas ou a sua situação mudaram, contacte-nos através de hello@auntymel.app e podemos repor o seu questionário para o preencher de novo."
+      },
+      "dataSafe": {
+        "q": "Os meus dados de saúde estão seguros?",
+        "a": "Sim. Os seus dados são encriptados em trânsito e em repouso, guardados em servidores seguros na UE (Supabase, Irlanda) e nunca são vendidos a terceiros. Consulte a nossa Política de Privacidade para todos os detalhes."
+      },
+      "delete": {
+        "q": "Como apago a minha conta e os meus dados?",
+        "a": "Pode pedir o apagamento completo da sua conta e dos seus dados na nossa página de apagamento de dados ou por e-mail para privacy@auntymel.app. Apagamos tudo no prazo de 30 dias."
+      },
+      "devices": {
+        "q": "Em que dispositivos funciona a Aunty Mel?",
+        "a": "A Aunty Mel é uma Progressive Web App (PWA) que funciona em qualquer smartphone, tablet ou computador recente. Pode adicioná-la ao ecrã principal a partir do navegador e usá-la como uma app. As apps nativas para iOS e Android estão a chegar."
+      },
+      "surgical": {
+        "q": "Posso usar a Aunty Mel se tive uma menopausa cirúrgica?",
+        "a": "Claro que sim. No questionário inicial pode dizer-nos que teve uma menopausa cirúrgica e o seu plano será adaptado em conformidade."
+      },
+      "culture": {
+        "q": "Porque perguntam pela minha origem cultural?",
+        "a": "A investigação mostra que a menopausa afeta as mulheres de forma diferente consoante a sua origem cultural — nos padrões de sintomas, nos fatores alimentares e nas abordagens que resultam melhor. Usamos esta informação para tornar as suas recomendações verdadeiramente relevantes para si, com alimentos e tradições que conhece. Esta informação é opcional, tratada como sensível e nunca partilhada."
+      }
+    }
+  },
+  "Meta": {
+    "description": "Todas precisamos de uma Aunty Mel. Orientação de bem-estar personalizada para a perimenopausa e a menopausa — baseada em verdadeira experiência especializada para a ajudar a compreender o seu corpo, gerir os seus sintomas e ter uma conversa mais produtiva com o seu médico."
+  },
+  "RegionBlocked": {
+    "title": "A Aunty Mel ainda não está disponível na sua região",
+    "body": "Estamos a trabalhar para trazer a Aunty Mel para o seu país de forma a cumprir a regulamentação de saúde local. Avisamos assim que estiver pronta.",
+    "mistake": "Se acha que é um engano, contacte"
+  },
+  "Waitlist": {
+    "symptoms": {
+      "hot_flashes": "🔥 Afrontamentos",
+      "night_sweats": "🌙 Suores noturnos",
+      "sleep_problems": "😴 Problemas de sono",
+      "mood_changes": "🌊 Alterações de humor",
+      "anxiety": "💭 Ansiedade",
+      "brain_fog": "🌫️ Nevoeiro mental",
+      "weight_changes": "⚖️ Alterações de peso",
+      "fatigue": "🔋 Cansaço",
+      "low_libido": "💔 Libido baixa",
+      "other": "✨ Outra coisa"
+    },
+    "errorGeneric": "Algo correu mal. Tente novamente.",
+    "doneTitlePriority": "Está entre as primeiras da fila",
+    "doneTitle": "Já está na lista",
+    "priorityBadge": "✨ Acesso antecipado prioritário",
+    "doneBody": "Enviamos-lhe um e-mail assim que lançarmos a app, {name}. Veja a sua caixa de entrada: enviámos-lhe um e-mail de boas-vindas.",
+    "rewardTitle": "99 p de desconto por convite — para sempre",
+    "rewardBody": "Cada mulher que convidar tem acesso antecipado prioritário. Recebe <strong>99 p de desconto na sua subscrição todos os meses, para sempre.</strong> Convide 8 mulheres e a sua subscrição fica totalmente gratuita.",
+    "linkLabel": "O seu link de convite pessoal",
+    "copied": "✓ Copiado!",
+    "copy": "Copiar o seu link de convite",
+    "shareVia": "Partilhar por",
+    "whatsappText": "Acabei de me inscrever na lista de espera da Aunty Mel — uma nova app de bem-estar para a menopausa. Usa o meu link para teres acesso antecipado prioritário: {url}",
+    "emailSubject": "Precisas da Aunty Mel na tua vida",
+    "emailBody": "Acabei de me inscrever na lista de espera da Aunty Mel — uma app de bem-estar para a menopausa que percebe mesmo do assunto. Usa o meu link para teres acesso antecipado prioritário: {url}",
+    "email": "E-mail",
+    "disclaimerDone": "Apenas orientação geral de bem-estar — não é aconselhamento médico. Consulte sempre o seu médico de família para questões médicas.",
+    "referredBadge": "✨ Foi convidada — vai ter acesso antecipado prioritário",
+    "heroTitle": "Todas precisamos de uma Aunty Mel",
+    "hero1": "Desde sempre, os segredos da menopausa passaram de mãe para filha, de tia para sobrinha, de avó para neta — na experiência partilhada, nas conversas em voz baixa, na sabedoria das mulheres que já tinham passado por isso.",
+    "hero2": "Esse conhecimento nunca se perdeu. Só precisa de uma casa.",
+    "hero3": "A Aunty Mel é essa casa. Orientação de bem-estar personalizada — baseada na experiência especializada da Pamela — para a ajudar a compreender o seu corpo, obter resultados reais e ter uma conversa mais produtiva com o seu médico.",
+    "stats": {
+      "libido": {
+        "stat": "40–55%",
+        "label": "das mulheres têm libido baixa durante a menopausa"
+      },
+      "uk": {
+        "stat": "13 M",
+        "label": "de mulheres na peri ou pós-menopausa só no Reino Unido"
+      },
+      "world": {
+        "stat": "+1000 M",
+        "label": "de mulheres na menopausa em todo o mundo até 2025"
+      }
+    },
+    "formTitle": "Juntar-me à lista de espera",
+    "formIntro": "Seja das primeiras a saber quando lançarmos.",
+    "formIntroReferred": "Vai ter acesso antecipado prioritário.",
+    "firstName": "Primeiro nome",
+    "firstNamePlaceholder": "O seu primeiro nome",
+    "emailLabel": "Endereço de e-mail",
+    "emailPlaceholder": "o.seu@email.com",
+    "symptomLabel": "Que sintoma a incomoda mais neste momento?",
+    "optional": "(opcional)",
+    "joining": "A inscrever...",
+    "submitReferred": "Inscrever-me — acesso prioritário →",
+    "submit": "Juntar-me à lista de espera →",
+    "noSpam": "Sem spam. Só lhe enviamos e-mails sobre o lançamento. Apenas orientação geral de bem-estar — não é aconselhamento médico.",
+    "expectTitle": "O que vai ter",
+    "expect": {
+      "plan": "Um plano de bem-estar personalizado, criado à volta dos seus sintomas",
+      "guidance": "Orientação da Pamela sobre alimentação, estilo de vida e mentalidade",
+      "journal": "Um diário para acompanhar o que resulta e o que não resulta",
+      "articles": "Artigos baseados em evidência — informação real, sem rodeios",
+      "gp": "Ferramentas para ter conversas melhores com o seu médico de família"
+    },
+    "referTitle": "Convide uma amiga e poupe 99 p para sempre",
+    "referBody": "Depois de se inscrever, recebe o seu próprio link de convite. Cada mulher que convidar tem acesso antecipado prioritário. Recebe 99 p de desconto na sua subscrição mensal — para sempre — por cada convite. Convide 8 mulheres e a sua subscrição fica totalmente gratuita.",
+    "loading": "A carregar..."
+  },
+  "WaitlistPartner": {
+    "relationships": {
+      "partner": "💑 Companheiro/a ou cônjuge",
+      "adult_child": "👨‍👩‍👧 Filho ou filha adulto/a",
+      "friend": "👭 Amigo ou amiga próxima",
+      "other_family": "👨‍👩‍👦‍👦 Outro familiar"
+    },
+    "motivations": {
+      "understand": "Quero perceber o que ela está a viver",
+      "support": "Quero saber como a apoiar melhor",
+      "relationship": "Está a afetar a nossa relação e quero ajudar",
+      "her_idea": "Ela falou-me disto e quero envolver-me",
+      "curious": "Tenho curiosidade e quero saber mais"
+    },
+    "errorGeneric": "Algo correu mal. Tente novamente.",
+    "doneTitle": "Já está na lista, {name}",
+    "doneBody": "Estamos a criar algo para si. Quando lançarmos o apoio para companheiros e familiares, será dos primeiros a saber. O facto de estar aqui significa muito — e ela também.",
+    "meantimeTitle": "Entretanto",
+    "meantimeBody": "O mais útil que pode fazer agora é falar-lhe diretamente da Aunty Mel. Ela pode juntar-se à lista de espera principal e ter acesso assim que lançarmos a app.",
+    "shareWithHer": "Partilhar a Aunty Mel com ela →",
+    "disclaimer": "A Aunty Mel fornece apenas informação geral de bem-estar. Não é aconselhamento médico. Consulte sempre um médico para questões médicas.",
+    "back": "← Voltar à Aunty Mel",
+    "heroTitle": "Importa-se. E isso conta.",
+    "hero1": "Está aqui porque alguém de quem gosta está a passar por algo difícil de perceber de fora. Só por estar aqui, já está à frente da maioria.",
+    "hero2": "Estamos a criar uma forma de companheiros e familiares perceberem melhor a menopausa — para que a possa apoiar da forma de que ela realmente precisa. Inscreva-se e seja dos primeiros a saber quando lançarmos.",
+    "whyTitle": "Porque é que isto importa",
+    "stats": {
+      "affected": {
+        "stat": "76%",
+        "text": "dos companheiros dizem que os sintomas da menopausa os afetaram pessoalmente"
+      },
+      "relationship": {
+        "stat": "55%",
+        "text": "dizem que teve um impacto negativo na relação"
+      },
+      "influential": {
+        "stat": "74%",
+        "text": "acreditam que influenciam a decisão dela de procurar apoio"
+      }
+    },
+    "statsSource": "Fonte: inquérito MATE — o estudo mais completo sobre companheiros masculinos e a menopausa",
+    "formTitle": "Juntar-me à lista de espera para companheiros e familiares",
+    "formIntro": "Avisamos assim que o apoio para companheiros e familiares for lançado.",
+    "firstName": "O seu primeiro nome",
+    "firstNamePlaceholder": "O seu primeiro nome",
+    "emailLabel": "O seu e-mail",
+    "emailPlaceholder": "o.seu@email.com",
+    "relationshipLabel": "A sua relação com ela",
+    "motivationLabel": "O que o/a traz aqui? (opcional)",
+    "openLabel": "O que é que mais quer perceber? (opcional)",
+    "openPlaceholder": "Qual é a única coisa que gostaria de perceber melhor sobre o que ela está a viver?",
+    "joining": "A inscrever...",
+    "submit": "Juntar-me à lista para companheiros e familiares →",
+    "noSpam": "Sem spam. Só lhe enviamos e-mails sobre o lançamento do apoio para companheiros e familiares.",
+    "herTooTitle": "Quer que ela se inscreva também?",
+    "herTooBody": "Partilhe com ela a lista de espera principal da Aunty Mel. Ela vai ter acesso antecipado prioritário quando a app for lançada.",
+    "loading": "A carregar..."
+  }
+}

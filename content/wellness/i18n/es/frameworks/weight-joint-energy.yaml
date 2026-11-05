@@ -1,0 +1,97 @@
+# Traducción de frameworks/weight-joint-energy.yaml — prevalece la versión en inglés.
+df_protein_muscle:
+  title: Prioriza la proteína — el músculo es tu motor metabólico
+  body: >-
+    El descenso de los estrógenos acelera la pérdida de músculo (sarcopenia), lo que ralentiza el metabolismo y dificulta el control del peso. Intenta tomar 1,2–1,6 g de proteína por kg de peso corporal al día. Repártela entre las comidas: 25–30 g por comida es más eficaz para la síntesis de proteína muscular que tomar casi toda en la cena. Fuentes: huevos, pollo, pescado, yogur griego, legumbres, requesón, tofu.
+df_anti_inflammatory:
+  title: Alimentación antiinflamatoria para el dolor articular
+  body: >-
+    El dolor articular en la perimenopausia se debe en parte a la inflamación, porque disminuye el efecto antiinflamatorio de los estrógenos. Alimentos que favorecen la vía antiinflamatoria: aceite de oliva, pescado azul, frutos del bosque, cúrcuma, jengibre, verduras de hoja verde oscuro, verduras de colores. Alimentos que favorecen la inflamación: ultraprocesados, azúcar refinado, aceites de semillas (girasol, aceite vegetal), exceso de alcohol.
+df_reduce_refined_carbs:
+  title: Reduce los hidratos refinados — no todos los hidratos
+  body: >-
+    Los cambios hormonales de la perimenopausia aumentan la resistencia a la insulina, así que los hidratos refinados (pan blanco, bollería, bebidas azucaradas, arroz blanco) disparan el azúcar en sangre más que antes. Esto favorece la acumulación de grasa, sobre todo en el abdomen. Céntrate en los hidratos complejos: avena, boniato, legumbres, pan integral. No hace falta eliminar los hidratos, solo elegir los que vienen con fibra.
+df_collagen_joints:
+  title: Cuida tus articulaciones con alimentos que ayudan a formar colágeno
+  body: >-
+    La vitamina C es esencial para la síntesis de colágeno en el cartílago y el tejido conjuntivo. Incluye cada día cítricos, kiwi, pimiento rojo, brócoli y fresas. El caldo de huesos contiene precursores del colágeno. Los alimentos ricos en silicio (avena, puerros, judías verdes) también favorecen la reparación del tejido conjuntivo.
+lf_strength_training:
+  title: Entrenamiento de fuerza — el ejercicio más importante en la menopausia
+  body: >-
+    El entrenamiento de fuerza (pesas, bandas elásticas, ejercicios con el propio peso) es la intervención con más evidencia para el control del peso en la perimenopausia, la densidad ósea, la estabilidad de las articulaciones y el metabolismo. No significa levantar mucho peso: incluso 2–3 sesiones semanales de 30 minutos con sentadillas, zancadas, flexiones y remos aportan un beneficio metabólico medible. Empieza con poco peso y céntrate en la técnica. Si quieres un punto de partida gratis, el NHS británico publica el plan Strength and Flex — una serie de cinco semanas de ejercicios sin material — junto con sus vídeos de entrenamiento Fitness Studio (en inglés).
+lf_low_impact_joints:
+  title: Protege las articulaciones con movimiento de bajo impacto
+  body: >-
+    Si tienes dolor articular, prioriza el movimiento que trabaja las articulaciones sin impacto: natación, bicicleta, yoga, pilates, caminar por terreno llano. Evita correr con impacto o el HIIT sobre superficies duras hasta que el dolor esté controlado. El calentamiento y la vuelta a la calma importan más ahora que a los 30: dedica 5–10 minutos al principio y al final de cada sesión.
+lf_movement_consistency:
+  title: La constancia gana a la intensidad para la salud metabólica
+  body: >-
+    Las sesiones cortas de alta intensidad seguidas de días de descanso son menos eficaces para el control del peso en la menopausia que el movimiento moderado y constante a diario. Un paseo de 30 minutos cada día aporta más beneficio metabólico acumulado que dos sesiones intensas de 90 minutos a la semana. El objetivo es evitar estar sentada mucho tiempo: interrúmpelo cada 60–90 minutos, aunque sea con un paseo de 5 minutos.
+mr_weight_compassion:
+  title: Los cambios de peso en la menopausia son hormonales — no es culpa tuya
+  body: >-
+    De media, una mujer gana 2–5 kg durante la transición menopáusica sin cambiar nada de su alimentación ni de su actividad. La causa es el descenso de los estrógenos, que cambia la distribución de la grasa, no comer de más. El paso de acumular grasa en caderas y muslos a acumularla en el abdomen es una respuesta hormonal. La vergüenza y las dietas restrictivas empeoran el cuadro metabólico. El objetivo es la salud metabólica — fuerza, energía, marcadores en sangre —, no el número de la báscula.
+mr_joint_pain_movement_anxiety:
+  title: El dolor articular genera miedo a moverse — y eso lo empeora
+  body: >-
+    El dolor lleva a evitar movimientos para protegerse, lo que debilita los músculos alrededor de las articulaciones, lo que causa más dolor. Se llama kinesiofobia (miedo al movimiento) y es muy frecuente. El movimiento suave, constante y con poco dolor — aunque duelan las articulaciones — es terapéutico. Si el movimiento te aumenta el dolor de forma sistemática durante más de un día, habla con tu médico sobre la fisioterapia.
+ss_omega3_joints:
+  title: Omega-3 (EPA+DHA) — antiinflamatorio para articulaciones y metabolismo
+  body: >-
+    El omega-3 en dosis altas (2000–3000 mg de EPA+DHA al día, de aceite de pescado o de algas) tiene evidencia clínica de que reduce la rigidez articular y los marcadores inflamatorios. Sus beneficios metabólicos (mejor sensibilidad a la insulina, menos triglicéridos) también son relevantes para el control del peso en la menopausia. Tómalo con una comida que contenga grasa. El omega-3 de algas es el equivalente vegetal.
+  disclaimer: >-
+    El omega-3 en dosis altas (más de 3 g de EPA+DHA) puede hacer la sangre más fluida. Si tomas anticoagulantes (warfarina, aspirina, apixabán) o tienes una operación pendiente, consulta con tu médico de cabecera o farmacéutico antes de tomarlo.
+ss_collagen_type2_joints:
+  title: Colágeno tipo II — específicamente para el cartílago articular
+  body: >-
+    Aquí hay dos productos bastante distintos, en dosis muy distintas, y conviene saber cuál es cuál. El colágeno hidrolizado (descompuesto en péptidos más pequeños) se usa normalmente en torno a 10 g/día. El colágeno tipo II no desnaturalizado (a menudo vendido como UC-II) es una preparación diferente y más concentrada, estudiada a una dosis mucho menor, normalmente en torno a 40 mg/día: tomar 10 g de este sería muchísimo más de lo previsto. En ambos casos, el tipo II es la forma asociada específicamente al cartílago articular, distinta del colágeno tipo I que se usa para el pelo, la piel y las uñas.
+  disclaimer: >-
+    Los suplementos de colágeno suelen ser seguros para la mayoría de los adultos. Si tienes alergia al pescado o al marisco, revisa el origen del colágeno. Consulta con tu médico de cabecera antes de usarlo si tienes algún problema de salud en curso.
+ss_curcumin_joints:
+  title: Curcumina — para el dolor y la rigidez articular
+  body: >-
+    Algunas mujeres prueban la curcumina, normalmente en torno a 500 mg 2–4 veces/día, a menudo combinada con piperina (extracto de pimienta negra) para mejorar su absorción. Es un antiinflamatorio bastante bien estudiado, que se usa a menudo específicamente para el dolor y la rigidez articular.
+  disclaimer: >-
+    Los productos de curcumina de absorción mejorada (los combinados con piperina) se han relacionado con casos raros de daño hepático y pueden causar reflujo en dosis altas. La curcumina también puede interactuar con los medicamentos que hacen la sangre más fluida. Consúltalo siempre con tu médico de cabecera o farmacéutico antes de empezar, sobre todo si tomas algún medicamento con receta o tienes problemas de hígado.
+ss_glucosamine_chondroitin:
+  title: Glucosamina y condroitina
+  body: >-
+    Algunas mujeres toman glucosamina y condroitina juntas, normalmente en torno a 1500 mg de glucosamina más 1200 mg de condroitina al día: una combinación tradicional para las articulaciones, con cierta evidencia de que ayuda al cartílago y reduce las molestias articulares, sobre todo en la artrosis.
+  disclaimer: >-
+    Puede aumentar el riesgo de sangrado junto con la warfarina y puede afectar a la glucosa en sangre: conviene avisar si eres diabética o tomas anticoagulantes. Precaución también si tienes alergia al marisco, ya que la glucosamina a menudo procede del marisco. Consulta con tu médico de cabecera antes de usarla.
+ss_msm_joints:
+  title: MSM (metilsulfonilmetano)
+  body: >-
+    Normalmente 1–3 g/día. Hay cierta evidencia de que reduce el dolor y la inflamación articular.
+  disclaimer: >-
+    Consúltalo siempre con tu médico de cabecera o farmacéutico antes de empezar, sobre todo si tomas algún medicamento con receta.
+ss_wobenzym_joints:
+  title: Mezclas de enzimas sistémicas — para el dolor articular y la recuperación
+  body: >-
+    Las mezclas de enzimas sistémicas (proteasas como la bromelina, la tripsina y la quimotripsina; Wobenzym es la marca más estudiada) suelen tomarse con el estómago vacío, entre comidas en lugar de con ellas, siguiendo la pauta del propio producto. La evidencia para el dolor articular y la recuperación es limitada y dispar, y varía según el producto y el estudio; no es una categoría con evidencia sólida y consolidada, así que tómala como algo para hablar con tu médico más que como una opción establecida. Las formulaciones y la potencia de las enzimas varían mucho entre productos, así que la dosis depende por completo del que elijas: sigue la etiqueta del producto concreto en lugar de una regla general, y un farmacéutico puede ayudarte a comparar.
+  disclaimer: >-
+    Pueden interactuar con los medicamentos que hacen la sangre más fluida: hace falta consultarlo antes con el médico, sobre todo si tomas anticoagulantes o aspirina.
+ss_berberine_weight:
+  title: Berberina — para el azúcar en sangre y la salud metabólica
+  body: >-
+    Normalmente 500 mg, 2–3 veces/día antes de las comidas. Favorece la regulación del azúcar en sangre y la salud metabólica.
+  disclaimer: >-
+    No es adecuada durante el embarazo ni la lactancia. Puede interactuar con los medicamentos para el azúcar y la tensión, y con otros varios por la forma en que el hígado los procesa: esta especialmente necesita que la consultes antes con tu médico, y menciónale todos los medicamentos que tomas.
+ss_myo_inositol_weight:
+  title: Mioinositol — para la sensibilidad a la insulina y el equilibrio del azúcar en sangre
+  body: >-
+    Normalmente 2–4 g/día. Favorece la sensibilidad a la insulina y el equilibrio del azúcar en sangre. También está bien estudiado en el SOP, donde la resistencia a la insulina suele ser un factor central.
+  disclaimer: >-
+    Consúltalo siempre con tu médico de cabecera o farmacéutico antes de empezar, sobre todo si tomas algún medicamento con receta.
+ss_protein_fibre_weight:
+  title: Proteína en polvo y suplementos de fibra
+  body: >-
+    La proteína en polvo (de suero, de guisante o de colágeno) no es un suplemento para perder grasa en sí, pero ayuda a la saciedad, al mantenimiento muscular y a la estabilidad del azúcar en sangre cuando cuesta llegar a la proteína solo con la comida. Un suplemento de fibra (p. ej., PHGG, psyllium) también ayuda a la saciedad y a la estabilidad del azúcar, especialmente útil si todavía no llegas de forma constante a tus objetivos de fibra con la comida.
+  disclaimer: >-
+    Consúltalo siempre con tu médico de cabecera o farmacéutico antes de empezar, sobre todo si tomas algún medicamento con receta o tienes una enfermedad digestiva diagnosticada.
+ss_green_tea_ala_weight:
+  title: Extracto de té verde y ácido alfa-lipoico — para apoyar el metabolismo
+  body: >-
+    El extracto de té verde (EGCG), normalmente 250–500 mg/día, tiene una evidencia modesta como apoyo metabólico. El ácido alfa-lipoico (ALA), normalmente 300–600 mg/día, favorece la regulación del azúcar en sangre y la sensibilidad a la insulina, y actúa como antioxidante que apoya la producción de energía de las células.
+  disclaimer: >-
+    El extracto de té verde requiere precaución si tienes problemas de hígado o sensibilidad a la cafeína. El ALA puede interactuar con los medicamentos para el azúcar y la tiroides: este especialmente necesita que lo consultes antes con tu médico si tomas alguno de ellos.

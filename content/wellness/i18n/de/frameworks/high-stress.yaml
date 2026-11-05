@@ -1,0 +1,45 @@
+# Übersetzung von frameworks/high-stress.yaml — maßgeblich ist die englische Fassung.
+df_stress_blood_sugar:
+  title: Cortisol treibt Blutzuckerspitzen an — iss so, dass du gegensteuerst
+  body: >-
+    Cortisol (das Stresshormon) erhöht den Blutzucker direkt, indem es gespeicherten Zucker aus der Leber freisetzt. Zusammen mit der Insulinresistenz der Perimenopause erzeugt Dauerstress einen Kreislauf aus Blutzuckerspitzen und -abstürzen, der die Stimmung verschlechtert, Heißhunger auf Kohlenhydrate auslöst und die Einlagerung von Bauchfett fördert. Steuer dagegen, indem du Eiweiß und Fett vor Kohlenhydraten isst, keine Mahlzeiten auslässt und blutzuckerstabilisierende Snacks (Nüsse, gekochte Eier, Vollfettjoghurt) griffbereit hast, um die Spirale aus Stress und Hunger zu verhindern.
+df_stress_magnesium_food:
+  title: Stress verbraucht Magnesium — iss Lebensmittel, die es auffüllen
+  body: >-
+    Unter Stress wird mehr Magnesium ausgeschieden. Ein Magnesiummangel verschlechtert Angst, Schlaf und Muskelverspannungen — ein Teufelskreis. Magnesiumreiche Lebensmittel: dunkle Schokolade (>70 %), Kürbiskerne, Spinat, schwarze Bohnen, Mandeln, Avocado und Bananen. Als erster Schritt sind sie besser als Präparate. Reduziere Alkohol und Koffein, die ebenfalls die Magnesiumausscheidung erhöhen.
+df_stress_caffeine_limit:
+  title: Koffein erhöht das Cortisol — beschränk dich auf 1–2 Tassen vor Mittag
+  body: >-
+    Koffein bringt die Nebennieren dazu, Cortisol und Adrenalin auszuschütten — dieselbe Stressreaktion, die Dauerstress ohnehin schon hochhält. Wenn du unter Dauerstress stehst, erhöht Koffein die Cortisollast, statt dir echte Energie zu geben. Reduziere auf 1–2 Tassen Kaffee und trink die letzte vor Mittag — bewusst früher als die allgemeine Grenze von 13 Uhr für den Schlaf, weil du neben der Wirkung auf den Schlaf auch die Cortisollast steuerst. Der Entzugskopfschmerz dauert 2–3 Tage; danach berichten die meisten Frauen von stabilerer Energie und weniger Grundangst.
+lf_stress_minimum_viable_recovery:
+  title: Bestimme eine tägliche Erholungsaktivität, die nicht verhandelbar ist
+  body: >-
+    Bei hohem Stress werden Erholungsaktivitäten als Erstes gestrichen — genau dann, wenn man sie am meisten braucht. Forschung zur Stressresilienz zeigt immer wieder, dass eine einzige tägliche „Mikro-Erholung“ von 10–20 Minuten — ein Spaziergang draußen, 10 Minuten Dehnen, 5 Minuten bewusstes Atmen, eine Tasse Tee ohne Bildschirm — eine überraschend große Wirkung auf die tägliche Cortisolregulation hat. Das ist kein Luxus. Es ist die Wartung, die Burnout verhindert. Wähle eine konkrete Aktivität und schütze sie wie einen Termin mit dir selbst.
+lf_stress_sleep_priority:
+  title: Schlafmangel und hoher Stress bilden einen Teufelskreis — durchbrich ihn mit einer festen Schlafenszeit
+  body: >-
+    Dauerstress erhöht das Cortisol in der Nacht und erschwert den Schlaf. Schlechter Schlaf erhöht am nächsten Tag das Grund-Cortisol und macht Stress schwerer zu bewältigen. Der wirksamste einzelne Hebel, um diesen Kreis zu durchbrechen, ist eine geschützte Schlafenszeit. Leg zwei Wochen lang eine feste Schlafenszeit fest — 60 Minuten früher als jetzt. Gönn dir eine 30-minütige Abendroutine (keine Bildschirme, gedimmtes Licht). Auch wenn du nicht schneller einschläfst, schwächt diese geschützte Zeit den Kreislauf aus Cortisol und Schlaf ab.
+lf_stress_boundary_work:
+  title: Überprüf deine Verpflichtungen — hoher Stress ist oft Überlastung, keine Schwäche
+  body: >-
+    Viele Frauen mit hohem Stress sind gleichzeitig Hauptbezugsperson für Kinder und ältere Eltern und stehen beruflich unter Höchstdruck. Das ist ein strukturelles Belastungsproblem, kein Resilienzproblem. Ein wöchentlicher Blick auf deine Verpflichtungen — was sich abgeben, automatisieren, streichen oder bündeln lässt — schafft verlässlich spürbar Zeit. Schon 2–3 Stunden weniger Verpflichtungen pro Woche senken das Cortisol innerhalb eines Monats messbar.
+mr_stress_physiological_sigh:
+  title: Der physiologische Seufzer — eine 5-Sekunden-Unterbrechung für das Cortisol
+  body: >-
+    Der physiologische Seufzer (zweimal durch die Nase einatmen, dann lange und langsam durch den Mund ausatmen) aktiviert das parasympathische Nervensystem schneller als jede andere Technik. Er wirkt, indem er überblähte Lungenbläschen entlastet, die sich unter Stress ansammeln. Nutze ihn, wenn Angst aufkommt, vor einem schwierigen Gespräch oder wenn du merkst, dass sich Anspannung aufbaut. Die Arbeiten des Stanford-Neurowissenschaftlers Andrew Huberman zum Mechanismus sind leicht zugänglich, wenn du die Wissenschaft dahinter verstehen möchtest.
+mr_stress_not_your_fault:
+  title: Die Wechseljahre verstärken die Stressempfindlichkeit — das ist Biologie, kein Versagen
+  body: >-
+    Östrogen moduliert die Bedrohungsreaktion des Gehirns, indem es Serotonin- und GABA-Rezeptoren reguliert. Sinkt das Östrogen, wird die Stressreaktion empfindlicher und lässt sich schwerer herunterregulieren. Dinge, die du vor der Perimenopause ohne große Mühe bewältigt hättest, können sich jetzt überwältigend anfühlen. Das ist eine neurologische Veränderung, keine Charakterveränderung. Das zu verstehen, nimmt die Selbstvorwürfe, die den Stress oft noch verstärken.
+ss_ashwagandha_stress:
+  title: Ashwagandha (KSM-66) — das am besten belegte Adaptogen für das Cortisol
+  body: >-
+    Ashwagandha-Wurzelextrakt (KSM-66- oder Sensoril-Formulierung, 300–600 mg täglich) hat von allen Adaptogenen die stärkste klinische Evidenz für die Senkung von Serum-Cortisol, empfundenem Stress und Angst. Mehrere randomisierte Studien zeigen nach 8 Wochen eine deutliche Senkung des Cortisols und bessere Resilienzwerte. Zu einer Mahlzeit einnehmen. Meide billige, nicht standardisierte Ashwagandha-Pulver — für die Wirksamkeit kommt es auf die Formulierung an.
+  disclaimer: >-
+    Ashwagandha kann Wechselwirkungen mit Schilddrüsenmedikamenten, Beruhigungsmitteln und Immunsuppressiva haben. Nicht geeignet in der Schwangerschaft. Manche bekommen Verdauungsbeschwerden — zu einer Mahlzeit einnehmen. Sprich vor der Einnahme mit deiner Hausärztin oder deinem Hausarzt, wenn du eine Schilddrüsenerkrankung hast oder regelmäßig Medikamente nimmst.
+ss_l_theanine:
+  title: L-Theanin — Ruhe ohne Müdigkeit bei Angst am Tag
+  body: >-
+    L-Theanin (200–400 mg, mit Koffein oder allein) fördert Alpha-Gehirnwellen, die mit ruhiger Wachheit verbunden sind, ohne müde zu machen. Es wirkt schnell (30–60 Minuten) und ist daher in akuten Stresssituationen hilfreich. Regelmäßig eingenommen, senkt es die Grundangst. Es kommt natürlich in grünem Tee vor, ist ausgesprochen gut verträglich und hat keine bekannten nennenswerten Wechselwirkungen.
+  disclaimer: >-
+    L-Theanin wird in der Regel sehr gut vertragen. Es gibt theoretische Wechselwirkungen mit Blutdruckmedikamenten — sprich mit deiner Hausärztin oder deinem Hausarzt, wenn du Blutdrucksenker nimmst.

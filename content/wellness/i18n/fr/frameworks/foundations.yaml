@@ -1,0 +1,144 @@
+# Traduction de frameworks/foundations.yaml — la version anglaise fait foi.
+df_meal_timing_by_stage:
+  title: Horaires et fréquence des repas — selon le stade, et selon comment vous allez
+  body: |-
+    Il n’existe pas ici de règle universelle étayée par des preuves solides, mais voici un schéma que certaines femmes et certains praticiens trouvent utile : en périménopause, prendre un petit-déjeuner dans l’heure qui suit le réveil, avec 3 repas par jour (4–5 plus petits si l’énergie est difficile). À la ménopause et en postménopause, certaines trouvent qu’il leur convient mieux de rompre le jeûne un peu plus tard — vers 10–11 h — avec 2–3 repas par jour. Voyez cela comme un point de départ pour expérimenter, pas comme une prescription.
+    Mais cela s’ajuste : si vous avez des difficultés de sommeil, de l’anxiété, du brouillard mental ou peu d’énergie, mieux vaut éviter complètement le jeûne, quel que soit le stade — votre corps a besoin d’un carburant régulier, pas de moins. Dans ce cas, des repas plus fréquents et plus petits (4–5) vous conviennent généralement mieux que 2–3 gros repas, et la caféine et l’alcool sont souvent les premières choses à réduire, car ils aggravent directement ces symptômes précis.
+df_carb_and_eating_order:
+  title: Le moment des glucides et l’ordre dans l’assiette
+  body: |-
+    La plupart des femmes ménopausées tolèrent mal les glucides au petit-déjeuner — ils passent généralement mieux l’après-midi et sont à éviter ou à limiter le soir. Cela compte moins si votre contrôle global de la glycémie est déjà bon (par ex. vous mangez surtout des aliments bruts, peu transformés).
+    Un levier simple et gratuit, quel que soit le stade : pendant un repas, mangez les protéines et les légumes avant les glucides, plutôt que de commencer par les glucides. Cela atténue le pic de glycémie qui suit, sans changer ce que vous mangez — seulement l’ordre.
+df_evening_eating_window:
+  title: Arrêtez de manger 3–5 heures avant le coucher
+  body: >-
+    Essayez d’arrêter de manger 3–5 heures avant de vous coucher. En été, avec des journées plus longues, manger un peu plus tard peut fonctionner — mais c’est à éviter pendant les mois d’hiver, en particulier sous les latitudes du Royaume-Uni.
+df_whole_foods_protein_fibre:
+  title: L’assiette de base — protéines, fibres et couleurs, à chaque stade
+  body: >-
+    Privilégiez les aliments bruts plutôt que transformés, quel que soit le stade. À augmenter : des protéines à chaque repas ; des fibres issues des légumes, en particulier les crucifères (brocoli, chou-fleur, chou kale, chou) ; des aliments riches en polyphénols ; des aliments prébiotiques, et probiotiques pour certaines femmes ; des oméga-3, des graines de lin et de chia ; et des aliments réchauffants comme le gingembre, la cannelle, le curcuma et l’oignon rouge.
+df_hydration_protocol:
+  title: Une hydratation régulière — environ 2 litres, répartis sur la journée
+  body: >-
+    Visez une hydratation régulière tout au long de la journée plutôt que de grandes quantités d’un coup — environ 2 litres comme base générale, davantage si vous êtes active ou avez des sueurs nocturnes ou des bouffées de chaleur, qui augmentent les pertes de liquide. Commencez la journée par un grand verre d’eau au réveil — une habitude simple et apaisante qui réhydrate après le jeûne de la nuit et met en route la digestion avant de manger. Essayez d’arrêter de boire 1–2 heures avant le coucher, pour éviter que des réveils pour aller aux toilettes ne perturbent votre sommeil.
+df_reduce_sugar_processed_xenoestrogens:
+  title: Ce qu’il faut réduire — sucre raffiné, emballages et (pour certaines) produits laitiers
+  body: >-
+    Le sucre raffiné et les aliments ultra-transformés provoquent des variations de glycémie, de l’inflammation et des coups de fatigue, qui alimentent tous le cercle humeur/sommeil/énergie. Quand c’est possible, choisissez des produits frais plutôt que très emballés ou en conserve, et faites attention au contact des aliments avec le plastique, pour réduire l’exposition aux xéno-œstrogènes. Limiter les produits laitiers en excès vaut aussi la peine pour certaines femmes, en particulier en cas de démangeaisons/migraines pouvant évoquer une sensibilité à l’histamine.
+df_thyroid_iron_support_foods:
+  title: Thyroïde et fer — les deux manques nutritionnels les plus souvent négligés
+  body: >-
+    La fonction thyroïdienne revient souvent en même temps que les symptômes de la ménopause — les sources alimentaires clés à inclure sont l’iode (algues, poisson, œufs) et le sélénium (noix du Brésil — 1–2 par jour suffisent à couvrir vos besoins — et poisson). Le manque de fer est une cause fréquente, et souvent négligée, de fatigue et d’affinement des cheveux — on en trouve dans la viande rouge, les légumes à feuilles vert foncé, les lentilles et les autres légumineuses. Associer des aliments végétaux riches en fer à de la vitamine C (par ex. des lentilles avec du poivron ou un filet de citron) améliore l’absorption.
+df_histamine_food_awareness:
+  title: Si vous remarquez des démangeaisons ou des migraines — l’histamine mérite peut-être qu’on s’y intéresse
+  body: >-
+    Si vous avez des démangeaisons ou des migraines associées à d’autres symptômes comme des ballonnements ou des rougeurs, l’intolérance à l’histamine est une piste que certains praticiens envisagent — ce n’est pas quelque chose qu’on peut s’autodiagnostiquer par la seule alimentation, donc à évoquer avec votre médecin ou un praticien plutôt qu’à tester de façon fiable chez soi. Si vous voulez expérimenter, certaines femmes essaient de réduire les aliments fermentés, le fromage et l’alcool pendant quelques semaines pour voir si les symptômes changent. Les aliments fermentés (choucroute, kéfir, kimchi, kombucha) soutiennent réellement un microbiote sain chez beaucoup de femmes, mais ils sont aussi riches en histamine — c’est donc un vrai compromis pour certaines, pas une contradiction cachée avec les conseils sur la santé intestinale ailleurs.
+lf_weekly_movement_mix:
+  title: Un mélange hebdomadaire — marche en côte, renforcement, yoga, Pilates
+  body: >-
+    Marcher en montée ou sur une pente est excellent pour le cœur et la perte de poids, plus doux pour les articulations que la course tout en développant une vraie forme cardiovasculaire. La musculation protège la masse musculaire et la densité osseuse, qui diminuent toutes deux plus vite quand les œstrogènes baissent, et soutient aussi la régulation de la glycémie. Le yoga ou le travail de l’équilibre soutiennent la souplesse, la régulation du système nerveux et l’équilibre — de plus en plus importants pour prévenir les chutes avec l’âge. Le Pilates renforce la sangle abdominale et la stabilité, et soutient la posture et la santé du périnée.
+lf_stair_sprints:
+  title: 90 secondes d’escaliers par jour
+  body: >-
+    De courts efforts comme monter les escaliers en marchant ou en courant — même 90 secondes par jour — sont un excellent moyen d’améliorer votre forme cardiovasculaire sans longue séance d’entraînement.
+  disclaimer: >-
+    Mieux vaut demander rapidement l’avis de votre médecin d’abord si vous avez des problèmes articulaires, de l’hypertension, ou si vous n’avez pas fait d’exercice intense depuis un moment.
+lf_circadian_light:
+  title: Lumière le matin, pénombre le soir — les deux bouts de votre horloge biologique
+  body: >-
+    L’exposition à une lumière vive le matin — idéalement dehors, dans l’heure qui suit le réveil — aide à régler l’horloge biologique, ce qui soutient à la fois la qualité du sommeil et l’humeur/l’énergie dans la journée. Le soir, réduisez la lumière bleue : les écrans et l’éclairage LED au plafond freinent la production de mélatonine, ce qui rend plus difficile l’endormissement et le maintien du sommeil. Baissez les lumières et éloignez-vous des écrans (ou utilisez des lunettes anti-lumière bleue ou le mode nuit) pendant l’heure ou les deux heures qui précèdent le coucher — les bougies fonctionnent bien pendant les mois d’hiver.
+lf_cold_exposure:
+  title: L’exposition à l’eau froide
+  body: >-
+    Douches froides, eau froide sur le visage ou sur les poignets, ou simplement finir sa douche à l’eau froide — des données de plus en plus nombreuses suggèrent des effets sur l’humeur, l’énergie et la résistance au stress. Si la baignade en eau libre vous tente, progressez petit à petit plutôt que de plonger directement dans une eau froide, et ne nagez jamais seule.
+  disclaimer: >-
+    Une immersion brutale dans l’eau froide peut faire monter fortement le rythme cardiaque et la tension et déclencher un réflexe d’inspiration involontaire, ce qui présente un vrai risque en cas de maladie cardiovasculaire ou d’hypertension — demandez d’abord l’avis de votre médecin si c’est votre cas. Progressez petit à petit (commencez par des douches plus fraîches avant l’eau libre) et ne nagez jamais seule.
+lf_postmeal_walk_and_chewing:
+  title: Une courte marche après le repas, et bien mastiquer
+  body: >-
+    Marcher après les repas — même 10 minutes — atténue nettement les pics de glycémie, ce qui rejoint le cercle humeur/énergie. Cela paraît minime, mais manger plus lentement et bien mastiquer plutôt que de se presser vaut aussi la peine d’être essayé — beaucoup de femmes trouvent que cela les aide à être plus calmes pendant le repas et plus à l’aise après.
+lf_rebounding_box_jumping:
+  title: Mini-trampoline et sauts sur plateforme — pour la densité osseuse
+  body: >-
+    10 minutes de mini-trampoline par jour sont un moyen sans impact de soutenir le drainage lymphatique, la densité osseuse et la forme cardiovasculaire, et c’est doux pour les articulations comparé à la course — c’est la plus douce des deux options présentées ici. Les sauts sur plateforme (box jumps) — environ 10 minutes, 3 fois par semaine — sollicitent davantage le squelette et construisent donc la densité osseuse plus directement, mais ils sont réellement à fort impact : ce n’est pas le bon point de départ si vos articulations sont déjà douloureuses, et le mini-trampoline ou la musculation vous conviendront mieux dans ce cas.
+  disclaimer: >-
+    Demandez l’avis de votre médecin avant de commencer un entraînement à base de sauts si vous avez des problèmes articulaires, une densité osseuse faible connue ou suspectée, de l’hypertension, des symptômes au niveau du périnée, ou si vous n’avez pas fait d’exercice à impact depuis un moment. Progressez petit à petit plutôt que de commencer à la dose complète.
+lf_vagal_breathwork_and_sauna:
+  title: Respiration pour le nerf vague, et sauna ou exposition à la chaleur
+  body: >-
+    Des techniques de respiration simples — la respiration carrée (inspirez sur 4, retenez sur 4, expirez sur 4, retenez sur 4), le soupir physiologique (deux courtes inspirations par le nez, une longue expiration par la bouche) ou fredonner — activent le nerf vague et font passer le corps du mode « combat ou fuite » au mode « repos et digestion ». Cela ne prend que quelques minutes et peut se faire n’importe où. Le sauna ou l’exposition à la chaleur disposent aussi de données croissantes pour la santé cardiovasculaire, et certaines femmes trouvent que cela aide les douleurs articulaires et l’humeur.
+  disclaimer: >-
+    Si vous êtes sujette aux bouffées de chaleur ou déjà sensible à la chaleur, le sauna demande de la prudence — séances plus courtes, ou à éviter complètement s’il déclenche des symptômes au lieu d’aider. Demandez d’abord l’avis de votre médecin si vous avez une maladie cardiovasculaire, une tension mal contrôlée ou un problème qui affecte l’hydratation, ou si vous prenez un médicament qui agit sur la tension ou l’équilibre des liquides — la chaleur fait monter le rythme cardiaque et peut modifier rapidement la tension.
+lf_nature_and_connection:
+  title: Du temps dans la nature, et garder des liens sociaux
+  body: >-
+    Le temps passé dans la nature — marcher pieds nus dans l’herbe ou le sable, ou jardiner dans un potager — n’est pas qu’un exercice : c’est l’effet apaisant, ancré dans l’instant présent, d’être dehors et de faire quelque chose de ses mains. Des liens sociaux forts sont associés à une meilleure humeur, une meilleure longévité et une meilleure résilience pendant les transitions hormonales — l’une des habitudes les plus simples et les mieux étayées qui soient. Qu’il s’agisse d’une marche régulière avec une amie, d’un cours ou d’une communauté, c’est une vraie habitude quotidienne ou hebdomadaire à nommer, pas juste un « plus ».
+mr_gp_signpost:
+  title: Parlez de vos options à votre médecin — y compris le THM
+  body: |-
+    Le traitement hormonal de la ménopause (THM) est le traitement le plus efficace des symptômes vasomoteurs, et il peut avoir des effets protecteurs sur la densité osseuse et la santé cardiovasculaire chez beaucoup de femmes lorsqu’il est commencé dans les 10 ans suivant la ménopause. Le THM moderne à hormones identiques à celles du corps a généralement un profil de sécurité plus favorable que les anciennes formulations. Savoir s’il vous convient dépend de vos symptômes, de votre âge, de vos antécédents médicaux et de vos facteurs de risque personnels — il ne convient pas à tout le monde, et c’est une discussion à avoir avec votre médecin, pas une auto-évaluation. Cette application soutient votre mode de vie — elle ne remplace pas les soins médicaux. Prenez rendez-vous si vos symptômes affectent nettement votre qualité de vie.
+    Indépendamment du THM : les suggestions de mode de vie de cette application — alimentation, mouvement, sommeil, état d’esprit — se veulent un cadre général adapté à la plupart des femmes, sans rien qui soit intrinsèquement inadapté comme peut l’être un médicament sur ordonnance. Cela dit, demandez toujours d’abord l’avis de votre médecin si vous prenez un médicament (pour écarter les interactions, en particulier avec les compléments), si vous êtes suivie par un spécialiste pour une maladie, ou si vous attendez un traitement, un examen ou un diagnostic. Il ne s’agit pas de restreindre l’accès aux conseils — il s’agit de s’assurer qu’ils viennent en plus d’un bon suivi médical, pas à la place.
+mr_this_is_real:
+  title: Vos symptômes sont réels — et largement sous-estimés
+  body: |-
+    La ménopause touche presque tous les systèmes du corps. Au pic de la périménopause, les femmes rapportent en moyenne 7–10 symptômes en même temps. Pourtant, la plupart des femmes ne sont pas interrogées sur la ménopause par les soignants avant d’en parler elles-mêmes. Ce que vous vivez est réel, a des causes biologiques, et n’est ni un signe de faiblesse ni le signe de « mal vieillir ». C’est une transition — avec un début, un milieu et une fin.
+    Une prise de sang normale ne veut pas dire qu’il ne se passe rien. Les taux d’hormones fluctuent beaucoup en périménopause, donc un seul résultat peut sembler normal alors que ce que vous ressentez raconte autre chose — c’est pourquoi, au Royaume-Uni, les recommandations du NICE indiquent que les femmes de plus de 45 ans qui ont des symptômes peuvent généralement être diagnostiquées sans prise de sang. Si l’on vous a dit que vos analyses étaient « normales » mais que vous ne vous sentez pas bien, cela vaut la peine d’en reparler à votre médecin — ce n’est pas une impasse.
+mr_your_window_headline:
+  title: C’est votre fenêtre
+  body: |-
+    La périménopause ne vous arrive pas simplement — elle vous appelle à agir. C’est votre fenêtre d’opportunité, pas un lent déclin, mais le moment d’agir et de changer la trajectoire des 40 prochaines années.
+    La ménopause n’est pas la fin de votre fenêtre — c’en est une nouvelle. Les années autour et juste après les dernières règles sont celles où certains changements vont le plus vite — la perte osseuse, par exemple, y est la plus rapide — donc ce que vous construisez pendant cette période se prolonge sur les décennies suivantes. Comment voulez-vous vous sentir, qui voulez-vous être dans 5, 10, 15 ans ? Commencez dès maintenant à devenir cette femme.
+mr_advice_flexes_to_you:
+  title: Votre programme doit s’adapter à comment vous allez — pas seulement à votre stade
+  body: >-
+    Le sommeil, le stress, le niveau d’activité, l’alimentation et la génétique interagissent tous, et le bon point de départ dépend de là où vous en êtes réellement, pas seulement de votre stade. Deux femmes en postménopause peuvent avoir besoin de conseils totalement différents si l’une dort bien et est active, et l’autre est épuisée, à cran et dort à peine. Votre stade nous dit où commencer à chercher ; la façon dont vous allez côté sommeil, stress, énergie et humeur nous dit ce dont vous avez vraiment besoin. C’est aussi le bon moment pour réfléchir à vos limites — à ce que vous portez pour tout le monde, et s’il y a de la place pour vous remettre sur la liste.
+mr_hormonal_conditions_awareness:
+  title: D’autres déséquilibres hormonaux à écarter
+  body: >-
+    Si vous avez d’autres déséquilibres hormonaux, ils peuvent aussi influencer ce dont vous avez besoin ici. Les maladies de la thyroïde (hypothyroïdie, maladie de Hashimoto, hyperthyroïdie) interagissent étroitement avec les œstrogènes et la progestérone, si bien que les symptômes se chevauchent et s’amplifient souvent — la TSH est le premier examen standard, complété par d’autres (comme la FT4) si elle est anormale ou si les symptômes évoquent fortement une cause thyroïdienne malgré un résultat normal. Le SOPK, même s’il est généralement diagnostiqué plus tôt dans la vie, entraîne souvent une résistance à l’insuline qui se prolonge en périménopause et à la ménopause, ce qui demande d’autant plus d’attention à la stabilité de la glycémie. Vous lirez peut-être aussi des articles sur la « fatigue surrénalienne » ou sur le stress chronique qui « épuiserait » vos hormones — sachez que ce n’est pas un diagnostic médical reconnu, même si une véritable insuffisance surrénalienne est une maladie réelle, diagnostiquée séparément, que votre médecin peut rechercher si vous êtes inquiète. La résistance à l’insuline ou le prédiabète méritent d’être nommés directement comme un déséquilibre hormonal à part entière, pas seulement comme un « problème de glycémie ». Les antécédents familiaux comptent aussi — si votre mère ou vos sœurs ont eu une périménopause particulièrement difficile, une ménopause précoce, ou des maladies comme l’ostéoporose ou une maladie cardiovasculaire, c’est une information utile pour faire des examens de façon préventive.
+mr_chronic_illness_pacing:
+  title: Si vous vivez aussi avec un Covid long, un SFC ou une fibromyalgie
+  body: >-
+    Ces trois affections se recoupent fortement avec les symptômes de la périménopause et de la ménopause — fatigue, brouillard mental, mauvais sommeil, changements d’humeur, intolérance à l’effort — si bien que les symptômes peuvent facilement être attribués aux seules hormones, ce qui retarde de vrais examens. Doser son énergie compte davantage ici — l’exercice intense, y compris les courts efforts fractionnés, devra peut-être être réduit si vous avez des poussées de symptômes après l’effort (une aggravation des symptômes après une activité, parfois avec un ou deux jours de décalage). « Forcer malgré tout » est le mauvais réflexe dans ce cas — avec des symptômes post-effort, plus d’activité peut retarder la récupération au lieu de renforcer la résilience. Travailler avec votre médecin ou un spécialiste est important, car les conseils de mode de vie standard peuvent nécessiter de vraies adaptations.
+ss_vitamin_d3_k2:
+  title: Vitamine D3 (+K2) — idéalement guidée par une prise de sang
+  body: >-
+    Le manque de vitamine D est très fréquent au Royaume-Uni, et il compte davantage à la ménopause, car la baisse des œstrogènes affecte déjà la densité osseuse. Beaucoup de femmes prennent un complément entre 1000–4000 UI par jour, idéalement selon une prise de sang plutôt qu’au hasard — faire d’abord le dosage vous dit si vous en avez besoin, et en quelle quantité. Certaines femmes choisissent un produit associant D3 (cholécalciférol) et K2, car la K2 soutient l’utilisation du calcium par l’organisme. C’est une suggestion qui aide beaucoup de femmes, pas un avis médical, alors demandez d’abord l’avis de votre médecin généraliste ou de votre pharmacien.
+  disclaimer: >-
+    Une toxicité de la vitamine D peut survenir à très forte dose (au-delà de 4000 UI/jour sur le long terme). La K2 peut interagir avec la warfarine et d’autres anticoagulants — ne prenez pas cette association si vous êtes sous anticoagulants sans l’accord explicite de votre médecin. Faites toujours un dosage avant de dépasser 2000 UI et demandez l’avis de votre médecin généraliste si vous avez une maladie rénale, une hypercalcémie ou une sarcoïdose.
+ss_magnesium_form_guide:
+  title: Magnésium — la forme compte
+  body: >-
+    Si vous essayez le magnésium, la forme fait plus de différence qu’on ne le pense. Les femmes qui en prennent utilisent couramment autour de 200–400 mg par jour, en commençant par le bas de la fourchette. Le glycinate est plus doux pour l’intestin et provoque moins de selles molles — généralement le meilleur choix si vous cherchez un soutien pour le sommeil, le calme ou le système nerveux, sans effet laxatif. Le citrate a un effet laxatif naturel, c’est donc le meilleur choix si vous êtes aussi constipée ou souhaitez un soutien du transit — même s’il peut donner des selles molles si la dose est trop élevée. Les deux sont mieux absorbés que l’oxyde de magnésium, moins cher mais mal absorbé et surtout utilisé pour son effet laxatif plutôt que pour augmenter le taux de magnésium.
+  disclaimer: >-
+    Les compléments ne sont pas des médicaments réglementés. Demandez toujours l’avis de votre médecin généraliste ou de votre pharmacien avant de commencer, surtout si vous prenez des médicaments sur ordonnance ou avez un problème rénal ou cardiaque.
+ss_omega3_foundational:
+  title: Oméga-3 (EPA/DHA)
+  body: >-
+    Beaucoup de femmes prennent un complément associant EPA et DHA, couramment entre 1000–2000 mg par jour. Si vous en choisissez un, vérifiez la teneur réelle en EPA/DHA par gélule plutôt que le seul poids total d’huile de poisson, et recherchez une pureté testée par un organisme indépendant.
+  disclaimer: >-
+    À forte dose, les oméga-3 peuvent fluidifier le sang. Si vous prenez des anticoagulants (warfarine, aspirine, apixaban) ou devez être opérée, demandez l’avis de votre médecin généraliste ou de votre pharmacien avant d’en prendre.
+ss_b_complex_methylated:
+  title: Complexe B — les formes méthylées sont bonnes à connaître
+  body: >-
+    Si vous envisagez un complexe B, la forme est bonne à connaître — le méthylfolate comme alternative à l’acide folique synthétique, la méthylcobalamine comme alternative à la cyanocobalamine synthétique. Aucune des deux formes n’est universellement « meilleure » — avoir une variante courante du gène MTHFR n’est pas, à elle seule, une raison de préférer les formes méthylées, quoi que vous puissiez lire ailleurs ; si vous connaissez votre statut MTHFR et voulez en tenir compte, parlez-en à votre médecin plutôt que de décider à partir d’informations générales comme celles-ci. Vu la fréquence des carences en B12 et en folates à cette période de la vie, il vaut la peine de savoir que ces options existent plutôt que de supposer qu’une seule forme convient à tout le monde.
+  disclaimer: >-
+    Demandez toujours l’avis de votre médecin généraliste ou de votre pharmacien avant de commencer, surtout si vous prenez des médicaments sur ordonnance ou avez un problème rénal.
+ss_gut_repair_probiotic_prebiotic:
+  title: Probiotiques et fibres prébiotiques — pour réparer la santé intestinale
+  body: >-
+    Certaines femmes trouvent qu’un probiotique multisouche aide leur santé intestinale pendant cette transition — la dose varie selon le produit et le nombre d’UFC, donc mieux vaut chercher des souches validées cliniquement plutôt que le nombre d’UFC le plus élevé. Les fibres prébiotiques (par ex. inuline, PHGG) sont une autre option que beaucoup essaient — commencer bas et augmenter lentement aide à éviter les ballonnements, en particulier si la santé intestinale est déjà fragilisée.
+  disclaimer: >-
+    Demandez toujours l’avis de votre médecin généraliste ou de votre pharmacien avant de commencer, surtout si vous prenez des médicaments sur ordonnance ou avez une maladie digestive diagnostiquée.
+ss_digestive_enzymes_hcl:
+  title: Enzymes digestives et HCL — contre les ballonnements, le reflux, et pour l’absorption
+  body: >-
+    Certaines femmes trouvent utile de prendre des enzymes digestives avec les repas si les ballonnements ou l’inconfort après avoir mangé sont fréquents. Certains praticiens pensent qu’une acidité gastrique réduite peut y jouer un rôle chez certaines femmes — c’est une idée contestée plutôt qu’établie, donc à considérer comme une théorie à discuter avec un médecin ou un praticien plutôt que comme une évidence. Le chlorhydrate de bétaïne (HCL) est une option que certaines femmes essaient sous encadrement, avec des repas contenant des protéines. Nous ne détaillerons pas ici comment ajuster soi-même la dose selon les sensations — c’est précisément le genre de chose qu’un praticien doit vous expliquer en personne, vu à quel point c’est inadapté pour certaines personnes.
+  disclaimer: >-
+    Le HCL ne convient pas à tout le monde — en particulier en cas d’ulcère actif, de gastrite ou de prise d’anti-inflammatoires — il nécessite donc l’avis d’un médecin ou d’un praticien avant de commencer, y compris pour la dose.
+ss_calcium_d_glucarate:
+  title: D-glucarate de calcium — pour soutenir l’élimination des œstrogènes
+  body: >-
+    Certaines femmes s’intéressent au D-glucarate de calcium, souvent cité autour de 500 mg–1 g/jour dans les doses que les gens disent utiliser, en partant de l’idée qu’il aide le foie à éliminer les œstrogènes plutôt qu’ils ne soient réabsorbés par l’intestin. Cette idée revient surtout chez les femmes ayant des antécédents d’affections sensibles aux œstrogènes comme l’endométriose, l’adénomyose ou les fibromes. Il faut être honnête : les preuves chez l’humain pour cet effet précis sont limitées — l’essentiel de ce qu’on sait vient de travaux en laboratoire et chez l’animal plutôt que d’essais cliniques chez des femmes. Si vous voulez explorer cette piste, un soutien plus large de l’élimination des œstrogènes — fonction hépatique, fibres, légumes crucifères, moins d’alcool et d’exposition aux xéno-œstrogènes — repose sur des preuves plus solides et mérite d’être prioritaire dans tous les cas.
+  disclaimer: >-
+    Demandez toujours l’avis de votre médecin généraliste ou de votre pharmacien avant de commencer, surtout si vous prenez des médicaments sur ordonnance ou avez des antécédents personnels ou familiaux d’affections sensibles aux hormones. Le D-glucarate de calcium peut modifier la façon dont le foie traite certains médicaments, donc cet avis compte encore plus si vous prenez un traitement régulier.

@@ -1,0 +1,31 @@
+# Traduction de frameworks/perimenopause-specific.yaml — la version anglaise fait foi.
+df_peri_blood_sugar:
+  title: La stabilité de la glycémie est votre meilleur atout en périménopause
+  body: >-
+    En périménopause, les œstrogènes fluctuent fortement — parfois très hauts, parfois très bas, au cours d’un même mois. Ces variations diminuent la sensibilité à l’insuline et rendent la régulation de la glycémie plus difficile. Vous remarquerez peut-être des chutes d’humeur, des baisses d’énergie l’après-midi et des fringales que vous n’aviez pas avant. La solution : à chaque repas, mangez d’abord les protéines et les lipides, avant les glucides ; ne mangez jamais de glucides seuls ; et évitez de sauter des repas. Une glycémie stable donne une humeur et une énergie nettement plus stables.
+df_peri_fibre:
+  title: 30 g de fibres par jour — pour le métabolisme des œstrogènes et le microbiote intestinal
+  body: >-
+    L’excès d’œstrogènes est éliminé par le foie puis évacué par l’intestin. Un microbiote intestinal en bonne santé (l’« estrobolome ») aide à recycler les œstrogènes de façon appropriée. Une alimentation pauvre en fibres permet aux œstrogènes d’être réabsorbés par l’intestin, ce qui contribue aux symptômes de dominance œstrogénique (règles abondantes, ballonnements, sensibilité des seins) en début de périménopause. Visez 30 g de fibres par jour : céréales complètes, légumineuses, légumes et fruits. Une alimentation végétale variée est le moyen le plus efficace d’y parvenir.
+lf_cycle_tracking:
+  title: Suivez votre cycle — les tendances révèlent votre profil hormonal
+  body: >-
+    La périménopause se caractérise par l’irrégularité, mais suivre vos cycles fait apparaître dans vos symptômes des tendances qui semblent aléatoires tant qu’on ne les voit pas. Des applis comme Clue ou Natural Cycles (ou un simple carnet) vous permettent de noter symptômes, humeur, énergie et sommeil en parallèle de votre cycle. Sur 3–4 mois, la plupart des femmes repèrent des périodes prévisibles (en général la semaine avant les règles, ou les jours autour de l’ovulation) où certains symptômes atteignent leur pic. On passe de « je ne sais jamais comment je vais me sentir » à « je peux me préparer pour mardi ».
+lf_peri_strength_early:
+  title: Commencez le renforcement musculaire maintenant — avant que la perte osseuse ne s’accélère
+  body: >-
+    La période la plus importante pour protéger durablement la densité osseuse et la masse musculaire, c’est la périménopause — avant la perte accélérée qui survient dans les 5 années suivant les dernières règles. Prendre l’habitude du renforcement musculaire dès maintenant (même 2 fois par semaine, 30 minutes) constitue une réserve de densité osseuse et de muscle qui amortit la transition. Les femmes qui installent cette habitude en périménopause s’adaptent nettement mieux à la phase postménopausique.
+mr_peri_mourning:
+  title: Le chagrin est une réaction légitime à la périménopause
+  body: >-
+    La périménopause arrive souvent en même temps que de grandes étapes de vie — les enfants qui quittent la maison, des parents vieillissants, des exigences professionnelles au plus haut, et un rapport à la fertilité qui change. Le poids émotionnel de cette période est réel et rarement reconnu. Ressentir du chagrin, de la colère ou un sentiment de perte pendant cette transition n’est ni de la dépression ni une faiblesse — c’est une réaction proportionnée au changement. Nommer ce chagrin, plutôt que de lutter contre lui, est souvent le premier pas pour le traverser.
+mr_peri_information_power:
+  title: Mieux vous comprenez la périménopause, moins elle fait peur
+  body: >-
+    Les femmes qui vivent le plus difficilement la périménopause sont souvent celles qui avaient le moins d’informations avant qu’elle ne commence. Chaque symptôme que vous ressentez a un mécanisme — une raison hormonale, pas imaginaire. L’appli et le site Balance du Dr Louise Newson, l’association britannique Menopause Charity et des livres comme « Perimenopause Power » de Maisie Hill sont des ressources fondées sur des données probantes (en anglais). La connaissance ne fait pas disparaître les symptômes, mais elle enlève la peur que quelque chose ne tourne pas rond chez vous en particulier.
+ss_magnesium_peri:
+  title: Magnésium — pour les symptômes de type SPM, l’humeur et le sommeil
+  body: >-
+    En début de périménopause, la progestérone baisse en premier — avant les œstrogènes — ce qui provoque des symptômes de type syndrome prémenstruel : irritabilité, sensibilité des seins, troubles du sommeil et ballonnements pendant la phase lutéale. Le glycinate de magnésium (300–400 mg le soir) agit directement sur bon nombre de ces symptômes en soutenant le GABA, en réduisant le cortisol et en détendant les muscles lisses. C’est l’un des compléments les mieux étayés par les données pour la périménopause en particulier.
+  disclaimer: >-
+    Les compléments de magnésium sont généralement bien tolérés. À forte dose, ils peuvent provoquer des selles molles — commencez à 200 mg et augmentez progressivement. Demandez l’avis de votre médecin généraliste avant de les prendre si vous avez une maladie rénale ou un problème cardiaque, ou si vous prenez des médicaments sur ordonnance.

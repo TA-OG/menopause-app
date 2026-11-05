@@ -9,6 +9,8 @@ import {
   selectFocus,
 } from '@/lib/wellness-engine'
 import { deriveUserSignals } from '@/lib/user-signals'
+import { getLocale, getTranslations } from 'next-intl/server'
+import { loadOverlay, loadEnglishIndex, localizeRecs } from '@/lib/plan-content-i18n'
 import { redirect } from 'next/navigation'
 import Greeting from '@/components/ui/Greeting'
 import RefreshSubscriptionButton from '@/components/ui/RefreshSubscriptionButton'
@@ -48,7 +50,8 @@ export default async function DashboardPage({
     .eq('id', user.id)
     .single()
 
-  const firstName = profile?.full_name?.split(' ')[0] ?? 'there'
+  const firstName = profile?.full_name?.trim().split(/\s+/)[0] || null
+  const t = await getTranslations('Dashboard')
 
   // Just returned from Stripe checkout — the webhook may not have landed
   // yet, or may have failed to resolve the user (see migration 023 and
@@ -111,7 +114,14 @@ export default async function DashboardPage({
         noted.mindset_recommendations.length +
         noted.supplement_suggestions.length
 
-      focus = selectFocus(noted, signals, FOCUS_COUNT)
+      // Chosen on the English copy, then shown in her language.
+      const locale = await getLocale()
+      focus = localizeRecs(
+        selectFocus(noted, signals, FOCUS_COUNT),
+        loadOverlay(locale),
+        loadEnglishIndex(),
+        locale
+      )
     }
   }
 
@@ -125,10 +135,10 @@ export default async function DashboardPage({
         <section aria-labelledby="focus-heading" className="space-y-3">
           <div className="flex items-baseline justify-between gap-3">
             <h2 id="focus-heading" className="font-bold text-brand-900">
-              Start here
+              {t('startHere')}
             </h2>
             <a href="/my-plan" className="text-sm font-medium text-brand-700">
-              All {planTotal} →
+              {t('allCount', { count: planTotal })}
             </a>
           </div>
 
@@ -153,7 +163,7 @@ export default async function DashboardPage({
                         appears — including here, where it is only a summary. */}
                     {rec.personal_note && (
                       <span className="text-sm font-medium text-blush-800">
-                        🩺 Read the note on this one before you start
+                        🩺 {t('readNoteFirst')}
                       </span>
                     )}
                   </span>
@@ -168,15 +178,13 @@ export default async function DashboardPage({
       {focus.length === 0 && (
         <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
           <div className="mb-3 flex items-center justify-between">
-            <h2 className="font-semibold text-gray-900">Your wellness plan</h2>
+            <h2 className="font-semibold text-gray-900">{t('yourPlan')}</h2>
             <a href="/my-plan" className="text-sm font-medium text-brand-700">
-              View →
+              {t('view')}
             </a>
           </div>
           <p className="text-base text-gray-600">
-            {geo.personalisedAllowed
-              ? 'Complete your intake to see your personalised plan.'
-              : 'Personalised plans aren’t available in your region yet — the guides are.'}
+            {geo.personalisedAllowed ? t('planReadyFree') : t('regionUnavailable')}
           </p>
         </div>
       )}
@@ -186,22 +194,29 @@ export default async function DashboardPage({
         href="/symptom-checkin"
         className="block rounded-2xl bg-brand-900 p-5 text-white transition-colors hover:bg-brand-800"
       >
-        <p className="text-lg font-semibold">Log today&apos;s symptoms</p>
+        <p className="text-lg font-semibold">{t('logSymptoms')}</p>
         <p className="mt-1 text-base text-brand-200">
-          Track how you&apos;re doing and see your progress over time
+          {t('logSymptomsSubtitle')}
         </p>
+      </a>
+      {/* Separate link: the card above is itself a link, and links can't nest. */}
+      <a
+        href="/symptom-checkin/history"
+        className="-mt-3 flex min-h-11 items-center justify-end text-sm font-medium text-brand-700"
+      >
+        {t('pastCheckins')}
       </a>
 
       {/* Journal shortcut */}
       <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
         <div className="mb-3 flex items-center justify-between">
-          <h2 className="font-semibold text-gray-900">Journal</h2>
+          <h2 className="font-semibold text-gray-900">{t('journal')}</h2>
           <a href="/journal" className="text-sm font-medium text-brand-700">
-            Open →
+            {t('open')}
           </a>
         </div>
         <p className="text-base text-gray-600">
-          Track what you&apos;re trying and how it&apos;s working for you.
+          {t('journalSubtitle')}
         </p>
       </div>
 
@@ -210,28 +225,25 @@ export default async function DashboardPage({
         href="/refer"
         className="block rounded-2xl border border-brand-200 bg-brand-50 p-5 transition-colors hover:bg-brand-100"
       >
-        <p className="font-semibold text-brand-900">
-          🎁 Invite a friend, get a free month
-        </p>
+        <p className="font-semibold text-brand-900">{t('inviteTitle')}</p>
         <p className="mt-1 text-base text-brand-800">
-          You both get one month free — stack up to 6 referrals.
+          {t('inviteSubtitle')}
         </p>
       </a>
 
       {/* Upgrade prompt for free users */}
       {!isPremium && (
         <div className="rounded-2xl border border-blush-200 bg-blush-50 p-5">
-          <p className="font-semibold text-blush-800">Unlock your full plan</p>
+          <p className="font-semibold text-blush-800">{t('unlockPlan')}</p>
           <p className="mb-3 mt-1 text-base text-blush-700">
-            Get access to all recommendations, content, and your complete journal
-            history.
+            {t('unlockPlanSubtitle')}
           </p>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
             <a
               href="/pay"
               className="inline-block rounded-xl bg-blush-600 px-4 py-2.5 text-base font-semibold text-white transition-colors hover:bg-blush-700"
             >
-              Upgrade — £7.99/month
+              {t('upgrade')}
             </a>
             <RefreshSubscriptionButton />
           </div>

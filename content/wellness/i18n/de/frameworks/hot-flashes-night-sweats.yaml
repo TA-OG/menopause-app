@@ -1,0 +1,79 @@
+# Übersetzung von frameworks/hot-flashes-night-sweats.yaml — maßgeblich ist die englische Fassung.
+df_cool_foods:
+  title: Setz auf „kühlende“ Lebensmittel
+  body: >-
+    Lebensmittel mit vielen Phytoöstrogenen — gemahlene Leinsamen, Edamame, Tofu, Tempeh — können helfen, die Östrogenschwankungen abzufedern, die Hitzewallungen auslösen. Ziel sind 1–2 Esslöffel gemahlene Leinsamen täglich, in Porridge, Joghurt oder Smoothies.
+df_reduce_triggers:
+  title: Verringere häufige Auslöser von Hitzewallungen
+  body: >-
+    Koffein, Alkohol, scharfes Essen und sehr heiße Getränke sind die am häufigsten genannten Auslöser von Hitzewallungen über die Ernährung. Lass jeweils einen davon zwei Wochen lang weg und notiere, ob die Wallungen seltener oder schwächer werden. Viele Frauen stellen fest, dass der Morgenkaffee der größte einzelne Auslöser ist.
+df_blood_sugar:
+  title: Stabilisiere den Blutzucker als allgemeine Grundlage
+  body: >-
+    Manche Frauen bemerken, dass Blutzuckerspitzen und -abstürze eine Hitzewallung auszulösen oder zu verstärken scheinen, auch wenn das für Wechseljahres-Hitzewallungen allgemein kein belegter Auslöser ist — beobachte es lieber bei dir, statt davon auszugehen. Eiweiß und gesunde Fette zu jeder Mahlzeit (z. B. Eier, Nüsse, fetter Fisch, Avocado) verlangsamen ohnehin die Zuckeraufnahme und sind in jedem Fall eine vernünftige Grundlage. Meide auf nüchternen Magen raffinierte Kohlenhydrate und süße Snacks.
+df_hf_hydration:
+  title: Trink gleichmäßig genug
+  body: >-
+    Flüssigkeitsmangel erhöht die Körpertemperatur und macht Hitzewallungen stärker. Etwa 2 Liter am Tag gelten als übliche Faustregel, über den Tag verteilt, und etwas mehr, wenn du nachts schwitzt — das ist aber ein Richtwert, kein Ziel, und wie viel du tatsächlich brauchst, hängt von deiner Größe, dem Wetter und deiner Aktivität ab. Wenn dir eine Ärztin oder ein Arzt gesagt hat, die Trinkmenge zu begrenzen — etwa bei Herz- oder Nierenschwäche — halte dich an diese Grenze, nicht an diese hier. Beginne den Tag mit einem großen Glas kaltem Wasser und stell dir eins neben das Bett.
+lf_layers_bedding:
+  title: Bettzeug in Schichten — die praktischste Hilfe gegen Nachtschweiß
+  body: >-
+    Steig auf atmungsaktives, feuchtigkeitsableitendes Bettzeug um (Bambus oder Baumwoll-Perkal). Schlaf mit Schichten, die du wegstrampeln kannst: ein Laken, eine leichte Decke, eine Bettdecke — statt einer einzigen schweren Decke. Ein kleiner Ventilator, der von dir weg zeigt (damit er den Raum kühlt, statt dich anzublasen), kann den Nachtschweiß verringern, weil er die Raumtemperatur unter 18 °C hält.
+lf_paced_breathing:
+  title: Langsames Atmen, um eine Hitzewallung abzufangen
+  body: >-
+    Studien zeigen, dass langsames, gleichmäßiges Atmen (4–5 Atemzüge pro Minute) die Stärke einer Hitzewallung verringern kann, wenn man beim ersten Anzeichen damit beginnt. Probier es so: 4 Zählzeiten einatmen, 2 halten, 6 ausatmen. Übe es täglich, damit es automatisch wird. Es braucht etwa 2 Wochen Übung, bis es im Moment zuverlässig funktioniert.
+lf_exercise_timing:
+  title: Der Zeitpunkt des Trainings zählt
+  body: >-
+    Regelmäßige, moderate Bewegung senkt insgesamt die Häufigkeit vasomotorischer Beschwerden — Sport in der Hitze oder mit hoher Intensität kann aber vorübergehend Hitzewallungen auslösen. Bei Frauen mit starkem Nachtschweiß wirkt Bewegung am Morgen an der kühlen Luft meist besser als Sport am Abend.
+lf_clothing:
+  title: Kleide dich in Schichten aus Naturfasern
+  body: >-
+    Synthetische Stoffe halten die Wärme. Naturfasern — Baumwolle, Leinen, Bambus, Merino — lassen Feuchtigkeit verdunsten. Bei der Arbeit gibt dir eine Strickjacke oder ein Blazer, den du schnell ausziehen kannst, mehr Kontrolle als ein einzelnes dickeres Kleidungsstück. Stell dir, wenn möglich, einen kleinen Ventilator auf den Schreibtisch.
+mr_flush_not_just_supplements:
+  title: Hitzewallungen sind nicht nur eine Frage von Nahrungsergänzungsmitteln
+  body: >-
+    Auch die Darmgesundheit und ein stabiler Blutzucker können eine Rolle spielen. Manche Frauen bemerken, dass Blutzuckerschwankungen eine Hitzewallung auslösen oder verstärken — plausibel über das Adrenalin, das ausgeschüttet wird, um eine Unterzuckerung auszugleichen. Für Wechseljahres-Hitzewallungen allgemein ist das aber kein belegter Auslöser, sondern ein Muster, von dem manche Frauen berichten und das du bei dir beobachten kannst. Den Blutzucker über den Tag stabil zu halten, ist in jedem Fall eine vernünftige Grundlage. Vielleicht liest du auch, dass ein schlechter Östrogenabbau (ein Problem von Darm oder Leber) Hitzewallungen verursacht — das ist eine Theorie, die manche Fachleute verwenden, aber keine Ursache, die gängige Leitlinien zur Menopause als belegt ansehen; also mit Vorsicht betrachten. So oder so bringt die Arbeit an den Grundlagen — Schlaf, Stress, Blutzucker, Bewegung — für Häufigkeit und Stärke der Hitzewallungen oft mehr als jedes einzelne Präparat.
+mr_flush_normalise:
+  title: Sieh die Hitzewallung anders — Angst verstärkt sie
+  body: >-
+    Die Angst vor einer nahenden Hitzewallung ist selbst ein Auslöser: Sie aktiviert das sympathische Nervensystem, das die Körpertemperatur erhöht. Frauen, die lernen, eine Hitzewallung zu beobachten, ohne sie zu dramatisieren („das ist in 90 Sekunden vorbei“), berichten mit der Zeit von deutlich geringerer Stärke. Im Vereinigten Königreich erkennt das NICE die kognitive Verhaltenstherapie (KVT) bei Wechseljahresbeschwerden als Option für vasomotorische Beschwerden an — zusätzlich zur HRT oder stattdessen. In England kannst du dich, wenn du berechtigt bist, selbst bei den NHS Talking Therapies anmelden; dieses Angebot richtet sich aber an Angst und Depression, und eine speziell auf die Menopause ausgerichtete KVT gibt es nicht überall — frag deshalb deine Hausärztin oder deinen Hausarzt auch nach einer menopausenspezifischen KVT oder einer Überweisung an eine Menopause-Sprechstunde. Women’s Health Concern (der Patientinnenbereich der British Menopause Society) bietet ein kostenloses Infoblatt (auf Englisch) zur KVT bei Wechseljahresbeschwerden an.
+mr_sleep_hygiene:
+  title: Schütze deinen Schlaf trotz Nachtschweiß
+  body: >-
+    Nachtschweiß führt oft zu zusätzlicher Angst rund um den Schlaf („Mir graut vor dem Schlafengehen“). Halte deine Abendroutine gleichbleibend und ruhig. Eine kühle Dusche vor dem Schlafengehen senkt die Körpertemperatur für 60–90 Minuten — das Zeitfenster, in dem es am meisten hilft. Verzichte in den 30 Minuten davor auf Bildschirme. Wenn dich ein Schweißausbruch weckt, halte Wasser und Ventilator bereit und schau nicht aufs Handy.
+mr_track_patterns:
+  title: Beobachte zwei Wochen lang deine Auslöser
+  body: >-
+    Notiere in deinem täglichen Check-in, wie oft Hitzewallungen auftreten, zu welcher Tageszeit und was du in den 2 Stunden davor gegessen oder getrunken hast. Die meisten Frauen erkennen innerhalb von zwei Wochen 2–3 klare Muster. Deine Auslöser zu kennen, gibt dir Handlungsspielraum — und das hängt für sich genommen mit einer geringer empfundenen Belastung durch die Symptome zusammen.
+ss_magnesium_glycinate:
+  title: Magnesiumglycinat — für den Schlaf und gegen Hitzewallungen
+  body: >-
+    Magnesiumglycinat (200–400 mg vor dem Schlafengehen) ist gut verträglich und hat erste Belege dafür, dass es in der Perimenopause Nachtschweiß seltener macht und die Schlafqualität verbessert. Es beruhigt außerdem das Nervensystem. Die Glycinat-Form ist schonender für die Verdauung als Magnesiumoxid.
+  disclaimer: >-
+    Nahrungsergänzungsmittel sind keine zugelassenen Arzneimittel. Sprich vor dem Beginn immer mit deiner Hausärztin, deinem Hausarzt oder in der Apotheke, besonders wenn du verschreibungspflichtige Medikamente nimmst oder eine Nieren- oder Herzerkrankung hast.
+ss_sage_extract:
+  title: Salbei — bei Hitzewallungen und Nachtschweiß
+  body: >-
+    Für standardisierten Salbeiextrakt (Salvia officinalis) gibt es einige klinische Belege für eine leichte Verringerung der Häufigkeit von Hitzewallungen — in den Studien wurden meist 300–600 mg täglich eines standardisierten Extrakts verwendet; das ist etwas anderes als eine Tasse Salbeitee, der nicht in einer bekannten Dosis untersucht wurde und nicht dieselbe Evidenz hat. Salbeitee vor dem Schlafengehen ist ein traditionelles Mittel gegen starkes Schwitzen, zu dem manche Frauen nach wie vor greifen — man sollte nur wissen, dass er auf einer anderen Grundlage steht als die Forschung zum Extrakt. Die Wirkung des standardisierten Extrakts baut sich über 4–8 Wochen auf. Kein Ersatz für eine HRT bei starken Hitzewallungen.
+  disclaimer: >-
+    Salbeipräparate können mit manchen Medikamenten wechselwirken, etwa mit Antiepileptika und Diabetesmedikamenten. Nicht geeignet in der Schwangerschaft. Sprich vor der Einnahme mit deiner Hausärztin oder deinem Hausarzt, besonders wenn du eine bestehende Erkrankung hast.
+ss_omega3_vasomotor:
+  title: Omega-3 (EPA/DHA) — bei Hitzewallungen und Nachtschweiß
+  body: >-
+    Es gibt einige Belege dafür, dass es Häufigkeit und Stärke vasomotorischer Beschwerden — Hitzewallungen und Nachtschweiß — verringert, zusätzlich zu seinem allgemeinen gesundheitlichen Nutzen.
+  disclaimer: >-
+    Hoch dosiertes Omega-3 kann blutverdünnend wirken. Wenn du Blutverdünner nimmst (Warfarin, Aspirin, Apixaban) oder eine Operation ansteht, sprich vor der Einnahme mit deiner Hausärztin, deinem Hausarzt oder in der Apotheke.
+ss_vitamin_e_vasomotor:
+  title: Vitamin E — bei vasomotorischen Beschwerden
+  body: >-
+    Manche Frauen probieren Vitamin E, üblicherweise etwa 400 IE/Tag, um Häufigkeit und Stärke vasomotorischer Beschwerden einschließlich Nachtschweiß zu verringern — die Belege für genau diese Wirkung sind bescheiden. 400 IE sind eine hohe Ergänzungsdosis, weit über dem, was man über die Nahrung aufnimmt.
+  disclaimer: >-
+    Hoch dosiertes Vitamin E kann das Blutungsrisiko erhöhen, besonders zusammen mit Blutverdünnern oder Thrombozytenaggregationshemmern (Warfarin, Aspirin) oder vor einer Operation. Sprich vor dem Beginn immer mit deiner Hausärztin, deinem Hausarzt oder in der Apotheke, besonders wenn du verschreibungspflichtige Medikamente nimmst.
+ss_maca_hot_flushes:
+  title: Maca — für hormonelles Gleichgewicht, Energie, Stimmung und Libido
+  body: >-
+    Maca (z. B. die Formulierungen von Dr. Anna Cabeca oder herkömmliches Macawurzelpulver oder -kapseln) unterstützt bei vielen Frauen hormonelles Gleichgewicht, Energie, Stimmung und Libido.
+  disclaimer: >-
+    Vorsicht bei Autoimmunerkrankungen — Maca kann das Immunsystem anregen und Schübe verstärken. Wenn das auf dich zutrifft, lass es vorher ärztlich oder fachärztlich abklären.

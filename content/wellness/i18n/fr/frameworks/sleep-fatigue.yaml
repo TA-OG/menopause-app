@@ -1,0 +1,69 @@
+# Traduction de frameworks/sleep-fatigue.yaml — la version anglaise fait foi.
+df_sleep_tryptophan:
+  title: Mangez des aliments riches en tryptophane le soir
+  body: |-
+    Le tryptophane est un précurseur de la sérotonine et de la mélatonine — les hormones qui régulent le sommeil. On en trouve beaucoup dans la dinde, le poulet, les œufs, les graines de courge, l’avoine et les produits laitiers. Une petite collation protéines + glucides 90 minutes avant le coucher (par ex. un petit bol de porridge d’avoine ou une banane avec quelques noix) peut soutenir la production de mélatonine.
+    Votre dîner peut aussi aider. Certaines femmes trouvent utile de composer le repas du soir autour de poisson gras, de dinde ou de poulet, ou de pois chiches et de lentilles, avec un glucide complexe comme la patate douce, le quinoa ou le riz complet. Certaines remarquent aussi qu’un repas copieux et riche en glucides tard le soir est suivi d’un réveil vers 2–3 h du matin — prendre l’essentiel des glucides plus tôt et garder un repas tardif léger et équilibré en protéines est une chose simple à essayer. Ce sont des pistes douces à tester, pas une prescription.
+df_caffeine_cutoff:
+  title: Fixez une limite stricte pour la caféine à 13 h
+  body: >-
+    La caféine a une demi-vie de 5–6 heures — un café pris à 15 h a encore la moitié de sa caféine dans votre organisme à 20 h. Avancer votre limite à 13 h est le changement alimentaire le plus efficace que la plupart des femmes puissent faire pour la qualité de leur sommeil. Passez aux tisanes, au rooibos ou au décaféiné après le déjeuner.
+df_energy_blood_sugar:
+  title: Mangez pour une énergie stable tout au long de la journée
+  body: >-
+    La fatigue est souvent aggravée par les chutes de glycémie. Évitez de sauter des repas et visez des protéines, des bonnes graisses et des fibres à chaque repas pour entretenir votre énergie. Une petite collation en milieu de matinée et en milieu d’après-midi (une poignée de noix, une pomme avec du beurre de cacahuète) évite le coup de barre de 15 h que décrivent beaucoup de femmes en périménopause.
+lf_sleep_consistency:
+  title: Fixez votre heure de réveil — elle ancre tout votre cycle de sommeil
+  body: >-
+    Votre rythme circadien est réglé avant tout par votre heure de réveil, pas par votre heure de coucher. Vous lever à la même heure chaque jour (week-ends compris), à 30 minutes près, est le changement de comportement de sommeil le mieux étayé par les données. Cela semble contre-intuitif après une mauvaise nuit, mais faire la grasse matinée rend la nuit suivante plus difficile.
+lf_morning_light:
+  title: La lumière du matin — 10 minutes dehors dans l’heure qui suit le réveil
+  body: >-
+    La lumière extérieure (même par temps nuageux) est 10–50 fois plus intense que l’éclairage intérieur. S’y exposer dans la première heure après le réveil supprime la mélatonine résiduelle, améliore la vigilance dans la journée et ancre votre cycle veille-sommeil. Une courte marche ou un moment assise près d’une fenêtre ouverte, ça compte. C’est gratuit et ça prend 10 minutes.
+lf_restorative_movement:
+  title: Un mouvement réparateur contre la fatigue — pas le repos
+  body: >-
+    Contre toute attente, le repos aggrave la fatigue dans la plupart des cas. Un mouvement doux et régulier — une marche de 20 minutes, du yoga, de la natation — active les systèmes énergétiques et améliore l’efficacité des mitochondries. Visez à bouger chaque jour, même seulement 15 minutes. Gardez l’effort intense pour les moments où vous avez plus d’énergie en réserve.
+lf_wind_down:
+  title: Un rituel de 30 minutes pour décompresser chaque soir
+  body: |-
+    Votre système nerveux a besoin d’un signal de transition entre le « mode journée » et le sommeil. Mettez en place un rituel régulier de 30 minutes : lumière tamisée, pas d’écrans, quelque chose de peu stimulant (lecture, étirements doux, un bain ou une douche). Refaire la même séquence chaque soir apprend à votre corps à l’associer à l’endormissement.
+    Si une série de mauvaises nuits s’est accumulée, certaines femmes trouvent qu’une « sleepcation » volontaire remet les compteurs à zéro : bloquez une soirée dans votre agenda, éteignez vos appareils, rendez la chambre calme et confortable, et mettez votre pyjama préféré.
+mr_sleep_effort:
+  title: Arrêtez d’essayer de dormir — l’intention paradoxale
+  body: >-
+    Plus vous essayez de dormir, plus vous êtes éveillée. La thérapie cognitive de l’insomnie (TCC-I) enseigne le « contrôle du stimulus » et l’« intention paradoxale » — si vous êtes réveillée au bout de 20 minutes, levez-vous, faites quelque chose de calme dans une lumière tamisée, et ne retournez au lit que lorsque vous avez sommeil. Cela casse la boucle d’anxiété autour du sommeil. Demandez à votre médecin de vous orienter vers un programme de TCC-I ; au Royaume-Uni, l’appli Sleepio est accessible via le NHS.
+mr_fatigue_self_compassion:
+  title: Reposez-vous sans culpabilité
+  body: >-
+    Beaucoup de femmes forcent malgré la fatigue parce qu’elles ont l’impression qu’elles « devraient » y arriver. La fatigue en périménopause est physiologique — c’est votre corps qui s’adapte aux changements hormonaux, pas un défaut de caractère. Les œstrogènes interviennent dans la façon dont vos cellules produisent de l’énergie, donc des taux qui changent font partie du tableau physique. La réponse n’est généralement pas de forcer davantage ; c’est de soutenir votre corps et de vous reposer sans culpabilité. Prévoir un temps de repos volontaire chaque jour (même 20 minutes allongée) et le considérer comme de l’entretien plutôt que comme une faiblesse change nettement la façon dont on vit la fatigue.
+ss_magnesium_sleep:
+  title: Glycinate de magnésium — pour la qualité du sommeil
+  body: >-
+    Le glycinate de magnésium (200–400 mg, 30–60 minutes avant le coucher) dispose de bonnes preuves pour améliorer l’endormissement et la continuité du sommeil. Il détend les muscles lisses, réduit le cortisol et soutient le GABA — le principal neurotransmetteur apaisant du cerveau. Commencez à 200 mg et augmentez si besoin.
+  disclaimer: >-
+    Les compléments ne sont pas des médicaments réglementés. Demandez toujours l’avis de votre médecin généraliste ou de votre pharmacien avant de commencer, surtout si vous prenez des médicaments sur ordonnance ou avez un problème rénal ou cardiaque.
+ss_vitamin_d:
+  title: Vitamine D — énergie, humeur et défenses immunitaires
+  body: >-
+    Au Royaume-Uni, la plupart des adultes manquent de vitamine D en hiver. Une carence est fortement associée à la fatigue, à une humeur basse et à un mauvais sommeil. Le NHS recommande 10 microgrammes (400 UI) par jour à tous les adultes d’octobre à mars ; les femmes à la peau plus foncée ou peu exposées au soleil peuvent bénéficier d’une supplémentation toute l’année à 1000–2000 UI. Demandez à votre médecin une prise de sang pour vérifier votre taux avant de prendre de plus fortes doses.
+  disclaimer: >-
+    Les doses très élevées de vitamine D (au-delà de 4000 UI/jour) peuvent être toxiques. Faites vérifier vos taux avant de dépasser 2000 UI. Demandez l’avis de votre médecin généraliste si vous avez des antécédents de calculs rénaux ou d’hypercalcémie.
+ss_coq10_ubiquinol_energy:
+  title: CoQ10 (ou ubiquinol) — pour la production d’énergie des cellules
+  body: >-
+    La CoQ10 se prend couramment à 100–200 mg/jour et participe réellement à la production d’énergie des cellules, mais les preuves qu’une supplémentation améliore de façon mesurable la fatigue sont mitigées plutôt qu’établies. L’ubiquinol est la forme « active » en laquelle votre corps convertit la forme standard (ubiquinone) — cette conversion peut devenir moins efficace avec l’âge, c’est pourquoi certaines femmes choisissent l’ubiquinol, même s’il n’est pas fermement établi qu’il soit cliniquement meilleur pour tout le monde. Les statines sont connues pour faire baisser le taux de CoQ10 dans l’organisme, ce qui explique qu’on en parle souvent pour les femmes sous statines ou autre traitement cardiaque.
+  disclaimer: >-
+    Si vous prenez une statine ou un autre traitement cardiaque, cela doit se faire sous l’avis de votre médecin, en raison de l’interaction.
+ss_nmn_pqq_energy:
+  title: NMN et PQQ — émergents, pas établis, pour soutenir l’énergie
+  body: >-
+    Le NMN (nicotinamide mononucléotide, couramment 250–500 mg/jour) augmente de façon fiable le taux de NAD+, qui diminue avec l’âge et intervient dans le métabolisme énergétique des cellules — mais les essais chez l’humain n’ont pas encore établi que cela se traduise par un bénéfice net sur la fatigue ; la plupart des recherches sont pour l’instant petites et de courte durée. Le PQQ (pyrroloquinoléine quinone, couramment 10–20 mg/jour) lui est parfois associé ; il est généralement bien toléré, avec le même écart entre un mécanisme prometteur et un résultat prouvé. Mieux vaut les considérer comme expérimentaux plutôt que comme une solution fiable.
+  disclaimer: >-
+    Demandez toujours l’avis de votre médecin généraliste ou de votre pharmacien avant de commencer, surtout si vous prenez des médicaments sur ordonnance.
+ss_nac_glutathione_energy:
+  title: NAC et glutathion — soutien antioxydant
+  body: >-
+    La NAC (N-acétylcystéine, couramment 600 mg/jour) et/ou le glutathion soutiennent le principal système antioxydant de l’organisme, qui joue un rôle dans la production d’énergie des cellules et la réduction du stress oxydatif. Vous lirez peut-être que le glutathion doit être liposomal pour agir — certaines études montrent que le glutathion oral standard peut aussi en augmenter le taux dans l’organisme ; ce n’est donc pas une obligation stricte, même si la formulation influence l’absorption et que la recherche sur la meilleure forme est encore en cours.
+  disclaimer: >-
+    Demandez toujours l’avis de votre médecin généraliste ou de votre pharmacien avant de commencer, surtout si vous prenez des médicaments sur ordonnance.
