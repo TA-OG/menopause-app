@@ -18,7 +18,9 @@
  */
 
 import { useEffect, useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { createClient } from '@/lib/supabase/client'
+import { safeNext } from '@/lib/safe-redirect'
 import Logo from '@/components/ui/Logo'
 
 function readFragment(): URLSearchParams {
@@ -27,11 +29,16 @@ function readFragment(): URLSearchParams {
 }
 
 export default function AuthCompletePage() {
+  const t = useTranslations('AuthComplete')
   const [failed, setFailed] = useState(false)
 
   useEffect(() => {
+    // Back to sign-in, keeping where she was going so a retry still gets her there.
     const bounce = (reason: string) => {
-      window.location.replace(`/auth/sign-in?error=${encodeURIComponent(reason)}`)
+      const retry = new URLSearchParams({ error: reason })
+      const next = new URLSearchParams(window.location.search).get('next')
+      if (next) retry.set('redirectTo', safeNext(next))
+      window.location.replace(`/auth/sign-in?${retry}`)
     }
 
     const run = async () => {
@@ -55,7 +62,9 @@ export default function AuthCompletePage() {
       if (error) return bounce('auth_callback_failed')
 
       // Session cookies are written now, so the server can identify the user.
-      let redirectTo = query.get('next') ?? '/dashboard'
+      // The fallback is sanitised here too: it is used exactly when the server
+      // could not vouch for `next`, so it must never be the raw query value.
+      let redirectTo = safeNext(query.get('next'))
       try {
         const res = await fetch('/api/auth/complete-signin', {
           method: 'POST',
@@ -63,7 +72,7 @@ export default function AuthCompletePage() {
           body: JSON.stringify({ next: query.get('next'), ref: query.get('ref') }),
         })
         const body = await res.json()
-        if (res.ok && typeof body?.redirectTo === 'string') redirectTo = body.redirectTo
+        if (res.ok && typeof body?.redirectTo === 'string') redirectTo = safeNext(body.redirectTo)
       } catch {
         // They are signed in either way — carry on into the app rather than
         // blocking on follow-up work that also retries at the next sign-in.
@@ -81,13 +90,13 @@ export default function AuthCompletePage() {
       <Logo />
       {failed ? (
         <>
-          <p className="text-sm text-brand-900">We could not finish signing you in.</p>
+          <p className="text-sm text-brand-900">{t('failed')}</p>
           <a href="/auth/sign-in" className="text-sm text-brand-600 underline">
-            Try again
+            {t('tryAgain')}
           </a>
         </>
       ) : (
-        <p className="text-sm text-gray-500">Signing you in…</p>
+        <p className="text-sm text-gray-500">{t('signingIn')}</p>
       )}
     </div>
   )

@@ -106,7 +106,9 @@ describe('DELETE /api/account', () => {
     const res = await DELETE(request({ confirm: 'DELETE' }))
     expect(res.status).toBe(500)
     expect(m.rpc).not.toHaveBeenCalled()
-    expect((await res.json()).error).toMatch(/nothing has been deleted/)
+    const body = await res.json()
+    expect(body.code).toBe('nothing_deleted')
+    expect(body.error).toMatch(/nothing has been deleted/)
   })
 
   it('carries on when the Stripe customer is already gone (e.g. a retry)', async () => {
@@ -128,7 +130,8 @@ describe('DELETE /api/account', () => {
     m.rpc.mockResolvedValue({ error: { message: 'boom' } })
     const res = await DELETE(request({ confirm: 'DELETE' }))
     expect(res.status).toBe(500)
-    const { error } = await res.json()
+    const { error, code } = await res.json()
+    expect(code).toBe('subscription_cancelled')
     expect(error).toMatch(/subscription has been cancelled/)
     expect(error).not.toMatch(/nothing has been deleted/)
     expect(m.signOut).not.toHaveBeenCalled()
@@ -138,13 +141,16 @@ describe('DELETE /api/account', () => {
     m.profile = { data: { stripe_customer_id: null, is_admin: false }, error: null }
     m.rpc.mockResolvedValue({ error: { message: 'boom' } })
     const res = await DELETE(request({ confirm: 'DELETE' }))
-    expect((await res.json()).error).toMatch(/nothing has been deleted/)
+    const body = await res.json()
+    expect(body.code).toBe('nothing_deleted')
+    expect(body.error).toMatch(/nothing has been deleted/)
   })
 
   it('refuses to delete an admin account from the app', async () => {
     m.profile = { data: { stripe_customer_id: null, is_admin: true }, error: null }
     const res = await DELETE(request({ confirm: 'DELETE' }))
     expect(res.status).toBe(403)
+    expect((await res.json()).code).toBe('admin')
     expect(m.customersDel).not.toHaveBeenCalled()
     expect(m.rpc).not.toHaveBeenCalled()
   })

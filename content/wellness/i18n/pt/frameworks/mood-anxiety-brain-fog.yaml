@@ -1,0 +1,107 @@
+# Tradução de frameworks/mood-anxiety-brain-fog.yaml — prevalece a versão em inglês.
+df_omega3_brain:
+  title: Ácidos gordos ómega-3 para o cérebro e o humor
+  body: >-
+    O DHA (um tipo de ómega-3) é essencial para o funcionamento das membranas das células cerebrais e para a sinalização da serotonina. A descida dos estrogénios reduz a eficiência com que o cérebro usa o ómega-3. Coma peixe gordo (salmão, sardinha, cavala) 2–3 vezes por semana, ou tome um suplemento de 1000 mg de EPA+DHA por dia se não comer peixe. As sementes de linhaça moídas e as nozes fornecem ALA (um precursor vegetal do ómega-3).
+df_fermented_foods:
+  title: A saúde intestinal e a ligação ao humor
+  body: >-
+    O eixo intestino-cérebro está bem estabelecido, embora seja muitas vezes descrito de forma vaga. Cerca de 90% da serotonina do corpo é produzida no intestino — mas pelas suas próprias células enterocromafins, não pelas bactérias intestinais, e essa serotonina não passa para o cérebro. O que as bactérias intestinais fazem é influenciar a quantidade produzida e comunicar com o cérebro por outras vias. A maior parte deste trabalho é, no entanto, mecanicista ou feita em animais — os ensaios em humanos sobre alimentos fermentados e humor ainda são limitados, por isso encare o benefício no humor como verdadeiramente incerto. Ainda assim, os alimentos fermentados valem a pena para a saúde intestinal em geral: iogurte com culturas vivas, kefir, kimchi, chucrute, miso. Procure variedade ao longo da semana em vez de grandes quantidades de uma só coisa.
+df_protein_neurotransmitters:
+  title: Proteína em todas as refeições — os aminoácidos constroem as substâncias do seu humor
+  body: >-
+    A serotonina, a dopamina e o GABA são feitos a partir de aminoácidos que vêm da proteína da alimentação. Saltar refeições ou comer snacks pobres em proteína pode esgotar os materiais de que o seu cérebro precisa. Procure ingerir 20–30 g de proteína ao pequeno-almoço (ovos, iogurte grego, salmão fumado) — isto prepara a produção de neurotransmissores para o dia.
+lf_exercise_mood:
+  title: O exercício é a intervenção para o humor com mais evidência que existe
+  body: >-
+    30 minutos de cardio moderado (caminhada rápida, bicicleta, natação) 3–5 vezes por semana aumentam o BDNF (fator neurotrófico derivado do cérebro) — a proteína de crescimento e reparação do próprio cérebro. Também aumenta as endorfinas, baixa o cortisol e contraria diretamente a ansiedade e o humor em baixo da perimenopausa. O efeito começa logo na primeira sessão e acumula-se ao longo das semanas. Se não fizer mais nada desta lista, faça isto.
+lf_stress_boundary:
+  title: Identifique uma coisa que pode deixar de fazer
+  body: >-
+    A perimenopausa coincide muitas vezes com o pico da pressão profissional e com responsabilidades familiares de cuidado. As mulheres que se descrevem como «sobrecarregadas» referem muitas vezes que o humor e o nevoeiro mental melhoram bastante quando reduzem uma obrigação regular — não quando acrescentam mais ferramentas de recuperação. Reveja a sua semana e identifique uma coisa que possa eliminar, delegar ou fazer com menos frequência.
+lf_brain_fog_tactics:
+  title: Estratégias práticas para o nevoeiro mental no trabalho
+  body: >-
+    O nevoeiro mental é real — os estrogénios regulam o córtex pré-frontal. Adaptações práticas: anote as coisas de imediato em vez de as tentar fixar; use lembretes no calendário para o que normalmente se lembraria; reserve tempo de concentração de manhã, quando a função cognitiva costuma estar no auge; faça pausas curtas para se mexer a cada 90 minutos para recuperar a concentração. Não são falhanços — são adaptações.
+mr_physiology_not_personality:
+  title: Isto é fisiologia, não uma mudança de personalidade
+  body: |-
+    As alterações emocionais da menopausa não são uma mudança de personalidade nem sinal de que há algo errado consigo — são fisiologia. Os estrogénios têm uma relação direta com a serotonina e a dopamina, por isso, quando descem, o humor, a motivação e a resiliência descem com eles. Não é fraqueza. Não é «só stress». É química. Mas o humor raramente depende só dos estrogénios — está também ligado a vários outros sistemas, e vale a pena perceber o quadro completo em vez de presumir que «são só as hormonas» ou que «sou só eu».
+    Sono e energia: dormir mal — tão comum na menopausa por causa dos suores noturnos, dos pensamentos acelerados ou de um sistema nervoso cansado mas em alerta — não a deixa só exausta, reduz diretamente a sua capacidade de regular as emoções. Uma noite curta torna o detetor de ameaças do cérebro mais reativo e abafa a parte do cérebro que acalma as coisas. A falta de energia agrava isto — quando está com o depósito vazio, sobra simplesmente menos para a paciência ou a perspetiva. Humor, sono e energia alimentam-se mutuamente num ciclo, para o bem e para o mal.
+    Desequilíbrio hormonal e raiva: muitas mulheres reconhecem «a raiva» da perimenopausa. As oscilações irregulares, muitas vezes grandes, dos estrogénios e da progesterona nesta fase podem contribuir para ela — não é um defeito de carácter, nem está simplesmente «na sua cabeça». Convém ser honesta, ainda assim: o mecanismo exato não está cientificamente estabelecido, e as ideias que talvez tenha lido sobre um «problema de proporção» entre progesterona e estrogénios, uma «má eliminação dos estrogénios» ou xenoestrogénios ambientais como causa não são tratadas pelas orientações habituais sobre a menopausa como causas estabelecidas — encare-as como teorias e não como explicações. Se a raiva ou a irritabilidade persistirem, vale a pena olhar para o quadro mais amplo, incluindo o stress crónico, e falar disso com o seu médico de família.
+mr_mood_hidden_drivers:
+  title: O que mais pode estar por trás — para além das hormonas
+  body: |-
+    Estado nutricional: a falta de B12 e de folato pode imitar ou agravar o humor em baixo, o nevoeiro mental, o cansaço e a irritabilidade — a carência é comum, sobretudo com a idade, com certos medicamentos ou com pouca ingestão de proteínas animais e legumes de folha verde. É algo simples e corrigível que é demasiadas vezes esquecido.
+    Saúde da tiroide: uma tiroide pouco ativa, em particular, pode parecer exatamente o «cérebro e o humor da menopausa» — humor em baixo, cansaço, nevoeiro mental, aumento de peso, sentir-se apagada. Muitas vezes passa despercebida, porque o teste padrão só com TSH não conta a história toda, e os sintomas são atribuídos a «só a menopausa» sem que a função da tiroide tenha sido bem verificada.
+    Açúcar no sangue: a pré-diabetes e a diabetes afetam diretamente o humor — as oscilações de açúcar podem causar irritabilidade, ansiedade, nevoeiro mental e quebras de energia que parecem iguais às mudanças de humor «hormonais», e uma má regulação também piora o sono e aumenta a inflamação.
+    O alcance mais vasto da histamina: os seus efeitos vão muito além da comichão, das enxaquecas e do rubor — pode também contribuir para inchaço, sono fraco, nevoeiro mental e cansaço. Se assinala várias caixas entre humor, sono, energia e digestão sem uma causa única óbvia, vale a pena considerar a histamina como um fio verdadeiro por baixo de tudo.
+mr_mood_complex_history:
+  title: Se tem antecedentes de endometriose, adenomiose ou miomas
+  body: |-
+    A endometriose, a adenomiose e os miomas são doenças sensíveis aos estrogénios, e algumas mulheres com estes antecedentes descrevem as oscilações emocionais da perimenopausa com mais intensidade — a raiva, a montanha-russa, a sensação de não se reconhecer. Isto não está estabelecido como regra geral para todas as mulheres com estes antecedentes, e não é ser «mais sensível» ou dramática se é assim que o sente. Vale também a pena dizer que muitas mulheres com estes antecedentes vivem há anos, por vezes décadas, com dor crónica, muitas vezes desvalorizada ou mal tratada antes do diagnóstico — e a depressão é realmente mais comum nelas. Se nota o humor em baixo a par das mudanças da perimenopausa, isso não é necessariamente «só a menopausa» por cima — pode ser o peso acumulado da dor, e de anos sem ser acreditada nem ouvida, finalmente a fazer-se sentir.
+    Se vive com covid longa, síndrome de fadiga crónica (SFC) ou fibromialgia a par da menopausa, o peso emocional de gerir uma doença crónica e a menopausa ao mesmo tempo é real, e muitas vezes isolador — é difícil separar que sintomas pertencem a que causa. As duas coisas podem ser verdade ao mesmo tempo, e ambas merecem cuidado, não uma competição sobre qual é «o verdadeiro problema».
+mr_mood_reframe:
+  title: Quem sou eu agora? — não tem de ser uma pergunta de crise
+  body: |-
+    A forma como conta este capítulo a si própria molda mesmo a forma como o vive. «Quem sou eu agora?» pode ser uma pergunta curiosa em vez de uma pergunta em pânico — sem fingir que está tudo bem, mas reconhecendo que esta versão de si, intermédia e desconhecida, não é um problema para resolver, é uma pessoa para conhecer. Muitas mulheres chegam aqui com a sensação de se terem perdido — essa desorientação é real e comum, e muitas vezes há mais coisas por baixo do que «só as hormonas», que é precisamente por que merece uma investigação a sério em vez de ser simplesmente aguentada.
+    A menopausa não é um problema para resolver isoladamente — é uma transição que toca ao mesmo tempo as hormonas, o sono, os nutrientes, a tiroide e a saúde metabólica. O objetivo não é «voltar ao normal», mas perceber o que se passa realmente por baixo do humor, e não apenas gerir o humor. Acompanhar padrões — qualidade do sono, quebras de energia, ciclos de humor, desencadeantes — dá-lhe informação, não apenas sintomas para aguentar.
+mr_mood_gp_red_flags:
+  title: Quando ir ao médico por causa do humor ou da ansiedade
+  body: |-
+    Consulte o seu médico de família se: o humor em baixo ou a ansiedade forem persistentes, estiverem a piorar ou a afetar o seu dia a dia; tiver pensamentos de autolesão ou desesperança — sempre no próprio dia; a raiva ou a irritabilidade lhe parecerem desproporcionadas ou assustadoras, a si ou a quem está à sua volta; as perturbações do sono forem graves, prolongadas ou não melhorarem com mudanças de estilo de vida; ou as alterações de humor surgirem com outros sinais de alarme — alteração significativa do peso, palpitações, hemorragias abundantes ou irregulares, sede excessiva ou vontade de urinar frequente.
+    Vale a pena pedir uma análise à TSH (a primeira verificação padrão da tiroide, com mais testes se o resultado for anormal ou se os sintomas apontarem fortemente para a tiroide) e análises à B12/folato se ainda não tiverem sido feitas, bem como HbA1c ou glicemia em jejum se houver antecedentes familiares de diabetes, alterações de peso ou sintomas de açúcar no sangue a par das alterações de humor. Se se pergunta se a THS, os antidepressivos ou outro apoio podem ajudar — é uma conversa que vale a pena ter, não algo para aguentar sozinha a cerrar os dentes.
+ss_magnesium_anxiety:
+  title: Glicinato de magnésio — para regular o sistema nervoso e trazer calma
+  body: >-
+    Habitualmente 200–400 mg/dia. Aqui prefere-se a forma glicinato ao citrato, já que não se procura um efeito laxante.
+  disclaimer: >-
+    Confirme sempre com o seu médico de família ou farmacêutico antes de começar, sobretudo se tomar medicamentos receitados ou tiver problemas renais ou cardíacos.
+ss_l_theanine_anxiety:
+  title: L-teanina — calma e foco sem sonolência
+  body: >-
+    Habitualmente 100–200 mg. Apoia a calma e o foco sem causar sonolência, e pode ser tomada durante o dia para a ansiedade, e não só ao deitar.
+  disclaimer: >-
+    Confirme sempre com o seu médico de família ou farmacêutico antes de começar, sobretudo se tomar medicamentos receitados.
+ss_ashwagandha:
+  title: Ashwagandha — para a resposta do corpo ao stress
+  body: >-
+    Habitualmente 300–600 mg/dia de extrato de raiz padronizado. Bem estudada como apoio à resposta do corpo ao stress e à regulação do cortisol.
+  disclaimer: >-
+    É preciso cuidado se tiver uma doença autoimune (pode estimular a atividade imunitária), uma doença da tiroide (pode afetar os níveis das hormonas da tiroide) ou se estiver grávida — fale primeiro com o seu médico de família.
+ss_saffron_mood:
+  title: Açafrão — para o humor e a ansiedade
+  body: >-
+    Habitualmente 30 mg/dia de extrato padronizado. Alguma evidência de apoio ao humor e aos sintomas de ansiedade.
+  disclaimer: >-
+    Confirme sempre com o seu médico de família ou farmacêutico antes de começar, sobretudo se tomar medicamentos receitados.
+ss_b_complex_mood:
+  title: Complexo B — para o sistema nervoso e a resistência ao stress
+  body: >-
+    Procure metilcobalamina (B12) e metilfolato em vez das formas sintéticas mais baratas (cianocobalamina, ácido fólico). As vitaminas B têm um papel no funcionamento do sistema nervoso e na resistência ao stress, o que é especialmente relevante se a alimentação ou o stress tiverem esgotado os seus níveis.
+  disclaimer: >-
+    Confirme sempre com o seu médico de família ou farmacêutico antes de começar, sobretudo se tomar medicamentos receitados ou tiver problemas renais.
+ss_omega3_mood_brainfog:
+  title: Ómega-3 (EPA/DHA) — para o nevoeiro mental, a ansiedade e o humor
+  body: >-
+    Especificamente para o nevoeiro mental, habitualmente 2–3 g/dia de EPA/DHA combinados — o limite superior do intervalo geral, dado o foco específico no cérebro. Apoia a função cognitiva e tem benefícios anti-inflamatórios para o cérebro, a par de evidência de apoio ao humor e de redução dos sintomas de ansiedade.
+  disclaimer: >-
+    O ómega-3 em doses elevadas pode tornar o sangue mais fluido. Se toma anticoagulantes (varfarina, aspirina, apixabano) ou vai ser operada, consulte o seu médico de família ou farmacêutico antes de o tomar.
+ss_acetyl_l_carnitine_brainfog:
+  title: Acetil-L-carnitina — para o metabolismo energético do cérebro
+  body: >-
+    Habitualmente 1–3 g/dia. Apoia o metabolismo energético do cérebro e tem alguma evidência para a função cognitiva e a clareza mental.
+  disclaimer: >-
+    Confirme sempre com o seu médico de família ou farmacêutico antes de começar, sobretudo se tomar medicamentos receitados.
+ss_ginkgo_brainfog:
+  title: Ginkgo biloba — para a circulação e a memória
+  body: >-
+    Habitualmente 120–240 mg/dia. Apoia a circulação para o cérebro e tem alguma evidência para a memória e a clareza mental.
+  disclaimer: >-
+    Pode interagir com medicação que torna o sangue mais fluido — é preciso confirmar primeiro com o médico, sobretudo se toma anticoagulantes ou aspirina.
+ss_phosphatidylserine_brainfog:
+  title: Fosfatidilserina — para a memória e a função cognitiva
+  body: >-
+    Habitualmente 150 mg/dia. Alguma evidência de apoio à memória e à função cognitiva.
+  disclaimer: >-
+    Confirme sempre com o seu médico de família ou farmacêutico antes de começar, sobretudo se tomar medicamentos receitados.

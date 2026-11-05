@@ -129,9 +129,13 @@ function renderFramework(framework: WellnessFramework): string {
  * header, so the generated "Reviewed:" date doesn't register as drift.
  */
 function stripHeader(doc: string): string {
+  // A Windows checkout (core.autocrlf) gives the committed file CRLF endings.
+  // Without normalising, the marker below is never found and the whole file,
+  // date included, is compared against LF output, so --check always fails.
+  const normalised = doc.replace(/\r\n/g, '\n')
   const marker = '\n---\n'
-  const i = doc.indexOf(marker)
-  return (i === -1 ? doc : doc.slice(i + marker.length)).trim()
+  const i = normalised.indexOf(marker)
+  return (i === -1 ? normalised : normalised.slice(i + marker.length)).trim()
 }
 
 function loadFrameworks(): WellnessFramework[] {

@@ -1,0 +1,45 @@
+# Tradução de frameworks/high-stress.yaml — prevalece a versão em inglês.
+df_stress_blood_sugar:
+  title: O cortisol provoca picos de açúcar no sangue — coma de forma a contrariá-los
+  body: >-
+    O cortisol (a hormona do stress) aumenta diretamente a glicose no sangue ao libertar o açúcar armazenado no fígado. Combinado com a resistência à insulina da perimenopausa, o stress crónico cria um ciclo de picos e quebras de açúcar que piora o humor, provoca desejos de hidratos de carbono e aumenta a acumulação de gordura abdominal. Contrarie-o comendo proteínas e gorduras antes dos hidratos de carbono, não saltando refeições e tendo à mão snacks que estabilizem o açúcar (frutos secos, ovos cozidos, iogurte gordo) para evitar a espiral de stress e fome.
+df_stress_magnesium_food:
+  title: O stress gasta o magnésio — coma alimentos que o reponham
+  body: >-
+    Sob stress, elimina-se mais magnésio. A falta de magnésio agrava a ansiedade, o sono e a tensão muscular — criando um ciclo vicioso. Alimentos ricos em magnésio: chocolate negro (>70%), sementes de abóbora, espinafres, feijão preto, amêndoas, abacate e bananas. Como primeira abordagem, são melhores do que os suplementos. Reduza o álcool e a cafeína, que também aumentam a eliminação de magnésio.
+df_stress_caffeine_limit:
+  title: A cafeína aumenta o cortisol — limite-se a 1–2 chávenas antes do meio-dia
+  body: >-
+    A cafeína leva as glândulas suprarrenais a libertar cortisol e adrenalina — a mesma resposta de stress que o stress crónico já mantém elevada. Se vive em stress crónico, a cafeína aumenta a carga de cortisol em vez de lhe dar energia verdadeira. Reduza para 1–2 chávenas de café e termine antes do meio-dia — de propósito mais cedo do que o limite geral das 13h para o sono, porque está a gerir a carga de cortisol além do efeito no sono. A dor de cabeça da abstinência dura 2–3 dias; depois disso, a maioria das mulheres refere uma energia mais estável e menos ansiedade de fundo.
+lf_stress_minimum_viable_recovery:
+  title: Escolha uma atividade de recuperação diária inegociável
+  body: >-
+    Com stress elevado, as atividades de recuperação são as primeiras a cair — precisamente quando são mais necessárias. A investigação sobre resiliência ao stress mostra de forma consistente que uma única «microrrecuperação» diária de 10–20 minutos — uma caminhada ao ar livre, 10 minutos de alongamentos, 5 minutos de respiração consciente, uma chávena de chá sem ecrãs — tem um efeito desproporcionado na regulação diária do cortisol. Não é um capricho. É a manutenção que evita o esgotamento. Escolha uma atividade concreta e proteja-a como uma marcação consigo própria.
+lf_stress_sleep_priority:
+  title: A falta de sono e o stress elevado formam um ciclo vicioso — quebre-o com uma hora fixa para deitar
+  body: >-
+    O stress crónico aumenta o cortisol à noite e dificulta o sono. Dormir mal aumenta o cortisol de fundo no dia seguinte e torna o stress mais difícil de gerir. A forma mais eficaz de quebrar este ciclo é proteger a hora de deitar. Defina uma hora fixa — 60 minutos mais cedo do que a hora a que se deita agora — durante duas semanas. Faça uma rotina de 30 minutos para abrandar (sem ecrãs, luz baixa). Mesmo que não adormeça mais depressa, proteger este tempo reduz o ciclo entre cortisol e sono.
+lf_stress_boundary_work:
+  title: Reveja os seus compromissos — o stress elevado é muitas vezes sobrecarga, não fraqueza
+  body: >-
+    Muitas mulheres com stress elevado são a principal cuidadora dos filhos e dos pais idosos, ao mesmo tempo que mantêm uma carreira no auge das exigências. É um problema de carga estrutural, não de resiliência. Rever semanalmente os compromissos — o que pode ser delegado, automatizado, abandonado ou agrupado — liberta de forma consistente tempo significativo. Mesmo 2–3 horas a menos de obrigações por semana baixam o cortisol de forma mensurável num mês.
+mr_stress_physiological_sigh:
+  title: O suspiro fisiológico — 5 segundos para interromper o cortisol
+  body: >-
+    O suspiro fisiológico (uma inspiração dupla pelo nariz seguida de uma expiração longa e lenta pela boca) ativa o sistema nervoso parassimpático mais depressa do que qualquer outra técnica. Funciona ao esvaziar os alvéolos pulmonares demasiado insuflados que se acumulam com o stress. Use-o quando a ansiedade começar, antes de uma conversa difícil ou quando sentir a tensão a crescer. O trabalho do neurocientista de Stanford Andrew Huberman sobre este mecanismo está amplamente disponível se quiser perceber a ciência.
+mr_stress_not_your_fault:
+  title: A menopausa aumenta a sensibilidade ao stress — é biologia, não incapacidade
+  body: >-
+    Os estrogénios modulam a resposta do cérebro à ameaça ao regular os recetores de serotonina e de GABA. Quando os estrogénios descem, a resposta ao stress torna-se mais sensível e mais difícil de acalmar. Coisas que geria sem grande dificuldade antes da perimenopausa podem agora parecer avassaladoras. É uma mudança neurológica, não uma mudança de carácter. Perceber isto tira a culpa que muitas vezes agrava o próprio stress.
+ss_ashwagandha_stress:
+  title: Ashwagandha (KSM-66) — o adaptogénio com mais evidência para o cortisol
+  body: >-
+    O extrato de raiz de ashwagandha (formulação KSM-66 ou Sensoril, 300–600 mg por dia) é o adaptogénio com a evidência clínica mais forte na redução do cortisol sérico, do stress percebido e da ansiedade. Vários ensaios aleatorizados mostram reduções significativas do cortisol e melhores pontuações de resiliência às 8 semanas. Tome com comida. Evite pós de ashwagandha baratos e não padronizados — a formulação conta para a eficácia.
+  disclaimer: >-
+    A ashwagandha pode interagir com medicamentos para a tiroide, sedativos e imunossupressores. Não é adequada na gravidez. Algumas pessoas têm desconforto digestivo — tome com comida. Consulte o seu médico de família antes de a usar se tiver doença da tiroide ou tomar medicação regular.
+ss_l_theanine:
+  title: L-teanina — calma sem sonolência para a ansiedade durante o dia
+  body: >-
+    A L-teanina (200–400 mg, com cafeína ou sozinha) favorece as ondas cerebrais alfa associadas a um estado de alerta calmo, sem causar sonolência. Atua depressa (30–60 minutos), o que a torna útil em situações de stress agudo. Tomada com regularidade, reduz a ansiedade de fundo. Existe naturalmente no chá verde, é extremamente bem tolerada e não tem interações significativas conhecidas.
+  disclaimer: >-
+    A L-teanina costuma ser muito bem tolerada. Existem interações teóricas com medicamentos para a tensão arterial — consulte o seu médico de família se tomar anti-hipertensores.

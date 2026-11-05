@@ -11,6 +11,12 @@ import type { WellnessFramework, SubstanceEntry } from '../src/types/database'
 import { validateFrameworks as validateFrameworksEngine } from '../src/lib/wellness-engine'
 import { ALL_CIRCUMSTANCE_PATTERNS, justifiedBy } from '../src/lib/medical-flags'
 import { collectedKeys } from '../src/lib/onboarding-config'
+import {
+  loadOverlay,
+  loadCulturalSource,
+  validateOverlay,
+  validateCulturalOverlay,
+} from '../src/lib/plan-content-i18n'
 
 const FRAMEWORKS_DIR = path.join(process.cwd(), 'content/wellness/frameworks')
 const REGISTRY_PATH = path.join(process.cwd(), 'content/wellness/substances.yaml')
@@ -444,6 +450,39 @@ function reportUnaskedCautions(frameworks: WellnessFramework[]): void {
   )
 }
 
+/**
+ * Translated plan content (content/wellness/i18n/<locale>/) must never change a
+ * number or a dose from the English: a mistranslated "400 mg" is a safety
+ * defect, so drift, unknown ids and unreadable overlay files fail the build.
+ * An untranslated block only falls back to English, which is safe, so gaps are
+ * reported rather than fatal (the test suite still fails on them).
+ */
+const TRANSLATED_LOCALES = ['fr', 'es', 'de', 'pt']
+
+function validateTranslations(frameworks: WellnessFramework[]): string[] {
+  const errors: string[] = []
+  const cultural = loadCulturalSource()
+  for (const locale of TRANSLATED_LOCALES) {
+    let overlay
+    try {
+      overlay = loadOverlay(locale, { strict: true })
+    } catch (err) {
+      errors.push(`[i18n:${locale}] ${(err as Error).message}`)
+      continue
+    }
+    const recs = validateOverlay(frameworks, overlay.recs, locale)
+    const cult = validateCulturalOverlay(cultural, overlay.cultural, locale)
+    errors.push(...recs.errors, ...cult.errors)
+    const gaps = recs.missing.length + cult.missing.length
+    console.log(
+      `   ${locale}: ${recs.coverage.translated}/${recs.coverage.total} recommendations, ` +
+      `${cult.coverage.translated}/${cult.coverage.total} cultural blocks translated` +
+      (gaps > 0 ? ` — ${gaps} untranslated (shown in English)` : '')
+    )
+  }
+  return errors
+}
+
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
 console.log('🔍 Validating wellness frameworks...')
@@ -477,6 +516,7 @@ const errors = Array.from(new Set([
   ...validateSubstanceRegistry(frameworks, substances),
   ...validateNumericClaims(frameworks, claims),
   ...validateCircumstanceTags(frameworks),
+  ...validateTranslations(frameworks),
 ]))
 
 if (errors.length > 0) {

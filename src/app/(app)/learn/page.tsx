@@ -1,6 +1,8 @@
 import { createClient } from '@/lib/supabase/server'
 import { getUserAccess } from '@/lib/access'
+import { getLocale, getTranslations } from 'next-intl/server'
 import { redirect } from 'next/navigation'
+import { pickLocalizedModules } from '@/lib/content-locale'
 
 export default async function LearnPage() {
   const supabase = createClient()
@@ -8,29 +10,36 @@ export default async function LearnPage() {
   if (!user) redirect('/auth/sign-in')
 
   const { isPremium } = await getUserAccess(supabase, user.id)
+  const locale = await getLocale()
+  const t = await getTranslations('Learn')
 
-  // Fetch published content — free articles always, premium if subscribed
+  // Fetch published content — free articles always, premium if subscribed.
+  // Locale IN (current, 'en') so an untranslated article still shows up via
+  // its English row instead of vanishing from the list; pickLocalizedModules
+  // resolves the two possible rows per slug down to one.
   let query = supabase
     .from('content_modules')
-    .select('id, slug, title, category, tags, tier, estimated_read_minutes, published_at')
+    .select('id, slug, title, category, tags, tier, locale, estimated_read_minutes, published_at')
     .not('published_at', 'is', null)
+    .in('locale', Array.from(new Set([locale, 'en'])))
     .order('published_at', { ascending: false })
 
   if (!isPremium) {
     query = query.eq('tier', 'free')
   }
 
-  const { data: modules } = await query
+  const { data: rawModules } = await query
+  const modules = pickLocalizedModules(rawModules ?? [], locale)
 
-  const freeModules = modules?.filter((m) => m.tier === 'free') ?? []
-  const premiumModules = modules?.filter((m) => m.tier === 'premium') ?? []
+  const freeModules = modules.filter((m) => m.tier === 'free')
+  const premiumModules = modules.filter((m) => m.tier === 'premium')
 
   return (
     <div className="space-y-6 py-4">
       <div>
-        <h1 className="text-2xl font-bold text-brand-900">Learn</h1>
+        <h1 className="text-2xl font-bold text-brand-900">{t('title')}</h1>
         <p className="text-gray-500 text-sm mt-1">
-          Real answers for the questions you&apos;ve been Googling at 3am — straight from Pamela, no fluff, no jargon
+          {t('subtitle')}
         </p>
       </div>
 
@@ -38,7 +47,7 @@ export default async function LearnPage() {
       {freeModules.length > 0 && (
         <section>
           <h2 className="font-semibold text-gray-700 text-sm uppercase tracking-wide mb-3">
-            Free articles
+            {t('freeArticles')}
           </h2>
           <div className="space-y-3">
             {freeModules.map((module) => (
@@ -58,7 +67,7 @@ export default async function LearnPage() {
                   </div>
                   {module.estimated_read_minutes && (
                     <span className="text-xs text-gray-400 flex-shrink-0">
-                      {module.estimated_read_minutes} min
+                      {t('minRead', { minutes: module.estimated_read_minutes })}
                     </span>
                   )}
                 </div>
@@ -72,7 +81,7 @@ export default async function LearnPage() {
       {isPremium && premiumModules.length > 0 && (
         <section>
           <h2 className="font-semibold text-gray-700 text-sm uppercase tracking-wide mb-3">
-            Premium articles
+            {t('premiumArticles')}
           </h2>
           <div className="space-y-3">
             {premiumModules.map((module) => (
@@ -92,7 +101,7 @@ export default async function LearnPage() {
                   </div>
                   {module.estimated_read_minutes && (
                     <span className="text-xs text-gray-400 flex-shrink-0">
-                      {module.estimated_read_minutes} min
+                      {t('minRead', { minutes: module.estimated_read_minutes })}
                     </span>
                   )}
                 </div>
@@ -105,23 +114,22 @@ export default async function LearnPage() {
       {/* Upgrade prompt for free users */}
       {!isPremium && (
         <div className="bg-brand-50 border border-brand-200 rounded-2xl p-5">
-          <p className="font-semibold text-brand-900">Unlock the full library</p>
+          <p className="font-semibold text-brand-900">{t('unlockLibrary')}</p>
           <p className="text-brand-700 text-sm mt-1 mb-3">
-            Premium members get access to all of Pamela&apos;s in-depth guides
-            on nutrition, sleep, sexual health, mental wellbeing, and more.
+            {t('unlockLibrarySubtitle')}
           </p>
           <a
             href="/pay"
             className="inline-block bg-brand-900 text-white text-sm font-semibold px-4 py-2 rounded-xl"
           >
-            Upgrade — £7.99/month
+            {t('upgrade')}
           </a>
         </div>
       )}
 
-      {(modules?.length ?? 0) === 0 && (
+      {modules.length === 0 && (
         <div className="text-center py-12">
-          <p className="text-gray-400 text-sm">Articles coming soon.</p>
+          <p className="text-gray-400 text-sm">{t('comingSoon')}</p>
         </div>
       )}
     </div>

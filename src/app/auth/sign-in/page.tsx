@@ -8,10 +8,40 @@
  * unavailable during the build phase on Vercel.
  */
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { createClient } from '@/lib/supabase/client'
+import { AUTH_NEXT_COOKIE, AUTH_NEXT_MAX_AGE_SECONDS, safeNext } from '@/lib/safe-redirect'
 import Logo from '@/components/ui/Logo'
+
+/**
+ * Remember where she was going before she leaves for Google or her inbox.
+ *
+ * The middleware sends a signed-out visitor here with `?redirectTo=` — a
+ * check-in reminder opening /symptom-checkin, say. That has to survive a
+ * round trip through Supabase, and it travels in a short-lived cookie rather
+ * than on the callback URL: Supabase checks the callback URL, query string
+ * included, against its Redirect URLs allow-list, so `?next=` there could stop
+ * sign-in working in any environment whose entry is an exact path.
+ * /auth/callback reads the cookie and clears it.
+ *
+ * With no redirectTo the cookie is cleared, so an abandoned attempt can never
+ * steer a later sign-in somewhere she did not ask to go.
+ */
+function rememberDestination() {
+  const requested = new URLSearchParams(window.location.search).get('redirectTo')
+  const secure = window.location.protocol === 'https:' ? '; Secure' : ''
+
+  if (!requested) {
+    document.cookie = `${AUTH_NEXT_COOKIE}=; Path=/; Max-Age=0; SameSite=Lax${secure}`
+    return
+  }
+
+  const target = encodeURIComponent(safeNext(requested))
+  document.cookie =
+    `${AUTH_NEXT_COOKIE}=${target}; Path=/; Max-Age=${AUTH_NEXT_MAX_AGE_SECONDS}; SameSite=Lax${secure}`
+}
 
 // ─── Google logo SVG paths (brand-compliant colours) ─────────────────────────
 
@@ -35,11 +65,22 @@ function GoogleIcon() {
 // ─── Main component ──────────────────────────────────────────────────────────
 
 export default function SignInPage() {
+  const t = useTranslations('SignIn')
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
   const [googleLoading, setGoogleLoading] = useState(false)
   const [sent, setSent] = useState(false)
   const [error, setError] = useState('')
+
+  // /auth/callback and /auth/complete send a failed sign-in back here with
+  // ?error=. It was never read, so an expired or already-used magic link
+  // returned her to a blank form with no idea why. The message is ours, not
+  // the query value: anything in the URL can be written by someone else.
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).has('error')) {
+      setError(t('linkFailed'))
+    }
+  }, [t])
 
   /**
    * Send a passwordless magic link to the user's email via Supabase Auth.
@@ -58,6 +99,7 @@ export default function SignInPage() {
     e.preventDefault()
     setLoading(true)
     setError('')
+    rememberDestination()
 
     const supabase = createClient()
     const { error: authError } = await supabase.auth.signInWithOtp({
@@ -93,6 +135,7 @@ export default function SignInPage() {
   async function handleGoogle() {
     setGoogleLoading(true)
     setError('')
+    rememberDestination()
 
     const supabase = createClient()
     const { error: authError } = await supabase.auth.signInWithOAuth({
@@ -117,16 +160,16 @@ export default function SignInPage() {
         <div className="text-center max-w-sm">
           <div className="text-5xl mb-4">📧</div>
           <h1 className="text-2xl font-bold text-brand-900 mb-2">
-            Check your email
+            {t('checkEmail')}
           </h1>
           <p className="text-gray-600 text-sm">
-            Magic link sent to <strong>{email}</strong>.
+            {t.rich('magicLinkSent', { email, strong: (chunks) => <strong>{chunks}</strong> })}
           </p>
           <button
             onClick={() => setSent(false)}
             className="text-sm text-brand-700 underline mt-4"
           >
-            Try again
+            {t('tryAgain')}
           </button>
         </div>
       </div>
@@ -145,7 +188,7 @@ export default function SignInPage() {
             <Logo size="lg" />
           </div>
           <p className="text-gray-500 text-sm">
-            Sign in to your wellness plan.
+            {t('subtitle')}
           </p>
         </div>
 
@@ -156,13 +199,13 @@ export default function SignInPage() {
           className="w-full flex items-center justify-center gap-3 border border-gray-200 bg-white text-gray-700 font-medium py-3 rounded-2xl hover:bg-gray-50 transition-colors disabled:opacity-50 mb-4"
         >
           <GoogleIcon />
-          {googleLoading ? 'Connecting...' : 'Continue with Google'}
+          {googleLoading ? t('connecting') : t('continueWithGoogle')}
         </button>
 
         {/* Divider */}
         <div className="flex items-center gap-3 mb-4">
           <div className="flex-1 h-px bg-gray-200" />
-          <span className="text-xs text-gray-400">or use email</span>
+          <span className="text-xs text-gray-400">{t('orUseEmail')}</span>
           <div className="flex-1 h-px bg-gray-200" />
         </div>
 
@@ -173,12 +216,12 @@ export default function SignInPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            placeholder="your@email.com"
+            placeholder={t('emailPlaceholder')}
             className="w-full border border-gray-200 rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-300"
           />
 
           {error && (
-            <p className="text-red-600 text-sm bg-red-50 rounded-xl px-4 py-2">
+            <p role="alert" className="text-red-600 text-sm bg-red-50 rounded-xl px-4 py-2">
               {error}
             </p>
           )}
@@ -188,15 +231,15 @@ export default function SignInPage() {
             disabled={loading}
             className="w-full bg-brand-900 text-white font-semibold py-3 rounded-2xl hover:bg-brand-800 transition-colors disabled:opacity-50"
           >
-            {loading ? 'Sending...' : 'Send magic link'}
+            {loading ? t('sending') : t('sendMagicLink')}
           </button>
         </form>
 
         {/* Sign-up link */}
         <p className="text-center text-sm text-gray-500 mt-6">
-          No account?{' '}
+          {t('noAccount')}{' '}
           <Link href="/auth/sign-up" className="text-brand-700 font-medium">
-            Sign up free
+            {t('signUpFree')}
           </Link>
         </p>
       </div>

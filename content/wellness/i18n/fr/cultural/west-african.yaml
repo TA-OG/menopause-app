@@ -1,0 +1,54 @@
+# Traduction de cultural/west-african.yaml — la version anglaise fait foi.
+items:
+  egusi-pumpkin-seeds:
+    body: |-
+      L’egusi (graines de melon) est très nourrissant — riche en bonnes graisses, en protéines et en zinc. Le zinc est indispensable à la synthèse de la testostérone (qui influe sur l’énergie et la libido pendant la ménopause) et au fonctionnement immunitaire. La soupe d’egusi est un plat vraiment nourrissant qui mérite de rester au menu.
+  moringa-traditional-remedy:
+    body: |-
+      Le moringa (Moringa oleifera) est utilisé depuis des générations dans la médecine traditionnelle d’Afrique de l’Ouest et d’ailleurs en Afrique. Il est riche en calcium, en fer, en vitamine C et en antioxydants. Des recherches émergentes soutiennent son usage pour l’énergie, l’inflammation et la régulation de la glycémie. Ajouter de la poudre de moringa aux smoothies ou aux soupes est un moyen pratique d’en consommer.
+  hibiscus-zobo-blood-pressure:
+    body: |-
+      La boisson zobo (hibiscus) est très consommée en Afrique de l’Ouest et dispose de vraies données pour soutenir une tension artérielle saine et apporter des antioxydants. Surveiller sa tension devient plus important pendant la ménopause, car les effets protecteurs des œstrogènes sur le cœur diminuent.
+
+      La préparation traditionnelle, très sucrée, réduit une partie du bénéfice. Essayez de la sucrer moins et d’y ajouter du gingembre, qui a en plus des propriétés anti-inflammatoires.
+  palm-oil-fats:
+    body: |-
+      L’huile de palme rouge est un aliment de base culturel et son profil nutritionnel diffère de celui des huiles végétales transformées — elle contient du bêta-carotène et de la vitamine E. Avec modération, elle fait partie d’une alimentation équilibrée. L’essentiel pendant la ménopause, c’est l’équilibre global des graisses — veiller à ce que le poisson gras, l’avocat et les noix soient aussi régulièrement au menu pour soutenir la santé du cerveau et la production d’hormones.
+  beans-black-eyed-peas:
+    body: |-
+      Les haricots — niébé (haricots à œil noir), haricots bruns, haricots rouges — sont au cœur de la cuisine d’Afrique de l’Ouest et vraiment bons pour vous pendant la ménopause. Ils sont riches en protéines végétales et en fibres, donc les plats à base de haricots mangés régulièrement apportent une énergie durable et soutiennent la stabilité de la glycémie, ce qui compte pour l’énergie, l’humeur et le poids.
+
+      Une réserve honnête, car vous avez peut-être lu le contraire : les preuves que les phyto-œstrogènes atténuent les bouffées de chaleur viennent d’études sur le soja en particulier, et le soja est une source d’isoflavones bien plus riche que les autres haricots. Les haricots valent largement la peine pour leurs protéines et leurs fibres. Mais si c’est contre les bouffées que vous agissez, cela veut dire des aliments à base de soja — edamame, tofu, tempeh — plutôt que les haricots en général.
+  spicy-food-triggers:
+    body: |-
+      La pepper soup, le suya et les autres plats épicés sont profondément culturels et délicieux. Les plats épicés peuvent déclencher des bouffées de chaleur chez certaines femmes pendant la ménopause — pas chez toutes, et pas toujours. Observez si vous remarquez un lien entre un repas épicé et une bouffée dans les 30–60 minutes qui suivent.
+
+      S’il y a un schéma, cela ne veut pas dire renoncer complètement aux épices — juste faire attention au moment et à la quantité, en particulier le soir.
+  stress-and-allostatic-load:
+    body: |-
+      Les recherches montrent que les femmes d’origine africaine portent une charge allostatique plus élevée — le coût physiologique cumulé du stress chronique. Ce n’est pas un échec personnel ; cela reflète la réalité structurelle d’avoir à affronter en même temps le racisme, la pression économique et les responsabilités d’aidante.
+
+      Ce stress de fond peut contribuer à la façon dont les symptômes de la ménopause sont vécus — savoir s’il les aggrave directement reste une question ouverte dans la recherche, pas un fait établi. Le reconnaître — pour vous-même et auprès de votre médecin — vaut quand même la peine. Si vos symptômes vous semblent plus sévères, ce n’est pas parce que vous êtes plus faible.
+  community-wisdom:
+    body: |-
+      Dans beaucoup de cultures africaines, la ménopause a longtemps été une expérience vécue en communauté — les femmes aînées détenaient le savoir et le transmettaient à celles qui venaient après elles. C’est sur cette transmission de sagesse entre générations qu’Aunty Mel est construite. Vous ne traversez pas cela seule, et ce savoir ne s’est jamais perdu — il lui faut simplement un lieu moderne.
+  taboo-and-speaking-up:
+    body: |-
+      Dans certaines communautés et familles d’Afrique de l’Ouest, on ne parle pas de la ménopause. Elle peut être taboue, considérée comme privée, ou associée au vieillissement d’une façon stigmatisante. On peut attendre des femmes qu’elles fassent avec en silence.
+
+      Vous avez le droit de nommer ce que vous vivez. Suivre vos symptômes, comprendre votre corps et chercher du soutien n’est pas une trahison culturelle — c’est la forme la plus moderne de la sagesse que portaient vos grands-mères.
+  vitamin-d-africa-to-uk:
+    body: |-
+      Si vous avez grandi en Afrique de l’Ouest et êtes venue vivre au Royaume-Uni, votre corps est passé d’un ensoleillement équatorial abondant à l’un des climats les plus gris d’Europe. Le manque de vitamine D est extrêmement fréquent chez les femmes d’Afrique de l’Ouest vivant au Royaume-Uni, et il aggrave directement la fatigue, la santé des os, l’humeur et les douleurs articulaires.
+
+      C’est une chose simple et à fort impact à régler — une prise de sang prescrite par votre médecin confirmera votre taux. La plupart des recommandations conseillent 1000–2000 UI par jour aux femmes à la peau plus foncée vivant au Royaume-Uni.
+      MISE EN GARDE : demandez toujours l’avis de votre médecin avant de prendre des doses supérieures à la dose standard du NHS de 400 UI. Il est recommandé de faire d’abord un dosage.
+byTitle:
+  Your timeline and your symptoms may differ from what you've read:
+    title: Votre calendrier et vos symptômes peuvent être différents de ce que vous avez lu
+    body: |-
+      La plupart des recherches sur la ménopause ont été menées auprès de femmes blanches, occidentales et de classe moyenne. Les symptômes, les calendriers et les expériences décrits dans les ressources de santé grand public ne reflètent peut-être pas tout à fait les vôtres.
+
+      Les femmes d’origine africaine arrivent à la ménopause plus tôt et vivent des symptômes plus intenses et plus longs. Si vous avez des symptômes au début ou au milieu de la quarantaine (40 ans et plus), prenez-les au sérieux — vous n’êtes pas trop jeune.
+
+      Bon à savoir sur l’origine de ces données : les études sur lesquelles elles reposent sont en grande partie américaines, et elles décrivent des moyennes, pas votre calendrier personnel.

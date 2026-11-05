@@ -1,0 +1,45 @@
+# Traducción de frameworks/high-stress.yaml — prevalece la versión en inglés.
+df_stress_blood_sugar:
+  title: El cortisol provoca picos de azúcar en sangre — come para contrarrestarlos
+  body: >-
+    El cortisol (la hormona del estrés) sube directamente la glucosa en sangre al liberar el azúcar almacenado en el hígado. Junto con la resistencia a la insulina de la perimenopausia, el estrés crónico crea un ciclo de picos y bajones de azúcar que empeora el ánimo, dispara los antojos de hidratos y aumenta la acumulación de grasa abdominal. Contrarréstalo comiendo proteínas y grasas antes que hidratos, sin saltarte comidas, y teniendo a mano tentempiés que estabilicen el azúcar (frutos secos, huevos duros, yogur entero) para evitar la espiral de estrés y hambre.
+df_stress_magnesium_food:
+  title: El estrés agota el magnesio — come alimentos que lo repongan
+  body: >-
+    Con el estrés se elimina más magnesio. La falta de magnesio empeora la ansiedad, el sueño y la tensión muscular, y se crea un círculo vicioso. Alimentos ricos en magnesio: chocolate negro (>70 %), pipas de calabaza, espinacas, alubias negras, almendras, aguacate y plátanos. Como primer paso son mejores que los suplementos. Reduce el alcohol y la cafeína, que también aumentan la eliminación de magnesio.
+df_stress_caffeine_limit:
+  title: La cafeína sube el cortisol — limítala a 1–2 tazas antes del mediodía
+  body: >-
+    La cafeína hace que las glándulas suprarrenales liberen cortisol y adrenalina — la misma respuesta de estrés que el estrés crónico ya mantiene alta. Si vives en un estado de estrés crónico, la cafeína suma carga de cortisol en lugar de darte energía de verdad. Redúcela a 1–2 tazas de café y termina antes del mediodía — a propósito antes que el límite general de las 13:00 para el sueño, porque estás gestionando la carga de cortisol además del efecto sobre el sueño. El dolor de cabeza de la abstinencia dura 2–3 días; después, la mayoría de las mujeres cuentan que tienen una energía más estable y menos ansiedad de fondo.
+lf_stress_minimum_viable_recovery:
+  title: Elige una actividad de recuperación diaria innegociable
+  body: >-
+    Con mucho estrés, las actividades de recuperación son lo primero que se deja — justo cuando más falta hacen. La investigación sobre resiliencia al estrés muestra una y otra vez que una sola «microrrecuperación» diaria de 10–20 minutos — un paseo al aire libre, 10 minutos de estiramientos, 5 minutos de respiración consciente, una taza de té sin pantallas — tiene un efecto enorme en la regulación diaria del cortisol. No es darse un capricho. Es el mantenimiento que evita quemarse. Elige una actividad concreta y protégela como una cita contigo misma.
+lf_stress_sleep_priority:
+  title: Dormir poco y el estrés alto forman un círculo vicioso — rómpelo con una hora fija de acostarte
+  body: >-
+    El estrés crónico sube el cortisol por la noche y dificulta el sueño. Dormir mal sube el cortisol de fondo al día siguiente y hace el estrés más difícil de llevar. La forma más eficaz de romper este ciclo es proteger la hora de acostarte. Fija una hora constante — 60 minutos antes de la hora a la que te acuestas ahora — durante dos semanas. Haz una rutina de 30 minutos para desconectar (sin pantallas, luz tenue). Aunque no te duermas antes, proteger ese tiempo reduce el círculo entre cortisol y sueño.
+lf_stress_boundary_work:
+  title: Revisa tus compromisos — el estrés alto suele ser sobrecarga, no debilidad
+  body: >-
+    Muchas mujeres con mucho estrés son a la vez la principal cuidadora de sus hijos y de sus padres mayores, mientras sostienen una carrera en su momento de máxima exigencia. Es un problema de carga estructural, no de resiliencia. Revisar cada semana los compromisos — qué se puede delegar, automatizar, dejar o agrupar — libera de forma constante un tiempo valioso. Incluso 2–3 horas semanales menos de obligaciones bajan el cortisol de forma medible en un mes.
+mr_stress_physiological_sigh:
+  title: El suspiro fisiológico — 5 segundos para cortar el cortisol
+  body: >-
+    El suspiro fisiológico (una doble inspiración por la nariz seguida de una espiración larga y lenta por la boca) activa el sistema nervioso parasimpático más rápido que cualquier otra técnica. Funciona desinflando los alvéolos pulmonares sobreinflados que se acumulan con el estrés. Úsalo cuando empiece la ansiedad, antes de una conversación difícil o cuando notes que crece la tensión. Los trabajos del neurocientífico de Stanford Andrew Huberman sobre este mecanismo son fáciles de encontrar si quieres entender la ciencia.
+mr_stress_not_your_fault:
+  title: La menopausia aumenta la sensibilidad al estrés — es biología, no incapacidad
+  body: >-
+    Los estrógenos modulan la respuesta del cerebro ante las amenazas regulando los receptores de serotonina y GABA. Cuando bajan, la respuesta al estrés se vuelve más sensible y cuesta más calmarla. Cosas que antes de la perimenopausia gestionabas sin mucha dificultad ahora pueden parecerte abrumadoras. Es un cambio neurológico, no un cambio de carácter. Entenderlo elimina la culpa que a menudo empeora el propio estrés.
+ss_ashwagandha_stress:
+  title: Ashwagandha (KSM-66) — el adaptógeno con más evidencia para el cortisol
+  body: >-
+    El extracto de raíz de ashwagandha (formulación KSM-66 o Sensoril, 300–600 mg al día) es el adaptógeno con la evidencia clínica más sólida para reducir el cortisol en sangre, el estrés percibido y la ansiedad. Varios ensayos aleatorizados muestran reducciones significativas del cortisol y mejores puntuaciones de resiliencia a las 8 semanas. Tómala con comida. Evita los polvos de ashwagandha baratos y no estandarizados — la formulación importa para que funcione.
+  disclaimer: >-
+    La ashwagandha puede interactuar con medicamentos para la tiroides, sedantes e inmunosupresores. No es adecuada durante el embarazo. A algunas personas les causa molestias digestivas — tómala con comida. Consulta con tu médico de cabecera antes de usarla si tienes problemas de tiroides o tomas medicación habitual.
+ss_l_theanine:
+  title: L-teanina — calma sin sedación para la ansiedad durante el día
+  body: >-
+    La L-teanina (200–400 mg, con cafeína o sola) favorece las ondas cerebrales alfa asociadas a un estado de alerta tranquila, sin causar somnolencia. Actúa rápido (30–60 minutos), por lo que es útil en situaciones de estrés agudo. Tomada con regularidad, reduce la ansiedad de fondo. Está presente de forma natural en el té verde, se tolera muy bien y no tiene interacciones importantes conocidas.
+  disclaimer: >-
+    La L-teanina suele tolerarse muy bien. Existen interacciones teóricas con los medicamentos para la tensión — consulta con tu médico de cabecera si tomas antihipertensivos.

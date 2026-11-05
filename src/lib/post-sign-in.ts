@@ -1,6 +1,7 @@
 import type { SupabaseClient, User } from '@supabase/supabase-js'
 import { claimReferral } from '@/lib/referral-rewards'
 import { activatePendingComplimentaryPremium } from '@/lib/complimentary-premium'
+import { safeNext } from '@/lib/safe-redirect'
 
 /**
  * The work that must run every time someone completes a sign-in, whichever
@@ -17,22 +18,9 @@ import { activatePendingComplimentaryPremium } from '@/lib/complimentary-premium
  * complimentary premium started.
  */
 
-/**
- * Resolve a post-sign-in redirect target that cannot leave the site.
- *
- * `next` arrives from the query string, so it is attacker-controlled: without
- * this an invite link could be reshaped into an open redirect that bounces a
- * freshly-authenticated woman to a look-alike site. Only a plain absolute path
- * is allowed — no scheme, no host, and no protocol-relative "//evil.com".
- */
-export function safeNext(next: string | null | undefined, fallback = '/dashboard'): string {
-  if (!next) return fallback
-  if (!next.startsWith('/')) return fallback
-  if (next.startsWith('//')) return fallback
-  // Backslashes are treated as slashes by some browsers when resolving URLs.
-  if (next.startsWith('/\\')) return fallback
-  return next
-}
+// Defined in safe-redirect.ts so the browser and the edge middleware can use
+// it without importing this module's Stripe dependency.
+export { safeNext }
 
 /**
  * Claim any referral, start any pending complimentary premium, and work out

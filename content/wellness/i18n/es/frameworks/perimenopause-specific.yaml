@@ -1,0 +1,31 @@
+# Traducción de frameworks/perimenopause-specific.yaml — prevalece la versión en inglés.
+df_peri_blood_sugar:
+  title: La estabilidad del azúcar en sangre es tu mejor herramienta en la perimenopausia
+  body: >-
+    En la perimenopausia, los estrógenos fluctúan muchísimo — a veces muy altos, a veces muy bajos, dentro del mismo mes. Estas oscilaciones reducen la sensibilidad a la insulina y hacen más difícil regular el azúcar en sangre. Puede que notes bajones de ánimo, caídas de energía por la tarde y antojos que antes no tenías. La solución: en cada comida, come primero proteínas y grasas antes que hidratos de carbono, nunca comas hidratos solos y evita saltarte comidas. Un azúcar en sangre estable da un ánimo y una energía mucho más estables.
+df_peri_fibre:
+  title: 30 g de fibra al día — para el metabolismo de los estrógenos y la microbiota intestinal
+  body: >-
+    El exceso de estrógenos lo elimina el hígado y se excreta por el intestino. Una microbiota intestinal sana (el «estroboloma») ayuda a reciclar los estrógenos de forma adecuada. Una dieta pobre en fibra permite que los estrógenos se reabsorban desde el intestino, lo que contribuye a síntomas de predominio estrogénico (reglas abundantes, hinchazón, sensibilidad en los pechos) al inicio de la perimenopausia. Intenta tomar 30 g de fibra al día: cereales integrales, legumbres, verduras y fruta. Una alimentación variada de origen vegetal es la forma más eficaz de conseguirlo.
+lf_cycle_tracking:
+  title: Registra tu ciclo — los patrones revelan tu panorama hormonal
+  body: >-
+    La perimenopausia se define por la irregularidad, pero registrar tus ciclos revela patrones en tus síntomas que parecen aleatorios hasta que los ves. Apps como Clue o Natural Cycles (o un diario en papel) te permiten anotar síntomas, ánimo, energía y sueño junto a tu ciclo. En 3–4 meses, la mayoría de las mujeres identifican ventanas previsibles (normalmente la semana antes de la regla, o los días en torno a la ovulación) en las que ciertos síntomas llegan a su pico. Así, «nunca sé cómo me voy a sentir» se convierte en «puedo prepararme para el martes».
+lf_peri_strength_early:
+  title: Empieza ya el entrenamiento de fuerza — antes de que se acelere la pérdida ósea
+  body: >-
+    El momento más importante para proteger a largo plazo la densidad ósea y la masa muscular es la perimenopausia — antes de la pérdida acelerada que se produce en los 5 años posteriores a la última regla. Crear ahora el hábito del entrenamiento de fuerza (aunque sea 2 veces por semana, 30 minutos) genera una reserva de densidad ósea y de músculo que amortigua la transición. Las mujeres que establecen este hábito en la perimenopausia se adaptan bastante mejor a la etapa posmenopáusica.
+mr_peri_mourning:
+  title: El duelo es una respuesta legítima a la perimenopausia
+  body: >-
+    La perimenopausia suele llegar junto a grandes hitos vitales — los hijos que se van de casa, padres que envejecen, exigencias profesionales en su punto álgido y una relación con la fertilidad que cambia. El peso emocional de esta etapa es real y pocas veces se reconoce. Sentir duelo, rabia o pérdida durante esta transición no es depresión ni debilidad: es una respuesta proporcionada al cambio. Ponerle nombre de duelo, en lugar de luchar contra él, suele ser el primer paso para atravesarlo.
+mr_peri_information_power:
+  title: Cuanto mejor entiendas la perimenopausia, menos miedo da
+  body: >-
+    Las mujeres que viven la perimenopausia de forma más difícil suelen ser las que menos información tenían antes de que empezara. Cada síntoma que tienes tiene un mecanismo: una razón hormonal, no imaginaria. La app y la web Balance de la Dra. Louise Newson, la organización británica Menopause Charity y libros como «Perimenopause Power» de Maisie Hill son recursos basados en la evidencia (en inglés). El conocimiento no elimina los síntomas, pero quita el miedo a que te pase algo raro solo a ti.
+ss_magnesium_peri:
+  title: Magnesio — para síntomas tipo SPM, el estado de ánimo y el sueño
+  body: >-
+    Al inicio de la perimenopausia, la progesterona baja primero — antes que los estrógenos — y produce síntomas parecidos al síndrome premenstrual: irritabilidad, sensibilidad en los pechos, alteraciones del sueño e hinchazón en la fase lútea. El glicinato de magnesio (300–400 mg por la noche) actúa directamente sobre muchos de estos síntomas porque favorece el GABA, reduce el cortisol y relaja la musculatura lisa. Es uno de los suplementos con más respaldo científico específicamente para la perimenopausia.
+  disclaimer: >-
+    Los suplementos de magnesio suelen tolerarse bien. En dosis altas pueden ablandar las heces — empieza con 200 mg y ve aumentando poco a poco. Consulta con tu médico de cabecera antes de tomarlos si tienes una enfermedad renal o problemas de corazón, o si tomas cualquier medicamento con receta.

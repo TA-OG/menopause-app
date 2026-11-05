@@ -5,7 +5,7 @@ import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { rateLimit } from '@/lib/rate-limit'
 import { recordEvent } from '@/lib/monitoring'
-import { DELETE_CONFIRMATION } from '@/lib/account-deletion'
+import { DELETE_CONFIRMATION, type DeleteAccountErrorCode } from '@/lib/account-deletion'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2024-04-10',
@@ -44,7 +44,7 @@ export async function DELETE(request: NextRequest) {
   const body = await request.json().catch(() => null)
   if (!DeleteAccountSchema.safeParse(body).success) {
     return NextResponse.json(
-      { error: `Type ${DELETE_CONFIRMATION} to confirm.` },
+      { error: `Type ${DELETE_CONFIRMATION} to confirm.`, code: 'confirm_required' satisfies DeleteAccountErrorCode },
       { status: 400 }
     )
   }
@@ -58,7 +58,7 @@ export async function DELETE(request: NextRequest) {
     .maybeSingle()
 
   if (profileError) {
-    return failed(user.id, 'profile lookup', profileError, NOTHING_DELETED)
+    return failed(user.id, 'profile lookup', profileError, 'nothing_deleted')
   }
 
   // An admin deleting themselves would also remove their access to the admin
@@ -66,7 +66,10 @@ export async function DELETE(request: NextRequest) {
   // something to allow from a button on the profile page.
   if (profile?.is_admin) {
     return NextResponse.json(
-      { error: 'Admin accounts can\'t be deleted from the app. Please email privacy@auntymel.app.' },
+      {
+        error: 'Admin accounts can\'t be deleted from the app. Please email privacy@auntymel.app.',
+        code: 'admin' satisfies DeleteAccountErrorCode,
+      },
       { status: 403 }
     )
   }
@@ -78,7 +81,7 @@ export async function DELETE(request: NextRequest) {
       // Already gone from Stripe (deleted there by hand, or a retry of a
       // previous attempt that got this far) — nothing left to cancel.
       const alreadyDeleted = err instanceof Stripe.errors.StripeInvalidRequestError && err.code === 'resource_missing'
-      if (!alreadyDeleted) return failed(user.id, 'Stripe cancellation', err, NOTHING_DELETED)
+      if (!alreadyDeleted) return failed(user.id, 'Stripe cancellation', err, 'nothing_deleted')
     }
   }
 
@@ -91,7 +94,7 @@ export async function DELETE(request: NextRequest) {
       user.id,
       'erase_user',
       eraseError,
-      profile?.stripe_customer_id ? SUBSCRIPTION_CANCELLED_DATA_KEPT : NOTHING_DELETED
+      profile?.stripe_customer_id ? 'subscription_cancelled' : 'nothing_deleted'
     )
   }
 
@@ -112,15 +115,23 @@ export async function DELETE(request: NextRequest) {
   return NextResponse.json({ deleted: true })
 }
 
-const NOTHING_DELETED =
-  'We couldn\'t delete your account just now, and nothing has been deleted. ' +
-  'Please try again, or email privacy@auntymel.app and we\'ll do it for you.'
+// English, for logs and other API callers. The profile dialog shows the
+// code's message in her own language (DeleteAccount.error* in messages/*.json).
+const FAILURE_MESSAGE: Record<'nothing_deleted' | 'subscription_cancelled', string> = {
+  nothing_deleted:
+    'We couldn\'t delete your account just now, and nothing has been deleted. ' +
+    'Please try again, or email privacy@auntymel.app and we\'ll do it for you.',
+  subscription_cancelled:
+    'Your subscription has been cancelled, but we couldn\'t finish deleting your account. ' +
+    'Please try again, or email privacy@auntymel.app and we\'ll do it for you.',
+}
 
-const SUBSCRIPTION_CANCELLED_DATA_KEPT =
-  'Your subscription has been cancelled, but we couldn\'t finish deleting your account. ' +
-  'Please try again, or email privacy@auntymel.app and we\'ll do it for you.'
-
-async function failed(userId: string, step: string, err: unknown, userMessage: string) {
+async function failed(
+  userId: string,
+  step: string,
+  err: unknown,
+  code: 'nothing_deleted' | 'subscription_cancelled'
+) {
   const message = err instanceof Error ? err.message : JSON.stringify(err)
   console.error(`Account deletion failed at ${step} for ${userId}:`, err)
   await recordEvent({
@@ -132,5 +143,5 @@ async function failed(userId: string, step: string, err: unknown, userMessage: s
     stack: err instanceof Error ? err.stack ?? null : null,
     userId,
   })
-  return NextResponse.json({ error: userMessage }, { status: 500 })
+  return NextResponse.json({ error: FAILURE_MESSAGE[code], code }, { status: 500 })
 }

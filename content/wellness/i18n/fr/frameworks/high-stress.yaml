@@ -1,0 +1,45 @@
+# Traduction de frameworks/high-stress.yaml — la version anglaise fait foi.
+df_stress_blood_sugar:
+  title: Le cortisol provoque des pics de glycémie — mangez de façon à les contrer
+  body: >-
+    Le cortisol (l’hormone du stress) augmente directement la glycémie en libérant le sucre stocké dans le foie. Associé à la résistance à l’insuline de la périménopause, le stress chronique crée un cycle de pics et de chutes de glycémie qui dégrade l’humeur, provoque des envies de glucides et favorise le stockage de graisse abdominale. Contrez-le en mangeant les protéines et les lipides avant les glucides, en ne sautant pas de repas et en gardant sous la main des en-cas qui stabilisent la glycémie (noix, œufs durs, yaourt entier) pour éviter la spirale stress-faim.
+df_stress_magnesium_food:
+  title: Le stress épuise le magnésium — mangez des aliments qui le reconstituent
+  body: >-
+    Sous l’effet du stress, le magnésium est éliminé en plus grande quantité. Un déficit en magnésium aggrave l’anxiété, le sommeil et les tensions musculaires — ce qui crée un cercle vicieux. Aliments riches en magnésium : chocolat noir (>70 %), graines de courge, épinards, haricots noirs, amandes, avocat et bananes. En première intention, ils valent mieux que les compléments. Réduisez l’alcool et la caféine, qui augmentent eux aussi l’élimination du magnésium.
+df_stress_caffeine_limit:
+  title: La caféine augmente le cortisol — limitez-vous à 1–2 tasses avant midi
+  body: >-
+    La caféine pousse les glandes surrénales à libérer du cortisol et de l’adrénaline — la même réponse au stress que le stress chronique maintient déjà élevée. Si vous êtes en état de stress chronique, la caféine alourdit la charge de cortisol au lieu de vous donner une vraie énergie. Réduisez à 1–2 tasses de café, en terminant avant midi — volontairement plus tôt que la limite générale de 13 h pour le sommeil, car vous gérez la charge de cortisol en plus de l’effet sur le sommeil. Le mal de tête du sevrage dure 2–3 jours ; ensuite, la plupart des femmes décrivent une énergie plus stable et une anxiété de fond plus faible.
+lf_stress_minimum_viable_recovery:
+  title: Choisissez une activité de récupération quotidienne non négociable
+  body: >-
+    Sous un stress élevé, les activités de récupération sont les premières sacrifiées — précisément quand on en a le plus besoin. Les recherches sur la résilience au stress montrent de façon constante qu’une seule « micro-récupération » quotidienne de 10–20 minutes — une marche dehors, 10 minutes d’étirements, 5 minutes de respiration consciente, une tasse de thé sans écran — a un effet démesuré sur la régulation quotidienne du cortisol. Ce n’est pas de la complaisance envers soi-même. C’est l’entretien qui évite l’épuisement. Choisissez une activité précise et protégez-la comme un rendez-vous avec vous-même.
+lf_stress_sleep_priority:
+  title: Manque de sommeil et stress élevé forment un cercle vicieux — cassez-le avec une heure de coucher régulière
+  body: >-
+    Le stress chronique augmente le cortisol la nuit, ce qui rend le sommeil plus difficile. Un mauvais sommeil augmente le cortisol de fond le lendemain, ce qui rend le stress plus difficile à gérer. Le moyen le plus efficace de rompre ce cycle, c’est de protéger l’heure du coucher. Fixez une heure de coucher régulière — 60 minutes plus tôt que maintenant — pendant deux semaines. Prévoyez un rituel de 30 minutes pour décompresser (pas d’écrans, lumière tamisée). Même si vous ne vous endormez pas plus vite, protéger ce temps réduit le cercle cortisol-sommeil.
+lf_stress_boundary_work:
+  title: Faites le point sur vos engagements — un stress élevé est souvent une surcharge, pas une faiblesse
+  body: >-
+    Beaucoup de femmes très stressées sont à la fois la principale aidante de leurs enfants et de parents vieillissants, tout en menant une carrière au maximum de ses exigences. C’est un problème de charge structurelle, pas de résilience. Faire chaque semaine le point sur ses engagements — ce qui peut être délégué, automatisé, abandonné ou regroupé — libère régulièrement un temps précieux. Même 2–3 heures d’obligations en moins par semaine font baisser le cortisol de façon mesurable en un mois.
+mr_stress_physiological_sigh:
+  title: Le soupir physiologique — 5 secondes pour interrompre le cortisol
+  body: >-
+    Le soupir physiologique (une double inspiration par le nez suivie d’une longue expiration lente par la bouche) active le système nerveux parasympathique plus vite que toute autre technique. Il agit en dégonflant les alvéoles pulmonaires sur-gonflées qui s’accumulent sous l’effet du stress. Utilisez-le dès que l’anxiété monte, avant une conversation difficile ou quand vous sentez la tension s’installer. Les travaux du neuroscientifique de Stanford Andrew Huberman sur ce mécanisme sont largement accessibles si vous voulez comprendre la science.
+mr_stress_not_your_fault:
+  title: La ménopause rend plus sensible au stress — c’est de la biologie, pas une insuffisance
+  body: >-
+    Les œstrogènes modulent la réponse du cerveau à la menace en régulant les récepteurs de la sérotonine et du GABA. Quand les œstrogènes baissent, la réponse au stress devient plus sensible et plus difficile à apaiser. Des choses que vous gériez sans grande difficulté avant la périménopause peuvent maintenant vous sembler insurmontables. C’est un changement neurologique, pas un changement de caractère. Le comprendre supprime la culpabilité qui aggrave souvent le stress lui-même.
+ss_ashwagandha_stress:
+  title: Ashwagandha (KSM-66) — l’adaptogène le mieux étayé contre le cortisol
+  body: >-
+    L’extrait de racine d’ashwagandha (formulation KSM-66 ou Sensoril, 300–600 mg par jour) est l’adaptogène qui dispose des preuves cliniques les plus solides pour réduire le cortisol sanguin, le stress perçu et l’anxiété. Plusieurs essais randomisés montrent une baisse significative du cortisol et de meilleurs scores de résilience à 8 semaines. À prendre pendant un repas. Évitez les poudres d’ashwagandha bon marché et non standardisées — la formulation compte pour l’efficacité.
+  disclaimer: >-
+    L’ashwagandha peut interagir avec les traitements de la thyroïde, les sédatifs et les immunosuppresseurs. Déconseillée pendant la grossesse. Certaines personnes ont des troubles digestifs — à prendre pendant un repas. Demandez l’avis de votre médecin généraliste avant de la prendre si vous avez un problème de thyroïde ou prenez un traitement régulier.
+ss_l_theanine:
+  title: L-théanine — le calme sans somnolence contre l’anxiété en journée
+  body: >-
+    La L-théanine (200–400 mg, avec ou sans caféine) favorise les ondes cérébrales alpha associées à un état de vigilance calme, sans provoquer de somnolence. Son action rapide (30–60 minutes) la rend utile dans les situations de stress aigu. Prise régulièrement, elle réduit l’anxiété de fond. On la trouve naturellement dans le thé vert ; elle est extrêmement bien tolérée et ne présente pas d’interaction importante connue.
+  disclaimer: >-
+    La L-théanine est généralement très bien tolérée. Des interactions théoriques avec les traitements de l’hypertension existent — demandez l’avis de votre médecin généraliste si vous prenez des antihypertenseurs.

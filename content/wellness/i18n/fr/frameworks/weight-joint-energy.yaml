@@ -1,0 +1,97 @@
+# Traduction de frameworks/weight-joint-energy.yaml — la version anglaise fait foi.
+df_protein_muscle:
+  title: Priorité aux protéines — le muscle est votre moteur métabolique
+  body: >-
+    La baisse des œstrogènes accélère la perte musculaire (sarcopénie), ce qui ralentit le métabolisme et rend la gestion du poids plus difficile. Visez 1,2–1,6 g de protéines par kg de poids corporel et par jour. Répartissez-les sur les repas : 25–30 g par repas sont plus efficaces pour la synthèse des protéines musculaires que l’essentiel au dîner. Sources : œufs, poulet, poisson, yaourt grec, légumineuses, fromage blanc type cottage, tofu.
+df_anti_inflammatory:
+  title: Une alimentation anti-inflammatoire contre les douleurs articulaires
+  body: >-
+    En périménopause, les douleurs articulaires viennent en partie de l’inflammation, car l’effet anti-inflammatoire des œstrogènes diminue. Aliments qui soutiennent la voie anti-inflammatoire : huile d’olive, poissons gras, baies, curcuma, gingembre, légumes à feuilles vert foncé, légumes colorés. Aliments qui favorisent l’inflammation : aliments ultra-transformés, sucre raffiné, huiles de graines (tournesol, huile végétale), alcool en excès.
+df_reduce_refined_carbs:
+  title: Réduisez les glucides raffinés — pas tous les glucides
+  body: >-
+    Les changements hormonaux de la périménopause augmentent la résistance à l’insuline : les glucides raffinés (pain blanc, viennoiseries, boissons sucrées, riz blanc) font monter la glycémie plus qu’avant. Cela favorise le stockage des graisses, en particulier au niveau du ventre. Misez sur les glucides complexes : avoine, patate douce, légumineuses, pain complet. Inutile de supprimer les glucides — choisissez simplement ceux qui apportent des fibres.
+df_collagen_joints:
+  title: Soutenez vos articulations avec des aliments qui aident à fabriquer le collagène
+  body: >-
+    La vitamine C est indispensable à la synthèse du collagène dans le cartilage et les tissus conjonctifs. Mangez chaque jour des agrumes, du kiwi, du poivron rouge, du brocoli et des fraises. Le bouillon d’os contient des précurseurs du collagène. Les aliments riches en silicium (avoine, poireaux, haricots verts) soutiennent aussi la réparation des tissus conjonctifs.
+lf_strength_training:
+  title: Le renforcement musculaire — l’exercice le plus important à la ménopause
+  body: >-
+    Le renforcement musculaire (poids, élastiques, exercices au poids du corps) est l’intervention la mieux étayée pour la gestion du poids en périménopause, la densité osseuse, la stabilité des articulations et le métabolisme. Il ne s’agit pas de soulever des charges lourdes — même 2–3 séances de 30 minutes par semaine de squats, fentes, pompes et tirages apportent un bénéfice métabolique mesurable. Commencez léger et concentrez-vous sur la technique. Si vous cherchez un point de départ gratuit, le NHS britannique propose le programme Strength and Flex — une série de cinq semaines d’exercices sans matériel — ainsi que des vidéos d’entraînement Fitness Studio (en anglais).
+lf_low_impact_joints:
+  title: Protégez vos articulations avec des mouvements sans impact
+  body: >-
+    En cas de douleurs articulaires, privilégiez les mouvements qui sollicitent les articulations sans impact : natation, vélo, yoga, Pilates, marche sur terrain plat. Évitez la course à fort impact ou le HIIT sur sol dur tant que la douleur n’est pas maîtrisée. L’échauffement et le retour au calme comptent davantage qu’à 30 ans — prévoyez 5–10 minutes au début et à la fin de chaque séance.
+lf_movement_consistency:
+  title: La régularité l’emporte sur l’intensité pour la santé métabolique
+  body: >-
+    De courtes séances intenses suivies de jours de repos sont moins efficaces pour gérer le poids à la ménopause qu’un mouvement modéré et régulier chaque jour. Une marche de 30 minutes par jour apporte plus de bénéfice métabolique cumulé que deux séances intenses de 90 minutes par semaine. L’objectif est d’éviter de rester assise longtemps — interrompez la position assise toutes les 60–90 minutes, ne serait-ce que par une marche de 5 minutes.
+mr_weight_compassion:
+  title: Les variations de poids à la ménopause sont hormonales — ce n’est pas votre faute
+  body: >-
+    En moyenne, une femme prend 2–5 kg pendant la transition ménopausique sans rien changer à son alimentation ni à son activité. C’est la baisse des œstrogènes qui modifie la répartition des graisses, pas le fait de trop manger. Le passage d’un stockage sur les hanches et les cuisses à un stockage abdominal est une réponse hormonale. La honte et les régimes restrictifs aggravent le tableau métabolique. L’objectif, c’est la santé métabolique — force, énergie, marqueurs sanguins — pas le chiffre sur la balance.
+mr_joint_pain_movement_anxiety:
+  title: La douleur articulaire crée la peur de bouger — ce qui l’aggrave
+  body: >-
+    La douleur pousse à éviter certains mouvements pour se protéger, ce qui affaiblit les muscles autour des articulations, ce qui augmente la douleur. On appelle cela la kinésiophobie (peur du mouvement) et c’est extrêmement fréquent. Un mouvement doux, régulier et peu douloureux — même quand les articulations font mal — est thérapeutique. Si le mouvement augmente systématiquement votre douleur pendant plus d’une journée, parlez de kinésithérapie à votre médecin.
+ss_omega3_joints:
+  title: Oméga-3 (EPA+DHA) — anti-inflammatoires pour les articulations et le métabolisme
+  body: >-
+    Les oméga-3 à forte dose (2000–3000 mg d’EPA+DHA par jour, issus d’huile de poisson ou d’huile d’algues) disposent de preuves cliniques pour réduire la raideur articulaire et les marqueurs inflammatoires. Leurs bénéfices métaboliques (meilleure sensibilité à l’insuline, baisse des triglycérides) comptent aussi pour la gestion du poids à la ménopause. À prendre avec un repas contenant des graisses. Les oméga-3 d’algues sont l’équivalent végétal.
+  disclaimer: >-
+    À forte dose (au-delà de 3 g d’EPA+DHA), les oméga-3 peuvent fluidifier le sang. Si vous prenez des anticoagulants (warfarine, aspirine, apixaban) ou devez être opérée, demandez l’avis de votre médecin généraliste ou de votre pharmacien avant d’en prendre.
+ss_collagen_type2_joints:
+  title: Collagène de type II — spécifiquement pour le cartilage des articulations
+  body: >-
+    Il existe ici deux produits très différents, à des doses très différentes — il vaut la peine de savoir lequel est lequel. Le collagène hydrolysé (découpé en peptides plus petits) s’utilise couramment autour de 10 g/jour. Le collagène de type II non dénaturé (souvent vendu sous le nom UC-II) est une préparation différente, plus concentrée, étudiée à une dose bien plus faible, généralement autour de 40 mg/jour — en prendre 10 g serait bien plus que prévu. Dans les deux cas, le type II est la forme associée spécifiquement au cartilage des articulations, distincte du collagène de type I utilisé pour les cheveux, la peau et les ongles.
+  disclaimer: >-
+    Les compléments de collagène sont généralement sûrs pour la plupart des adultes. Si vous êtes allergique au poisson ou aux crustacés, vérifiez l’origine du collagène. Demandez l’avis de votre médecin généraliste avant de les prendre si vous avez un problème de santé en cours.
+ss_curcumin_joints:
+  title: Curcumine — contre les douleurs et la raideur articulaires
+  body: >-
+    Certaines femmes essaient la curcumine, couramment autour de 500 mg 2–4 fois/jour, souvent associée à la pipérine (extrait de poivre noir) pour améliorer son absorption. C’est un anti-inflammatoire assez bien étudié, souvent utilisé spécifiquement contre les douleurs et la raideur articulaires.
+  disclaimer: >-
+    Les produits à base de curcumine à absorption renforcée (associés à la pipérine) ont été liés à de rares cas d’atteinte du foie et peuvent provoquer des remontées acides à forte dose. La curcumine peut aussi interagir avec les médicaments qui fluidifient le sang. Demandez toujours l’avis de votre médecin généraliste ou de votre pharmacien avant de commencer, surtout si vous prenez des médicaments sur ordonnance ou avez des problèmes de foie.
+ss_glucosamine_chondroitin:
+  title: Glucosamine et chondroïtine
+  body: >-
+    Certaines femmes associent glucosamine et chondroïtine, couramment autour de 1500 mg de glucosamine plus 1200 mg de chondroïtine par jour — une combinaison traditionnelle pour les articulations, avec quelques données en faveur d’un soutien du cartilage et d’une réduction de l’inconfort articulaire, en particulier dans l’arthrose.
+  disclaimer: >-
+    Peut augmenter le risque de saignement avec la warfarine et peut modifier la glycémie — à signaler si vous êtes diabétique ou sous anticoagulants. Prudence aussi en cas d’allergie aux crustacés, car la glucosamine est souvent issue de crustacés. Demandez l’avis de votre médecin généraliste avant de les prendre.
+ss_msm_joints:
+  title: MSM (méthylsulfonylméthane)
+  body: >-
+    Couramment 1–3 g/jour. Quelques données en faveur d’une réduction des douleurs et de l’inflammation articulaires.
+  disclaimer: >-
+    Demandez toujours l’avis de votre médecin généraliste ou de votre pharmacien avant de commencer, surtout si vous prenez des médicaments sur ordonnance.
+ss_wobenzym_joints:
+  title: Mélanges d’enzymes systémiques — contre les douleurs articulaires et pour la récupération
+  body: >-
+    Les mélanges d’enzymes systémiques (protéases dont la bromélaïne, la trypsine et la chymotrypsine — Wobenzym est la marque la plus étudiée) se prennent généralement à jeun, entre les repas plutôt qu’avec, en suivant la posologie du produit. Les preuves pour les douleurs articulaires et la récupération sont limitées et mitigées, et varient selon les produits et les études — ce n’est pas une catégorie appuyée par des preuves solides et établies, donc à considérer comme un sujet à discuter plutôt qu’une option reconnue. Les formulations et la puissance des enzymes varient beaucoup d’un produit à l’autre, la dose dépend donc entièrement de celui que vous choisissez — suivez l’étiquette du produit plutôt qu’une règle générale ; un pharmacien peut vous aider à comparer.
+  disclaimer: >-
+    Peuvent interagir avec les médicaments qui fluidifient le sang — un avis médical est nécessaire d’abord, en particulier si vous prenez des anticoagulants ou de l’aspirine.
+ss_berberine_weight:
+  title: Berbérine — pour la glycémie et la santé métabolique
+  body: >-
+    Couramment 500 mg, 2–3 fois/jour avant les repas. Soutient la régulation de la glycémie et la santé métabolique.
+  disclaimer: >-
+    Déconseillée pendant la grossesse ou l’allaitement. Peut interagir avec les traitements de la glycémie et de la tension, ainsi qu’avec plusieurs autres médicaments par le biais de leur métabolisme dans le foie — celle-ci en particulier nécessite d’abord l’avis de votre médecin, en lui citant tous vos médicaments.
+ss_myo_inositol_weight:
+  title: Myo-inositol — pour la sensibilité à l’insuline et l’équilibre de la glycémie
+  body: >-
+    Couramment 2–4 g/jour. Soutient la sensibilité à l’insuline et l’équilibre de la glycémie. Également bien étudié dans le SOPK, où la résistance à l’insuline est souvent un moteur central.
+  disclaimer: >-
+    Demandez toujours l’avis de votre médecin généraliste ou de votre pharmacien avant de commencer, surtout si vous prenez des médicaments sur ordonnance.
+ss_protein_fibre_weight:
+  title: Protéines en poudre et compléments de fibres
+  body: >-
+    Les protéines en poudre (lactosérum, pois ou collagène) ne font pas maigrir en elles-mêmes, mais elles aident la satiété, le maintien musculaire et la stabilité de la glycémie quand il est difficile d’atteindre son apport en protéines par la seule alimentation. Un complément de fibres (par ex. PHGG, psyllium) aide aussi la satiété et la stabilité de la glycémie, particulièrement utile si vous n’atteignez pas encore régulièrement vos objectifs de fibres par l’alimentation.
+  disclaimer: >-
+    Demandez toujours l’avis de votre médecin généraliste ou de votre pharmacien avant de commencer, surtout si vous prenez des médicaments sur ordonnance ou avez une maladie digestive diagnostiquée.
+ss_green_tea_ala_weight:
+  title: Extrait de thé vert et acide alpha-lipoïque — pour soutenir le métabolisme
+  body: >-
+    L’extrait de thé vert (EGCG), couramment 250–500 mg/jour, dispose de preuves modestes en faveur d’un soutien métabolique. L’acide alpha-lipoïque (ALA), couramment 300–600 mg/jour, soutient la régulation de la glycémie et la sensibilité à l’insuline, et agit comme un antioxydant qui soutient la production d’énergie des cellules.
+  disclaimer: >-
+    L’extrait de thé vert demande de la prudence en cas de problème de foie ou de sensibilité à la caféine. L’ALA peut interagir avec les traitements de la glycémie et de la thyroïde — celui-ci en particulier nécessite d’abord l’avis de votre médecin si vous prenez l’un ou l’autre.

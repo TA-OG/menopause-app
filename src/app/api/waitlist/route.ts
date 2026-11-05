@@ -186,6 +186,19 @@ export async function POST(request: NextRequest) {
 
 // ─── Email helpers ────────────────────────────────────────────────────────────
 
+function escapeHtml(value: string): string {
+  return value.replace(/[&<>'"]/g, (char) => {
+    switch (char) {
+      case '&': return '&amp;'
+      case '<': return '&lt;'
+      case '>': return '&gt;'
+      case "'": return '&#39;'
+      case '"': return '&quot;'
+      default: return char
+    }
+  })
+}
+
 async function sendWelcomeEmail(
   email: string,
   firstName: string,
@@ -195,6 +208,10 @@ async function sendWelcomeEmail(
 ) {
   const { Resend } = await import('resend')
   const resend = new Resend(process.env.RESEND_API_KEY!)
+  const safeFirstName = escapeHtml(firstName)
+  const subjectFirstName = firstName.replace(/[\r\n]+/g, ' ').trim()
+  const safeReferralUrl = escapeHtml(referralUrl)
+  const safeReferralCode = escapeHtml(referralCode)
 
   // The Resend SDK reports a rejected send on the response rather than by
   // throwing, so an unchecked call cannot tell a delivered email from one that
@@ -203,8 +220,8 @@ async function sendWelcomeEmail(
     from: process.env.RESEND_FROM_EMAIL!,
     to: email,
     subject: isPriority
-      ? `${firstName}, you're first in line for Aunty Mel 🌸`
-      : `${firstName}, you're on the Aunty Mel list 🌸`,
+      ? `${subjectFirstName}, you're first in line for Aunty Mel 🌸`
+      : `${subjectFirstName}, you're on the Aunty Mel list 🌸`,
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 520px; margin: 0 auto; color: #1a1a1a;">
         <div style="background: #6b204f; padding: 32px 24px; border-radius: 16px 16px 0 0; text-align: center;">
@@ -212,7 +229,7 @@ async function sendWelcomeEmail(
           <p style="color: #f0c4e4; font-size: 14px; margin: 8px 0 0;">Every body needs an Aunty Mel</p>
         </div>
         <div style="background: #fff5db; padding: 32px 24px; border-radius: 0 0 16px 16px;">
-          <p style="font-size: 16px;">Hi ${firstName},</p>
+          <p style="font-size: 16px;">Hi ${safeFirstName},</p>
           ${isPriority
             ? `<p style="font-size: 16px;">Because someone referred you, you'll get <strong>priority early access</strong> when we launch. You're ahead of the queue.</p>`
             : `<p style="font-size: 16px;">For eons, the secrets of menopause have been shared between women who already knew. Aunty Mel is bringing that wisdom home — personalised wellness guidance to help you understand your body and get real results.</p><p style="font-size: 16px;">You'll be among the first to know when we launch.</p>`
@@ -221,11 +238,11 @@ async function sendWelcomeEmail(
 
           <div style="background: white; border-radius: 12px; padding: 20px; margin: 24px 0; text-align: center;">
             <p style="font-size: 13px; color: #666; margin: 0 0 8px;">Your personal referral link</p>
-            <p style="font-size: 14px; font-weight: bold; color: #6b204f; word-break: break-all;">${referralUrl}</p>
-            <p style="font-size: 13px; color: #666; margin: 8px 0 0;">Your code: <strong>${referralCode}</strong></p>
+            <p style="font-size: 14px; font-weight: bold; color: #6b204f; word-break: break-all;">${safeReferralUrl}</p>
+            <p style="font-size: 13px; color: #666; margin: 8px 0 0;">Your code: <strong>${safeReferralCode}</strong></p>
           </div>
 
-          <a href="${referralUrl}" style="display: block; background: #6b204f; color: white; text-decoration: none; padding: 14px 24px; border-radius: 12px; font-weight: bold; font-size: 15px; text-align: center; margin-bottom: 24px;">
+          <a href="${safeReferralUrl}" style="display: block; background: #6b204f; color: white; text-decoration: none; padding: 14px 24px; border-radius: 12px; font-weight: bold; font-size: 15px; text-align: center; margin-bottom: 24px;">
             Share your link →
           </a>
 

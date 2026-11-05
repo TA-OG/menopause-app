@@ -1,0 +1,57 @@
+# Traduction de frameworks/skin-hair.yaml — la version anglaise fait foi.
+df_collagen_nutrition:
+  title: Mangez pour produire du collagène — la peau en perd 30 % en 5 ans
+  body: >-
+    Le collagène de la peau diminue d’environ 30 % au cours des cinq premières années après la ménopause, puis d’environ 2 % par an. C’est la perte d’œstrogènes qui en est la cause, pas l’âge en soi. Pour soutenir la synthèse du collagène : mangez chaque jour des aliments riches en vitamine C (agrumes, poivron rouge, kiwi, brocoli) ; ajoutez des protéines à chaque repas (le collagène est fabriqué à partir d’acides aminés) ; et limitez le sucre et les aliments ultra-transformés, qui favorisent la glycation — un processus qui rigidifie et abîme le collagène.
+df_biotin_zinc_hair:
+  title: Protéines, zinc et fer — le trio nutritionnel contre la chute des cheveux
+  body: >-
+    La chute des cheveux à la ménopause est en partie hormonale (alopécie androgénétique liée au changement du rapport œstrogènes/androgènes), mais les carences nutritionnelles l’accélèrent nettement. Les carences les plus fréquentes chez les femmes en périménopause concernent le fer (surtout la ferritine — demandez un dosage de la ferritine, pas seulement de l’hémoglobine) et les protéines. Les aliments riches en zinc (graines de courge, huîtres, bœuf, lentilles) et ceux qui contiennent de la biotine (œufs, noix, patate douce) soutiennent aussi la santé du follicule pileux.
+df_omega3_skin_barrier:
+  title: Les oméga-3 restaurent la barrière d’hydratation de la peau
+  body: >-
+    La barrière lipidique de la peau s’affaiblit quand les œstrogènes baissent, ce qui entraîne sécheresse, sensibilité et une moins bonne cicatrisation. Les acides gras oméga-3 (poissons gras, graines de lin, noix, huile d’algues) s’intègrent directement aux membranes des cellules de la peau et renforcent la barrière d’hydratation. Augmenter sa consommation de poisson gras pendant 12 semaines (3 fois par semaine) améliore de façon mesurable l’hydratation et la texture de la peau.
+lf_sun_protection:
+  title: De l’écran solaire tous les jours — une peau qui s’amincit brûle et vieillit bien plus vite
+  body: >-
+    Après la ménopause, la peau est plus fine, produit moins de mélanine et cicatrise plus lentement. L’exposition aux UV est le premier facteur du vieillissement visible de la peau — plus que tout autre facteur environnemental. Appliquez chaque matin, même en hiver, une protection à large spectre SPF 30–50 sur le visage, le cou et le décolleté. C’est le geste local le mieux étayé par les données pour la santé de la peau.
+lf_scalp_care:
+  title: Massage du cuir chevelu et gestes doux — moins de casse, une meilleure pousse
+  body: >-
+    Un massage du cuir chevelu de 4 minutes par jour (du bout des doigts, sans les ongles) augmente l’afflux sanguin vers les follicules et, selon une étude pilote, améliore l’épaisseur des cheveux au bout de 24 semaines. Utilisez un peigne à dents larges sur cheveux mouillés (élastiques et fragiles), réduisez les appareils chauffants et évitez les coiffures serrées qui provoquent une alopécie de traction. Passer à un shampooing sans sulfates réduit l’irritation du cuir chevelu.
+lf_retinol_skincare:
+  title: Le rétinol — l’actif local le mieux étayé contre le vieillissement de la peau
+  body: >-
+    Le rétinol (vitamine A) est le seul ingrédient de soin local dont l’efficacité clinique est solidement prouvée pour stimuler la production de collagène et accélérer le renouvellement des cellules de la peau. Commencez par une formule peu concentrée, 0,1–0,25 %, deux fois par semaine le soir, et augmentez progressivement. Il faut 12 semaines pour voir des résultats. Il provoque d’abord sécheresse et desquamation — c’est normal. Appliquez un écran solaire le matin quand vous utilisez du rétinol. La trétinoïne, plus puissante et sur ordonnance, est disponible auprès de votre médecin pour des résultats plus marqués.
+mr_hair_loss_emotional:
+  title: La chute des cheveux touche profondément — ce n’est pas de la vanité d’en souffrir
+  body: >-
+    La chute des cheveux chez la femme représente un poids psychologique important. Les études montrent que les femmes dont les cheveux s’affinent à la ménopause rapportent davantage d’anxiété sociale, de gêne et une moins bonne qualité de vie que les hommes ayant une chute comparable. Ces sentiments sont normaux et proportionnés. Obtenir un diagnostic précis (demandez un dosage de la ferritine, de la thyroïde et des androgènes lors de la consultation) est important — une grande partie des chutes de cheveux à ce stade se traite si elles sont prises tôt.
+mr_skin_changing_body_image:
+  title: Votre peau change — cela ne veut pas dire qu’elle vous lâche
+  body: >-
+    Les changements de la peau à la ménopause sont, pour beaucoup de femmes, l’un des aspects les plus difficiles à affronter visuellement. La culture occidentale associe la valeur des femmes à une apparence jeune, ce qui rend les choses plus dures qu’elles ne devraient l’être. Votre peau s’adapte à un nouvel environnement hormonal. En prendre soin régulièrement (alimentation, écran solaire, hydratation, sommeil) est la réponse la plus utile — plutôt que de se lancer dans des interventions radicales ou de se retirer de la vie sociale.
+ss_collagen_skin:
+  title: Collagène hydrolysé — des données émergentes pour la peau, les cheveux et les ongles
+  body: >-
+    Couramment 10 g/jour. Choisissez du collagène bovin de type I hydrolysé — « hydrolysé » signifie qu’il a été découpé en peptides plus petits que votre corps peut réellement absorber et utiliser, et le type I est le collagène le plus abondant, qui soutient la peau, les cheveux, les ongles, les articulations, les os et la paroi intestinale. La production naturelle de collagène diminue avec l’âge, donc une supplémentation aide l’organisme dans son travail continu de réparation et de renouvellement.
+  disclaimer: >-
+    Les peptides de collagène sont généralement bien tolérés. Si vous êtes allergique au poisson ou aux crustacés, vérifiez soigneusement l’origine (il existe des versions marines, bovines et végétales). Demandez l’avis de votre médecin généraliste avant de les prendre si vous avez un problème de santé en cours.
+ss_zinc_hair:
+  title: Zinc — pour la pousse et la réparation des cheveux
+  body: >-
+    Couramment 10–30 mg/jour. Soutient la pousse et la réparation des cheveux. À ne pas prendre longtemps à forte dose sans surveillance, car un excès de zinc peut épuiser le cuivre.
+  disclaimer: >-
+    Demandez toujours l’avis de votre médecin généraliste ou de votre pharmacien avant de commencer, surtout si vous prenez des médicaments sur ordonnance.
+ss_iron_hair:
+  title: Fer — seulement si une prise de sang confirme une carence
+  body: >-
+    Un manque de fer est une cause fréquente, et souvent négligée, d’affinement et de chute des cheveux à cette période de la vie — mais une supplémentation n’a de sens que si une prise de sang confirme une carence, pas sur simple supposition. Demandez spécifiquement un dosage de la ferritine, pas seulement de l’hémoglobine.
+  disclaimer: >-
+    Faites toujours vérifier vos taux par votre médecin avant de prendre du fer — une supplémentation inutile en fer peut causer ses propres problèmes.
+ss_biotin_hair:
+  title: Biotine — efficace seulement en cas de vraie carence
+  body: >-
+    La biotine (vitamine B7) est très vantée pour la santé des cheveux et des ongles. Elle agit si vous êtes carencée, mais la carence en biotine est en réalité peu fréquente. Si votre alimentation comprend des œufs, des noix et des céréales complètes, vous n’êtes probablement pas carencée. La biotine à forte dose (10 mg et plus) fausse les analyses de sang de la thyroïde et de la troponine — un point de sécurité important. Les carences en fer et en ferritine sont des causes bien plus fréquentes de chute des cheveux chez les femmes en périménopause — faites-vous tester avant de prendre de la biotine.
+  disclaimer: >-
+    La biotine à forte dose (>5 mg/jour) peut fausser les résultats des tests de la fonction thyroïdienne, de la troponine et d’autres analyses de sang par immunodosage. Prévenez votre médecin si vous prenez de la biotine avant toute prise de sang. Demandez l’avis de votre médecin généraliste avant de l’utiliser.

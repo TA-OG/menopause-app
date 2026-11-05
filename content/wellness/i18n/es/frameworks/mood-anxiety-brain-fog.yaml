@@ -1,0 +1,107 @@
+# Traducción de frameworks/mood-anxiety-brain-fog.yaml — prevalece la versión en inglés.
+df_omega3_brain:
+  title: Ácidos grasos omega-3 para el cerebro y el ánimo
+  body: >-
+    El DHA (un tipo de omega-3) es esencial para el funcionamiento de las membranas de las células del cerebro y para la señalización de la serotonina. El descenso de los estrógenos reduce la eficiencia con la que el cerebro usa el omega-3. Come pescado azul (salmón, sardinas, caballa) 2–3 veces por semana, o toma un suplemento de 1000 mg de EPA+DHA al día si no comes pescado. Las semillas de lino molidas y las nueces aportan ALA (un precursor vegetal del omega-3).
+df_fermented_foods:
+  title: La salud intestinal y su relación con el ánimo
+  body: >-
+    El eje intestino-cerebro está bien establecido, aunque a menudo se describe de forma imprecisa. Alrededor del 90 % de la serotonina del cuerpo se fabrica en el intestino — pero la producen tus propias células enterocromafines, no las bacterias intestinales, y esa serotonina no pasa al cerebro. Lo que hacen las bacterias intestinales es influir en cuánta se produce y comunicarse con el cerebro por otras vías. Sin embargo, la mayor parte de ese trabajo es mecanicista o procede de estudios en animales: los ensayos en humanos sobre alimentos fermentados y ánimo siguen siendo limitados, así que considera el beneficio sobre el ánimo como realmente incierto. Aun así, los alimentos fermentados merecen la pena para la salud intestinal en general: yogur con fermentos vivos, kéfir, kimchi, chucrut, miso. Busca variedad a lo largo de la semana en lugar de grandes cantidades de un solo alimento.
+df_protein_neurotransmitters:
+  title: Proteína en cada comida — los aminoácidos fabrican las sustancias de tu ánimo
+  body: >-
+    La serotonina, la dopamina y el GABA se fabrican a partir de aminoácidos que vienen de la proteína de la dieta. Saltarte comidas o tomar tentempiés con poca proteína puede agotar los ladrillos que tu cerebro necesita. Intenta tomar 20–30 g de proteína en el desayuno (huevos, yogur griego, salmón ahumado): así preparas la producción de neurotransmisores para todo el día.
+lf_exercise_mood:
+  title: El ejercicio es la intervención sobre el ánimo con más evidencia que existe
+  body: >-
+    30 minutos de cardio moderado (caminar a paso ligero, bicicleta, natación) 3–5 veces por semana aumentan el BDNF (factor neurotrófico derivado del cerebro), la proteína de crecimiento y reparación propia del cerebro. También suben las endorfinas, baja el cortisol y se contrarrestan directamente la ansiedad y el ánimo bajo de la perimenopausia. El efecto empieza desde la primera sesión y se acumula con las semanas. Si no haces nada más de esta lista, haz esto.
+lf_stress_boundary:
+  title: Identifica una cosa que puedas dejar de hacer
+  body: >-
+    La perimenopausia suele coincidir con el momento de máxima presión profesional y con responsabilidades familiares de cuidado. Las mujeres que se describen como «desbordadas» suelen contar que su ánimo y su niebla mental mejoran mucho cuando reducen una obligación habitual, no cuando añaden más herramientas de recuperación. Repasa tu semana e identifica una cosa que puedas quitar, delegar o hacer con menos frecuencia.
+lf_brain_fog_tactics:
+  title: Trucos prácticos para la niebla mental en el trabajo
+  body: >-
+    La niebla mental es real: los estrógenos regulan la corteza prefrontal. Adaptaciones prácticas: apunta las cosas en el momento en lugar de intentar retenerlas; usa recordatorios del calendario para lo que normalmente recordarías; reserva tiempo de concentración por la mañana, cuando la función cognitiva suele estar en su mejor momento; haz pausas cortas para moverte cada 90 minutos para recuperar la concentración. No son fracasos: son adaptaciones.
+mr_physiology_not_personality:
+  title: Es fisiología, no un cambio de personalidad
+  body: |-
+    Los cambios emocionales de la menopausia no son un cambio de personalidad ni una señal de que algo va mal en ti: son fisiología. Los estrógenos tienen una relación directa con la serotonina y la dopamina, así que cuando bajan, el ánimo, la motivación y la resiliencia bajan con ellos. No es debilidad. No es «solo estrés». Es química. Pero el ánimo rara vez depende solo de los estrógenos: está enredado con varios sistemas más, y merece la pena entender el cuadro completo en lugar de dar por hecho que «son solo las hormonas» o que «soy yo».
+    Sueño y energía: dormir mal — algo tan frecuente en la menopausia por los sudores nocturnos, los pensamientos acelerados o un sistema nervioso cansado pero en alerta — no solo te deja agotada, sino que reduce directamente tu capacidad de regular las emociones. Una noche corta hace más reactivo el detector de amenazas del cerebro y apaga la parte del cerebro que calma las cosas. La falta de energía lo agrava: cuando vas con el depósito vacío, simplemente queda menos para la paciencia o la perspectiva. El ánimo, el sueño y la energía se alimentan entre sí en un círculo, para bien o para mal.
+    Desequilibrio hormonal y rabia: muchas mujeres reconocen «la rabia» de la perimenopausia. Las fluctuaciones irregulares, a menudo grandes, de estrógenos y progesterona en esta etapa pueden contribuir a ella: no es un defecto de tu carácter ni está simplemente «en tu cabeza». Conviene ser sinceras, eso sí: el mecanismo exacto no está demostrado científicamente, y las ideas que quizá hayas leído sobre un «problema de proporción» entre progesterona y estrógenos, una «mala eliminación de los estrógenos» o los xenoestrógenos ambientales como causa no son algo que las guías habituales sobre la menopausia consideren causas demostradas: tómalas como teorías, no como explicaciones. Si la rabia o la irritabilidad persisten, merece la pena mirar el cuadro más amplio, incluido el estrés crónico, y comentarlo con tu médico de cabecera.
+mr_mood_hidden_drivers:
+  title: Qué más podría estar detrás — más allá de las hormonas
+  body: |-
+    Estado nutricional: la falta de B12 y folato puede imitar o empeorar el ánimo bajo, la niebla mental, el cansancio y la irritabilidad; la carencia es frecuente, sobre todo con la edad, con ciertos medicamentos o con poca ingesta de proteínas animales y verduras de hoja verde. Es algo sencillo y corregible que se pasa por alto con demasiada frecuencia.
+    Salud de la tiroides: una tiroides poco activa, en particular, puede parecerse exactamente al «cerebro y ánimo de la menopausia»: ánimo bajo, cansancio, niebla mental, aumento de peso, sensación de estar apagada. A menudo no se detecta porque la prueba estándar solo de TSH no cuenta toda la historia, y los síntomas se atribuyen a «solo la menopausia» sin que se haya revisado bien la función tiroidea.
+    Azúcar en sangre: la prediabetes y la diabetes afectan directamente al ánimo; las oscilaciones de azúcar pueden causar irritabilidad, ansiedad, niebla mental y bajones de energía que parecen idénticos a los cambios de ánimo «hormonales», y una mala regulación también empeora el sueño y aumenta la inflamación.
+    El alcance más amplio de la histamina: sus efectos van mucho más allá del picor, las migrañas y el enrojecimiento; también puede contribuir a la hinchazón, a dormir mal, a la niebla mental y al cansancio. Si marcas varias casillas entre ánimo, sueño, energía y digestión sin una causa única evidente, la histamina merece considerarse como un hilo real que corre por debajo.
+mr_mood_complex_history:
+  title: Si tienes antecedentes de endometriosis, adenomiosis o miomas
+  body: |-
+    La endometriosis, la adenomiosis y los miomas son afecciones sensibles a los estrógenos, y algunas mujeres con estos antecedentes describen los vaivenes emocionales de la perimenopausia con más intensidad: la rabia, la montaña rusa, la sensación de no reconocerte. No está demostrado como regla general para todas las mujeres con estos antecedentes, y no es ser «más sensible» ni exagerar si es así como lo vives. También conviene decir que muchas mujeres con estos antecedentes llevan años, a veces décadas, viviendo con dolor crónico, a menudo minimizado o mal tratado antes del diagnóstico, y la depresión es realmente más frecuente en ellas. Si notas el ánimo bajo junto con los cambios de la perimenopausia, no tiene por qué ser «solo la menopausia» por encima: puede ser el peso acumulado del dolor, y de años sin que te creyeran ni te escucharan, que por fin se hace sentir.
+    Si vives con covid persistente, síndrome de fatiga crónica (SFC) o fibromialgia además de la menopausia, el peso emocional de gestionar a la vez una enfermedad crónica y la menopausia es real, y a menudo aísla: cuesta desenredar qué síntomas corresponden a cada causa. Las dos cosas pueden ser ciertas a la vez, y las dos merecen cuidados, no competir por cuál es «el problema de verdad».
+mr_mood_reframe:
+  title: ¿Quién soy ahora? — no tiene por qué ser una pregunta de crisis
+  body: |-
+    Cómo te cuentas este capítulo a ti misma influye de verdad en cómo lo vives. «¿Quién soy ahora?» puede ser una pregunta curiosa en lugar de una pregunta de pánico: sin fingir que todo va bien, sino reconociendo que esta versión de ti, intermedia y desconocida, no es un problema que resolver, sino una persona a la que conocer. Muchas mujeres llegan aquí sintiendo que se han perdido a sí mismas; esa desorientación es real y frecuente, y muy a menudo hay más cosas debajo que «solo las hormonas», que es justo por lo que merece una investigación de verdad en lugar de aguantar sin más.
+    La menopausia no es un problema que se arregle de forma aislada: es una transición que afecta a la vez a las hormonas, el sueño, los nutrientes, la tiroides y la salud metabólica. El objetivo no es «volver a la normalidad», sino entender qué está pasando de verdad debajo del ánimo, no solo gestionar el ánimo. Registrar patrones — calidad del sueño, bajones de energía, ciclos de ánimo, desencadenantes — te da información, no solo síntomas que soportar.
+mr_mood_gp_red_flags:
+  title: Cuándo ir al médico por el ánimo o la ansiedad
+  body: |-
+    Ve a tu médico de cabecera si: el ánimo bajo o la ansiedad persisten, empeoran o afectan a tu día a día; tienes cualquier pensamiento de autolesión o desesperanza (siempre el mismo día); la rabia o la irritabilidad te parecen desproporcionadas o te asustan a ti o a quienes te rodean; las alteraciones del sueño son graves, prolongadas o no mejoran con cambios de estilo de vida; o los cambios de ánimo vienen acompañados de otros síntomas de alarma: un cambio de peso importante, palpitaciones, sangrado abundante o irregular, sed excesiva o ganas de orinar muy frecuentes.
+    Merece la pena pedir un análisis de TSH (la primera revisión estándar de la tiroides, al que se añaden más pruebas si sale alterado o si los síntomas apuntan claramente a la tiroides) y un análisis de B12/folato si no se han revisado, además de HbA1c o glucosa en ayunas si hay antecedentes familiares de diabetes, cambios de peso o síntomas de azúcar junto con los cambios de ánimo. Si te preguntas si la THS, los antidepresivos u otro tipo de apoyo podrían ayudarte, es una conversación que merece la pena tener, no algo que tengas que aguantar sola apretando los dientes.
+ss_magnesium_anxiety:
+  title: Glicinato de magnesio — para regular el sistema nervioso y la calma
+  body: >-
+    Normalmente 200–400 mg/día. Aquí se prefiere la forma glicinato al citrato, ya que no se busca un efecto laxante.
+  disclaimer: >-
+    Consúltalo siempre con tu médico de cabecera o farmacéutico antes de empezar, sobre todo si tomas algún medicamento con receta o tienes problemas de riñón o de corazón.
+ss_l_theanine_anxiety:
+  title: L-teanina — calma y concentración sin sedación
+  body: >-
+    Normalmente 100–200 mg. Favorece la calma y la concentración sin sedación, y puede tomarse durante el día para la ansiedad, no solo al acostarte.
+  disclaimer: >-
+    Consúltalo siempre con tu médico de cabecera o farmacéutico antes de empezar, sobre todo si tomas algún medicamento con receta.
+ss_ashwagandha:
+  title: Ashwagandha — para la respuesta del cuerpo al estrés
+  body: >-
+    Normalmente 300–600 mg/día de extracto de raíz estandarizado. Bien estudiada como apoyo a la respuesta del cuerpo al estrés y a la regulación del cortisol.
+  disclaimer: >-
+    Precaución si tienes una enfermedad autoinmune (puede estimular la actividad inmunitaria), problemas de tiroides (puede afectar a los niveles de hormona tiroidea) o si estás embarazada: consúltalo antes con tu médico de cabecera.
+ss_saffron_mood:
+  title: Azafrán — para el ánimo y la ansiedad
+  body: >-
+    Normalmente 30 mg/día de extracto estandarizado. Hay cierta evidencia de que favorece el ánimo y los síntomas de ansiedad.
+  disclaimer: >-
+    Consúltalo siempre con tu médico de cabecera o farmacéutico antes de empezar, sobre todo si tomas algún medicamento con receta.
+ss_b_complex_mood:
+  title: Complejo B — para el sistema nervioso y la resistencia al estrés
+  body: >-
+    Busca metilcobalamina (B12) y metilfolato en lugar de las formas sintéticas más baratas (cianocobalamina, ácido fólico). Las vitaminas B intervienen en el funcionamiento del sistema nervioso y en la resistencia al estrés, algo especialmente relevante si la alimentación o el estrés han reducido tus niveles.
+  disclaimer: >-
+    Consúltalo siempre con tu médico de cabecera o farmacéutico antes de empezar, sobre todo si tomas algún medicamento con receta o tienes problemas de riñón.
+ss_omega3_mood_brainfog:
+  title: Omega-3 (EPA/DHA) — para la niebla mental, la ansiedad y el ánimo
+  body: >-
+    Para la niebla mental en concreto, normalmente 2–3 g/día de EPA/DHA combinados: la parte alta del rango general, dado el enfoque específico en el cerebro. Favorece la función cognitiva y tiene efectos antiinflamatorios para el cerebro, además de evidencia de que ayuda al ánimo y reduce los síntomas de ansiedad.
+  disclaimer: >-
+    El omega-3 en dosis altas puede hacer la sangre más fluida. Si tomas anticoagulantes (warfarina, aspirina, apixabán) o tienes una operación pendiente, consulta con tu médico de cabecera o farmacéutico antes de tomarlo.
+ss_acetyl_l_carnitine_brainfog:
+  title: Acetil-L-carnitina — para el metabolismo energético del cerebro
+  body: >-
+    Normalmente 1–3 g/día. Favorece el metabolismo energético del cerebro y tiene cierta evidencia para la función cognitiva y la claridad mental.
+  disclaimer: >-
+    Consúltalo siempre con tu médico de cabecera o farmacéutico antes de empezar, sobre todo si tomas algún medicamento con receta.
+ss_ginkgo_brainfog:
+  title: Ginkgo biloba — para la circulación y la memoria
+  body: >-
+    Normalmente 120–240 mg/día. Favorece la circulación hacia el cerebro y tiene cierta evidencia para la memoria y la claridad mental.
+  disclaimer: >-
+    Puede interactuar con los medicamentos que hacen la sangre más fluida: hace falta consultarlo antes con el médico, sobre todo si tomas anticoagulantes o aspirina.
+ss_phosphatidylserine_brainfog:
+  title: Fosfatidilserina — para la memoria y la función cognitiva
+  body: >-
+    Normalmente 150 mg/día. Hay cierta evidencia de que ayuda a la memoria y a la función cognitiva.
+  disclaimer: >-
+    Consúltalo siempre con tu médico de cabecera o farmacéutico antes de empezar, sobre todo si tomas algún medicamento con receta.

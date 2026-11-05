@@ -1,0 +1,39 @@
+# Tradução de cultural/hispanic-latina.yaml — prevalece a versão em inglês.
+items:
+  beans-legumes-central:
+    body: |-
+      Feijão-preto, feijão-pinto, frijoles — as leguminosas estão no centro da cozinha latino-americana e estão entre os melhores alimentos para a menopausa. São ricas em proteína vegetal, fibra e fitoestrogénios. Se o feijão já faz parte do seu dia a dia, isso é uma vantagem nutricional significativa.
+  avocado-healthy-fats:
+    body: |-
+      O abacate é um básico latino-americano e é mesmo excelente para a menopausa — rico em gorduras monoinsaturadas que apoiam a produção de hormonas, vitamina E para a saúde da pele (especialmente relevante dadas as alterações de pele comuns nas mulheres latinas durante a menopausa) e potássio para controlar a tensão arterial. Comer abacate todos os dias tem apoio na evidência, não é só moda.
+  chilli-triggers:
+    body: |-
+      O picante e a comida picante são fundamentais em muitas cozinhas latino-americanas e têm um profundo significado cultural. Tal como noutras tradições de comida picante, preste atenção a uma possível ligação entre refeições picantes e afrontamentos. Se houver um padrão, pense no momento em vez de eliminar — comer picante mais cedo no dia pode reduzir o efeito à noite.
+  corn-tortilla-vs-flour:
+    body: |-
+      As tortilhas de milho têm um índice glicémico mais baixo do que as de farinha de trigo e são naturalmente sem glúten. Durante a menopausa, quando a estabilidade do açúcar no sangue afeta diretamente a frequência dos afrontamentos e o humor, esta é uma troca simples que vale a pena fazer onde as tortilhas de milho fazem parte da cultura.
+  hibiscus-jamaica:
+    body: |-
+      A agua de jamaica (água de flor de hibisco) é muito consumida no México e na América Central. Tem evidência real de apoio à tensão arterial e propriedades antioxidantes. Reduzir o açúcar adicionado na preparação maximiza o benefício — uma doçura leve com muito hibisco e lima é igualmente saborosa.
+  skin-and-hair-changes:
+    body: |-
+      As alterações da pele e do cabelo são mais acentuadas nas mulheres hispânicas e latinas durante a menopausa — alterações de textura, secura, alterações de pigmentação e perda de densidade do cabelo estão documentadas com mais frequência. Não é vaidade — estas alterações afetam a identidade e o bem-estar.
+
+      A hidratação (com água e com as gorduras saudáveis da alimentação), a vitamina E e bons cuidados de pele adaptados a uma pele mais seca e em mudança merecem prioridade. Um dermatologista com experiência nas alterações de pele da menopausa pode ajudar se as alterações forem significativas.
+  cultural-positivity:
+    body: |-
+      A investigação com mulheres latinas e de origem mexicana mostra que muitas têm uma atitude mais positiva em relação à menopausa do que as mulheres brancas ocidentais — veem-na como uma transição natural e não como uma doença. Esta perspetiva cultural tem valor real e, nos estudos, está associada a menos sofrimento com os sintomas.
+
+      Pode manter esta perspetiva cultural positiva e, ainda assim, levar os seus sintomas a sério. As duas coisas são verdade. A transição é natural e também pode ser difícil — e merece apoio nas partes difíceis.
+  familismo-and-stress:
+    body: |-
+      O valor cultural do familismo — uma ligação e uma responsabilidade familiar muito profundas — faz com que muitas mulheres latinas estejam no centro da vida emocional e prática da família alargada durante os anos da menopausa. É uma dádiva e também uma fonte significativa de stress.
+
+      Encontrar nem que sejam pequenos momentos só para si — uma caminhada, um momento de silêncio — não é rejeitar a sua família. É o que lhe permite continuar a estar presente para ela.
+byTitle:
+  Mood changes and skin changes are especially common for Latina women:
+    title: As alterações de humor e de pele são especialmente comuns nas mulheres latinas
+    body: |-
+      A investigação mostra de forma consistente que as mulheres hispânicas e latinas referem alterações de humor e oscilações emocionais com mais frequência do que outros grupos durante a menopausa — 55% em comparação com 49% das mulheres brancas. As alterações da pele e do cabelo também são mais acentuadas.
+
+      Não são imaginadas nem exageradas — refletem padrões hormonais reais. Nomeá-las com clareza quando fala com o seu médico ajuda-a a obter o apoio de que precisa, em vez de ver os seus sintomas de humor desvalorizados ou diagnosticados erradamente apenas como ansiedade ou depressão.

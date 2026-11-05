@@ -16,3 +16,24 @@ describe('isDeleteConfirmed', () => {
     }
   })
 })
+
+describe('delete error codes', () => {
+  it('maps every code to a DeleteAccount message in every locale', async () => {
+    const { DELETE_ERROR_MESSAGE_KEY } = await import('./account-deletion')
+    const locales = ['en', 'fr', 'es', 'de', 'pt'] as const
+    for (const locale of locales) {
+      const messages = (await import(`../../messages/${locale}.json`)).default
+      for (const key of Object.values(DELETE_ERROR_MESSAGE_KEY)) {
+        expect(messages.DeleteAccount[key], `${locale}.DeleteAccount.${key}`).toBeTruthy()
+      }
+    }
+  })
+
+  it('rejects anything that is not a known code', async () => {
+    const { isDeleteAccountErrorCode } = await import('./account-deletion')
+    expect(isDeleteAccountErrorCode('admin')).toBe(true)
+    for (const v of ['', 'toString', 'constructor', null, undefined, 42]) {
+      expect(isDeleteAccountErrorCode(v)).toBe(false)
+    }
+  })
+})

@@ -5,6 +5,11 @@
  *   content/modules/free/*.yaml      → tier = free
  *   content/modules/premium/*.yaml   → tier = premium
  *
+ * A translation sits alongside its English source with a locale suffix:
+ *   when-progesterone-is-the-missing-piece.yaml      → locale = en
+ *   when-progesterone-is-the-missing-piece.fr.yaml    → locale = fr
+ * Both share the same `slug`; an article is identified by (slug, locale), so
+ * a translation is its own row and never touches the English one.
  * Tier is taken from the folder, never from the file.
  *
  *   npm run import-content                # seed new articles into the database
@@ -45,6 +50,25 @@ const MODULES_DIR = path.join(process.cwd(), 'content/modules')
 const TIERS = ['free', 'premium'] as const
 type Tier = (typeof TIERS)[number]
 
+// Keep in sync with SUPPORTED_LOCALES in src/lib/locale-geo-map.ts (not
+// imported directly — scripts run via tsx outside the app's path aliases,
+// and this list changes rarely enough that duplicating it here is simpler
+// than wiring up module resolution just for this one script).
+const LOCALE_SUFFIXES = ['fr', 'es', 'de', 'pt'] as const
+type Locale = 'en' | (typeof LOCALE_SUFFIXES)[number]
+
+/**
+ * Translations of an article live alongside the English source with a
+ * locale suffix: `slug.yaml` (English, implicit) next to `slug.fr.yaml`.
+ * Both share the same `slug` — that's what makes them translations of the
+ * same article rather than separate articles.
+ */
+function parseFilename(file: string): { base: string; locale: Locale } {
+  const suffixed = file.match(/^(.+)\.(fr|es|de|pt)\.yaml$/)
+  if (suffixed) return { base: suffixed[1], locale: suffixed[2] as Locale }
+  return { base: file.replace(/\.yaml$/, ''), locale: 'en' }
+}
+
 interface ArticleFile {
   slug?: string
   title?: string
@@ -65,6 +89,7 @@ interface ParsedArticle {
   estimated_read_minutes: number | null
   published_at: string | null
   tier: Tier
+  locale: Locale
 }
 
 const isDryRun = process.argv.includes('--dry-run')
@@ -82,6 +107,7 @@ function loadArticles(): { articles: ParsedArticle[]; errors: string[] } {
 
     for (const file of files) {
       const where = `${tier}/${file}`
+      const { locale } = parseFilename(file)
       let raw: ArticleFile
       try {
         raw = yaml.load(fs.readFileSync(path.join(dir, file), 'utf8')) as ArticleFile
@@ -104,11 +130,14 @@ function loadArticles(): { articles: ParsedArticle[]; errors: string[] } {
       }
       if (!raw.slug) continue
 
-      const prior = seenSlugs.get(raw.slug)
+      // Translations of the same article share a slug — only flag a
+      // duplicate when the same slug+locale pair repeats.
+      const dedupeKey = `${raw.slug}:${locale}`
+      const prior = seenSlugs.get(dedupeKey)
       if (prior) {
-        errors.push(`[${where}] Duplicate slug "${raw.slug}" — also in ${prior}`)
+        errors.push(`[${where}] Duplicate slug "${raw.slug}" for locale "${locale}" — also in ${prior}`)
       }
-      seenSlugs.set(raw.slug, where)
+      seenSlugs.set(dedupeKey, where)
 
       articles.push({
         slug: raw.slug,
@@ -119,6 +148,7 @@ function loadArticles(): { articles: ParsedArticle[]; errors: string[] } {
         estimated_read_minutes: raw.estimated_read_minutes ?? null,
         published_at: raw.published_at ? new Date(raw.published_at).toISOString() : null,
         tier,
+        locale,
       })
     }
   }
@@ -141,7 +171,7 @@ async function main() {
   console.log(`   Found ${articles.length} article(s)`)
   for (const a of articles) {
     const state = a.published_at ? 'published' : 'draft'
-    console.log(`   • [${a.tier}] ${a.slug} (${state})`)
+    console.log(`   • [${a.tier}/${a.locale}] ${a.slug} (${state})`)
   }
 
   if (articles.length === 0) {
@@ -173,17 +203,20 @@ async function main() {
   // not this file — holds its current wording.
   const { data: existingRows, error: readError } = await supabase
     .from('content_modules')
-    .select('slug, created_by, updated_by')
-    .in('slug', articles.map((a) => a.slug))
+    .select('slug, locale, created_by, updated_by')
+    .in('slug', Array.from(new Set(articles.map((a) => a.slug))))
 
   if (readError) {
     console.error(`\n❌ Could not read existing articles: ${readError.message}\n`)
     process.exit(1)
   }
 
+  // Keyed by slug AND locale: a French translation Pamela has edited must not
+  // shield (or expose) the English article that shares its slug.
+  const keyOf = (slug: string, locale: string) => `${slug}:${locale}`
   const existing = new Map(
     (existingRows ?? []).map((row) => [
-      row.slug as string,
+      keyOf(row.slug as string, row.locale as string),
       { authored: row.created_by !== null || row.updated_by !== null },
     ]),
   )
@@ -196,12 +229,13 @@ async function main() {
   // update (published_at is set on the first and never on the second), and it
   // keeps each article's outcome reportable on its own line.
   for (const article of articles) {
-    const current = existing.get(article.slug)
+    const label = article.locale === 'en' ? article.slug : `${article.slug} (${article.locale})`
+    const current = existing.get(keyOf(article.slug, article.locale))
 
     if (!current) {
       const { error } = await supabase.from('content_modules').insert(article)
       if (error) {
-        console.error(`\n❌ Could not create ${article.slug}: ${error.message}\n`)
+        console.error(`\n❌ Could not create ${label}: ${error.message}\n`)
         process.exit(1)
       }
       created++
@@ -209,7 +243,7 @@ async function main() {
     }
 
     if (current.authored) {
-      skipped.push(article.slug)
+      skipped.push(label)
       continue
     }
 
@@ -227,9 +261,10 @@ async function main() {
         tier: article.tier,
       })
       .eq('slug', article.slug)
+      .eq('locale', article.locale)
 
     if (error) {
-      console.error(`\n❌ Could not update ${article.slug}: ${error.message}\n`)
+      console.error(`\n❌ Could not update ${label}: ${error.message}\n`)
       process.exit(1)
     }
     updated++

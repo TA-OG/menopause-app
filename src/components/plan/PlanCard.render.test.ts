@@ -14,8 +14,12 @@
  */
 
 import { describe, it, expect } from 'vitest'
-import { createElement } from 'react'
+import { createElement, type ComponentProps, type ComponentType } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
+import { NextIntlClientProvider } from 'next-intl'
+import en from '../../../messages/en.json'
+import fr from '../../../messages/fr.json'
+import de from '../../../messages/de.json'
 import PlanCard from './PlanCard'
 import type { WellnessRecommendation } from '@/types/database'
 
@@ -49,8 +53,21 @@ const CAUTIONED: WellnessRecommendation = {
   ],
 }
 
-function render(rec: WellnessRecommendation): string {
-  return renderToStaticMarkup(createElement(PlanCard, { rec }))
+// The provider's props type marks children required, but createElement takes
+// children as its third argument (react/no-children-prop), so type it without.
+const IntlProvider = NextIntlClientProvider as unknown as ComponentType<
+  Omit<ComponentProps<typeof NextIntlClientProvider>, 'children'>
+>
+const MESSAGES = { en, fr, de } as const
+
+function render(rec: WellnessRecommendation, locale: keyof typeof MESSAGES = 'en'): string {
+  return renderToStaticMarkup(
+    createElement(
+      IntlProvider,
+      { locale, messages: MESSAGES[locale], timeZone: 'Europe/London' },
+      createElement(PlanCard, { rec })
+    )
+  )
 }
 
 describe('PlanCard renders the collapse rule it is given', () => {
@@ -176,5 +193,42 @@ describe('PlanCard renders the collapse rule it is given', () => {
     expect(plain).toContain('Plain')
     expect(plain).toContain('Read more')
     expect(plain).not.toContain('Check with your GP')
+  })
+})
+
+describe('PlanCard in another language', () => {
+  const html = render(CAUTIONED, 'fr')
+
+  it('re-composes her personal note in French from the declared values', () => {
+    expect(html).toContain('Vous nous avez indiqué que vous prenez des anticoagulants.')
+    expect(html).not.toContain('PERSONAL-SENTINEL')
+  })
+
+  it('keeps every other safety line visible while collapsed', () => {
+    for (const sentinel of ['GP-CHECK-SENTINEL', 'CEILING-SENTINEL', 'MERGED-GP-CHECK-SENTINEL']) {
+      expect(html).toContain(sentinel)
+    }
+  })
+
+  it('labels the symptom chips and the toggle in French', () => {
+    expect(html).toContain('Troubles du sommeil')
+    expect(html).toContain('Lire la suite')
+    expect(html).not.toContain('Sleep problems')
+  })
+
+  it("joins several circumstances with the locale's own list grammar", () => {
+    const two = render(
+      { ...CAUTIONED, personal_note: { ...CAUTIONED.personal_note!, because: ['blood_thinners', 'diabetes'] } },
+      'de'
+    )
+    expect(two).toContain('Du hast uns gesagt, dass du Blutverdünner nimmst und du Diabetes hast.')
+  })
+
+  it('falls back to the English note rather than drop part of it', () => {
+    const unknown = render(
+      { ...CAUTIONED, personal_note: { ...CAUTIONED.personal_note!, because: ['not_a_real_flag'] } },
+      'fr'
+    )
+    expect(unknown).toContain('PERSONAL-SENTINEL')
   })
 })
