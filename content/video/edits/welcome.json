@@ -1,0 +1,17 @@
+{
+  "output": "aunty-mel-welcome",
+  "segments": [
+    { "src": "ssa", "take": 2, "in": 18.05, "out": 27.05,
+      "note": "For ten years women have told me the same thing... a stranger in their body." },
+    { "src": "origin", "take": 2, "in": 183.08, "out": 212.05,
+      "note": "As part of my perimenopause journey... no woman needs to suffer... I too was in perimenopause. Starts after 'I healed my gut' (health-claim cut).",
+      "lower_third": { "title": "Pamela", "subtitle": "Founder, Aunty Mel", "from": 1.5, "to": 7 } },
+    { "src": "origin", "take": 4, "in": 154.95, "out": 194.55,
+      "note": "Take 3: timeline, vision, nutrition, movement, mindset, rest... that's why we've created Aunty Mel." },
+    { "src": "origin", "take": 3, "in": 845.45, "out": 861.35,
+      "note": "You are an individual... understand what you need to do to thrive." },
+    { "src": "ssa", "take": 5, "in": 20.20, "out": 23.65,
+      "note": "You're not broken, you just need to optimise your system. (Cut before 'link in bio'.)" }
+  ],
+  "end_card": { "line": "Let's start with how you're feeling today" }
+}

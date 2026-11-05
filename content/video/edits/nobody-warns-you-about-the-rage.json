@@ -1,0 +1,29 @@
+{
+ "output": "aunty-mel-nobody-warns-you-about-the-rage",
+ "segments": [
+  {
+   "src": "ssa",
+   "take": 6,
+   "in": 71.85,
+   "out": 86.85,
+   "text": "In the ten years plus I've been delivering menopause support. Nobody warned you about the rage. The nervous system losing its usual buffer. Nutrition, lifestyle, mindset, rebuild that buffer.",
+   "lower_third": {
+    "title": "Pamela",
+    "subtitle": "Founder, Aunty Mel",
+    "from": 0.8,
+    "to": 5.5
+   }
+  },
+  {
+   "src": "ssa",
+   "take": 6,
+   "in": 96.47,
+   "out": 100.85,
+   "text": "You are not broken. You just need to optimise your systems."
+  }
+ ],
+ "end_card": {
+  "line": "Breathe. You're not alone"
+ },
+ "feeling": "anxious"
+}

@@ -1,0 +1,22 @@
+{
+ "output": "aunty-mel-its-not-your-relationship",
+ "segments": [
+  {
+   "src": "ssa",
+   "take": 6,
+   "in": 112.12,
+   "out": 135.92,
+   "text": "In ten years plus I've been delivering menopause support. This isn't about your relationship. It's a hormonal feedback connected to what you eat, how you move and the stress management rather than a relationship breakdown or mindset reframing alone. You're not broken. You just need to optimise your system.",
+   "lower_third": {
+    "title": "Pamela",
+    "subtitle": "Founder, Aunty Mel",
+    "from": 0.8,
+    "to": 5.5
+   }
+  }
+ ],
+ "end_card": {
+  "line": "You're not alone in this"
+ },
+ "feeling": "overwhelmed"
+}

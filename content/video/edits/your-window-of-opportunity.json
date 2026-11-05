@@ -1,0 +1,22 @@
+{
+ "output": "aunty-mel-your-window-of-opportunity",
+ "segments": [
+  {
+   "src": "ssa",
+   "take": 6,
+   "in": 191.01,
+   "out": 211.85,
+   "text": "In the ten years plus I've been delivering menopause support. The system starts shifting years before your periods change. This is your window of opportunity. Nutrition, lifestyle, mindset is your friend here. You are not broken. You just need to optimise your systems.",
+   "lower_third": {
+    "title": "Pamela",
+    "subtitle": "Founder, Aunty Mel",
+    "from": 0.8,
+    "to": 5.5
+   }
+  }
+ ],
+ "end_card": {
+  "line": "Your window starts now"
+ },
+ "learn": "perimenopause"
+}

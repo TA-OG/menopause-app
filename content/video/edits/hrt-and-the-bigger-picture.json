@@ -1,0 +1,23 @@
+{
+ "output": "aunty-mel-hrt-and-the-bigger-picture",
+ "segments": [
+  {
+   "src": "ssa",
+   "take": 7,
+   "in": 90.3,
+   "out": 112.7,
+   "text": "In the 10 years plus, I've been delivering menopause support. I've seen HRT get prescribed as symptom management. But, the hormone support alongside nutrition, lifestyle and mindset are system restoration, not a band -aid. You are not broken, you just need to optimise your system.",
+   "lower_third": {
+    "title": "Pamela",
+    "subtitle": "Founder, Aunty Mel",
+    "from": 0.8,
+    "to": 5.5
+   }
+  }
+ ],
+ "end_card": {
+  "line": "Talk to your GP about what's right for you"
+ },
+ "learn": "hrt",
+ "review": "Pamela to approve HRT framing"
+}

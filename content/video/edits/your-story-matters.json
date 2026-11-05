@@ -1,0 +1,36 @@
+{
+ "output": "aunty-mel-your-story-matters",
+ "segments": [
+  {
+   "src": "origin",
+   "take": 2,
+   "in": 372.08,
+   "out": 389.34,
+   "text": "And so what I do with women that come to see me and I'm working with them as a group or one -to -one, I initially really want to hear their story, like what has led you up to this point.",
+   "lower_third": {
+    "title": "Pamela",
+    "subtitle": "Founder, Aunty Mel",
+    "from": 0.8,
+    "to": 5.5
+   }
+  },
+  {
+   "src": "origin",
+   "take": 2,
+   "in": 448.42,
+   "out": 492.56,
+   "text": "And then I want to know about you, like what did you struggle with, did you have any other life traumas, losses during your childhood, adulthood and then any medication, did you take the contraceptive pill, did you have antibiotics, you know did you have failed relationships, you know all of those things really shape you as a woman and also really has an impact on your perimenopause or to menopause journey, seeing you as a whole person is part of the picture."
+  },
+  {
+   "src": "origin",
+   "take": 2,
+   "in": 493.16,
+   "out": 518.44,
+   "text": "And so once we look at that timeline we then go into what do you want, you feel like a stranger right now but actually what do you want in three months, six months, a year and longer, how do you want to feel, how do you want to show up in those relationships that you have at home or at work, your vision is really really important,"
+  }
+ ],
+ "end_card": {
+  "line": "Your story matters"
+ },
+ "learn": "my-plan"
+}

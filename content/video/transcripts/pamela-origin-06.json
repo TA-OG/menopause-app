@@ -1,0 +1,17 @@
+{
+ "source": "E:\\StreamToday -  AUNTYMEL - Pamela origin\\StreamToday -  Pamela origin 06.mp4",
+ "duration": 160.4693125,
+ "model": "medium.en",
+ "segments": [
+  {
+   "start": 91.73,
+   "end": 92.73,
+   "text": "Why not do this?"
+  },
+  {
+   "start": 93.73,
+   "end": 94.73,
+   "text": "Shall I take that?"
+  }
+ ]
+}

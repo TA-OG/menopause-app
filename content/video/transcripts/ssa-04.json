@@ -1,0 +1,22 @@
+{
+ "source": "E:\\StreamToday -  AUNTYMEL REC 1\\StreamToday -  ssa 04.mp4",
+ "duration": 23.3173125,
+ "model": "medium.en",
+ "segments": [
+  {
+   "start": 2.58,
+   "end": 6.54,
+   "text": "the ten years I've been delivering menopause support I've learned that it"
+  },
+  {
+   "start": 6.54,
+   "end": 13.54,
+   "text": "isn't symptom management it's a system optimization every system every symptom"
+  },
+  {
+   "start": 13.54,
+   "end": 19.26,
+   "text": "ties back to nutrition lifestyle mindset as three"
+  }
+ ]
+}
