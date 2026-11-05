@@ -18,6 +18,7 @@ import { useRouter } from 'next/navigation'
 import { useLocale, useMessages, useTranslations } from 'next-intl'
 import { createClient } from '@/lib/supabase/client'
 import Logo from '@/components/ui/Logo'
+import { usePushSubscription, snoozePushPrompt, PUSH_ERROR_MESSAGE_KEY } from '@/lib/use-push-subscription'
 import { SUPPORTED_LOCALES, LOCALE_LABELS } from '@/lib/locale-geo-map'
 import { setLocale } from '@/lib/set-locale'
 import {
@@ -358,6 +359,9 @@ export default function OnboardingPage() {
         )}
         {step.kind === 'custom' && step.component === 'location' && (
           <LocationStep answers={answers} setAnswers={setAnswers} next={next} />
+        )}
+        {step.kind === 'custom' && step.component === 'reminders' && (
+          <RemindersStep next={next} />
         )}
         {step.kind === 'custom' && step.component === 'complete' && (
           <CompleteStep answers={answers} saving={saving} error={error} onComplete={completeOnboarding} />
@@ -703,6 +707,73 @@ function LocationStep({
       <PrimaryButton label={t('ui.continue')} onClick={next} />
       <button type="button" onClick={next} className="w-full text-sm text-gray-400 py-1">
         {t('ui.skip')}
+      </button>
+    </div>
+  )
+}
+
+function RemindersStep({ next }: { next: () => void }) {
+  const t = useTranslations('Onboarding')
+  const tNotifications = useTranslations('Notifications')
+  const { status, error, permission, subscribe } = usePushSubscription()
+
+  function notNow() {
+    snoozePushPrompt()
+    next()
+  }
+
+  async function turnOn() {
+    if (await subscribe()) next()
+  }
+
+  const header = (
+    <StepHeader title={t('reminders.title')} subtitle={t('reminders.subtitle')} />
+  )
+
+  if (status === 'checking') return header
+
+  // Nothing this device can do right now — explain, and let her carry on.
+  if (status === 'unsupported' || status === 'ios-needs-home-screen' || permission === 'denied') {
+    return (
+      <div className="space-y-4">
+        {header}
+        <p className="text-sm text-gray-600 bg-white border border-gray-200 rounded-2xl px-4 py-3 leading-relaxed">
+          {status === 'ios-needs-home-screen'
+            ? t('reminders.iosHomeScreen')
+            : status === 'unsupported'
+              ? t('reminders.unsupported')
+              : t('reminders.blocked')}
+        </p>
+        <PrimaryButton label={t('ui.continue')} onClick={next} />
+      </div>
+    )
+  }
+
+  if (status === 'subscribed') {
+    return (
+      <div className="space-y-4">
+        {header}
+        <p className="text-sm text-gray-600">{t('reminders.enabled')}</p>
+        <PrimaryButton label={t('ui.continue')} onClick={next} />
+      </div>
+    )
+  }
+
+  return (
+    <div className="space-y-3">
+      {header}
+      {error && (
+        <p className="text-red-600 text-sm bg-red-50 rounded-xl px-4 py-2">
+          {tNotifications(PUSH_ERROR_MESSAGE_KEY[error])}
+        </p>
+      )}
+      <PrimaryButton
+        label={status === 'subscribing' ? t('reminders.turningOn') : t('reminders.turnOn')}
+        onClick={turnOn}
+        disabled={status === 'subscribing'}
+      />
+      <button type="button" onClick={notNow} className="w-full text-sm text-gray-500 py-2">
+        {t('reminders.notNow')}
       </button>
     </div>
   )

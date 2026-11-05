@@ -576,6 +576,17 @@
       "building": "Création de votre programme...",
       "planError": "Vos réponses ont été enregistrées, mais nous n'avons pas pu créer votre programme. Veuillez réessayer.",
       "genericError": "Une erreur s'est produite. Veuillez réessayer."
+    },
+    "reminders": {
+      "title": "Souhaitez-vous un petit rappel chaque jour ?",
+      "subtitle": "Un court rappel chaque matin pour faire le point sur votre état. Vous pouvez changer l’heure, ou le désactiver, dans votre profil.",
+      "iosHomeScreen": "Sur iPhone ou iPad, les rappels fonctionnent une fois Aunty Mel ajoutée à votre écran d’accueil (Partager → Sur l’écran d’accueil). Vous pourrez ensuite les activer depuis votre profil.",
+      "unsupported": "Ce navigateur ne prend pas en charge les rappels. Vous pouvez toujours faire votre suivi à tout moment depuis l’appli.",
+      "blocked": "Les notifications sont bloquées pour ce site dans les réglages de votre navigateur. Si vous les autorisez, vous pourrez activer les rappels depuis votre profil.",
+      "enabled": "Les rappels sont activés sur cet appareil.",
+      "turnOn": "Activer les rappels",
+      "turningOn": "Activation…",
+      "notNow": "Pas maintenant"
     }
   },
   "Greeting": {
@@ -794,11 +805,11 @@
   },
   "Notifications": {
     "title": "Notifications push",
-    "subtitle": "Rappels quotidiens de votre programme et de votre suivi",
+    "subtitle": "Un rappel quotidien pour faire le point sur votre état",
     "working": "En cours…",
     "turnOn": "Activer",
     "turnOff": "Désactiver",
-    "offByDefault": "Désactivées par défaut — activez-les pour recevoir des rappels de votre programme.",
+    "offByDefault": "Désactivées sur cet appareil — activez-les pour recevoir un rappel quotidien de suivi.",
     "hourLabel": "M’envoyer mon rappel quotidien vers",
     "saving": "Enregistrement…",
     "unsupported": "Les notifications push ne sont pas prises en charge par ce navigateur.",
@@ -1053,5 +1064,18 @@
     "herTooTitle": "Vous voulez qu’elle s’inscrive aussi ?",
     "herTooBody": "Partagez avec elle la liste d’attente principale d’Aunty Mel. Elle aura un accès anticipé prioritaire au lancement de l’appli.",
     "loading": "Chargement..."
+  },
+  "PushOptIn": {
+    "title": "Souhaitez-vous un petit rappel chaque jour ?",
+    "subtitle": "Un court rappel chaque matin pour faire le point sur votre état.",
+    "iosTitle": "Envie de rappels quotidiens ?",
+    "iosBody": "Sur iPhone ou iPad, ajoutez d’abord Aunty Mel à votre écran d’accueil (Partager → Sur l’écran d’accueil), ouvrez-la depuis là, puis activez les rappels dans votre profil.",
+    "enabled": "Les rappels sont activés. Vous pouvez changer l’heure ou les désactiver dans votre profil.",
+    "turnOn": "Activer les rappels",
+    "turningOn": "Activation…",
+    "notNow": "Pas maintenant"
+  },
+  "Push": {
+    "checkinBody": "Comment vous sentez-vous aujourd’hui ? Prenez une minute pour faire le point."
   }
 }

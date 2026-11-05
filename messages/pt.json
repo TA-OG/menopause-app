@@ -576,6 +576,17 @@
       "building": "A criar o seu plano...",
       "planError": "As suas respostas foram guardadas, mas não foi possível criar o seu plano. Tente novamente.",
       "genericError": "Algo correu mal. Tente novamente."
+    },
+    "reminders": {
+      "title": "Gostaria de um pequeno lembrete todos os dias?",
+      "subtitle": "Um breve lembrete todas as manhãs para registar como se sente. Pode mudar a hora, ou desativá-lo, no seu perfil.",
+      "iosHomeScreen": "No iPhone ou iPad, os lembretes funcionam depois de adicionar a Aunty Mel ao ecrã principal (Partilhar → Adicionar ao ecrã principal). Depois disso, pode ativá-los no seu perfil.",
+      "unsupported": "Este navegador não suporta lembretes. Pode fazer o seu registo a qualquer momento na app.",
+      "blocked": "As notificações estão bloqueadas para este site nas definições do seu navegador. Se as permitir aí, pode ativar os lembretes no seu perfil.",
+      "enabled": "Os lembretes estão ativados neste dispositivo.",
+      "turnOn": "Ativar lembretes",
+      "turningOn": "A ativar…",
+      "notNow": "Agora não"
     }
   },
   "Greeting": {
@@ -794,11 +805,11 @@
   },
   "Notifications": {
     "title": "Notificações push",
-    "subtitle": "Lembretes diários do seu plano e do seu registo",
+    "subtitle": "Um lembrete diário para registar como se sente",
     "working": "A processar…",
     "turnOn": "Ativar",
     "turnOff": "Desativar",
-    "offByDefault": "Desativadas por predefinição — ative-as para receber lembretes do seu plano.",
+    "offByDefault": "Desativadas neste dispositivo — ative-as para receber um lembrete diário de registo.",
     "hourLabel": "Enviar o meu lembrete diário por volta das",
     "saving": "A guardar…",
     "unsupported": "Este navegador não suporta notificações push.",
@@ -1053,5 +1064,18 @@
     "herTooTitle": "Quer que ela se inscreva também?",
     "herTooBody": "Partilhe com ela a lista de espera principal da Aunty Mel. Ela vai ter acesso antecipado prioritário quando a app for lançada.",
     "loading": "A carregar..."
+  },
+  "PushOptIn": {
+    "title": "Gostaria de um pequeno lembrete todos os dias?",
+    "subtitle": "Um breve lembrete todas as manhãs para registar como se sente.",
+    "iosTitle": "Quer lembretes diários?",
+    "iosBody": "No iPhone ou iPad, adicione primeiro a Aunty Mel ao ecrã principal (Partilhar → Adicionar ao ecrã principal), abra-a a partir daí e ative os lembretes no seu perfil.",
+    "enabled": "Os lembretes estão ativados. Pode mudar a hora ou desativá-los no seu perfil.",
+    "turnOn": "Ativar lembretes",
+    "turningOn": "A ativar…",
+    "notNow": "Agora não"
+  },
+  "Push": {
+    "checkinBody": "Como se sente hoje? Tire um minuto para fazer o seu registo."
   }
 }

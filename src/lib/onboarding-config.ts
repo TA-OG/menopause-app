@@ -77,7 +77,7 @@ export type OnboardingStep =
   /** Bespoke step rendered by a dedicated component in the wizard. */
   | (BaseStep & {
       kind: 'custom'
-      component: 'language' | 'disclaimer' | 'continent' | 'heritage' | 'location' | 'complete'
+      component: 'language' | 'disclaimer' | 'continent' | 'heritage' | 'location' | 'reminders' | 'complete'
     })
 
 /** Answers are a flat map; array values are multi-selects. */
@@ -397,6 +397,11 @@ export const STEPS: OnboardingStep[] = [
   // │   ],                                                                       │
   // │ },                                                                         │
   // ╰────────────────────────────────────────────────────────────────────────────╯
+
+  // Push opt-in. Asked here, from a button tap, because browsers only show
+  // the permission prompt in response to a user gesture — it can't be turned
+  // on silently. Skippable; /profile and the dashboard banner offer it later.
+  { id: 'reminders', kind: 'custom', component: 'reminders', title: '' },
 
   { id: 'complete', kind: 'custom', component: 'complete', title: '' },
 ]

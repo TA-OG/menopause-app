@@ -576,6 +576,17 @@
       "building": "Building your plan...",
       "planError": "Your answers were saved, but we couldn't build your plan. Please try again.",
       "genericError": "Something went wrong. Please try again."
+    },
+    "reminders": {
+      "title": "Would you like a gentle daily nudge?",
+      "subtitle": "A short reminder each morning to check in on how you’re feeling. You can change the time, or turn it off, in your profile.",
+      "iosHomeScreen": "On iPhone or iPad, reminders work once Aunty Mel is added to your Home Screen (Share → Add to Home Screen). You can turn them on from your profile after that.",
+      "unsupported": "This browser doesn’t support reminders. You can still check in any time from the app.",
+      "blocked": "Notifications are blocked for this site in your browser settings. If you allow them there, you can turn reminders on from your profile.",
+      "enabled": "Reminders are on for this device.",
+      "turnOn": "Turn on reminders",
+      "turningOn": "Turning on…",
+      "notNow": "Not now"
     }
   },
   "Greeting": {
@@ -794,11 +805,11 @@
   },
   "Notifications": {
     "title": "Push notifications",
-    "subtitle": "Daily plan reminders and check-in nudges",
+    "subtitle": "A daily reminder to check in on how you’re feeling",
     "working": "Working…",
     "turnOn": "Turn on",
     "turnOff": "Turn off",
-    "offByDefault": "Off by default — turn on to get reminders from your plan.",
+    "offByDefault": "Off on this device — turn on to get a daily check-in reminder.",
     "hourLabel": "Send my daily reminder around",
     "saving": "Saving…",
     "unsupported": "Push notifications aren’t supported in this browser.",
@@ -1053,5 +1064,18 @@
     "herTooTitle": "Want her to join too?",
     "herTooBody": "Share the main Aunty Mel waitlist with her. She’ll get priority early access when the app launches.",
     "loading": "Loading..."
+  },
+  "PushOptIn": {
+    "title": "Would you like a gentle daily nudge?",
+    "subtitle": "A short reminder each morning to check in on how you’re feeling.",
+    "iosTitle": "Want daily reminders?",
+    "iosBody": "On iPhone or iPad, add Aunty Mel to your Home Screen first (Share → Add to Home Screen), then open it from there and turn reminders on in your profile.",
+    "enabled": "Reminders are on. You can change the time or turn them off in your profile.",
+    "turnOn": "Turn on reminders",
+    "turningOn": "Turning on…",
+    "notNow": "Not now"
+  },
+  "Push": {
+    "checkinBody": "How are you feeling today? Take a minute to check in."
   }
 }

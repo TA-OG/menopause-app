@@ -576,6 +576,17 @@
       "building": "Dein Plan wird erstellt...",
       "planError": "Deine Antworten wurden gespeichert, aber wir konnten deinen Plan nicht erstellen. Bitte versuche es erneut.",
       "genericError": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
+    },
+    "reminders": {
+      "title": "Möchtest du jeden Tag eine sanfte Erinnerung?",
+      "subtitle": "Jeden Morgen eine kurze Erinnerung, festzuhalten, wie es dir geht. Uhrzeit ändern oder ausschalten kannst du in deinem Profil.",
+      "iosHomeScreen": "Auf dem iPhone oder iPad funktionieren Erinnerungen, sobald Aunty Mel auf deinem Home-Bildschirm ist (Teilen → Zum Home-Bildschirm). Danach kannst du sie in deinem Profil einschalten.",
+      "unsupported": "Dieser Browser unterstützt keine Erinnerungen. Du kannst deinen Check-in trotzdem jederzeit in der App machen.",
+      "blocked": "Benachrichtigungen sind für diese Seite in deinen Browser-Einstellungen blockiert. Wenn du sie dort erlaubst, kannst du Erinnerungen in deinem Profil einschalten.",
+      "enabled": "Erinnerungen sind auf diesem Gerät eingeschaltet.",
+      "turnOn": "Erinnerungen einschalten",
+      "turningOn": "Wird eingeschaltet…",
+      "notNow": "Jetzt nicht"
     }
   },
   "Greeting": {
@@ -794,11 +805,11 @@
   },
   "Notifications": {
     "title": "Push-Benachrichtigungen",
-    "subtitle": "Tägliche Erinnerungen an deinen Plan und deinen Check-in",
+    "subtitle": "Eine tägliche Erinnerung, festzuhalten, wie es dir geht",
     "working": "Wird bearbeitet…",
     "turnOn": "Einschalten",
     "turnOff": "Ausschalten",
-    "offByDefault": "Standardmäßig aus — schalte sie ein, um Erinnerungen aus deinem Plan zu bekommen.",
+    "offByDefault": "Auf diesem Gerät aus — schalte sie ein, um eine tägliche Check-in-Erinnerung zu bekommen.",
     "hourLabel": "Tägliche Erinnerung ungefähr um",
     "saving": "Wird gespeichert…",
     "unsupported": "Push-Benachrichtigungen werden von diesem Browser nicht unterstützt.",
@@ -1053,5 +1064,18 @@
     "herTooTitle": "Soll sie auch mitmachen?",
     "herTooBody": "Teile die Hauptwarteliste von Aunty Mel mit ihr. Sie bekommt bevorzugten Frühzugang, wenn die App startet.",
     "loading": "Wird geladen..."
+  },
+  "PushOptIn": {
+    "title": "Möchtest du jeden Tag eine sanfte Erinnerung?",
+    "subtitle": "Jeden Morgen eine kurze Erinnerung, festzuhalten, wie es dir geht.",
+    "iosTitle": "Tägliche Erinnerungen?",
+    "iosBody": "Füge Aunty Mel auf dem iPhone oder iPad zuerst zu deinem Home-Bildschirm hinzu (Teilen → Zum Home-Bildschirm), öffne sie von dort und schalte Erinnerungen in deinem Profil ein.",
+    "enabled": "Erinnerungen sind eingeschaltet. Uhrzeit ändern oder ausschalten kannst du in deinem Profil.",
+    "turnOn": "Erinnerungen einschalten",
+    "turningOn": "Wird eingeschaltet…",
+    "notNow": "Jetzt nicht"
+  },
+  "Push": {
+    "checkinBody": "Wie geht es dir heute? Nimm dir eine Minute für deinen Check-in."
   }
 }

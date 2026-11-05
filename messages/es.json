@@ -576,6 +576,17 @@
       "building": "Creando tu plan...",
       "planError": "Tus respuestas se han guardado, pero no hemos podido crear tu plan. Inténtalo de nuevo.",
       "genericError": "Algo ha salido mal. Inténtalo de nuevo."
+    },
+    "reminders": {
+      "title": "¿Quieres un pequeño recordatorio cada día?",
+      "subtitle": "Un breve recordatorio cada mañana para contar cómo te sientes. Puedes cambiar la hora, o desactivarlo, en tu perfil.",
+      "iosHomeScreen": "En iPhone o iPad, los recordatorios funcionan cuando añades Aunty Mel a tu pantalla de inicio (Compartir → Añadir a pantalla de inicio). Después podrás activarlos desde tu perfil.",
+      "unsupported": "Este navegador no admite recordatorios. Puedes hacer tu registro cuando quieras desde la app.",
+      "blocked": "Las notificaciones están bloqueadas para este sitio en los ajustes de tu navegador. Si las permites allí, podrás activar los recordatorios desde tu perfil.",
+      "enabled": "Los recordatorios están activados en este dispositivo.",
+      "turnOn": "Activar recordatorios",
+      "turningOn": "Activando…",
+      "notNow": "Ahora no"
     }
   },
   "Greeting": {
@@ -794,11 +805,11 @@
   },
   "Notifications": {
     "title": "Notificaciones push",
-    "subtitle": "Recordatorios diarios de tu plan y de tu registro",
+    "subtitle": "Un recordatorio diario para contar cómo te sientes",
     "working": "Procesando…",
     "turnOn": "Activar",
     "turnOff": "Desactivar",
-    "offByDefault": "Desactivadas por defecto — actívalas para recibir recordatorios de tu plan.",
+    "offByDefault": "Desactivadas en este dispositivo — actívalas para recibir un recordatorio diario de registro.",
     "hourLabel": "Enviarme el recordatorio diario hacia las",
     "saving": "Guardando…",
     "unsupported": "Este navegador no admite notificaciones push.",
@@ -1053,5 +1064,18 @@
     "herTooTitle": "¿Quieres que ella también se apunte?",
     "herTooBody": "Comparte con ella la lista de espera principal de Aunty Mel. Tendrá acceso anticipado prioritario cuando se lance la app.",
     "loading": "Cargando..."
+  },
+  "PushOptIn": {
+    "title": "¿Quieres un pequeño recordatorio cada día?",
+    "subtitle": "Un breve recordatorio cada mañana para contar cómo te sientes.",
+    "iosTitle": "¿Quieres recordatorios diarios?",
+    "iosBody": "En iPhone o iPad, primero añade Aunty Mel a tu pantalla de inicio (Compartir → Añadir a pantalla de inicio), ábrela desde allí y activa los recordatorios en tu perfil.",
+    "enabled": "Los recordatorios están activados. Puedes cambiar la hora o desactivarlos en tu perfil.",
+    "turnOn": "Activar recordatorios",
+    "turningOn": "Activando…",
+    "notNow": "Ahora no"
+  },
+  "Push": {
+    "checkinBody": "¿Cómo te sientes hoy? Tómate un minuto para hacer tu registro."
   }
 }

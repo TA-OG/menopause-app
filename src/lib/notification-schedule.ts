@@ -1,11 +1,15 @@
-import type { WellnessPlan, WellnessRecommendation } from '@/types/database'
+import { DEFAULT_LOCALE, isSupportedLocale, type Locale } from '@/lib/locale-geo-map'
+import en from '../../messages/en.json'
+import fr from '../../messages/fr.json'
+import es from '../../messages/es.json'
+import de from '../../messages/de.json'
+import pt from '../../messages/pt.json'
 
 /**
- * Pure helpers for the plan-drip cron (src/app/api/cron/notifications/route.ts).
- * Extracted so the local-time and rotation logic — the two places a bug would
- * either send at the wrong hour or repeat/skip plan items — are testable
- * without a database or a webpush client, matching how wellness-engine.ts
- * keeps the plan-building logic pure and separate from its API route.
+ * Pure helpers for the daily check-in reminder cron
+ * (src/app/api/cron/notifications/route.ts). Extracted so the local-time
+ * logic — where a bug would send at the wrong hour or on the wrong day — is
+ * testable without a database or a webpush client.
  */
 
 export interface LocalMoment {
@@ -45,54 +49,42 @@ export function localHourAndDate(timezone: string | null | undefined): LocalMome
   }
 }
 
-const MAX_BODY_LENGTH = 160
-
-export function truncate(text: string, max: number = MAX_BODY_LENGTH): string {
-  const trimmed = text.trim()
-  return trimmed.length <= max ? trimmed : `${trimmed.slice(0, max - 1).trimEnd()}…`
+/**
+ * Whether the check-in reminder is due for this user on this tick: it's
+ * their chosen notification_hour where they are, and they haven't already
+ * logged a check-in for their local date. A null hour means none has been
+ * set (the subscribe route defaults it to 9), so it's never due. The
+ * once-per-day claim in notification_log is enforced separately by the
+ * database (migration 040).
+ */
+export function isCheckinNudgeDue(
+  local: LocalMoment | null,
+  notificationHour: number | null,
+  checkedInToday: boolean
+): boolean {
+  if (!local || notificationHour === null) return false
+  return local.hour === notificationHour && !checkedInToday
 }
 
 /**
- * Every recommendation in a (tier-gated) plan, combined across categories,
- * in the order buildPlan/applyTierGating already produced. Individual
- * category arrays are already deduplicated by buildPlan; this just merges
- * them for rotation across the whole plan rather than per-category.
+ * The check-in reminder in the user's own language (profiles.locale). The
+ * body lives in messages/*.json (Push.checkinBody) with the rest of the
+ * app's copy; the title is the brand name and stays as it is. Anything not a
+ * supported locale falls back to English rather than sending nothing.
  */
-export function flattenPlan(
-  plan: Pick<
-    WellnessPlan,
-    'diet_adjustments' | 'lifestyle_adjustments' | 'mindset_recommendations' | 'supplement_suggestions'
-  >
-): WellnessRecommendation[] {
-  return [
-    ...plan.diet_adjustments,
-    ...plan.lifestyle_adjustments,
-    ...plan.mindset_recommendations,
-    ...plan.supplement_suggestions,
-  ]
+const PUSH_MESSAGES: Record<Locale, { checkinBody: string }> = {
+  en: en.Push,
+  fr: fr.Push,
+  es: es.Push,
+  de: de.Push,
+  pt: pt.Push,
 }
 
-/**
- * Pick the next recommendation to surface: the one least recently sent to
- * this user. A recommendation with no history (never sent) sorts before any
- * with a timestamp, since an empty string is lexicographically smaller than
- * any ISO 8601 date — so new plan items are surfaced before the rotation
- * repeats, and the cycle only starts repeating once everything currently in
- * the plan has been sent at least once.
- */
-export function pickNext(
-  recs: WellnessRecommendation[],
-  lastSentAt: Map<string, string>
-): WellnessRecommendation | null {
-  if (recs.length === 0) return null
-  let best = recs[0]
-  let bestTime = lastSentAt.get(best.id) ?? ''
-  for (const rec of recs.slice(1)) {
-    const time = lastSentAt.get(rec.id) ?? ''
-    if (time < bestTime) {
-      best = rec
-      bestTime = time
-    }
+export function checkinNudgeMessage(locale: string | null | undefined) {
+  const lang = isSupportedLocale(locale) ? locale : DEFAULT_LOCALE
+  return {
+    title: 'Aunty Mel',
+    body: PUSH_MESSAGES[lang].checkinBody,
+    url: '/symptom-checkin',
   }
-  return best
 }
