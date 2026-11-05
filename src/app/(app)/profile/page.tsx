@@ -2,6 +2,7 @@ import { createClient } from '@/lib/supabase/server'
 import { getUserAccess } from '@/lib/access'
 import { redirect } from 'next/navigation'
 import NotificationSettings from '@/components/NotificationSettings'
+import DeleteAccount from '@/components/DeleteAccount'
 import LanguageSettings from '@/components/settings/LanguageSettings'
 import { getLocale, getTranslations } from 'next-intl/server'
 import { isSupportedLocale, DEFAULT_LOCALE } from '@/lib/locale-geo-map'
@@ -138,6 +139,9 @@ export default async function ProfilePage() {
           {t('signOut')}
         </button>
       </form>
+
+      {/* Delete account — the data-deletion page sends people here */}
+      <DeleteAccount hasSubscription={isPaidPremium} />
     </div>
   )
 }

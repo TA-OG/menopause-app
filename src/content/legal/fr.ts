@@ -330,7 +330,7 @@ Ces informations sont conservées sous une forme minimale et ne sont jamais util
 
 ## Comment demander la suppression
 
-### Option 1 — Écrivez-nous (le plus rapide)
+### Option 1 — Écrivez-nous
 
 Envoyez un e-mail depuis l’adresse associée à votre compte :
 
@@ -338,11 +338,11 @@ Envoyez un e-mail depuis l’adresse associée à votre compte :
 
 Objet : **Data deletion request** (demande de suppression des données) · Indiquez l’adresse e-mail de votre compte
 
-### Option 2 — Depuis votre compte
+### Option 2 — Depuis votre compte (immédiat)
 
-Connectez-vous à Aunty Mel, puis allez dans **Profil → Paramètres du compte → Supprimer le compte**. Votre compte sera immédiatement désactivé et la suppression complète de vos données sera programmée dans un délai de 30 jours.
+Connectez-vous à Aunty Mel, allez dans **Profil** et touchez **Supprimer mon compte** en bas de la page. Votre compte et vos données sont supprimés de l’appli immédiatement, et tout abonnement est résilié, sans plus aucun prélèvement. Les copies restantes, par exemple dans les sauvegardes, disparaissent sous 30 jours.
 
-## Et ensuite ?
+## Si vous nous écrivez : et ensuite ?
 
 1. **Sous 48 heures** — Nous accusons réception de votre demande par e-mail
 2. **Sous 30 jours** — Votre compte est désactivé et toutes vos données personnelles sont supprimées de nos systèmes et de ceux de nos sous-traitants

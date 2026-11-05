@@ -330,7 +330,7 @@ Estos registros se conservan de forma mínima y nunca se usan con fines de marke
 
 ## Cómo solicitar la eliminación
 
-### Opción 1 — Escríbenos (lo más rápido)
+### Opción 1 — Escríbenos
 
 Envía un correo desde la dirección asociada a tu cuenta:
 
@@ -338,11 +338,11 @@ Envía un correo desde la dirección asociada a tu cuenta:
 
 Asunto: **Data deletion request** (solicitud de eliminación de datos) · Incluye la dirección de correo de tu cuenta
 
-### Opción 2 — Desde tu cuenta
+### Opción 2 — Desde tu cuenta (inmediato)
 
-Inicia sesión en Aunty Mel y ve a **Perfil → Configuración de la cuenta → Eliminar cuenta**. Tu cuenta se desactivará de inmediato y la eliminación completa de tus datos se programará en un plazo de 30 días.
+Inicia sesión en Aunty Mel, ve a **Perfil** y toca **Eliminar mi cuenta** al final de la página. Tu cuenta y tus datos se eliminan de la app de inmediato, y cualquier suscripción se cancela para que no se te vuelva a cobrar. Las copias restantes, por ejemplo en copias de seguridad, desaparecen en un plazo de 30 días.
 
-## Qué pasa después
+## Si nos escribes: qué pasa después
 
 1. **En 48 horas** — Te confirmamos por correo que hemos recibido tu solicitud
 2. **En 30 días** — Tu cuenta se desactiva y todos tus datos personales se eliminan de nuestros sistemas y de los de nuestros encargados del tratamiento

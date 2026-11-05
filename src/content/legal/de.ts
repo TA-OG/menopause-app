@@ -330,7 +330,7 @@ Diese Unterlagen werden in minimaler Form aufbewahrt und nicht für Marketing od
 
 ## So beantragst du die Löschung
 
-### Option 1 — Schreib uns (am schnellsten)
+### Option 1 — Schreib uns
 
 Sende eine E-Mail von der Adresse, die mit deinem Konto verknüpft ist:
 
@@ -338,11 +338,11 @@ Sende eine E-Mail von der Adresse, die mit deinem Konto verknüpft ist:
 
 Betreff: **Data deletion request** (Antrag auf Datenlöschung) · Gib die E-Mail-Adresse deines Kontos an
 
-### Option 2 — In deinem Konto
+### Option 2 — In deinem Konto (sofort)
 
-Melde dich bei Aunty Mel an und geh zu **Profil → Kontoeinstellungen → Konto löschen**. Dein Konto wird sofort deaktiviert und die vollständige Löschung deiner Daten innerhalb von 30 Tagen eingeplant.
+Melde dich bei Aunty Mel an, geh zu **Profil** und tippe unten auf der Seite auf **Mein Konto löschen**. Dein Konto und deine Daten werden sofort aus der App gelöscht, und ein laufendes Abo wird gekündigt, damit dir nichts mehr berechnet wird. Verbleibende Kopien, zum Beispiel in Backups, sind innerhalb von 30 Tagen gelöscht.
 
-## Wie es weitergeht
+## Wenn du uns schreibst: wie es weitergeht
 
 1. **Innerhalb von 48 Stunden** — Wir bestätigen den Eingang deines Antrags per E-Mail
 2. **Innerhalb von 30 Tagen** — Dein Konto wird deaktiviert und alle personenbezogenen Daten werden aus unseren Systemen und denen unserer Auftragsverarbeiter gelöscht

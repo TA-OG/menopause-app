@@ -883,7 +883,7 @@
       },
       "cancel": {
         "q": "Wie kündige ich mein Abo?",
-        "a": "Geh in deine Kontoeinstellungen und tippe auf „Abo verwalten“. Du kannst jederzeit kündigen. Du behältst den Zugang bis zum Ende deines aktuellen Abrechnungszeitraums, und wir belasten dich nicht noch einmal."
+        "a": "Geh zu deinem Profil und tippe auf „Zahlungen verwalten“. Du kannst jederzeit kündigen. Du behältst den Zugang bis zum Ende deines aktuellen Abrechnungszeitraums, und wir belasten dich nicht noch einmal."
       },
       "refund": {
         "q": "Kann ich mein Geld zurückbekommen?",
@@ -891,7 +891,7 @@
       },
       "updatePlan": {
         "q": "Wie aktualisiere ich meinen Wellness-Plan?",
-        "a": "Dein Plan wird aus deinen Antworten im Einstiegsfragebogen erstellt. Wenn sich deine Symptome oder deine Situation geändert haben, schreib uns an hello@auntymel.app, und wir setzen deinen Fragebogen zurück, damit du ihn neu ausfüllen kannst."
+        "a": "Dein Plan wird aus deinen Antworten im Einstiegsfragebogen erstellt. Wenn sich deine Symptome oder deine Situation geändert haben, geh zu deinem Profil und tippe auf „Fragebogen wiederholen“, um die Fragen neu zu beantworten – wir erstellen deinen Plan dann neu."
       },
       "dataSafe": {
         "q": "Sind meine Gesundheitsdaten sicher?",
@@ -899,7 +899,7 @@
       },
       "delete": {
         "q": "Wie lösche ich mein Konto und meine Daten?",
-        "a": "Du kannst die vollständige Löschung deines Kontos und deiner Daten über unsere Seite zur Datenlöschung beantragen oder per E-Mail an privacy@auntymel.app. Wir löschen alles innerhalb von 30 Tagen."
+        "a": "Geh zu deinem Profil und tippe unten auf „Mein Konto löschen“. Dein Konto und deine Daten werden sofort gelöscht, und ein laufendes Abo wird gekündigt. Du kannst auch an privacy@auntymel.app schreiben, dann löschen wir alles innerhalb von 30 Tagen. Details findest du auf unserer Seite zur Datenlöschung."
       },
       "devices": {
         "q": "Auf welchen Geräten funktioniert Aunty Mel?",
@@ -1053,5 +1053,24 @@
     "herTooTitle": "Soll sie auch mitmachen?",
     "herTooBody": "Teile die Hauptwarteliste von Aunty Mel mit ihr. Sie bekommt bevorzugten Frühzugang, wenn die App startet.",
     "loading": "Wird geladen..."
+  },
+  "DeleteAccount": {
+    "open": "Mein Konto löschen",
+    "title": "Dein Konto löschen?",
+    "pointData": "Dein Konto, deine Check-ins, dein Tagebuch, dein Plan und deine Einstellungen werden sofort gelöscht.",
+    "pointSubscription": "Dein Abo wird jetzt gekündigt, und dir wird nichts mehr berechnet.",
+    "pointFinal": "Das kann nicht rückgängig gemacht werden.",
+    "refundNote": "Das Löschen erstattet deine aktuelle Zahlung nicht. Wenn du innerhalb unserer 30-tägigen Geld-zurück-Garantie bist, schreib an {email}.",
+    "confirmLabel": "Gib <strong>{word}</strong> ein, um zu bestätigen",
+    "confirm": "Mein Konto löschen",
+    "deleting": "Wird gelöscht…",
+    "cancel": "Abbrechen",
+    "deletedTitle": "Dein Konto wurde gelöscht",
+    "deletedBody": "Alle deine Daten wurden entfernt. Danke, dass du Zeit mit Aunty Mel verbracht hast.",
+    "home": "Zur Startseite",
+    "errorNothingDeleted": "Wir konnten dein Konto gerade nicht löschen, und es wurde nichts gelöscht. Versuch es noch einmal oder schreib an {email}, dann erledigen wir das für dich.",
+    "errorSubscriptionCancelled": "Dein Abo wurde gekündigt, aber wir konnten dein Konto nicht fertig löschen. Versuch es noch einmal oder schreib an {email}, dann erledigen wir das für dich.",
+    "errorAdmin": "Admin-Konten können nicht in der App gelöscht werden. Schreib an {email}.",
+    "errorGeneric": "Etwas ist schiefgelaufen. Bitte versuch es noch einmal."
   }
 }

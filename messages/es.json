@@ -883,7 +883,7 @@
       },
       "cancel": {
         "q": "¿Cómo cancelo mi suscripción?",
-        "a": "Ve a la configuración de tu cuenta y toca «Gestionar suscripción». Puedes cancelar cuando quieras. Mantendrás el acceso hasta el final del periodo de facturación en curso y no te volveremos a cobrar."
+        "a": "Ve a tu Perfil y toca «Gestionar la facturación». Puedes cancelar cuando quieras. Mantendrás el acceso hasta el final del periodo de facturación en curso y no te volveremos a cobrar."
       },
       "refund": {
         "q": "¿Puedo pedir un reembolso?",
@@ -891,7 +891,7 @@
       },
       "updatePlan": {
         "q": "¿Cómo actualizo mi plan de bienestar?",
-        "a": "Tu plan se genera a partir de tus respuestas al cuestionario inicial. Si tus síntomas o tu situación han cambiado, escríbenos a hello@auntymel.app y podemos restablecer tu cuestionario para que lo vuelvas a hacer desde cero."
+        "a": "Tu plan se genera a partir de tus respuestas al cuestionario inicial. Si tus síntomas o tu situación han cambiado, ve a tu Perfil y toca «Repetir el cuestionario» para responder de nuevo, y reharemos tu plan."
       },
       "dataSafe": {
         "q": "¿Están seguros mis datos de salud?",
@@ -899,7 +899,7 @@
       },
       "delete": {
         "q": "¿Cómo elimino mi cuenta y mis datos?",
-        "a": "Puedes solicitar la eliminación completa de tu cuenta y tus datos desde nuestra página de eliminación de datos o escribiendo a privacy@auntymel.app. Lo eliminaremos todo en un plazo de 30 días."
+        "a": "Ve a tu Perfil y toca «Eliminar mi cuenta» al final de la página. Tu cuenta y tus datos se eliminan de inmediato y cualquier suscripción se cancela. También puedes escribir a privacy@auntymel.app y lo eliminaremos todo en un plazo de 30 días. Nuestra página de eliminación de datos tiene los detalles."
       },
       "devices": {
         "q": "¿En qué dispositivos funciona Aunty Mel?",
@@ -1053,5 +1053,24 @@
     "herTooTitle": "¿Quieres que ella también se apunte?",
     "herTooBody": "Comparte con ella la lista de espera principal de Aunty Mel. Tendrá acceso anticipado prioritario cuando se lance la app.",
     "loading": "Cargando..."
+  },
+  "DeleteAccount": {
+    "open": "Eliminar mi cuenta",
+    "title": "¿Eliminar tu cuenta?",
+    "pointData": "Tu cuenta, tus registros, tu diario, tu plan y tus ajustes se eliminan de inmediato.",
+    "pointSubscription": "Tu suscripción se cancela ahora y no se te volverá a cobrar.",
+    "pointFinal": "Esto no se puede deshacer.",
+    "refundNote": "Eliminar la cuenta no reembolsa tu pago actual. Si estás dentro de nuestra garantía de devolución de 30 días, escribe a {email}.",
+    "confirmLabel": "Escribe <strong>{word}</strong> para confirmar",
+    "confirm": "Eliminar mi cuenta",
+    "deleting": "Eliminando…",
+    "cancel": "Cancelar",
+    "deletedTitle": "Tu cuenta se ha eliminado",
+    "deletedBody": "Todos tus datos se han borrado. Gracias por pasar tiempo con Aunty Mel.",
+    "home": "Volver a la página de inicio",
+    "errorNothingDeleted": "No hemos podido eliminar tu cuenta ahora mismo y no se ha borrado nada. Inténtalo de nuevo o escribe a {email} y lo haremos por ti.",
+    "errorSubscriptionCancelled": "Tu suscripción se ha cancelado, pero no hemos podido terminar de eliminar tu cuenta. Inténtalo de nuevo o escribe a {email} y lo haremos por ti.",
+    "errorAdmin": "Las cuentas de administración no se pueden eliminar desde la app. Escribe a {email}.",
+    "errorGeneric": "Algo ha salido mal. Inténtalo de nuevo."
   }
 }

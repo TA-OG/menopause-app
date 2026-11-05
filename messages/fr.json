@@ -883,7 +883,7 @@
       },
       "cancel": {
         "q": "Comment résilier mon abonnement ?",
-        "a": "Allez dans les paramètres de votre compte et touchez « Gérer l’abonnement ». Vous pouvez résilier à tout moment. Vous gardez l’accès jusqu’à la fin de votre période de facturation en cours et nous ne vous facturerons plus rien."
+        "a": "Allez dans votre Profil et touchez « Gérer la facturation ». Vous pouvez résilier à tout moment. Vous gardez l’accès jusqu’à la fin de votre période de facturation en cours et nous ne vous facturerons plus rien."
       },
       "refund": {
         "q": "Puis-je être remboursée ?",
@@ -891,7 +891,7 @@
       },
       "updatePlan": {
         "q": "Comment mettre à jour mon programme de bien-être ?",
-        "a": "Votre programme est généré à partir de vos réponses au questionnaire d’accueil. Si vos symptômes ou votre situation ont changé, contactez-nous à hello@auntymel.app et nous pourrons réinitialiser votre questionnaire pour que vous le refassiez."
+        "a": "Votre programme est généré à partir de vos réponses au questionnaire d’accueil. Si vos symptômes ou votre situation ont changé, allez dans votre Profil et touchez « Refaire le questionnaire » pour répondre à nouveau : nous reconstruirons votre programme."
       },
       "dataSafe": {
         "q": "Mes données de santé sont-elles en sécurité ?",
@@ -899,7 +899,7 @@
       },
       "delete": {
         "q": "Comment supprimer mon compte et mes données ?",
-        "a": "Vous pouvez demander la suppression complète de votre compte et de vos données via notre page de suppression des données ou en écrivant à privacy@auntymel.app. Nous supprimerons tout sous 30 jours."
+        "a": "Allez dans votre Profil et touchez « Supprimer mon compte » en bas de la page. Votre compte et vos données sont supprimés immédiatement et tout abonnement est résilié. Vous pouvez aussi écrire à privacy@auntymel.app : nous supprimerons tout sous 30 jours. Notre page de suppression des données donne tous les détails."
       },
       "devices": {
         "q": "Sur quels appareils Aunty Mel fonctionne-t-elle ?",
@@ -1053,5 +1053,24 @@
     "herTooTitle": "Vous voulez qu’elle s’inscrive aussi ?",
     "herTooBody": "Partagez avec elle la liste d’attente principale d’Aunty Mel. Elle aura un accès anticipé prioritaire au lancement de l’appli.",
     "loading": "Chargement..."
+  },
+  "DeleteAccount": {
+    "open": "Supprimer mon compte",
+    "title": "Supprimer votre compte ?",
+    "pointData": "Votre compte, vos suivis, votre journal, votre programme et vos réglages sont supprimés immédiatement.",
+    "pointSubscription": "Votre abonnement est résilié dès maintenant, sans plus aucun prélèvement.",
+    "pointFinal": "Cette action est irréversible.",
+    "refundNote": "La suppression ne rembourse pas votre paiement en cours. Si vous êtes dans le délai de notre garantie satisfait ou remboursé de 30 jours, écrivez à {email}.",
+    "confirmLabel": "Tapez <strong>{word}</strong> pour confirmer",
+    "confirm": "Supprimer mon compte",
+    "deleting": "Suppression…",
+    "cancel": "Annuler",
+    "deletedTitle": "Votre compte a été supprimé",
+    "deletedBody": "Toutes vos données ont été effacées. Merci d’avoir passé du temps avec Aunty Mel.",
+    "home": "Retour à l’accueil",
+    "errorNothingDeleted": "Nous n’avons pas pu supprimer votre compte pour le moment, et rien n’a été supprimé. Réessayez, ou écrivez à {email} et nous le ferons pour vous.",
+    "errorSubscriptionCancelled": "Votre abonnement a été résilié, mais nous n’avons pas pu terminer la suppression de votre compte. Réessayez, ou écrivez à {email} et nous le ferons pour vous.",
+    "errorAdmin": "Les comptes administrateur ne peuvent pas être supprimés depuis l’appli. Écrivez à {email}.",
+    "errorGeneric": "Un problème est survenu. Veuillez réessayer."
   }
 }

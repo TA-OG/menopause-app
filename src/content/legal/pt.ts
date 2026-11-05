@@ -330,7 +330,7 @@ Estes registos são guardados de forma mínima e nunca são usados para marketin
 
 ## Como pedir o apagamento
 
-### Opção 1 — Envie-nos um e-mail (mais rápido)
+### Opção 1 — Envie-nos um e-mail
 
 Envie um e-mail a partir do endereço associado à sua conta:
 
@@ -338,11 +338,11 @@ Envie um e-mail a partir do endereço associado à sua conta:
 
 Assunto: **Data deletion request** (pedido de apagamento de dados) · Indique o endereço de e-mail da sua conta
 
-### Opção 2 — Na sua conta
+### Opção 2 — Na sua conta (imediato)
 
-Inicie sessão na Aunty Mel e vá a **Perfil → Definições da conta → Apagar conta**. A sua conta será desativada de imediato e o apagamento completo dos seus dados será agendado no prazo de 30 dias.
+Inicie sessão na Aunty Mel, vá a **Perfil** e toque em **Apagar a minha conta** no fundo da página. A sua conta e os seus dados são apagados da app de imediato, e qualquer subscrição é cancelada para que não haja mais cobranças. As cópias restantes, por exemplo em cópias de segurança, desaparecem no prazo de 30 dias.
 
-## O que acontece a seguir
+## Se nos enviar um e-mail: o que acontece a seguir
 
 1. **No prazo de 48 horas** — Confirmamos por e-mail a receção do seu pedido
 2. **No prazo de 30 dias** — A sua conta é desativada e todos os seus dados pessoais são apagados dos nossos sistemas e dos sistemas dos nossos subcontratantes

@@ -202,6 +202,21 @@ export async function POST(request: NextRequest) {
         break
     }
 
+    // Deleting an account (DELETE /api/account) deletes the Stripe customer,
+    // and Stripe then sends customer.subscription.deleted still carrying the
+    // erased user's id in metadata. The profile updates above simply match
+    // no rows, but linking this event to that id would violate the
+    // payment_events → profiles foreign key and leave the event stuck in
+    // 'processing'. Only link events to users who still exist.
+    if (resolvedUserId) {
+      const { data: stillExists } = await admin
+        .from('profiles')
+        .select('id')
+        .eq('id', resolvedUserId)
+        .maybeSingle()
+      if (!stillExists) resolvedUserId = null
+    }
+
     await admin
       .from('payment_events')
       .update({ status: 'completed', user_id: resolvedUserId, error: null })

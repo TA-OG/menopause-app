@@ -883,7 +883,7 @@
       },
       "cancel": {
         "q": "How do I cancel my subscription?",
-        "a": "Go to your account settings and tap “Manage subscription”. You can cancel at any time. You’ll keep access until the end of your current billing period and we won’t charge you again."
+        "a": "Go to your Profile and tap “Manage billing”. You can cancel at any time. You’ll keep access until the end of your current billing period and we won’t charge you again."
       },
       "refund": {
         "q": "Can I get a refund?",
@@ -891,7 +891,7 @@
       },
       "updatePlan": {
         "q": "How do I update my wellness plan?",
-        "a": "Your plan is generated from your onboarding answers. If your symptoms or situation have changed, contact us at hello@auntymel.app and we can reset your onboarding so you can complete it fresh."
+        "a": "Your plan is generated from your onboarding answers. If your symptoms or situation have changed, go to your Profile and tap “Redo intake” to answer the questions again, and we’ll rebuild your plan."
       },
       "dataSafe": {
         "q": "Is my health data safe?",
@@ -899,7 +899,7 @@
       },
       "delete": {
         "q": "How do I delete my account and data?",
-        "a": "You can request full account and data deletion by visiting our data deletion page or emailing privacy@auntymel.app. We’ll delete everything within 30 days."
+        "a": "Go to your Profile and tap “Delete my account” at the bottom. Your account and data are deleted straight away and any subscription is cancelled. You can also email privacy@auntymel.app and we’ll delete everything within 30 days. Our data deletion page has the details."
       },
       "devices": {
         "q": "What devices does Aunty Mel work on?",
@@ -1053,5 +1053,24 @@
     "herTooTitle": "Want her to join too?",
     "herTooBody": "Share the main Aunty Mel waitlist with her. She’ll get priority early access when the app launches.",
     "loading": "Loading..."
+  },
+  "DeleteAccount": {
+    "open": "Delete my account",
+    "title": "Delete your account?",
+    "pointData": "Your account, check-ins, journal, plan and settings are deleted straight away.",
+    "pointSubscription": "Your subscription is cancelled now and you won’t be charged again.",
+    "pointFinal": "This can’t be undone.",
+    "refundNote": "Deleting doesn’t refund your current payment. If you’re within our 30-day money-back guarantee, email {email}.",
+    "confirmLabel": "Type <strong>{word}</strong> to confirm",
+    "confirm": "Delete my account",
+    "deleting": "Deleting…",
+    "cancel": "Cancel",
+    "deletedTitle": "Your account has been deleted",
+    "deletedBody": "All of your data has been removed. Thank you for spending time with Aunty Mel.",
+    "home": "Back to the home page",
+    "errorNothingDeleted": "We couldn’t delete your account just now, and nothing has been deleted. Please try again, or email {email} and we’ll do it for you.",
+    "errorSubscriptionCancelled": "Your subscription has been cancelled, but we couldn’t finish deleting your account. Please try again, or email {email} and we’ll do it for you.",
+    "errorAdmin": "Admin accounts can’t be deleted from the app. Please email {email}.",
+    "errorGeneric": "Something went wrong. Please try again."
   }
 }

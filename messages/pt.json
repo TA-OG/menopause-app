@@ -883,7 +883,7 @@
       },
       "cancel": {
         "q": "Como cancelo a minha subscrição?",
-        "a": "Vá às definições da sua conta e toque em «Gerir subscrição». Pode cancelar a qualquer momento. Mantém o acesso até ao fim do período de faturação atual e não voltamos a cobrar."
+        "a": "Vá ao seu Perfil e toque em «Gerir faturação». Pode cancelar a qualquer momento. Mantém o acesso até ao fim do período de faturação atual e não voltamos a cobrar."
       },
       "refund": {
         "q": "Posso pedir um reembolso?",
@@ -891,7 +891,7 @@
       },
       "updatePlan": {
         "q": "Como atualizo o meu plano de bem-estar?",
-        "a": "O seu plano é gerado a partir das suas respostas ao questionário inicial. Se os seus sintomas ou a sua situação mudaram, contacte-nos através de hello@auntymel.app e podemos repor o seu questionário para o preencher de novo."
+        "a": "O seu plano é gerado a partir das suas respostas ao questionário inicial. Se os seus sintomas ou a sua situação mudaram, vá ao seu Perfil e toque em «Refazer o questionário» para responder de novo, e criamos o seu plano outra vez."
       },
       "dataSafe": {
         "q": "Os meus dados de saúde estão seguros?",
@@ -899,7 +899,7 @@
       },
       "delete": {
         "q": "Como apago a minha conta e os meus dados?",
-        "a": "Pode pedir o apagamento completo da sua conta e dos seus dados na nossa página de apagamento de dados ou por e-mail para privacy@auntymel.app. Apagamos tudo no prazo de 30 dias."
+        "a": "Vá ao seu Perfil e toque em «Apagar a minha conta» no fundo da página. A sua conta e os seus dados são apagados de imediato e qualquer subscrição é cancelada. Também pode enviar um e-mail para privacy@auntymel.app e apagamos tudo no prazo de 30 dias. A nossa página de apagamento de dados tem os detalhes."
       },
       "devices": {
         "q": "Em que dispositivos funciona a Aunty Mel?",
@@ -1053,5 +1053,24 @@
     "herTooTitle": "Quer que ela se inscreva também?",
     "herTooBody": "Partilhe com ela a lista de espera principal da Aunty Mel. Ela vai ter acesso antecipado prioritário quando a app for lançada.",
     "loading": "A carregar..."
+  },
+  "DeleteAccount": {
+    "open": "Apagar a minha conta",
+    "title": "Apagar a sua conta?",
+    "pointData": "A sua conta, registos, diário, plano e definições são apagados de imediato.",
+    "pointSubscription": "A sua subscrição é cancelada agora e não haverá mais cobranças.",
+    "pointFinal": "Isto não pode ser desfeito.",
+    "refundNote": "Apagar a conta não reembolsa o seu pagamento atual. Se estiver dentro da nossa garantia de reembolso de 30 dias, envie um e-mail para {email}.",
+    "confirmLabel": "Escreva <strong>{word}</strong> para confirmar",
+    "confirm": "Apagar a minha conta",
+    "deleting": "A apagar…",
+    "cancel": "Cancelar",
+    "deletedTitle": "A sua conta foi apagada",
+    "deletedBody": "Todos os seus dados foram removidos. Obrigado por passar tempo com a Aunty Mel.",
+    "home": "Voltar à página inicial",
+    "errorNothingDeleted": "Não foi possível apagar a sua conta neste momento e nada foi apagado. Tente novamente ou envie um e-mail para {email} e tratamos disso por si.",
+    "errorSubscriptionCancelled": "A sua subscrição foi cancelada, mas não foi possível concluir o apagamento da sua conta. Tente novamente ou envie um e-mail para {email} e tratamos disso por si.",
+    "errorAdmin": "As contas de administração não podem ser apagadas na app. Envie um e-mail para {email}.",
+    "errorGeneric": "Algo correu mal. Tente novamente."
   }
 }

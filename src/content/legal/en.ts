@@ -331,7 +331,7 @@ These records are kept in minimal form and are not used for any marketing or pro
 
 ## How to request deletion
 
-### Option 1 — Email us (fastest)
+### Option 1 — Email us
 
 Send an email from the address associated with your account:
 
@@ -339,11 +339,11 @@ Send an email from the address associated with your account:
 
 Subject: **Data deletion request** · Include the email address on your account
 
-### Option 2 — From your account
+### Option 2 — From your account (immediate)
 
-Sign in to Aunty Mel, go to **Profile → Account Settings → Delete Account**. This will immediately deactivate your account and schedule full data deletion within 30 days.
+Sign in to Aunty Mel, go to **Profile** and tap **Delete my account** at the bottom of the page. Your account and data are deleted from the app straight away, and any subscription is cancelled so you won’t be charged again. Any remaining copies, for example in backups, are gone within 30 days.
 
-## What happens next
+## If you email us: what happens next
 
 1. **Within 48 hours** — We confirm receipt of your request by email
 2. **Within 30 days** — Your account is deactivated and all personal data is deleted from our systems and those of our processors
