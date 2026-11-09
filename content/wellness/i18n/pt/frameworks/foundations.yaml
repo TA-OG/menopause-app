@@ -1,6 +1,6 @@
 # Tradução de frameworks/foundations.yaml — prevalece a versão em inglês.
 df_meal_timing_by_stage:
-  title: Horário e frequência das refeições — diferentes consoante a fase e consoante como está
+  title: Horário e frequência das refeições — diferentes conforme a fase e como  está se sentindo.
   body: |-
     Não há aqui uma regra universal com evidência forte, mas há um padrão que algumas mulheres e profissionais consideram útil: na perimenopausa, tomar o pequeno-almoço na primeira hora depois de acordar, com 3 refeições por dia (4–5 mais pequenas se a energia for um problema). Na menopausa e na pós-menopausa, algumas acham que lhes cai melhor quebrar o jejum um pouco mais tarde — por volta das 10–11h — com 2–3 refeições por dia. Encare isto como um ponto de partida para experimentar, não como uma prescrição fixa.
     Mas isto ajusta-se: se tem dificuldades com o sono, ansiedade, nevoeiro mental ou pouca energia, o melhor é evitar totalmente o jejum, em qualquer fase — o seu corpo precisa de combustível regular, não de menos. Nesse caso, refeições mais frequentes e mais pequenas (4–5) costumam servir-lhe melhor do que 2–3 maiores, e a cafeína e o álcool são normalmente as primeiras coisas a reduzir, porque ambos agravam diretamente estes mesmos sintomas.
@@ -10,13 +10,13 @@ df_carb_and_eating_order:
     A maioria das mulheres pós-menopáusicas não tolera bem os hidratos de carbono ao pequeno-almoço — costumam ser mais bem tolerados à tarde e é melhor evitá-los ou reduzi-los à noite. Isto importa menos se o seu controlo geral do açúcar no sangue já for bom (p. ex., se come sobretudo alimentos frescos e pouco processados).
     Uma alavanca simples e gratuita, em qualquer fase: numa refeição, coma a proteína e os legumes antes dos hidratos de carbono, em vez de começar por eles. Isto atenua o pico de açúcar que se segue, sem mudar o que come — só a ordem.
 df_evening_eating_window:
-  title: Pare de comer 3–5 horas antes de deitar
+  title: Pare de comer 3–5 horas antes de dormir.
   body: >-
     Procure parar de comer 3–5 horas antes de deitar. No verão, com mais horas de luz, comer um pouco mais tarde pode resultar — mas convém evitar isso nos meses de inverno, sobretudo em latitudes como as do Reino Unido.
 df_whole_foods_protein_fibre:
   title: O prato base — proteína, fibra e cor, em todas as fases
   body: >-
-    Dê prioridade aos alimentos frescos em vez dos processados, seja qual for a fase. O que aumentar: proteína em todas as refeições; fibra dos legumes, sobretudo das crucíferas (brócolos, couve-flor, couve kale, couve); alimentos ricos em polifenóis; alimentos prebióticos, e probióticos para algumas mulheres; ómega-3, sementes de linhaça e de chia; e alimentos que aquecem, como gengibre, canela, açafrão-da-índia e cebola-roxa.
+    Dê prioridade aos alimentos frescos em vez dos processados, seja qual for a fase. Aumentar o consumo de proteína em todas as refeições; fibra dos legumes, sobretudo das crucíferas (brócolis, couve-flor, couve kale, couve); alimentos ricos em polifenóis; alimentos prebióticos, e probióticos para algumas mulheres; ómega-3, sementes de linhaça e de chia; e alimentos que aquecem, como gengibre, canela, açafrão-da-índia e cebola-roxa.
 df_hydration_protocol:
   title: Hidratação regular — cerca de 2 litros, distribuídos ao longo do dia
   body: >-
@@ -24,7 +24,7 @@ df_hydration_protocol:
 df_reduce_sugar_processed_xenoestrogens:
   title: O que reduzir — açúcar refinado, embalagens e (para algumas) lacticínios
   body: >-
-    O açúcar refinado e os ultraprocessados provocam oscilações de açúcar no sangue, inflamação e quebras de energia, que alimentam o ciclo entre humor, sono e energia. Sempre que possível, escolha alimentos frescos em vez de muito embalados ou enlatados, e tenha atenção ao contacto dos alimentos com plástico, para reduzir a exposição a xenoestrogénios. Para algumas mulheres vale também a pena limitar o excesso de lacticínios, sobretudo quando há um padrão de comichão/enxaquecas que pode indicar sensibilidade à histamina.
+    O açúcar refinado e os ultraprocessados provocam oscilações de açúcar no sangue, inflamação e quebras de energia, que afetam o humor, sono e energia. Sempre que possível, escolha alimentos frescos em vez de embalados ou enlatados, e tenha atenção ao contacto dos alimentos com plástico, para reduzir a exposição a xenoestrogénios. Para algumas mulheres vale também a pena limitar o excesso de laticínios, sobretudo quando há um padrão de enxaquecas que pode indicar sensibilidade à histamina.
 df_thyroid_iron_support_foods:
   title: Tiroide e ferro — as duas lacunas nutricionais mais esquecidas
   body: >-
@@ -70,7 +70,7 @@ lf_vagal_breathwork_and_sauna:
   disclaimer: >-
     Se tem tendência para afrontamentos ou já tem dificuldade com o calor, a sauna pode exigir cuidado — sessões mais curtas, ou evitá-la de todo se provocar sintomas em vez de ajudar. Fale primeiro com o seu médico se tiver doença cardiovascular, tensão arterial mal controlada ou uma condição que afete a hidratação, e se tomar medicação que afete a tensão arterial ou o equilíbrio de líquidos — o calor aumenta a frequência cardíaca e pode alterar rapidamente a tensão arterial.
 lf_nature_and_connection:
-  title: Tempo na natureza, e manter ligações sociais
+  title: Passe tempo na natureza, e mantenha-se conectado socialmente.
   body: >-
     O tempo na natureza — caminhar descalça na relva ou na areia, ou uma atividade tipo horta — não é só exercício, é o efeito de estar no momento presente, ao ar livre, a fazer algo com as mãos. Ligações sociais fortes estão associadas a melhor humor, maior longevidade e mais resiliência ao longo das transições hormonais — um dos hábitos mais simples e com mais evidência que existem. Seja uma caminhada regular com uma amiga, uma aula ou uma comunidade, é um verdadeiro hábito diário ou semanal que vale a pena nomear, não apenas um «extra».
 mr_gp_signpost:
@@ -84,10 +84,10 @@ mr_this_is_real:
     A menopausa afeta praticamente todos os sistemas do corpo. No pico da perimenopausa, as mulheres referem em média 7–10 sintomas ao mesmo tempo. Ainda assim, a maioria das mulheres não é questionada sobre a menopausa pelos profissionais de saúde até ser ela própria a falar no assunto. O que está a viver é real, tem causas biológicas e não é sinal de fraqueza nem de envelhecer «mal». É uma transição — com um início, um meio e um fim.
     Uma análise ao sangue normal não quer dizer que não se passa nada. Os níveis hormonais oscilam muito na perimenopausa, por isso um único resultado pode parecer normal enquanto o que sente conta outra história — é por isso que, no Reino Unido, as orientações do NICE indicam que as mulheres com mais de 45 anos com sintomas podem normalmente ser diagnosticadas sem análises. Se lhe disseram que as suas análises estão «normais» mas não se sente bem, vale a pena voltar ao seu médico — não é um beco sem saída.
 mr_your_window_headline:
-  title: Esta é a sua janela
+  title: Esta é a sua oportunidade.
   body: |-
-    A perimenopausa não está simplesmente a acontecer-lhe — está a chamá-la a agir. Esta é a sua janela de oportunidade, não um declínio lento, mas o momento de agir e mudar a trajetória dos próximos 40 anos.
-    A menopausa não é o fim da sua janela — é uma nova. Os anos à volta e logo a seguir à última menstruação são aqueles em que algumas mudanças acontecem mais depressa — a perda óssea, por exemplo, é mais rápida nessa altura — por isso o que construir nesta fase prolonga-se pelas décadas seguintes. Como se quer sentir, quem quer ser daqui a 5, 10, 15 anos? Comece já a praticar ser essa mulher.
+    A perimenopausa está chamando-a a agir. Esta é a sua oportunidade, uma oportunidade de mudar a trajetória dos próximos 40 anos.
+    A menopausa é uma nova etapa. Durante a menopausa, as mudanças acontecem mais depressa — a perda óssea, por exemplo, é mais rápida nessa fase — por isso o que construir nesta fase prolonga-se pelas décadas seguintes. Como se quer sentir, quem quer ser daqui a 5, 10, 15 anos? Comece já a praticar.
 mr_advice_flexes_to_you:
   title: O seu plano deve ajustar-se a como está — não só à sua fase
   body: >-
@@ -111,11 +111,11 @@ ss_magnesium_form_guide:
   body: >-
     Se experimentar o magnésio, a forma faz mais diferença do que a maioria das pessoas pensa. As mulheres que o tomam usam habitualmente cerca de 200–400 mg por dia, começando pelo limite inferior. O glicinato é mais suave para o intestino e tem menos probabilidade de amolecer as fezes — normalmente a melhor opção se procura apoio para o sono, a calma ou o sistema nervoso sem efeito laxante. O citrato tem um efeito laxante natural, por isso é a melhor escolha se também tem obstipação ou quer apoio para o trânsito intestinal — embora possa amolecer as fezes se a dose for demasiado alta. Ambos são mais bem absorvidos do que o óxido de magnésio, que é mais barato mas mal absorvido e usado sobretudo pelo efeito laxante, e não para aumentar os níveis de magnésio.
   disclaimer: >-
-    Os suplementos não são medicamentos regulados. Confirme sempre com o seu médico de família ou farmacêutico antes de começar, sobretudo se tomar medicamentos receitados ou tiver problemas renais ou cardíacos.
+    Os suplementos não são medicamentos regulados. Converse sempre com o seu médico de família ou profissional da saude antes de começar qualquer tratamento, sobretudo se tomar medicamentos receitados ou tiver problemas renais ou cardíacos.
 ss_omega3_foundational:
   title: Ómega-3 (EPA/DHA)
   body: >-
-    Muitas mulheres tomam um suplemento combinado de EPA/DHA, habitualmente no intervalo de 1000–2000 mg por dia. Se estiver a escolher um, vale a pena verificar o teor real de EPA/DHA por cápsula e não só o peso total de óleo de peixe, e procurar pureza testada por uma entidade independente.
+    Muitas mulheres tomam  EPA e DHA combinados, entre 1000–2000 mg por dia. Caso escolha um, verifique o teor real de EPA/DHA por cápsula e não só o peso total de óleo de peixe, e procurar pureza testada por uma entidade independente.
   disclaimer: >-
     O ómega-3 em doses elevadas pode tornar o sangue mais fluido. Se toma anticoagulantes (varfarina, aspirina, apixabano) ou vai ser operada, consulte o seu médico de família ou farmacêutico antes de o tomar.
 ss_b_complex_methylated:
