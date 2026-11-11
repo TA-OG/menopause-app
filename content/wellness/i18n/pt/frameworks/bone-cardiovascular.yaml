@@ -2,13 +2,13 @@
 df_calcium_bone:
   title: 700–1200 mg de cálcio por dia — primeiro através da alimentação
   body: >-
-    Os estrogénios regulam diretamente a reabsorção óssea. A sua descida acelera a perda óssea até 20% nos primeiros 5–7 anos após a menopausa. A ingestão de cálcio é fundamental. Procure ingerir 700–1200 mg por dia através da alimentação: lacticínios (leite, queijo, iogurte), bebidas vegetais enriquecidas, sardinhas e salmão de conserva (com as espinhas), brócolos, couve kale, amêndoas e tofu feito com sulfato de cálcio. O cálcio dos alimentos é mais bem absorvido do que o dos suplementos. Suplementar mais de 1000 mg por dia só com comprimidos tem pouca evidência e pode aumentar o risco cardiovascular.
+    O estrogênio regula diretamente a reabsorção óssea. A sua queda acelera a perda óssea em até 20% nos primeiros 5–7 anos após a menopausa. A ingestão de cálcio é fundamental. Procure ingerir 700–1200 mg por dia através da alimentação: laticínios (leite, queijo, iogurte), bebidas vegetais enriquecidas, sardinhas e salmão enlatados (com as espinhas), brócolis, couve kale, amêndoas e tofu feito com sulfato de cálcio. O cálcio dos alimentos é mais bem absorvido do que o dos suplementos. Suplementar mais de 1000 mg por dia só com comprimidos tem pouca evidência e pode aumentar o risco cardiovascular.
 df_heart_healthy_fats:
   title: Gorduras insaturadas em vez de saturadas — para proteger o coração
   body: >-
     Antes da menopausa, os estrogénios protegem o coração — aumentam o HDL (colesterol «bom») e reduzem o LDL (colesterol «mau»). Depois da menopausa, esta proteção perde-se e o LDL costuma subir 10–15%. Substitua as gorduras saturadas (manteiga, carne vermelha, lacticínios gordos) por fontes insaturadas: azeite, abacate, frutos secos, sementes e peixe gordo. O padrão mediterrânico é a abordagem alimentar que mais protege o coração nesta faixa etária.
 df_reduce_sodium:
-  title: Reduza o sal — a tensão arterial sobe depois da menopausa
+  title: Reduza o sal — a pressão sobe depois da menopausa
   body: >-
     A tensão arterial sobe muitas vezes nos anos seguintes à menopausa, devido às alterações vasculares que acompanham a descida dos estrogénios. Os adultos no Reino Unido consomem em média 8–9 g de sal por dia — o máximo recomendado é 6 g. Principais fontes de sal escondido: pão, charcutaria, queijo, refeições pré-feitas e molhos. Temperar com ervas e sumo de limão faz uma diferença real. Na rotulagem nutricional da frente da embalagem, 0,3 g de sal por 100 g ou menos corresponde à faixa verde «baixo», e mais de 1,5 g por 100 g à faixa vermelha «alto» — por isso, comparar dois produtos só por esse número é um ganho fácil. (As bebidas usam as mesmas faixas de 0,3 g / 1,5 g, mas por 100 ml.)
 lf_weight_bearing_bones:
@@ -22,21 +22,21 @@ lf_cardio_heart:
 lf_smoking_cessation:
   title: Deixar de fumar — a maior medida para o coração
   body: >-
-    Fumar duplica o risco de enfarte e é o principal fator de risco modificável de doença cardiovascular nas mulheres pós-menopáusicas. Acelera também a perda óssea (as fumadoras têm uma densidade óssea 10–15% inferior à das não fumadoras) e agrava os afrontamentos. Os serviços de apoio à cessação tabágica (no Reino Unido, os NHS Stop Smoking Services), a vareniclina (Champix) e a terapêutica de substituição de nicotina combinada são todos mais eficazes do que a força de vontade sozinha. Fale com o seu médico de família.
+    Fumar duplica o risco de enfarte e é o principal fator de risco modificável de doença cardiovascular nas mulheres em pós-menopausa. Acelera também a perda óssea (as fumadoras têm uma densidade óssea 10–15% inferior à das não fumadoras) e agrava as ondas de calor. Serviços de apoio para pessoas que desejam parar de fumar, (no Reino Unido, os NHS Stop Smoking Services), a vareniclina (Champix) e a terapêutica de substituição de nicotina combinada são todos mais eficazes do que a força de vontade sozinha. Fale com o seu médico.
 mr_bone_density_check:
   title: Pergunte ao seu médico por uma densitometria óssea — conheça o seu ponto de partida
   body: >-
     A densitometria óssea (DEXA) mede a densidade mineral óssea e demora 10–15 minutos. No Reino Unido, o NICE recomenda-a a mulheres com menopausa precoce (antes dos 45), menopausa cirúrgica ou outros fatores de risco (uso prolongado de corticoides, IMC baixo, antecedentes familiares de fratura da anca). Mesmo sem estes fatores, conhecer a sua densidade óssea de partida na menopausa dá-lhe uma referência para medir o efeito do que fizer a seguir. Pergunte ao seu médico de família se pode fazê-la no seu sistema de saúde.
 mr_heart_risk_awareness:
-  title: A doença cardiovascular é a principal causa de morte nas mulheres — não o cancro da mama
+  title: A doença cardiovascular é a principal causa de morte nas mulheres — não o câncer de mama.
   body: >-
     Depois da menopausa, o risco cardiovascular das mulheres ultrapassa o dos homens da mesma idade. Ainda assim, as mulheres são avaliadas menos vezes, reconhecem pior os próprios sintomas e recebem menos tratamento preventivo. Na próxima consulta, peça ao seu médico uma avaliação do risco cardiovascular (colesterol, tensão arterial, glicemia). No Reino Unido, a maioria dos centros de saúde oferece o NHS Health Check a adultos dos 40–74 anos. A prevenção é muito mais eficaz do que o tratamento.
 ss_calcium_supplement:
   title: Suplementos de cálcio — só se a alimentação não chegar
   body: >-
-    A suplementação de cálcio (500 mg por dia, não mais) só é adequada se a sua ingestão de cálcio na alimentação ficar sistematicamente abaixo de 700 mg. A maioria das mulheres que consome lacticínios ou bebidas vegetais enriquecidas atinge este valor através da alimentação. O carbonato de cálcio deve tomar-se com comida; o citrato de cálcio pode tomar-se sem comer. Não ultrapasse 1000 mg por dia no total, entre alimentação e suplementos, sem orientação médica.
+    A suplementação de cálcio (500 mg por dia, não mais) só é adequada se a sua ingestão de cálcio na alimentação estiver abaixo de 700 mg. A maioria das mulheres que consomem laticínios ou bebidas vegetais enriquecidas atingem este valor através da alimentação. O carbonato de cálcio deve tomar-se com comida; o citrato de cálcio pode tomar-se sem comer. Não ultrapasse 1000 mg por dia no total, entre alimentação e suplementos, sem orientação médica.
   disclaimer: >-
-    Segundo alguns estudos, suplementos de cálcio acima de 1000 mg/dia podem aumentar o risco cardiovascular. Não tome suplementos sem avaliar primeiro a sua ingestão alimentar. Consulte o seu médico de família se tiver antecedentes de cálculos renais, hipercalcemia ou doença cardiovascular.
+    Segundo alguns estudos, suplementos de cálcio acima de 1000 mg/dia podem aumentar o risco cardiovascular. Não tome suplementos sem avaliar primeiro a sua ingestão alimentar. Consulte o seu médico caso tiver antecedentes de pedra no rim, hipercalcemia ou doença cardiovascular.
 ss_vitamin_k2:
   title: Vitamina K2 (MK-7) — encaminha o cálcio para os ossos, não para as artérias
   body: >-
