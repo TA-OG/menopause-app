@@ -1,5 +1,6 @@
 'use client'
 
+import { Gift } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
 
@@ -52,7 +53,7 @@ export default function ReferralRewardBanner() {
 
   return (
     <div className="bg-brand-900 text-white rounded-2xl p-4 mb-4 flex items-start gap-3">
-      <span className="text-2xl leading-none">🎉</span>
+      <Gift aria-hidden="true" className="h-6 w-6 flex-shrink-0" />
       <div className="flex-1">
         <p className="text-sm font-semibold">{message}</p>
         <p className="text-brand-200 text-xs mt-0.5">{t('checkBilling')}</p>

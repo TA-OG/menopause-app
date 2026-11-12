@@ -1,10 +1,17 @@
+import { Globe } from 'lucide-react'
+import IconBadge from '@/components/ui/IconBadge'
+import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
+import { NO_INDEX } from '@/lib/page-meta'
 import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { getGeoAccess } from '@/lib/geo'
 import NavBar from '@/components/layout/NavBar'
 import ReferralRewardBanner from '@/components/referral/ReferralRewardBanner'
 import { getTranslations } from 'next-intl/server'
+
+// Everything behind the login is personal. Keep it out of search results.
+export const metadata: Metadata = { robots: NO_INDEX }
 
 export default async function AppLayout({
   children,
@@ -40,16 +47,16 @@ export default async function AppLayout({
     return (
       <div className="min-h-screen bg-cream flex items-center justify-center px-6">
         <div className="max-w-md text-center space-y-4">
-          <div className="text-5xl">🌍</div>
+          <IconBadge icon={Globe} />
           <h1 className="text-2xl font-bold text-brand-900">
             {t('title')}
           </h1>
           <p className="text-brand-700 text-sm">
             {t('body')}
           </p>
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-gray-600">
             {t('mistake')}{' '}
-            <a href="mailto:hello@auntymel.app" className="text-brand-600 underline">
+            <a href="mailto:hello@auntymel.app" className="text-brand-700 underline">
               hello@auntymel.app
             </a>
             .

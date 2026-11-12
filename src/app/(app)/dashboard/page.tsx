@@ -1,3 +1,5 @@
+import { pageTitle } from '@/lib/page-meta'
+import { Stethoscope } from 'lucide-react'
 import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { getUserAccess } from '@/lib/access'
@@ -34,6 +36,10 @@ import type { WellnessPlan } from '@/types/database'
 
 /** How many suggestions lead the page. */
 const FOCUS_COUNT = 3
+
+export async function generateMetadata() {
+  return pageTitle('NavBar', 'home')
+}
 
 export default async function DashboardPage({
   searchParams,
@@ -163,7 +169,8 @@ export default async function DashboardPage({
                         appears — including here, where it is only a summary. */}
                     {rec.personal_note && (
                       <span className="text-sm font-medium text-blush-800">
-                        🩺 {t('readNoteFirst')}
+                        <Stethoscope aria-hidden="true" className="mr-1 inline h-4 w-4 align-text-bottom" />
+                        {t('readNoteFirst')}
                       </span>
                     )}
                   </span>

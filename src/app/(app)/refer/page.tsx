@@ -1,7 +1,12 @@
+import { pageTitle } from '@/lib/page-meta'
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import { getTranslations } from 'next-intl/server'
 import ReferralCard from '@/components/referral/ReferralCard'
+
+export async function generateMetadata() {
+  return pageTitle('Refer')
+}
 
 export default async function ReferPage() {
   const supabase = createClient()

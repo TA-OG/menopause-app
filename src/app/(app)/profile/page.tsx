@@ -1,3 +1,4 @@
+import { pageTitle } from '@/lib/page-meta'
 import { createClient } from '@/lib/supabase/server'
 import { getUserAccess } from '@/lib/access'
 import { redirect } from 'next/navigation'
@@ -5,6 +6,10 @@ import NotificationSettings from '@/components/NotificationSettings'
 import LanguageSettings from '@/components/settings/LanguageSettings'
 import { getLocale, getTranslations } from 'next-intl/server'
 import { isSupportedLocale, DEFAULT_LOCALE } from '@/lib/locale-geo-map'
+
+export async function generateMetadata() {
+  return pageTitle('Profile')
+}
 
 export default async function ProfilePage() {
   const supabase = createClient()
@@ -50,15 +55,15 @@ export default async function ProfilePage() {
       {/* Account info */}
       <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 space-y-3">
         <div>
-          <p className="text-xs text-gray-400 uppercase tracking-wide">{t('name')}</p>
+          <p className="text-xs text-gray-600 uppercase tracking-wide">{t('name')}</p>
           <p className="font-medium text-gray-900 mt-0.5">{profile?.full_name ?? '—'}</p>
         </div>
         <div>
-          <p className="text-xs text-gray-400 uppercase tracking-wide">{t('email')}</p>
+          <p className="text-xs text-gray-600 uppercase tracking-wide">{t('email')}</p>
           <p className="font-medium text-gray-900 mt-0.5">{user.email}</p>
         </div>
         <div>
-          <p className="text-xs text-gray-400 uppercase tracking-wide">{t('plan')}</p>
+          <p className="text-xs text-gray-600 uppercase tracking-wide">{t('plan')}</p>
           <p className="font-medium mt-0.5">
             {isPremium ? (
               <span className="text-brand-700">{t('premium')}</span>
@@ -133,7 +138,7 @@ export default async function ProfilePage() {
       <form action={signOut}>
         <button
           type="submit"
-          className="w-full text-gray-400 text-sm py-2 hover:text-gray-600 transition-colors"
+          className="w-full text-gray-600 text-sm py-2 hover:text-gray-900 transition-colors"
         >
           {t('signOut')}
         </button>

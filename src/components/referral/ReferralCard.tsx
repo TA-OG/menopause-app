@@ -86,7 +86,7 @@ export default function ReferralCard() {
           />
         </div>
         {stats.monthsBanked > 0 && (
-          <p className="text-xs text-gray-400 mt-2">
+          <p className="text-xs text-gray-600 mt-2">
             {t('banked', { count: stats.monthsBanked })}
           </p>
         )}
@@ -124,7 +124,7 @@ export default function ReferralCard() {
         </a>
       </div>
 
-      <p className="text-xs text-gray-400 leading-relaxed">
+      <p className="text-xs text-gray-600 leading-relaxed">
         {t.rich('terms', { link: (chunks) => <a href="/terms#referrals" className="underline">{chunks}</a> })}
       </p>
     </div>

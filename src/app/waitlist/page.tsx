@@ -1,5 +1,7 @@
 'use client'
 
+import { BookOpen, Brain, Flower2, NotebookPen, Sparkles, Stethoscope } from 'lucide-react'
+import IconBadge from '@/components/ui/IconBadge'
 import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
@@ -13,7 +15,7 @@ const SYMPTOM_OPTIONS = [
 
 const STAT_KEYS = ['libido', 'uk', 'world'] as const
 const EXPECT_KEYS = ['plan', 'guidance', 'journal', 'articles', 'gp'] as const
-const EXPECT_EMOJI = { plan: '✨', guidance: '🧘', journal: '📓', articles: '📚', gp: '🩺' } as const
+const EXPECT_ICONS = { plan: Sparkles, guidance: Brain, journal: NotebookPen, articles: BookOpen, gp: Stethoscope } as const
 
 function WaitlistForm() {
   const t = useTranslations('Waitlist')
@@ -96,7 +98,7 @@ function WaitlistForm() {
         <div className="w-full max-w-sm space-y-6">
           {/* Header */}
           <div className="text-center">
-            <div className="text-5xl mb-3">🌸</div>
+            <IconBadge icon={Flower2} />
             <h1 className="text-2xl font-bold text-brand-900">
               {isPriority ? t('doneTitlePriority') : t('doneTitle')}
             </h1>
@@ -137,7 +139,7 @@ function WaitlistForm() {
 
           {/* Share options */}
           <div>
-            <p className="text-xs text-center text-gray-400 mb-3">{t('shareVia')}</p>
+            <p className="text-xs text-center text-gray-600 mb-3">{t('shareVia')}</p>
             <div className="flex gap-2">
               <a
                 href={`https://wa.me/?text=${encodeURIComponent(t('whatsappText', { url: referralUrl }))}`}
@@ -157,7 +159,7 @@ function WaitlistForm() {
           </div>
 
           {/* Disclaimer */}
-          <p className="text-xs text-center text-gray-400 leading-relaxed">
+          <p className="text-xs text-center text-gray-600 leading-relaxed">
             {t('disclaimerDone')}
           </p>
         </div>
@@ -218,10 +220,10 @@ function WaitlistForm() {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="text-sm font-medium text-gray-700 block mb-1">
+              <label htmlFor="wl-field-1" className="text-sm font-medium text-gray-700 block mb-1">
                 {t('firstName')}
               </label>
-              <input
+              <input id="wl-field-1"
                 type="text"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
@@ -232,10 +234,10 @@ function WaitlistForm() {
             </div>
 
             <div>
-              <label className="text-sm font-medium text-gray-700 block mb-1">
+              <label htmlFor="wl-field-2" className="text-sm font-medium text-gray-700 block mb-1">
                 {t('emailLabel')}
               </label>
-              <input
+              <input id="wl-field-2"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -249,7 +251,7 @@ function WaitlistForm() {
             <div>
               <label className="text-sm font-medium text-gray-700 block mb-2">
                 {t('symptomLabel')}{' '}
-                <span className="text-gray-400 font-normal">{t('optional')}</span>
+                <span className="text-gray-600 font-normal">{t('optional')}</span>
               </label>
               <div className="grid grid-cols-2 gap-2">
                 {SYMPTOM_OPTIONS.map((opt) => (
@@ -283,7 +285,7 @@ function WaitlistForm() {
               {loading ? t('joining') : refCode ? t('submitReferred') : t('submit')}
             </button>
 
-            <p className="text-xs text-center text-gray-400 leading-relaxed">
+            <p className="text-xs text-center text-gray-600 leading-relaxed">
               {t('noSpam')}
             </p>
           </form>
@@ -294,9 +296,9 @@ function WaitlistForm() {
           <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide text-center">
             {t('expectTitle')}
           </p>
-          {EXPECT_KEYS.map((key) => ({ emoji: EXPECT_EMOJI[key], text: t(`expect.${key}`) })).map((item) => (
+          {EXPECT_KEYS.map((key) => ({ Icon: EXPECT_ICONS[key], text: t(`expect.${key}`) })).map((item) => (
             <div key={item.text} className="flex items-start gap-3">
-              <span className="text-lg flex-shrink-0">{item.emoji}</span>
+              <item.Icon aria-hidden="true" className="mt-0.5 h-5 w-5 flex-shrink-0 text-brand-700" />
               <p className="text-sm text-gray-600 leading-snug">{item.text}</p>
             </div>
           ))}

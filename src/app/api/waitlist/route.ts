@@ -138,12 +138,6 @@ export async function POST(request: NextRequest) {
           .from('waitlist_signups')
           .update({ referral_count: newCount })
           .eq('id', referredById)
-
-        // Send referrer a notification email (via Resend)
-        // This is fire-and-forget — don't block the response
-        notifyReferrer(referrer.first_name, newCount, referral_code!).catch(
-          console.error
-        )
       }
     }
 
@@ -257,19 +251,6 @@ async function sendWelcomeEmail(
   if (error) {
     throw new Error(`Resend rejected the waitlist welcome email: ${error.message}`)
   }
-}
-
-async function notifyReferrer(
-  firstName: string,
-  newCount: number,
-  _referralCode: string
-) {
-  // Fire-and-forget notification to referrer
-  // Implementation: look up their email and send a nudge
-  // Kept simple for MVP — expand to include their updated discount amount
-  console.log(
-    `Referrer ${firstName} now has ${newCount} referral(s) — 99p × ${newCount} = £${(newCount * 0.99).toFixed(2)} off/month`
-  )
 }
 
 async function syncToBrevo(

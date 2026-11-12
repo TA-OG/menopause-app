@@ -1,5 +1,6 @@
 'use client'
 
+import { Brain, Leaf, Pill, Salad, type LucideIcon } from 'lucide-react'
 import { useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import PlanCard from './PlanCard'
@@ -34,11 +35,11 @@ export interface PlanTabsProps {
 type TabKey = 'diet' | 'lifestyle' | 'mindset' | 'supplements'
 
 // Labels come from messages (PlanTabs.<key>).
-const TAB_META: { key: TabKey; emoji: string }[] = [
-  { key: 'diet', emoji: '🥗' },
-  { key: 'lifestyle', emoji: '🌿' },
-  { key: 'mindset', emoji: '🧘' },
-  { key: 'supplements', emoji: '💊' },
+const TAB_META: { key: TabKey; Icon: LucideIcon }[] = [
+  { key: 'diet', Icon: Salad },
+  { key: 'lifestyle', Icon: Leaf },
+  { key: 'mindset', Icon: Brain },
+  { key: 'supplements', Icon: Pill },
 ]
 
 export default function PlanTabs({
@@ -118,12 +119,12 @@ export default function PlanTabs({
               }`}
             >
               <span className="flex items-center gap-1">
-                <span aria-hidden="true">{tab.emoji}</span>
+                <tab.Icon aria-hidden="true" className="h-4 w-4" />
                 {t(tab.key)}
               </span>
               <span
                 className={`text-[11px] font-medium ${
-                  isActive ? 'text-brand-600' : 'text-gray-400'
+                  isActive ? 'text-brand-700' : 'text-gray-600'
                 }`}
               >
                 {groups[tab.key].length}

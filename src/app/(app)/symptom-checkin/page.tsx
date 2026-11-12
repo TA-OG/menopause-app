@@ -42,6 +42,8 @@ function ScaleInput({
       </div>
       <input
         type="range"
+        aria-label={label}
+        aria-valuetext={`${value}/5`}
         min={1}
         max={5}
         step={1}
@@ -49,7 +51,7 @@ function ScaleInput({
         onChange={(e) => onChange(Number(e.target.value))}
         className="w-full accent-brand-700"
       />
-      <div className="flex justify-between text-xs text-gray-400 mt-1">
+      <div className="flex justify-between text-xs text-gray-600 mt-1">
         <span>{low}</span>
         <span>{high}</span>
       </div>
@@ -79,7 +81,7 @@ function SymptomRow({
             className={`w-8 h-8 rounded-full text-xs font-bold transition-all ${
               severity === v
                 ? 'bg-brand-900 text-white'
-                : 'bg-gray-100 text-gray-400 hover:bg-brand-100'
+                : 'bg-gray-100 text-gray-600 hover:bg-brand-100'
             }`}
           >
             {v}
@@ -238,7 +240,7 @@ export default function SymptomCheckinPage() {
       {/* Symptom severity */}
       <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
         <h2 className="font-semibold text-gray-900 mb-1">{t('symptomsTitle')}</h2>
-        <p className="text-xs text-gray-400 mb-4">{t('symptomsHelp')}</p>
+        <p className="text-xs text-gray-600 mb-4">{t('symptomsHelp')}</p>
         <div className="divide-y divide-gray-50">
           {SYMPTOMS.map((key) => (
             <SymptomRow
@@ -277,6 +279,8 @@ export default function SymptomCheckinPage() {
           </div>
           <input
             type="range"
+            aria-label={t('sleepTitle')}
+            aria-valuetext={t('hours', { value: sleepHours })}
             min={0}
             max={12}
             step={0.5}
@@ -284,7 +288,7 @@ export default function SymptomCheckinPage() {
             onChange={(e) => setSleepHours(Number(e.target.value))}
             className="w-full accent-brand-700"
           />
-          <div className="flex justify-between text-xs text-gray-400 mt-1">
+          <div className="flex justify-between text-xs text-gray-600 mt-1">
             <span>{t('hours', { value: 0 })}</span>
             <span>{t('hours', { value: 12 })}</span>
           </div>
@@ -295,6 +299,7 @@ export default function SymptomCheckinPage() {
       <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
         <h2 className="font-semibold text-gray-900 mb-3">{t('notesTitle')}</h2>
         <textarea
+          aria-label={t('notesTitle')}
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
           placeholder={t('notesPlaceholder')}

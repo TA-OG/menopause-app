@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { createClient } from '@/lib/supabase/server'
 import { getUserAccess } from '@/lib/access'
 import { getLocale, getTranslations } from 'next-intl/server'
@@ -6,6 +7,26 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
 const ARTICLE_COLUMNS = 'slug, title, body_md, tier, category, tags, estimated_read_minutes, published_at'
+
+// The tab title is the article's own title (in her language when translated).
+// RLS decides what she may see, so a locked or unpublished slug just gets the
+// generic title here and a 404 from the page itself.
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const supabase = createClient()
+  const locale = await getLocale()
+  const find = (loc: string) =>
+    supabase
+      .from('content_modules')
+      .select('title')
+      .eq('slug', params.slug)
+      .eq('locale', loc)
+      .not('published_at', 'is', null)
+      .lte('published_at', new Date().toISOString())
+      .maybeSingle()
+  let { data } = await find(locale)
+  if (!data && locale !== 'en') ({ data } = await find('en'))
+  return data?.title ? { title: data.title } : {}
+}
 
 export default async function ArticlePage({
   params,
@@ -41,19 +62,19 @@ export default async function ArticlePage({
 
   return (
     <article className="space-y-5 py-4">
-      <a href="/learn" className="text-sm text-brand-600 font-medium">
+      <a href="/learn" className="text-sm text-brand-700 font-medium">
         {t('backToLearn')}
       </a>
 
       <header>
-        <span className="text-xs text-brand-600 font-medium bg-brand-50 px-2 py-0.5 rounded-full">
+        <span className="text-xs text-brand-700 font-medium bg-brand-50 px-2 py-0.5 rounded-full">
           {article.category}
         </span>
         <h1 className="text-2xl font-bold text-brand-900 mt-3 leading-snug">
           {article.title}
         </h1>
         {article.estimated_read_minutes && (
-          <p className="text-xs text-gray-400 mt-1">
+          <p className="text-xs text-gray-600 mt-1">
             {t('minReadFull', { minutes: article.estimated_read_minutes })}
           </p>
         )}
@@ -73,7 +94,7 @@ export default async function ArticlePage({
           </a>
         </div>
       ) : (
-        <div className="prose prose-sm max-w-none prose-headings:text-brand-900 prose-a:text-brand-600">
+        <div className="prose prose-sm max-w-none prose-headings:text-brand-900 prose-a:text-brand-700">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>
             {article.body_md}
           </ReactMarkdown>

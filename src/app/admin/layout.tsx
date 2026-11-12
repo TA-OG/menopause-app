@@ -1,5 +1,12 @@
+import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
+
+// Internal tooling: a plain title, and never in a search index.
+export const metadata: Metadata = {
+  title: { absolute: 'Admin | Aunty Mel' },
+  robots: { index: false, follow: false },
+}
 
 /**
  * Admin layout — hard gate.

@@ -28,9 +28,26 @@
     padding-right: env(safe-area-inset-right);
   }
 
-  /* Smooth scroll */
+  /* One visible keyboard-focus style for every link, button and control.
+     Inputs that draw their own ring keep it (their focus:outline-none wins). */
+  :focus-visible {
+    outline: 2px solid rgb(var(--brand));
+    outline-offset: 2px;
+  }
+
+  /* Smooth scroll — but not for people who have asked for less motion. */
   html {
     scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 

@@ -13,6 +13,8 @@
  *   Next.js static prerendering doesn't crash when env vars are absent at build.
  */
 
+import { Sparkles } from 'lucide-react'
+import IconBadge from '@/components/ui/IconBadge'
 import { useState, useEffect, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
 import { useLocale, useMessages, useTranslations } from 'next-intl'
@@ -282,10 +284,10 @@ export default function OnboardingPage() {
         {showProgress && (
           <div className="mb-8">
             <div className="flex items-center justify-between mb-2">
-              <button onClick={back} className="text-sm text-gray-400 hover:text-gray-600 font-medium">
+              <button onClick={back} className="text-sm text-gray-600 hover:text-gray-900 font-medium">
                 {t('ui.back')}
               </button>
-              <span className="text-xs text-gray-400">{progress}%</span>
+              <span className="text-xs text-gray-600">{progress}%</span>
             </div>
             <div className="w-full bg-gray-100 rounded-full h-1.5">
               <div
@@ -333,7 +335,7 @@ export default function OnboardingPage() {
               ))}
             </div>
             {step.skippable && (
-              <button type="button" onClick={next} className="w-full text-sm text-gray-400 py-1">
+              <button type="button" onClick={next} className="w-full text-sm text-gray-600 py-1">
                 {t('ui.skip')}
               </button>
             )}
@@ -410,7 +412,7 @@ function MultiStep({
       </div>
       <PrimaryButton label={step.ctaLabel ?? t('ui.continue')} onClick={next} disabled={!meetsMin} />
       {step.skippable && (
-        <button type="button" onClick={next} className="w-full text-sm text-gray-400 py-1">
+        <button type="button" onClick={next} className="w-full text-sm text-gray-600 py-1">
           {t('ui.skip')}
         </button>
       )}
@@ -552,7 +554,7 @@ function ContinentStep({
           </button>
         ))}
       </div>
-      <button type="button" onClick={next} className="w-full text-sm text-gray-400 py-1">
+      <button type="button" onClick={next} className="w-full text-sm text-gray-600 py-1">
         {t('ui.skip')}
       </button>
     </div>
@@ -588,7 +590,7 @@ function HeritageStep({
           return allowed.includes(group.group)
         }).map((group) => (
           <div key={group.group}>
-            <p className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2 sticky top-0 bg-white py-1">
+            <p className="text-xs font-bold text-gray-600 uppercase tracking-wide mb-2 sticky top-0 bg-white py-1">
               {text(om, ['communityGroups', messageKey(group.group)], group.group)}
             </p>
             <div className="space-y-1.5">
@@ -625,7 +627,7 @@ function HeritageStep({
         }
         onClick={next}
       />
-      <button type="button" onClick={next} className="w-full text-sm text-gray-400 py-1">
+      <button type="button" onClick={next} className="w-full text-sm text-gray-600 py-1">
         {t('ui.skip')}
       </button>
     </div>
@@ -651,8 +653,8 @@ function LocationStep({
       <StepHeader title={t('location.title')} subtitle={t('location.subtitle')} />
 
       <div>
-        <label className="text-sm font-medium text-gray-700 block mb-1.5">{t('location.city')}</label>
-        <input
+        <label htmlFor="ob-field-1" className="text-sm font-medium text-gray-700 block mb-1.5">{t('location.city')}</label>
+        <input id="ob-field-1"
           type="text"
           value={(answers.city as string) ?? ''}
           onChange={(e) => setAnswers((a) => ({ ...a, city: e.target.value }))}
@@ -662,8 +664,8 @@ function LocationStep({
       </div>
 
       <div>
-        <label className="text-sm font-medium text-gray-700 block mb-1.5">{t('location.country')}</label>
-        <select
+        <label htmlFor="ob-field-2" className="text-sm font-medium text-gray-700 block mb-1.5">{t('location.country')}</label>
+        <select id="ob-field-2"
           value={(answers.country as string) ?? ''}
           onChange={(e) => setAnswers((a) => ({ ...a, country: e.target.value }))}
           className="w-full border border-gray-200 rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-300 bg-white"
@@ -678,8 +680,8 @@ function LocationStep({
       </div>
 
       <div>
-        <label className="text-sm font-medium text-gray-700 block mb-1.5">{t('location.timezone')}</label>
-        <select
+        <label htmlFor="ob-field-3" className="text-sm font-medium text-gray-700 block mb-1.5">{t('location.timezone')}</label>
+        <select id="ob-field-3"
           value={(answers.timezone as string) ?? ''}
           onChange={(e) => setAnswers((a) => ({ ...a, timezone: e.target.value }))}
           className="w-full border border-gray-200 rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-300 bg-white"
@@ -701,7 +703,7 @@ function LocationStep({
       </div>
 
       <PrimaryButton label={t('ui.continue')} onClick={next} />
-      <button type="button" onClick={next} className="w-full text-sm text-gray-400 py-1">
+      <button type="button" onClick={next} className="w-full text-sm text-gray-600 py-1">
         {t('ui.skip')}
       </button>
     </div>
@@ -723,7 +725,7 @@ function CompleteStep({
   const firstName = (answers.full_name as string | undefined)?.trim().split(/\s+/)[0]
   return (
     <div className="space-y-6 text-center">
-      <div className="text-6xl">✨</div>
+      <IconBadge icon={Sparkles} />
       <div>
         <h2 className="text-2xl font-bold text-brand-900">
           {firstName ? t('title', { name: firstName }) : t('titleNoName')}

@@ -11,6 +11,8 @@
  * during the Vercel build phase.
  */
 
+import { Gift, Mail } from 'lucide-react'
+import IconBadge from '@/components/ui/IconBadge'
 import { Suspense, useState } from 'react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
@@ -42,6 +44,7 @@ function GoogleIcon() {
 function SignUpForm() {
   const t = useTranslations('SignUp')
   const tDisclaimer = useTranslations('Disclaimer')
+  const tMeta = useTranslations('Meta.titles')
   const searchParams = useSearchParams()
   const refCode = searchParams.get('ref')
 
@@ -84,7 +87,7 @@ function SignUpForm() {
     })
 
     if (authError) {
-      setError(authError.message)
+      setError(t('errorGeneric'))
       setGoogleLoading(false)
     }
   }
@@ -121,7 +124,7 @@ function SignUpForm() {
     })
 
     if (authError) {
-      setError(authError.message)
+      setError(t('errorGeneric'))
       setLoading(false)
     } else {
       setSent(true)
@@ -134,7 +137,7 @@ function SignUpForm() {
     return (
       <div className="min-h-screen flex items-center justify-center px-6 bg-cream">
         <div className="text-center max-w-sm">
-          <div className="text-5xl mb-4">📧</div>
+          <IconBadge icon={Mail} />
           <h1 className="text-2xl font-bold text-brand-900 mb-2">
             {t('checkEmail')}
           </h1>
@@ -163,6 +166,7 @@ function SignUpForm() {
           <div className="flex justify-center mb-4">
             <Logo size="lg" />
           </div>
+          <h1 className="sr-only">{tMeta('signUp')}</h1>
           <p className="text-gray-500 text-sm">
             {t('subtitle')}
           </p>
@@ -171,8 +175,9 @@ function SignUpForm() {
         {/* Referral banner — shown when arriving via a friend's link */}
         {refCode && (
           <div className="text-center mb-6">
-            <div className="inline-block bg-brand-900 text-white text-xs font-semibold px-4 py-1.5 rounded-full">
-              🎁 {t('referralBanner')}
+            <div className="inline-flex items-center gap-1.5 bg-brand-900 text-white text-xs font-semibold px-4 py-1.5 rounded-full">
+              <Gift aria-hidden="true" className="h-3.5 w-3.5" />
+              {t('referralBanner')}
             </div>
           </div>
         )}
@@ -241,22 +246,34 @@ function SignUpForm() {
         {/* Divider */}
         <div className="flex items-center gap-3 mb-4">
           <div className="flex-1 h-px bg-gray-200" />
-          <span className="text-xs text-gray-400">{t('orUseEmail')}</span>
+          <span className="text-xs text-gray-600">{t('orUseEmail')}</span>
           <div className="flex-1 h-px bg-gray-200" />
         </div>
 
         {/* Email sign-up form */}
         <form onSubmit={handleEmailSignUp} className="space-y-3">
+          <label htmlFor="signup-name" className="sr-only">
+            {t('nameLabel')}
+          </label>
           <input
+            id="signup-name"
+            name="name"
             type="text"
+            autoComplete="given-name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder={t('namePlaceholder')}
             required
             className="w-full border border-gray-200 rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-300"
           />
+          <label htmlFor="signup-email" className="sr-only">
+            {t('emailLabel')}
+          </label>
           <input
+            id="signup-email"
+            name="email"
             type="email"
+            autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder={t('emailPlaceholder')}
@@ -265,13 +282,13 @@ function SignUpForm() {
           />
 
           {error && (
-            <p className="text-red-600 text-sm bg-red-50 rounded-xl px-4 py-2">
+            <p role="alert" className="text-red-600 text-sm bg-red-50 rounded-xl px-4 py-2">
               {error}
             </p>
           )}
 
           {/* Medical disclaimer — required for health-related apps */}
-          <p className="text-xs text-gray-400 leading-relaxed">
+          <p className="text-xs text-gray-600 leading-relaxed">
             {tDisclaimer('short')}
           </p>
 

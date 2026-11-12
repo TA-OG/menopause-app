@@ -1,5 +1,7 @@
 'use client'
 
+import { Flower2, Heart } from 'lucide-react'
+import IconBadge from '@/components/ui/IconBadge'
 import { useState, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
@@ -65,7 +67,7 @@ function PartnerWaitlistForm() {
     return (
       <div className="min-h-screen bg-gradient-to-b from-brand-50 to-white flex items-center justify-center px-6">
         <div className="w-full max-w-sm space-y-6 text-center">
-          <div className="text-5xl">🌸</div>
+          <IconBadge icon={Flower2} />
           <h1 className="text-2xl font-bold text-brand-900">
             {t('doneTitle', { name: firstName })}
           </h1>
@@ -86,7 +88,7 @@ function PartnerWaitlistForm() {
               {t('shareWithHer')}
             </Link>
           </div>
-          <p className="text-xs text-gray-400 leading-relaxed">
+          <p className="text-xs text-gray-600 leading-relaxed">
             {t('disclaimer')}
           </p>
         </div>
@@ -105,7 +107,7 @@ function PartnerWaitlistForm() {
 
         {/* Hero */}
         <div className="text-center mb-10">
-          <div className="text-5xl mb-4">💙</div>
+          <IconBadge icon={Heart} />
           <h1 className="text-3xl font-bold text-brand-900 leading-tight">
             {t('heroTitle')}
           </h1>
@@ -128,7 +130,7 @@ function PartnerWaitlistForm() {
               <p className="text-sm text-gray-600 leading-snug">{item.text}</p>
             </div>
           ))}
-          <p className="text-xs text-gray-400 mt-3">{t('statsSource')}</p>
+          <p className="text-xs text-gray-600 mt-3">{t('statsSource')}</p>
         </div>
 
         {/* Form */}
@@ -140,10 +142,10 @@ function PartnerWaitlistForm() {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="text-sm font-medium text-gray-700 block mb-1">
+              <label htmlFor="wp-field-1" className="text-sm font-medium text-gray-700 block mb-1">
                 {t('firstName')}
               </label>
-              <input
+              <input id="wp-field-1"
                 type="text"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
@@ -154,10 +156,10 @@ function PartnerWaitlistForm() {
             </div>
 
             <div>
-              <label className="text-sm font-medium text-gray-700 block mb-1">
+              <label htmlFor="wp-field-2" className="text-sm font-medium text-gray-700 block mb-1">
                 {t('emailLabel')}
               </label>
-              <input
+              <input id="wp-field-2"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -215,10 +217,10 @@ function PartnerWaitlistForm() {
 
             {/* Open question — most valuable research */}
             <div>
-              <label className="text-sm font-medium text-gray-700 block mb-1">
+              <label htmlFor="wp-field-3" className="text-sm font-medium text-gray-700 block mb-1">
                 {t('openLabel')}
               </label>
-              <textarea
+              <textarea id="wp-field-3"
                 value={openQuestion}
                 onChange={(e) => setOpenQuestion(e.target.value)}
                 placeholder={t('openPlaceholder')}
@@ -239,7 +241,7 @@ function PartnerWaitlistForm() {
               {loading ? t('joining') : t('submit')}
             </button>
 
-            <p className="text-xs text-center text-gray-400 leading-relaxed">
+            <p className="text-xs text-center text-gray-600 leading-relaxed">
               {t('noSpam')}
             </p>
           </form>

@@ -1,3 +1,4 @@
+import { pageTitle } from '@/lib/page-meta'
 import { redirect } from 'next/navigation'
 import { getTranslations } from 'next-intl/server'
 import { createClient } from '@/lib/supabase/server'
@@ -28,6 +29,10 @@ import CheckinHistoryList from '@/components/checkin/CheckinHistoryList'
  * HISTORY_PAGE_SIZE check-ins, and checkin_date is unique per user, so they
  * contain every check-in in the 30-day window.
  */
+export async function generateMetadata() {
+  return pageTitle('CheckinHistory')
+}
+
 export default async function CheckinHistoryPage({
   searchParams,
 }: {

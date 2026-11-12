@@ -1,5 +1,7 @@
 'use client'
 
+import { Sparkles } from 'lucide-react'
+import IconBadge from '@/components/ui/IconBadge'
 import { useState } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
 
@@ -81,7 +83,7 @@ export default function PayPage() {
       <div className="w-full max-w-sm space-y-6">
 
         <div className="text-center">
-          <div className="text-5xl mb-3">✨</div>
+          <IconBadge icon={Sparkles} />
           <h1 className="text-2xl font-bold text-brand-900">{t('title')}</h1>
           <p className="text-gray-500 mt-2 text-sm">{t('subtitle')}</p>
         </div>
@@ -125,7 +127,7 @@ export default function PayPage() {
         <div className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm space-y-3">
           {FEATURE_KEYS.map((key) => (
             <div key={key} className="flex items-start gap-3">
-              <span className="text-brand-600 mt-0.5">✓</span>
+              <span className="text-brand-700 mt-0.5">✓</span>
               <span className="text-sm text-gray-700">{t(key)}</span>
             </div>
           ))}
@@ -151,7 +153,7 @@ export default function PayPage() {
               : t('startYearly', { price: display })}
         </button>
 
-        <p className="text-xs text-center text-gray-400">{t('reassurance')}</p>
+        <p className="text-xs text-center text-gray-600">{t('reassurance')}</p>
 
       </div>
     </div>

@@ -228,7 +228,7 @@ export default function NotificationSettings({ initialEnabled, initialHour }: Pr
       </div>
       {error && <p className="text-xs text-red-600 mt-2">{error}</p>}
       {!initialEnabled && !isSubscribed && status === 'idle' && (
-        <p className="text-xs text-gray-400 mt-2">{t('offByDefault')}</p>
+        <p className="text-xs text-gray-600 mt-2">{t('offByDefault')}</p>
       )}
       {isSubscribed && (
         <div className="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between gap-4">
