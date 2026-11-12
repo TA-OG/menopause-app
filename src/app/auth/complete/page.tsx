@@ -91,7 +91,7 @@ export default function AuthCompletePage() {
       {failed ? (
         <>
           <p className="text-sm text-brand-900">{t('failed')}</p>
-          <a href="/auth/sign-in" className="text-sm text-brand-600 underline">
+          <a href="/auth/sign-in" className="text-sm text-brand-700 underline">
             {t('tryAgain')}
           </a>
         </>

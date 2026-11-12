@@ -119,6 +119,17 @@ browser-safe parts, so keep `crypto` and secrets out of it.
   primary-symptom boost. Do not "simplify" it away.
 - Calcium supplement vs **calcium D-glucarate**, and collagen **Type I** vs **Type II**, are
   genuinely different substances. Never merge them via fuzzy title matching.
+- **Page titles:** the root layout sets the `%s | Aunty Mel` template. A *string* `title` in a
+  layout stops that template reaching child routes (see `waitlist/layout.tsx` and
+  `symptom-checkin/layout.tsx`, which re-declare it). Client-component pages get their title from
+  a sibling `layout.tsx` using `pageTitle()` in `src/lib/page-meta.ts`. Everything behind the
+  login is `noindex`; public pages are listed in `PUBLIC_PATHS` (`src/lib/site.ts`), which drives
+  both `sitemap.ts` and the intent of `robots.ts`.
+- **Icons:** `public/icons/*` and `src/app/icon.png` / `apple-icon.png` must be genuinely square
+  at the size in their filename. They were once all the 1000×280 wordmark.
+- **Internal links in signed-in pages are plain `<a>`, not `<Link>`, in places** — Next 14's client
+  router cache can show a stale page (see the note in `symptom-checkin/page.tsx`). Check before
+  converting any of them.
 - Migrations are sequentially numbered in `supabase/migrations/` — always add a new file,
   never edit an applied one.
 

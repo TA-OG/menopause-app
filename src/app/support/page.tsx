@@ -1,3 +1,4 @@
+import { Mail } from 'lucide-react'
 import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
 
@@ -32,7 +33,7 @@ export default async function SupportPage() {
 
         {/* Header */}
         <div className="mb-10">
-          <Link href="/" className="text-brand-600 text-sm font-medium hover:underline">
+          <Link href="/" className="text-brand-700 text-sm font-medium hover:underline">
             {tLegal('back')}
           </Link>
           <h1 className="text-3xl font-bold text-brand-900 mt-4 mb-2">{t('title')}</h1>
@@ -48,9 +49,10 @@ export default async function SupportPage() {
               href="mailto:hello@auntymel.app"
               className="flex items-center gap-3 bg-brand-900 text-white font-semibold text-sm px-5 py-3 rounded-xl hover:bg-brand-800 transition-colors w-fit"
             >
-              ✉️ {t('emailButton', { email: 'hello@auntymel.app' })}
+              <Mail aria-hidden="true" className="h-4 w-4" />
+              {t('emailButton', { email: 'hello@auntymel.app' })}
             </a>
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-gray-600">
               {t('privacyRequests')}{' '}
               <a href="mailto:privacy@auntymel.app" className="underline">
                 privacy@auntymel.app
@@ -77,10 +79,10 @@ export default async function SupportPage() {
 
         {/* Footer links */}
         <div className="border-t border-gray-200 pt-6 mt-10 flex flex-wrap gap-4 text-sm">
-          <Link href="/privacy" className="text-brand-600 hover:underline">{tLegal('links.privacy')}</Link>
-          <Link href="/terms" className="text-brand-600 hover:underline">{tLegal('links.termsRefund')}</Link>
-          <Link href="/data-deletion" className="text-brand-600 hover:underline">{tLegal('links.dataDeletion')}</Link>
-          <Link href="/" className="text-gray-400 hover:underline">{tLegal('backPlain')}</Link>
+          <Link href="/privacy" className="text-brand-700 hover:underline">{tLegal('links.privacy')}</Link>
+          <Link href="/terms" className="text-brand-700 hover:underline">{tLegal('links.termsRefund')}</Link>
+          <Link href="/data-deletion" className="text-brand-700 hover:underline">{tLegal('links.dataDeletion')}</Link>
+          <Link href="/" className="text-gray-600 hover:underline">{tLegal('backPlain')}</Link>
         </div>
 
       </div>

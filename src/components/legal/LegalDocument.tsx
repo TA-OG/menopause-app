@@ -67,7 +67,7 @@ export default async function LegalDocument({
   return (
     <main className="min-h-screen bg-cream" lang={locale}>
       <div className="max-w-2xl mx-auto px-6 py-12">
-        <Link href="/" className="text-brand-600 text-sm font-medium hover:underline">
+        <Link href="/" className="text-brand-700 text-sm font-medium hover:underline">
           {t('back')}
         </Link>
 
@@ -114,7 +114,7 @@ export default async function LegalDocument({
                 return (
                   <a
                     href={href}
-                    className="text-brand-600 underline"
+                    className="text-brand-700 underline"
                     {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                   >
                     {children}
@@ -145,11 +145,11 @@ export default async function LegalDocument({
 
         <div className="border-t border-gray-200 pt-6 mt-10 flex flex-wrap gap-4 text-sm">
           {FOOTER_LINKS[doc].map((l) => (
-            <Link key={l.href} href={l.href} className="text-brand-600 hover:underline">
+            <Link key={l.href} href={l.href} className="text-brand-700 hover:underline">
               {t(`links.${l.key}`)}
             </Link>
           ))}
-          <Link href="/" className="text-gray-400 hover:underline">
+          <Link href="/" className="text-gray-600 hover:underline">
             {t('backPlain')}
           </Link>
         </div>

@@ -1,13 +1,15 @@
 import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
+import { ClipboardList, NotebookPen, BookOpen } from 'lucide-react'
 import Logo from '@/components/ui/Logo'
 
 export default async function LandingPage() {
   const t = await getTranslations('Landing')
+  const tLegal = await getTranslations('Legal')
   const features = [
-    { emoji: '✨', key: 'plan' },
-    { emoji: '📓', key: 'journal' },
-    { emoji: '📚', key: 'knowledge' },
+    { Icon: ClipboardList, key: 'plan' },
+    { Icon: NotebookPen, key: 'journal' },
+    { Icon: BookOpen, key: 'knowledge' },
   ] as const
 
   return (
@@ -37,6 +39,8 @@ export default async function LandingPage() {
         <div className="flex justify-center mb-8">
           <Logo size="xl" />
         </div>
+        {/* The wordmark is the visual title; this is the page's real h1. */}
+        <h1 className="sr-only">{t('heroTitle')}</h1>
 
         <p className="text-base text-gray-700 mb-5 leading-relaxed">
           {t.rich('manifesto1', { em: (chunks) => <em>{chunks}</em> })}
@@ -60,7 +64,7 @@ export default async function LandingPage() {
             {t('getStarted')}
           </Link>
         </div>
-        <p className="mt-3 text-sm text-gray-400">{t('noCard')}</p>
+        <p className="mt-3 text-sm text-gray-600">{t('noCard')}</p>
       </section>
 
       {/* What you get */}
@@ -68,16 +72,32 @@ export default async function LandingPage() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
           {features.map((item) => (
             <div key={item.key} className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm text-center">
-              <div className="text-3xl mb-2">{item.emoji}</div>
-              <p className="font-bold text-brand-900 text-sm mb-1">{t(`features.${item.key}.title`)}</p>
-              <p className="text-xs text-gray-500 leading-relaxed">{t(`features.${item.key}.desc`)}</p>
+              <item.Icon aria-hidden="true" className="mx-auto mb-3 h-7 w-7 text-brand-700" />
+              <h2 className="font-bold text-brand-900 text-sm mb-1">{t(`features.${item.key}.title`)}</h2>
+              <p className="text-sm text-gray-600 leading-relaxed">{t(`features.${item.key}.desc`)}</p>
             </div>
           ))}
         </div>
 
         {/* Disclaimer */}
-        <p className="text-xs text-center text-gray-400 leading-relaxed">{t('disclaimer')}</p>
+        <p className="text-xs text-center text-gray-600 leading-relaxed">{t('disclaimer')}</p>
       </section>
+
+      <footer className="border-t border-brand-100 px-6 py-6">
+        <nav className="mx-auto flex max-w-2xl flex-wrap justify-center gap-x-5 gap-y-2 text-sm">
+          {[
+            { href: '/support', label: tLegal('links.support') },
+            { href: '/privacy', label: tLegal('links.privacy') },
+            { href: '/terms', label: tLegal('links.terms') },
+            { href: '/cookies', label: tLegal('links.cookies') },
+            { href: '/accessibility', label: tLegal('meta.accessibility.title') },
+          ].map((l) => (
+            <Link key={l.href} href={l.href} className="inline-flex min-h-11 items-center text-brand-700 hover:underline">
+              {l.label}
+            </Link>
+          ))}
+        </nav>
+      </footer>
     </main>
   )
 }

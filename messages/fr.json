@@ -29,7 +29,10 @@
     "checkEmail": "Vérifiez votre e-mail",
     "magicLinkSent": "Lien magique envoyé à <strong>{email}</strong>.",
     "tryAgain": "Réessayer",
-    "linkFailed": "Ce lien de connexion n'a pas fonctionné. Il a peut-être expiré ou a déjà été utilisé. Veuillez vous reconnecter ci-dessous."
+    "linkFailed": "Ce lien de connexion n'a pas fonctionné. Il a peut-être expiré ou a déjà été utilisé. Veuillez vous reconnecter ci-dessous.",
+    "emailLabel": "Adresse e-mail",
+    "noAccountFound": "Nous n’avons trouvé aucun compte avec cette adresse e-mail. Vérifiez l’orthographe ou inscrivez-vous ci-dessous — cela ne prend qu’un instant.",
+    "errorGeneric": "Une erreur s’est produite. Veuillez réessayer."
   },
   "SignUp": {
     "subtitle": "Votre programme de bien-être personnalisé vous attend.",
@@ -53,7 +56,10 @@
     "magicLinkSentClick": "Lien magique envoyé à <strong>{email}</strong>. Cliquez dessus pour continuer.",
     "tryAgain": "Réessayer",
     "consentRequired": "Veuillez accepter les conditions requises avant de continuer.",
-    "loading": "Chargement..."
+    "loading": "Chargement...",
+    "emailLabel": "Adresse e-mail",
+    "nameLabel": "Prénom",
+    "errorGeneric": "Une erreur s’est produite. Veuillez réessayer."
   },
   "Dashboard": {
     "logSymptoms": "Enregistrer vos symptômes du jour",
@@ -66,7 +72,7 @@
     "journal": "Journal",
     "open": "Ouvrir →",
     "journalSubtitle": "Suivez ce que vous essayez et ce qui fonctionne pour vous.",
-    "inviteTitle": "🎁 Invitez une amie, obtenez un mois gratuit",
+    "inviteTitle": "Invitez une amie, obtenez un mois gratuit",
     "inviteSubtitle": "Vous recevez toutes les deux un mois gratuit — cumulable jusqu'à 6 parrainages.",
     "unlockPlan": "Débloquez votre programme complet",
     "unlockPlanSubtitle": "Accédez à toutes les recommandations, au contenu et à tout l'historique de votre journal.",
@@ -159,7 +165,7 @@
     "name": "Nom",
     "email": "E-mail",
     "plan": "Formule",
-    "premium": "Premium ✨",
+    "premium": "Premium",
     "free": "Gratuite",
     "languageTitle": "Langue",
     "languageBody": "La langue de l'application, y compris votre questionnaire et les articles de la rubrique Apprendre.",
@@ -170,7 +176,7 @@
     "upgradeTitle": "Passer à Premium",
     "upgradeBody": "Débloquez votre programme de bien-être complet, toute la bibliothèque de contenus et l'historique complet de votre journal.",
     "upgradeCta": "Passer à l'abonnement — 7,99 £/mois",
-    "inviteTitle": "🎁 Invitez vos amies, recevez un mois gratuit",
+    "inviteTitle": "Invitez vos amies, recevez un mois gratuit",
     "inviteBody": "Vous et votre amie recevez chacune un mois gratuit. Cumulable jusqu'à 6.",
     "updatePlanTitle": "Mettre à jour votre programme de bien-être",
     "updatePlanBody": "Refaites le questionnaire si vos symptômes ou votre mode de vie ont changé.",
@@ -681,10 +687,10 @@
     "daysLabel": "Depuis combien de jours essayez-vous ?",
     "effectLabel": "Comment ça se passe ?",
     "effects": {
-      "much_better": "✅ Beaucoup mieux",
-      "better": "👍 Mieux",
-      "no_change": "➡️ Pas de changement",
-      "worse": "👎 Moins bien"
+      "much_better": "Beaucoup mieux",
+      "better": "Mieux",
+      "no_change": "Pas de changement",
+      "worse": "Moins bien"
     },
     "continueLabel": "Continueriez-vous ?",
     "yes": "Oui",
@@ -704,7 +710,9 @@
     "wouldContinue": "Continuerait",
     "wouldNotContinue": "Ne continuerait pas",
     "errorSave": "Impossible d’enregistrer l’entrée. Veuillez réessayer.",
-    "errorNetwork": "Impossible d’enregistrer l’entrée. Vérifiez votre connexion."
+    "errorNetwork": "Impossible d’enregistrer l’entrée. Vérifiez votre connexion.",
+    "errorLoad": "Impossible de charger vos entrées. Vérifiez votre connexion et réessayez.",
+    "retry": "Réessayer"
   },
   "Pay": {
     "title": "Débloquer Premium",
@@ -743,7 +751,7 @@
     "title": "Invitez une amie, obtenez un mois gratuit",
     "body": "Quand une amie s’inscrit avec votre lien et s’abonne, vous recevez <strong>toutes les deux</strong> un mois gratuit. Parrainez jusqu’à {cap} amies et cumulez jusqu’à {cap} mois gratuits.",
     "progress": "{earned} mois gagnés sur {cap}",
-    "capReached": "Plafond atteint 🎉",
+    "capReached": "Plafond atteint",
     "banked": "{count, plural, one {# mois gratuit en réserve} other {# mois gratuits en réserve}} — appliqué automatiquement à votre prochain abonnement.",
     "linkLabel": "Votre lien de parrainage",
     "copied": "✓ Copié !",
@@ -767,7 +775,7 @@
   },
   "Offline": {
     "title": "Vous êtes hors ligne",
-    "body": "Pas de connexion Internet. Votre journal et vos suivis se synchroniseront dès que vous serez de nouveau en ligne."
+    "body": "Pas de connexion Internet. Reconnectez-vous et réessayez."
   },
   "Landing": {
     "signIn": "Se connecter",
@@ -790,7 +798,8 @@
         "desc": "Des articles de Pamela fondés sur des données probantes — sans blabla, sans peur"
       }
     },
-    "disclaimer": "Aunty Mel fournit uniquement des informations générales sur le bien-être. Ce n’est pas un avis médical. Consultez toujours votre médecin généraliste pour toute question médicale."
+    "disclaimer": "Aunty Mel fournit uniquement des informations générales sur le bien-être. Ce n’est pas un avis médical. Consultez toujours votre médecin généraliste pour toute question médicale.",
+    "heroTitle": "Chaque femme mérite son Aunty Mel"
   },
   "Notifications": {
     "title": "Notifications push",
@@ -916,7 +925,12 @@
     }
   },
   "Meta": {
-    "description": "Chaque femme mérite son Aunty Mel. Des conseils bien-être personnalisés pour la périménopause et la ménopause — fondés sur une véritable expertise pour vous aider à comprendre votre corps, gérer vos symptômes et avoir un échange plus constructif avec votre médecin."
+    "description": "Chaque femme mérite son Aunty Mel. Des conseils bien-être personnalisés pour la périménopause et la ménopause — fondés sur une véritable expertise pour vous aider à comprendre votre corps, gérer vos symptômes et avoir un échange plus constructif avec votre médecin.",
+    "titles": {
+      "signIn": "Connexion",
+      "signUp": "Créer votre compte",
+      "onboarding": "Préparer votre plan"
+    }
   },
   "RegionBlocked": {
     "title": "Aunty Mel n’est pas encore disponible dans votre région",
@@ -939,7 +953,7 @@
     "errorGeneric": "Une erreur s’est produite. Veuillez réessayer.",
     "doneTitlePriority": "Vous êtes parmi les premières",
     "doneTitle": "Vous êtes sur la liste",
-    "priorityBadge": "✨ Accès anticipé prioritaire",
+    "priorityBadge": "Accès anticipé prioritaire",
     "doneBody": "Nous vous écrirons dès le lancement, {name}. Surveillez votre boîte de réception pour votre e-mail de bienvenue.",
     "rewardTitle": "99 p de réduction par parrainage — à vie",
     "rewardBody": "Chaque femme que vous parrainez obtient un accès anticipé prioritaire. Vous bénéficiez de <strong>99 p de réduction sur votre abonnement chaque mois, à vie.</strong> Parrainez 8 femmes et votre abonnement devient entièrement gratuit.",
@@ -952,7 +966,7 @@
     "emailBody": "Je viens de m’inscrire sur la liste d’attente d’Aunty Mel — une appli de bien-être pour la ménopause qui comprend vraiment. Utilise mon lien pour avoir un accès anticipé prioritaire : {url}",
     "email": "E-mail",
     "disclaimerDone": "Conseils de bien-être généraux uniquement — ceci n’est pas un avis médical. Consultez toujours votre médecin généraliste pour toute question médicale.",
-    "referredBadge": "✨ Vous avez été parrainée — vous aurez un accès anticipé prioritaire",
+    "referredBadge": "Vous avez été parrainée — vous aurez un accès anticipé prioritaire",
     "heroTitle": "Chaque femme mérite son Aunty Mel",
     "hero1": "Depuis toujours, les secrets de la ménopause se transmettent de mère en fille, de tante à nièce, de grand-mère à petite-fille — à travers l’expérience partagée, les conversations à voix basse, la sagesse des femmes qui sont passées par là.",
     "hero2": "Ce savoir ne s’est jamais perdu. Il lui fallait simplement un lieu.",
@@ -1053,5 +1067,18 @@
     "herTooTitle": "Vous voulez qu’elle s’inscrive aussi ?",
     "herTooBody": "Partagez avec elle la liste d’attente principale d’Aunty Mel. Elle aura un accès anticipé prioritaire au lancement de l’appli.",
     "loading": "Chargement..."
+  },
+  "NotFound": {
+    "title": "Page introuvable",
+    "body": "Nous n’avons pas trouvé la page que vous cherchez. Elle a peut-être été déplacée, ou le lien contient une faute de frappe.",
+    "home": "Retour à Aunty Mel"
+  },
+  "Error": {
+    "title": "Une erreur s’est produite",
+    "body": "Désolées — cela n’aurait pas dû arriver. L’équipe a été prévenue. Vous pouvez réessayer, et si le problème persiste, dites-le-nous.",
+    "retry": "Réessayer"
+  },
+  "Loading": {
+    "label": "Chargement"
   }
 }

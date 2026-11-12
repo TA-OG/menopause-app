@@ -29,7 +29,10 @@
     "checkEmail": "Check your email",
     "magicLinkSent": "Magic link sent to <strong>{email}</strong>.",
     "tryAgain": "Try again",
-    "linkFailed": "That sign-in link didn't work. It may have expired or already been used. Please sign in again below."
+    "linkFailed": "That sign-in link didn't work. It may have expired or already been used. Please sign in again below.",
+    "emailLabel": "Email address",
+    "noAccountFound": "We couldn’t find an account for that email. Check the spelling, or sign up below — it only takes a moment.",
+    "errorGeneric": "Something went wrong. Please try again."
   },
   "SignUp": {
     "subtitle": "Your personalised wellness plan is waiting.",
@@ -53,7 +56,10 @@
     "magicLinkSentClick": "Magic link sent to <strong>{email}</strong>. Click it to continue.",
     "tryAgain": "Try again",
     "consentRequired": "Please accept the required terms before continuing.",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "emailLabel": "Email address",
+    "nameLabel": "First name",
+    "errorGeneric": "Something went wrong. Please try again."
   },
   "Dashboard": {
     "logSymptoms": "Log today's symptoms",
@@ -66,7 +72,7 @@
     "journal": "Journal",
     "open": "Open →",
     "journalSubtitle": "Track what you're trying and how it's working for you.",
-    "inviteTitle": "🎁 Invite a friend, get a free month",
+    "inviteTitle": "Invite a friend, get a free month",
     "inviteSubtitle": "You both get one month free — stack up to 6 referrals.",
     "unlockPlan": "Unlock your full plan",
     "unlockPlanSubtitle": "Get access to all recommendations, content, and your complete journal history.",
@@ -159,7 +165,7 @@
     "name": "Name",
     "email": "Email",
     "plan": "Plan",
-    "premium": "Premium ✨",
+    "premium": "Premium",
     "free": "Free",
     "languageTitle": "Language",
     "languageBody": "The language the app is shown in, including your quiz and Learn articles.",
@@ -170,7 +176,7 @@
     "upgradeTitle": "Upgrade to Premium",
     "upgradeBody": "Unlock your full wellness plan, complete content library, and full journal history.",
     "upgradeCta": "Upgrade — £7.99/month",
-    "inviteTitle": "🎁 Invite friends, get a free month",
+    "inviteTitle": "Invite friends, get a free month",
     "inviteBody": "You and your friend both get a free month. Stack up to 6.",
     "updatePlanTitle": "Update your wellness plan",
     "updatePlanBody": "Redo your intake if your symptoms or lifestyle have changed.",
@@ -681,10 +687,10 @@
     "daysLabel": "How many days have you been trying this?",
     "effectLabel": "How has it been going?",
     "effects": {
-      "much_better": "✅ Much better",
-      "better": "👍 Better",
-      "no_change": "➡️ No change",
-      "worse": "👎 Worse"
+      "much_better": "Much better",
+      "better": "Better",
+      "no_change": "No change",
+      "worse": "Worse"
     },
     "continueLabel": "Would you continue with this?",
     "yes": "Yes",
@@ -704,7 +710,9 @@
     "wouldContinue": "Would continue",
     "wouldNotContinue": "Would not continue",
     "errorSave": "Could not save entry. Please try again.",
-    "errorNetwork": "Could not save entry. Please check your connection."
+    "errorNetwork": "Could not save entry. Please check your connection.",
+    "errorLoad": "Couldn’t load your entries. Check your connection and try again.",
+    "retry": "Try again"
   },
   "Pay": {
     "title": "Unlock Premium",
@@ -743,7 +751,7 @@
     "title": "Invite a friend, get a free month",
     "body": "When a friend joins with your link and subscribes, you <strong>both</strong> get one month free. Refer up to {cap} friends and stack up to {cap} free months.",
     "progress": "{earned} of {cap} months earned",
-    "capReached": "Cap reached 🎉",
+    "capReached": "Cap reached",
     "banked": "{count, plural, one {# free month banked} other {# free months banked}} — will apply automatically on your next subscription.",
     "linkLabel": "Your referral link",
     "copied": "✓ Copied!",
@@ -767,7 +775,7 @@
   },
   "Offline": {
     "title": "You’re offline",
-    "body": "No internet connection. Your journal and check-ins will sync when you’re back online."
+    "body": "There’s no internet connection. Reconnect and try again."
   },
   "Landing": {
     "signIn": "Sign in",
@@ -790,7 +798,8 @@
         "desc": "Evidence-informed articles from Pamela — no fluff, no fear"
       }
     },
-    "disclaimer": "Aunty Mel provides general wellness information only. Not medical advice. Always consult your GP for medical concerns."
+    "disclaimer": "Aunty Mel provides general wellness information only. Not medical advice. Always consult your GP for medical concerns.",
+    "heroTitle": "Every body needs an Aunty Mel"
   },
   "Notifications": {
     "title": "Push notifications",
@@ -916,7 +925,12 @@
     }
   },
   "Meta": {
-    "description": "Every body needs an Aunty Mel. Personalised wellness guidance for perimenopause and menopause — built on real specialist expertise to help you understand your body, manage your symptoms, and have a more powerful conversation with your doctor."
+    "description": "Every body needs an Aunty Mel. Personalised wellness guidance for perimenopause and menopause — built on real specialist expertise to help you understand your body, manage your symptoms, and have a more powerful conversation with your doctor.",
+    "titles": {
+      "signIn": "Sign in",
+      "signUp": "Create your account",
+      "onboarding": "Set up your plan"
+    }
   },
   "RegionBlocked": {
     "title": "Aunty Mel isn’t available in your region yet",
@@ -939,7 +953,7 @@
     "errorGeneric": "Something went wrong. Please try again.",
     "doneTitlePriority": "You’re first in line",
     "doneTitle": "You’re on the list",
-    "priorityBadge": "✨ Priority early access",
+    "priorityBadge": "Priority early access",
     "doneBody": "We’ll email you the moment we launch, {name}. Check your inbox for your welcome email.",
     "rewardTitle": "Earn 99p off per referral — forever",
     "rewardBody": "Every woman you refer gets priority early access. You get <strong>99p off your subscription every month, for life.</strong> Refer 8 women and your subscription is completely free.",
@@ -952,7 +966,7 @@
     "emailBody": "I just joined the waitlist for Aunty Mel — a menopause wellness app that actually gets it. Use my link to get priority early access: {url}",
     "email": "Email",
     "disclaimerDone": "General wellness guidance only — not medical advice. Always consult your GP for medical concerns.",
-    "referredBadge": "✨ You’ve been referred — you’ll get priority early access",
+    "referredBadge": "You’ve been referred — you’ll get priority early access",
     "heroTitle": "Every body needs an Aunty Mel",
     "hero1": "For eons, the secrets of menopause have been passed from mother to daughter, aunty to niece, grandmother to granddaughter — carried in shared experience, in quiet conversations, in the wisdom of women who had already been through it.",
     "hero2": "That knowledge was never lost. It just needs a home.",
@@ -1053,5 +1067,18 @@
     "herTooTitle": "Want her to join too?",
     "herTooBody": "Share the main Aunty Mel waitlist with her. She’ll get priority early access when the app launches.",
     "loading": "Loading..."
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "body": "We couldn’t find the page you were looking for. It may have moved, or the link may have a typo.",
+    "home": "Back to Aunty Mel"
+  },
+  "Error": {
+    "title": "Something went wrong",
+    "body": "Sorry — that wasn’t supposed to happen. The team has been notified. You can try again, and if it keeps happening please let us know.",
+    "retry": "Try again"
+  },
+  "Loading": {
+    "label": "Loading"
   }
 }

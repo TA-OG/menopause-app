@@ -5,10 +5,47 @@
  * .register('/sw.js') with no file at that path to serve — every push
  * subscription attempt failed silently. This is that file.
  *
- * Deliberately minimal: this app has no other offline/caching needs, so the
- * only jobs here are receiving a push event and turning it into a
- * notification, and routing a click on that notification back into the app.
+ * Deliberately minimal. Jobs: receive a push event and turn it into a
+ * notification; route a click on that notification back into the app; and
+ * show the /offline page when a page navigation fails for lack of a network.
+ *
+ * Nothing else is cached. Pages hold personal health data and must always
+ * come from the server, so the only response ever served from cache is the
+ * offline fallback itself, and only when the network request has failed.
  */
+
+const OFFLINE_CACHE = 'aunty-mel-offline-v1'
+const OFFLINE_URL = '/offline'
+
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches
+      .open(OFFLINE_CACHE)
+      .then((cache) => cache.add(new Request(OFFLINE_URL, { cache: 'reload' })))
+      // A failed pre-cache must not block the worker; push still has to work.
+      .catch(() => {})
+  )
+  self.skipWaiting()
+})
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches
+      .keys()
+      .then((keys) => Promise.all(keys.filter((k) => k !== OFFLINE_CACHE).map((k) => caches.delete(k))))
+      .then(() => self.clients.claim())
+  )
+})
+
+self.addEventListener('fetch', (event) => {
+  // Page navigations only — never API calls, assets or non-GET requests.
+  if (event.request.mode !== 'navigate') return
+  event.respondWith(
+    fetch(event.request).catch(() =>
+      caches.match(OFFLINE_URL).then((cached) => cached || Response.error())
+    )
+  )
+})
 
 self.addEventListener('push', (event) => {
   if (!event.data) return

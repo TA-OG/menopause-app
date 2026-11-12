@@ -8,6 +8,8 @@
  * unavailable during the build phase on Vercel.
  */
 
+import { Mail } from 'lucide-react'
+import IconBadge from '@/components/ui/IconBadge'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
@@ -66,6 +68,7 @@ function GoogleIcon() {
 
 export default function SignInPage() {
   const t = useTranslations('SignIn')
+  const tMeta = useTranslations('Meta.titles')
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
   const [googleLoading, setGoogleLoading] = useState(false)
@@ -116,11 +119,9 @@ export default function SignInPage() {
       const noAccount =
         /signups? not allowed|signup_disabled|user not found/i.test(authError.message)
 
-      setError(
-        noAccount
-          ? 'We could not find an account for that email. Check the spelling, or sign up below — it takes a moment.'
-          : authError.message,
-      )
+      // Always her language: the provider's own wording is English and is not
+      // written for her. Anything unrecognised gets the generic line.
+      setError(noAccount ? t('noAccountFound') : t('errorGeneric'))
       setLoading(false)
     } else {
       setSent(true)
@@ -147,7 +148,7 @@ export default function SignInPage() {
     })
 
     if (authError) {
-      setError(authError.message)
+      setError(t('errorGeneric'))
       setGoogleLoading(false)
     }
   }
@@ -158,7 +159,7 @@ export default function SignInPage() {
     return (
       <div className="min-h-screen flex items-center justify-center px-6 bg-cream">
         <div className="text-center max-w-sm">
-          <div className="text-5xl mb-4">📧</div>
+          <IconBadge icon={Mail} />
           <h1 className="text-2xl font-bold text-brand-900 mb-2">
             {t('checkEmail')}
           </h1>
@@ -187,6 +188,7 @@ export default function SignInPage() {
           <div className="flex justify-center mb-4">
             <Logo size="lg" />
           </div>
+          <h1 className="sr-only">{tMeta('signIn')}</h1>
           <p className="text-gray-500 text-sm">
             {t('subtitle')}
           </p>
@@ -205,14 +207,20 @@ export default function SignInPage() {
         {/* Divider */}
         <div className="flex items-center gap-3 mb-4">
           <div className="flex-1 h-px bg-gray-200" />
-          <span className="text-xs text-gray-400">{t('orUseEmail')}</span>
+          <span className="text-xs text-gray-600">{t('orUseEmail')}</span>
           <div className="flex-1 h-px bg-gray-200" />
         </div>
 
         {/* Email magic link form */}
         <form onSubmit={handleMagicLink} className="space-y-4">
+          <label htmlFor="signin-email" className="sr-only">
+            {t('emailLabel')}
+          </label>
           <input
+            id="signin-email"
+            name="email"
             type="email"
+            autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required

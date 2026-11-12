@@ -29,7 +29,10 @@
     "checkEmail": "Überprüfe deine E-Mails",
     "magicLinkSent": "Anmeldelink gesendet an <strong>{email}</strong>.",
     "tryAgain": "Erneut versuchen",
-    "linkFailed": "Dieser Anmeldelink hat nicht funktioniert. Möglicherweise ist er abgelaufen oder wurde bereits verwendet. Bitte melde dich unten erneut an."
+    "linkFailed": "Dieser Anmeldelink hat nicht funktioniert. Möglicherweise ist er abgelaufen oder wurde bereits verwendet. Bitte melde dich unten erneut an.",
+    "emailLabel": "E-Mail-Adresse",
+    "noAccountFound": "Wir haben kein Konto mit dieser E-Mail-Adresse gefunden. Prüfe die Schreibweise oder registriere dich unten – das dauert nur einen Moment.",
+    "errorGeneric": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
   },
   "SignUp": {
     "subtitle": "Dein persönlicher Wellness-Plan wartet auf dich.",
@@ -53,7 +56,10 @@
     "magicLinkSentClick": "Anmeldelink gesendet an <strong>{email}</strong>. Klicke darauf, um fortzufahren.",
     "tryAgain": "Erneut versuchen",
     "consentRequired": "Bitte akzeptiere die erforderlichen Bedingungen, bevor du fortfährst.",
-    "loading": "Wird geladen..."
+    "loading": "Wird geladen...",
+    "emailLabel": "E-Mail-Adresse",
+    "nameLabel": "Vorname",
+    "errorGeneric": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
   },
   "Dashboard": {
     "logSymptoms": "Heutige Symptome erfassen",
@@ -66,7 +72,7 @@
     "journal": "Tagebuch",
     "open": "Öffnen →",
     "journalSubtitle": "Verfolge, was du ausprobierst und wie es für dich funktioniert.",
-    "inviteTitle": "🎁 Lade eine Freundin ein, erhalte einen Gratismonat",
+    "inviteTitle": "Lade eine Freundin ein, erhalte einen Gratismonat",
     "inviteSubtitle": "Ihr bekommt beide einen Gratismonat — bis zu 6 Empfehlungen kombinierbar.",
     "unlockPlan": "Schalte deinen vollständigen Plan frei",
     "unlockPlanSubtitle": "Erhalte Zugang zu allen Empfehlungen, Inhalten und deinem vollständigen Tagebuchverlauf.",
@@ -159,7 +165,7 @@
     "name": "Name",
     "email": "E-Mail",
     "plan": "Tarif",
-    "premium": "Premium ✨",
+    "premium": "Premium",
     "free": "Kostenlos",
     "languageTitle": "Sprache",
     "languageBody": "Die Sprache der App, einschließlich deines Fragebogens und der Artikel unter „Wissen“.",
@@ -170,7 +176,7 @@
     "upgradeTitle": "Auf Premium upgraden",
     "upgradeBody": "Schalte deinen vollständigen Wellness-Plan, die gesamte Inhaltsbibliothek und deinen vollständigen Tagebuchverlauf frei.",
     "upgradeCta": "Upgrade — 7,99 £/Monat",
-    "inviteTitle": "🎁 Lade Freundinnen ein und erhalte einen Gratismonat",
+    "inviteTitle": "Lade Freundinnen ein und erhalte einen Gratismonat",
     "inviteBody": "Du und deine Freundin bekommt beide einen Gratismonat. Bis zu 6 kombinierbar.",
     "updatePlanTitle": "Deinen Wellness-Plan aktualisieren",
     "updatePlanBody": "Mach den Fragebogen noch einmal, wenn sich deine Symptome oder dein Lebensstil verändert haben.",
@@ -681,10 +687,10 @@
     "daysLabel": "Seit wie vielen Tagen probierst du das aus?",
     "effectLabel": "Wie läuft es bisher?",
     "effects": {
-      "much_better": "✅ Viel besser",
-      "better": "👍 Besser",
-      "no_change": "➡️ Keine Veränderung",
-      "worse": "👎 Schlechter"
+      "much_better": "Viel besser",
+      "better": "Besser",
+      "no_change": "Keine Veränderung",
+      "worse": "Schlechter"
     },
     "continueLabel": "Würdest du damit weitermachen?",
     "yes": "Ja",
@@ -704,7 +710,9 @@
     "wouldContinue": "Würde weitermachen",
     "wouldNotContinue": "Würde nicht weitermachen",
     "errorSave": "Eintrag konnte nicht gespeichert werden. Bitte versuche es erneut.",
-    "errorNetwork": "Eintrag konnte nicht gespeichert werden. Bitte prüfe deine Verbindung."
+    "errorNetwork": "Eintrag konnte nicht gespeichert werden. Bitte prüfe deine Verbindung.",
+    "errorLoad": "Deine Einträge konnten nicht geladen werden. Prüfe deine Verbindung und versuche es erneut.",
+    "retry": "Erneut versuchen"
   },
   "Pay": {
     "title": "Premium freischalten",
@@ -743,7 +751,7 @@
     "title": "Lade eine Freundin ein, erhalte einen Gratismonat",
     "body": "Wenn eine Freundin über deinen Link beitritt und ein Abo abschließt, bekommt ihr <strong>beide</strong> einen Gratismonat. Lade bis zu {cap} Freundinnen ein und sammle bis zu {cap} Gratismonate.",
     "progress": "{earned} von {cap} Monaten gesammelt",
-    "capReached": "Maximum erreicht 🎉",
+    "capReached": "Maximum erreicht",
     "banked": "{count, plural, one {# Gratismonat gutgeschrieben} other {# Gratismonate gutgeschrieben}} — wird automatisch bei deinem nächsten Abo angerechnet.",
     "linkLabel": "Dein Einladungslink",
     "copied": "✓ Kopiert!",
@@ -767,7 +775,7 @@
   },
   "Offline": {
     "title": "Du bist offline",
-    "body": "Keine Internetverbindung. Dein Tagebuch und deine Check-ins werden synchronisiert, sobald du wieder online bist."
+    "body": "Keine Internetverbindung. Verbinde dich wieder und versuche es erneut."
   },
   "Landing": {
     "signIn": "Anmelden",
@@ -790,7 +798,8 @@
         "desc": "Evidenzbasierte Artikel von Pamela — ohne Geschwafel, ohne Angstmache"
       }
     },
-    "disclaimer": "Aunty Mel bietet ausschließlich allgemeine Wellness-Informationen. Kein medizinischer Rat. Wende dich bei medizinischen Anliegen immer an deine Hausärztin oder deinen Hausarzt."
+    "disclaimer": "Aunty Mel bietet ausschließlich allgemeine Wellness-Informationen. Kein medizinischer Rat. Wende dich bei medizinischen Anliegen immer an deine Hausärztin oder deinen Hausarzt.",
+    "heroTitle": "Jede Frau braucht eine Aunty Mel"
   },
   "Notifications": {
     "title": "Push-Benachrichtigungen",
@@ -916,7 +925,12 @@
     }
   },
   "Meta": {
-    "description": "Jede Frau braucht eine Aunty Mel. Persönliche Wellness-Begleitung für Perimenopause und Menopause — auf Basis echter Fachexpertise, damit du deinen Körper verstehst, deine Symptome in den Griff bekommst und mit deiner Ärztin oder deinem Arzt gezielter sprechen kannst."
+    "description": "Jede Frau braucht eine Aunty Mel. Persönliche Wellness-Begleitung für Perimenopause und Menopause — auf Basis echter Fachexpertise, damit du deinen Körper verstehst, deine Symptome in den Griff bekommst und mit deiner Ärztin oder deinem Arzt gezielter sprechen kannst.",
+    "titles": {
+      "signIn": "Anmelden",
+      "signUp": "Konto erstellen",
+      "onboarding": "Deinen Plan einrichten"
+    }
   },
   "RegionBlocked": {
     "title": "Aunty Mel ist in deiner Region noch nicht verfügbar",
@@ -939,7 +953,7 @@
     "errorGeneric": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
     "doneTitlePriority": "Du bist ganz vorne mit dabei",
     "doneTitle": "Du stehst auf der Liste",
-    "priorityBadge": "✨ Bevorzugter Frühzugang",
+    "priorityBadge": "Bevorzugter Frühzugang",
     "doneBody": "Wir schreiben dir, sobald wir starten, {name}. Schau in dein Postfach — dort wartet deine Willkommens-E-Mail.",
     "rewardTitle": "99 p Rabatt pro Einladung — für immer",
     "rewardBody": "Jede Frau, die du einlädst, bekommt bevorzugten Frühzugang. Du bekommst <strong>jeden Monat 99 p Rabatt auf dein Abo, lebenslang.</strong> Lade 8 Frauen ein, und dein Abo ist komplett kostenlos.",
@@ -952,7 +966,7 @@
     "emailBody": "Ich habe mich gerade auf die Warteliste von Aunty Mel gesetzt — eine Wellness-App für die Wechseljahre, die wirklich versteht, worum es geht. Mit meinem Link bekommst du bevorzugten Frühzugang: {url}",
     "email": "E-Mail",
     "disclaimerDone": "Nur allgemeine Wellness-Hinweise — kein medizinischer Rat. Wende dich bei medizinischen Anliegen immer an deine Hausärztin oder deinen Hausarzt.",
-    "referredBadge": "✨ Du wurdest eingeladen — du bekommst bevorzugten Frühzugang",
+    "referredBadge": "Du wurdest eingeladen — du bekommst bevorzugten Frühzugang",
     "heroTitle": "Jede Frau braucht eine Aunty Mel",
     "hero1": "Seit jeher werden die Geheimnisse der Wechseljahre von der Mutter an die Tochter, von der Tante an die Nichte, von der Großmutter an die Enkelin weitergegeben — in geteilter Erfahrung, in leisen Gesprächen, in der Weisheit von Frauen, die es schon hinter sich hatten.",
     "hero2": "Dieses Wissen ist nie verloren gegangen. Es braucht nur ein Zuhause.",
@@ -1053,5 +1067,18 @@
     "herTooTitle": "Soll sie auch mitmachen?",
     "herTooBody": "Teile die Hauptwarteliste von Aunty Mel mit ihr. Sie bekommt bevorzugten Frühzugang, wenn die App startet.",
     "loading": "Wird geladen..."
+  },
+  "NotFound": {
+    "title": "Seite nicht gefunden",
+    "body": "Wir haben die gesuchte Seite nicht gefunden. Sie wurde vielleicht verschoben, oder der Link enthält einen Tippfehler.",
+    "home": "Zurück zu Aunty Mel"
+  },
+  "Error": {
+    "title": "Etwas ist schiefgelaufen",
+    "body": "Entschuldigung — das hätte nicht passieren sollen. Das Team wurde benachrichtigt. Du kannst es erneut versuchen, und wenn es wieder passiert, sag uns bitte Bescheid.",
+    "retry": "Erneut versuchen"
+  },
+  "Loading": {
+    "label": "Wird geladen"
   }
 }

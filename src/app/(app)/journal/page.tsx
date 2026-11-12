@@ -1,5 +1,6 @@
 'use client'
 
+import { Target } from 'lucide-react'
 import { useState, useEffect, useCallback } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
 import type { JournalEntry, SymptomKey } from '@/types/database'
@@ -22,6 +23,7 @@ export default function JournalPage() {
   const [entries, setEntries] = useState<JournalEntry[]>([])
   const [isLimited, setIsLimited] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [loadError, setLoadError] = useState(false)
   const [showNew, setShowNew] = useState(false)
   const [saveError, setSaveError] = useState('')
 
@@ -42,7 +44,13 @@ export default function JournalPage() {
         const { data, limited } = await res.json()
         setEntries(data ?? [])
         setIsLimited(!!limited)
+        setLoadError(false)
+      } else {
+        // Say so: an empty list here would read as "you have no entries".
+        setLoadError(true)
       }
+    } catch {
+      setLoadError(true)
     } finally {
       setLoading(false)
     }
@@ -113,10 +121,10 @@ export default function JournalPage() {
 
           {/* Symptom focus */}
           <div>
-            <label className="text-sm font-medium text-gray-700 block mb-1">
+            <label htmlFor="jr-field-1" className="text-sm font-medium text-gray-700 block mb-1">
               {t('symptomLabel')}
             </label>
-            <select
+            <select id="jr-field-1"
               value={symptomFocus}
               onChange={(e) => setSymptomFocus(e.target.value as SymptomKey)}
               className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm"
@@ -130,10 +138,10 @@ export default function JournalPage() {
 
           {/* Plan item being tracked */}
           <div>
-            <label className="text-sm font-medium text-gray-700 block mb-1">
+            <label htmlFor="jr-field-2" className="text-sm font-medium text-gray-700 block mb-1">
               {t('planItemLabel')}
             </label>
-            <input
+            <input id="jr-field-2"
               type="text"
               value={planItemTitle}
               onChange={(e) => setPlanItemTitle(e.target.value)}
@@ -145,10 +153,10 @@ export default function JournalPage() {
           {/* Days tried */}
           {planItemTitle && (
             <div>
-              <label className="text-sm font-medium text-gray-700 block mb-1">
+              <label htmlFor="jr-field-3" className="text-sm font-medium text-gray-700 block mb-1">
                 {t('daysLabel')}
               </label>
-              <input
+              <input id="jr-field-3"
                 type="number"
                 min={1}
                 value={daysTried}
@@ -211,10 +219,10 @@ export default function JournalPage() {
 
           {/* Free text notes */}
           <div>
-            <label className="text-sm font-medium text-gray-700 block mb-1">
+            <label htmlFor="jr-field-4" className="text-sm font-medium text-gray-700 block mb-1">
               {t('notesLabel')}
             </label>
-            <textarea
+            <textarea id="jr-field-4"
               value={content}
               onChange={(e) => setContent(e.target.value)}
               placeholder={t('notesPlaceholder')}
@@ -263,11 +271,24 @@ export default function JournalPage() {
 
       {/* Entry list */}
       {loading ? (
-        <p className="text-gray-400 text-sm text-center py-8">{t('loading')}</p>
+        <p role="status" className="text-gray-600 text-sm text-center py-8">{t('loading')}</p>
+      ) : loadError ? (
+        <div role="alert" className="rounded-2xl border border-red-200 bg-red-50 p-4 text-center">
+          <p className="text-sm text-red-800">{t('errorLoad')}</p>
+          <button
+            onClick={() => {
+              setLoading(true)
+              loadEntries()
+            }}
+            className="mt-3 min-h-11 rounded-xl border border-red-200 bg-white px-4 text-sm font-semibold text-red-800"
+          >
+            {t('retry')}
+          </button>
+        </div>
       ) : entries.length === 0 ? (
         <div className="text-center py-12">
-          <p className="text-gray-400 text-sm">{t('emptyTitle')}</p>
-          <p className="text-gray-400 text-sm mt-1">
+          <p className="text-gray-600 text-sm">{t('emptyTitle')}</p>
+          <p className="text-gray-600 text-sm mt-1">
             {t('emptyBody')}
           </p>
         </div>
@@ -279,7 +300,7 @@ export default function JournalPage() {
               className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100"
             >
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs text-gray-400">
+                <span className="text-xs text-gray-600">
                   {new Date(entry.created_at).toLocaleDateString(locale, {
                     day: 'numeric', month: 'short', year: 'numeric'
                   })}
@@ -293,9 +314,10 @@ export default function JournalPage() {
 
               {entry.plan_item_title && (
                 <p className="text-sm font-medium text-gray-700 mb-1">
-                  🎯 {entry.plan_item_title}
+                  <Target aria-hidden="true" className="mr-1 inline h-4 w-4 align-text-bottom" />
+                  {entry.plan_item_title}
                   {entry.days_tried && (
-                    <span className="text-gray-400 font-normal">
+                    <span className="text-gray-600 font-normal">
                       {' '}· {t('day', { count: entry.days_tried })}
                     </span>
                   )}
@@ -308,7 +330,7 @@ export default function JournalPage() {
                     ? t(`effects.${entry.perceived_effect as EffectKey}`)
                     : entry.perceived_effect}
                   {entry.would_continue !== null && (
-                    <span className="ml-2 text-gray-400">
+                    <span className="ml-2 text-gray-600">
                       · {entry.would_continue ? t('wouldContinue') : t('wouldNotContinue')}
                     </span>
                   )}
@@ -316,7 +338,7 @@ export default function JournalPage() {
               )}
 
               {entry.content && (
-                <p className="text-sm text-gray-600 mt-2 leading-relaxed">
+                <p className="text-sm text-gray-600 mt-2 leading-relaxed whitespace-pre-line break-words">
                   {entry.content}
                 </p>
               )}

@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages, getTranslations } from 'next-intl/server'
 import './globals.css'
 import AutoLocaleNotice from '@/components/layout/AutoLocaleNotice'
+import { siteUrl } from '@/lib/site'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -18,13 +19,17 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('Meta')
   const locale = await getLocale()
   return {
+    metadataBase: new URL(siteUrl()),
     title: {
       default: 'Aunty Mel',
       template: '%s | Aunty Mel',
     },
     description: t('description'),
-    keywords: ['menopause', 'perimenopause', 'wellness', 'womens health', 'symptoms'],
+    // './' resolves to each page's own path, so every page declares itself
+    // canonical (and the ?lang= / ?tab= variants collapse onto it).
+    alternates: { canonical: './' },
     manifest: '/manifest.json',
+    other: { 'mobile-web-app-capable': 'yes' },
     appleWebApp: {
       capable: true,
       statusBarStyle: 'default',
@@ -37,6 +42,14 @@ export async function generateMetadata(): Promise<Metadata> {
       type: 'website',
       locale: OG_LOCALE[locale] ?? 'en_GB',
       siteName: 'Aunty Mel',
+      title: 'Aunty Mel',
+      description: t('description'),
+      // The image itself comes from opengraph-image.tsx
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Aunty Mel',
+      description: t('description'),
     },
   }
 }
@@ -45,8 +58,8 @@ export const viewport: Viewport = {
   themeColor: '#c653a0',
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
+  // No maximumScale / userScalable: locking zoom stops low-vision readers
+  // enlarging text (WCAG 1.4.4) — on an app for women in midlife, that matters.
 }
 
 export default async function RootLayout({
@@ -59,12 +72,6 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className={inter.variable}>
-      <head>
-        <link rel="icon" href="/icons/icon-192x192.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-      </head>
       <body className="min-h-screen bg-white">
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
@@ -75,8 +82,8 @@ export default async function RootLayout({
             __html: `
               if ('serviceWorker' in navigator) {
                 window.addEventListener('load', function() {
-                  navigator.serviceWorker.register('/sw.js')
-                    .catch(function(err) { console.log('SW registration failed:', err) })
+                  // Best-effort: push and the offline page degrade without it.
+                  navigator.serviceWorker.register('/sw.js').catch(function() {})
                 })
               }
             `,

@@ -1,8 +1,13 @@
+import { pageTitle } from '@/lib/page-meta'
 import { createClient } from '@/lib/supabase/server'
 import { getUserAccess } from '@/lib/access'
 import { getLocale, getTranslations } from 'next-intl/server'
 import { redirect } from 'next/navigation'
 import { pickLocalizedModules } from '@/lib/content-locale'
+
+export async function generateMetadata() {
+  return pageTitle('Learn')
+}
 
 export default async function LearnPage() {
   const supabase = createClient()
@@ -58,7 +63,7 @@ export default async function LearnPage() {
               >
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex-1">
-                    <span className="text-xs text-brand-600 font-medium bg-brand-50 px-2 py-0.5 rounded-full">
+                    <span className="text-xs text-brand-700 font-medium bg-brand-50 px-2 py-0.5 rounded-full">
                       {module.category}
                     </span>
                     <h3 className="font-semibold text-gray-900 mt-2 text-sm leading-snug">
@@ -66,7 +71,7 @@ export default async function LearnPage() {
                     </h3>
                   </div>
                   {module.estimated_read_minutes && (
-                    <span className="text-xs text-gray-400 flex-shrink-0">
+                    <span className="text-xs text-gray-600 flex-shrink-0">
                       {t('minRead', { minutes: module.estimated_read_minutes })}
                     </span>
                   )}
@@ -100,7 +105,7 @@ export default async function LearnPage() {
                     </h3>
                   </div>
                   {module.estimated_read_minutes && (
-                    <span className="text-xs text-gray-400 flex-shrink-0">
+                    <span className="text-xs text-gray-600 flex-shrink-0">
                       {t('minRead', { minutes: module.estimated_read_minutes })}
                     </span>
                   )}
@@ -129,7 +134,7 @@ export default async function LearnPage() {
 
       {modules.length === 0 && (
         <div className="text-center py-12">
-          <p className="text-gray-400 text-sm">{t('comingSoon')}</p>
+          <p className="text-gray-600 text-sm">{t('comingSoon')}</p>
         </div>
       )}
     </div>

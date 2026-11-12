@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { getLocale, getTranslations } from 'next-intl/server'
+import { Gift, User } from 'lucide-react'
 import Logo from '@/components/ui/Logo'
+import BottomNav from './BottomNav'
 import LanguageSwitcher from './LanguageSwitcher'
 import { isSupportedLocale, type Locale } from '@/lib/locale-geo-map'
 
@@ -8,14 +10,6 @@ export default async function NavBar() {
   const t = await getTranslations('NavBar')
   const rawLocale = await getLocale()
   const locale: Locale = isSupportedLocale(rawLocale) ? rawLocale : 'en'
-
-  const NAV_ITEMS = [
-    { href: '/dashboard', label: t('home'), icon: '🏠' },
-    { href: '/my-plan', label: t('myPlan'), icon: '✨' },
-    { href: '/symptom-checkin', label: t('checkIn'), icon: '📊' },
-    { href: '/journal', label: t('journal'), icon: '📓' },
-    { href: '/learn', label: t('learn'), icon: '📚' },
-  ]
 
   return (
     <>
@@ -25,39 +19,36 @@ export default async function NavBar() {
           <Link
             href="/refer"
             aria-label={t('inviteAria')}
-            className="justify-self-start text-xl leading-none p-1.5 rounded-full hover:bg-brand-50 transition-colors"
+            className="justify-self-start rounded-full p-2 text-brand-900 transition-colors hover:bg-brand-50"
           >
-            🎁
+            <Gift aria-hidden="true" className="h-5 w-5" />
           </Link>
-          <Logo size="sm" />
+          <Link href="/dashboard">
+            <Logo size="sm" />
+          </Link>
           <div className="justify-self-end flex items-center gap-1">
             <LanguageSwitcher currentLocale={locale} />
             <Link
               href="/profile"
               aria-label={t('profileAria')}
-              className="text-xl leading-none p-1.5 rounded-full hover:bg-brand-50 transition-colors"
+              className="rounded-full p-2 text-brand-900 transition-colors hover:bg-brand-50"
             >
-              👤
+              <User aria-hidden="true" className="h-5 w-5" />
             </Link>
           </div>
         </div>
       </header>
 
       {/* Bottom nav */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 safe-bottom z-50">
-        <div className="flex items-center justify-around max-w-lg mx-auto px-2 py-2">
-          {NAV_ITEMS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="flex flex-col items-center gap-0.5 px-3 py-1 rounded-xl hover:bg-brand-50 transition-colors"
-            >
-              <span className="text-xl">{item.icon}</span>
-              <span className="text-xs text-gray-500 font-medium">{item.label}</span>
-            </Link>
-          ))}
-        </div>
-      </nav>
+      <BottomNav
+        labels={{
+          home: t('home'),
+          myPlan: t('myPlan'),
+          checkIn: t('checkIn'),
+          journal: t('journal'),
+          learn: t('learn'),
+        }}
+      />
     </>
   )
 }

@@ -1,3 +1,6 @@
+import { pageTitle } from '@/lib/page-meta'
+import { BookOpen, Globe, Sparkles, Stethoscope, Utensils } from 'lucide-react'
+import IconBadge from '@/components/ui/IconBadge'
 import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { getUserAccess } from '@/lib/access'
@@ -25,6 +28,10 @@ import type { WellnessPlan } from '@/types/database'
  * delivery was. Nothing has been deleted here — it has been sorted and folded.
  */
 
+export async function generateMetadata() {
+  return pageTitle('MyPlan')
+}
+
 export default async function MyPlanPage({
   searchParams,
 }: {
@@ -44,7 +51,7 @@ export default async function MyPlanPage({
   if (!geo.personalisedAllowed) {
     return (
       <div className="space-y-4 py-12 text-center">
-        <div className="text-5xl">📚</div>
+        <IconBadge icon={BookOpen} className="mb-0" />
         <h1 className="text-xl font-bold text-brand-900">{t('regionTitle')}</h1>
         <p className="mx-auto max-w-sm text-base text-gray-600">{t('regionBody')}</p>
         <a
@@ -67,7 +74,7 @@ export default async function MyPlanPage({
   if (!plan) {
     return (
       <div className="space-y-4 py-12 text-center">
-        <div className="text-5xl">✨</div>
+        <IconBadge icon={Sparkles} className="mb-0" />
         <h1 className="text-xl font-bold text-brand-900">{t('noPlanTitle')}</h1>
         <p className="text-base text-gray-600">{t('noPlanBody')}</p>
         <a
@@ -133,7 +140,8 @@ export default async function MyPlanPage({
         {/* Says plainly that her answers changed what she is looking at. */}
         {flagged > 0 && (
           <p className="mt-2 rounded-xl bg-blush-50 px-3 py-2 text-sm font-medium text-blush-900">
-            🩺 {t('flaggedNotes', { count: flagged })}
+            <Stethoscope aria-hidden="true" className="mr-1.5 inline h-4 w-4 align-text-bottom" />
+            {t('flaggedNotes', { count: flagged })}
           </p>
         )}
       </div>
@@ -142,12 +150,15 @@ export default async function MyPlanPage({
       {hasCulturalContext &&
         culturalContext?.awareness?.map((item, i) => (
           <div key={i} className="rounded-2xl border border-brand-200 bg-brand-50 p-4">
-            <p className="mb-2 text-base font-bold text-brand-900">🌍 {item.title}</p>
+            <p className="mb-2 flex items-start gap-2 text-base font-bold text-brand-900">
+              <Globe aria-hidden="true" className="mt-0.5 h-4 w-4 flex-shrink-0" />
+              {item.title}
+            </p>
             <p className="whitespace-pre-line text-base leading-relaxed text-brand-800">
               {item.body}
             </p>
             {item.source && (
-              <p className="mt-2 text-sm text-brand-600">{t('source', { source: item.source })}</p>
+              <p className="mt-2 text-sm text-brand-700">{t('source', { source: item.source })}</p>
             )}
           </div>
         ))}
@@ -178,7 +189,7 @@ export default async function MyPlanPage({
       {isPremium && hasCulturalContext && (culturalContext?.diet?.length ?? 0) > 0 && (
         <div>
           <h2 className="mb-3 flex items-center gap-2 font-bold text-gray-900">
-            <span aria-hidden="true">🍽️</span> {t('cultureFoods')}
+            <Utensils aria-hidden="true" className="h-4 w-4" /> {t('cultureFoods')}
           </h2>
           <div className="space-y-3">
             {culturalContext!.diet!.map((item) => (
@@ -202,7 +213,7 @@ export default async function MyPlanPage({
       {isPremium && hasCulturalContext && (culturalContext?.lifestyle?.length ?? 0) > 0 && (
         <div>
           <h2 className="mb-3 flex items-center gap-2 font-bold text-gray-900">
-            <span aria-hidden="true">💫</span> {t('cultureExperience')}
+            <Sparkles aria-hidden="true" className="h-4 w-4" /> {t('cultureExperience')}
           </h2>
           <div className="space-y-3">
             {culturalContext!.lifestyle!.map((item) => (
