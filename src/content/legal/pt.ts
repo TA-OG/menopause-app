@@ -16,7 +16,7 @@ const privacy = `# Política de Privacidade
 
 ## 1. Quem somos
 
-A Aunty Mel é uma plataforma digital de bem-estar criada para apoiar as mulheres durante a perimenopausa e a menopausa. A app é desenvolvida e explorada pela **Velanium Holdings Ltd** (número de sociedade 17285945), uma sociedade registada em Inglaterra e no País de Gales, com sede em 3rd Floor, 86-90 Paul St, London, United Kingdom, EC2A 4NE.
+A Aunty Mel é uma plataforma digital de bem-estar criada para apoiar as mulheres durante a perimenopausa e a menopausa. O aplicativo é desenvolvido e explorado pela **Velanium Holdings Ltd** (número de sociedade 17285945), uma sociedade registada em Inglaterra e no País de Gales, com sede em 3rd Floor, 86-90 Paul St, London, United Kingdom, EC2A 4NE.
 
 Os seus dados pessoais são geridos em nosso nome pela **THEOKELLOGROUP.COM LTD**, que atua como responsável pelo tratamento da Aunty Mel e está registada no Information Commissioner’s Office (ICO) do Reino Unido (referência de registo ICO: **ZB547251**).
 
@@ -37,7 +37,7 @@ Quando se regista, recolhemos o seu nome e endereço de e-mail. Se iniciar sess�
 Para personalizar o seu plano de bem-estar, recolhemos informação que nos fornece voluntariamente, incluindo:
 
 - A fase da menopausa (p. ex., perimenopausa, pós-menopausa)
-- Os sintomas que sente (p. ex., afrontamentos, problemas de sono, alterações de humor)
+- Os sintomas que sente (p. ex., ondas de calor, problemas de sono, alterações de humor)
 - Informação sobre o estilo de vida (alimentação, nível de exercício, qualidade do sono, nível de stress)
 - Origem cultural (usada para tornar as recomendações culturalmente relevantes)
 - Registos diários de sintomas e entradas no diário
@@ -50,15 +50,15 @@ Os pagamentos são processados pela Stripe. Nunca vemos nem guardamos o número 
 
 ### Dados do programa de convites
 
-Se usar o nosso programa de convites, recolhemos e guardamos o seu código de convite pessoal, a ligação entre si e quem se registar com ele e se esse convite deu direito a uma recompensa. Usamos estes dados apenas para creditar meses grátis nas contas certas e detetar abusos do programa (p. ex., contas duplicadas ou falsas). Não são partilhados com as amigas que convida, para além da confirmação de que houve um convite.
+Se usar o nosso programa de convites, recolhemos e guardamos o seu código de convite pessoal, a ligação entre si e quem se registar com ele e se esse convite deu direito a uma recompensa. Usamos estes dados apenas para creditar meses grátis nas contas certas e detectar abusos do programa (p. ex., contas duplicadas ou falsas). Não são partilhados com as amigas que convida, para além da confirmação de que houve um convite.
 
 ### Dados de utilização
 
-Recolhemos informação básica de utilização — páginas visitadas, funcionalidades usadas e registos de erros — para melhorar a app. Estes dados são anonimizados sempre que possível.
+Recolhemos informação básica de utilização — páginas visitadas, funcionalidades usadas e registos de erros — para melhorar o aplicativo. Estes dados são anonimizados sempre que possível.
 
 ### Comunicações
 
-Se nos contactar por e-mail ou através da app, guardamos um registo dessa correspondência para lhe podermos responder e melhorar o nosso apoio.
+Se nos contactar por e-mail ou através do aplicativo, guardamos um registo dessa correspondência para podermos responder e melhorar o nosso apoio.
 
 ## 3. Porque recolhemos os seus dados (fundamento jurídico)
 
@@ -123,7 +123,7 @@ Nenhum sistema é 100% seguro. Se tivermos conhecimento de uma violação de dad
 
 ## 8. Cookies e rastreio
 
-Usamos um pequeno número de cookies essenciais ao funcionamento da app — em concreto, um cookie de sessão para a manter com sessão iniciada. Não usamos cookies de publicidade nem píxeis de rastreio de terceiros.
+Usamos um pequeno número de cookies essenciais ao funcionamento do aplicativo — em concreto, um cookie de sessão para a manter com sessão iniciada. Não usamos cookies de publicidade nem píxeis de rastreio de terceiros.
 
 Pode controlar os cookies nas definições do seu navegador, mas, se desativar os cookies essenciais, não conseguirá manter a sessão iniciada.
 
@@ -178,7 +178,7 @@ Ao criar uma conta ou usar o nosso serviço, aceita estes termos. Se não concor
 
 **A Aunty Mel fornece informação geral de bem-estar, não aconselhamento médico.**
 
-Os conteúdos, recomendações e orientações da Aunty Mel destinam-se apenas a fins informativos e educativos. Não substituem o aconselhamento, diagnóstico ou tratamento de um profissional de saúde. Consulte sempre um profissional de saúde qualificado — o seu médico de família, um especialista em menopausa ou outro profissional habilitado — para qualquer questão médica.
+Os conteúdos, recomendações e orientações da Aunty Mel destinam-se apenas a fins informativos e educativos. Não substituem o aconselhamento, diagnóstico ou tratamento de um profissional de saúde. Consulte sempre um profissional de saúde qualificado — o seu médico, um especialista em menopausa ou outro profissional habilitado — para qualquer questão médica.
 
 Em caso de emergência médica, ligue para o 999 (Reino Unido) ou para o 112 (União Europeia), ou dirija-se às urgências mais próximas.
 
@@ -190,7 +190,7 @@ Cada pessoa só pode criar uma conta. Reservamo-nos o direito de fundir ou remov
 
 ## 4. Subscrição e pagamento
 
-A Aunty Mel está disponível num plano gratuito e numa subscrição premium paga (atualmente **7,99 £/mês**). Os preços são apresentados em libras esterlinas (GBP) e incluem IVA.
+A Aunty Mel está disponível num plano gratuito e numa assinatura premium paga (atualmente **7,99 £/mês**). Os preços são apresentados em libras esterlinas (GBP) e incluem IVA.
 
 A sua subscrição renova-se automaticamente todos os meses até a cancelar. Os pagamentos são processados pela Stripe e estão sujeitos aos [termos da Stripe](https://stripe.com/gb/legal/ssa). Podemos alterar os nossos preços no futuro — se o fizermos, avisá-la-emos com pelo menos 30 dias de antecedência antes de qualquer alteração afetar a sua subscrição.
 
