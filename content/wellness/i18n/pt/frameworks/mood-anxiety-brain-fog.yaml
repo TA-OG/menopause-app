@@ -10,11 +10,11 @@ df_fermented_foods:
 df_protein_neurotransmitters:
   title: Proteína em todas as refeições — os aminoácidos constroem as substâncias do seu humor
   body: >-
-    A serotonina, a dopamina e o GABA são feitos a partir de aminoácidos que vêm da proteína da alimentação. Saltar refeições ou comer snacks pobres em proteína pode esgotar os materiais de que o seu cérebro precisa. Procure ingerir 20–30 g de proteína ao pequeno-almoço (ovos, iogurte grego, salmão fumado) — isto prepara a produção de neurotransmissores para o dia.
+    A serotonina, a dopamina e o GABA são produzidos a partir de aminoácidos que vêm da proteína da alimentação. Pular refeições ou comer snacks pobres em proteína pode esgotar os materiais de que o seu cérebro precisa. Procure ingerir 20–30 g de proteína no café da manhã (ovos, iogurte grego, salmão fumado) — isto prepara a produção de neurotransmissores para o dia.
 lf_exercise_mood:
   title: O exercício é a intervenção para o humor com mais evidência que existe
   body: >-
-    30 minutos de cardio moderado (caminhada rápida, bicicleta, natação) 3–5 vezes por semana aumentam o BDNF (fator neurotrófico derivado do cérebro) — a proteína de crescimento e reparação do próprio cérebro. Também aumenta as endorfinas, baixa o cortisol e contraria diretamente a ansiedade e o humor em baixo da perimenopausa. O efeito começa logo na primeira sessão e acumula-se ao longo das semanas. Se não fizer mais nada desta lista, faça isto.
+    30 minutos de cardio moderado (caminhada rápida, bicicleta, natação) 3–5 vezes por semana aumentam o BDNF (fator neurotrófico derivado do cérebro) — a proteína de crescimento e reparação do próprio cérebro. Também aumenta as endorfinas, baixa o cortisol, ansiedade e auxilia na melhora do humor durante a perimenopausa. O efeito começa logo na primeira sessão e acumula-se ao longo das semanas.
 lf_stress_boundary:
   title: Identifique uma coisa que pode deixar de fazer
   body: >-
@@ -24,7 +24,7 @@ lf_brain_fog_tactics:
   body: >-
     O nevoeiro mental é real — os estrogénios regulam o córtex pré-frontal. Adaptações práticas: anote as coisas de imediato em vez de as tentar fixar; use lembretes no calendário para o que normalmente se lembraria; reserve tempo de concentração de manhã, quando a função cognitiva costuma estar no auge; faça pausas curtas para se mexer a cada 90 minutos para recuperar a concentração. Não são falhanços — são adaptações.
 mr_physiology_not_personality:
-  title: Isto é fisiologia, não uma mudança de personalidade
+  title: Lembre-se que isso é fisiologia, não uma mudança de personalidade
   body: |-
     As alterações emocionais da menopausa não são uma mudança de personalidade nem sinal de que há algo errado consigo — são fisiologia. Os estrogénios têm uma relação direta com a serotonina e a dopamina, por isso, quando descem, o humor, a motivação e a resiliência descem com eles. Não é fraqueza. Não é «só stress». É química. Mas o humor raramente depende só dos estrogénios — está também ligado a vários outros sistemas, e vale a pena perceber o quadro completo em vez de presumir que «são só as hormonas» ou que «sou só eu».
     Sono e energia: dormir mal — tão comum na menopausa por causa dos suores noturnos, dos pensamentos acelerados ou de um sistema nervoso cansado mas em alerta — não a deixa só exausta, reduz diretamente a sua capacidade de regular as emoções. Uma noite curta torna o detetor de ameaças do cérebro mais reativo e abafa a parte do cérebro que acalma as coisas. A falta de energia agrava isto — quando está com o depósito vazio, sobra simplesmente menos para a paciência ou a perspetiva. Humor, sono e energia alimentam-se mutuamente num ciclo, para o bem e para o mal.
@@ -60,7 +60,7 @@ ss_magnesium_anxiety:
 ss_l_theanine_anxiety:
   title: L-teanina — calma e foco sem sonolência
   body: >-
-    Habitualmente 100–200 mg. Apoia a calma e o foco sem causar sonolência, e pode ser tomada durante o dia para a ansiedade, e não só ao deitar.
+    Geralmente em doses de 100–200 mg. Auxilia na calma e no foco sem causar sonolência, e pode ser tomada durante o dia para a ansiedade, e não só ao deitar.
   disclaimer: >-
     Confirme sempre com o seu médico de família ou farmacêutico antes de começar, sobretudo se tomar medicamentos receitados.
 ss_ashwagandha:
@@ -74,17 +74,17 @@ ss_saffron_mood:
   body: >-
     Habitualmente 30 mg/dia de extrato padronizado. Alguma evidência de apoio ao humor e aos sintomas de ansiedade.
   disclaimer: >-
-    Confirme sempre com o seu médico de família ou farmacêutico antes de começar, sobretudo se tomar medicamentos receitados.
+    Confirme sempre com o seu médico ou farmacêutico antes de começar, sobretudo se tomar medicamentos receitados.
 ss_b_complex_mood:
   title: Complexo B — para o sistema nervoso e a resistência ao stress
   body: >-
     Procure metilcobalamina (B12) e metilfolato em vez das formas sintéticas mais baratas (cianocobalamina, ácido fólico). As vitaminas B têm um papel no funcionamento do sistema nervoso e na resistência ao stress, o que é especialmente relevante se a alimentação ou o stress tiverem esgotado os seus níveis.
   disclaimer: >-
-    Confirme sempre com o seu médico de família ou farmacêutico antes de começar, sobretudo se tomar medicamentos receitados ou tiver problemas renais.
+    Confirme sempre com o seu médico ou farmacêutico antes de começar, sobretudo se tomar medicamentos receitados ou tiver problemas renais.
 ss_omega3_mood_brainfog:
   title: Ómega-3 (EPA/DHA) — para o nevoeiro mental, a ansiedade e o humor
   body: >-
-    Especificamente para o nevoeiro mental, habitualmente 2–3 g/dia de EPA/DHA combinados — o limite superior do intervalo geral, dado o foco específico no cérebro. Apoia a função cognitiva e tem benefícios anti-inflamatórios para o cérebro, a par de evidência de apoio ao humor e de redução dos sintomas de ansiedade.
+    Especificamente para o nevoeiro mental, geralmente em doses de 2–3 g/dia de EPA/DHA combinados — o limite superior do intervalo geral, dado o foco específico no cérebro. Ajuda a função cognitiva e tem benefícios anti-inflamatórios para o cérebro, juntamente com evidência de apoio ao humor e de redução dos sintomas de ansiedade.
   disclaimer: >-
     O ómega-3 em doses elevadas pode tornar o sangue mais fluido. Se toma anticoagulantes (varfarina, aspirina, apixabano) ou vai ser operada, consulte o seu médico de família ou farmacêutico antes de o tomar.
 ss_acetyl_l_carnitine_brainfog:

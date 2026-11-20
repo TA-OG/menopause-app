@@ -16,7 +16,7 @@ const privacy = `# Política de Privacidade
 
 ## 1. Quem somos
 
-A Aunty Mel é uma plataforma digital de bem-estar criada para apoiar as mulheres durante a perimenopausa e a menopausa. A app é desenvolvida e explorada pela **Velanium Holdings Ltd** (número de sociedade 17285945), uma sociedade registada em Inglaterra e no País de Gales, com sede em 3rd Floor, 86-90 Paul St, London, United Kingdom, EC2A 4NE.
+A Aunty Mel é uma plataforma digital de bem-estar criada para apoiar as mulheres durante a perimenopausa e a menopausa. O aplicativo é desenvolvido e explorado pela **Velanium Holdings Ltd** (número de sociedade 17285945), uma sociedade registada em Inglaterra e no País de Gales, com sede em 3rd Floor, 86-90 Paul St, London, United Kingdom, EC2A 4NE.
 
 Os seus dados pessoais são geridos em nosso nome pela **THEOKELLOGROUP.COM LTD**, que atua como responsável pelo tratamento da Aunty Mel e está registada no Information Commissioner’s Office (ICO) do Reino Unido (referência de registo ICO: **ZB547251**).
 
@@ -37,7 +37,7 @@ Quando se regista, recolhemos o seu nome e endereço de e-mail. Se iniciar sess�
 Para personalizar o seu plano de bem-estar, recolhemos informação que nos fornece voluntariamente, incluindo:
 
 - A fase da menopausa (p. ex., perimenopausa, pós-menopausa)
-- Os sintomas que sente (p. ex., afrontamentos, problemas de sono, alterações de humor)
+- Os sintomas que sente (p. ex., ondas de calor, problemas de sono, alterações de humor)
 - Informação sobre o estilo de vida (alimentação, nível de exercício, qualidade do sono, nível de stress)
 - Origem cultural (usada para tornar as recomendações culturalmente relevantes)
 - Registos diários de sintomas e entradas no diário
@@ -46,19 +46,19 @@ Para personalizar o seu plano de bem-estar, recolhemos informação que nos forn
 
 ### Informações de pagamento
 
-Os pagamentos são processados pela Stripe. Nunca vemos nem guardamos o número completo do seu cartão. A Stripe envia-nos uma referência de pagamento e o estado da subscrição, para sabermos se está ativa.
+Os pagamentos são processados pela Stripe. Nunca vemos nem guardamos o número completo do seu cartão. A Stripe envia-nos uma referência de pagamento e o status da assinatura, para sabermos se está ativa.
 
 ### Dados do programa de convites
 
-Se usar o nosso programa de convites, recolhemos e guardamos o seu código de convite pessoal, a ligação entre si e quem se registar com ele e se esse convite deu direito a uma recompensa. Usamos estes dados apenas para creditar meses grátis nas contas certas e detetar abusos do programa (p. ex., contas duplicadas ou falsas). Não são partilhados com as amigas que convida, para além da confirmação de que houve um convite.
+Se usar o nosso programa de convites, recolhemos e guardamos o seu código de convite pessoal, a ligação entre si e quem se registar com ele e se esse convite deu direito a uma recompensa. Usamos estes dados apenas para creditar meses grátis nas contas certas e detectar abusos do programa (p. ex., contas duplicadas ou falsas). Não são partilhados com as amigas que convida, para além da confirmação de que houve um convite.
 
 ### Dados de utilização
 
-Recolhemos informação básica de utilização — páginas visitadas, funcionalidades usadas e registos de erros — para melhorar a app. Estes dados são anonimizados sempre que possível.
+Recolhemos informação básica de utilização — páginas visitadas, funcionalidades usadas e registos de erros — para melhorar o aplicativo. Estes dados são anonimizados sempre que possível.
 
 ### Comunicações
 
-Se nos contactar por e-mail ou através da app, guardamos um registo dessa correspondência para lhe podermos responder e melhorar o nosso apoio.
+Se nos contactar por e-mail ou através do aplicativo, guardamos um registo dessa correspondência para podermos responder e melhorar o nosso apoio.
 
 ## 3. Porque recolhemos os seus dados (fundamento jurídico)
 
@@ -77,7 +77,7 @@ Tratamos os seus dados para as seguintes finalidades e com os seguintes fundamen
 
 ## 4. Com quem partilhamos os seus dados
 
-Não vendemos, alugamos nem trocamos os seus dados pessoais. Só os partilhamos com os seguintes prestadores de serviços de confiança, que nos ajudam a gerir a plataforma:
+Não vendemos, alugamos nem trocamos os seus dados pessoais. Só os compartilhamos com os seguintes prestadores de serviços de confiança, que nos ajudam a gerir a plataforma:
 
 - **Supabase** — Base de dados e autenticação · UE (Irlanda) · [Política de privacidade](https://supabase.com/privacy)
 - **Stripe** — Processamento de pagamentos · EUA (cláusulas contratuais-tipo) · [Política de privacidade](https://stripe.com/gb/privacy)
@@ -97,7 +97,7 @@ Os dados de utilização anonimizados e agregados (que não permitem identificá
 
 Ao abrigo do RGPD do Reino Unido, tem os seguintes direitos sobre os seus dados pessoais:
 
-- **Direito de acesso:** pedir uma cópia dos dados pessoais que temos sobre si.
+- **Direito de acesso:** pedir uma cópia de seus dados pessoais.
 - **Direito de retificação:** pedir-nos que corrijamos dados inexatos ou incompletos.
 - **Direito ao apagamento:** pedir-nos que apaguemos os seus dados («direito a ser esquecida»).
 - **Direito à limitação:** pedir-nos que limitemos a utilização dos seus dados em determinadas circunstâncias.
@@ -123,7 +123,7 @@ Nenhum sistema é 100% seguro. Se tivermos conhecimento de uma violação de dad
 
 ## 8. Cookies e rastreio
 
-Usamos um pequeno número de cookies essenciais ao funcionamento da app — em concreto, um cookie de sessão para a manter com sessão iniciada. Não usamos cookies de publicidade nem píxeis de rastreio de terceiros.
+Usamos um pequeno número de cookies essenciais ao funcionamento do aplicativo — em concreto, um cookie de sessão para a manter com sessão iniciada. Não usamos cookies de publicidade nem píxeis de rastreio de terceiros.
 
 Pode controlar os cookies nas definições do seu navegador, mas, se desativar os cookies essenciais, não conseguirá manter a sessão iniciada.
 
@@ -170,7 +170,7 @@ const terms = `# Termos de Serviço e Política de Reembolso
 
 ## 1. Sobre a Aunty Mel
 
-A Aunty Mel é uma plataforma digital de bem-estar explorada pela **Velanium Holdings Ltd** (número de sociedade 17285945), uma sociedade registada em Inglaterra e no País de Gales, com sede em 3rd Floor, 86-90 Paul St, London, United Kingdom, EC2A 4NE. A nossa plataforma oferece orientação de bem-estar personalizada a mulheres que atravessam a perimenopausa e a menopausa, com base na informação que nos fornece e em conteúdos selecionados pela nossa equipa de especialistas.
+A Aunty Mel é uma plataforma digital de bem-estar explorada pela **Velanium Holdings Ltd** (número de sociedade 17285945), uma sociedade registada em Inglaterra e no País de Gales, com sede em 3rd Floor, 86-90 Paul St, London, United Kingdom, EC2A 4NE. A nossa plataforma oferece orientação de bem-estar personalizada a mulheres que atravessam a perimenopausa e a menopausa, com base na informação que nos fornece e em conteúdos selecionados pela nossa equipe de especialistas.
 
 Ao criar uma conta ou usar o nosso serviço, aceita estes termos. Se não concordar, não use o serviço — e, se algo lhe parecer injusto, diga-nos através de [hello@auntymel.app](mailto:hello@auntymel.app). Queremos que estes termos sejam justos.
 
@@ -178,7 +178,7 @@ Ao criar uma conta ou usar o nosso serviço, aceita estes termos. Se não concor
 
 **A Aunty Mel fornece informação geral de bem-estar, não aconselhamento médico.**
 
-Os conteúdos, recomendações e orientações da Aunty Mel destinam-se apenas a fins informativos e educativos. Não substituem o aconselhamento, diagnóstico ou tratamento de um profissional de saúde. Consulte sempre um profissional de saúde qualificado — o seu médico de família, um especialista em menopausa ou outro profissional habilitado — para qualquer questão médica.
+Os conteúdos, recomendações e orientações da Aunty Mel destinam-se apenas a fins informativos e educativos. Não substituem o aconselhamento, diagnóstico ou tratamento de um profissional de saúde. Consulte sempre um profissional de saúde qualificado — o seu médico, um especialista em menopausa ou outro profissional habilitado — para qualquer questão médica.
 
 Em caso de emergência médica, ligue para o 999 (Reino Unido) ou para o 112 (União Europeia), ou dirija-se às urgências mais próximas.
 
@@ -190,7 +190,7 @@ Cada pessoa só pode criar uma conta. Reservamo-nos o direito de fundir ou remov
 
 ## 4. Subscrição e pagamento
 
-A Aunty Mel está disponível num plano gratuito e numa subscrição premium paga (atualmente **7,99 £/mês**). Os preços são apresentados em libras esterlinas (GBP) e incluem IVA.
+A Aunty Mel está disponível num plano gratuito e numa assinatura premium paga (atualmente **7,99 £/mês**). Os preços são apresentados em libras esterlinas (GBP) e incluem IVA.
 
 A sua subscrição renova-se automaticamente todos os meses até a cancelar. Os pagamentos são processados pela Stripe e estão sujeitos aos [termos da Stripe](https://stripe.com/gb/legal/ssa). Podemos alterar os nossos preços no futuro — se o fizermos, avisá-la-emos com pelo menos 30 dias de antecedência antes de qualquer alteração afetar a sua subscrição.
 
@@ -210,12 +210,12 @@ Na sua conta, pode gerar um link de convite pessoal (Convidar amigas). Aplicam-s
 Pode:
 
 - Usar a Aunty Mel para o seu bem-estar pessoal, sem fins comerciais
-- Partilhar o seu link de convite para trazer amigas para a plataforma
+- Compartilhar o seu link de convite para trazer amigas para a plataforma
 - Dar-nos a sua opinião para podermos melhorar
 
 Por favor, não:
 
-- Partilhe as suas credenciais de acesso com outras pessoas
+- Compartilhe as suas credenciais de acesso com outras pessoas
 - Tente extrair de forma automatizada, fazer engenharia inversa ou copiar os nossos conteúdos ou modelos de bem-estar
 - Use a plataforma para prestar ou revender aconselhamento de bem-estar a terceiros
 - Publique conteúdo prejudicial, abusivo ou ilegal
@@ -227,7 +227,7 @@ Os modelos de bem-estar, artigos, recomendações e outros conteúdos da Aunty M
 
 ## 8. Os seus conteúdos
 
-Os conteúdos que cria na Aunty Mel — entradas no diário, registos, notas — pertencem-lhe. Usamo-los apenas para lhe proporcionar e melhorar a sua experiência personalizada. Não publicamos nem partilhamos os seus conteúdos pessoais sem o seu consentimento.
+Os conteúdos que cria na Aunty Mel — entradas no diário, registos, notas — pertencem-lhe. Usamo-los apenas para lhe proporcionar e melhorar a sua experiência personalizada. Não publicamos nem compartilhamos os seus conteúdos pessoais sem o seu consentimento.
 
 ## 9. Disponibilidade do serviço
 
@@ -235,7 +235,7 @@ Procuramos que a Aunty Mel esteja disponível 24 horas por dia, 7 dias por seman
 
 ## 10. Limitação de responsabilidade
 
-Na medida máxima permitida pela lei do Reino Unido, a Velanium Holdings Ltd não é responsável por perdas indiretas, acessórias ou consequenciais decorrentes da utilização da plataforma. A nossa responsabilidade por perdas diretas está limitada ao montante que nos pagou nos 12 meses anteriores ao facto que deu origem à reclamação.
+Na medida máxima permitida pela lei do Reino Unido, a Velanium Holdings Ltd não é responsável por perdas indiretas, acessórias ou consequenciais decorrentes da utilização da plataforma. A nossa responsabilidade por perdas diretas está limitada ao montante que nos pagou nos 12 meses anteriores ao fato que deu origem à reclamação.
 
 Nada nestes termos exclui a responsabilidade por morte ou danos pessoais causados por negligência nossa, nem por fraude ou declarações fraudulentas.
 
@@ -251,7 +251,7 @@ Podemos atualizar estes termos de tempos a tempos. Em caso de alterações relev
 
 ## 13. Contacto
 
-Tem perguntas sobre estes termos? Somos uma equipa pequena e teremos todo o gosto em conversar:
+Tem perguntas sobre estes termos? Somos uma equipa pequena e temos o prazer em conversar:
 
 **Velanium Holdings Ltd**\\
 Número de sociedade: 17285945\\
@@ -275,7 +275,7 @@ Os cookies são pequenos ficheiros de texto que o seu navegador guarda no seu di
 
 ### Cookies essenciais — sempre ativos
 
-São necessários para a app funcionar e não podem ser desativados.
+São necessários para o aplicativo funcionar e não podem ser desativados.
 
 | Cookie | Finalidade | Duração | Tipo |
 | --- | --- | --- | --- |
@@ -288,7 +288,7 @@ Não usamos o Google Analytics, o pixel do Facebook nem quaisquer cookies de pub
 
 ## Armazenamento local
 
-Para além dos cookies, usamos o armazenamento local do seu navegador para guardar preferências da app (como a última página que viu) e para permitir o funcionamento offline como Progressive Web App (PWA). Estes dados ficam no seu dispositivo e não são enviados para os nossos servidores.
+Além dos cookies, usamos o armazenamento local do seu navegador para guardar preferências do aplicativo (como a última página que viu) e para permitir o funcionamento offline como Progressive Web App (PWA). Estes dados ficam no seu dispositivo e não são enviados para os nossos servidores.
 
 ## Como controlar os cookies
 
@@ -301,7 +301,7 @@ Pode controlar os cookies nas definições do seu navegador. Tenha em atenção 
 
 ## Alterações a esta política
 
-Se algum dia introduzirmos novos cookies, atualizaremos esta página e avisá-la-emos na app antes de o fazermos.
+Se algum dia introduzirmos novos cookies, atualizaremos esta página e avisaremos no aplicativo antes de o fazermos.
 
 ## Tem perguntas?
 
@@ -348,14 +348,14 @@ Inicie sessão na Aunty Mel e vá a **Perfil → Definições da conta → Apaga
 2. **No prazo de 30 dias** — A sua conta é desativada e todos os seus dados pessoais são apagados dos nossos sistemas e dos sistemas dos nossos subcontratantes
 3. **Depois do apagamento** — Enviamos-lhe um e-mail a confirmar que tudo foi removido
 
-O apagamento dos seus dados é um direito seu ao abrigo do RGPD do Reino Unido. Pode também exercer os seus direitos de **acesso**, **retificação** ou **portabilidade** dos seus dados escrevendo para [privacy@auntymel.app](mailto:privacy@auntymel.app). Se não estiver satisfeita com a nossa resposta, pode apresentar uma reclamação ao [Information Commissioner’s Office (ICO)](https://ico.org.uk/make-a-complaint).
+O apagamento dos seus dados é um direito seu e protegido pelo RGPD do Reino Unido. Pode também exercer os seus direitos de **acesso**, **retificação** ou **portabilidade** dos seus dados escrevendo para [privacy@auntymel.app](mailto:privacy@auntymel.app). Se não estiver satisfeita com a nossa resposta, pode apresentar uma reclamação ao [Information Commissioner’s Office (ICO)](https://ico.org.uk/make-a-complaint).
 `
 
 const accessibility = `# Declaração de Acessibilidade
 
 Última atualização: 12 de maio de 2026
 
-A Aunty Mel está empenhada em tornar a sua app acessível a todas as pessoas, incluindo pessoas com deficiência. Acreditamos que as mulheres que atravessam a menopausa merecem apoio independentemente da forma como acedem à internet, e trabalhamos para cumprir o nível AA das **Diretrizes de Acessibilidade para Conteúdo Web (WCAG) 2.1**.
+A Aunty Mel está empenhada em tornar seu aplicativo acessível a todas as pessoas, incluindo pessoas com deficiência. Acreditamos que as mulheres que atravessam a menopausa merecem apoio independentemente da forma como acessam a internet, e trabalhamos para cumprir o nível AA das **Diretrizes de Acessibilidade para Conteúdo Web (WCAG) 2.1**.
 
 ## O que estamos a fazer
 

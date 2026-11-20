@@ -15,7 +15,7 @@ df_energy_blood_sugar:
 lf_sleep_consistency:
   title: Fixe a hora de acordar — ela ancora todo o seu ciclo de sono
   body: >-
-    O seu ritmo circadiano é definido sobretudo pela hora a que acorda, não pela hora a que se deita. Levantar-se todos os dias à mesma hora (incluindo ao fim de semana), com uma margem de 30 minutos, é a mudança de comportamento de sono com mais evidência. Parece contraintuitivo depois de uma noite má, mas ficar na cama torna a noite seguinte pior.
+    O seu ritmo circadiano é definido sobretudo pela hora a que acorda, não pela hora a que se deita. Levantar-se todos os dias à mesma hora (incluindo ao fim de semana), com uma margem de 30 minutos de diferença, é a mudança mais eficaz para melhoras no sono. Parece contraintuitivo depois de uma noite má, mas ficar na cama torna a noite seguinte pior.
 lf_morning_light:
   title: Luz da manhã — 10 minutos ao ar livre na primeira hora depois de acordar
   body: >-
@@ -32,7 +32,7 @@ lf_wind_down:
 mr_sleep_effort:
   title: Pare de tentar dormir — a intenção paradoxal
   body: >-
-    Quanto mais tenta dormir, mais desperta fica. A terapia cognitivo-comportamental para a insónia (TCC-I) ensina o «controlo de estímulos» e a «intenção paradoxal» — se ainda estiver acordada ao fim de 20 minutos, levante-se, faça algo calmo com luz baixa e só volte para a cama quando tiver sono. Isto quebra o ciclo de ansiedade à volta do sono. Peça ao seu médico que a encaminhe para um programa de TCC-I; no Reino Unido, a app Sleepio está disponível através do NHS.
+    Quanto mais tenta dormir, mais desperta fica. A terapia cognitivo-comportamental para a insónia (TCC-I) ensina o 'controle de estímulos' e a 'intenção paradoxal' — se ainda estiver acordada ao fim de 20 minutos, levante-se, faça algo calmo com luz baixa e só volte para a cama quando tiver sono. Isto quebra o ciclo de ansiedade à volta do sono. Peça ao seu médico que a encaminhe para um programa de TCC-I; no Reino Unido, a app Sleepio está disponível através do NHS.
 mr_fatigue_self_compassion:
   title: Descanse sem culpa
   body: >-
@@ -40,13 +40,13 @@ mr_fatigue_self_compassion:
 ss_magnesium_sleep:
   title: Glicinato de magnésio — para a qualidade do sono
   body: >-
-    O glicinato de magnésio (200–400 mg, 30–60 minutos antes de deitar) tem boa evidência de que melhora o adormecer e a continuidade do sono. Relaxa o músculo liso, reduz o cortisol e apoia o GABA — o principal neurotransmissor calmante do cérebro. Comece com 200 mg e aumente se for preciso.
+    O glicinato de magnésio (200–400 mg, 30–60 minutos antes de deitar) tem boa evidência de que melhora o sono e sua continuidade. Relaxa o músculo liso, reduz o cortisol e ajuda o GABA — o principal neurotransmissor calmante do cérebro. Comece com 200 mg e aumente se for preciso.
   disclaimer: >-
-    Os suplementos não são medicamentos regulados. Confirme sempre com o seu médico de família ou farmacêutico antes de começar, sobretudo se tomar medicamentos receitados ou tiver problemas renais ou cardíacos.
+    Os suplementos não são medicamentos regulados. Confirme sempre com o seu médico ou farmacêutico antes de começar, sobretudo se tomar medicamentos receitados ou tiver problemas renais ou cardíacos.
 ss_vitamin_d:
   title: Vitamina D — energia, humor e defesas
   body: >-
-    No Reino Unido, a maioria dos adultos tem falta de vitamina D no inverno. A carência está fortemente associada ao cansaço, ao humor em baixo e ao sono fraco. O NHS recomenda 10 microgramas (400 UI) por dia a todos os adultos de outubro a março; as mulheres com pele mais escura ou pouca exposição ao sol podem beneficiar de suplementação durante todo o ano, a 1000–2000 UI. Peça ao seu médico uma análise ao sangue para verificar o seu nível antes de tomar doses mais elevadas.
+    No Reino Unido, a maioria dos adultos tem falta de vitamina D no inverno. A carência está fortemente associada ao cansaço, ao humor em baixo e ao sono fraco. O NHS recomenda 10 microgramas (400 UI) por dia a todos os adultos de outubro a março; as mulheres com pele mais escura ou pouca exposição ao sol podem beneficiar de suplementação durante todo o ano, a 1000–2000 UI. Peça ao seu médico um exame de sangue para verificar o seu nível antes de tomar doses mais elevadas.
   disclaimer: >-
     Doses muito elevadas de vitamina D (acima de 4000 UI/dia) podem ser tóxicas. Verifique os seus níveis antes de tomar mais de 2000 UI. Consulte o seu médico de família se tiver antecedentes de cálculos renais ou hipercalcemia.
 ss_coq10_ubiquinol_energy:
@@ -66,4 +66,4 @@ ss_nac_glutathione_energy:
   body: >-
     A NAC (N-acetilcisteína, habitualmente 600 mg/dia) e/ou a glutationa apoiam o principal sistema antioxidante do corpo, que tem um papel na produção de energia das células e na redução do stress oxidativo. Pode ler que a glutationa tem de ser lipossómica para funcionar — alguns estudos mostram que a glutationa oral normal também pode aumentar os níveis no corpo, por isso não é um requisito rigoroso, embora a formulação influencie a absorção e a investigação sobre a melhor forma ainda esteja a evoluir.
   disclaimer: >-
-    Confirme sempre com o seu médico de família ou farmacêutico antes de começar, sobretudo se tomar medicamentos receitados.
+    Confirme sempre com o seu médico ou farmacêutico antes de começar, sobretudo se tomar medicamentos receitados.

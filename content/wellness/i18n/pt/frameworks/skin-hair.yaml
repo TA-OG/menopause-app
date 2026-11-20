@@ -1,6 +1,6 @@
 # Tradução de frameworks/skin-hair.yaml — prevalece a versão em inglês.
 df_collagen_nutrition:
-  title: Coma para produzir colagénio — a pele perde 30% nos primeiros 5 anos
+  title: Coma alimentos que ajudam na produção de colágeno — a pele perde 30% nos primeiros 5 anos
   body: >-
     O colagénio da pele diminui cerca de 30% nos primeiros cinco anos após a menopausa e, depois disso, cerca de 2% por ano. A causa é a perda de estrogénios, não a idade em si. Para apoiar a síntese de colagénio: coma todos os dias alimentos ricos em vitamina C (citrinos, pimento vermelho, kiwi, brócolos); inclua proteína em todas as refeições (o colagénio é feito a partir de aminoácidos); e limite o açúcar e os ultraprocessados, que favorecem a glicação — um processo que endurece e danifica o colagénio.
 df_biotin_zinc_hair:
@@ -14,15 +14,15 @@ df_omega3_skin_barrier:
 lf_sun_protection:
   title: Protetor solar todos os dias — a pele mais fina queima e envelhece muito mais depressa
   body: >-
-    Depois da menopausa, a pele é mais fina, produz menos melanina e cicatriza mais devagar. A exposição aos raios UV é a principal causa do envelhecimento visível da pele — mais do que qualquer outro fator ambiental. Aplique todas as manhãs, também no inverno, um protetor de largo espetro FPS 30–50 no rosto, pescoço e decote. É a medida tópica com mais evidência para a saúde da pele.
+    Depois da menopausa, a pele é mais fina, produz menos melanina e cicatriza mais devagar. A exposição aos raios UV é a principal causa do envelhecimento visível da pele — mais do que qualquer outro fator ambiental. Aplique todas as manhãs, também no inverno, um protetor solar com fator FPS 30–50 no rosto, pescoço e decote. É a medida tópica mais eficaz para a saúde da pele.
 lf_scalp_care:
-  title: Massagem do couro cabeludo e cuidados suaves — menos quebra, melhor crescimento
+  title: Massagem no couro cabeludo e cuidados suaves — menos quebra, melhor crescimento
   body: >-
-    Uma massagem do couro cabeludo de 4 minutos por dia (só com as pontas dos dedos, sem unhas) aumenta o fluxo sanguíneo para os folículos e, segundo um estudo-piloto, melhora a espessura do cabelo ao fim de 24 semanas. Use um pente de dentes largos com o cabelo molhado (que é elástico e parte com facilidade), reduza os aparelhos de calor e evite penteados apertados que provocam alopecia de tração. Mudar para um champô sem sulfatos reduz a irritação do couro cabeludo.
+    Uma massagem no couro cabeludo por 4 minutos ao dia (só com as pontas dos dedos, sem unhas) aumenta o fluxo sanguíneo para os folículos e, segundo um estudo-piloto, melhora a espessura do cabelo ao fim de 24 semanas. Use um pente de dentes largos com o cabelo molhado (que é elástico e parte com facilidade), reduza o uso de secadores e evite penteados apertados que provocam alopecia de tração. Usar shampoo sem sulfatos reduz a irritação do couro cabeludo.
 lf_retinol_skincare:
   title: Retinol — o ativo tópico com mais evidência contra o envelhecimento da pele
   body: >-
-    O retinol (vitamina A) é o único ingrediente de cuidado tópico com evidência clínica sólida de que estimula a produção de colagénio e acelera a renovação das células da pele. Comece com uma fórmula de baixa concentração, 0,1–0,25%, duas vezes por semana à noite, e aumente devagar. Os resultados demoram 12 semanas. No início provoca secura e descamação — é normal. Use protetor solar de manhã quando usar retinol. A tretinoína, mais forte e sujeita a receita, está disponível através do seu médico para resultados mais evidentes.
+    O retinol (vitamina A) é o único ingrediente de cuidado tópico com evidência clínica sólida de que estimula a produção de colágeno e acelera a renovação das células da pele. Comece com uma fórmula de baixa concentração, 0,1–0,25%, duas vezes por semana à noite, e aumente devagar. Os resultados demoram 12 semanas. No início provoca secura e descamação — é normal. Use protetor solar de manhã quando usar retinol. A tretinoína, mais forte e sujeita a receita, está disponível através do seu médico para resultados mais evidentes.
 mr_hair_loss_emotional:
   title: A queda de cabelo afeta muito — não é vaidade sofrer com ela
   body: >-
@@ -30,19 +30,19 @@ mr_hair_loss_emotional:
 mr_skin_changing_body_image:
   title: A sua pele está a mudar — isso não quer dizer que a esteja a falhar
   body: >-
-    As mudanças da pele na menopausa estão, para muitas mulheres, entre os aspetos visualmente mais difíceis de enfrentar. A cultura ocidental associa o valor das mulheres a uma aparência jovem de uma forma que torna isto mais difícil do que devia ser. A sua pele está a adaptar-se a um novo ambiente hormonal. Cuidar dela com regularidade (alimentação, protetor solar, hidratação, sono) é a resposta mais útil — em vez de recorrer a intervenções drásticas ou de se afastar da vida social.
+    As mudanças na pele na menopausa são, para muitas mulheres, um dos aspectos mais difíceis de enfrentar. A cultura ocidental associa o valor das mulheres a uma aparência jovem de uma forma que torna isto mais difícil do que deveria ser. A sua pele está a adaptar-se a um novo ambiente hormonal. Cuidar dela com regularidade (alimentação, protetor solar, hidratação, sono) é a resposta mais útil — em vez de recorrer a intervenções drásticas ou de se afastar da vida social.
 ss_collagen_skin:
   title: Colagénio hidrolisado — evidência emergente para a pele, o cabelo e as unhas
   body: >-
-    Habitualmente 10 g/dia. Procure colagénio bovino tipo I hidrolisado — «hidrolisado» significa que foi decomposto em péptidos mais pequenos que o seu corpo consegue realmente absorver e usar, e o tipo I é o colagénio mais abundante, que sustenta a pele, o cabelo, as unhas, as articulações, os ossos e o revestimento intestinal. A produção natural de colagénio diminui com a idade, por isso a suplementação ajuda o corpo no seu trabalho contínuo de reparação e renovação.
+    Geralmente em doses de 10 g/dia. Procure colágeno bovino tipo I hidrolisado — 'hidrolisado' significa que foi decomposto em péptidos menores para que o seu corpo consiga absorver. O tipo I é o colágeno mais abundante, que sustenta a pele, o cabelo, as unhas, as articulações, os ossos e o revestimento intestinal. A produção natural de colágeno diminui com a idade, por isso a suplementação ajuda o corpo no seu trabalho contínuo de reparação e renovação.
   disclaimer: >-
-    Os péptidos de colagénio costumam ser bem tolerados. Se tiver alergia a peixe ou marisco, verifique bem a origem (há opções marinhas, bovinas e vegetais). Consulte o seu médico de família antes de o usar se tiver algum problema de saúde em curso.
+    Os péptidos de colágeno costumam ser bem tolerados. Se tiver alergia a peixe ou marisco, verifique bem a origem (há opções marinhas, bovinas e vegetais). Consulte o seu médico antes de o usar se tiver algum problema de saúde.
 ss_zinc_hair:
   title: Zinco — para o crescimento e a reparação do cabelo
   body: >-
-    Habitualmente 10–30 mg/dia. Apoia o crescimento e a reparação do cabelo. Não deve ser tomado durante muito tempo em doses elevadas sem vigilância, porque o excesso de zinco pode esgotar o cobre.
+    Geralmente em doses de 10–30 mg/dia. Ajuda no crescimento e na reparação do cabelo. Não deve ser tomado durante muito tempo em doses elevadas sem vigilância, porque o excesso de zinco pode esgotar o cobre.
   disclaimer: >-
-    Confirme sempre com o seu médico de família ou farmacêutico antes de começar, sobretudo se tomar medicamentos receitados.
+    Confirme sempre com o seu médico ou farmacêutico antes de começar, sobretudo se tomar medicamentos receitados.
 ss_iron_hair:
   title: Ferro — só se as análises confirmarem a carência
   body: >-
